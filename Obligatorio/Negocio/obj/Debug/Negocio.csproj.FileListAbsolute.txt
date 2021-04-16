@@ -1,0 +1,6 @@
+C:\Users\crist\Documents\GitHub\208443_182999\Obligatorio\Negocio\bin\Debug\Negocio.dll
+C:\Users\crist\Documents\GitHub\208443_182999\Obligatorio\Negocio\bin\Debug\Negocio.pdb
+C:\Users\crist\Documents\GitHub\208443_182999\Obligatorio\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
+C:\Users\crist\Documents\GitHub\208443_182999\Obligatorio\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\crist\Documents\GitHub\208443_182999\Obligatorio\Negocio\obj\Debug\Negocio.dll
+C:\Users\crist\Documents\GitHub\208443_182999\Obligatorio\Negocio\obj\Debug\Negocio.pdb
