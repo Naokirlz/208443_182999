@@ -8,45 +8,52 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasCategoria
     {
+        //private Categoria NuevaCategoria;
+
+        //[TestInitialize]
+        //public void Initialize()
+        //{
+        //    this.NuevaCategoria = new Categoria("hola" + con);
+        //    ContadorInt++;
+        //}
+
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaCategoriaConNombreMenor3Caracteres()
         {
-            Categoria nuevaCategoria = new Categoria("12");
-
+            Categoria UnaCategoria = new Categoria("12");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaCategoriaConNombreMayor15Caracteres()
         {
-            Categoria nuevaCategoria = new Categoria("1234512345123451");
-
+            Categoria UnaCategoria = new Categoria("1234512345123451");
         }
 
         [TestMethod]
         public void SeGuardaCorrectamenteElNombre()
         {
-            Categoria nuevaCategoria = new Categoria("hola");
-            string nombre = "hola";
-            Assert.AreEqual(nombre, nuevaCategoria.Nombre);
-        }
-
-        [TestMethod]
-        public void SeAsignaElId()
-        {
-            Categoria nuevaCategoria = new Categoria("hola");
-            int id = 1;
-            Assert.AreEqual(id, nuevaCategoria.Id);
+            Categoria NuevaCategoria = new Categoria("ElNombre");
+            string nombre = "ElNombre";
+            Assert.AreEqual(nombre, NuevaCategoria.Nombre);
         }
 
         [TestMethod]
         public void SeAsignaElIdAutoincremental()
         {
-            Categoria nuevaCategoria = new Categoria("hola");
-            Categoria otraCategoria = new Categoria("hola");
-            int diferencia = otraCategoria.Id - nuevaCategoria.Id;
+            Categoria UnaCategoria = new Categoria("Incremental");
+            Categoria OtraCategoria = new Categoria("Incremental2");
+            int diferencia = OtraCategoria.Id - UnaCategoria.Id;
             Assert.AreEqual(1, diferencia);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionElementoYaExiste))]
+        public void NoSePuedeCrearCategoriaRepetida()
+        {
+            Categoria UnaCategoria = new Categoria("CateRepetida");
+            Categoria RepetidaCategoria = new Categoria("CateRepetida");
         }
     }
 }

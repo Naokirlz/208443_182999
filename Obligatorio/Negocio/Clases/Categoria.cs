@@ -12,17 +12,29 @@ namespace Negocio
         public string Nombre { get; set; }
         public int Id { get; }
         private static int Cantidad = 1;
+        private static List<Categoria> Categorias = new List<Categoria>();
 
 
-        public Categoria(string nombre)
+        public Categoria(string unNombre)
         {
-            if (nombre.Length < 3 || nombre.Length > 15)
+            if (unNombre.Length < 3 || unNombre.Length > 15)
             {
                 throw new ExcepcionLargoTexto();
             }
-            this.Nombre = nombre;
+            if (ExisteCategoria(unNombre)) throw new ExcepcionElementoYaExiste();
+            this.Nombre = unNombre;
             this.Id = Cantidad;
+            Categorias.Add(this);
             Cantidad++;
+        }
+
+        private static bool ExisteCategoria(string unNombre)
+        {
+            foreach (var categoria in Categoria.Categorias)
+            {
+                if (categoria.Nombre.Equals(unNombre)) return true;
+            }
+            return false;
         }
     }
 }

@@ -348,3 +348,8 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+Obligatorio/.vs/Obligatorio/v16/.suo
+*.testlog
+*.dll
+*.pdb
+*.cache
