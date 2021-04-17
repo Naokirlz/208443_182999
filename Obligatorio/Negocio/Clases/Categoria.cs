@@ -17,11 +17,7 @@ namespace Negocio
 
         public Categoria(string unNombre)
         {
-            if (unNombre.Length < 3 || unNombre.Length > 15)
-            {
-                throw new ExcepcionLargoTexto();
-            }
-            if (ExisteCategoria(unNombre)) throw new ExcepcionElementoYaExiste();
+            ValidarCategoria(unNombre);
             this.Nombre = unNombre;
             this.Id = Cantidad;
             Categorias.Add(this);
@@ -35,6 +31,15 @@ namespace Negocio
                 if (categoria.Nombre.Equals(unNombre)) return true;
             }
             return false;
+        }
+
+        private void ValidarCategoria(string unNombre)
+        {
+            if (unNombre.Length < 3 || unNombre.Length > 15)
+            {
+                throw new ExcepcionLargoTexto();
+            }
+            if (ExisteCategoria(unNombre)) throw new ExcepcionElementoYaExiste();
         }
     }
 }
