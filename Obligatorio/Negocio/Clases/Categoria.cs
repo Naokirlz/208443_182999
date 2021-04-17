@@ -10,19 +10,19 @@ namespace Negocio
     public class Categoria
     {
         public string Nombre { get; set; }
-        
+        public int Id { get; }
+        private static int Cantidad = 1;
+
 
         public Categoria(string nombre)
         {
-
             if (nombre.Length < 3 || nombre.Length > 15)
             {
                 throw new ExcepcionLargoTexto();
-
             }
-
             this.Nombre = nombre;
-
+            this.Id = Cantidad;
+            Cantidad++;
         }
     }
 }
