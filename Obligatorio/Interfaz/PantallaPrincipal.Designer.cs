@@ -32,6 +32,7 @@ namespace Interfaz
             this.btnAgregarCategoria = new System.Windows.Forms.Button();
             this.pnlPanelPrincipal = new System.Windows.Forms.Panel();
             this.btnModificarCategoria = new System.Windows.Forms.Button();
+            this.btnEliminarCategorias = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAgregarCategoria
@@ -61,11 +62,22 @@ namespace Interfaz
             this.btnModificarCategoria.UseVisualStyleBackColor = true;
             this.btnModificarCategoria.Click += new System.EventHandler(this.btnModificarCategoria_Click);
             // 
+            // btnEliminarCategorias
+            // 
+            this.btnEliminarCategorias.Location = new System.Drawing.Point(12, 127);
+            this.btnEliminarCategorias.Name = "btnEliminarCategorias";
+            this.btnEliminarCategorias.Size = new System.Drawing.Size(185, 23);
+            this.btnEliminarCategorias.TabIndex = 3;
+            this.btnEliminarCategorias.Text = "Eliminar Categorías";
+            this.btnEliminarCategorias.UseVisualStyleBackColor = true;
+            this.btnEliminarCategorias.Click += new System.EventHandler(this.btnEliminarCategorias_Click);
+            // 
             // PantallaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 298);
+            this.Controls.Add(this.btnEliminarCategorias);
             this.Controls.Add(this.btnModificarCategoria);
             this.Controls.Add(this.pnlPanelPrincipal);
             this.Controls.Add(this.btnAgregarCategoria);
@@ -81,6 +93,7 @@ namespace Interfaz
         private System.Windows.Forms.Button btnAgregarCategoria;
         private System.Windows.Forms.Panel pnlPanelPrincipal;
         private System.Windows.Forms.Button btnModificarCategoria;
+        private System.Windows.Forms.Button btnEliminarCategorias;
     }
 }
 

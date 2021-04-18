@@ -35,8 +35,15 @@ namespace Interfaz
         private void btnModificarCategoria_Click(object sender, EventArgs e)
         {
             pnlPanelPrincipal.Controls.Clear();
-            UserControl agmodificarCategoria = new ModificarCategoria(GestorCategorias);
-            pnlPanelPrincipal.Controls.Add(agmodificarCategoria);
+            UserControl modificarCategoria = new ModificarCategoria(GestorCategorias);
+            pnlPanelPrincipal.Controls.Add(modificarCategoria);
+        }
+
+        private void btnEliminarCategorias_Click(object sender, EventArgs e)
+        {
+            pnlPanelPrincipal.Controls.Clear();
+            UserControl eliminarCategoria = new EliminarCategorias(GestorCategorias);
+            pnlPanelPrincipal.Controls.Add(eliminarCategoria);
         }
     }
 }

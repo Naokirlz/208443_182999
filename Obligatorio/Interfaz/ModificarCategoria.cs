@@ -28,12 +28,10 @@ namespace Interfaz
 
         private void Refrescar()
         {
-            //this.cmbCategoria.DataSource = this.GestorCategorias.Repositorio.Categorias;
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
             BindingSource bSource = new BindingSource();
             bSource.DataSource = this.GestorCategorias.ListarCategorias();
             this.cmbCategoria.DataSource = bSource;
-
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -42,6 +40,11 @@ namespace Interfaz
             try
             {
                 Categoria aCambiar = (Categoria) this.cmbCategoria.SelectedItem;
+                if (aCambiar == null)
+                {
+                    MessageBox.Show("Seleccione al menos una categoría");
+                    return;
+                }
                 int id = aCambiar.Id;
                 string nuevoNombre = this.txtNuevoNombre.Text;
                 this.GestorCategorias.ModificarCategoria(id, nuevoNombre);
