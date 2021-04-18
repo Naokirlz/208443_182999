@@ -52,6 +52,12 @@
     <Compile Include="AgregarCategoria.Designer.cs">
       <DependentUpon>AgregarCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="EliminarCategorias.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EliminarCategorias.Designer.cs">
+      <DependentUpon>EliminarCategorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModificarCategoria.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AgregarCategoria.resx">
       <DependentUpon>AgregarCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarCategorias.resx">
+      <DependentUpon>EliminarCategorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModificarCategoria.resx">
       <DependentUpon>ModificarCategoria.cs</DependentUpon>

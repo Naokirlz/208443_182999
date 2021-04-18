@@ -36,7 +36,7 @@ namespace Interfaz
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(255, 173);
+            this.btnEliminar.Location = new System.Drawing.Point(255, 168);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 7;
@@ -47,7 +47,7 @@ namespace Interfaz
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(22, 58);
+            this.lblCategoria.Location = new System.Drawing.Point(22, 53);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(131, 13);
             this.lblCategoria.TabIndex = 6;
@@ -56,7 +56,7 @@ namespace Interfaz
             // cmbCategoria
             // 
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategoria.Location = new System.Drawing.Point(159, 50);
+            this.cmbCategoria.Location = new System.Drawing.Point(159, 45);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(185, 21);
             this.cmbCategoria.TabIndex = 5;
@@ -69,7 +69,7 @@ namespace Interfaz
             this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.cmbCategoria);
             this.Name = "EliminarCategorias";
-            this.Size = new System.Drawing.Size(481, 314);
+            this.Size = new System.Drawing.Size(465, 287);
             this.ResumeLayout(false);
             this.PerformLayout();
 
