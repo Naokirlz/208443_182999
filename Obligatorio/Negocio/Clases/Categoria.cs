@@ -10,7 +10,7 @@ namespace Negocio
     public class Categoria
     {
         public string Nombre { get; set; }
-        public int Id { get; }
+        public int Id { get; set; }
         private static int Cantidad = 1;
         
         
@@ -24,7 +24,12 @@ namespace Negocio
             Cantidad++;
         }
 
-       
+        public Categoria(string unNombre, int unId) :this(unNombre)
+        {
+            this.Id = unId;
+        }
+
+
 
         private static void ValidarCategoria(string unNombre)
         {

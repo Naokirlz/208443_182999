@@ -53,7 +53,13 @@ namespace Negocio.Clases
 
         public List<Categoria> ListarCategorias()
         {
-            return this.Categorias;
+            List<Categoria> clon = new List<Categoria>();
+            foreach(Categoria cat in Categorias)
+            {
+                Categoria clonCat = new Categoria(cat.Nombre, cat.Id);
+                clon.Add(clonCat);
+            }
+            return clon;
         }
     }
 }

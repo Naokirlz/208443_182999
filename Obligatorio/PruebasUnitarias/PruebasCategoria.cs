@@ -18,7 +18,6 @@ namespace PruebasUnitarias
         public void NoSePuedeCrearUnaCategoriaConNombreMenor3Caracteres()
         {
             Gestor.Alta("12");            
-            //Categoria UnaCategoria = new Categoria("12");
         }
 
         [TestMethod]
@@ -26,7 +25,6 @@ namespace PruebasUnitarias
         public void NoSePuedeCrearUnaCategoriaConNombreMayor15Caracteres()
         {
             Gestor.Alta("1234512345123451");
-            //Categoria UnaCategoria = new Categoria("1234512345123451");
         }
 
         [TestMethod]
@@ -43,10 +41,6 @@ namespace PruebasUnitarias
         {
             Categoria UnaCategoria = Gestor.Alta("Incremental");
             Categoria OtraCategoria = Gestor.Alta("Incremental2");
-
-            //Categoria UnaCategoria = new Categoria("Incremental");
-            //Categoria OtraCategoria = new Categoria("Incremental2");
-            
             int diferencia = OtraCategoria.Id - UnaCategoria.Id;
             Assert.AreEqual(1, diferencia);
         }
@@ -57,7 +51,6 @@ namespace PruebasUnitarias
         {
             Categoria UnaCategoria = Gestor.Alta("CateRepetida");
             Categoria RepetidaCategoria = Gestor.Alta("CateRepetida");
-           
         }
 
         [TestMethod]
@@ -123,7 +116,6 @@ namespace PruebasUnitarias
 
 
         [TestMethod]
-        
         public void SePuedenVerTodasLasCategorias()
         {
             GestorCategorias Gestor2 = new GestorCategorias();
@@ -153,7 +145,21 @@ namespace PruebasUnitarias
 
         }
 
+        [TestMethod]
+        public void NoSeEnviaLaListaOriginalPorParametro()
+        {
+            GestorCategorias Gestor2 = new GestorCategorias();
+            Categoria categoria1 = Gestor2.Alta("Categoria1");
 
+            List<Categoria> Lista = Gestor2.ListarCategorias();
+
+            Categoria modificadaDeLista = Lista[0];
+            modificadaDeLista.Nombre = "aaaaaaaa";
+
+            Categoria posCero = Gestor2.BuscarCategoria(modificadaDeLista.Id);
+            Assert.AreNotEqual("aaaaaaaa", posCero.Nombre);
+            Assert.AreEqual("Categoria1", posCero.Nombre);
+        }
 
     }
 }
