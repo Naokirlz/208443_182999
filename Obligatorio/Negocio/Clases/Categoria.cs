@@ -34,7 +34,7 @@ namespace Negocio
             return false;
         }
 
-        private void ValidarCategoria(string unNombre)
+        private static void ValidarCategoria(string unNombre)
         {
             if (unNombre.Length < 3 || unNombre.Length > 15)
             {
@@ -53,6 +53,12 @@ namespace Negocio
             throw new ExcepcionElementoNoExiste();
         }
 
+        public static void ModificarCategoria(int id, string nuevoNombre)
+        {
+            Categoria Modificar = BuscarCategoria(id);
+            ValidarCategoria(nuevoNombre);
+            Modificar.Nombre = nuevoNombre;
+        }
 
     }
 }
