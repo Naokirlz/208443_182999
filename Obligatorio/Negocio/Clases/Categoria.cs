@@ -13,7 +13,7 @@ namespace Negocio
         public int Id { get; }
         private static int Cantidad = 1;
         
-        private static List<Categoria> Categorias = new List<Categoria>();
+        
 
 
         public Categoria(string unNombre)
@@ -21,18 +21,10 @@ namespace Negocio
             ValidarCategoria(unNombre);
             this.Nombre = unNombre;
             this.Id = Cantidad;
-            Categorias.Add(this);
             Cantidad++;
         }
 
-        private static bool ExisteCategoria(string unNombre)
-        {
-            foreach (var categoria in Categoria.Categorias)
-            {
-                if (categoria.Nombre.Equals(unNombre)) return true;
-            }
-            return false;
-        }
+       
 
         private static void ValidarCategoria(string unNombre)
         {
@@ -40,24 +32,13 @@ namespace Negocio
             {
                 throw new ExcepcionLargoTexto();
             }
-            if (ExisteCategoria(unNombre)) throw new ExcepcionElementoYaExiste();
+            
         }
 
-
-        public static Categoria BuscarCategoria(int id)
+        public void ModificarCategoria(string nuevoNombre)
         {
-            foreach (Categoria categoria in Categorias)
-            {
-                if(categoria.Id == id) { return categoria; }
-            }
-            throw new ExcepcionElementoNoExiste();
-        }
-
-        public static void ModificarCategoria(int id, string nuevoNombre)
-        {
-            Categoria Modificar = BuscarCategoria(id);
             ValidarCategoria(nuevoNombre);
-            Modificar.Nombre = nuevoNombre;
+            this.Nombre = nuevoNombre;
         }
 
     }
