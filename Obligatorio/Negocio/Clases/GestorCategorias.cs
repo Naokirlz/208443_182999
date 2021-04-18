@@ -9,52 +9,42 @@ namespace Negocio.Clases
 {
     public class GestorCategorias
     {
-        private List<Categoria> Categorias { get; set; }
+        private RepositorioCategorias Repositorio;
 
         public GestorCategorias()
         {
-            this.Categorias = new List<Categoria>();
-
+            this.Repositorio = new RepositorioCategorias();
         }
-
 
         public Categoria Alta(string nombre)
         {
-            Categoria nueva = new Categoria(nombre);
-
-            if (ExisteCategoria(nombre)) { throw new ExcepcionElementoYaExiste(); }
-            this.Categorias.Add(nueva);
+            Categoria nueva = Repositorio.Alta(nombre);
             return nueva;
-
         }
-
 
         public  void ModificarCategoria(int id, string nuevoNombre)
         {
-            Categoria Modificar = BuscarCategoria(id);
-            if (ExisteCategoria(nuevoNombre)) throw new ExcepcionElementoYaExiste();
-            Modificar.ModificarCategoria(nuevoNombre);
-            Modificar.Nombre = nuevoNombre;
+            Repositorio.ModificarCategoria(id, nuevoNombre);
+            //Categoria Modificar = BuscarCategoria(id);
+            //if (ExisteCategoria(nuevoNombre)) throw new ExcepcionElementoYaExiste();
+            //Modificar.ModificarCategoria(nuevoNombre);
+            //Modificar.Nombre = nuevoNombre;
         }
 
 
 
-        private bool ExisteCategoria(string unNombre)
-        {
-            foreach (var categoria in this.Categorias)
-            {
-                if (categoria.Nombre.Equals(unNombre)) return true;
-            }
-            return false;
-        }
+        //private bool ExisteCategoria(string unNombre)
+        //{
+        //    foreach (var categoria in this.Categorias)
+        //    {
+        //        if (categoria.Nombre.Equals(unNombre)) return true;
+        //    }
+        //    return false;
+        //}
 
         public Categoria BuscarCategoria(int id)
         {
-            foreach (Categoria categoria in this.Categorias)
-            {
-                if (categoria.Id == id) { return categoria; }
-            }
-            throw new ExcepcionElementoNoExiste();
+            return Repositorio.BuscarCategoria(id);
         }
 
 
