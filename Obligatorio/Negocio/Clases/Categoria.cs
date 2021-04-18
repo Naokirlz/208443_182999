@@ -12,6 +12,7 @@ namespace Negocio
         public string Nombre { get; set; }
         public int Id { get; }
         private static int Cantidad = 1;
+        
         private static List<Categoria> Categorias = new List<Categoria>();
 
 
@@ -41,5 +42,17 @@ namespace Negocio
             }
             if (ExisteCategoria(unNombre)) throw new ExcepcionElementoYaExiste();
         }
+
+
+        public static Categoria BuscarCategoria(int id)
+        {
+            foreach (Categoria categoria in Categorias)
+            {
+                if(categoria.Id == id) { return categoria; }
+            }
+            throw new ExcepcionElementoNoExiste();
+        }
+
+
     }
 }

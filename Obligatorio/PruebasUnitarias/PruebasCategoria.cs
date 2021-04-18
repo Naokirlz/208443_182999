@@ -55,5 +55,28 @@ namespace PruebasUnitarias
             Categoria UnaCategoria = new Categoria("CateRepetida");
             Categoria RepetidaCategoria = new Categoria("CateRepetida");
         }
+
+        [TestMethod]
+        
+        public void BuscarUnaCategoriaExistente()
+        {
+            Categoria UnaCategoria = new Categoria("BuscarCategoria");
+            int id = UnaCategoria.Id;
+            Categoria Buscada = Categoria.BuscarCategoria(id);
+            Assert.AreEqual(UnaCategoria, Buscada);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionElementoNoExiste))]
+        public void BuscarUnaCategoriaNoExistente()
+        {
+            Categoria UnaCategoria = new Categoria("BuscOtraCat");
+            int id = UnaCategoria.Id + 1;
+            Categoria Buscada = Categoria.BuscarCategoria(id);
+            
+        }
+
+
+
     }
 }
