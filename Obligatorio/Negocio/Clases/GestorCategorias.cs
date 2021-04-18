@@ -9,7 +9,7 @@ namespace Negocio.Clases
 {
     public class GestorCategorias
     {
-        private RepositorioCategorias Repositorio;
+        public RepositorioCategorias Repositorio;
 
         public GestorCategorias()
         {

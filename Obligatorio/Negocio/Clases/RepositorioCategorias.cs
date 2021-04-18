@@ -9,7 +9,7 @@ namespace Negocio.Clases
 {
     public class RepositorioCategorias
     {
-        private List<Categoria> Categorias { get; set; }
+        public List<Categoria> Categorias { get; set; }
 
         public RepositorioCategorias()
         {
