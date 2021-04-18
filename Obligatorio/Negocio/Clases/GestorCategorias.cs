@@ -22,6 +22,15 @@ namespace Negocio.Clases
             return nueva;
         }
 
+
+        public bool  Baja(int id)
+        {
+            BuscarCategoria(id);
+            return  Repositorio.Baja(1);
+        }
+
+
+
         public  void ModificarCategoria(int id, string nuevoNombre)
         {
             Repositorio.ModificarCategoria(id, nuevoNombre);
@@ -51,5 +60,7 @@ namespace Negocio.Clases
         {
             return Repositorio.ListarCategorias();
         }
+
+       
     }
 }

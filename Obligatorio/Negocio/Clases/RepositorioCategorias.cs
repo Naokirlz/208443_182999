@@ -25,6 +25,12 @@ namespace Negocio.Clases
             return nueva;
         }
 
+        internal bool Baja(int id)
+        {
+            Categorias.Remove(BuscarCategoria(id));
+            return true;
+        }
+
         public void ModificarCategoria(int id, string nuevoNombre)
         {
             Categoria Modificar = BuscarCategoria(id);

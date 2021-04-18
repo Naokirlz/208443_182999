@@ -161,5 +161,29 @@ namespace PruebasUnitarias
             Assert.AreEqual("Categoria1", posCero.Nombre);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionElementoNoExiste))]
+        public void EliminarElementoNoExistente()
+        {
+            GestorCategorias Gestor3 = new GestorCategorias();
+            Categoria categoria1 = Gestor3.Alta("Categoria1");
+            int id = categoria1.Id + 2;
+            Gestor3.Baja(id);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionElementoNoExiste))]
+        public void PruebaEliminarCategoria()
+        {
+            GestorCategorias Gestor4 = new GestorCategorias();
+            Categoria categoria1 = Gestor4.Alta("Categoria1");
+            int id = categoria1.Id;
+            Gestor4.Baja(id);
+            Gestor4.BuscarCategoria(id);
+
+        }
+
+
     }
 }
