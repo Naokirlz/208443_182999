@@ -47,7 +47,9 @@ namespace Negocio.Clases
             return Repositorio.BuscarCategoria(id);
         }
 
-
-
+        public List<Categoria> ListarCategorias()
+        {
+            return Repositorio.ListarCategorias();
+        }
     }
 }

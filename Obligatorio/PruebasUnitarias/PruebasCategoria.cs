@@ -3,6 +3,7 @@ using System;
 using Negocio;
 using Negocio.Excepciones;
 using Negocio.Clases;
+using System.Collections.Generic;
 
 namespace PruebasUnitarias
 {
@@ -119,5 +120,40 @@ namespace PruebasUnitarias
             string nombreNuevo = "1234567891234567";
             Gestor.ModificarCategoria(id, nombreNuevo);
         }
+
+
+        [TestMethod]
+        
+        public void SePuedenVerTodasLasCategorias()
+        {
+            GestorCategorias Gestor2 = new GestorCategorias();
+            Categoria categoria1 = Gestor2.Alta("Categoria1");
+            Categoria categoria2 = Gestor2.Alta("Categoria2");
+            Categoria categoria3 = Gestor2.Alta("Categoria3");
+
+            bool estaCat1 = false;
+            bool estaCat2 = false;
+            bool estaCat3 = false;
+            bool categoriaDif = false;
+           
+
+            List<Categoria> Lista = Gestor2.ListarCategorias();
+        
+            foreach (Categoria categoria in Lista)
+            {
+
+                if (categoria.Nombre == categoria1.Nombre && categoria.Id == categoria1.Id) { estaCat1 = true; }
+                else if (categoria.Nombre == categoria2.Nombre && categoria.Id == categoria2.Id) { estaCat2 = true; }
+                else if (categoria.Nombre == categoria3.Nombre && categoria.Id == categoria3.Id) { estaCat3 = true; }
+                else { categoriaDif = true; }
+
+            }
+
+            Assert.IsTrue(estaCat1 && estaCat2 && estaCat3 && !categoriaDif);
+
+        }
+
+
+
     }
 }

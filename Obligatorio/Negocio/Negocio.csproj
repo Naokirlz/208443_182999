@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Categoria.cs" />
+    <Compile Include="Clases\GestorCategorias.cs" />
+    <Compile Include="Clases\RepositorioCategorias.cs" />
     <Compile Include="Excepciones\ExcepcionElementoNoExiste.cs" />
     <Compile Include="Excepciones\ExcepcionElementoYaExiste.cs" />
     <Compile Include="Excepciones\ExcepcionLargoTexto.cs" />

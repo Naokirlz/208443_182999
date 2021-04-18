@@ -41,5 +41,12 @@ namespace Negocio
             this.Nombre = nuevoNombre;
         }
 
+
+        public override string ToString()
+        {
+            return this.Nombre;
+        }
+
+
     }
 }

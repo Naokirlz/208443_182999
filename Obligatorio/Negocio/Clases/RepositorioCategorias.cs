@@ -9,7 +9,7 @@ namespace Negocio.Clases
 {
     public class RepositorioCategorias
     {
-        public List<Categoria> Categorias { get; set; }
+        private List<Categoria> Categorias { get; set; }
 
         public RepositorioCategorias()
         {
@@ -49,6 +49,11 @@ namespace Negocio.Clases
                 if (categoria.Id == id) { return categoria; }
             }
             throw new ExcepcionElementoNoExiste();
+        }
+
+        public List<Categoria> ListarCategorias()
+        {
+            return this.Categorias;
         }
     }
 }

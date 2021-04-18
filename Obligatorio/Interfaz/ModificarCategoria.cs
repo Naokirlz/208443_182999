@@ -21,7 +21,19 @@ namespace Interfaz
         {
             InitializeComponent();
             this.GestorCategorias = gestorCategorias;
-            this.cmbCategoria.DataSource = this.GestorCategorias.Repositorio.Categorias;
+            Refrescar();
+
+            
+        }
+
+        private void Refrescar()
+        {
+            //this.cmbCategoria.DataSource = this.GestorCategorias.Repositorio.Categorias;
+            BindingList<Categoria> bindinglist = new BindingList<Categoria>();
+            BindingSource bSource = new BindingSource();
+            bSource.DataSource = this.GestorCategorias.ListarCategorias();
+            this.cmbCategoria.DataSource = bSource;
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -34,6 +46,7 @@ namespace Interfaz
                 string nuevoNombre = this.txtNuevoNombre.Text;
                 this.GestorCategorias.ModificarCategoria(id, nuevoNombre);
                 this.txtNuevoNombre.Clear();
+                Refrescar();
                 MessageBox.Show("Categoría " + nuevoNombre + " fue modificada con éxito!!");
             }
             catch (ExcepcionElementoYaExiste unaExcepcion)
