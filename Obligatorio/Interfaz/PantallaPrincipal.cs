@@ -14,8 +14,9 @@ namespace Interfaz
     public partial class PantallaPrincipal : Form
     {
         public GestorCategorias GestorCategorias;
-        public PantallaPrincipal()
+        public PantallaPrincipal(GestorCategorias gestorCategorias)
         {
+            this.GestorCategorias = gestorCategorias;
             InitializeComponent();
             this.GestorCategorias = new GestorCategorias();
         }

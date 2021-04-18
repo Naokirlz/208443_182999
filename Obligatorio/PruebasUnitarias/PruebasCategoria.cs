@@ -11,7 +11,6 @@ namespace PruebasUnitarias
     public class PruebasCategoria
     {
         private GestorCategorias Gestor = new GestorCategorias();
-
        
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]

@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="PruebasCategoria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PruebasGenerales.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -10,10 +10,16 @@ namespace Negocio.Clases
     public class GestorCategorias
     {
         public RepositorioCategorias Repositorio;
+        private string Password;
 
         public GestorCategorias()
         {
             this.Repositorio = new RepositorioCategorias();
+        }
+
+        public GestorCategorias(string unaPassword):this()
+        {
+            this.Password = unaPassword;
         }
 
         public Categoria Alta(string nombre)
@@ -22,6 +28,10 @@ namespace Negocio.Clases
             return nueva;
         }
 
+        public bool Login(string unaPassword)
+        {
+            return unaPassword == this.Password;
+        }
 
         public bool  Baja(int id)
         {
