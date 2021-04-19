@@ -187,6 +187,12 @@ namespace PruebasUnitarias
             Assert.IsFalse(esta);
         }
 
-
+        [TestMethod]
+        public void ElMetodoToStringDevuelveElNombre()
+        {
+            Categoria categoria = Gestor.Alta("Categoria10");
+            string nombre = categoria.ToString();
+            Assert.AreEqual("Categoria10", nombre);
+        }
     }
 }
