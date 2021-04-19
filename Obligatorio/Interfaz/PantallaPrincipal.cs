@@ -46,5 +46,10 @@ namespace Interfaz
             UserControl eliminarCategoria = new EliminarCategorias(GestorCategorias);
             pnlPanelPrincipal.Controls.Add(eliminarCategoria);
         }
+
+        private void PantallaPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

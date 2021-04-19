@@ -25,8 +25,9 @@ namespace Interfaz
             if (this.GestorCategorias.Login(this.txtIngresar.Text))
             {
                 PantallaPrincipal nuevaPantalla = new PantallaPrincipal(this.GestorCategorias);
-                nuevaPantalla.Show();
                 this.Hide();
+                nuevaPantalla.Show();
+                
             }
             else
             {

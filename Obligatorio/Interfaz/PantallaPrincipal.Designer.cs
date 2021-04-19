@@ -83,6 +83,7 @@ namespace Interfaz
             this.Controls.Add(this.btnAgregarCategoria);
             this.Name = "PantallaPrincipal";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PantallaPrincipal_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 

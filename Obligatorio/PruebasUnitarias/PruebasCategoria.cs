@@ -172,15 +172,19 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void PruebaEliminarCategoria()
         {
             GestorCategorias Gestor4 = new GestorCategorias();
             Categoria categoria1 = Gestor4.Alta("Categoria1");
             int id = categoria1.Id;
             Gestor4.Baja(id);
-            Gestor4.BuscarCategoria(id);
-
+            List<Categoria> lista = Gestor4.ListarCategorias();
+            bool esta = false;
+            foreach(Categoria cat in lista)
+            {
+                if (cat.Id == categoria1.Id) esta = true;
+            }
+            Assert.IsFalse(esta);
         }
 
 

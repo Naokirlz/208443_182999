@@ -33,10 +33,10 @@ namespace Negocio.Clases
             return unaPassword == this.Password;
         }
 
-        public bool  Baja(int id)
+        public void Baja(int id)
         {
             BuscarCategoria(id);
-            return  Repositorio.Baja(1);
+            Repositorio.Baja(id);
         }
 
 
