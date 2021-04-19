@@ -46,17 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Categoria\AgregarCategoria.cs">
+    <Compile Include="CategoriasForm\AgregarCategoria.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Categoria\AgregarCategoria.Designer.cs">
+    <Compile Include="CategoriasForm\AgregarCategoria.Designer.cs">
       <DependentUpon>AgregarCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="Categoria\EliminarCategorias.cs">
+    <Compile Include="CategoriasForm\EliminarCategorias.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Categoria\EliminarCategorias.Designer.cs">
+    <Compile Include="CategoriasForm\EliminarCategorias.Designer.cs">
       <DependentUpon>EliminarCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriasForm\GestionCategorias.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CategoriasForm\GestionCategorias.Designer.cs">
+      <DependentUpon>GestionCategorias.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -64,10 +70,10 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Categoria\ModificarCategoria.cs">
+    <Compile Include="CategoriasForm\ModificarCategoria.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Categoria\ModificarCategoria.Designer.cs">
+    <Compile Include="CategoriasForm\ModificarCategoria.Designer.cs">
       <DependentUpon>ModificarCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="PantallaPrincipal.cs">
@@ -78,16 +84,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Categoria\AgregarCategoria.resx">
+    <EmbeddedResource Include="CategoriasForm\AgregarCategoria.resx">
       <DependentUpon>AgregarCategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Categoria\EliminarCategorias.resx">
+    <EmbeddedResource Include="CategoriasForm\EliminarCategorias.resx">
       <DependentUpon>EliminarCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoriasForm\GestionCategorias.resx">
+      <DependentUpon>GestionCategorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Categoria\ModificarCategoria.resx">
+    <EmbeddedResource Include="CategoriasForm\ModificarCategoria.resx">
       <DependentUpon>ModificarCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PantallaPrincipal.resx">

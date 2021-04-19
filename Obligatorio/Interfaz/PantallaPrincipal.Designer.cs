@@ -29,72 +29,45 @@ namespace Interfaz
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAgregarCategoria = new System.Windows.Forms.Button();
+            this.btnGestionCategoria = new System.Windows.Forms.Button();
             this.pnlPanelPrincipal = new System.Windows.Forms.Panel();
-            this.btnModificarCategoria = new System.Windows.Forms.Button();
-            this.btnEliminarCategorias = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnAgregarCategoria
+            // btnGestionCategoria
             // 
-            this.btnAgregarCategoria.Location = new System.Drawing.Point(12, 69);
-            this.btnAgregarCategoria.Name = "btnAgregarCategoria";
-            this.btnAgregarCategoria.Size = new System.Drawing.Size(185, 23);
-            this.btnAgregarCategoria.TabIndex = 0;
-            this.btnAgregarCategoria.Text = "Agregar Categorías";
-            this.btnAgregarCategoria.UseVisualStyleBackColor = true;
-            this.btnAgregarCategoria.Click += new System.EventHandler(this.btnAgregarCategoria_Click);
+            this.btnGestionCategoria.Location = new System.Drawing.Point(12, 69);
+            this.btnGestionCategoria.Name = "btnGestionCategoria";
+            this.btnGestionCategoria.Size = new System.Drawing.Size(185, 23);
+            this.btnGestionCategoria.TabIndex = 0;
+            this.btnGestionCategoria.Text = "Gestionar Categorías";
+            this.btnGestionCategoria.UseVisualStyleBackColor = true;
+            this.btnGestionCategoria.Click += new System.EventHandler(this.btnGestionCategoria_Click);
             // 
             // pnlPanelPrincipal
             // 
             this.pnlPanelPrincipal.Location = new System.Drawing.Point(228, 31);
             this.pnlPanelPrincipal.Name = "pnlPanelPrincipal";
-            this.pnlPanelPrincipal.Size = new System.Drawing.Size(401, 257);
+            this.pnlPanelPrincipal.Size = new System.Drawing.Size(729, 376);
             this.pnlPanelPrincipal.TabIndex = 1;
-            // 
-            // btnModificarCategoria
-            // 
-            this.btnModificarCategoria.Location = new System.Drawing.Point(12, 98);
-            this.btnModificarCategoria.Name = "btnModificarCategoria";
-            this.btnModificarCategoria.Size = new System.Drawing.Size(185, 23);
-            this.btnModificarCategoria.TabIndex = 2;
-            this.btnModificarCategoria.Text = "Modificar Categorías";
-            this.btnModificarCategoria.UseVisualStyleBackColor = true;
-            this.btnModificarCategoria.Click += new System.EventHandler(this.btnModificarCategoria_Click);
-            // 
-            // btnEliminarCategorias
-            // 
-            this.btnEliminarCategorias.Location = new System.Drawing.Point(12, 127);
-            this.btnEliminarCategorias.Name = "btnEliminarCategorias";
-            this.btnEliminarCategorias.Size = new System.Drawing.Size(185, 23);
-            this.btnEliminarCategorias.TabIndex = 3;
-            this.btnEliminarCategorias.Text = "Eliminar Categorías";
-            this.btnEliminarCategorias.UseVisualStyleBackColor = true;
-            this.btnEliminarCategorias.Click += new System.EventHandler(this.btnEliminarCategorias_Click);
             // 
             // PantallaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 298);
-            this.Controls.Add(this.btnEliminarCategorias);
-            this.Controls.Add(this.btnModificarCategoria);
+            this.ClientSize = new System.Drawing.Size(969, 419);
             this.Controls.Add(this.pnlPanelPrincipal);
-            this.Controls.Add(this.btnAgregarCategoria);
+            this.Controls.Add(this.btnGestionCategoria);
             this.Name = "PantallaPrincipal";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PantallaPrincipal_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnAgregarCategoria;
+        private System.Windows.Forms.Button btnGestionCategoria;
         private System.Windows.Forms.Panel pnlPanelPrincipal;
-        private System.Windows.Forms.Button btnModificarCategoria;
-        private System.Windows.Forms.Button btnEliminarCategorias;
     }
 }
 
