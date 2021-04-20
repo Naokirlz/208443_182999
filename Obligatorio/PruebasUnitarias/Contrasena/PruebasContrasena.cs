@@ -100,5 +100,23 @@ namespace PruebasUnitarias.Contrasena
             for (int caracter = 0; caracter <= 250; caracter++) unaNota += "a";
             Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "usuario", "password", unaCategoria, unaNota);
         }
+
+        [TestMethod]
+        public void SeGuardaLaFechaModificacionCorrecta()
+        {
+            Categoria unaCategoria = new Categoria("otra categoría");
+            DateTime fechaCreacion = DateTime.Now;
+            Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "usuario", "password", unaCategoria, "Notas",fechaCreacion);
+            Assert.AreEqual(fechaCreacion, nuevaContrasenia.FechaUltimaModificacion);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionFechaIncorrecta))]
+        public void NoSeGuardaContraseniaSiFechaModificacionEsFuturo()
+        {
+            Categoria unaCategoria = new Categoria("otra categoría");
+            DateTime fechaCreacion = DateTime.Now.AddDays(1);
+            Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "usuario", "password", unaCategoria, "Notas", fechaCreacion);
+            Assert.AreEqual(fechaCreacion, nuevaContrasenia.FechaUltimaModificacion);
+        }
     }
 }

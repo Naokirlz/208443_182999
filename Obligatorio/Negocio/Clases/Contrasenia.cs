@@ -15,6 +15,7 @@ namespace Negocio.Clases
         public string Password { get; }
         public Categoria Categoria { get; }
         public string Notas { get; }
+        public DateTime FechaUltimaModificacion { get; set; }
 
         public Contrasenia() { }
         public Contrasenia(string unSitio) : base()
@@ -44,6 +45,10 @@ namespace Negocio.Clases
         {
             if (unaNota.Length > 250) throw new ExcepcionLargoTexto();
             this.Notas = unaNota;
+        }
+
+        public Contrasenia(string unSitio, string unUsuario, string unPassword, Categoria unaCategoria, string unaNota, DateTime fechaUltimaModificacion) : this(unSitio, unUsuario, unPassword, unaCategoria, unaNota)
+        {
         }
     }
 }
