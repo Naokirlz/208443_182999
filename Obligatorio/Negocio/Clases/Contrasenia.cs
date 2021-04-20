@@ -30,6 +30,8 @@ namespace Negocio.Clases
         }
         public Contrasenia(string unSitio, string unUsuario, string unPassword) : this(unSitio, unUsuario)
         {
+            if (unPassword.Length < 5) throw new ExcepcionLargoTexto();
+            if (unPassword.Length > 25) throw new ExcepcionLargoTexto();
             this.Password = unPassword;
         }
     }

@@ -60,6 +60,18 @@ namespace PruebasUnitarias.Contrasena
             Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "12345", "12345");
             Assert.AreEqual("12345", nuevaContrasenia.Password);
         }
-        
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeCrearUnaContrasenaConPasswordMenor5Caracteres()
+        {
+            Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "usuario", "1234");
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeCrearUnaContrasenaConPasswordfMayor25Caracteres()
+        {
+            Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "usuario", "12345123451234512345123451");
+        }
     }
 }
