@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Categoria.cs" />
+    <Compile Include="Clases\Contrasenia.cs" />
     <Compile Include="Clases\GestorCategorias.cs" />
     <Compile Include="Clases\RepositorioCategorias.cs" />
     <Compile Include="Excepciones\ExcepcionElementoNoExiste.cs" />

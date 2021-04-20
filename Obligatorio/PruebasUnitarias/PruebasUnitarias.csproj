@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contrasena\PruebasContrasena.cs" />
     <Compile Include="PruebasCategoria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PruebasGenerales.cs" />
