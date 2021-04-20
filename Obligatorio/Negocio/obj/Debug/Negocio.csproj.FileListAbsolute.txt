@@ -9,4 +9,3 @@ C:\Users\fnico\Documents\GitHub\208443_182999\Obligatorio\Negocio\bin\Debug\Nego
 C:\Users\fnico\Documents\GitHub\208443_182999\Obligatorio\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
 C:\Users\fnico\Documents\GitHub\208443_182999\Obligatorio\Negocio\obj\Debug\Negocio.dll
 C:\Users\fnico\Documents\GitHub\208443_182999\Obligatorio\Negocio\obj\Debug\Negocio.pdb
-C:\Users\fnico\Documents\GitHub\208443_182999\Obligatorio\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
