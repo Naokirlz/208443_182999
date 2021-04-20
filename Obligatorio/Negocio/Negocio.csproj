@@ -47,6 +47,7 @@
     <Compile Include="Clases\RepositorioCategorias.cs" />
     <Compile Include="Excepciones\ExcepcionElementoNoExiste.cs" />
     <Compile Include="Excepciones\ExcepcionElementoYaExiste.cs" />
+    <Compile Include="Excepciones\ExcepcionFechaIncorrecta.cs" />
     <Compile Include="Excepciones\ExcepcionLargoTexto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -49,6 +49,8 @@ namespace Negocio.Clases
 
         public Contrasenia(string unSitio, string unUsuario, string unPassword, Categoria unaCategoria, string unaNota, DateTime fechaUltimaModificacion) : this(unSitio, unUsuario, unPassword, unaCategoria, unaNota)
         {
+            if (fechaUltimaModificacion > DateTime.Now) throw new ExcepcionFechaIncorrecta();
+            this.FechaUltimaModificacion = fechaUltimaModificacion;
         }
     }
 }
