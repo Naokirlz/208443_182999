@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Negocio.Clases
 {
     public class Contrasenia
@@ -23,6 +24,7 @@ namespace Negocio.Clases
         public Contrasenia(string unSitio, string unUsuario) : this(unSitio)
         {
             if (unUsuario.Length < 5) throw new ExcepcionLargoTexto();
+            if (unUsuario.Length > 25) throw new ExcepcionLargoTexto();
             this.Usuario = unUsuario;
         }
     }

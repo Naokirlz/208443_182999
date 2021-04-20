@@ -32,5 +32,12 @@ namespace PruebasUnitarias.Contrasena
         {
             Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "1234");
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeCrearUnaContrasenaConUsuarioMayor25Caracteres()
+        {
+            Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "12345123451234512345123451");
+        }
     }
 }
