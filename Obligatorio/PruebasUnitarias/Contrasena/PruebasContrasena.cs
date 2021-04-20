@@ -13,6 +13,13 @@ namespace PruebasUnitarias.Contrasena
     public class PruebasContrasena
     {
         [TestMethod]
+        public void SePuedeCrearUnaContrasenaConSitioCorrecto()
+        {
+            Contrasenia nuevaContrasenia = new Contrasenia("12345");
+            Assert.AreEqual("12345", nuevaContrasenia.Sitio);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConSitioMenor3Caracteres()
         {
@@ -24,6 +31,13 @@ namespace PruebasUnitarias.Contrasena
         public void NoSePuedeCrearUnaContrasenaConSitioMayor25Caracteres()
         {
             Contrasenia nuevaContrasenia = new Contrasenia("12345123451234512345123451");
+        }
+
+        [TestMethod]
+        public void SePuedeCrearUnaContrasenaConUsuarioCorrecto()
+        {
+            Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "12345");
+            Assert.AreEqual("12345", nuevaContrasenia.Usuario);
         }
 
         [TestMethod]
