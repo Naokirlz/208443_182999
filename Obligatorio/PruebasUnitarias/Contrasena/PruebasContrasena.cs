@@ -53,5 +53,13 @@ namespace PruebasUnitarias.Contrasena
         {
             Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "12345123451234512345123451");
         }
+
+        [TestMethod]
+        public void SePuedeCrearUnaContrasenaConPasswordCorrecto()
+        {
+            Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "12345", "12345");
+            Assert.AreEqual("12345", nuevaContrasenia.Password);
+        }
+        
     }
 }
