@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Negocio;
 using Negocio.Clases;
 using Negocio.Excepciones;
 
@@ -72,6 +73,14 @@ namespace PruebasUnitarias.Contrasena
         public void NoSePuedeCrearUnaContrasenaConPasswordfMayor25Caracteres()
         {
             Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "usuario", "12345123451234512345123451");
+        }
+
+        [TestMethod]
+        public void SePuedeCrearUnaContrasenaConCategoria()
+        {
+            Categoria unaCategoria = new Categoria("una categoría"); 
+            Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "usuario", "password", unaCategoria);
+            Assert.AreEqual("una categoría", nuevaContrasenia.Categoria.Nombre);
         }
     }
 }

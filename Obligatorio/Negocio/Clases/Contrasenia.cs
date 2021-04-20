@@ -13,6 +13,7 @@ namespace Negocio.Clases
         public string Sitio { get; }
         public string Usuario { get; }
         public string Password { get; }
+        public Categoria Categoria { get; }
 
         public Contrasenia() { }
         public Contrasenia(string unSitio) : base()
@@ -33,6 +34,10 @@ namespace Negocio.Clases
             if (unPassword.Length < 5) throw new ExcepcionLargoTexto();
             if (unPassword.Length > 25) throw new ExcepcionLargoTexto();
             this.Password = unPassword;
+        }
+        public Contrasenia(string unSitio, string unUsuario, string unPassword, Categoria unaCategoria) : this(unSitio, unUsuario, unPassword)
+        {
+            this.Categoria = unaCategoria;
         }
     }
 }
