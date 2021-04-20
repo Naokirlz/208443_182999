@@ -82,5 +82,23 @@ namespace PruebasUnitarias.Contrasena
             Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "usuario", "password", unaCategoria);
             Assert.AreEqual("una categoría", nuevaContrasenia.Categoria.Nombre);
         }
+
+        [TestMethod]
+        public void SePuedeCrearUnaContraseniaConNotaCorrecta()
+        {
+            Categoria unaCategoria = new Categoria("otra categoría");
+            Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "usuario", "password", unaCategoria, "Notas");
+            Assert.AreEqual("Notas", nuevaContrasenia.Notas);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeCrearUnaContrasenaConNotasMayor250Caracteres()
+        {
+            Categoria unaCategoria = new Categoria("otra categoría");
+            string unaNota = "";
+            for (int caracter = 0; caracter <= 250; caracter++) unaNota += "a";
+            Contrasenia nuevaContrasenia = new Contrasenia("Sitio", "usuario", "password", unaCategoria, unaNota);
+        }
     }
 }
