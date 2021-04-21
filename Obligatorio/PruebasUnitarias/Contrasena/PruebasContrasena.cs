@@ -90,27 +90,8 @@ namespace PruebasUnitarias.Contrasena
             {
                 Password = "12345123451234512345123451"
             };
-        }
-
-        [TestMethod]
-        public void SePuedeCrearUnaContrasenaConCategoria()
-        {
-            Categoria unaCategoria = new Categoria("una categoría"); 
-            Contrasenia nuevaContrasenia = new Contrasenia() { 
-                Categoria = unaCategoria
-            };
-            Assert.AreEqual("una categoría", nuevaContrasenia.Categoria.Nombre);
-        }
-
-        [TestMethod]
-        public void SePuedeCrearUnaContraseniaConNotaCorrecta()
-        {
-            Contrasenia nuevaContrasenia = new Contrasenia() { 
-                Notas = "Notas"
-            };
-            Assert.AreEqual("Notas", nuevaContrasenia.Notas);
-        }
-
+        }     
+        
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConNotasMayor250Caracteres()
@@ -127,22 +108,44 @@ namespace PruebasUnitarias.Contrasena
         public void NoSeGuardaContraseniaSiFechaModificacionEsFuturo()
         {
             DateTime fechaCreacion = DateTime.Now.AddDays(1);
-            Contrasenia nuevaContrasenia = new Contrasenia()
-            {
-                FechaUltimaModificacion = fechaCreacion
-            };
-            Assert.AreEqual(fechaCreacion, nuevaContrasenia.FechaUltimaModificacion);
+            Contrasenia nuevaContrasenia = new Contrasenia();
+            nuevaContrasenia.SetFechaUltimaModificacion(fechaCreacion);
+            //{
+            //    FechaUltimaModificacion = fechaCreacion
+            //};
+            Assert.AreEqual(fechaCreacion, nuevaContrasenia.GetFechaUltimaModificacion());
         }
 
         [TestMethod]
-        public void SeGuardaLaFechaModificacionCorrecta()
+        public void SeGuardaLaFechaDeModificacionCorrecta()
         {
-            DateTime fechaCreacion = DateTime.Now;
+            DateTime fechaActual = DateTime.Now;
+            Contrasenia nuevaContrasenia = new Contrasenia();
+            nuevaContrasenia.SetFechaUltimaModificacion(fechaActual);
+            //{
+            //    FechaUltimaModificacion = fechaActual
+            //};
+            Assert.AreEqual(fechaActual, nuevaContrasenia.GetFechaUltimaModificacion());
+        }
+        [TestMethod]
+        public void SePuedeCrearUnaContraseniaConNotaCorrecta()
+        {
+            string notas = "notas";
             Contrasenia nuevaContrasenia = new Contrasenia()
             {
-                FechaUltimaModificacion = fechaCreacion
+                Notas = notas
             };
-            Assert.AreEqual(fechaCreacion, nuevaContrasenia.FechaUltimaModificacion);
+            Assert.AreEqual(notas, nuevaContrasenia.Notas);
         }
+
+        [TestMethod]
+        public void SePuedeCrearUnaContrasenaConCategoria()
+        {
+            Negocio.Categoria unaCategoria = new Negocio.Categoria("una categoría");
+            Contrasenia nuevaContrasenia = new Contrasenia();
+            nuevaContrasenia.SetCategoriaPass(unaCategoria);
+            Assert.AreEqual("una categoría", nuevaContrasenia.GetCategoriaPass().Nombre);
+        }
+
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Negocio;
 
 
 namespace Negocio.Clases
@@ -12,7 +13,7 @@ namespace Negocio.Clases
     {
         public string Sitio
         {
-            get { return Sitio; }
+            get => Sitio;
             set
             {
                 if (value.Length < 3) throw new ExcepcionLargoTexto();
@@ -22,17 +23,17 @@ namespace Negocio.Clases
         }
         public string Usuario
         {
-            get { return Usuario; }
+            get => Usuario;
             set
             {
-                if (value.Length< 5) throw new ExcepcionLargoTexto();
+                if (value.Length < 5) throw new ExcepcionLargoTexto();
                 if (value.Length > 25) throw new ExcepcionLargoTexto();
                 Usuario = value;
             }
         }
         public string Password
         {
-            get { return Password; }
+            get => Password;
             set
             {
                 if (value.Length < 5) throw new ExcepcionLargoTexto();
@@ -40,29 +41,51 @@ namespace Negocio.Clases
                 Password = value;
             }
         }
-        public Categoria Categoria
-        {
-            get { return Categoria; }
-            set { Categoria = value; }
-        }
         public string Notas
         {
-            get { return Notas; }
+            get => Notas;
             set
             {
                 if (value.Length > 250) throw new ExcepcionLargoTexto();
                 Notas = value;
             }
         }
-        public DateTime FechaUltimaModificacion
+
+        private Categoria categoriaPass;
+
+        public Categoria GetCategoriaPass()
         {
-            get { return FechaUltimaModificacion; }
-            set
-            {
-                if (value > DateTime.Now) throw new ExcepcionFechaIncorrecta();
-                FechaUltimaModificacion = value;
-            }
+            return categoriaPass;
         }
+
+        public void SetCategoriaPass(Categoria value)
+        {
+            categoriaPass = value;
+        }
+
+        //{
+        //    get => CategoriaPass;
+        //    set => CategoriaPass = value;
+        //}
+        private DateTime fechaUltimaModificacion;
+
+        public DateTime GetFechaUltimaModificacion()
+        {
+            return fechaUltimaModificacion;
+        }
+
+        public void SetFechaUltimaModificacion(DateTime value)
+        {
+            fechaUltimaModificacion = value;
+        }
+        //public DateTime FechaUltimaModificacion {
+        //    get => FechaUltimaModificacion;
+        //    set
+        //    {
+        //        if (value > DateTime.Now) throw new ExcepcionFechaIncorrecta();
+        //        FechaUltimaModificacion = value;
+        //    }
+        //}
 
         public Contrasenia() { }
     }
