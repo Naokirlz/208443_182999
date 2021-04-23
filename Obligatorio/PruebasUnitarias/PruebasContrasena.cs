@@ -76,15 +76,7 @@ namespace PruebasUnitarias
             Assert.AreEqual("12345", nuevaContrasenia.Password);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionLargoTexto))]
-        public void NoSePuedeCrearUnaContrasenaConPasswordMenor5Caracteres()
-        {
-            Contrasenia nuevaContrasenia = new Contrasenia()
-            {
-                Password = "1234"
-            };
-        }
+        
         
 
         

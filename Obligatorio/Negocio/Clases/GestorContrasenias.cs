@@ -17,14 +17,14 @@ namespace Negocio.Clases
         public void Alta(Contrasenia unaContrasena)
         {
             if (unaContrasena.FechaUltimaModificacion != null) ValidarFecha(unaContrasena.FechaUltimaModificacion);
-            if (unaContrasena.Notas != null) ValidarLargoTexto(unaContrasena.Notas, 250);
-            if (unaContrasena.Password != null) ValidarLargoTexto(unaContrasena.Password, 25);
+            if (unaContrasena.Notas != null) ValidarLargoTexto(unaContrasena.Notas, 250, 0);
+            if (unaContrasena.Password != null) ValidarLargoTexto(unaContrasena.Password, 25, 5);
             Repositorio.Alta(unaContrasena);
         }
 
-        private void ValidarLargoTexto(string texto, int largoMax)
+        private void ValidarLargoTexto(string texto, int largoMax, int largoMin)
         {
-            if (texto.Length > largoMax) throw new ExcepcionLargoTexto();
+            if (texto.Length > largoMax || texto.Length < largoMin) throw new ExcepcionLargoTexto();
         }
 
         public List<Contrasenia> ListarContrasenias()

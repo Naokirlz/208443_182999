@@ -83,10 +83,20 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConPasswordfMayor25Caracteres()
         {
-            string pass = "";
             Contrasenia nuevaContrasenia = new Contrasenia()
             {
                 Password = "12345123451234512345123451"
+            };
+            Gestor.Alta(nuevaContrasenia);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeCrearUnaContrasenaConPasswordMenor5Caracteres()
+        {
+            Contrasenia nuevaContrasenia = new Contrasenia()
+            {
+                Password = "1234"
             };
             Gestor.Alta(nuevaContrasenia);
         }
