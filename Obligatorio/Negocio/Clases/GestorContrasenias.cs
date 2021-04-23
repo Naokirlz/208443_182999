@@ -20,6 +20,7 @@ namespace Negocio.Clases
             if (unaContrasena.Notas != null) ValidarLargoTexto(unaContrasena.Notas, 250, 0);
             if (unaContrasena.Password != null) ValidarLargoTexto(unaContrasena.Password, 25, 5);
             if (unaContrasena.Usuario != null) ValidarLargoTexto(unaContrasena.Usuario, 25, 5);
+            if (unaContrasena.Sitio != null) ValidarLargoTexto(unaContrasena.Sitio, 25, 3);
             Repositorio.Alta(unaContrasena);
         }
 
