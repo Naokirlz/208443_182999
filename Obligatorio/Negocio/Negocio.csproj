@@ -46,6 +46,7 @@
     <Compile Include="Clases\GestorCategorias.cs" />
     <Compile Include="Clases\GestorContrasenias.cs" />
     <Compile Include="Clases\RepositorioCategorias.cs" />
+    <Compile Include="Clases\RepositorioContrasenias.cs" />
     <Compile Include="Excepciones\ExcepcionElementoNoExiste.cs" />
     <Compile Include="Excepciones\ExcepcionElementoYaExiste.cs" />
     <Compile Include="Excepciones\ExcepcionFechaIncorrecta.cs" />

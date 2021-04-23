@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Negocio;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Negocio.Clases;
 using Negocio.Excepciones;
+using System;
 
-namespace PruebasUnitarias.Contrasena
+namespace PruebasUnitarias
 {
     [TestClass]
     public class PruebasContrasena
     {
+        [TestCleanup]
+
         [TestMethod]
         public void SePuedeCrearUnaContrasenaConSitioCorrecto()
         {
-            Contrasenia nuevaContrasenia = new Contrasenia() { 
+            Contrasenia nuevaContrasenia = new Contrasenia()
+            {
                 Sitio = "12345",
             };
             Assert.AreEqual("12345", nuevaContrasenia.Sitio);
@@ -26,7 +24,8 @@ namespace PruebasUnitarias.Contrasena
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConSitioMenor3Caracteres()
         {
-            Contrasenia nuevaContrasenia = new Contrasenia() {
+            Contrasenia nuevaContrasenia = new Contrasenia()
+            {
                 Sitio = "12"
             };
         }
@@ -35,7 +34,8 @@ namespace PruebasUnitarias.Contrasena
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConSitioMayor25Caracteres()
         {
-            Contrasenia nuevaContrasenia = new Contrasenia() {
+            Contrasenia nuevaContrasenia = new Contrasenia()
+            {
                 Sitio = "12345123451234512345123451"
             };
         }
@@ -43,7 +43,8 @@ namespace PruebasUnitarias.Contrasena
         [TestMethod]
         public void SePuedeCrearUnaContrasenaConUsuarioCorrecto()
         {
-            Contrasenia nuevaContrasenia = new Contrasenia() {
+            Contrasenia nuevaContrasenia = new Contrasenia()
+            {
                 Usuario = "12345"
             };
             Assert.AreEqual("12345", nuevaContrasenia.Usuario);
@@ -68,7 +69,8 @@ namespace PruebasUnitarias.Contrasena
         [TestMethod]
         public void SePuedeCrearUnaContrasenaConPasswordCorrecto()
         {
-            Contrasenia nuevaContrasenia = new Contrasenia() { 
+            Contrasenia nuevaContrasenia = new Contrasenia()
+            {
                 Password = "12345"
             };
             Assert.AreEqual("12345", nuevaContrasenia.Password);
@@ -78,7 +80,8 @@ namespace PruebasUnitarias.Contrasena
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConPasswordMenor5Caracteres()
         {
-            Contrasenia nuevaContrasenia = new Contrasenia() {
+            Contrasenia nuevaContrasenia = new Contrasenia()
+            {
                 Password = "1234"
             };
         }
@@ -90,43 +93,23 @@ namespace PruebasUnitarias.Contrasena
             {
                 Password = "12345123451234512345123451"
             };
-        }     
-        
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionLargoTexto))]
-        public void NoSePuedeCrearUnaContrasenaConNotasMayor250Caracteres()
-        {
-            string unaNota = "";
-            for (int caracter = 0; caracter <= 250; caracter++) unaNota += "a";
-            Contrasenia nuevaContrasenia = new Contrasenia() { 
-                Notas = unaNota,
-            };
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionFechaIncorrecta))]
-        public void NoSeGuardaContraseniaSiFechaModificacionEsFuturo()
-        {
-            DateTime fechaCreacion = DateTime.Now.AddDays(1);
-            Contrasenia nuevaContrasenia = new Contrasenia();
-            nuevaContrasenia.SetFechaUltimaModificacion(fechaCreacion);
-            //{
-            //    FechaUltimaModificacion = fechaCreacion
-            //};
-            Assert.AreEqual(fechaCreacion, nuevaContrasenia.GetFechaUltimaModificacion());
-        }
+        
+
+        
 
         [TestMethod]
         public void SeGuardaLaFechaDeModificacionCorrecta()
         {
             DateTime fechaActual = DateTime.Now;
-            Contrasenia nuevaContrasenia = new Contrasenia();
-            nuevaContrasenia.SetFechaUltimaModificacion(fechaActual);
-            //{
-            //    FechaUltimaModificacion = fechaActual
-            //};
-            Assert.AreEqual(fechaActual, nuevaContrasenia.GetFechaUltimaModificacion());
+            Contrasenia nuevaContrasenia = new Contrasenia()
+            {
+                FechaUltimaModificacion = fechaActual
+            };
+            Assert.AreEqual(fechaActual, nuevaContrasenia.FechaUltimaModificacion);
         }
+
         [TestMethod]
         public void SePuedeCrearUnaContraseniaConNotaCorrecta()
         {
@@ -135,17 +118,20 @@ namespace PruebasUnitarias.Contrasena
             {
                 Notas = notas
             };
+            //Contrasenia nuevaContrasenia = new Contrasenia();
+            //nuevaContrasenia.SetNotas(notas);
             Assert.AreEqual(notas, nuevaContrasenia.Notas);
         }
 
         [TestMethod]
         public void SePuedeCrearUnaContrasenaConCategoria()
         {
-            Negocio.Categoria unaCategoria = new Negocio.Categoria("una categoría");
-            Contrasenia nuevaContrasenia = new Contrasenia();
-            nuevaContrasenia.SetCategoriaPass(unaCategoria);
-            Assert.AreEqual("una categoría", nuevaContrasenia.GetCategoriaPass().Nombre);
+            Categoria unaCategoria = new Categoria("una categoría");
+            Contrasenia nuevaContrasenia = new Contrasenia()
+            {
+                Categoria = unaCategoria
+            };
+            Assert.AreEqual("una categoría", nuevaContrasenia.Categoria.Nombre);
         }
-
     }
 }

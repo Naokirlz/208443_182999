@@ -1,16 +1,16 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Negocio;
 using Negocio.Clases;
+using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PruebasUnitarias.Contrasena
+namespace PruebasUnitarias
 {
     [TestClass]
     public class PruebasContraseniaGestor
     {
-
         //no se puede guardar una contraseña sin sitio
         //no se puede guardar una contraseña sin usuario
         //no se puede guardar una contraseña sin password
@@ -38,20 +38,45 @@ namespace PruebasUnitarias.Contrasena
         public void SePuedeGuardarCorrectamente()
         {
             Categoria categoria = new Categoria("Categoría");
-            Contrasenia nuevaContrasena = new Contrasenia() { 
-                //CategoriaPass = categoria,
+            Contrasenia nuevaContrasena = new Contrasenia()
+            {
+                Categoria = categoria,
                 Usuario = "usuario",
                 Sitio = "netflix",
                 Notas = "clave de netflix",
-                //FechaUltimaModificacion = DateTime.Now,
+                FechaUltimaModificacion = DateTime.Now,
                 Password = "secreto"
             };
-            nuevaContrasena.SetCategoriaPass(categoria);
-            nuevaContrasena.SetFechaUltimaModificacion(DateTime.Now);
             Gestor.Alta(nuevaContrasena);
             List<Contrasenia> contrasenias = Gestor.ListarContrasenias();
             bool existe = contrasenias.Any(c => c.Usuario == nuevaContrasena.Usuario && c.Sitio == nuevaContrasena.Sitio);
             Assert.IsTrue(existe);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionFechaIncorrecta))]
+        public void NoSeGuardaContraseniaSiFechaModificacionEsFuturo()
+        {
+            DateTime fechaCreacion = DateTime.Now.AddDays(1);
+            Contrasenia nuevaContrasenia = new Contrasenia()
+            {
+                FechaUltimaModificacion = fechaCreacion
+            };
+            Gestor.Alta(nuevaContrasenia);
+            Assert.AreEqual(fechaCreacion, nuevaContrasenia.FechaUltimaModificacion);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeCrearUnaContrasenaConNotasMayor250Caracteres()
+        {
+            string unaNota = "";
+            for (int caracter = 0; caracter <= 250; caracter++) unaNota += "a";
+            Contrasenia nuevaContrasenia = new Contrasenia()
+            {
+                Notas = unaNota,
+            };
+            Gestor.Alta(nuevaContrasenia);
         }
     }
 }
