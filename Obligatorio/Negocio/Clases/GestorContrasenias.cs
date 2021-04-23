@@ -16,8 +16,9 @@ namespace Negocio.Clases
 
         public void Alta(Contrasenia unaContrasena)
         {
-            ValidarFecha(unaContrasena.FechaUltimaModificacion);
-            ValidarLargoTexto(unaContrasena.Notas, 250);
+            if (unaContrasena.FechaUltimaModificacion != null) ValidarFecha(unaContrasena.FechaUltimaModificacion);
+            if (unaContrasena.Notas != null) ValidarLargoTexto(unaContrasena.Notas, 250);
+            if (unaContrasena.Password != null) ValidarLargoTexto(unaContrasena.Password, 25);
             Repositorio.Alta(unaContrasena);
         }
 

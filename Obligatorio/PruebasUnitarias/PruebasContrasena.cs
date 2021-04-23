@@ -85,15 +85,7 @@ namespace PruebasUnitarias
                 Password = "1234"
             };
         }
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionLargoTexto))]
-        public void NoSePuedeCrearUnaContrasenaConPasswordfMayor25Caracteres()
-        {
-            Contrasenia nuevaContrasenia = new Contrasenia()
-            {
-                Password = "12345123451234512345123451"
-            };
-        }
+        
 
         
 
