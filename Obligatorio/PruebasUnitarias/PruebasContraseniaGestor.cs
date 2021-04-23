@@ -100,5 +100,23 @@ namespace PruebasUnitarias
             };
             Gestor.Alta(nuevaContrasenia);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeCrearUnaContrasenaConUsuarioMenor5Caracteres()
+        {
+            Contrasenia nuevaContrasenia = new Contrasenia();
+            nuevaContrasenia.Usuario = "1234";
+            Gestor.Alta(nuevaContrasenia);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeCrearUnaContrasenaConUsuarioMayor25Caracteres()
+        {
+            Contrasenia nuevaContrasenia = new Contrasenia();
+            nuevaContrasenia.Usuario = "12345123451234512345123451";
+            Gestor.Alta(nuevaContrasenia);
+        }
     }
 }
