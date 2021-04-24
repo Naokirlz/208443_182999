@@ -6,28 +6,27 @@ using System.Threading.Tasks;
 
 namespace Negocio.Clases
 {
-    public class TarjetaCredito
+    public class TarjetaCredito: IComparable<TarjetaCredito>
     {
-        private static List<TarjetaCredito> tarjetas = new List<TarjetaCredito>();
-
+       
+        public int IdTarjeta { get; set; }
         public Categoria Categoria { get; set; }
         public string Nombre { get; set; }
         // ver si despues el tipo conviene que sea una clase
         public string Tipo { get; set; }
         public string Numero { get; set; }
-        public int Codigo { get; set; }
+        public string Codigo { get; set; }
         public DateTime Vencimiento { get; set; }
         public String Nota { get; set; }
 
 
-        public static TarjetaCredito Alta(TarjetaCredito nueva)
+
+        public int CompareTo(TarjetaCredito other)
         {
-            // hago los controles
-            tarjetas.Add(nueva);
-            // si agrego y si no tiro exception
-            return nueva;
+          return this.Categoria.Nombre.CompareTo(other.Categoria.Nombre);
 
         }
+
 
     }
 }

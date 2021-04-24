@@ -52,6 +52,7 @@
     <Compile Include="PruebasCategoria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PruebasGenerales.cs" />
+    <Compile Include="PruebasTarjetaCredito.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

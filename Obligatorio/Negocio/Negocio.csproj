@@ -43,10 +43,14 @@
   <ItemGroup>
     <Compile Include="Clases\Categoria.cs" />
     <Compile Include="Clases\GestorCategorias.cs" />
+    <Compile Include="Clases\GestorTarjetaCredito.cs" />
     <Compile Include="Clases\RepositorioCategorias.cs" />
+    <Compile Include="Clases\RepositorioTarjetaCredito.cs" />
+    <Compile Include="Clases\TarjetaCredito.cs" />
     <Compile Include="Excepciones\ExcepcionElementoNoExiste.cs" />
     <Compile Include="Excepciones\ExcepcionElementoYaExiste.cs" />
     <Compile Include="Excepciones\ExcepcionLargoTexto.cs" />
+    <Compile Include="Excepciones\ExcepcionNumeroNoValido.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -10,6 +10,7 @@ namespace Negocio.Clases
     public class GestorCategorias
     {
         public RepositorioCategorias Repositorio;
+        //sacar de esta clase al refactoriar
         private string Password;
 
         public GestorCategorias()
@@ -28,6 +29,8 @@ namespace Negocio.Clases
             return nueva;
         }
 
+
+        //sacar de esta clase al refactoriar
         public bool Login(string unaPassword)
         {
             return unaPassword == this.Password;
