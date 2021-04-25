@@ -11,7 +11,7 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasContraseniaGestor
     {
-        //no se puede guardar una contraseña sin sitio
+        
         //no se puede guardar una contraseña sin usuario
         //no se puede guardar una contraseña sin password
         //no se puede guardar una contraseña sin categoria
@@ -32,6 +32,21 @@ namespace PruebasUnitarias
         //la password no se guarda en texto plano
 
         private GestorContrasenias Gestor = new GestorContrasenias();
+        private Contrasenia ContraseniaCompleta;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            Contrasenia contraseniaCompleta = new Contrasenia() { 
+                Sitio="unsitio.com",
+                Categoria = new Categoria("Categoria"),
+                Usuario = "usuario",
+                Notas = "clave de netflix",
+                FechaUltimaModificacion = DateTime.Now,
+                Password = "secreto"
+            };
+            this.ContraseniaCompleta = contraseniaCompleta;
+        }
 
         // se puede guardar una contraseña correctamente
         [TestMethod]
@@ -139,6 +154,15 @@ namespace PruebasUnitarias
                 Sitio = "12345123451234512345123451"
             };
             Gestor.Alta(nuevaContrasenia);
+        }
+
+        //no se puede guardar una contraseña sin sitio
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionFaltaAtributo))]
+        public void NoSePuedeCrearUnaContrasenaSinSitio()
+        {
+            ContraseniaCompleta.Sitio = null;
+            Gestor.Alta(ContraseniaCompleta);
         }
     }
 }
