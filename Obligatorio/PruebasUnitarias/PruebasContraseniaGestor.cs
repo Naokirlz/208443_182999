@@ -12,12 +12,8 @@ namespace PruebasUnitarias
     public class PruebasContraseniaGestor
     {
         //no se puede guardar una contraseña con categoria que no existe //hacer junto con Cristian
+        // validar categoria antes de crearla y antes de modificar
 
-       
-        
-        
-        
-        //se puede cambiar la categoria
         //se modifica la fecha de modificacion correctamente en cambio de sitio
         //se modifica la fecha de modificacion correctamente en cambio de usuario
         //se modifica la fecha de modificacion correctamente en cambio de password
@@ -305,6 +301,17 @@ namespace PruebasUnitarias
             Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             nuevaContrasenia.Password = "12345123451234512345123451";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
+        }
+
+        //se puede cambiar la categoria
+        [TestMethod]
+        public void SePuedeModificarLaCategoria()
+        {
+            Categoria nuevaCat = new Categoria("categoria nueva");
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            nuevaContrasenia.Categoria = nuevaCat;
+            Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
+            Assert.AreEqual(nuevaCat.Nombre, modificada.Categoria.Nombre);
         }
     }
 }

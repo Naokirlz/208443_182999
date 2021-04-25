@@ -34,6 +34,7 @@ namespace Negocio.Clases
             anterior.Sitio = aModificarContrasenia.Sitio;
             anterior.Usuario = aModificarContrasenia.Usuario;
             anterior.Password = aModificarContrasenia.Password;
+            anterior.Categoria = aModificarContrasenia.Categoria;
             Contrasenia clonModificada = ClonarContrasenia(anterior);
             return clonModificada;
         }
