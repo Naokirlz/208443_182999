@@ -457,5 +457,62 @@ namespace PruebasUnitarias
             }
             Assert.IsTrue(hayMayuscula && hayMinuscula && NohayOtro);
         }
+        //se puede autogenerar password con numeros
+        [TestMethod]
+        public void SePuedeGenerarPasswordConNumeross()
+        {
+            string password = Gestor.GenerarPassword(13, false, false, true, false);
+            bool hayNumeros = false;
+            bool NohayOtro = true;
+
+            foreach (char caracter in password)
+            {
+                if (caracter >= 48 && caracter <= 57) hayNumeros = true;
+                else NohayOtro = false;
+            }
+            Assert.IsTrue(hayNumeros && NohayOtro);
+        }
+        //se puede autogenerar password con especiales
+        [TestMethod]
+        public void SePuedeGenerarPasswordConEspeciales()
+        {
+            string password = Gestor.GenerarPassword(13, false, false, false, true);
+            bool hayEspeciales = false;
+            bool NohayOtro = true;
+
+            foreach (char caracter in password)
+            {
+                if (caracter >= 32 && caracter <= 47) hayEspeciales = true;
+                else if(caracter >= 58 && caracter <= 64) hayEspeciales = true;
+                else if(caracter >= 91 && caracter <= 96) hayEspeciales = true;
+                else if(caracter >= 123 && caracter <= 126) hayEspeciales = true;
+                else NohayOtro = false;
+            }
+            Assert.IsTrue(hayEspeciales && NohayOtro);
+        }
+        //se puede autogenerar password con todos los tipos
+        [TestMethod]
+        public void SePuedeGenerarPasswordConTodosLosTipos()
+        {
+            string password = Gestor.GenerarPassword(13, true, true, true, true);
+            bool hayMayuscula = false;
+            bool hayMinuscula = false;
+            bool hayEspeciales = false;
+            bool hayNumeros = false;
+            bool NohayOtro = true;
+
+            foreach (char caracter in password)
+            {
+                if (caracter >= 65 && caracter <= 90) hayMayuscula = true;
+                else if (caracter >= 97 && caracter <= 122) hayMinuscula = true;
+                else if (caracter >= 32 && caracter <= 47) hayEspeciales = true;
+                else if (caracter >= 58 && caracter <= 64) hayEspeciales = true;
+                else if (caracter >= 91 && caracter <= 96) hayEspeciales = true;
+                else if (caracter >= 123 && caracter <= 126) hayEspeciales = true;
+                else if (caracter >= 48 && caracter <= 57) hayNumeros = true;
+                else NohayOtro = false;
+            }
+            Assert.IsTrue(hayMayuscula && hayMinuscula && hayEspeciales && hayNumeros && NohayOtro);
+        }
     }
 }

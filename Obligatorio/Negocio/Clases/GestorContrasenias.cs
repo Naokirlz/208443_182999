@@ -116,7 +116,17 @@ namespace Negocio.Clases
             }
             if (minuscula)
             {
-                password += GenerarCaracter(false, true, true, true);
+                password += GenerarCaracter(false, true, false, false);
+                largo--;
+            }
+            if (numero)
+            {
+                password += GenerarCaracter(false, false, true, false);
+                largo--;
+            }
+            if (especial)
+            {
+                password += GenerarCaracter(false, false, false, true);
                 largo--;
             }
 
