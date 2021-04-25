@@ -70,12 +70,9 @@ namespace PruebasUnitarias
         public void NoSeGuardaContraseniaSiFechaModificacionEsFuturo()
         {
             DateTime fechaCreacion = DateTime.Now.AddDays(1);
-            Contrasenia nuevaContrasenia = new Contrasenia()
-            {
-                FechaUltimaModificacion = fechaCreacion
-            };
-            Gestor.Alta(nuevaContrasenia);
-            Assert.AreEqual(fechaCreacion, nuevaContrasenia.FechaUltimaModificacion);
+            ContraseniaCompleta.FechaUltimaModificacion = fechaCreacion;
+            Gestor.Alta(ContraseniaCompleta);
+            Assert.AreEqual(fechaCreacion, ContraseniaCompleta.FechaUltimaModificacion);
         }
 
         [TestMethod]
@@ -84,73 +81,56 @@ namespace PruebasUnitarias
         {
             string unaNota = "";
             for (int caracter = 0; caracter <= 250; caracter++) unaNota += "a";
-            Contrasenia nuevaContrasenia = new Contrasenia()
-            {
-                Notas = unaNota,
-            };
-            Gestor.Alta(nuevaContrasenia);
+            ContraseniaCompleta.Notas = unaNota;
+            Gestor.Alta(ContraseniaCompleta);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConPasswordfMayor25Caracteres()
         {
-            Contrasenia nuevaContrasenia = new Contrasenia()
-            {
-                Password = "12345123451234512345123451"
-            };
-            Gestor.Alta(nuevaContrasenia);
+            ContraseniaCompleta.Password = "12345123451234512345123451";
+            Gestor.Alta(ContraseniaCompleta);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConPasswordMenor5Caracteres()
         {
-            Contrasenia nuevaContrasenia = new Contrasenia()
-            {
-                Password = "1234"
-            };
-            Gestor.Alta(nuevaContrasenia);
+            ContraseniaCompleta.Password = "1234";
+            Gestor.Alta(ContraseniaCompleta);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConUsuarioMenor5Caracteres()
         {
-            Contrasenia nuevaContrasenia = new Contrasenia();
-            nuevaContrasenia.Usuario = "1234";
-            Gestor.Alta(nuevaContrasenia);
+            ContraseniaCompleta.Usuario = "1234";
+            Gestor.Alta(ContraseniaCompleta);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConUsuarioMayor25Caracteres()
         {
-            Contrasenia nuevaContrasenia = new Contrasenia();
-            nuevaContrasenia.Usuario = "12345123451234512345123451";
-            Gestor.Alta(nuevaContrasenia);
+            ContraseniaCompleta.Usuario = "12345123451234512345123451";
+            Gestor.Alta(ContraseniaCompleta);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConSitioMenor3Caracteres()
         {
-            Contrasenia nuevaContrasenia = new Contrasenia()
-            {
-                Sitio = "12"
-            };
-            Gestor.Alta(nuevaContrasenia);
+            ContraseniaCompleta.Sitio = "12";
+            Gestor.Alta(ContraseniaCompleta);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConSitioMayor25Caracteres()
         {
-            Contrasenia nuevaContrasenia = new Contrasenia()
-            {
-                Sitio = "12345123451234512345123451"
-            };
-            Gestor.Alta(nuevaContrasenia);
+            ContraseniaCompleta.Sitio = "12345123451234512345123451";
+            Gestor.Alta(ContraseniaCompleta);
         }
 
         //no se puede guardar una contraseña sin sitio

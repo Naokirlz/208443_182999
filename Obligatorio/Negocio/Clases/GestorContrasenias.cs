@@ -16,16 +16,18 @@ namespace Negocio.Clases
 
         public Contrasenia Alta(Contrasenia unaContrasena)
         {
-            if (unaContrasena.FechaUltimaModificacion != null) ValidarFecha(unaContrasena.FechaUltimaModificacion);
-            if (unaContrasena.Notas != null) ValidarLargoTexto(unaContrasena.Notas, 250, 0);
-            if (unaContrasena.Password != null) ValidarLargoTexto(unaContrasena.Password, 25, 5);
-            if (unaContrasena.Usuario != null) ValidarLargoTexto(unaContrasena.Usuario, 25, 5);
-            if (unaContrasena.Sitio != null) ValidarLargoTexto(unaContrasena.Sitio, 25, 3);
-            if (unaContrasena.Sitio == null || 
+            if (unaContrasena.Sitio == null ||
                 unaContrasena.Usuario == null ||
                 unaContrasena.Password == null ||
                 unaContrasena.Categoria == null)
                 throw new ExcepcionFaltaAtributo();
+
+            ValidarFecha(unaContrasena.FechaUltimaModificacion);
+            ValidarLargoTexto(unaContrasena.Notas, 250, 0);
+            ValidarLargoTexto(unaContrasena.Password, 25, 5);
+            ValidarLargoTexto(unaContrasena.Usuario, 25, 5);
+            ValidarLargoTexto(unaContrasena.Sitio, 25, 3);
+            
             unaContrasena.FechaUltimaModificacion = DateTime.Now;
             return Repositorio.Alta(unaContrasena);
         }
