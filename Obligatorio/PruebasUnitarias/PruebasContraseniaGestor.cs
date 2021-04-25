@@ -11,9 +11,6 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasContraseniaGestor
     {
-        
-        
-        //no se puede guardar una contraseña sin password
         //no se puede guardar una contraseña sin categoria
         //no se puede guardar una contraseña con categoria que no existe
         //no se puede guardar una contraseña sin fecha de modificacion
@@ -171,6 +168,15 @@ namespace PruebasUnitarias
         public void NoSePuedeGuardarUnaContrasenaSinUsuario()
         {
             ContraseniaCompleta.Usuario = null;
+            Gestor.Alta(ContraseniaCompleta);
+        }
+
+        //no se puede guardar una contraseña sin password
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionFaltaAtributo))]
+        public void NoSePuedeGuardarUnaContrasenaSinPassword()
+        {
+            ContraseniaCompleta.Password = null;
             Gestor.Alta(ContraseniaCompleta);
         }
     }

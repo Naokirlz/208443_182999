@@ -21,7 +21,9 @@ namespace Negocio.Clases
             if (unaContrasena.Password != null) ValidarLargoTexto(unaContrasena.Password, 25, 5);
             if (unaContrasena.Usuario != null) ValidarLargoTexto(unaContrasena.Usuario, 25, 5);
             if (unaContrasena.Sitio != null) ValidarLargoTexto(unaContrasena.Sitio, 25, 3);
-            if (unaContrasena.Sitio == null || unaContrasena.Usuario == null)
+            if (unaContrasena.Sitio == null || 
+                unaContrasena.Usuario == null ||
+                unaContrasena.Password == null)
                 throw new ExcepcionFaltaAtributo();
             Repositorio.Alta(unaContrasena);
         }
