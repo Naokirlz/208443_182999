@@ -14,10 +14,7 @@ namespace PruebasUnitarias
         //no se puede guardar una contraseña con categoria que no existe //hacer junto con Cristian
         // validar categoria antes de crearla y antes de modificar
 
-        //se modifica la fecha de modificacion correctamente en cambio de sitio
-        //se modifica la fecha de modificacion correctamente en cambio de usuario
-        //se modifica la fecha de modificacion correctamente en cambio de password
-        //se modifica la fecha de modificacion correctamente en cambio de categoria
+        
         //se puede autogenerar la password en una cantidad correcta de caracteres
         //se puede autogenerar la password en una cantidad correcta de tipos de caracteres
         //se puede obtener la fuerza de la contraseña
@@ -312,6 +309,37 @@ namespace PruebasUnitarias
             nuevaContrasenia.Categoria = nuevaCat;
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
             Assert.AreEqual(nuevaCat.Nombre, modificada.Categoria.Nombre);
+        }
+
+        //se modifica la fecha de modificacion correctamente cuando se modifica un atributo
+        [TestMethod]
+        public void SeModificaLaFechaDeModificacionAlModificarAtributos()
+        {
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            nuevaContrasenia.Sitio = "sitio nuevo";
+            Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
+            Assert.AreNotEqual(nuevaContrasenia.FechaUltimaModificacion, modificada.FechaUltimaModificacion);
+        }
+
+        //se puede cambiar las notas
+        [TestMethod]
+        public void SePuedeModificarLasNotas()
+        {
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            nuevaContrasenia.Notas = "nuevas notas";
+            Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
+            Assert.AreEqual("nuevas notas", modificada.Notas);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeModificarLasNotasConMas250Caracteres()
+        {
+            string unaNota = "";
+            for (int caracter = 0; caracter <= 250; caracter++) unaNota += "a";
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            nuevaContrasenia.Notas = unaNota;
+            Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
         }
     }
 }

@@ -52,6 +52,8 @@ namespace Negocio.Clases
             ValidarLargoTexto(aModificarContrasenia.Sitio, 25, 3);
             ValidarLargoTexto(aModificarContrasenia.Usuario, 25, 5);
             ValidarLargoTexto(aModificarContrasenia.Password, 25, 5);
+            ValidarLargoTexto(aModificarContrasenia.Notas, 250, 0);
+            aModificarContrasenia.FechaUltimaModificacion = DateTime.Now;
             return Repositorio.ModificarContrasenia(aModificarContrasenia);
         }
 
