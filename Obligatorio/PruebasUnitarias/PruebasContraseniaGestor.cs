@@ -15,8 +15,7 @@ namespace PruebasUnitarias
         // validar categoria antes de crearla y antes de modificar
         // se deja test de validar la fecha para luego
 
-        //se puede autogenerar la password en una cantidad correcta de tipos de caracteres
-        //se puede obtener la fuerza de la contraseña
+        
         //sitio y usuario tienen solo una contraseña
         //la password no se guarda en texto plano
 
@@ -408,6 +407,34 @@ namespace PruebasUnitarias
         {
             string password = Gestor.GenerarPassword(13, false,true,false,false);
             Assert.AreEqual(13, password.Length);
+        }
+
+        //se puede autogenerar la password en una cantidad correcta de tipos de caracteres
+        //se puede autogenerar password con minusculas
+        [TestMethod]
+        public void SePuedeGenerarPasswordConMinusculas()
+        {
+            string password = Gestor.GenerarPassword(13, false, true, false, false);
+            bool soloMinuscula = true;
+
+            foreach (char caracter in password)
+            {
+                if (caracter < 97 || caracter > 122) soloMinuscula = false;
+            }
+            Assert.IsTrue(soloMinuscula);
+        }
+        //se puede autogenerar password con mayusculas
+        [TestMethod]
+        public void SePuedeGenerarPasswordConMayusculas()
+        {
+            string password = Gestor.GenerarPassword(13, true, false, false, false);
+            bool soloMayuscula = true;
+
+            foreach (char caracter in password)
+            {
+                if (caracter < 65 || caracter > 90) soloMayuscula = false;
+            }
+            Assert.IsTrue(soloMayuscula);
         }
     }
 }

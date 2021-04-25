@@ -108,7 +108,11 @@ namespace Negocio.Clases
         {
             string password = "";
             var random = new Random();
-            for (int caracter = 0; caracter < largo; caracter++) password += (char)(random.Next(26) + 91);
+            if(minuscula && !mayuscula && !numero && !especial)
+                for (int caracter = 0; caracter < largo; caracter++) password += (char)(random.Next(26) + 97);
+            else if (!minuscula && mayuscula && !numero && !especial)
+                for (int caracter = 0; caracter < largo; caracter++) password += (char)(random.Next(26) + 65);
+
             return password;
         }
     }
