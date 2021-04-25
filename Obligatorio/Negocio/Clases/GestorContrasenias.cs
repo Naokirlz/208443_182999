@@ -27,7 +27,16 @@ namespace Negocio.Clases
                 unaContrasena.Categoria == null)
                 throw new ExcepcionFaltaAtributo();
             unaContrasena.FechaUltimaModificacion = DateTime.Now;
-            return Repositorio.Alta(unaContrasena);
+            Contrasenia nuevaContrasenia = new Contrasenia()
+            {
+                Sitio = unaContrasena.Sitio,
+                Notas = unaContrasena.Notas,
+                Password = unaContrasena.Password,
+                Usuario = unaContrasena.Usuario,
+                Categoria = unaContrasena.Categoria,
+                FechaUltimaModificacion = unaContrasena.FechaUltimaModificacion
+            };
+            return Repositorio.Alta(nuevaContrasenia);
         }
 
         private void ValidarLargoTexto(string texto, int largoMax, int largoMin)
@@ -47,6 +56,7 @@ namespace Negocio.Clases
 
         public Contrasenia ModificarContrasenia(Contrasenia aModificarContrasenia)
         {
+            ValidarLargoTexto(aModificarContrasenia.Sitio, 25, 3);
             return Repositorio.ModificarContrasenia(aModificarContrasenia);
         }
     }
