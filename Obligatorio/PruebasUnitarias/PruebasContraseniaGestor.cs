@@ -574,5 +574,13 @@ namespace PruebasUnitarias
         {
             Gestor.Buscar(75);
         }
+
+        [TestMethod]
+        public void SePuedeBorrarUnaContrasenia()
+        {
+            Contrasenia nuevaConstrasenia = Gestor.Alta(ContraseniaCompleta);
+            Gestor.Baja(nuevaConstrasenia.Id);
+            Assert.AreEqual(0, Gestor.ListarContrasenias().Count);
+        }
     }
 }

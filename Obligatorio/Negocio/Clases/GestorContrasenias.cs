@@ -175,5 +175,10 @@ namespace Negocio.Clases
         {
             return Repositorio.MostrarPassword(password);
         }
+
+        public void Baja(int id)
+        {
+            Repositorio.Baja(id);
+        }
     }
 }

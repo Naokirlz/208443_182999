@@ -97,5 +97,10 @@ namespace Negocio.Clases
         {
             return DesEncriptar(password);
         }
+
+        internal void Baja(int id)
+        {
+            Contrasenias.Remove(BuscarPorId(id));
+        }
     }
 }
