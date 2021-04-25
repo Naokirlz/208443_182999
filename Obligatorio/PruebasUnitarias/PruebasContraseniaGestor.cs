@@ -393,6 +393,16 @@ namespace PruebasUnitarias
             string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
             Assert.AreEqual("VERDE CLARO", fortaleza);
         }
+
+        // se puede detectar password en VERDE OSCURO
+        [TestMethod]
+        public void SePuedeDetectarPasswordVerdeOscuro()
+        {
+            ContraseniaCompleta.Password = "AAAAAAaAAAA$AA1";
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
+            Assert.AreEqual("VERDE OSCURO", fortaleza);
+        }
         //se puede autogenerar la password en una cantidad correcta de caracteres
 
     }

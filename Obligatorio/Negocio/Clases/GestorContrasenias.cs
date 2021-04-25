@@ -96,6 +96,7 @@ namespace Negocio.Clases
                 else if (caracter >= 123 && caracter <= 126) especiales = true;
             }
 
+            if (largo > 14 && mayusculas && minusculas && numeros && especiales) return "VERDE OSCURO";
             if (largo > 14 && mayusculas && minusculas && !numeros && !especiales) return "VERDE CLARO";
             if (largo > 14 && mayusculas && !minusculas && !numeros && !especiales) return "AMARILLO";
             if (largo > 14 && !mayusculas && minusculas && !numeros && !especiales) return "AMARILLO";
