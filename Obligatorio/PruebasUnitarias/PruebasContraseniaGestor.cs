@@ -15,8 +15,6 @@ namespace PruebasUnitarias
         // validar categoria antes de crearla y antes de modificar
         // se deja test de validar la fecha para luego
 
-        
-        //se puede autogenerar la password en una cantidad correcta de caracteres
         //se puede autogenerar la password en una cantidad correcta de tipos de caracteres
         //se puede obtener la fuerza de la contraseña
         //sitio y usuario tienen solo una contraseña
@@ -403,7 +401,13 @@ namespace PruebasUnitarias
             string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
             Assert.AreEqual("VERDE OSCURO", fortaleza);
         }
-        //se puede autogenerar la password en una cantidad correcta de caracteres
 
+        //se puede autogenerar la password en una cantidad correcta de caracteres
+        [TestMethod]
+        public void SePuedeGenerarPasswordPorCaracteres()
+        {
+            string password = Gestor.GenerarPassword(13, false,true,false,false);
+            Assert.AreEqual(13, password.Length);
+        }
     }
 }

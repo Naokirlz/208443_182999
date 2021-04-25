@@ -103,5 +103,13 @@ namespace Negocio.Clases
             if (largo >= 8) return "NARANJA";
             return "ROJO";
         }
+
+        public string GenerarPassword(int largo, bool mayuscula, bool minuscula, bool numero, bool especial)
+        {
+            string password = "";
+            var random = new Random();
+            for (int caracter = 0; caracter < largo; caracter++) password += (char)(random.Next(26) + 91);
+            return password;
+        }
     }
 }
