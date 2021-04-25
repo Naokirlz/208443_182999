@@ -78,6 +78,27 @@ namespace Negocio.Clases
 
         public string VerificarFortaleza(Contrasenia nuevaContrasenia)
         {
+            bool mayusculas = false;
+            bool minusculas = false;
+            bool numeros = false;
+            bool especiales = false;
+            string password = nuevaContrasenia.Password;
+            int largo = password.Length;
+
+            foreach(char caracter in password)
+            {
+                if (caracter >= 65 && caracter <= 90) mayusculas = true;
+                else if (caracter >= 97 && caracter <= 122) minusculas = true;
+                else if (caracter >= 48 && caracter <= 57) numeros = true;
+                else if (caracter >= 32 && caracter <= 47) especiales = true;
+                else if (caracter >= 58 && caracter <= 64) especiales = true;
+                else if (caracter >= 91 && caracter <= 96) especiales = true;
+                else if (caracter >= 123 && caracter <= 126) especiales = true;
+            }
+
+            if (largo > 14 && mayusculas && !minusculas && !numeros && !especiales) return "AMARILLO";
+            if (largo > 14 && !mayusculas && minusculas && !numeros && !especiales) return "AMARILLO";
+            if (largo >= 8) return "NARANJA";
             return "ROJO";
         }
     }
