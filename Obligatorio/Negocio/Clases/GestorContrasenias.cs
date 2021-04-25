@@ -108,12 +108,46 @@ namespace Negocio.Clases
         {
             string password = "";
             var random = new Random();
-            if(minuscula && !mayuscula && !numero && !especial)
-                for (int caracter = 0; caracter < largo; caracter++) password += (char)(random.Next(26) + 97);
-            else if (!minuscula && mayuscula && !numero && !especial)
-                for (int caracter = 0; caracter < largo; caracter++) password += (char)(random.Next(26) + 65);
+
+            if (mayuscula)
+            {
+                password += (char)(random.Next(26) + 65);
+                largo--;
+            }
+            if (minuscula)
+            {
+                password += (char)(random.Next(26) + 97);
+                largo--;
+            }
+
+            for (int caracter = 0; caracter < largo; caracter++) password += GenerarCaracter(mayuscula, minuscula, numero, especial);
 
             return password;
+        }
+
+        private string GenerarCaracter(bool mayuscula, bool minuscula, bool numero, bool especial)
+        {
+            string caracter = "";
+            var random = new Random();
+
+            int codigo = 0;
+
+            while (
+                (codigo < 32 || (codigo < 97 && codigo > 123)) ||
+                (codigo >= 97 && codigo <= 122 && !minuscula) ||
+                (codigo >= 65 && codigo <= 90 && !mayuscula) ||
+                (codigo >= 48 && codigo <= 57 && !numero) ||
+                (codigo >= 32 && codigo <= 47 && !especial) ||
+                (codigo >= 58 && codigo <= 64 && !especial) ||
+                (codigo >= 91 && codigo <= 96 && !especial) ||
+                (codigo >= 123 && codigo <= 126 && !especial)
+                )
+            {
+                codigo = random.Next(126);
+            }
+                
+            caracter += (char)codigo;
+            return caracter;
         }
     }
 }

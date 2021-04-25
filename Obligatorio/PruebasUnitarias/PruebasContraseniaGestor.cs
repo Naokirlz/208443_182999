@@ -415,26 +415,47 @@ namespace PruebasUnitarias
         public void SePuedeGenerarPasswordConMinusculas()
         {
             string password = Gestor.GenerarPassword(13, false, true, false, false);
-            bool soloMinuscula = true;
+            bool hayMinuscula = false;
+            bool NohayOtro = true;
 
             foreach (char caracter in password)
             {
-                if (caracter < 97 || caracter > 122) soloMinuscula = false;
+                if (caracter >= 97 && caracter <= 122) hayMinuscula = true;
+                else NohayOtro = false;
             }
-            Assert.IsTrue(soloMinuscula);
+            Assert.IsTrue(hayMinuscula && NohayOtro);
         }
         //se puede autogenerar password con mayusculas
         [TestMethod]
         public void SePuedeGenerarPasswordConMayusculas()
         {
             string password = Gestor.GenerarPassword(13, true, false, false, false);
-            bool soloMayuscula = true;
+            bool hayMayuscula = false;
+            bool NohayOtro = true;
 
             foreach (char caracter in password)
             {
-                if (caracter < 65 || caracter > 90) soloMayuscula = false;
+                if (caracter >= 65 && caracter <= 90) hayMayuscula = true;
+                else NohayOtro = false;
             }
-            Assert.IsTrue(soloMayuscula);
+            Assert.IsTrue(hayMayuscula && NohayOtro);
+        }
+        //se puede autogenerar password con mayusculas y minusculas
+        [TestMethod]
+        public void SePuedeGenerarPasswordConMayusculasYMinusculas()
+        {
+            string password = Gestor.GenerarPassword(13, true, true, false, false);
+            bool hayMayuscula = false;
+            bool hayMinuscula = false;
+            bool NohayOtro = true;
+
+            foreach (char caracter in password)
+            {
+                if (caracter >= 65 && caracter <= 90) hayMayuscula = true;
+                else if (caracter >= 97 && caracter <= 122) hayMinuscula = true;
+                else NohayOtro = false;
+            }
+            Assert.IsTrue(hayMayuscula && hayMinuscula && NohayOtro);
         }
     }
 }
