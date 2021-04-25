@@ -16,18 +16,20 @@ namespace Negocio.Clases
 
         public Contrasenia Alta(Contrasenia unaContrasena)
         {
-            if (unaContrasena.Sitio == null ||
-                unaContrasena.Usuario == null ||
-                unaContrasena.Password == null ||
-                unaContrasena.Categoria == null)
-                throw new ExcepcionFaltaAtributo();
+            //if (unaContrasena.Sitio == null ||
+            //    unaContrasena.Usuario == null ||
+            //    unaContrasena.Password == null ||
+            //    unaContrasena.Categoria == null)
+            //    throw new ExcepcionFaltaAtributo();
 
-            ValidarFecha(unaContrasena.FechaUltimaModificacion);
-            ValidarLargoTexto(unaContrasena.Notas, 250, 0);
-            ValidarLargoTexto(unaContrasena.Password, 25, 5);
-            ValidarLargoTexto(unaContrasena.Usuario, 25, 5);
-            ValidarLargoTexto(unaContrasena.Sitio, 25, 3);
-            
+            //ValidarFecha(unaContrasena.FechaUltimaModificacion);
+            //ValidarLargoTexto(unaContrasena.Notas, 250, 0);
+            //ValidarLargoTexto(unaContrasena.Password, 25, 5);
+            //ValidarLargoTexto(unaContrasena.Usuario, 25, 5);
+            //ValidarLargoTexto(unaContrasena.Sitio, 25, 3);
+
+            ValidarCampos(unaContrasena);
+
             unaContrasena.FechaUltimaModificacion = DateTime.Now;
             return Repositorio.Alta(unaContrasena);
         }
@@ -49,10 +51,7 @@ namespace Negocio.Clases
 
         public Contrasenia ModificarContrasenia(Contrasenia aModificarContrasenia)
         {
-            ValidarLargoTexto(aModificarContrasenia.Sitio, 25, 3);
-            ValidarLargoTexto(aModificarContrasenia.Usuario, 25, 5);
-            ValidarLargoTexto(aModificarContrasenia.Password, 25, 5);
-            ValidarLargoTexto(aModificarContrasenia.Notas, 250, 0);
+            ValidarCampos(aModificarContrasenia);
             aModificarContrasenia.FechaUltimaModificacion = DateTime.Now;
             return Repositorio.ModificarContrasenia(aModificarContrasenia);
         }
@@ -60,6 +59,26 @@ namespace Negocio.Clases
         public Contrasenia Buscar(int id)
         {
             return Repositorio.Buscar(id);
+        }
+
+        private void ValidarCampos(Contrasenia aValidarContrasenia)
+        {
+            if (aValidarContrasenia.Sitio == null ||
+                aValidarContrasenia.Usuario == null ||
+                aValidarContrasenia.Password == null ||
+                aValidarContrasenia.Categoria == null)
+                throw new ExcepcionFaltaAtributo();
+
+            ValidarFecha(aValidarContrasenia.FechaUltimaModificacion);
+            ValidarLargoTexto(aValidarContrasenia.Sitio, 25, 3);
+            ValidarLargoTexto(aValidarContrasenia.Usuario, 25, 5);
+            ValidarLargoTexto(aValidarContrasenia.Password, 25, 5);
+            ValidarLargoTexto(aValidarContrasenia.Notas, 250, 0);
+        }
+
+        public string VerificarFortaleza(Contrasenia nuevaContrasenia)
+        {
+            return "ROJO";
         }
     }
 }
