@@ -19,7 +19,8 @@ namespace Negocio.Clases
             unaContrasenia.Id = IdContrasenia;
             IdContrasenia++;
             this.Contrasenias.Add(unaContrasenia);
-            return unaContrasenia;
+            Contrasenia clonada = ClonarContrasenia(unaContrasenia);
+            return clonada;
         }
 
         public List<Contrasenia> ListarContrasenias()
@@ -31,15 +32,7 @@ namespace Negocio.Clases
         {
             Contrasenia anterior = BuscarPorId(aModificarContrasenia.Id);
             anterior.Sitio = aModificarContrasenia.Sitio;
-            Contrasenia clonModificada = new Contrasenia() {
-                Id = anterior.Id,
-                Sitio = anterior.Sitio,
-                Notas = anterior.Notas,
-                Password = anterior.Password,
-                Usuario = anterior.Usuario,
-                Categoria = anterior.Categoria,
-                FechaUltimaModificacion = anterior.FechaUltimaModificacion
-            };
+            Contrasenia clonModificada = ClonarContrasenia(anterior);
             return clonModificada;
         }
 
@@ -55,17 +48,23 @@ namespace Negocio.Clases
         internal Contrasenia Buscar(int id)
         {
             Contrasenia buscada = BuscarPorId(id);
-            Contrasenia clonBuscada = new Contrasenia()
-            {
-                Id = buscada.Id,
-                Sitio = buscada.Sitio,
-                Notas = buscada.Notas,
-                Password = buscada.Password,
-                Usuario = buscada.Usuario,
-                Categoria = buscada.Categoria,
-                FechaUltimaModificacion = buscada.FechaUltimaModificacion
-            };
+            Contrasenia clonBuscada = ClonarContrasenia(buscada);
             return clonBuscada;
+        }
+
+        private Contrasenia ClonarContrasenia(Contrasenia unaContrasenia)
+        {
+            Contrasenia clonada = new Contrasenia()
+            {
+                Id = unaContrasenia.Id,
+                Sitio = unaContrasenia.Sitio,
+                Notas = unaContrasenia.Notas,
+                Password = unaContrasenia.Password,
+                Usuario = unaContrasenia.Usuario,
+                Categoria = unaContrasenia.Categoria,
+                FechaUltimaModificacion = unaContrasenia.FechaUltimaModificacion
+            };
+            return clonada;
         }
     }
 }

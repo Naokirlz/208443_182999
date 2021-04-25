@@ -259,5 +259,14 @@ namespace PruebasUnitarias
             Contrasenia buscada = Gestor.Buscar(modificada.Id);
             Assert.AreNotEqual("12345123451234512345123451", buscada.Sitio);
         }
+
+        [TestMethod]
+        public void SeAsignaElIdAutoincremental()
+        {
+            Contrasenia unaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia otraContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int diferencia = otraContrasenia.Id - unaContrasenia.Id;
+            Assert.AreEqual(1, diferencia);
+        }
     }
 }
