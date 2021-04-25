@@ -15,7 +15,7 @@ namespace PruebasUnitarias
 
        
         
-        //se puede cambiar el usuario
+        
         //se puede cambiar el password
         //se puede cambiar la categoria
         //se modifica la fecha de modificacion correctamente en cambio de sitio
@@ -247,6 +247,37 @@ namespace PruebasUnitarias
             Contrasenia otraContrasenia = Gestor.Alta(ContraseniaCompleta);
             int diferencia = otraContrasenia.Id - unaContrasenia.Id;
             Assert.AreEqual(1, diferencia);
+        }
+
+        //se puede cambiar el usuario
+        [TestMethod]
+        public void SePuedeModificarElUsuario()
+        {
+            ContraseniaCompleta.Usuario = "usuario anterior";
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            nuevaContrasenia.Usuario = "usuario nuevo";
+            Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
+            Assert.AreEqual("usuario nuevo", modificada.Usuario);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeModificarElUsuarioConMenos5Caracteres()
+        {
+            ContraseniaCompleta.Usuario = "usuario anterior";
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            nuevaContrasenia.Usuario = "usua";
+            Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeModificarElUsuarioConMas25Caracteres()
+        {
+            ContraseniaCompleta.Usuario = "usuario anterior";
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            nuevaContrasenia.Usuario = "12345123451234512345123451";
+            Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
         }
     }
 }

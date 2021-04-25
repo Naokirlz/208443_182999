@@ -50,6 +50,7 @@ namespace Negocio.Clases
         public Contrasenia ModificarContrasenia(Contrasenia aModificarContrasenia)
         {
             ValidarLargoTexto(aModificarContrasenia.Sitio, 25, 3);
+            ValidarLargoTexto(aModificarContrasenia.Usuario, 25, 5);
             return Repositorio.ModificarContrasenia(aModificarContrasenia);
         }
 

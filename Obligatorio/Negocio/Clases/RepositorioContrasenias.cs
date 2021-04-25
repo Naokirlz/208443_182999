@@ -32,6 +32,7 @@ namespace Negocio.Clases
         {
             Contrasenia anterior = BuscarPorId(aModificarContrasenia.Id);
             anterior.Sitio = aModificarContrasenia.Sitio;
+            anterior.Usuario = aModificarContrasenia.Usuario;
             Contrasenia clonModificada = ClonarContrasenia(anterior);
             return clonModificada;
         }
