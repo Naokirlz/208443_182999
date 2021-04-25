@@ -566,5 +566,13 @@ namespace PruebasUnitarias
             Contrasenia guardada = Gestor.Buscar(unaC.Id);
             Assert.AreNotEqual("otro sitio distinto", guardada.Sitio);
         }
+
+        //No se encuentra una contraseña que no existe
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionElementoNoExiste))]
+        public void NoSeEncuentraContraseniaQueNoExiste()
+        {
+            Gestor.Buscar(75);
+        }
     }
 }
