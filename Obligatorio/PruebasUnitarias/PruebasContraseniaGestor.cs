@@ -201,11 +201,14 @@ namespace PruebasUnitarias
         }
 
         //se puede cambiar el sitio
-        //[TestMethod]
-        //public void SePuedeModificarElSitio()
-        //{
-        //    Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-        //    Contrasenia modificada = Gestor.
-        //}
+        [TestMethod]
+        public void SePuedeModificarElSitio()
+        {
+            ContraseniaCompleta.Sitio = "sitioviejo.com";
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            nuevaContrasenia.Sitio = "nuevositio.com";
+            Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
+            Assert.AreEqual("nuevositio.com", modificada.Sitio);
+        }
     }
 }

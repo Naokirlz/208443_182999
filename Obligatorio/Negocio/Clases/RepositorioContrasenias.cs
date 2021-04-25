@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Negocio.Clases
 {
@@ -20,6 +21,11 @@ namespace Negocio.Clases
         public List<Contrasenia> ListarContrasenias()
         {
             return this.Contrasenias;
+        }
+
+        internal Contrasenia ModificarContrasenia(Contrasenia aModificarContrasenia)
+        {
+            return aModificarContrasenia;
         }
     }
 }

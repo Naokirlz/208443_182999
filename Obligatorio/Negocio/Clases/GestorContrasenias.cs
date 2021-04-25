@@ -44,5 +44,10 @@ namespace Negocio.Clases
         {
             if (unaFecha > DateTime.Now) throw new ExcepcionFechaIncorrecta();
         }
+
+        public Contrasenia ModificarContrasenia(Contrasenia aModificarContrasenia)
+        {
+            return Repositorio.ModificarContrasenia(aModificarContrasenia);
+        }
     }
 }
