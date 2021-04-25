@@ -107,21 +107,32 @@ namespace Negocio.Clases
         public string GenerarPassword(int largo, bool mayuscula, bool minuscula, bool numero, bool especial)
         {
             string password = "";
-            var random = new Random();
+            int largoOriginal = largo;
 
             if (mayuscula)
             {
-                password += (char)(random.Next(26) + 65);
+                password += GenerarCaracter(true, false, false, false);
                 largo--;
             }
             if (minuscula)
             {
-                password += (char)(random.Next(26) + 97);
+                password += GenerarCaracter(false, true, true, true);
                 largo--;
             }
 
             for (int caracter = 0; caracter < largo; caracter++) password += GenerarCaracter(mayuscula, minuscula, numero, especial);
+            char[] passwordArreglo = password.ToCharArray();
+            Random random = new Random();
 
+            while (largoOriginal > 1)
+            {
+                int caracterRandom = random.Next(largoOriginal--);
+                char temp = passwordArreglo[largoOriginal];
+                passwordArreglo[largoOriginal] = passwordArreglo[caracterRandom];
+                passwordArreglo[caracterRandom] = temp;
+            }
+            password = "";
+            foreach (char c in passwordArreglo) password += c;
             return password;
         }
 
