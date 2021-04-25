@@ -16,7 +16,7 @@ namespace PruebasUnitarias
        
         
         
-        //se puede cambiar el password
+        
         //se puede cambiar la categoria
         //se modifica la fecha de modificacion correctamente en cambio de sitio
         //se modifica la fecha de modificacion correctamente en cambio de usuario
@@ -264,7 +264,6 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeModificarElUsuarioConMenos5Caracteres()
         {
-            ContraseniaCompleta.Usuario = "usuario anterior";
             Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             nuevaContrasenia.Usuario = "usua";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
@@ -274,9 +273,37 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeModificarElUsuarioConMas25Caracteres()
         {
-            ContraseniaCompleta.Usuario = "usuario anterior";
             Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             nuevaContrasenia.Usuario = "12345123451234512345123451";
+            Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
+        }
+
+        //se puede cambiar el password
+        [TestMethod]
+        public void SePuedeModificarElPassword()
+        {
+            ContraseniaCompleta.Password = "secretoAnterior";
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            nuevaContrasenia.Password = "secretoNuevo";
+            Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
+            Assert.AreEqual("secretoNuevo", modificada.Password);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeModificarElPasswordConMenos5Caracteres()
+        {
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            nuevaContrasenia.Password = "1234";
+            Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeModificarElPasswordConMas25Caracteres()
+        {
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            nuevaContrasenia.Password = "12345123451234512345123451";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
         }
     }

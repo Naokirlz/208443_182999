@@ -33,6 +33,7 @@ namespace Negocio.Clases
             Contrasenia anterior = BuscarPorId(aModificarContrasenia.Id);
             anterior.Sitio = aModificarContrasenia.Sitio;
             anterior.Usuario = aModificarContrasenia.Usuario;
+            anterior.Password = aModificarContrasenia.Password;
             Contrasenia clonModificada = ClonarContrasenia(anterior);
             return clonModificada;
         }
