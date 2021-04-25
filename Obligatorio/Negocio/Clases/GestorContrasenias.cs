@@ -29,6 +29,7 @@ namespace Negocio.Clases
             unaContrasena.FechaUltimaModificacion = DateTime.Now;
             Contrasenia nuevaContrasenia = new Contrasenia()
             {
+                Id = unaContrasena.Id,
                 Sitio = unaContrasena.Sitio,
                 Notas = unaContrasena.Notas,
                 Password = unaContrasena.Password,
@@ -58,6 +59,11 @@ namespace Negocio.Clases
         {
             ValidarLargoTexto(aModificarContrasenia.Sitio, 25, 3);
             return Repositorio.ModificarContrasenia(aModificarContrasenia);
+        }
+
+        public Contrasenia Buscar(int id)
+        {
+            return Repositorio.Buscar(id);
         }
     }
 }

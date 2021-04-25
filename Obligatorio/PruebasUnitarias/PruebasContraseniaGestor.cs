@@ -239,5 +239,25 @@ namespace PruebasUnitarias
             nuevaContrasenia.Sitio = "12345123451234512345123451";
             Assert.AreNotEqual("12345123451234512345123451", ContraseniaCompleta.Sitio);
         }
+
+        [TestMethod]
+        public void SePuedeBuscarUnaContrasenia()
+        {
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia buscada = Gestor.Buscar(nuevaContrasenia.Id);
+            Assert.AreEqual(nuevaContrasenia.Sitio, buscada.Sitio);
+        }
+
+        [TestMethod]
+        public void AlModificarUnaContraseniaCreadaNoSeModificaMandadaPorParametro()
+        {
+            ContraseniaCompleta.Sitio = "sitioviejo.com";
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            nuevaContrasenia.Sitio = "1234512345";
+            Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
+            modificada.Sitio = "12345123451234512345123451";
+            Contrasenia buscada = Gestor.Buscar(modificada.Id);
+            Assert.AreNotEqual("12345123451234512345123451", buscada.Sitio);
+        }
     }
 }

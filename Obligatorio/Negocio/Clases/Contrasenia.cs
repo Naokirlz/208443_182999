@@ -17,8 +17,8 @@ namespace Negocio.Clases
         public string Notas {get; set; }
         public Categoria Categoria { get; set; }
         public DateTime FechaUltimaModificacion { get; set; }
-        public int Id { get; }
-        private static int Cantidad = 1;
+        public int Id { get; set; }
+        //private static int Cantidad = 1;
 
         //public string Sitio
         //{
@@ -114,8 +114,8 @@ namespace Negocio.Clases
         ////}
 
         public Contrasenia() {
-            this.Id = Cantidad;
-            Cantidad++;
+            //this.Id = Cantidad;
+            //Cantidad++;
         }
     }
 }
