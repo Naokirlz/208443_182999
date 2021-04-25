@@ -87,5 +87,14 @@ namespace PruebasUnitarias
             };
             Assert.AreEqual("una categoría", nuevaContrasenia.Categoria.Nombre);
         }
+
+        [TestMethod]
+        public void SeAsignaElIdAutoincremental()
+        {
+            Contrasenia unaContrasenia = new Contrasenia();
+            Contrasenia otraContrasenia = new Contrasenia();
+            int diferencia = otraContrasenia.Id - unaContrasenia.Id;
+            Assert.AreEqual(1, diferencia);
+        }
     }
 }

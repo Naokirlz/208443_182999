@@ -14,7 +14,7 @@ namespace PruebasUnitarias
         //no se puede guardar una contraseña con categoria que no existe //hacer junto con Cristian
 
        
-        //se puede cambiar el sitio
+        
         //se puede cambiar el usuario
         //se puede cambiar el password
         //se puede cambiar la categoria
@@ -199,5 +199,13 @@ namespace PruebasUnitarias
             Assert.AreNotEqual(fechaIncorrecta, nuevaContrasenia.FechaUltimaModificacion);
             Assert.AreEqual(DateTime.Now.Date, nuevaContrasenia.FechaUltimaModificacion.Date);
         }
+
+        //se puede cambiar el sitio
+        //[TestMethod]
+        //public void SePuedeModificarElSitio()
+        //{
+        //    Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+        //    Contrasenia modificada = Gestor.
+        //}
     }
 }
