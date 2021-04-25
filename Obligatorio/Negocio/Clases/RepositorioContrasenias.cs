@@ -16,11 +16,18 @@ namespace Negocio.Clases
 
         public Contrasenia Alta(Contrasenia unaContrasenia)
         {
+            foreach (var contrasenia in this.Contrasenias)
+            {
+                if (contrasenia.Sitio.Equals(unaContrasenia.Sitio) &&
+                    contrasenia.Usuario.Equals(unaContrasenia.Usuario))
+                    throw new ExcepcionElementoYaExiste();
+            }
             unaContrasenia.Id = IdContrasenia;
             IdContrasenia++;
-            this.Contrasenias.Add(unaContrasenia);
+            unaContrasenia.Password = Encriptar(unaContrasenia.Password);
             Contrasenia clonada = ClonarContrasenia(unaContrasenia);
-            return clonada;
+            this.Contrasenias.Add(clonada);
+            return unaContrasenia;
         }
 
         public List<Contrasenia> ListarContrasenias()
@@ -33,7 +40,7 @@ namespace Negocio.Clases
             Contrasenia anterior = BuscarPorId(aModificarContrasenia.Id);
             anterior.Sitio = aModificarContrasenia.Sitio;
             anterior.Usuario = aModificarContrasenia.Usuario;
-            anterior.Password = aModificarContrasenia.Password;
+            anterior.Password = Encriptar(aModificarContrasenia.Password);
             anterior.Categoria = aModificarContrasenia.Categoria;
             anterior.Notas = aModificarContrasenia.Notas;
             Contrasenia clonModificada = ClonarContrasenia(anterior);
@@ -69,6 +76,27 @@ namespace Negocio.Clases
                 FechaUltimaModificacion = unaContrasenia.FechaUltimaModificacion
             };
             return clonada;
+        }
+
+        private string Encriptar(string texto)
+        {
+            byte[] byt = System.Text.Encoding.UTF8.GetBytes(texto);
+            string codificado;
+            codificado = Convert.ToBase64String(byt);
+            return codificado;
+        }
+
+        private string DesEncriptar(string texto)
+        {
+            byte[] b = Convert.FromBase64String(texto);
+            string original;
+            original = System.Text.Encoding.UTF8.GetString(b);
+            return original;
+        }
+
+        internal string MostrarPassword(string password)
+        {
+            return DesEncriptar(password);
         }
     }
 }

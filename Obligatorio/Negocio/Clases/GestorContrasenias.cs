@@ -82,7 +82,7 @@ namespace Negocio.Clases
             bool minusculas = false;
             bool numeros = false;
             bool especiales = false;
-            string password = nuevaContrasenia.Password;
+            string password = Repositorio.MostrarPassword(nuevaContrasenia.Password);
             int largo = password.Length;
 
             foreach(char caracter in password)
@@ -169,6 +169,11 @@ namespace Negocio.Clases
                 
             caracter += (char)codigo;
             return caracter;
+        }
+
+        public string MostrarPassword(string password)
+        {
+            return Repositorio.MostrarPassword(password);
         }
     }
 }

@@ -14,10 +14,7 @@ namespace PruebasUnitarias
         //no se puede guardar una contraseña con categoria que no existe //hacer junto con Cristian
         // validar categoria antes de crearla y antes de modificar
         // se deja test de validar la fecha para luego
-
         
-        //sitio y usuario tienen solo una contraseña
-        //la password no se guarda en texto plano
 
         private GestorContrasenias Gestor = new GestorContrasenias();
         private Contrasenia ContraseniaCompleta;
@@ -208,7 +205,7 @@ namespace PruebasUnitarias
             ContraseniaCompleta.Sitio = "sitioviejo.com";
             Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             nuevaContrasenia.Sitio = "12345123451234512345123451";
-            Assert.AreNotEqual("12345123451234512345123451", ContraseniaCompleta.Sitio);
+            Assert.AreNotEqual("12345123451234512345123451", Gestor.Buscar(nuevaContrasenia.Id).Sitio);
         }
 
         [TestMethod]
@@ -235,7 +232,15 @@ namespace PruebasUnitarias
         public void SeAsignaElIdAutoincremental()
         {
             Contrasenia unaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            Contrasenia otraContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = new Contrasenia() {
+                Sitio = "otrositio.com",
+                Categoria = new Categoria("Categoria"),
+                Usuario = "usuario",
+                Notas = "clave de netflix",
+                FechaUltimaModificacion = DateTime.Now,
+                Password = "secreto"
+            };
+            Contrasenia otraContrasenia = Gestor.Alta(nuevaContrasenia);
             int diferencia = otraContrasenia.Id - unaContrasenia.Id;
             Assert.AreEqual(1, diferencia);
         }
@@ -277,7 +282,7 @@ namespace PruebasUnitarias
             Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             nuevaContrasenia.Password = "secretoNuevo";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
-            Assert.AreEqual("secretoNuevo", modificada.Password);
+            Assert.AreEqual("secretoNuevo", Gestor.MostrarPassword(modificada.Password));
         }
 
         [TestMethod]
@@ -513,6 +518,53 @@ namespace PruebasUnitarias
                 else NohayOtro = false;
             }
             Assert.IsTrue(hayMayuscula && hayMinuscula && hayEspeciales && hayNumeros && NohayOtro);
+        }
+
+        //la password no se guarda en texto plano
+        [TestMethod]
+        public void SeGuardaElPasswordCodificado()
+        {
+            ContraseniaCompleta.Password = "secreto";
+            Contrasenia nueva = Gestor.Alta(ContraseniaCompleta);
+            Assert.AreNotEqual("secreto", nueva.Password);
+        }
+
+        //se puede desencriptar el password
+        [TestMethod]
+        public void SePuedeDesencriptarElPassword()
+        {
+            ContraseniaCompleta.Password = "secreto";
+            Contrasenia nueva = Gestor.Alta(ContraseniaCompleta);
+            Assert.AreEqual("secreto", Gestor.MostrarPassword(nueva.Password));
+        }
+
+        //sitio y usuario tienen solo una contraseña
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionElementoYaExiste))]
+        public void NoSePuedenGuardarDosPasswrodConMismoUsuarioYSitio()
+        {
+            Gestor.Alta(ContraseniaCompleta);
+            Gestor.Alta(ContraseniaCompleta);
+        }
+
+        //se pueden listar las contrasenias
+        [TestMethod]
+        public void SePuedePuedenListarLasContrasenias()
+        {
+            Contrasenia unaC = Gestor.Alta(ContraseniaCompleta);
+            ContraseniaCompleta.Sitio = "otro sitio distinto";
+            Contrasenia dosC = Gestor.Alta(ContraseniaCompleta);
+            Assert.AreEqual(2, Gestor.ListarContrasenias().Count);
+        }
+
+        //no se guarda la contraseña que mando por parámetro
+        [TestMethod]
+        public void SeGuardaLaContraseniaQueSeMandaPorParametro()
+        {
+            Contrasenia unaC = Gestor.Alta(ContraseniaCompleta);
+            ContraseniaCompleta.Sitio = "otro sitio distinto";
+            Contrasenia guardada = Gestor.Buscar(unaC.Id);
+            Assert.AreNotEqual("otro sitio distinto", guardada.Sitio);
         }
     }
 }
