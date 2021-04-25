@@ -11,9 +11,9 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasContraseniaGestor
     {
-        //no se puede guardar una contraseña sin categoria
-        //no se puede guardar una contraseña con categoria que no existe
-        //no se puede guardar una contraseña sin fecha de modificacion
+        //no se puede guardar una contraseña con categoria que no existe //hacer junto con Cristian
+
+       
         //se puede cambiar el sitio
         //se puede cambiar el usuario
         //se puede cambiar el password
@@ -178,6 +178,26 @@ namespace PruebasUnitarias
         {
             ContraseniaCompleta.Password = null;
             Gestor.Alta(ContraseniaCompleta);
+        }
+
+        //no se puede guardar una contraseña sin categoria
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionFaltaAtributo))]
+        public void NoSePuedeGuardarUnaContrasenaSinCategoria()
+        {
+            ContraseniaCompleta.Categoria = null;
+            Gestor.Alta(ContraseniaCompleta);
+        }
+
+        //se corrige la fecha de modificacién aunque se mande por parámetro
+        [TestMethod]
+        public void SeCorrigeLaFechaDeModificacionAunqueSeMandePorParametro()
+        {
+            DateTime fechaIncorrecta = DateTime.Now.AddDays(-1);
+            ContraseniaCompleta.FechaUltimaModificacion = fechaIncorrecta;
+            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Assert.AreNotEqual(fechaIncorrecta, nuevaContrasenia.FechaUltimaModificacion);
+            Assert.AreEqual(DateTime.Now.Date, nuevaContrasenia.FechaUltimaModificacion.Date);
         }
     }
 }
