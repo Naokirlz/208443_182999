@@ -29,8 +29,16 @@ namespace Interfaz.TarjetaCredito
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // AgregarTarjeta
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "AgregarTarjeta";
+            this.Size = new System.Drawing.Size(485, 290);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
