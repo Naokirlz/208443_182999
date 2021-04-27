@@ -31,6 +31,7 @@ namespace Interfaz
         {
             this.btnGestionCategoria = new System.Windows.Forms.Button();
             this.pnlPanelPrincipal = new System.Windows.Forms.Panel();
+            this.btnGestionContrasenia = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGestionCategoria
@@ -50,11 +51,22 @@ namespace Interfaz
             this.pnlPanelPrincipal.Size = new System.Drawing.Size(729, 376);
             this.pnlPanelPrincipal.TabIndex = 1;
             // 
+            // btnGestionContrasenia
+            // 
+            this.btnGestionContrasenia.Location = new System.Drawing.Point(12, 98);
+            this.btnGestionContrasenia.Name = "btnGestionContrasenia";
+            this.btnGestionContrasenia.Size = new System.Drawing.Size(185, 23);
+            this.btnGestionContrasenia.TabIndex = 2;
+            this.btnGestionContrasenia.Text = "Gestionar Contraseñas";
+            this.btnGestionContrasenia.UseVisualStyleBackColor = true;
+            this.btnGestionContrasenia.Click += new System.EventHandler(this.btnGestionContrasenia_Click);
+            // 
             // PantallaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(969, 419);
+            this.Controls.Add(this.btnGestionContrasenia);
             this.Controls.Add(this.pnlPanelPrincipal);
             this.Controls.Add(this.btnGestionCategoria);
             this.Name = "PantallaPrincipal";
@@ -68,6 +80,7 @@ namespace Interfaz
 
         private System.Windows.Forms.Button btnGestionCategoria;
         private System.Windows.Forms.Panel pnlPanelPrincipal;
+        private System.Windows.Forms.Button btnGestionContrasenia;
     }
 }
 

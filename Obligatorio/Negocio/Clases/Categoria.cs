@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Negocio.Excepciones;
 
-namespace Negocio
+namespace Negocio.Clases
 {
     public class Categoria
     {

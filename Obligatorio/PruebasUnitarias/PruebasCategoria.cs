@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using Negocio;
-using Negocio.Excepciones;
 using Negocio.Clases;
+using Negocio.Excepciones;
+using System;
 using System.Collections.Generic;
 
 namespace PruebasUnitarias
@@ -11,12 +11,12 @@ namespace PruebasUnitarias
     public class PruebasCategoria
     {
         private GestorCategorias Gestor = new GestorCategorias();
-       
+
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaCategoriaConNombreMenor3Caracteres()
         {
-            Gestor.Alta("12");            
+            Gestor.Alta("12");
         }
 
         [TestMethod]
@@ -29,7 +29,7 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SeGuardaCorrectamenteElNombre()
         {
-            
+
             Categoria NuevaCategoria = Gestor.Alta("ElNombre");
             string nombre = "ElNombre";
             Assert.AreEqual(nombre, NuevaCategoria.Nombre);
@@ -126,10 +126,10 @@ namespace PruebasUnitarias
             bool estaCat2 = false;
             bool estaCat3 = false;
             bool categoriaDif = false;
-           
+
 
             List<Categoria> Lista = Gestor2.ListarCategorias();
-        
+
             foreach (Categoria categoria in Lista)
             {
 
@@ -180,7 +180,7 @@ namespace PruebasUnitarias
             Gestor4.Baja(id);
             List<Categoria> lista = Gestor4.ListarCategorias();
             bool esta = false;
-            foreach(Categoria cat in lista)
+            foreach (Categoria cat in lista)
             {
                 if (cat.Id == categoria1.Id) esta = true;
             }

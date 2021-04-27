@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ED53649D-4FF9-41AE-A1A7-F0EBD8464321}</ProjectGuid>
+    <ProjectGuid>{59BA89ED-7FCD-474A-95D5-C73031FC5C7D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PruebasUnitarias</RootNamespace>
@@ -53,13 +53,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PruebasGenerales.cs" />
     <Compile Include="PruebasTarjetaCredito.cs" />
+    <Compile Include="PruebasContrasena.cs" />
+    <Compile Include="PruebasContraseniaGestor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Negocio\Negocio.csproj">
-      <Project>{82b688df-8bb3-418b-ab82-5a2ffec0d8ad}</Project>
+      <Project>{82B688DF-8BB3-418B-AB82-5A2FFEC0D8AD}</Project>
       <Name>Negocio</Name>
     </ProjectReference>
   </ItemGroup>
