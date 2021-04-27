@@ -14,11 +14,12 @@ namespace Interfaz
 {
     public partial class AgregarCategoria : UserControl
     {
-        private GestorCategorias GestorCategorias;
-        public AgregarCategoria(GestorCategorias gestorCategorias)
+        public Sistema sis = Sistema.Singleton;
+         
+        public AgregarCategoria()
         {
             InitializeComponent();
-            this.GestorCategorias = gestorCategorias;
+            
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -26,7 +27,7 @@ namespace Interfaz
             string nombre = this.txtNombre.Text;
             try
             {
-                this.GestorCategorias.Alta(nombre);
+                this.sis.GestorCategoria.Alta(nombre);
                 this.txtNombre.Clear();
                 MessageBox.Show("Categoría " + nombre + " fue creada con éxito!!");
             }

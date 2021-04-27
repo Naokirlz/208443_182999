@@ -47,6 +47,7 @@
     <Compile Include="Clases\GestorTarjetaCredito.cs" />
     <Compile Include="Clases\RepositorioCategorias.cs" />
     <Compile Include="Clases\RepositorioTarjetaCredito.cs" />
+    <Compile Include="Clases\Sistema.cs" />
     <Compile Include="Clases\TarjetaCredito.cs" />
     <Compile Include="Clases\GestorContrasenias.cs" />
     <Compile Include="Clases\RepositorioCategorias.cs" />

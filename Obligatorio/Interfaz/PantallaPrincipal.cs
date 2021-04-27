@@ -13,11 +13,10 @@ namespace Interfaz
 {
     public partial class PantallaPrincipal : Form
     {
-        public GestorCategorias GestorCategorias;
-        public PantallaPrincipal(GestorCategorias gestorCategorias)
+        
+        public PantallaPrincipal()
         {
-            this.GestorCategorias = gestorCategorias;
-            InitializeComponent();
+           InitializeComponent();
         }
 
         private void PantallaPrincipal_FormClosed(object sender, FormClosedEventArgs e)
@@ -28,7 +27,7 @@ namespace Interfaz
         private void btnGestionCategoria_Click(object sender, EventArgs e)
         {
             pnlPanelPrincipal.Controls.Clear();
-            UserControl gestorCategorias = new GestionCategorias(GestorCategorias);
+            UserControl gestorCategorias = new GestionCategorias();
             pnlPanelPrincipal.Controls.Add(gestorCategorias);
         }
 

@@ -13,18 +13,17 @@ namespace Interfaz
 {
     public partial class Login : Form
     {
-        private GestorCategorias GestorCategorias;
+        public Sistema sis = Sistema.Singleton;
         public Login()
         {
-            this.GestorCategorias = new GestorCategorias("secreto");
             InitializeComponent();
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (this.GestorCategorias.Login(this.txtIngresar.Text))
+            if (this.sis.Login(this.txtIngresar.Text))
             {
-                PantallaPrincipal nuevaPantalla = new PantallaPrincipal(this.GestorCategorias);
+                PantallaPrincipal nuevaPantalla = new PantallaPrincipal();
                 this.Hide();
                 nuevaPantalla.Show();
                 

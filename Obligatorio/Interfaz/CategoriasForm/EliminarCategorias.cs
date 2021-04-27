@@ -15,11 +15,10 @@ namespace Interfaz
 {
     public partial class EliminarCategorias : UserControl
     {
-        private GestorCategorias GestorCategorias;
-        public EliminarCategorias(GestorCategorias gestorCategorias)
+        public Sistema sis = Sistema.Singleton;
+        public EliminarCategorias()
         {
             InitializeComponent();
-            this.GestorCategorias = gestorCategorias;
             Refrescar();
         }
 
@@ -36,7 +35,7 @@ namespace Interfaz
                 int id = aEliminar.Id;
                 string nombre = aEliminar.Nombre;
 
-                this.GestorCategorias.Baja(id);
+                this.sis.GestorCategoria.Baja(id);
                 Refrescar();
                 MessageBox.Show("Categoría " + nombre + " fue eliminada con éxito!!");
             }
@@ -50,7 +49,7 @@ namespace Interfaz
         {
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
             BindingSource bSource = new BindingSource();
-            bSource.DataSource = this.GestorCategorias.ListarCategorias();
+            bSource.DataSource = this.sis.GestorCategoria.ListarCategorias();
             this.cmbCategoria.DataSource = bSource;
         }
     }

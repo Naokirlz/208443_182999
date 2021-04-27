@@ -15,12 +15,11 @@ namespace Interfaz
 {
     public partial class ModificarCategoria : UserControl
     {
-        public GestorCategorias GestorCategorias;
+        public Sistema sis = Sistema.Singleton;
 
-        public ModificarCategoria(GestorCategorias gestorCategorias)
+        public ModificarCategoria()
         {
             InitializeComponent();
-            this.GestorCategorias = gestorCategorias;
             Refrescar();
 
             
@@ -30,7 +29,7 @@ namespace Interfaz
         {
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
             BindingSource bSource = new BindingSource();
-            bSource.DataSource = this.GestorCategorias.ListarCategorias();
+            bSource.DataSource = this.sis.GestorCategoria.ListarCategorias();
             this.cmbCategoria.DataSource = bSource;
         }
 
@@ -47,7 +46,7 @@ namespace Interfaz
                 }
                 int id = aCambiar.Id;
                 string nuevoNombre = this.txtNuevoNombre.Text;
-                this.GestorCategorias.ModificarCategoria(id, nuevoNombre);
+                this.sis.GestorCategoria.ModificarCategoria(id, nuevoNombre);
                 this.txtNuevoNombre.Clear();
                 Refrescar();
                 MessageBox.Show("Categoría " + nuevoNombre + " fue modificada con éxito!!");
