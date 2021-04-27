@@ -34,9 +34,9 @@ namespace Interfaz
 
         private void btnGestionContrasenia_Click(object sender, EventArgs e)
         {
-            pnlPanelPrincipal.Controls.Clear();
-            UserControl gestorCategorias = new GestorContrasenias(GestorCategorias);
-            pnlPanelPrincipal.Controls.Add(gestorCategorias);
+            //pnlPanelPrincipal.Controls.Clear();
+            //UserControl gestorCategorias = new GestorContrasenias(GestorCategorias);
+            //pnlPanelPrincipal.Controls.Add(gestorCategorias);
         }
     }
 }
