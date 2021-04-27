@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Interfaz
 {
-    public partial class TarjetaCredito : Form
+    public partial class TarjetaCreditos : Form
     {
         GestorCategorias GestorCategorias = new GestorCategorias();
 
-        public TarjetaCredito()
+        public TarjetaCreditos()
         {
             InitializeComponent();
         }

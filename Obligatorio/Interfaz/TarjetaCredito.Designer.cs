@@ -1,7 +1,7 @@
 ﻿
 namespace Interfaz
 {
-    partial class TarjetaCredito
+    partial class TarjetaCreditos
     {
         /// <summary>
         /// Required designer variable.

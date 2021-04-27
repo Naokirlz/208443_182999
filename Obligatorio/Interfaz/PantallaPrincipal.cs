@@ -38,5 +38,12 @@ namespace Interfaz
             //UserControl gestorCategorias = new GestorContrasenias(GestorCategorias);
             //pnlPanelPrincipal.Controls.Add(gestorCategorias);
         }
+
+        private void btnGestionTarjetaCredito_Click(object sender, EventArgs e)
+        {
+            pnlPanelPrincipal.Controls.Clear();
+            //UserControl gestorTarjetas = new GestorTarjetaCredito(GestorCategorias);
+            //pnlPanelPrincipal.Controls.Add(gestorTarjetas);
+        }
     }
 }

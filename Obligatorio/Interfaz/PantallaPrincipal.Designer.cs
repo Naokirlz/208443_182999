@@ -32,6 +32,7 @@ namespace Interfaz
             this.btnGestionCategoria = new System.Windows.Forms.Button();
             this.pnlPanelPrincipal = new System.Windows.Forms.Panel();
             this.btnGestionContrasenia = new System.Windows.Forms.Button();
+            this.btnGestionTarjetaCredito = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGestionCategoria
@@ -61,11 +62,22 @@ namespace Interfaz
             this.btnGestionContrasenia.UseVisualStyleBackColor = true;
             this.btnGestionContrasenia.Click += new System.EventHandler(this.btnGestionContrasenia_Click);
             // 
+            // btnGestionTarjetaCredito
+            // 
+            this.btnGestionTarjetaCredito.Location = new System.Drawing.Point(12, 127);
+            this.btnGestionTarjetaCredito.Name = "btnGestionTarjetaCredito";
+            this.btnGestionTarjetaCredito.Size = new System.Drawing.Size(185, 23);
+            this.btnGestionTarjetaCredito.TabIndex = 3;
+            this.btnGestionTarjetaCredito.Text = "Tarjeras de Crédito";
+            this.btnGestionTarjetaCredito.UseVisualStyleBackColor = true;
+            this.btnGestionTarjetaCredito.Click += new System.EventHandler(this.btnGestionTarjetaCredito_Click);
+            // 
             // PantallaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(969, 419);
+            this.Controls.Add(this.btnGestionTarjetaCredito);
             this.Controls.Add(this.btnGestionContrasenia);
             this.Controls.Add(this.pnlPanelPrincipal);
             this.Controls.Add(this.btnGestionCategoria);
@@ -81,6 +93,7 @@ namespace Interfaz
         private System.Windows.Forms.Button btnGestionCategoria;
         private System.Windows.Forms.Panel pnlPanelPrincipal;
         private System.Windows.Forms.Button btnGestionContrasenia;
+        private System.Windows.Forms.Button btnGestionTarjetaCredito;
     }
 }
 
