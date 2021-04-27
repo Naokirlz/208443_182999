@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Negocio.Clases;
+using Negocio;
 using System;
 
 namespace PruebasUnitarias
@@ -7,7 +7,7 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasGenerales
     {
-        private Sistema sis = Sistema.Singleton;
+        private Sesion sis = Sesion.Singleton;
         
 
         [TestInitialize]

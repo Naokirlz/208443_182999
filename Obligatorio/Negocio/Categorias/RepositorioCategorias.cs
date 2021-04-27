@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Negocio.Clases
+namespace Negocio.Categorias
 {
     public class RepositorioCategorias
     {
@@ -60,7 +60,7 @@ namespace Negocio.Clases
         public List<Categoria> ListarCategorias()
         {
             List<Categoria> clon = new List<Categoria>();
-            foreach(Categoria cat in Categorias)
+            foreach (Categoria cat in Categorias)
             {
                 Categoria clonCat = new Categoria(cat.Nombre, cat.Id);
                 clon.Add(clonCat);

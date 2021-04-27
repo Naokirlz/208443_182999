@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Negocio.Clases
+namespace Negocio.Contrasenias
 {
     public class GestorContrasenias
     {

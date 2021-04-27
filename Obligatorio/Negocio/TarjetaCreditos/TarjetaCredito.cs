@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Negocio.Categorias;
 
-namespace Negocio.Clases
+namespace Negocio.TarjetaCreditos
 {
     public class TarjetaCredito: IComparable<TarjetaCredito>
     {
@@ -17,7 +18,7 @@ namespace Negocio.Clases
         public string Numero { get; set; }
         public string Codigo { get; set; }
         public DateTime Vencimiento { get; set; }
-        public String Nota { get; set; }
+        public string Nota { get; set; }
 
 
 

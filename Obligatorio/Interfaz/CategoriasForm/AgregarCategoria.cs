@@ -1,4 +1,4 @@
-﻿using Negocio.Clases;
+﻿using Negocio;
 using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace Interfaz
 {
     public partial class AgregarCategoria : UserControl
     {
-        public Sistema sis = Sistema.Singleton;
+        public Sesion sis = Sesion.Singleton;
          
         public AgregarCategoria()
         {

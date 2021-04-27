@@ -1,5 +1,5 @@
 ﻿using Negocio;
-using Negocio.Clases;
+using Negocio.Categorias;
 using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace Interfaz
 {
     public partial class ModificarCategoria : UserControl
     {
-        public Sistema sis = Sistema.Singleton;
+        public Sesion sis = Sesion.Singleton;
 
         public ModificarCategoria()
         {

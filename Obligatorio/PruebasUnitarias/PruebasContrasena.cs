@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Negocio.Clases;
+using Negocio.Contrasenias;
+using Negocio.Categorias;
 using Negocio.Excepciones;
 using System;
 

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Negocio.Clases
+namespace Negocio.Contrasenias
 {
     public class RepositorioContrasenias
     {

@@ -1,4 +1,6 @@
-﻿using Negocio.Clases;
+﻿using Negocio;
+using Negocio.Categorias;
+using Negocio.TarjetaCreditos;
 using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
@@ -14,7 +16,7 @@ namespace Interfaz.TarjetasCredito
 {
     public partial class AgregarTarjetas : UserControl
     {
-        public Sistema sis = Sistema.Singleton;
+        public Sesion sis = Sesion.Singleton;
         public AgregarTarjetas()
         {
             InitializeComponent();

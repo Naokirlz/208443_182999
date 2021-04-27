@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Negocio.Categorias;
+using Negocio.Contrasenias;
+using Negocio.TarjetaCreditos;
 
-namespace Negocio.Clases
+namespace Negocio
 {
-    public class Sistema
+    public class Sesion
     {
-        private static Sistema Sesion;
+        private static Sesion Instancia;
 
         public GestorCategorias GestorCategoria { get; set; }
         public GestorContrasenias GestorContrasenia { get; set; }
@@ -16,7 +19,7 @@ namespace Negocio.Clases
 
        
 
-        private Sistema()
+        private Sesion()
         {
 
             GestorCategoria = new GestorCategorias();
@@ -26,12 +29,12 @@ namespace Negocio.Clases
         }
 
 
-        public static Sistema Singleton
+        public static Sesion Singleton
         {
             get
             {
-                if (Sesion == null) Sesion = new Sistema();
-                return Sesion;
+                if (Instancia == null) Instancia = new Sesion();
+                return Instancia;
             }
 
         }

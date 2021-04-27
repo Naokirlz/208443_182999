@@ -1,5 +1,5 @@
 ﻿using Interfaz.TarjetasCredito;
-using Negocio.Clases;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

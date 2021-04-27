@@ -41,17 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\Categoria.cs" />
-    <Compile Include="Clases\Contrasenia.cs" />
-    <Compile Include="Clases\GestorCategorias.cs" />
-    <Compile Include="Clases\GestorTarjetaCredito.cs" />
-    <Compile Include="Clases\RepositorioCategorias.cs" />
-    <Compile Include="Clases\RepositorioTarjetaCredito.cs" />
-    <Compile Include="Clases\Sistema.cs" />
-    <Compile Include="Clases\TarjetaCredito.cs" />
-    <Compile Include="Clases\GestorContrasenias.cs" />
-    <Compile Include="Clases\RepositorioCategorias.cs" />
-    <Compile Include="Clases\RepositorioContrasenias.cs" />
+    <Compile Include="Categorias\Categoria.cs" />
+    <Compile Include="Contrasenias\Contrasenia.cs" />
+    <Compile Include="Categorias\GestorCategorias.cs" />
+    <Compile Include="TarjetaCreditos\GestorTarjetaCredito.cs" />
+    <Compile Include="Categorias\RepositorioCategorias.cs" />
+    <Compile Include="TarjetaCreditos\RepositorioTarjetaCredito.cs" />
+    <Compile Include="Sesion.cs" />
+    <Compile Include="TarjetaCreditos\TarjetaCredito.cs" />
+    <Compile Include="Contrasenias\GestorContrasenias.cs" />
+    <Compile Include="Contrasenias\RepositorioContrasenias.cs" />
     <Compile Include="Excepciones\ExcepcionElementoNoExiste.cs" />
     <Compile Include="Excepciones\ExcepcionElementoYaExiste.cs" />
     <Compile Include="Excepciones\ExcepcionFaltaAtributo.cs" />

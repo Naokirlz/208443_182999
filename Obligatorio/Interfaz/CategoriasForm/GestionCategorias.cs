@@ -1,4 +1,4 @@
-﻿using Negocio.Clases;
+﻿using Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +14,7 @@ namespace Interfaz
     public partial class GestionCategorias : UserControl
     {
         //public GestorCategorias GestorCategorias;
-        public Sistema sis = Sistema.Singleton;
+        public Sesion sis = Sesion.Singleton;
 
         public GestionCategorias()
         {
