@@ -90,11 +90,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TarjetaCredito.cs">
-      <SubType>Form</SubType>
+    <Compile Include="TarjetasCredito\AgregarTarjetas.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TarjetaCredito.Designer.cs">
-      <DependentUpon>TarjetaCredito.cs</DependentUpon>
+    <Compile Include="TarjetasCredito\AgregarTarjetas.Designer.cs">
+      <DependentUpon>AgregarTarjetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TarjetasCredito\GestionTarjetas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TarjetasCredito\GestionTarjetas.Designer.cs">
+      <DependentUpon>GestionTarjetas.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CategoriasForm\AgregarCategoria.resx">
       <DependentUpon>AgregarCategoria.cs</DependentUpon>
@@ -126,8 +132,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TarjetaCredito.resx">
-      <DependentUpon>TarjetaCredito.cs</DependentUpon>
+    <EmbeddedResource Include="TarjetasCredito\AgregarTarjetas.resx">
+      <DependentUpon>AgregarTarjetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TarjetasCredito\GestionTarjetas.resx">
+      <DependentUpon>GestionTarjetas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

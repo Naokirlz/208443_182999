@@ -1,4 +1,5 @@
-﻿using Negocio.Clases;
+﻿using Interfaz.TarjetasCredito;
+using Negocio.Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,8 +42,8 @@ namespace Interfaz
         private void btnGestionTarjetaCredito_Click(object sender, EventArgs e)
         {
             pnlPanelPrincipal.Controls.Clear();
-            //UserControl gestorTarjetas = new GestorTarjetaCredito(GestorCategorias);
-            //pnlPanelPrincipal.Controls.Add(gestorTarjetas);
+            UserControl gestorTarjetas = new GestionTarjetas();
+            pnlPanelPrincipal.Controls.Add(gestorTarjetas);
         }
     }
 }

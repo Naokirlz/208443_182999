@@ -1,5 +1,4 @@
-﻿using Negocio.Clases;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,11 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Interfaz.TarjetaCredito
+namespace Interfaz.TarjetasCredito
 {
     public partial class GestionTarjetas : UserControl
     {
-        public GestorCategorias GestorCategorias;
         public GestionTarjetas()
         {
             InitializeComponent();
@@ -22,8 +20,8 @@ namespace Interfaz.TarjetaCredito
         private void btnAgregarTarjeta_Click(object sender, EventArgs e)
         {
             pnlGestor.Controls.Clear();
-            //UserControl agregarCategoria = new AgregarTarjeta(GestorCategorias);
-            //pnlGestor.Controls.Add(agregarCategoria);
+            UserControl agregarTarjeta = new AgregarTarjetas();
+            pnlGestor.Controls.Add(agregarTarjeta);
         }
     }
 }

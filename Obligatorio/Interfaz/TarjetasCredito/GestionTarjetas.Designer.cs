@@ -1,5 +1,5 @@
 ﻿
-namespace Interfaz.TarjetaCredito
+namespace Interfaz.TarjetasCredito
 {
     partial class GestionTarjetas
     {
@@ -29,42 +29,42 @@ namespace Interfaz.TarjetaCredito
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAgregarTarjeta = new System.Windows.Forms.Button();
             this.pnlGestor = new System.Windows.Forms.Panel();
+            this.btnAgregarTarjeta = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // btnAgregarTarjeta
-            // 
-            this.btnAgregarTarjeta.Location = new System.Drawing.Point(3, 34);
-            this.btnAgregarTarjeta.Name = "btnAgregarTarjeta";
-            this.btnAgregarTarjeta.Size = new System.Drawing.Size(134, 23);
-            this.btnAgregarTarjeta.TabIndex = 0;
-            this.btnAgregarTarjeta.Text = "Agregar Tarjeta";
-            this.btnAgregarTarjeta.UseVisualStyleBackColor = true;
-            this.btnAgregarTarjeta.Click += new System.EventHandler(this.btnAgregarTarjeta_Click);
             // 
             // pnlGestor
             // 
-            this.pnlGestor.Location = new System.Drawing.Point(199, 16);
+            this.pnlGestor.Location = new System.Drawing.Point(194, 24);
             this.pnlGestor.Name = "pnlGestor";
-            this.pnlGestor.Size = new System.Drawing.Size(431, 303);
+            this.pnlGestor.Size = new System.Drawing.Size(516, 332);
             this.pnlGestor.TabIndex = 1;
+            // 
+            // btnAgregarTarjeta
+            // 
+            this.btnAgregarTarjeta.Location = new System.Drawing.Point(3, 61);
+            this.btnAgregarTarjeta.Name = "btnAgregarTarjeta";
+            this.btnAgregarTarjeta.Size = new System.Drawing.Size(185, 23);
+            this.btnAgregarTarjeta.TabIndex = 2;
+            this.btnAgregarTarjeta.Text = "Agregar Tarjeta";
+            this.btnAgregarTarjeta.UseVisualStyleBackColor = true;
+            this.btnAgregarTarjeta.Click += new System.EventHandler(this.btnAgregarTarjeta_Click);
             // 
             // GestionTarjetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pnlGestor);
             this.Controls.Add(this.btnAgregarTarjeta);
+            this.Controls.Add(this.pnlGestor);
             this.Name = "GestionTarjetas";
-            this.Size = new System.Drawing.Size(648, 339);
+            this.Size = new System.Drawing.Size(729, 376);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnAgregarTarjeta;
         private System.Windows.Forms.Panel pnlGestor;
+        private System.Windows.Forms.Button btnAgregarTarjeta;
     }
 }
