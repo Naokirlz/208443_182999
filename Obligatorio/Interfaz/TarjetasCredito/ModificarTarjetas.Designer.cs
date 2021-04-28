@@ -45,7 +45,7 @@ namespace Interfaz.TarjetasCredito
             this.lblCategoria = new System.Windows.Forms.Label();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.lblTarjeta = new System.Windows.Forms.Label();
-            this.cmbTarjeta = new System.Windows.Forms.ComboBox();
+            this.cmbTarjetas = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // dtpVencimiento
@@ -182,21 +182,22 @@ namespace Interfaz.TarjetasCredito
             this.lblTarjeta.TabIndex = 36;
             this.lblTarjeta.Text = "Tarjeta ";
             // 
-            // cmbTarjeta
+            // cmbTarjetas
             // 
-            this.cmbTarjeta.FormattingEnabled = true;
-            this.cmbTarjeta.Location = new System.Drawing.Point(89, 39);
-            this.cmbTarjeta.Name = "cmbTarjeta";
-            this.cmbTarjeta.Size = new System.Drawing.Size(168, 21);
-            this.cmbTarjeta.TabIndex = 35;
-            this.cmbTarjeta.SelectionChangeCommitted += new System.EventHandler(this.cmbTarjeta_SelectionChangeCommitted);
+            this.cmbTarjetas.FormattingEnabled = true;
+            this.cmbTarjetas.Location = new System.Drawing.Point(89, 39);
+            this.cmbTarjetas.Name = "cmbTarjetas";
+            this.cmbTarjetas.Size = new System.Drawing.Size(168, 21);
+            this.cmbTarjetas.TabIndex = 35;
+            this.cmbTarjetas.SelectedIndexChanged += new System.EventHandler(this.cmbContrasenias_SelectedIndexChanged);
+            this.cmbTarjetas.SelectionChangeCommitted += new System.EventHandler(this.cmbTarjeta_SelectionChangeCommitted);
             // 
             // ModificarTarjetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblTarjeta);
-            this.Controls.Add(this.cmbTarjeta);
+            this.Controls.Add(this.cmbTarjetas);
             this.Controls.Add(this.dtpVencimiento);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblVencimiento);
@@ -237,6 +238,6 @@ namespace Interfaz.TarjetasCredito
         private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.ComboBox cmbCategoria;
         private System.Windows.Forms.Label lblTarjeta;
-        private System.Windows.Forms.ComboBox cmbTarjeta;
+        private System.Windows.Forms.ComboBox cmbTarjetas;
     }
 }

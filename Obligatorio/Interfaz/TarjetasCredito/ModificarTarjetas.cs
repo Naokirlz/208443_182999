@@ -28,7 +28,7 @@ namespace Interfaz.TarjetasCredito
             BindingList<TarjetaCredito> bindinglist = new BindingList<TarjetaCredito>();
             BindingSource bSource = new BindingSource();
             bSource.DataSource = this.Sesion.GestorTarjetaCredito.ObtenerTodas();
-            this.cmbTarjeta.DataSource = bSource;
+            this.cmbTarjetas.DataSource = bSource;
 
             BindingList<Categoria> bindinglist2 = new BindingList<Categoria>();
             BindingSource bSource2 = new BindingSource();
@@ -42,7 +42,7 @@ namespace Interfaz.TarjetasCredito
         {
             try
             {
-                TarjetaCredito tarjetaSeleccionada = (TarjetaCredito)this.cmbTarjeta.SelectedItem;
+                TarjetaCredito tarjetaSeleccionada = (TarjetaCredito)this.cmbTarjetas.SelectedItem;
                 if (tarjetaSeleccionada == null)
                 {
                     MessageBox.Show("Seleccione al menos una Tarjeta de Crédito");
@@ -107,16 +107,23 @@ namespace Interfaz.TarjetasCredito
 
         private void CargarDatosTarjeta()
         {
-            TarjetaCredito tarjetaSeleccionada = (TarjetaCredito)this.cmbTarjeta.SelectedItem;
+            TarjetaCredito tarjetaSeleccionada = (TarjetaCredito)this.cmbTarjetas.SelectedItem;
+            if (tarjetaSeleccionada != null)
+            {
+                this.txtCodigo.Text = tarjetaSeleccionada.Codigo;
+                this.cmbCategoria.SelectedItem = tarjetaSeleccionada.Categoria;
+                this.txtNombre.Text = tarjetaSeleccionada.Nombre;
+                this.txtTipo.Text = tarjetaSeleccionada.Tipo;
+                this.txtNumero.Text = tarjetaSeleccionada.Numero;
+                this.txtCodigo.Text = tarjetaSeleccionada.Codigo;
+                this.txtNotas.Text = tarjetaSeleccionada.Nota;
+                this.dtpVencimiento.Value = tarjetaSeleccionada.Vencimiento;
+            }
+        }
 
-            this.txtCodigo.Text = tarjetaSeleccionada.Codigo;
-            this.cmbCategoria.SelectedItem = tarjetaSeleccionada.Categoria;
-            this.txtNombre.Text = tarjetaSeleccionada.Nombre;
-            this.txtTipo.Text = tarjetaSeleccionada.Tipo;
-            this.txtNumero.Text = tarjetaSeleccionada.Numero;
-            this.txtCodigo.Text = tarjetaSeleccionada.Codigo;
-            this.txtNotas.Text = tarjetaSeleccionada.Nota;
-            this.dtpVencimiento.Value = tarjetaSeleccionada.Vencimiento;
+        private void cmbContrasenias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarDatosTarjeta();
         }
     }
 }

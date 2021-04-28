@@ -31,6 +31,7 @@ namespace Interfaz.Contrasenias
         {
             this.pnlGestor = new System.Windows.Forms.Panel();
             this.btnAgregarContrasenia = new System.Windows.Forms.Button();
+            this.btnModificarContrasenias = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlGestor
@@ -50,10 +51,21 @@ namespace Interfaz.Contrasenias
             this.btnAgregarContrasenia.UseVisualStyleBackColor = true;
             this.btnAgregarContrasenia.Click += new System.EventHandler(this.btnAgregarTarjeta_Click);
             // 
+            // btnModificarContrasenias
+            // 
+            this.btnModificarContrasenias.Location = new System.Drawing.Point(0, 96);
+            this.btnModificarContrasenias.Name = "btnModificarContrasenias";
+            this.btnModificarContrasenias.Size = new System.Drawing.Size(185, 23);
+            this.btnModificarContrasenias.TabIndex = 4;
+            this.btnModificarContrasenias.Text = "Modificar Contraseña";
+            this.btnModificarContrasenias.UseVisualStyleBackColor = true;
+            this.btnModificarContrasenias.Click += new System.EventHandler(this.btnModificarContrasenias_Click);
+            // 
             // GestionContrasenias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnModificarContrasenias);
             this.Controls.Add(this.btnAgregarContrasenia);
             this.Controls.Add(this.pnlGestor);
             this.Name = "GestionContrasenias";
@@ -66,5 +78,6 @@ namespace Interfaz.Contrasenias
 
         private System.Windows.Forms.Panel pnlGestor;
         private System.Windows.Forms.Button btnAgregarContrasenia;
+        private System.Windows.Forms.Button btnModificarContrasenias;
     }
 }

@@ -23,5 +23,12 @@ namespace Interfaz.Contrasenias
             UserControl agregarContrasenia = new AgregarContrasenias();
             pnlGestor.Controls.Add(agregarContrasenia);
         }
+
+        private void btnModificarContrasenias_Click(object sender, EventArgs e)
+        {
+            pnlGestor.Controls.Clear();
+            UserControl modificarContrasenia = new ModificarContrasenias();
+            pnlGestor.Controls.Add(modificarContrasenia);
+        }
     }
 }
