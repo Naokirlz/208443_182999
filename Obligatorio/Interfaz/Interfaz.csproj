@@ -114,6 +114,12 @@
     <Compile Include="TarjetasCredito\ModificarTarjetas.Designer.cs">
       <DependentUpon>ModificarTarjetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="TarjetasCredito\ResumenTarjetas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TarjetasCredito\ResumenTarjetas.Designer.cs">
+      <DependentUpon>ResumenTarjetas.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CategoriasForm\AgregarCategoria.resx">
       <DependentUpon>AgregarCategoria.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TarjetasCredito\ModificarTarjetas.resx">
       <DependentUpon>ModificarTarjetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TarjetasCredito\ResumenTarjetas.resx">
+      <DependentUpon>ResumenTarjetas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

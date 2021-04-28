@@ -33,6 +33,7 @@ namespace Interfaz.TarjetasCredito
             this.btnAgregarTarjeta = new System.Windows.Forms.Button();
             this.btnModificarTarjeta = new System.Windows.Forms.Button();
             this.btnEliminarTarjetas = new System.Windows.Forms.Button();
+            this.btnResumenTarjeta = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlGestor
@@ -44,7 +45,7 @@ namespace Interfaz.TarjetasCredito
             // 
             // btnAgregarTarjeta
             // 
-            this.btnAgregarTarjeta.Location = new System.Drawing.Point(3, 61);
+            this.btnAgregarTarjeta.Location = new System.Drawing.Point(3, 86);
             this.btnAgregarTarjeta.Name = "btnAgregarTarjeta";
             this.btnAgregarTarjeta.Size = new System.Drawing.Size(185, 23);
             this.btnAgregarTarjeta.TabIndex = 2;
@@ -54,7 +55,7 @@ namespace Interfaz.TarjetasCredito
             // 
             // btnModificarTarjeta
             // 
-            this.btnModificarTarjeta.Location = new System.Drawing.Point(3, 90);
+            this.btnModificarTarjeta.Location = new System.Drawing.Point(3, 115);
             this.btnModificarTarjeta.Name = "btnModificarTarjeta";
             this.btnModificarTarjeta.Size = new System.Drawing.Size(185, 23);
             this.btnModificarTarjeta.TabIndex = 3;
@@ -64,7 +65,7 @@ namespace Interfaz.TarjetasCredito
             // 
             // btnEliminarTarjetas
             // 
-            this.btnEliminarTarjetas.Location = new System.Drawing.Point(3, 119);
+            this.btnEliminarTarjetas.Location = new System.Drawing.Point(3, 144);
             this.btnEliminarTarjetas.Name = "btnEliminarTarjetas";
             this.btnEliminarTarjetas.Size = new System.Drawing.Size(185, 23);
             this.btnEliminarTarjetas.TabIndex = 4;
@@ -72,10 +73,21 @@ namespace Interfaz.TarjetasCredito
             this.btnEliminarTarjetas.UseVisualStyleBackColor = true;
             this.btnEliminarTarjetas.Click += new System.EventHandler(this.btnEliminarTarjetas_Click);
             // 
+            // btnResumenTarjeta
+            // 
+            this.btnResumenTarjeta.Location = new System.Drawing.Point(3, 57);
+            this.btnResumenTarjeta.Name = "btnResumenTarjeta";
+            this.btnResumenTarjeta.Size = new System.Drawing.Size(185, 23);
+            this.btnResumenTarjeta.TabIndex = 5;
+            this.btnResumenTarjeta.Text = "Resumen";
+            this.btnResumenTarjeta.UseVisualStyleBackColor = true;
+            this.btnResumenTarjeta.Click += new System.EventHandler(this.btnResumenTarjeta_Click);
+            // 
             // GestionTarjetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnResumenTarjeta);
             this.Controls.Add(this.btnEliminarTarjetas);
             this.Controls.Add(this.btnModificarTarjeta);
             this.Controls.Add(this.btnAgregarTarjeta);
@@ -92,5 +104,6 @@ namespace Interfaz.TarjetasCredito
         private System.Windows.Forms.Button btnAgregarTarjeta;
         private System.Windows.Forms.Button btnModificarTarjeta;
         private System.Windows.Forms.Button btnEliminarTarjetas;
+        private System.Windows.Forms.Button btnResumenTarjeta;
     }
 }

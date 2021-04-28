@@ -37,5 +37,12 @@ namespace Interfaz.TarjetasCredito
             UserControl eliminarTarjeta = new EliminarTarjetas();
             pnlGestor.Controls.Add(eliminarTarjeta);
         }
+
+        private void btnResumenTarjeta_Click(object sender, EventArgs e)
+        {
+            pnlGestor.Controls.Clear();
+            UserControl resumenTarjeta = new ResumenTarjetas();
+            pnlGestor.Controls.Add(resumenTarjeta);
+        }
     }
 }
