@@ -16,5 +16,12 @@ namespace Interfaz.Contrasenias
         {
             InitializeComponent();
         }
+
+        private void btnAgregarTarjeta_Click(object sender, EventArgs e)
+        {
+            pnlGestor.Controls.Clear();
+            UserControl agregarContrasenia = new AgregarContrasenias();
+            pnlGestor.Controls.Add(agregarContrasenia);
+        }
     }
 }

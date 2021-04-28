@@ -1,4 +1,5 @@
-﻿using Interfaz.TarjetasCredito;
+﻿using Interfaz.Contrasenias;
+using Interfaz.TarjetasCredito;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -34,9 +35,9 @@ namespace Interfaz
 
         private void btnGestionContrasenia_Click(object sender, EventArgs e)
         {
-            //pnlPanelPrincipal.Controls.Clear();
-            //UserControl gestorCategorias = new GestorContrasenias(GestorCategorias);
-            //pnlPanelPrincipal.Controls.Add(gestorCategorias);
+            pnlPanelPrincipal.Controls.Clear();
+            UserControl gestorContrasenias = new GestionContrasenias();
+            pnlPanelPrincipal.Controls.Add(gestorContrasenias);
         }
 
         private void btnGestionTarjetaCredito_Click(object sender, EventArgs e)

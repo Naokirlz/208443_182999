@@ -29,21 +29,33 @@ namespace Interfaz.Contrasenias
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlPrincipal = new System.Windows.Forms.Panel();
+            this.pnlGestor = new System.Windows.Forms.Panel();
+            this.btnAgregarContrasenia = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // pnlPrincipal
+            // pnlGestor
             // 
-            this.pnlPrincipal.Location = new System.Drawing.Point(186, 10);
-            this.pnlPrincipal.Name = "pnlPrincipal";
-            this.pnlPrincipal.Size = new System.Drawing.Size(471, 322);
-            this.pnlPrincipal.TabIndex = 0;
+            this.pnlGestor.Location = new System.Drawing.Point(186, 10);
+            this.pnlGestor.Name = "pnlGestor";
+            this.pnlGestor.Size = new System.Drawing.Size(471, 322);
+            this.pnlGestor.TabIndex = 0;
+            // 
+            // btnAgregarContrasenia
+            // 
+            this.btnAgregarContrasenia.Location = new System.Drawing.Point(0, 67);
+            this.btnAgregarContrasenia.Name = "btnAgregarContrasenia";
+            this.btnAgregarContrasenia.Size = new System.Drawing.Size(185, 23);
+            this.btnAgregarContrasenia.TabIndex = 3;
+            this.btnAgregarContrasenia.Text = "Agregar Contraseña";
+            this.btnAgregarContrasenia.UseVisualStyleBackColor = true;
+            this.btnAgregarContrasenia.Click += new System.EventHandler(this.btnAgregarTarjeta_Click);
             // 
             // GestionContrasenias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pnlPrincipal);
+            this.Controls.Add(this.btnAgregarContrasenia);
+            this.Controls.Add(this.pnlGestor);
             this.Name = "GestionContrasenias";
             this.Size = new System.Drawing.Size(668, 346);
             this.ResumeLayout(false);
@@ -52,6 +64,7 @@ namespace Interfaz.Contrasenias
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlPrincipal;
+        private System.Windows.Forms.Panel pnlGestor;
+        private System.Windows.Forms.Button btnAgregarContrasenia;
     }
 }
