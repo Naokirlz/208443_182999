@@ -35,7 +35,7 @@ namespace Negocio.TarjetaCreditos
 
         public void Baja(TarjetaCredito bajaTarjeta)
         {
-            Buscar(bajaTarjeta);
+            bajaTarjeta = Buscar(bajaTarjeta);
             Repositorio.Baja(bajaTarjeta);
 
         }
