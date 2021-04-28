@@ -268,17 +268,15 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ExcepcionElementoNoExiste))]
+        
         public void EliminarTarjetaCredito()
         {
 
-            Gestor.Alta(nuevoTarjeta);
-            Gestor.Alta(otraTarjeta);
-            List<TarjetaCredito> tarjetas = Gestor.ObtenerTodas();
-            Assert.AreEqual(2, tarjetas.Count);
-
-            Gestor.Baja(otraTarjeta);
-            Gestor.Buscar(otraTarjeta);
+            TarjetaCredito prueba = Gestor.Alta(otraTarjeta);
+            Assert.AreEqual(1, Gestor.ObtenerTodas().Count());
+            Gestor.Baja(prueba);
+            Assert.AreEqual(0, Gestor.ObtenerTodas().Count());
+            
 
 
         }
