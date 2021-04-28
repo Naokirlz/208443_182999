@@ -46,7 +46,7 @@ namespace Interfaz.TarjetasCredito
                 string numero = this.txtNumero.Text;
                 string codigo = this.txtCodigo.Text;
                 string notas = this.txtNotas.Text;
-                DateTime vencimiento = this.monthCalendar1.SelectionStart;
+                DateTime vencimiento = this.dtpVencimiento.Value;
                 TarjetaCredito nuevaTarjeta = new TarjetaCredito() { 
                     Nombre = nombre,
                     Categoria = categoria,
@@ -58,9 +58,10 @@ namespace Interfaz.TarjetasCredito
                 };
                 this.sis.GestorTarjetaCredito.Alta(nuevaTarjeta);
                 //clear todo
-                Refrescar();
+                //Refrescar();
                 //mensaje de exito
-                //MessageBox.Show("Categoría " + nuevoNombre + " fue modificada con éxito!!");
+                MessageBox.Show("Tarjeta " + nuevaTarjeta + " fue guardada con éxito!!");
+                LimpiarCampos();
             }
             catch (ExcepcionElementoYaExiste unaExcepcion)
             {
@@ -72,6 +73,15 @@ namespace Interfaz.TarjetasCredito
                 MessageBox.Show(unaExcepcion.Message);
                 //this.txtNuevoNombre.Focus();
             }
+        }
+        private void LimpiarCampos()
+        {
+            this.txtCodigo.Text = "";
+            this.txtTipo.Text = "";
+            this.txtNombre.Text = "";
+            this.txtNumero.Text = "";
+            this.txtNotas.Text = "";
+            this.dtpVencimiento.Value = DateTime.Now;
         }
     }
 }

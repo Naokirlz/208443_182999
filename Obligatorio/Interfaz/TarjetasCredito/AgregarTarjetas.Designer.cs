@@ -44,6 +44,7 @@ namespace Interfaz.TarjetasCredito
             this.lblVencimiento = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.dtpVencimiento = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // lblCategoria
@@ -155,7 +156,7 @@ namespace Interfaz.TarjetasCredito
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(265, 40);
+            this.monthCalendar1.Location = new System.Drawing.Point(259, 40);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 17;
             // 
@@ -169,10 +170,19 @@ namespace Interfaz.TarjetasCredito
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // dtpVencimiento
+            // 
+            this.dtpVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpVencimiento.Location = new System.Drawing.Point(259, 214);
+            this.dtpVencimiento.Name = "dtpVencimiento";
+            this.dtpVencimiento.Size = new System.Drawing.Size(248, 20);
+            this.dtpVencimiento.TabIndex = 19;
+            // 
             // AgregarTarjetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dtpVencimiento);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.lblVencimiento);
@@ -212,5 +222,6 @@ namespace Interfaz.TarjetasCredito
         private System.Windows.Forms.Label lblVencimiento;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.DateTimePicker dtpVencimiento;
     }
 }
