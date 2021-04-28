@@ -96,6 +96,12 @@
     <Compile Include="TarjetasCredito\AgregarTarjetas.Designer.cs">
       <DependentUpon>AgregarTarjetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="TarjetasCredito\EliminarTarjetas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TarjetasCredito\EliminarTarjetas.Designer.cs">
+      <DependentUpon>EliminarTarjetas.cs</DependentUpon>
+    </Compile>
     <Compile Include="TarjetasCredito\GestionTarjetas.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </Compile>
     <EmbeddedResource Include="TarjetasCredito\AgregarTarjetas.resx">
       <DependentUpon>AgregarTarjetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TarjetasCredito\EliminarTarjetas.resx">
+      <DependentUpon>EliminarTarjetas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TarjetasCredito\GestionTarjetas.resx">
       <DependentUpon>GestionTarjetas.cs</DependentUpon>

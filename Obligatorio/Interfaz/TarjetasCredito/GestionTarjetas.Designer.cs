@@ -32,6 +32,7 @@ namespace Interfaz.TarjetasCredito
             this.pnlGestor = new System.Windows.Forms.Panel();
             this.btnAgregarTarjeta = new System.Windows.Forms.Button();
             this.btnModificarTarjeta = new System.Windows.Forms.Button();
+            this.btnEliminarTarjetas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlGestor
@@ -61,10 +62,21 @@ namespace Interfaz.TarjetasCredito
             this.btnModificarTarjeta.UseVisualStyleBackColor = true;
             this.btnModificarTarjeta.Click += new System.EventHandler(this.btnModificarTarjeta_Click);
             // 
+            // btnEliminarTarjetas
+            // 
+            this.btnEliminarTarjetas.Location = new System.Drawing.Point(3, 119);
+            this.btnEliminarTarjetas.Name = "btnEliminarTarjetas";
+            this.btnEliminarTarjetas.Size = new System.Drawing.Size(185, 23);
+            this.btnEliminarTarjetas.TabIndex = 4;
+            this.btnEliminarTarjetas.Text = "Eliminar Tarjeta";
+            this.btnEliminarTarjetas.UseVisualStyleBackColor = true;
+            this.btnEliminarTarjetas.Click += new System.EventHandler(this.btnEliminarTarjetas_Click);
+            // 
             // GestionTarjetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnEliminarTarjetas);
             this.Controls.Add(this.btnModificarTarjeta);
             this.Controls.Add(this.btnAgregarTarjeta);
             this.Controls.Add(this.pnlGestor);
@@ -79,5 +91,6 @@ namespace Interfaz.TarjetasCredito
         private System.Windows.Forms.Panel pnlGestor;
         private System.Windows.Forms.Button btnAgregarTarjeta;
         private System.Windows.Forms.Button btnModificarTarjeta;
+        private System.Windows.Forms.Button btnEliminarTarjetas;
     }
 }
