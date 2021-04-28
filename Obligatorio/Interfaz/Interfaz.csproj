@@ -70,6 +70,12 @@
     <Compile Include="Contrasenias\AgregarContrasenias.Designer.cs">
       <DependentUpon>AgregarContrasenias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Contrasenias\EliminarContrasenias.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Contrasenias\EliminarContrasenias.Designer.cs">
+      <DependentUpon>EliminarContrasenias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Contrasenias\GestionContrasenias.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Contrasenias\AgregarContrasenias.resx">
       <DependentUpon>AgregarContrasenias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contrasenias\EliminarContrasenias.resx">
+      <DependentUpon>EliminarContrasenias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contrasenias\GestionContrasenias.resx">
       <DependentUpon>GestionContrasenias.cs</DependentUpon>

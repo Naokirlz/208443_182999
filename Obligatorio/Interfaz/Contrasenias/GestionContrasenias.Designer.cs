@@ -32,6 +32,7 @@ namespace Interfaz.Contrasenias
             this.pnlGestor = new System.Windows.Forms.Panel();
             this.btnAgregarContrasenia = new System.Windows.Forms.Button();
             this.btnModificarContrasenias = new System.Windows.Forms.Button();
+            this.btnEliminarContrasenias = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlGestor
@@ -61,10 +62,21 @@ namespace Interfaz.Contrasenias
             this.btnModificarContrasenias.UseVisualStyleBackColor = true;
             this.btnModificarContrasenias.Click += new System.EventHandler(this.btnModificarContrasenias_Click);
             // 
+            // btnEliminarContrasenias
+            // 
+            this.btnEliminarContrasenias.Location = new System.Drawing.Point(0, 125);
+            this.btnEliminarContrasenias.Name = "btnEliminarContrasenias";
+            this.btnEliminarContrasenias.Size = new System.Drawing.Size(185, 23);
+            this.btnEliminarContrasenias.TabIndex = 5;
+            this.btnEliminarContrasenias.Text = "Eliminar Contraseña";
+            this.btnEliminarContrasenias.UseVisualStyleBackColor = true;
+            this.btnEliminarContrasenias.Click += new System.EventHandler(this.button1_Click);
+            // 
             // GestionContrasenias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnEliminarContrasenias);
             this.Controls.Add(this.btnModificarContrasenias);
             this.Controls.Add(this.btnAgregarContrasenia);
             this.Controls.Add(this.pnlGestor);
@@ -79,5 +91,6 @@ namespace Interfaz.Contrasenias
         private System.Windows.Forms.Panel pnlGestor;
         private System.Windows.Forms.Button btnAgregarContrasenia;
         private System.Windows.Forms.Button btnModificarContrasenias;
+        private System.Windows.Forms.Button btnEliminarContrasenias;
     }
 }
