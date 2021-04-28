@@ -57,21 +57,16 @@ namespace Interfaz.TarjetasCredito
                     Vencimiento = vencimiento
                 };
                 this.sis.GestorTarjetaCredito.Alta(nuevaTarjeta);
-                //clear todo
-                //Refrescar();
-                //mensaje de exito
                 MessageBox.Show("Tarjeta " + nuevaTarjeta + " fue guardada con éxito!!");
                 LimpiarCampos();
             }
             catch (ExcepcionElementoYaExiste unaExcepcion)
             {
                 MessageBox.Show(unaExcepcion.Message);
-                //this.txtNuevoNombre.Focus();
             }
             catch (ExcepcionLargoTexto unaExcepcion)
             {
                 MessageBox.Show(unaExcepcion.Message);
-                //this.txtNuevoNombre.Focus();
             }
         }
         private void LimpiarCampos()
