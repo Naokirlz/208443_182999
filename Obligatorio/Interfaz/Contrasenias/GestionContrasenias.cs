@@ -37,5 +37,12 @@ namespace Interfaz.Contrasenias
             UserControl eliminarContrasenia = new EliminarContrasenias();
             pnlGestor.Controls.Add(eliminarContrasenia);
         }
+
+        private void btnResumenContrasenias_Click(object sender, EventArgs e)
+        {
+            pnlGestor.Controls.Clear();
+            UserControl resumenContrasenia = new ResumenContrasenias();
+            pnlGestor.Controls.Add(resumenContrasenia);
+        }
     }
 }

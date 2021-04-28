@@ -88,6 +88,12 @@
     <Compile Include="Contrasenias\ModificarContrasenias.Designer.cs">
       <DependentUpon>ModificarContrasenias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Contrasenias\ResumenContrasenias.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Contrasenias\ResumenContrasenias.Designer.cs">
+      <DependentUpon>ResumenContrasenias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Contrasenias\ModificarContrasenias.resx">
       <DependentUpon>ModificarContrasenias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contrasenias\ResumenContrasenias.resx">
+      <DependentUpon>ResumenContrasenias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

@@ -33,6 +33,7 @@ namespace Interfaz.Contrasenias
             this.btnAgregarContrasenia = new System.Windows.Forms.Button();
             this.btnModificarContrasenias = new System.Windows.Forms.Button();
             this.btnEliminarContrasenias = new System.Windows.Forms.Button();
+            this.btnResumenContrasenias = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlGestor
@@ -72,10 +73,21 @@ namespace Interfaz.Contrasenias
             this.btnEliminarContrasenias.UseVisualStyleBackColor = true;
             this.btnEliminarContrasenias.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnResumenContrasenias
+            // 
+            this.btnResumenContrasenias.Location = new System.Drawing.Point(0, 38);
+            this.btnResumenContrasenias.Name = "btnResumenContrasenias";
+            this.btnResumenContrasenias.Size = new System.Drawing.Size(185, 23);
+            this.btnResumenContrasenias.TabIndex = 6;
+            this.btnResumenContrasenias.Text = "Resumen";
+            this.btnResumenContrasenias.UseVisualStyleBackColor = true;
+            this.btnResumenContrasenias.Click += new System.EventHandler(this.btnResumenContrasenias_Click);
+            // 
             // GestionContrasenias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnResumenContrasenias);
             this.Controls.Add(this.btnEliminarContrasenias);
             this.Controls.Add(this.btnModificarContrasenias);
             this.Controls.Add(this.btnAgregarContrasenia);
@@ -92,5 +104,6 @@ namespace Interfaz.Contrasenias
         private System.Windows.Forms.Button btnAgregarContrasenia;
         private System.Windows.Forms.Button btnModificarContrasenias;
         private System.Windows.Forms.Button btnEliminarContrasenias;
+        private System.Windows.Forms.Button btnResumenContrasenias;
     }
 }
