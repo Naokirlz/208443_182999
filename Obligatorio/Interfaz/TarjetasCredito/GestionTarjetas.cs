@@ -15,6 +15,8 @@ namespace Interfaz.TarjetasCredito
         public GestionTarjetas()
         {
             InitializeComponent();
+            UserControl resumenTarjeta = new ResumenTarjetas();
+            pnlGestor.Controls.Add(resumenTarjeta);
         }
 
         private void btnAgregarTarjeta_Click(object sender, EventArgs e)
