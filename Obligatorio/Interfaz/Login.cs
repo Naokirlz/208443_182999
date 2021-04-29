@@ -17,20 +17,33 @@ namespace Interfaz
         public Login()
         {
             InitializeComponent();
+            this.txtIngresar.Focus();
         }
 
         private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            RealizarLogin();
+        }
+
+        private void RealizarLogin()
         {
             if (this.sis.Login(this.txtIngresar.Text))
             {
                 PantallaPrincipal nuevaPantalla = new PantallaPrincipal();
                 this.Hide();
                 nuevaPantalla.Show();
-                
             }
             else
             {
                 MessageBox.Show("Contraseña Incorrecta");
+            }
+        }
+
+        private void txtIngresar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                RealizarLogin();
             }
         }
     }
