@@ -304,6 +304,17 @@ namespace PruebasUnitarias
 
         }
 
+        [TestMethod]
+        public void ElMetodoToStringDevuelveElNombre()
+        {
+            TarjetaCredito tarjeta = new TarjetaCredito()
+            {
+                Nombre = "Nombre",
+            };
+            string nombre = tarjeta.ToString();
+            Assert.AreEqual("Nombre", nombre);
+        }
+
 
 
 

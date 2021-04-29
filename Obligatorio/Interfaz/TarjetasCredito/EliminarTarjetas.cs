@@ -43,6 +43,7 @@ namespace Interfaz.TarjetasCredito
 
                 this.Sesion.GestorTarjetaCredito.Baja(tarjetaSeleccionada);
                 MessageBox.Show("Tarjeta Eliminada con éxito!!");
+                this.cmbTarjeta.Text = "";
                 Refrescar();
             }
             catch (ExcepcionElementoNoExiste unaExcepcion)

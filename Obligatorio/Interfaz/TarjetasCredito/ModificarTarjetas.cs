@@ -79,6 +79,7 @@ namespace Interfaz.TarjetasCredito
                 this.Sesion.GestorTarjetaCredito.ModificarTarjeta(tarjetaAModificar);
                 MessageBox.Show("Tarjeta " + tarjetaAModificar + " fue modificada con éxito!!");
                 LimpiarCampos();
+                Refrescar();
             }
             catch (ExcepcionElementoYaExiste unaExcepcion)
             {

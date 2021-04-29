@@ -28,6 +28,9 @@ namespace Negocio.TarjetaCreditos
 
         }
 
-
+        public override string ToString()
+        {
+            return this.Nombre;
+        }
     }
 }
