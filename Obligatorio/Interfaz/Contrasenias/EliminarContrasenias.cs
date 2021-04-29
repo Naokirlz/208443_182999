@@ -43,6 +43,7 @@ namespace Interfaz.Contrasenias
 
                 this.Sesion.GestorContrasenia.Baja(contraseniaSeleccionada.Id);
                 MessageBox.Show("Contraseña Eliminada con éxito!!");
+                this.cmbContrasenia.Text = "";
                 Refrescar();
             }
             catch (ExcepcionElementoNoExiste unaExcepcion)

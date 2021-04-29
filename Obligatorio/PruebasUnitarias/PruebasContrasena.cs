@@ -88,5 +88,16 @@ namespace PruebasUnitarias
             };
             Assert.AreEqual("una categoría", nuevaContrasenia.Categoria.Nombre);
         }
+
+        [TestMethod]
+        public void ElMetodoToStringDevuelveElUsuarioYSitio()
+        {
+            Contrasenia nuevaContrasenia = new Contrasenia() { 
+                Sitio = "deremate.com",
+                Usuario = "fede"
+            };
+            string texto = nuevaContrasenia.ToString();
+            Assert.AreEqual("deremate.com | fede", texto);
+        }
     }
 }

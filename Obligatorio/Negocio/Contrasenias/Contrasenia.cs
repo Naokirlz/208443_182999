@@ -117,5 +117,10 @@ namespace Negocio.Contrasenias
             //this.Id = Cantidad;
             //Cantidad++;
         }
+
+        public override string ToString()
+        {
+            return this.Sitio + " | " + this.Usuario;
+        }
     }
 }
