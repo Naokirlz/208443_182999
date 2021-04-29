@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Interfaz.CategoriasForm;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,6 +41,13 @@ namespace Interfaz
             pnlGestor.Controls.Clear();
             UserControl eliminarCategoria = new EliminarCategorias();
             pnlGestor.Controls.Add(eliminarCategoria);
+        }
+
+        private void btnResumenCategorias_Click(object sender, EventArgs e)
+        {
+            pnlGestor.Controls.Clear();
+            UserControl resumenCategoria = new ResumenCategorias();
+            pnlGestor.Controls.Add(resumenCategoria);
         }
     }
 }

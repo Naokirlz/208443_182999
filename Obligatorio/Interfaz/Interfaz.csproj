@@ -64,6 +64,12 @@
     <Compile Include="CategoriasForm\GestionCategorias.Designer.cs">
       <DependentUpon>GestionCategorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="CategoriasForm\ResumenCategorias.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CategoriasForm\ResumenCategorias.Designer.cs">
+      <DependentUpon>ResumenCategorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Contrasenias\AgregarContrasenias.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CategoriasForm\GestionCategorias.resx">
       <DependentUpon>GestionCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoriasForm\ResumenCategorias.resx">
+      <DependentUpon>ResumenCategorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contrasenias\AgregarContrasenias.resx">
       <DependentUpon>AgregarContrasenias.cs</DependentUpon>

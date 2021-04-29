@@ -33,6 +33,7 @@ namespace Interfaz
             this.btnAgregarCategoria = new System.Windows.Forms.Button();
             this.btnEliminarCategorias = new System.Windows.Forms.Button();
             this.btnModificarCategoria = new System.Windows.Forms.Button();
+            this.btnResumenCategorias = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlGestor
@@ -44,7 +45,7 @@ namespace Interfaz
             // 
             // btnAgregarCategoria
             // 
-            this.btnAgregarCategoria.Location = new System.Drawing.Point(9, 44);
+            this.btnAgregarCategoria.Location = new System.Drawing.Point(9, 72);
             this.btnAgregarCategoria.Name = "btnAgregarCategoria";
             this.btnAgregarCategoria.Size = new System.Drawing.Size(185, 23);
             this.btnAgregarCategoria.TabIndex = 1;
@@ -54,7 +55,7 @@ namespace Interfaz
             // 
             // btnEliminarCategorias
             // 
-            this.btnEliminarCategorias.Location = new System.Drawing.Point(9, 102);
+            this.btnEliminarCategorias.Location = new System.Drawing.Point(9, 130);
             this.btnEliminarCategorias.Name = "btnEliminarCategorias";
             this.btnEliminarCategorias.Size = new System.Drawing.Size(185, 23);
             this.btnEliminarCategorias.TabIndex = 5;
@@ -64,7 +65,7 @@ namespace Interfaz
             // 
             // btnModificarCategoria
             // 
-            this.btnModificarCategoria.Location = new System.Drawing.Point(9, 73);
+            this.btnModificarCategoria.Location = new System.Drawing.Point(9, 101);
             this.btnModificarCategoria.Name = "btnModificarCategoria";
             this.btnModificarCategoria.Size = new System.Drawing.Size(185, 23);
             this.btnModificarCategoria.TabIndex = 4;
@@ -72,10 +73,21 @@ namespace Interfaz
             this.btnModificarCategoria.UseVisualStyleBackColor = true;
             this.btnModificarCategoria.Click += new System.EventHandler(this.btnModificarCategoria_Click);
             // 
+            // btnResumenCategorias
+            // 
+            this.btnResumenCategorias.Location = new System.Drawing.Point(9, 43);
+            this.btnResumenCategorias.Name = "btnResumenCategorias";
+            this.btnResumenCategorias.Size = new System.Drawing.Size(185, 23);
+            this.btnResumenCategorias.TabIndex = 6;
+            this.btnResumenCategorias.Text = "Resumen";
+            this.btnResumenCategorias.UseVisualStyleBackColor = true;
+            this.btnResumenCategorias.Click += new System.EventHandler(this.btnResumenCategorias_Click);
+            // 
             // GestionCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnResumenCategorias);
             this.Controls.Add(this.btnEliminarCategorias);
             this.Controls.Add(this.btnModificarCategoria);
             this.Controls.Add(this.btnAgregarCategoria);
@@ -92,5 +104,6 @@ namespace Interfaz
         private System.Windows.Forms.Button btnAgregarCategoria;
         private System.Windows.Forms.Button btnEliminarCategorias;
         private System.Windows.Forms.Button btnModificarCategoria;
+        private System.Windows.Forms.Button btnResumenCategorias;
     }
 }
