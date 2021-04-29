@@ -44,6 +44,8 @@
     <Compile Include="Categorias\Categoria.cs" />
     <Compile Include="Contrasenias\Contrasenia.cs" />
     <Compile Include="Categorias\GestorCategorias.cs" />
+    <Compile Include="FuenteSimulada.cs" />
+    <Compile Include="IFuente.cs" />
     <Compile Include="TarjetaCreditos\GestorTarjetaCredito.cs" />
     <Compile Include="Categorias\RepositorioCategorias.cs" />
     <Compile Include="TarjetaCreditos\RepositorioTarjetaCredito.cs" />

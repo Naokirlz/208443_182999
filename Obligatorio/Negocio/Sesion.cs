@@ -17,7 +17,8 @@ namespace Negocio
         public GestorContrasenias GestorContrasenia { get; set; }
         public GestorTarjetaCredito GestorTarjetaCredito { get; set; }
 
-       
+        public List<IFuente> MisFuentes { get; set; }
+
 
         private Sesion()
         {
@@ -25,7 +26,7 @@ namespace Negocio
             GestorCategoria = new GestorCategorias();
             GestorContrasenia = new GestorContrasenias();
             GestorTarjetaCredito = new GestorTarjetaCredito();
-
+            MisFuentes = new List<IFuente>();
         }
 
 
@@ -44,6 +45,34 @@ namespace Negocio
             return password == "secreto";
         }
 
-        
+
+
+
+        public List<string> ContraseniasVulnerables(IFuente fuente)
+        {
+            List<string> retorno = new List<string>();
+            foreach (Contrasenia item in this.GestorContrasenia.ListarContrasenias())
+            {
+                if (fuente.Buscar(item.Password))
+                {
+                    retorno.Add(item.Password);
+                }
+            }
+            return retorno;
+        }
+
+        public List<string> TarjetasCreditoVulnerables(IFuente fuente)
+        {
+            List<string> retorno = new List<string>();
+            foreach (TarjetaCredito item in this.GestorTarjetaCredito.ObtenerTodas())
+            {
+                if (fuente.Buscar(item.Numero))
+                {
+                    retorno.Add(item.Numero);
+                }
+            }
+            return retorno;
+        }
+
     }
 }
