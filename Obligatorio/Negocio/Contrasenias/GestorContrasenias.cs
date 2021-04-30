@@ -108,50 +108,83 @@ namespace Negocio.Contrasenias
         {
             string password = "";
             int largoOriginal = largo;
+            //documentacion de Random
+            //El valor de inicialización predeterminado se deriva del reloj del sistema y tiene una resolución finita. Como resultado, diferentes Random objetos que se crean en estrecha sucesión mediante una llamada al constructor predeterminado tendrán valores de inicialización predeterminados idénticos y, por consiguiente, generarán conjuntos idénticos de números aleatorios.
+            var random = new Random();
+            
 
             if (mayuscula)
             {
-                password += GenerarCaracter(true, false, false, false);
+                password += GenerarCaracter(true, false, false, false, random);
                 largo--;
             }
             if (minuscula)
             {
-                password += GenerarCaracter(false, true, false, false);
+                password += GenerarCaracter(false, true, false, false, random);
                 largo--;
             }
             if (numero)
             {
-                password += GenerarCaracter(false, false, true, false);
+                password += GenerarCaracter(false, false, true, false, random);
                 largo--;
             }
             if (especial)
             {
-                password += GenerarCaracter(false, false, false, true);
+                password += GenerarCaracter(false, false, false, true, random);
                 largo--;
             }
 
-            for (int caracter = 0; caracter < largo; caracter++) password += GenerarCaracter(mayuscula, minuscula, numero, especial);
-            char[] passwordArreglo = password.ToCharArray();
-            Random random = new Random();
+            string caracterUltimo = "";
 
-            while (largoOriginal > 1)
+            for (int caracter = 0; caracter < largo; caracter++)
             {
-                int caracterRandom = random.Next(largoOriginal--);
-                char temp = passwordArreglo[largoOriginal];
-                passwordArreglo[largoOriginal] = passwordArreglo[caracterRandom];
-                passwordArreglo[caracterRandom] = temp;
+                string nuevoCaracter = GenerarCaracter(mayuscula, minuscula, numero, especial, random);
+                if (nuevoCaracter != caracterUltimo)
+                {
+                    password += GenerarCaracter(mayuscula, minuscula, numero, especial, random);
+                    caracterUltimo = nuevoCaracter;
+                }
+                else
+                {
+                    caracter--;
+                }
+
             }
+            char[] passwordArreglo = password.ToCharArray();
+            //Random random = new Random();
+
+            bool dosIguales = false;
             password = "";
-            foreach (char c in passwordArreglo) password += c;
+
+            do
+            {
+                while (largoOriginal > 1)
+                {
+                    int caracterRandom = random.Next(largoOriginal--);
+                    char temp = passwordArreglo[largoOriginal];
+                    passwordArreglo[largoOriginal] = passwordArreglo[caracterRandom];
+                    passwordArreglo[caracterRandom] = temp;
+                }
+                foreach (char c in passwordArreglo) password += c;
+                char caracterAnterior = new char();
+
+                foreach (char c in password)
+                {
+                    if (c == caracterAnterior) dosIguales = true;
+                    caracterAnterior = c;
+                }
+            }
+            while (dosIguales);
+
             return password;
         }
 
-        private string GenerarCaracter(bool mayuscula, bool minuscula, bool numero, bool especial)
+        private string GenerarCaracter(bool mayuscula, bool minuscula, bool numero, bool especial, Random random)
         {
             string caracter = "";
-            var random = new Random();
+            //var random = new Random();
 
-            int codigo = 0;
+            int codigo = random.Next(126);
 
             while (
                 (codigo < 32 || (codigo < 97 && codigo > 123)) ||
