@@ -583,5 +583,21 @@ namespace PruebasUnitarias
             Gestor.Baja(nuevaConstrasenia.Id);
             Assert.AreEqual(0, Gestor.ListarContrasenias().Count);
         }
+
+        [TestMethod]
+        public void AlAutogenerarUnPasswordNoMeDevuelveMasDeDosCaracteresIguales()
+        {
+            string password = Gestor.GenerarPassword(13, false, true, false, false);
+            bool dosIguales = false;
+            char caracterAnterior = new char();
+
+            foreach (char c in password)
+            {
+                if (c == caracterAnterior) dosIguales = true;
+                caracterAnterior = c;
+            }
+
+            Assert.IsFalse(dosIguales);
+        }
     }
 }
