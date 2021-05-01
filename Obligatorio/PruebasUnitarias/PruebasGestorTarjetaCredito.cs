@@ -14,9 +14,17 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasGestorTarjetaCredito
     {
-        private GestorTarjetaCredito Gestor = new GestorTarjetaCredito();
-        
-            TarjetaCredito nuevoTarjeta = new TarjetaCredito()
+        private GestorTarjetaCredito Gestor;
+        TarjetaCredito TarjetaDePruebaUno;
+        TarjetaCredito TarjetaDePruebaDos;
+
+       [TestInitialize]
+        public void InicializarPruebas()
+        {
+
+            Gestor = new GestorTarjetaCredito();
+
+            TarjetaDePruebaUno = new TarjetaCredito()
             {
                 Categoria = new Categoria("Fake"),
                 Nombre = "PruebaNombre",
@@ -27,33 +35,44 @@ namespace PruebasUnitarias
                 Nota = "Nota Opcional"
             };
 
-        TarjetaCredito otraTarjeta = new TarjetaCredito()
+            TarjetaDePruebaDos = new TarjetaCredito()
+            {
+                Categoria = new Categoria("Fake"),
+                Nombre = "OtraTarjeta",
+                Tipo = "PruebaTipo",
+                Numero = "5234123412341235",
+                Codigo = "123",
+                Vencimiento = DateTime.Now,
+                Nota = "Nota Opcional"
+            };
+
+        }
+
+
+        [TestCleanup]
+        public void LimpiarPruebas()
         {
-            Categoria = new Categoria("Fake"),
-            Nombre = "OtraTarjeta",
-            Tipo = "PruebaTipo",
-            Numero = "5234123412341235",
-            Codigo = "123",
-            Vencimiento = DateTime.Now,
-            Nota = "Nota Opcional"
-        };
+
+            Gestor = null;
+            TarjetaDePruebaUno = null;
+            TarjetaDePruebaDos = null;
+        }
 
 
         [TestMethod]
         public void AltaTarjetaDeCredito()
         {
-        
-            nuevoTarjeta = Gestor.Alta(nuevoTarjeta);
-            Assert.IsNotNull(nuevoTarjeta);
-           }
+            TarjetaDePruebaUno = Gestor.Alta(TarjetaDePruebaUno);
+            Assert.IsNotNull(TarjetaDePruebaUno);
+        }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionElementoYaExiste))]
         public void AltaTarjetaDeCreditoNombreRepetido()
         {
-           Gestor.Alta(nuevoTarjeta);
-           otraTarjeta.Nombre = nuevoTarjeta.Nombre;
-           Gestor.Alta(otraTarjeta);
+            Gestor.Alta(TarjetaDePruebaUno);
+            TarjetaDePruebaDos.Nombre = TarjetaDePruebaUno.Nombre;
+            Gestor.Alta(TarjetaDePruebaDos);
 
         }
 
@@ -61,9 +80,9 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoYaExiste))]
         public void AltaTarjetaDeCreditoNumeroRepetido()
         {
-            Gestor.Alta(nuevoTarjeta);
-            otraTarjeta.Numero = nuevoTarjeta.Numero;
-            Gestor.Alta(otraTarjeta);
+            Gestor.Alta(TarjetaDePruebaUno);
+            TarjetaDePruebaDos.Numero = TarjetaDePruebaUno.Numero;
+            Gestor.Alta(TarjetaDePruebaDos);
 
         }
 
@@ -71,8 +90,8 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void AltaTarjetaDeCreditoLargoNombreMenor3Caracteres()
         {
-            nuevoTarjeta.Nombre = "12";
-            Gestor.Alta(nuevoTarjeta);
+            TarjetaDePruebaUno.Nombre = "12";
+            Gestor.Alta(TarjetaDePruebaUno);
 
         }
 
@@ -80,8 +99,8 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void AltaTarjetaDeCreditoLargoNombreMayor25Caracteres()
         {
-            nuevoTarjeta.Nombre = ArmarTextoDeLargoVariable(26);
-            Gestor.Alta(nuevoTarjeta);
+            TarjetaDePruebaUno.Nombre = ArmarTextoDeLargoVariable(26);
+            Gestor.Alta(TarjetaDePruebaUno);
 
         }
 
@@ -90,8 +109,8 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void AltaTarjetaDeCreditoLargoTipoMenor3Caracteres()
         {
-            nuevoTarjeta.Tipo = "12";
-            Gestor.Alta(nuevoTarjeta);
+            TarjetaDePruebaUno.Tipo = "12";
+            Gestor.Alta(TarjetaDePruebaUno);
 
         }
 
@@ -99,8 +118,8 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void AltaTarjetaDeCreditoLargoNombreTipo25Caracteres()
         {
-            nuevoTarjeta.Tipo = ArmarTextoDeLargoVariable(26);
-            Gestor.Alta(nuevoTarjeta);
+            TarjetaDePruebaUno.Tipo = ArmarTextoDeLargoVariable(26);
+            Gestor.Alta(TarjetaDePruebaUno);
 
         }
 
@@ -109,11 +128,11 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void AltaTarjetaDeCreditoNumeroLargoDiferente16Caracteres()
         {
-            nuevoTarjeta.Numero = ArmarTextoDeLargoVariable(15);
-            Gestor.Alta(nuevoTarjeta);
+            TarjetaDePruebaUno.Numero = ArmarTextoDeLargoVariable(15);
+            Gestor.Alta(TarjetaDePruebaUno);
 
-            nuevoTarjeta.Numero = ArmarTextoDeLargoVariable(17);
-            Gestor.Alta(nuevoTarjeta);
+            TarjetaDePruebaUno.Numero = ArmarTextoDeLargoVariable(17);
+            Gestor.Alta(TarjetaDePruebaUno);
 
         }
 
@@ -122,11 +141,11 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void AltaTarjetaDeCreditoCodigoLargoDiferente3Caracteres()
         {
-            nuevoTarjeta.Codigo = ArmarTextoDeLargoVariable(2);
-            Gestor.Alta(nuevoTarjeta);
+            TarjetaDePruebaUno.Codigo = ArmarTextoDeLargoVariable(2);
+            Gestor.Alta(TarjetaDePruebaUno);
 
-            nuevoTarjeta.Codigo = ArmarTextoDeLargoVariable(4);
-            Gestor.Alta(nuevoTarjeta);
+            TarjetaDePruebaUno.Codigo = ArmarTextoDeLargoVariable(4);
+            Gestor.Alta(TarjetaDePruebaUno);
 
         }
 
@@ -134,8 +153,8 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionNumeroNoValido))]
         public void AltaTarjetaDeCreditoNumeroInvalido()
         {
-            nuevoTarjeta.Numero = "aaaaaaaaaaaaaaaa";
-            Gestor.Alta(nuevoTarjeta);
+            TarjetaDePruebaUno.Numero = "aaaaaaaaaaaaaaaa";
+            Gestor.Alta(TarjetaDePruebaUno);
 
 
         }
@@ -143,8 +162,8 @@ namespace PruebasUnitarias
         [TestMethod]
         public void AltaTarjetaDeCreditoNumerovalido()
         {
-            nuevoTarjeta.Numero = "1234123412341234";
-            TarjetaCredito prueba = Gestor.Alta(nuevoTarjeta);
+            TarjetaDePruebaUno.Numero = "1234123412341234";
+            TarjetaCredito prueba = Gestor.Alta(TarjetaDePruebaUno);
             Assert.IsNotNull(prueba);
 
 
@@ -153,8 +172,8 @@ namespace PruebasUnitarias
         [TestMethod]
         public void AltaTarjetaDeCreditoCodigovalido()
         {
-            nuevoTarjeta.Codigo = "123";
-            TarjetaCredito prueba = Gestor.Alta(nuevoTarjeta);
+            TarjetaDePruebaUno.Codigo = "123";
+            TarjetaCredito prueba = Gestor.Alta(TarjetaDePruebaUno);
             Assert.IsNotNull(prueba);
 
         }
@@ -166,8 +185,8 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionNumeroNoValido))]
         public void AltaTarjetaDeCreditoCodigoInvalido()
         {
-            nuevoTarjeta.Codigo = "aaa";
-            Gestor.Alta(nuevoTarjeta);
+            TarjetaDePruebaUno.Codigo = "aaa";
+            Gestor.Alta(TarjetaDePruebaUno);
 
 
         }
@@ -177,16 +196,16 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void AltaTarjetaDeCreditoNotaMayor250Caracteres()
         {
-            nuevoTarjeta.Nota = ArmarTextoDeLargoVariable(251);
-            Gestor.Alta(nuevoTarjeta);
-                      
+            TarjetaDePruebaUno.Nota = ArmarTextoDeLargoVariable(251);
+            Gestor.Alta(TarjetaDePruebaUno);
+
 
         }
 
         [TestMethod]
         public void ModificarNombreTarjetaCredito()
         {
-            TarjetaCredito modificada = Gestor.Alta(nuevoTarjeta);
+            TarjetaCredito modificada = Gestor.Alta(TarjetaDePruebaUno);
             modificada.Nombre = "Nuevo Nombre";
             Gestor.ModificarTarjeta(modificada);
             Assert.AreEqual("Nuevo Nombre", Gestor.Buscar(modificada).Nombre);
@@ -197,13 +216,13 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoYaExiste))]
         public void ModificarNombreTarjetaCreditoNombreRepetido()
         {
-            Gestor.Alta(nuevoTarjeta);
-            Gestor.Alta(otraTarjeta);
+            Gestor.Alta(TarjetaDePruebaUno);
+            Gestor.Alta(TarjetaDePruebaDos);
 
-            TarjetaCredito modificada = Gestor.Alta(nuevoTarjeta);
-            modificada.Nombre = otraTarjeta.Nombre;
+            TarjetaCredito modificada = Gestor.Alta(TarjetaDePruebaUno);
+            modificada.Nombre = TarjetaDePruebaDos.Nombre;
             Gestor.ModificarTarjeta(modificada);
-         
+
 
         }
 
@@ -211,11 +230,11 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoYaExiste))]
         public void ModificarNumeroTarjetaCreditoNumeroRepetido()
         {
-            Gestor.Alta(nuevoTarjeta);
-            Gestor.Alta(otraTarjeta);
+            Gestor.Alta(TarjetaDePruebaUno);
+            Gestor.Alta(TarjetaDePruebaDos);
 
-            TarjetaCredito modificada = Gestor.Alta(nuevoTarjeta);
-            modificada.Numero = otraTarjeta.Numero;
+            TarjetaCredito modificada = Gestor.Alta(TarjetaDePruebaUno);
+            modificada.Numero = TarjetaDePruebaDos.Numero;
             Gestor.ModificarTarjeta(modificada);
 
 
@@ -225,11 +244,11 @@ namespace PruebasUnitarias
         public void ListarTarjetasCredito()
         {
 
-            Gestor.Alta(nuevoTarjeta);
+            Gestor.Alta(TarjetaDePruebaUno);
             List<TarjetaCredito> tarjetas = Gestor.ObtenerTodas();
             Assert.AreEqual(1, tarjetas.Count);
 
-            Gestor.Alta(otraTarjeta);
+            Gestor.Alta(TarjetaDePruebaDos);
             tarjetas = Gestor.ObtenerTodas();
             Assert.AreEqual(2, tarjetas.Count);
 
@@ -238,11 +257,11 @@ namespace PruebasUnitarias
         [TestMethod]
         public void ListarTarjetasCreditoOrdenadaPorNombreCategoria()
         {
-            nuevoTarjeta.Categoria.Nombre = "ZZZZZZ";
-            Gestor.Alta(nuevoTarjeta);
-            
-            otraTarjeta.Categoria.Nombre = "AAAAAA";
-            Gestor.Alta(otraTarjeta);
+            TarjetaDePruebaUno.Categoria.Nombre = "ZZZZZZ";
+            Gestor.Alta(TarjetaDePruebaUno);
+
+            TarjetaDePruebaDos.Categoria.Nombre = "AAAAAA";
+            Gestor.Alta(TarjetaDePruebaDos);
 
             TarjetaCredito tarjetaPrueba = new TarjetaCredito()
             {
@@ -268,15 +287,15 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        
+
         public void EliminarTarjetaCredito()
         {
 
-            TarjetaCredito prueba = Gestor.Alta(otraTarjeta);
+            TarjetaCredito prueba = Gestor.Alta(TarjetaDePruebaDos);
             Assert.AreEqual(1, Gestor.ObtenerTodas().Count());
             Gestor.Baja(prueba);
             Assert.AreEqual(0, Gestor.ObtenerTodas().Count());
-            
+
 
 
         }
@@ -285,18 +304,18 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void EliminarTarjetaCreditoQuenNoExiste()
         {
-           Gestor.Baja(otraTarjeta);
-       
+            Gestor.Baja(TarjetaDePruebaDos);
+
         }
 
 
         [TestMethod]
-        
+
         public void EliminarClonNoMoficaListaOriginal()
         {
 
-            Gestor.Alta(nuevoTarjeta);
-            Gestor.Alta(otraTarjeta);
+            Gestor.Alta(TarjetaDePruebaUno);
+            Gestor.Alta(TarjetaDePruebaDos);
             List<TarjetaCredito> clon = Gestor.ObtenerTodas();
             clon.Clear();
 

@@ -15,7 +15,6 @@ namespace Negocio
             ContraseniasYTarjetasVulnerables = new List<string>();
         }
 
-
         public int BuscarPasswordOContraseniaEnFuente(string buscado)
         {
             int cantidadAparaceEnFuente = 0;

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.TarjetaCreditos;
@@ -12,14 +9,11 @@ namespace Negocio
     public class Sesion
     {
         private static Sesion Instancia;
-
         public GestorCategorias GestorCategoria { get; set; }
         public GestorContrasenias GestorContrasenia { get; set; }
         public GestorTarjetaCredito GestorTarjetaCredito { get; set; }
-
         public List<IFuente> MisFuentes { get; set; }
-
-        
+       
         private Sesion()
         {
             GestorCategoria = new GestorCategorias();
@@ -27,7 +21,6 @@ namespace Negocio
             GestorTarjetaCredito = new GestorTarjetaCredito();
             MisFuentes = new List<IFuente>();
         }
-
 
         public static Sesion Singleton
         {
@@ -44,41 +37,66 @@ namespace Negocio
             return password == "secreto";
         }
 
-
         public List<Contrasenia> ContraseniasVulnerables(IFuente fuente)
         {
-            List<Contrasenia> retorno = new List<Contrasenia>();
+            List<Contrasenia> contrasenias = new List<Contrasenia>();
             
-            foreach (Contrasenia item in this.GestorContrasenia.ListarContrasenias())
+            foreach (Contrasenia contrasenia in this.GestorContrasenia.ListarContrasenias())
             {
-                string desencriptado = this.GestorContrasenia.MostrarPassword(item.Password);
-                int cantidadVecesEnFuente = fuente.BuscarPasswordOContraseniaEnFuente(desencriptado);
-
-                if (cantidadVecesEnFuente > 0)
-                {
-                    item.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
-                    this.GestorContrasenia.ModificarContrasenia(item);
-                    retorno.Add(item);
-                }
+                AgregarContraseniaSiEsVulnerable(contrasenias, contrasenia, fuente);
             }
-            return retorno;
+            return contrasenias;
         }
+
+      
+
 
         public List<TarjetaCredito> TarjetasCreditoVulnerables(IFuente fuente)
         {
-            List<TarjetaCredito> retorno = new List<TarjetaCredito>();
+            List<TarjetaCredito> tarjetasVulnerables = new List<TarjetaCredito>();
             
-            foreach (TarjetaCredito item in this.GestorTarjetaCredito.ObtenerTodas())
+            foreach (TarjetaCredito tarjeta in this.GestorTarjetaCredito.ObtenerTodas())
             {
-                int cantidadVecesEnFuente = fuente.BuscarPasswordOContraseniaEnFuente(item.Numero);
-                if (cantidadVecesEnFuente > 0)
-                {
-                    item.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
-                    this.GestorTarjetaCredito.ModificarTarjeta(item);
-                    retorno.Add(item);
-                }
+                AgregarTarjetaSiEsVulnerable(tarjetasVulnerables, tarjeta, fuente);
             }
-            return retorno;
+            return tarjetasVulnerables;
+        }
+
+        private void AgregarContraseniaSiEsVulnerable(List<Contrasenia> contrasenias, Contrasenia contrasenia, IFuente fuente)
+        {
+            int cantidadVecesEnFuente = BuscarContraseniaEnFuente(contrasenia, fuente);
+            if (cantidadVecesEnFuente > 0)
+            {
+                contrasenia.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
+                this.GestorContrasenia.ModificarContrasenia(contrasenia);
+                contrasenias.Add(contrasenia);
+            }
+
+        }
+
+        private int BuscarContraseniaEnFuente(Contrasenia item, IFuente fuente)
+        {
+            string desencriptado = this.GestorContrasenia.MostrarPassword(item.Password);
+            return fuente.BuscarPasswordOContraseniaEnFuente(desencriptado);
+
+        }
+
+        private void AgregarTarjetaSiEsVulnerable(List<TarjetaCredito> tarjetas, TarjetaCredito item, IFuente fuente)
+        {
+            int cantidadVecesEnFuente = BuscarTarjetaCreditoEnFuente(item, fuente);
+            if (cantidadVecesEnFuente > 0)
+            {
+                item.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
+                this.GestorTarjetaCredito.ModificarTarjeta(item);
+                tarjetas.Add(item);
+            }
+
+
+        }
+
+        private int BuscarTarjetaCreditoEnFuente(TarjetaCredito item, IFuente fuente)
+        {
+            return fuente.BuscarPasswordOContraseniaEnFuente(item.Numero);
         }
 
 
