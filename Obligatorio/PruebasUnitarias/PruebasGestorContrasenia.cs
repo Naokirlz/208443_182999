@@ -587,6 +587,7 @@ namespace PruebasUnitarias
         [TestMethod]
         public void AlAutogenerarUnPasswordNoMeDevuelveMasDeDosCaracteresIguales()
         {
+            //no sería una buena prueba, hay que refactorizar, el que no me devuelva dos caracteres seguidos iguales surge porque devolvía todos los caracteres iguales, la intención es que no los devolviera todos iguales, pero dos iguales podía haber, pero para lograrlo a veces pasa y otras no, hay que verlo
             string password = Gestor.GenerarPassword(13, false, true, false, false);
             bool dosIguales = false;
             char caracterAnterior = new char();
