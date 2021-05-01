@@ -18,6 +18,10 @@ namespace Negocio.Contrasenias
         public Categoria Categoria { get; set; }
         public DateTime FechaUltimaModificacion { get; set; }
         public int Id { get; set; }
+
+        public int CantidadVecesEncontradaVulnerable { get; set; }
+       
+
         //private static int Cantidad = 1;
 
         //public string Sitio

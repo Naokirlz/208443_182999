@@ -9,7 +9,8 @@ namespace Negocio
     public interface IFuente
     {
 
-        bool Buscar(string busacado);
+        int BuscarPasswordOContraseniaEnFuente(string buscado);
+        void AgregarPasswordOContraseniaVulnerable(string passwordOContraseniaVulnerable);
 
     }
 }

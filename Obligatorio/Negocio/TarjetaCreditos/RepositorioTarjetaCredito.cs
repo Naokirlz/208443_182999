@@ -46,6 +46,7 @@ namespace Negocio.TarjetaCreditos
             anterior.Vencimiento = modificarTarjeta.Vencimiento;
             anterior.Nota = modificarTarjeta.Nota;
             anterior.IdTarjeta = modificarTarjeta.IdTarjeta;
+            anterior.CantidadVecesEncontradaVulnerable = modificarTarjeta.CantidadVecesEncontradaVulnerable;
 
         }
 
@@ -88,7 +89,8 @@ namespace Negocio.TarjetaCreditos
                 Codigo = original.Codigo,
                 Vencimiento = original.Vencimiento,
                 Nota = original.Nota,
-                IdTarjeta = original.IdTarjeta
+                IdTarjeta = original.IdTarjeta,
+                CantidadVecesEncontradaVulnerable = original.CantidadVecesEncontradaVulnerable
             };
 
             return clon;

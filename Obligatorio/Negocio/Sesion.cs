@@ -19,10 +19,9 @@ namespace Negocio
 
         public List<IFuente> MisFuentes { get; set; }
 
-
+        
         private Sesion()
         {
-
             GestorCategoria = new GestorCategorias();
             GestorContrasenia = new GestorContrasenias();
             GestorTarjetaCredito = new GestorTarjetaCredito();
@@ -46,32 +45,49 @@ namespace Negocio
         }
 
 
-
-
-        public List<string> ContraseniasVulnerables(IFuente fuente)
+        public List<Contrasenia> ContraseniasVulnerables(IFuente fuente)
         {
-            List<string> retorno = new List<string>();
+            List<Contrasenia> retorno = new List<Contrasenia>();
+            
             foreach (Contrasenia item in this.GestorContrasenia.ListarContrasenias())
             {
-                if (fuente.Buscar(item.Password))
+                string desencriptado = this.GestorContrasenia.MostrarPassword(item.Password);
+                int cantidadVecesEnFuente = fuente.BuscarPasswordOContraseniaEnFuente(desencriptado);
+
+                if (cantidadVecesEnFuente > 0)
                 {
-                    retorno.Add(item.Password);
+                    item.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
+                    this.GestorContrasenia.ModificarContrasenia(item);
+                    retorno.Add(item);
                 }
             }
             return retorno;
         }
 
-        public List<string> TarjetasCreditoVulnerables(IFuente fuente)
+        public List<TarjetaCredito> TarjetasCreditoVulnerables(IFuente fuente)
         {
-            List<string> retorno = new List<string>();
+            List<TarjetaCredito> retorno = new List<TarjetaCredito>();
+            
             foreach (TarjetaCredito item in this.GestorTarjetaCredito.ObtenerTodas())
             {
-                if (fuente.Buscar(item.Numero))
+                int cantidadVecesEnFuente = fuente.BuscarPasswordOContraseniaEnFuente(item.Numero);
+                if (cantidadVecesEnFuente > 0)
                 {
-                    retorno.Add(item.Numero);
+                    item.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
+                    this.GestorTarjetaCredito.ModificarTarjeta(item);
+                    retorno.Add(item);
                 }
             }
             return retorno;
+        }
+
+
+        public Sesion SesionTrucha()
+        {
+
+            Sesion trucha = new Sesion();
+            return trucha;
+
         }
 
     }

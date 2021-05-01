@@ -72,7 +72,8 @@ namespace Negocio.Contrasenias
                 Password = unaContrasenia.Password,
                 Usuario = unaContrasenia.Usuario,
                 Categoria = unaContrasenia.Categoria,
-                FechaUltimaModificacion = unaContrasenia.FechaUltimaModificacion
+                FechaUltimaModificacion = unaContrasenia.FechaUltimaModificacion,
+                CantidadVecesEncontradaVulnerable = unaContrasenia.CantidadVecesEncontradaVulnerable
             };
             return clonada;
         }

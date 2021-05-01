@@ -6,28 +6,36 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-    public class FuenteSimulada : IFuente
+    public class FuenteLocal : IFuente
     {
         public List<string> ContraseniasYTarjetasVulnerables { get; set; }
 
-        public FuenteSimulada()
+        public FuenteLocal()
         {
-
             ContraseniasYTarjetasVulnerables = new List<string>();
-
         }
 
 
-        public bool Buscar(string buscado)
+        public int BuscarPasswordOContraseniaEnFuente(string buscado)
         {
+            int cantidadAparaceEnFuente = 0;
+
             foreach (var item in ContraseniasYTarjetasVulnerables)
             {
                 if (item.Equals(buscado))
                 {
-                    return true;
+                    cantidadAparaceEnFuente++;
                 }
             }
-            return false;
+            return cantidadAparaceEnFuente;
         }
+
+
+        public void AgregarPasswordOContraseniaVulnerable(string passwordOContraseniaVulnerable)
+        {
+            ContraseniasYTarjetasVulnerables.Add(passwordOContraseniaVulnerable);
+        }
+
+
     }
 }

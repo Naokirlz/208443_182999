@@ -20,7 +20,7 @@ namespace Negocio.TarjetaCreditos
         public DateTime Vencimiento { get; set; }
         public string Nota { get; set; }
 
-
+        public int CantidadVecesEncontradaVulnerable { get; set; }
 
         public int CompareTo(TarjetaCredito other)
         {
