@@ -164,32 +164,6 @@ namespace Negocio.Contrasenias
             }
             foreach (char c in passwordArreglo) password += c;
 
-
-            //bool dosIguales = false;
-            
-
-            //do
-            //{
-            //    int largoAShuffle = largoOriginal;
-            //    password = "";
-            //    while (largoAShuffle > 1)
-            //    {
-            //        int caracterRandom = random.Next(largoAShuffle--);
-            //        char temp = passwordArreglo[largoAShuffle];
-            //        passwordArreglo[largoAShuffle] = passwordArreglo[caracterRandom];
-            //        passwordArreglo[caracterRandom] = temp;
-            //    }
-            //    foreach (char c in passwordArreglo) password += c;
-            //    char caracterAnterior = new char();
-
-            //    foreach (char c in password)
-            //    {
-            //        if (c == caracterAnterior) dosIguales = true;
-            //        caracterAnterior = c;
-            //    }
-            //}
-            //while (dosIguales);
-
             return password;
         }
 
