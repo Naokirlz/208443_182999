@@ -10,7 +10,7 @@ using System.Linq;
 namespace PruebasUnitarias
 {
     [TestClass]
-    public class PruebasContraseniaGestor
+    public class PruebasGestorContrasenia
     {
         //no se puede guardar una contraseña con categoria que no existe //hacer junto con Cristian
         // validar categoria antes de crearla y antes de modificar

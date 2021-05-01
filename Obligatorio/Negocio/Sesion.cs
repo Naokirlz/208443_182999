@@ -82,13 +82,5 @@ namespace Negocio
         }
 
 
-        public Sesion SesionTrucha()
-        {
-
-            Sesion trucha = new Sesion();
-            return trucha;
-
-        }
-
     }
 }

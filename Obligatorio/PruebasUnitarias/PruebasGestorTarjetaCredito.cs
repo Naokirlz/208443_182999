@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace PruebasUnitarias
 {
     [TestClass]
-    public class PruebasTarjetaCredito
+    public class PruebasGestorTarjetaCredito
     {
         private GestorTarjetaCredito Gestor = new GestorTarjetaCredito();
         

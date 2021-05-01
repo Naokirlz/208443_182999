@@ -14,7 +14,7 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasSesion
     {
-        Sesion sesionTrucha;
+        Sesion sesionPrueba;
         FuenteLocal Fuente;
         private TarjetaCredito nuevoTarjeta;
         private Contrasenia pruebaContrasenia;
@@ -23,7 +23,7 @@ namespace PruebasUnitarias
         [TestInitialize]
         public void InicializarPruebas()
         {
-            sesionTrucha = Sesion.Singleton;
+            sesionPrueba = Sesion.Singleton;
             Fuente = new FuenteLocal();
 
             this.nuevoTarjeta = new TarjetaCredito()
@@ -48,65 +48,92 @@ namespace PruebasUnitarias
 
         };
 
-            sesionTrucha.GestorTarjetaCredito.Alta(nuevoTarjeta);
-            sesionTrucha.GestorContrasenia.Alta(pruebaContrasenia);
-            sesionTrucha.MisFuentes.Add(Fuente);
+            sesionPrueba.GestorTarjetaCredito.Alta(nuevoTarjeta);
+            sesionPrueba.GestorContrasenia.Alta(pruebaContrasenia);
+            sesionPrueba.MisFuentes.Add(Fuente);
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("dalevo111!!!");
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
         }
 
 
         [TestCleanup]
         public void LimpiarPruebas()
         {
-            sesionTrucha.GestorContrasenia = new GestorContrasenias();
-            sesionTrucha.GestorTarjetaCredito = new GestorTarjetaCredito();
-            sesionTrucha.MisFuentes = new List<IFuente>();
+            sesionPrueba.GestorContrasenia = new GestorContrasenias();
+            sesionPrueba.GestorTarjetaCredito = new GestorTarjetaCredito();
+            sesionPrueba.MisFuentes = new List<IFuente>();
            
             
     }
 
         [TestMethod]
+        public void InicioSesionCorrecto()
+        {
+            Assert.IsTrue(sesionPrueba.Login("secreto"));
+
+        }
+
+
+        [TestMethod]
+        public void AgregarContraseniaOTarjetaVulnerableAFuente()
+        {
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("admin123");
+            int cantidadVecesEncontrada = sesionPrueba.MisFuentes[0].BuscarPasswordOContraseniaEnFuente("admin123");
+            Assert.AreEqual(cantidadVecesEncontrada, 1);
+
+        }
+
+        [TestMethod]
+        public void Agregar2VecesLaMismaContraseniaOTarjetaVulnerableAFuente()
+        {
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("admin123");
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("admin123");
+            int cantidadVecesEncontrada = sesionPrueba.MisFuentes[0].BuscarPasswordOContraseniaEnFuente("admin123");
+            Assert.AreEqual(cantidadVecesEncontrada, 2);
+
+        }
+
+
+        [TestMethod]
         public void EncuentraContraseniaVulnerableEnFuente()
         {
-            sesionTrucha.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("dalevo111!!!");
-
-            List<Contrasenia> contraseniasVulnerablesEncontradas = sesionTrucha.ContraseniasVulnerables(Fuente);
-            pruebaContrasenia = sesionTrucha.GestorContrasenia.Buscar(pruebaContrasenia.Id);
+       
+            sesionPrueba.ContraseniasVulnerables(Fuente);
+            pruebaContrasenia = sesionPrueba.GestorContrasenia.Buscar(pruebaContrasenia.Id);
             Assert.AreEqual(pruebaContrasenia.CantidadVecesEncontradaVulnerable, 1);
 
         }
 
         [TestMethod]
-        public void Encuentra2VecesContraseniaVulnerableEnFuente()
+        public void Encuentra2VecesUnaContraseniaVulnerableEnUnaFuente()
         {
-            sesionTrucha.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("dalevo111!!!");
-            sesionTrucha.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("dalevo111!!!");
-
-            List<Contrasenia> contraseniasVulnerablesEncontradas = sesionTrucha.ContraseniasVulnerables(Fuente);
-            pruebaContrasenia = sesionTrucha.GestorContrasenia.Buscar(pruebaContrasenia.Id);
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("dalevo111!!!");
+           
+            sesionPrueba.ContraseniasVulnerables(Fuente);
+            pruebaContrasenia = sesionPrueba.GestorContrasenia.Buscar(pruebaContrasenia.Id);
             Assert.AreEqual(pruebaContrasenia.CantidadVecesEncontradaVulnerable, 2);
-
+           
+           
         }
 
 
         [TestMethod]
         public void EncuentraTarjetaVulnerableEnFuente()
         {
-            sesionTrucha.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
-
-            List<TarjetaCredito> tarjetasVulnerablesEncontradas = sesionTrucha.TarjetasCreditoVulnerables(Fuente);
-            nuevoTarjeta = sesionTrucha.GestorTarjetaCredito.Buscar(nuevoTarjeta);
+            
+            sesionPrueba.TarjetasCreditoVulnerables(Fuente);
+            nuevoTarjeta = sesionPrueba.GestorTarjetaCredito.Buscar(nuevoTarjeta);
             Assert.AreEqual(nuevoTarjeta.CantidadVecesEncontradaVulnerable, 1);
 
         }
 
         [TestMethod]
-        public void Encuentra2VecesTarjetaVulnerableEnFuente()
+        public void Encuentra2VecesTarjetaVulnerableEnUnaFuente()
         {
-            sesionTrucha.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
-            sesionTrucha.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
 
-            List<TarjetaCredito> tarjetasVulnerablesEncontradas = sesionTrucha.TarjetasCreditoVulnerables(Fuente);
-            nuevoTarjeta = sesionTrucha.GestorTarjetaCredito.Buscar(nuevoTarjeta);
+            sesionPrueba.TarjetasCreditoVulnerables(Fuente);
+            nuevoTarjeta = sesionPrueba.GestorTarjetaCredito.Buscar(nuevoTarjeta);
             Assert.AreEqual(nuevoTarjeta.CantidadVecesEncontradaVulnerable, 2);
 
         }
