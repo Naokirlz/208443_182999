@@ -47,10 +47,7 @@ namespace Negocio
             }
             return contrasenias;
         }
-
-      
-
-
+ 
         public List<TarjetaCredito> TarjetasCreditoVulnerables(IFuente fuente)
         {
             List<TarjetaCredito> tarjetasVulnerables = new List<TarjetaCredito>();
