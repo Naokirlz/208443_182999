@@ -10,6 +10,7 @@ namespace Negocio.Categorias
     public class RepositorioCategorias
     {
         private List<Categoria> Categorias { get; set; }
+        private static int autonumerado = 1;
 
         public RepositorioCategorias()
         {
@@ -19,6 +20,8 @@ namespace Negocio.Categorias
         public Categoria Alta(string nombre)
         {
             Categoria nueva = new Categoria(nombre);
+            nueva.Id = autonumerado;
+            autonumerado++;
             this.Categorias.Add(nueva);
             return nueva;
         }

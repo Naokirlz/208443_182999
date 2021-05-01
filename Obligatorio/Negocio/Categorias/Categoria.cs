@@ -9,15 +9,14 @@ namespace Negocio.Categorias
 {
     public class Categoria
     {
-        private static int Autonumerado = 1;
+        
         public int Id { get; set; }
         public string Nombre { get; set; }
                 
         public Categoria(string unNombre)
         {
             this.Nombre = unNombre;
-            this.Id = Autonumerado;
-            Autonumerado++;
+            
         }
 
         public Categoria(string unNombre, int unId) :this(unNombre)

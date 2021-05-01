@@ -7,7 +7,7 @@ namespace Negocio.Contrasenias
     public class RepositorioContrasenias
     {
         private List<Contrasenia> Contrasenias { get; set; }
-        private static int IdContrasenia = 1;
+        private static int autonumerado = 1;
 
         public RepositorioContrasenias()
         {
@@ -22,8 +22,8 @@ namespace Negocio.Contrasenias
                     contrasenia.Usuario.Equals(unaContrasenia.Usuario))
                     throw new ExcepcionElementoYaExiste();
             }
-            unaContrasenia.Id = IdContrasenia;
-            IdContrasenia++;
+            unaContrasenia.Id = autonumerado;
+            autonumerado++;
             unaContrasenia.Password = Encriptar(unaContrasenia.Password);
             Contrasenia clonada = ClonarContrasenia(unaContrasenia);
             this.Contrasenias.Add(clonada);

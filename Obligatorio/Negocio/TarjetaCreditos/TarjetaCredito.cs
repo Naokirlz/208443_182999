@@ -22,9 +22,9 @@ namespace Negocio.TarjetaCreditos
 
         public int CantidadVecesEncontradaVulnerable { get; set; }
 
-        public int CompareTo(TarjetaCredito other)
+        public int CompareTo(TarjetaCredito otraTarjeta)
         {
-          return this.Categoria.Nombre.CompareTo(other.Categoria.Nombre);
+          return this.Categoria.Nombre.CompareTo(otraTarjeta.Categoria.Nombre);
 
         }
 
