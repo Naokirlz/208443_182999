@@ -9,41 +9,20 @@ namespace Negocio.Categorias
 {
     public class Categoria
     {
-        public string Nombre { get; set; }
+        private static int Autonumerado = 1;
         public int Id { get; set; }
-        private static int Cantidad = 1;
-        
-        
-
-
+        public string Nombre { get; set; }
+                
         public Categoria(string unNombre)
         {
-            ValidarCategoria(unNombre);
             this.Nombre = unNombre;
-            this.Id = Cantidad;
-            Cantidad++;
+            this.Id = Autonumerado;
+            Autonumerado++;
         }
 
         public Categoria(string unNombre, int unId) :this(unNombre)
         {
             this.Id = unId;
-        }
-
-
-
-        private static void ValidarCategoria(string unNombre)
-        {
-            if (unNombre.Length < 3 || unNombre.Length > 15)
-            {
-                throw new ExcepcionLargoTexto();
-            }
-            
-        }
-
-        public void ModificarCategoria(string nuevoNombre)
-        {
-            ValidarCategoria(nuevoNombre);
-            this.Nombre = nuevoNombre;
         }
 
 

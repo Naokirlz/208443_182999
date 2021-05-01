@@ -46,7 +46,7 @@ namespace Interfaz
                 }
                 int id = aCambiar.Id;
                 string nuevoNombre = this.txtNuevoNombre.Text;
-                this.sis.GestorCategoria.ModificarCategoria(id, nuevoNombre);
+                this.sis.GestorCategoria.Modificacion(id, nuevoNombre);
                 this.txtNuevoNombre.Clear();
                 Refrescar();
                 MessageBox.Show("Categoría " + nuevoNombre + " fue modificada con éxito!!");

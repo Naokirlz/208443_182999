@@ -19,27 +19,24 @@ namespace Negocio.Categorias
         public Categoria Alta(string nombre)
         {
             Categoria nueva = new Categoria(nombre);
-
-            if (ExisteCategoria(nombre)) { throw new ExcepcionElementoYaExiste(); }
             this.Categorias.Add(nueva);
             return nueva;
         }
 
-        internal bool Baja(int id)
+        internal void Baja(int id)
         {
-            Categorias.Remove(BuscarCategoria(id));
-            return true;
+            Categorias.Remove(BuscarCategoriaPorId(id));
+           
         }
 
-        public void ModificarCategoria(int id, string nuevoNombre)
+        public void Modificacion(int id, string nuevoNombre)
         {
-            Categoria Modificar = BuscarCategoria(id);
-            if (ExisteCategoria(nuevoNombre)) throw new ExcepcionElementoYaExiste();
-            Modificar.ModificarCategoria(nuevoNombre);
+            Categoria Modificar = BuscarCategoriaPorId(id);
             Modificar.Nombre = nuevoNombre;
+            
         }
 
-        private bool ExisteCategoria(string unNombre)
+        public bool ExisteCategoria(string unNombre)
         {
             foreach (var categoria in this.Categorias)
             {
@@ -48,7 +45,7 @@ namespace Negocio.Categorias
             return false;
         }
 
-        public Categoria BuscarCategoria(int id)
+        public Categoria BuscarCategoriaPorId(int id)
         {
             foreach (Categoria categoria in this.Categorias)
             {
@@ -67,5 +64,8 @@ namespace Negocio.Categorias
             }
             return clon;
         }
+
+
+       
     }
 }

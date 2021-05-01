@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace PruebasUnitarias
 {
     [TestClass]
-    public class PruebasCategoria
+    public class PruebasGestorCategoria
     {
         private GestorCategorias Gestor = new GestorCategorias();
 
@@ -57,7 +57,7 @@ namespace PruebasUnitarias
         {
             Categoria UnaCategoria = Gestor.Alta("BuscarCategoria");
             int id = UnaCategoria.Id;
-            Categoria Buscada = Gestor.BuscarCategoria(id);
+            Categoria Buscada = Gestor.BuscarCategoriaPorId(id);
             Assert.AreEqual(UnaCategoria, Buscada);
         }
 
@@ -67,7 +67,7 @@ namespace PruebasUnitarias
         {
             Categoria UnaCategoria = Gestor.Alta("BuscOtraCat");
             int id = UnaCategoria.Id + 1;
-            Categoria Buscada = Gestor.BuscarCategoria(id);
+            Categoria Buscada = Gestor.BuscarCategoriaPorId(id);
         }
 
         [TestMethod]
@@ -77,7 +77,7 @@ namespace PruebasUnitarias
             int id = UnaCategoria.Id;
             Assert.AreEqual(UnaCategoria.Nombre, "BuscarCate1");
             string nombreNuevo = "BuscarCate2";
-            Gestor.ModificarCategoria(id, nombreNuevo);
+            Gestor.Modificacion(id, nombreNuevo);
             Assert.AreEqual(UnaCategoria.Nombre, nombreNuevo);
         }
 
@@ -90,7 +90,7 @@ namespace PruebasUnitarias
 
             int id = UnaCategoria.Id;
             string nombreNuevo = "BuscarCate1";
-            Gestor.ModificarCategoria(id, nombreNuevo);
+            Gestor.Modificacion(id, nombreNuevo);
         }
 
         [TestMethod]
@@ -100,7 +100,7 @@ namespace PruebasUnitarias
             Categoria UnaCategoria = Gestor.Alta("BuscarCate1");
             int id = UnaCategoria.Id;
             string nombreNuevo = "Bu";
-            Gestor.ModificarCategoria(id, nombreNuevo);
+            Gestor.Modificacion(id, nombreNuevo);
         }
 
         [TestMethod]
@@ -110,7 +110,7 @@ namespace PruebasUnitarias
             Categoria UnaCategoria = Gestor.Alta("BuscarCate4");
             int id = UnaCategoria.Id;
             string nombreNuevo = "1234567891234567";
-            Gestor.ModificarCategoria(id, nombreNuevo);
+            Gestor.Modificacion(id, nombreNuevo);
         }
 
 
@@ -155,7 +155,7 @@ namespace PruebasUnitarias
             Categoria modificadaDeLista = Lista[0];
             modificadaDeLista.Nombre = "aaaaaaaa";
 
-            Categoria posCero = Gestor2.BuscarCategoria(modificadaDeLista.Id);
+            Categoria posCero = Gestor2.BuscarCategoriaPorId(modificadaDeLista.Id);
             Assert.AreNotEqual("aaaaaaaa", posCero.Nombre);
             Assert.AreEqual("Categoria1", posCero.Nombre);
         }
