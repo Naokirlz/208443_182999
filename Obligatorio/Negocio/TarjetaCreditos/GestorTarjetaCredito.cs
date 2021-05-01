@@ -12,24 +12,17 @@ namespace Negocio.TarjetaCreditos
     {
 
         public RepositorioTarjetaCredito Repositorio;
-        //necesito que el gestor de categorias me diga las categorias existentes
-        //para comprobar que exista en el sistema la categoria de la tarjeta a agregar
-
+      
         public GestorTarjetaCredito()
         {
-
             this.Repositorio = new RepositorioTarjetaCredito();
-
         }
-
 
 
         public TarjetaCredito Alta(TarjetaCredito nuevaTarjeta)
         {
-
             ControlAltaYModificar(nuevaTarjeta);
             return Repositorio.Alta(nuevaTarjeta);
-
         }
 
 
@@ -37,7 +30,6 @@ namespace Negocio.TarjetaCreditos
         {
             bajaTarjeta = Buscar(bajaTarjeta);
             Repositorio.Baja(bajaTarjeta);
-
         }
 
 
@@ -51,22 +43,14 @@ namespace Negocio.TarjetaCreditos
 
         public TarjetaCredito Buscar(TarjetaCredito buscada)
         {
-
             return Repositorio.BuscarPorId(buscada.IdTarjeta);
-            //si no la encuentra tira excepcion
-
         }
 
 
         public List<TarjetaCredito> ObtenerTodas()
         {
-
             return Repositorio.Clon();
-
         }
-
-        
-
 
         private void ControlAltaYModificar(TarjetaCredito nuevaTarjeta)
         {
@@ -80,12 +64,8 @@ namespace Negocio.TarjetaCreditos
             ControlLargoTexto(nuevaTarjeta.Codigo, 3, 3);
             ControlSoloNumeros(nuevaTarjeta.Codigo);
             ControlLargoTexto(nuevaTarjeta.Nota, -1, 250);
-          
-
+            
         }
-
-
-
 
         private bool CategoriaExiste(Categoria categoria)
         {

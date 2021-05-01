@@ -10,7 +10,7 @@ namespace Negocio.TarjetaCreditos
     public class RepositorioTarjetaCredito
     {
         private List<TarjetaCredito> Tarjetas { get; set; }
-        private static int idTarjeta = 1;
+        private static int autonumerado = 1;
 
 
         public RepositorioTarjetaCredito()
@@ -21,8 +21,8 @@ namespace Negocio.TarjetaCreditos
 
         public TarjetaCredito Alta(TarjetaCredito nuevaTarjeta)
         {
-            nuevaTarjeta.IdTarjeta = idTarjeta;
-            idTarjeta++;
+            nuevaTarjeta.IdTarjeta = autonumerado;
+            autonumerado++;
             Tarjetas.Add(nuevaTarjeta);
             return nuevaTarjeta;
 

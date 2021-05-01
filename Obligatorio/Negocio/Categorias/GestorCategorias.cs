@@ -29,7 +29,6 @@ namespace Negocio.Categorias
             return nueva;
         }
 
-
         public void Baja(int id)
         {
             BuscarCategoriaPorId(id);
