@@ -10,53 +10,48 @@ namespace Negocio.Categorias
     public class GestorCategorias
     {
         public RepositorioCategorias Repositorio;
-        
 
         public GestorCategorias()
         {
             this.Repositorio = new RepositorioCategorias();
         }
 
-       
         public Categoria Alta(string nombre)
         {
+            ValidarCategoria(nombre);
+
+            if (ExisteNombreCategoria(nombre)) { 
+            
+                throw new ExcepcionElementoYaExiste(); 
+            
+            }
             Categoria nueva = Repositorio.Alta(nombre);
             return nueva;
         }
 
 
-             
-
         public void Baja(int id)
         {
-            BuscarCategoria(id);
+            BuscarCategoriaPorId(id);
             Repositorio.Baja(id);
         }
 
-
-        public  void ModificarCategoria(int id, string nuevoNombre)
+        public void Modificacion(int id, string nuevoNombre)
         {
-            Repositorio.ModificarCategoria(id, nuevoNombre);
-            //Categoria Modificar = BuscarCategoria(id);
-            //if (ExisteCategoria(nuevoNombre)) throw new ExcepcionElementoYaExiste();
-            //Modificar.ModificarCategoria(nuevoNombre);
-            //Modificar.Nombre = nuevoNombre;
+            ValidarCategoria(nuevoNombre);
+            if (ExisteNombreCategoria(nuevoNombre)) throw new ExcepcionElementoYaExiste();
+            Repositorio.Modificacion(id, nuevoNombre);
+          
         }
 
-
-
-        //private bool ExisteCategoria(string unNombre)
-        //{
-        //    foreach (var categoria in this.Categorias)
-        //    {
-        //        if (categoria.Nombre.Equals(unNombre)) return true;
-        //    }
-        //    return false;
-        //}
-
-        public Categoria BuscarCategoria(int id)
+        public Categoria BuscarCategoriaPorId(int id)
         {
-            return Repositorio.BuscarCategoria(id);
+            return Repositorio.BuscarCategoriaPorId(id);
+        }
+
+        private bool ExisteNombreCategoria(string unNombre)
+        {
+           return Repositorio.ExisteCategoria(unNombre);
         }
 
         public List<Categoria> ListarCategorias()
@@ -64,6 +59,15 @@ namespace Negocio.Categorias
             return Repositorio.ListarCategorias();
         }
 
-       
+        private static void ValidarCategoria(string unNombre)
+        {
+            if (unNombre.Length < 3 || unNombre.Length > 15)
+            {
+                throw new ExcepcionLargoTexto();
+            }
+
+        }
+
+
     }
 }
