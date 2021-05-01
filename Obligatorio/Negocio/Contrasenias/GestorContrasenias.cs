@@ -107,11 +107,11 @@ namespace Negocio.Contrasenias
         public string GenerarPassword(int largo, bool mayuscula, bool minuscula, bool numero, bool especial)
         {
             string password = "";
-            int largoOriginal = largo;
+            
             //documentacion de Random
             //El valor de inicialización predeterminado se deriva del reloj del sistema y tiene una resolución finita. Como resultado, diferentes Random objetos que se crean en estrecha sucesión mediante una llamada al constructor predeterminado tendrán valores de inicialización predeterminados idénticos y, por consiguiente, generarán conjuntos idénticos de números aleatorios.
             var random = new Random();
-            
+            int largoOriginal = largo;
 
             if (mayuscula)
             {
@@ -153,28 +153,42 @@ namespace Negocio.Contrasenias
             char[] passwordArreglo = password.ToCharArray();
             //Random random = new Random();
 
-            bool dosIguales = false;
+            int largoAShuffle = largoOriginal;
             password = "";
-
-            do
+            while (largoAShuffle > 1)
             {
-                while (largoOriginal > 1)
-                {
-                    int caracterRandom = random.Next(largoOriginal--);
-                    char temp = passwordArreglo[largoOriginal];
-                    passwordArreglo[largoOriginal] = passwordArreglo[caracterRandom];
-                    passwordArreglo[caracterRandom] = temp;
-                }
-                foreach (char c in passwordArreglo) password += c;
-                char caracterAnterior = new char();
-
-                foreach (char c in password)
-                {
-                    if (c == caracterAnterior) dosIguales = true;
-                    caracterAnterior = c;
-                }
+                int caracterRandom = random.Next(largoAShuffle--);
+                char temp = passwordArreglo[largoAShuffle];
+                passwordArreglo[largoAShuffle] = passwordArreglo[caracterRandom];
+                passwordArreglo[caracterRandom] = temp;
             }
-            while (dosIguales);
+            foreach (char c in passwordArreglo) password += c;
+
+
+            //bool dosIguales = false;
+            
+
+            //do
+            //{
+            //    int largoAShuffle = largoOriginal;
+            //    password = "";
+            //    while (largoAShuffle > 1)
+            //    {
+            //        int caracterRandom = random.Next(largoAShuffle--);
+            //        char temp = passwordArreglo[largoAShuffle];
+            //        passwordArreglo[largoAShuffle] = passwordArreglo[caracterRandom];
+            //        passwordArreglo[caracterRandom] = temp;
+            //    }
+            //    foreach (char c in passwordArreglo) password += c;
+            //    char caracterAnterior = new char();
+
+            //    foreach (char c in password)
+            //    {
+            //        if (c == caracterAnterior) dosIguales = true;
+            //        caracterAnterior = c;
+            //    }
+            //}
+            //while (dosIguales);
 
             return password;
         }
