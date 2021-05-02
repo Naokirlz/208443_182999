@@ -33,6 +33,7 @@ namespace Interfaz
             this.pnlPanelPrincipal = new System.Windows.Forms.Panel();
             this.btnGestionContrasenia = new System.Windows.Forms.Button();
             this.btnGestionTarjetaCredito = new System.Windows.Forms.Button();
+            this.btnVerificarVulnerabilidad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGestionCategoria
@@ -72,11 +73,22 @@ namespace Interfaz
             this.btnGestionTarjetaCredito.UseVisualStyleBackColor = true;
             this.btnGestionTarjetaCredito.Click += new System.EventHandler(this.btnGestionTarjetaCredito_Click);
             // 
+            // btnVerificarVulnerabilidad
+            // 
+            this.btnVerificarVulnerabilidad.Location = new System.Drawing.Point(12, 156);
+            this.btnVerificarVulnerabilidad.Name = "btnVerificarVulnerabilidad";
+            this.btnVerificarVulnerabilidad.Size = new System.Drawing.Size(185, 23);
+            this.btnVerificarVulnerabilidad.TabIndex = 4;
+            this.btnVerificarVulnerabilidad.Text = "Verificar Vulnerabilidades";
+            this.btnVerificarVulnerabilidad.UseVisualStyleBackColor = true;
+            this.btnVerificarVulnerabilidad.Click += new System.EventHandler(this.btnVerificarVulnerabilidad_Click);
+            // 
             // PantallaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(969, 419);
+            this.Controls.Add(this.btnVerificarVulnerabilidad);
             this.Controls.Add(this.btnGestionTarjetaCredito);
             this.Controls.Add(this.btnGestionContrasenia);
             this.Controls.Add(this.pnlPanelPrincipal);
@@ -94,6 +106,7 @@ namespace Interfaz
         private System.Windows.Forms.Panel pnlPanelPrincipal;
         private System.Windows.Forms.Button btnGestionContrasenia;
         private System.Windows.Forms.Button btnGestionTarjetaCredito;
+        private System.Windows.Forms.Button btnVerificarVulnerabilidad;
     }
 }
 

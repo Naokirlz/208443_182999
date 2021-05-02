@@ -44,5 +44,12 @@ namespace Interfaz.Contrasenias
             UserControl resumenContrasenia = new ResumenContrasenias();
             pnlGestor.Controls.Add(resumenContrasenia);
         }
+
+        private void btnReporteFortaleza_Click(object sender, EventArgs e)
+        {
+            pnlGestor.Controls.Clear();
+            UserControl reporteFortalezaContrasenia = new ReporteFortalezaContrasenias();
+            pnlGestor.Controls.Add(reporteFortalezaContrasenia);
+        }
     }
 }

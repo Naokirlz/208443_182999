@@ -94,6 +94,12 @@
     <Compile Include="Contrasenias\ModificarContrasenias.Designer.cs">
       <DependentUpon>ModificarContrasenias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Contrasenias\ReporteFortalezaContrasenias.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Contrasenias\ReporteFortalezaContrasenias.Designer.cs">
+      <DependentUpon>ReporteFortalezaContrasenias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Contrasenias\ResumenContrasenias.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -150,6 +156,18 @@
     <Compile Include="TarjetasCredito\ResumenTarjetas.Designer.cs">
       <DependentUpon>ResumenTarjetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vulnerabilidades\GestionVulnerabilidades.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vulnerabilidades\GestionVulnerabilidades.Designer.cs">
+      <DependentUpon>GestionVulnerabilidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vulnerabilidades\ResumenVulnerabilidades.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vulnerabilidades\ResumenVulnerabilidades.Designer.cs">
+      <DependentUpon>ResumenVulnerabilidades.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CategoriasForm\AgregarCategoria.resx">
       <DependentUpon>AgregarCategoria.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Contrasenias\ModificarContrasenias.resx">
       <DependentUpon>ModificarContrasenias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contrasenias\ReporteFortalezaContrasenias.resx">
+      <DependentUpon>ReporteFortalezaContrasenias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contrasenias\ResumenContrasenias.resx">
       <DependentUpon>ResumenContrasenias.cs</DependentUpon>
@@ -210,6 +231,12 @@
     <EmbeddedResource Include="TarjetasCredito\ResumenTarjetas.resx">
       <DependentUpon>ResumenTarjetas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vulnerabilidades\GestionVulnerabilidades.resx">
+      <DependentUpon>GestionVulnerabilidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vulnerabilidades\ResumenVulnerabilidades.resx">
+      <DependentUpon>ResumenVulnerabilidades.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -229,5 +256,6 @@
       <Name>Negocio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

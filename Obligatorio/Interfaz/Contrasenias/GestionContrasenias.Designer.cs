@@ -34,6 +34,7 @@ namespace Interfaz.Contrasenias
             this.btnModificarContrasenias = new System.Windows.Forms.Button();
             this.btnEliminarContrasenias = new System.Windows.Forms.Button();
             this.btnResumenContrasenias = new System.Windows.Forms.Button();
+            this.btnReporteFortaleza = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlGestor
@@ -83,10 +84,21 @@ namespace Interfaz.Contrasenias
             this.btnResumenContrasenias.UseVisualStyleBackColor = true;
             this.btnResumenContrasenias.Click += new System.EventHandler(this.btnResumenContrasenias_Click);
             // 
+            // btnReporteFortaleza
+            // 
+            this.btnReporteFortaleza.Location = new System.Drawing.Point(0, 154);
+            this.btnReporteFortaleza.Name = "btnReporteFortaleza";
+            this.btnReporteFortaleza.Size = new System.Drawing.Size(185, 23);
+            this.btnReporteFortaleza.TabIndex = 7;
+            this.btnReporteFortaleza.Text = "Reporte de Fortalezas";
+            this.btnReporteFortaleza.UseVisualStyleBackColor = true;
+            this.btnReporteFortaleza.Click += new System.EventHandler(this.btnReporteFortaleza_Click);
+            // 
             // GestionContrasenias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnReporteFortaleza);
             this.Controls.Add(this.btnResumenContrasenias);
             this.Controls.Add(this.btnEliminarContrasenias);
             this.Controls.Add(this.btnModificarContrasenias);
@@ -105,5 +117,6 @@ namespace Interfaz.Contrasenias
         private System.Windows.Forms.Button btnModificarContrasenias;
         private System.Windows.Forms.Button btnEliminarContrasenias;
         private System.Windows.Forms.Button btnResumenContrasenias;
+        private System.Windows.Forms.Button btnReporteFortaleza;
     }
 }

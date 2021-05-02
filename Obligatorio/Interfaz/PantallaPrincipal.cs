@@ -1,5 +1,6 @@
 ﻿using Interfaz.Contrasenias;
 using Interfaz.TarjetasCredito;
+using Interfaz.Vulnerabilidades;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,13 @@ namespace Interfaz
             pnlPanelPrincipal.Controls.Clear();
             UserControl gestorTarjetas = new GestionTarjetas();
             pnlPanelPrincipal.Controls.Add(gestorTarjetas);
+        }
+
+        private void btnVerificarVulnerabilidad_Click(object sender, EventArgs e)
+        {
+            pnlPanelPrincipal.Controls.Clear();
+            UserControl gestorVulnerabilidades = new GestionVulnerabilidades();
+            pnlPanelPrincipal.Controls.Add(gestorVulnerabilidades);
         }
     }
 }
