@@ -157,6 +157,12 @@
     <Compile Include="TarjetasCredito\ResumenTarjetas.Designer.cs">
       <DependentUpon>ResumenTarjetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vulnerabilidades\FuenteLocalVulnerabilidades.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vulnerabilidades\FuenteLocalVulnerabilidades.Designer.cs">
+      <DependentUpon>FuenteLocalVulnerabilidades.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vulnerabilidades\GestionVulnerabilidades.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -231,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TarjetasCredito\ResumenTarjetas.resx">
       <DependentUpon>ResumenTarjetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vulnerabilidades\FuenteLocalVulnerabilidades.resx">
+      <DependentUpon>FuenteLocalVulnerabilidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vulnerabilidades\GestionVulnerabilidades.resx">
       <DependentUpon>GestionVulnerabilidades.cs</DependentUpon>

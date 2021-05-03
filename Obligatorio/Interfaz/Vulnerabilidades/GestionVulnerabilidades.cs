@@ -23,5 +23,12 @@ namespace Interfaz.Vulnerabilidades
             UserControl resumenVulnerabilidades = new ResumenVulnerabilidades();
             pnlGestor.Controls.Add(resumenVulnerabilidades);
         }
+
+        private void btnModificarFuenteLocal_Click(object sender, EventArgs e)
+        {
+            pnlGestor.Controls.Clear();
+            UserControl fuenteLocalVulnerabilidades = new FuenteLocalVulnerabilidades();
+            pnlGestor.Controls.Add(fuenteLocalVulnerabilidades);
+        }
     }
 }
