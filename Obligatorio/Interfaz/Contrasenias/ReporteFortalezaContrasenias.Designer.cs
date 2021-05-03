@@ -85,6 +85,7 @@ namespace Interfaz.Contrasenias
             this.Password});
             this.dgvContraseniasPorGrupo.Location = new System.Drawing.Point(15, 34);
             this.dgvContraseniasPorGrupo.Name = "dgvContraseniasPorGrupo";
+            this.dgvContraseniasPorGrupo.ReadOnly = true;
             this.dgvContraseniasPorGrupo.Size = new System.Drawing.Size(437, 256);
             this.dgvContraseniasPorGrupo.TabIndex = 3;
             this.dgvContraseniasPorGrupo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContraseniasPorGrupo_CellClick);
@@ -118,6 +119,7 @@ namespace Interfaz.Contrasenias
             // 
             this.Password.HeaderText = "Contraseña";
             this.Password.Name = "Password";
+            this.Password.ReadOnly = true;
             // 
             // btnVolver
             // 
