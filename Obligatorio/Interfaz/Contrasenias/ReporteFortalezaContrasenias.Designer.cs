@@ -88,6 +88,7 @@ namespace Interfaz.Contrasenias
             this.dgvContraseniasPorGrupo.Size = new System.Drawing.Size(437, 256);
             this.dgvContraseniasPorGrupo.TabIndex = 3;
             this.dgvContraseniasPorGrupo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContraseniasPorGrupo_CellClick);
+            this.dgvContraseniasPorGrupo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvContraseniasPorGrupo_CellFormatting);
             // 
             // Categoria
             // 

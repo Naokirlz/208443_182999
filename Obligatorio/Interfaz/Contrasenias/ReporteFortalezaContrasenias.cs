@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Microsoft.VisualBasic;
+using Negocio;
 using Negocio.Contrasenias;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,7 @@ namespace Interfaz.Contrasenias
 
             DataGridViewButtonColumn columnaBotonGuardar = new DataGridViewButtonColumn();
             columnaBotonGuardar.Name = "columnaGuardar";
-            columnaBotonGuardar.Text = "Guardar";
+            columnaBotonGuardar.Text = "Modficar";
             int columnGuardarIndex = 6;
             if (dgvContraseniasPorGrupo.Columns["columnaGuardar"] == null)
             {
@@ -115,11 +116,7 @@ namespace Interfaz.Contrasenias
             this.dgvContraseniasPorGrupo.Rows.Clear();
             foreach (Contrasenia contrasenia in grupo.Contrasenias)
             {
-                string password = "";
-                foreach(char c in Sesion.GestorContrasenia.MostrarPassword(contrasenia.Password))
-                {
-                    password += "*";
-                }
+                string password = new String('\u25CF', Sesion.GestorContrasenia.MostrarPassword(contrasenia.Password).Length);
                 string[] fila = {
                     contrasenia.Categoria.Nombre,
                     contrasenia.Sitio,
@@ -134,17 +131,28 @@ namespace Interfaz.Contrasenias
         private void dgvContraseniasPorGrupo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Grupo grupoMostrando = Grupos[this.GrupoMostrando];
+            string password = grupoMostrando.Contrasenias[e.RowIndex].Password;
 
             if (e.ColumnIndex == 5)
             {
-                string password = grupoMostrando.Contrasenias[e.RowIndex].Password;
                 password = Sesion.GestorContrasenia.MostrarPassword(password);
                 dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value = password;
+                //dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[5].EditedFormattedValue
+                
             }else if(e.ColumnIndex == 6)
             {
-                string password = (string)dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value;
-                Contrasenia modificada = grupoMostrando.Contrasenias[e.RowIndex];
-                modificada.Password = password;
+                string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", Sesion.GestorContrasenia.MostrarPassword(password));
+                //string password = (string)dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value;
+                if (nuevoPassword == "") return;
+                Contrasenia aModificar = grupoMostrando.Contrasenias[e.RowIndex];
+                Contrasenia modificada = new Contrasenia() { 
+                    Sitio=aModificar.Sitio,
+                    Categoria = aModificar.Categoria,
+                    Id=aModificar.Id,
+                    Notas=aModificar.Notas,
+                    Usuario=aModificar.Usuario
+                }; 
+                modificada.Password = nuevoPassword;
                 try
                 {
                     Sesion.GestorContrasenia.ModificarContrasenia(modificada);
@@ -164,6 +172,32 @@ namespace Interfaz.Contrasenias
             this.dgvContrasenias.Visible = true;
             this.dgvContraseniasPorGrupo.Visible = false;
             this.btnVolver.Visible = false;
+        }
+
+        private void dgvContraseniasPorGrupo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            ////// Si esta es una fila de encabezado o una fila nueva, no haga nada
+            //if (e.RowIndex < 0 || e.RowIndex == this.dgvContraseniasPorGrupo.NewRowIndex)
+            //    return;
+
+            //// Si formatea su columna deseada, establezca el valor
+            //if (e.ColumnIndex == this.dgvContraseniasPorGrupo.Columns["columnaRevelar"].Index)
+            //{
+            //    //Puedes poner tu lógica dinámica aquí
+            //    //y usa diferentes valores basados en otros valores de celda,
+            //    //por ejemplo celda "clean"
+            //    string valor = dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value.ToString();
+
+            //    if (valor.Equals("Sucio"))
+            //        button.Text = "Lavado";
+            //    else
+            //    if (valor.Equals("Limpio"))
+            //        button.Text = "Cortado";
+
+
+                ////this.dataGridView1.Rows[e.RowIndex].Cells["clean"].Value
+                ////e.Value = "Lavado";
+            //}
         }
     }
 
