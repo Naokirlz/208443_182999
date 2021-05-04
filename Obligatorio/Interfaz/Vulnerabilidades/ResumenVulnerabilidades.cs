@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Microsoft.VisualBasic;
+using Negocio;
 using Negocio.Contrasenias;
 using Negocio.TarjetaCreditos;
 using System;
@@ -26,7 +27,14 @@ namespace Interfaz.Vulnerabilidades
             this.contraseniasVulnerables = new List<Contrasenia>();
             this.tarjetasVulnerables = new List<TarjetaCredito>();
 
-            this.chkFuenteLocal.Checked = true;
+            if(Sesion.MisFuentes.Count() == 0)
+            {
+                this.chkFuenteLocal.Visible = false;
+            }
+            else
+            {
+                this.chkFuenteLocal.Checked = true;
+            }
 
             //DataGridViewButtonColumn columnaBotonVerTarjeta = new DataGridViewButtonColumn();
             //columnaBotonVerTarjeta.Name = "columnaVer";
@@ -107,6 +115,46 @@ namespace Interfaz.Vulnerabilidades
                         this.dgvVulnerabilidadesTarjetas.Rows.Add(fila);
                     }
                 }
+            }
+        }
+
+        private void dgvVulnerabilidadesContrasenias_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.ColumnIndex == 5)
+            {
+                
+                Contrasenia aModificar = this.contraseniasVulnerables[e.RowIndex];
+
+                string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", Sesion.GestorContrasenia.MostrarPassword(aModificar.Password));
+                //string password = (string)dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value;
+                if (nuevoPassword == "") return;
+
+
+                Contrasenia modificada = new Contrasenia()
+                {
+                    Sitio = aModificar.Sitio,
+                    Categoria = aModificar.Categoria,
+                    Id = aModificar.Id,
+                    Notas = aModificar.Notas,
+                    Usuario = aModificar.Usuario
+                };
+                modificada.Password = nuevoPassword;
+                try
+                {
+                    Sesion.GestorContrasenia.ModificarContrasenia(modificada);
+                    List<IFuente> fuentesAVerificar = new List<IFuente>();
+                    if (chkFuenteLocal.Checked)
+                    {
+                        fuentesAVerificar.Add(Sesion.MisFuentes[0]);
+                    }
+                    CargarTablaContraseniasVulnerables(fuentesAVerificar);
+                }
+                catch (Exception excep)
+                {
+                    MessageBox.Show(excep.Message);
+                }
+
             }
         }
     }
