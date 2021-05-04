@@ -60,6 +60,7 @@ namespace Interfaz.Vulnerabilidades
         {
             List<Contrasenia> contraseniaVulnerableTemporal = new List<Contrasenia>();
             this.dgvVulnerabilidadesContrasenias.Rows.Clear();
+            this.contraseniasVulnerables.Clear();
             foreach (IFuente fuente in fuentes)
             {
                 contraseniaVulnerableTemporal = Sesion.ContraseniasVulnerables(fuente);
@@ -68,11 +69,13 @@ namespace Interfaz.Vulnerabilidades
                     if (!this.contraseniasVulnerables.Contains(contrasenia))
                     {
                         contraseniasVulnerables.Add(contrasenia);
+                        string password = Sesion.GestorContrasenia.MostrarPassword(contrasenia.Password);
+
                         string[] fila = {
                             contrasenia.Categoria.Nombre,
                             contrasenia.Sitio,
                             contrasenia.Usuario,
-                            contrasenia.Password,
+                            new String('\u25CF', password.Length),
                             "Encontrada vulnerable " + Convert.ToString( contrasenia.CantidadVecesEncontradaVulnerable) + " veces."
                         };
                         this.dgvVulnerabilidadesContrasenias.Rows.Add(fila);
@@ -85,6 +88,7 @@ namespace Interfaz.Vulnerabilidades
         {
             List<TarjetaCredito> tarjetasVulnerableTemporal = new List<TarjetaCredito>();
             this.dgvVulnerabilidadesTarjetas.Rows.Clear();
+            this.tarjetasVulnerables.Clear();
             foreach (IFuente fuente in fuentes)
             {
                 tarjetasVulnerableTemporal = Sesion.TarjetasCreditoVulnerables(fuente);

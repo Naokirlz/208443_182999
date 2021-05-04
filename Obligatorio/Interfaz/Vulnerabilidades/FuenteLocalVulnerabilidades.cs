@@ -29,7 +29,8 @@ namespace Interfaz.Vulnerabilidades
             bool encontre = false;
             foreach (IFuente fuente in Sesion.MisFuentes)
             {
-                if(fuente.GetType().ToString() == "FuenteLocal")
+                string tipoFuente = fuente.GetType().ToString();
+                if (tipoFuente == "Negocio.FuenteLocal")
                 {
                     this.FuenteLocal = fuente;
                     encontre = true;

@@ -65,6 +65,7 @@ namespace Negocio
             if (cantidadVecesEnFuente > 0)
             {
                 contrasenia.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
+                contrasenia.Password = this.GestorContrasenia.MostrarPassword(contrasenia.Password);
                 this.GestorContrasenia.ModificarContrasenia(contrasenia);
                 contrasenias.Add(contrasenia);
             }

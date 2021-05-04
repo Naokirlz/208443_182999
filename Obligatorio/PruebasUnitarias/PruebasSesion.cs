@@ -116,6 +116,16 @@ namespace PruebasUnitarias
            
         }
 
+        [TestMethod]
+        public void AciertaDosVecesLasContraseniasVulnerables()
+        {
+
+            List<Contrasenia> contrasenias = sesionPrueba.ContraseniasVulnerables(Fuente);
+            List<Contrasenia> contrasenias2 = sesionPrueba.ContraseniasVulnerables(Fuente);
+            Assert.AreEqual(contrasenias.Count(), contrasenias2.Count());
+
+        }
+
 
         [TestMethod]
         public void EncuentraTarjetaVulnerableEnFuente()
@@ -135,6 +145,19 @@ namespace PruebasUnitarias
             sesionPrueba.TarjetasCreditoVulnerables(Fuente);
             nuevoTarjeta = sesionPrueba.GestorTarjetaCredito.Buscar(nuevoTarjeta);
             Assert.AreEqual(nuevoTarjeta.CantidadVecesEncontradaVulnerable, 2);
+
+        }
+
+        [TestMethod]
+        public void SiApareceMuchasVecesVulnerableDevuelveUnSoloObjeto()
+        {
+
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
+
+            List<TarjetaCredito> tarjetasVulnerables = sesionPrueba.TarjetasCreditoVulnerables(Fuente);
+
+            Assert.AreEqual(1, tarjetasVulnerables.Count());
 
         }
 
