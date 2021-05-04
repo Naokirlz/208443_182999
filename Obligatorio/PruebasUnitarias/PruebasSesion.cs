@@ -138,6 +138,15 @@ namespace PruebasUnitarias
 
         }
 
+        [TestMethod]
+        public void UnaFuenteTieneId()
+        {
+            IFuente nuevaFuente = new FuenteLocal() { 
+                Id = 1
+            };
+            Assert.AreEqual(1, nuevaFuente.Id);
+        }
+
 
     }
 }

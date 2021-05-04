@@ -137,7 +137,7 @@ namespace Interfaz.Contrasenias
 
             if (e.ColumnIndex == 5)
             {
-                if(dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value == "Revelar")
+                if(dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value.ToString() == "Revelar")
                 {
                     password = Sesion.GestorContrasenia.MostrarPassword(password);
                     dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value = password;
