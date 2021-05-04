@@ -169,7 +169,8 @@ namespace Interfaz.Contrasenias
                 {
                     Sesion.GestorContrasenia.ModificarContrasenia(modificada);
                     GenerarGrupos();
-                    CargarTablaPorGrupo(grupoMostrando);
+                    Grupo grupoActualizado = Grupos[this.GrupoMostrando];
+                    CargarTablaPorGrupo(grupoActualizado);
                     CargarTabla();
                 }
                 catch(Exception excep)

@@ -367,3 +367,6 @@ Obligatorio/PruebasUnitarias/obj/Debug/PruebasUnitarias.csproj.CoreCompileInputs
 Obligatorio/PruebasUnitarias/obj/Debug/PruebasUnitarias.csprojAssemblyReference.cache
 Obligatorio/PruebasUnitarias/obj/Debug/PruebasUnitarias.dll
 Obligatorio/PruebasUnitarias/obj/Debug/PruebasUnitarias.pdb
+
+#Ignorar el astah.lock
+.asta.lock
