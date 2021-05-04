@@ -37,7 +37,7 @@ namespace Negocio.TarjetaCreditos
         {
             Buscar(modificada);
             ControlAltaYModificar(modificada);
-            Repositorio.Modificar(modificada);
+            Repositorio.ModificarTarjeta(modificada);
         }
 
 
@@ -49,21 +49,21 @@ namespace Negocio.TarjetaCreditos
 
         public List<TarjetaCredito> ObtenerTodas()
         {
-            return Repositorio.Clon();
+            return Repositorio.RetornarListaRepositorioClonada();
         }
 
-        private void ControlAltaYModificar(TarjetaCredito nuevaTarjeta)
+        private void ControlAltaYModificar(TarjetaCredito tarjeta)
         {
-            CategoriaExiste(nuevaTarjeta.Categoria);
-            ControlLargoTexto(nuevaTarjeta.Nombre, 3, 25);
-            NombreTarjetaRepetido(nuevaTarjeta);
-            ControlLargoTexto(nuevaTarjeta.Tipo, 3, 25);
-            ControlLargoTexto(nuevaTarjeta.Numero, 16, 16);
-            NumeroTarjetaRepetido(nuevaTarjeta);
-            ControlSoloNumeros(nuevaTarjeta.Numero);
-            ControlLargoTexto(nuevaTarjeta.Codigo, 3, 3);
-            ControlSoloNumeros(nuevaTarjeta.Codigo);
-            ControlLargoTexto(nuevaTarjeta.Nota, -1, 250);
+            CategoriaExiste(tarjeta.Categoria);
+            ControlLargoTexto(tarjeta.Nombre, 3, 25);
+            NombreTarjetaRepetido(tarjeta);
+            ControlLargoTexto(tarjeta.Tipo, 3, 25);
+            ControlLargoTexto(tarjeta.Numero, 16, 16);
+            NumeroTarjetaRepetido(tarjeta);
+            ControlSoloNumeros(tarjeta.Numero);
+            ControlLargoTexto(tarjeta.Codigo, 3, 3);
+            ControlSoloNumeros(tarjeta.Codigo);
+            ControlLargoTexto(tarjeta.Nota, -1, 250);
             
         }
 
@@ -117,7 +117,7 @@ namespace Negocio.TarjetaCreditos
 
         private void NumeroTarjetaRepetido(TarjetaCredito tarjeta)
         {
-            List<TarjetaCredito> tarjetas = Repositorio.Clon();
+            List<TarjetaCredito> tarjetas = Repositorio.RetornarListaRepositorioClonada();
             foreach (TarjetaCredito item in tarjetas)
             {
                 if (item.Numero.Equals(tarjeta.Numero) && tarjeta.IdTarjeta != item.IdTarjeta)
@@ -127,7 +127,7 @@ namespace Negocio.TarjetaCreditos
 
         private void NombreTarjetaRepetido(TarjetaCredito tarjeta)
         {
-            List<TarjetaCredito> tarjetas = Repositorio.Clon();
+            List<TarjetaCredito> tarjetas = Repositorio.RetornarListaRepositorioClonada();
             foreach (TarjetaCredito item in tarjetas)
             {
                 if (item.Nombre.ToLower().Equals(tarjeta.Nombre.ToLower()) 

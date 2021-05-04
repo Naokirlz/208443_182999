@@ -34,7 +34,7 @@ namespace Negocio.TarjetaCreditos
             
         }
 
-        public void Modificar(TarjetaCredito modificarTarjeta)
+        public void ModificarTarjeta(TarjetaCredito modificarTarjeta)
         {
             TarjetaCredito anterior = BuscarPorId(modificarTarjeta.IdTarjeta);
 
@@ -61,7 +61,9 @@ namespace Negocio.TarjetaCreditos
 
         }
 
-        public List<TarjetaCredito> Clon()
+
+        //ver otra solucion sin clon porque roba tiempo hacer el clon
+        public List<TarjetaCredito> RetornarListaRepositorioClonada()
         {
             List<TarjetaCredito> clonTarjetas = new List<TarjetaCredito>();
 

@@ -33,10 +33,12 @@ namespace Negocio.Contrasenias
             return unaContrasenia;
         }
 
-        public List<Contrasenia> ListarContrasenias()
+        internal void Baja(int id)
         {
-            return this.Contrasenias;
+            Contrasenias.Remove(BuscarPorId(id));
         }
+
+        
 
         internal Contrasenia ModificarContrasenia(Contrasenia aModificarContrasenia)
         {
@@ -50,6 +52,13 @@ namespace Negocio.Contrasenias
             return clonModificada;
         }
 
+
+        public List<Contrasenia> ListarContrasenias()
+        {
+            return this.Contrasenias;
+        }
+
+
         private Contrasenia BuscarPorId(int id)
         {
             foreach (Contrasenia item in Contrasenias)
@@ -57,6 +66,7 @@ namespace Negocio.Contrasenias
 
             throw new ExcepcionElementoNoExiste();
         }
+
 
         internal Contrasenia Buscar(int id)
         {
@@ -162,9 +172,5 @@ namespace Negocio.Contrasenias
             return DesEncriptar(password);
         }
 
-        internal void Baja(int id)
-        {
-            Contrasenias.Remove(BuscarPorId(id));
-        }
     }
 }

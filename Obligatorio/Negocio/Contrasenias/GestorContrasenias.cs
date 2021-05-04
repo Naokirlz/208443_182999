@@ -16,37 +16,14 @@ namespace Negocio.Contrasenias
 
         public Contrasenia Alta(Contrasenia unaContrasena)
         {
-            //if (unaContrasena.Sitio == null ||
-            //    unaContrasena.Usuario == null ||
-            //    unaContrasena.Password == null ||
-            //    unaContrasena.Categoria == null)
-            //    throw new ExcepcionFaltaAtributo();
-
-            //ValidarFecha(unaContrasena.FechaUltimaModificacion);
-            //ValidarLargoTexto(unaContrasena.Notas, 250, 0);
-            //ValidarLargoTexto(unaContrasena.Password, 25, 5);
-            //ValidarLargoTexto(unaContrasena.Usuario, 25, 5);
-            //ValidarLargoTexto(unaContrasena.Sitio, 25, 3);
-
             ValidarCampos(unaContrasena);
-
             unaContrasena.FechaUltimaModificacion = DateTime.Now;
             return Repositorio.Alta(unaContrasena);
         }
 
-        private void ValidarLargoTexto(string texto, int largoMax, int largoMin)
+        public void Baja(int id)
         {
-            if (texto.Length > largoMax || texto.Length < largoMin) throw new ExcepcionLargoTexto();
-        }
-
-        public List<Contrasenia> ListarContrasenias()
-        {
-            return Repositorio.ListarContrasenias();
-        }
-
-        private void ValidarFecha(DateTime unaFecha)
-        {
-            if (unaFecha > DateTime.Now) throw new ExcepcionFechaIncorrecta();
+            Repositorio.Baja(id);
         }
 
         public Contrasenia ModificarContrasenia(Contrasenia aModificarContrasenia)
@@ -56,24 +33,16 @@ namespace Negocio.Contrasenias
             return Repositorio.ModificarContrasenia(aModificarContrasenia);
         }
 
+
         public Contrasenia Buscar(int id)
         {
             return Repositorio.Buscar(id);
         }
 
-        private void ValidarCampos(Contrasenia aValidarContrasenia)
-        {
-            if (aValidarContrasenia.Sitio == null ||
-                aValidarContrasenia.Usuario == null ||
-                aValidarContrasenia.Password == null ||
-                aValidarContrasenia.Categoria == null)
-                throw new ExcepcionFaltaAtributo();
 
-            ValidarFecha(aValidarContrasenia.FechaUltimaModificacion);
-            ValidarLargoTexto(aValidarContrasenia.Sitio, 25, 3);
-            ValidarLargoTexto(aValidarContrasenia.Usuario, 25, 5);
-            ValidarLargoTexto(aValidarContrasenia.Password, 25, 5);
-            ValidarLargoTexto(aValidarContrasenia.Notas, 250, 0);
+        public List<Contrasenia> ListarContrasenias()
+        {
+            return Repositorio.ListarContrasenias();
         }
 
         public string VerificarFortaleza(Contrasenia nuevaContrasenia)
@@ -85,7 +54,7 @@ namespace Negocio.Contrasenias
             string password = Repositorio.MostrarPassword(nuevaContrasenia.Password);
             int largo = password.Length;
 
-            foreach(char caracter in password)
+            foreach (char caracter in password)
             {
                 if (caracter >= 65 && caracter <= 90) mayusculas = true;
                 else if (caracter >= 97 && caracter <= 122) minusculas = true;
@@ -107,7 +76,7 @@ namespace Negocio.Contrasenias
         public string GenerarPassword(int largo, bool mayuscula, bool minuscula, bool numero, bool especial)
         {
             string password = "";
-            
+
             //documentacion de Random
             //El valor de inicialización predeterminado se deriva del reloj del sistema y tiene una resolución finita. Como resultado, diferentes Random objetos que se crean en estrecha sucesión mediante una llamada al constructor predeterminado tendrán valores de inicialización predeterminados idénticos y, por consiguiente, generarán conjuntos idénticos de números aleatorios.
             var random = new Random();
@@ -167,6 +136,41 @@ namespace Negocio.Contrasenias
             return password;
         }
 
+        public string MostrarPassword(string password)
+        {
+            return Repositorio.MostrarPassword(password);
+        }
+
+
+        private void ValidarCampos(Contrasenia aValidarContrasenia)
+        {
+            if (aValidarContrasenia.Sitio == null ||
+                aValidarContrasenia.Usuario == null ||
+                aValidarContrasenia.Password == null ||
+                aValidarContrasenia.Categoria == null)
+                throw new ExcepcionFaltaAtributo();
+
+            ValidarFecha(aValidarContrasenia.FechaUltimaModificacion);
+            ValidarLargoTexto(aValidarContrasenia.Sitio, 25, 3);
+            ValidarLargoTexto(aValidarContrasenia.Usuario, 25, 5);
+            ValidarLargoTexto(aValidarContrasenia.Password, 25, 5);
+            ValidarLargoTexto(aValidarContrasenia.Notas, 250, 0);
+        }
+
+
+        private void ValidarLargoTexto(string texto, int largoMax, int largoMin)
+        {
+            if (texto.Length > largoMax || texto.Length < largoMin) throw new ExcepcionLargoTexto();
+        }
+       
+        private void ValidarFecha(DateTime unaFecha)
+        {
+            if (unaFecha > DateTime.Now) throw new ExcepcionFechaIncorrecta();
+        }
+
+        
+        
+
         private string GenerarCaracter(bool mayuscula, bool minuscula, bool numero, bool especial, Random random)
         {
             string caracter = "";
@@ -192,14 +196,8 @@ namespace Negocio.Contrasenias
             return caracter;
         }
 
-        public string MostrarPassword(string password)
-        {
-            return Repositorio.MostrarPassword(password);
-        }
+        
 
-        public void Baja(int id)
-        {
-            Repositorio.Baja(id);
-        }
+        
     }
 }
