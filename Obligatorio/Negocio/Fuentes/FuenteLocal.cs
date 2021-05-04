@@ -9,7 +9,6 @@ namespace Negocio
     public class FuenteLocal : IFuente
     {
         public List<string> ContraseniasYTarjetasVulnerables { get; set; }
-        public int Id { get; set; }
         public FuenteLocal()
         {
             ContraseniasYTarjetasVulnerables = new List<string>();

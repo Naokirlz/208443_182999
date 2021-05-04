@@ -30,6 +30,11 @@ namespace Interfaz.Vulnerabilidades
         private void InitializeComponent()
         {
             this.dgvVulnerabilidadesTarjetas = new System.Windows.Forms.DataGridView();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tarjeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VulnerabilidadTarjeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFuentes = new System.Windows.Forms.Label();
             this.dgvVulnerabilidadesContrasenias = new System.Windows.Forms.DataGridView();
             this.CategoriaContrasenia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,11 +44,6 @@ namespace Interfaz.Vulnerabilidades
             this.Vulnerabilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.chkFuenteLocal = new System.Windows.Forms.CheckBox();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tarjeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VulnerabilidadTarjeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVulnerabilidadesTarjetas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVulnerabilidadesContrasenias)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +65,36 @@ namespace Interfaz.Vulnerabilidades
             this.dgvVulnerabilidadesTarjetas.ReadOnly = true;
             this.dgvVulnerabilidadesTarjetas.Size = new System.Drawing.Size(437, 110);
             this.dgvVulnerabilidadesTarjetas.TabIndex = 1;
+            // 
+            // Categoria
+            // 
+            this.Categoria.HeaderText = "Categoría";
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            // 
+            // Tarjeta
+            // 
+            this.Tarjeta.HeaderText = "Tarjeta";
+            this.Tarjeta.Name = "Tarjeta";
+            this.Tarjeta.ReadOnly = true;
+            // 
+            // VulnerabilidadTarjeta
+            // 
+            this.VulnerabilidadTarjeta.HeaderText = "Vulnerabilidad";
+            this.VulnerabilidadTarjeta.Name = "VulnerabilidadTarjeta";
+            this.VulnerabilidadTarjeta.ReadOnly = true;
             // 
             // lblFuentes
             // 
@@ -142,36 +172,6 @@ namespace Interfaz.Vulnerabilidades
             this.chkFuenteLocal.TabIndex = 6;
             this.chkFuenteLocal.Text = "Fuente Local";
             this.chkFuenteLocal.UseVisualStyleBackColor = true;
-            // 
-            // Categoria
-            // 
-            this.Categoria.HeaderText = "Categoría";
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Tipo
-            // 
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            // 
-            // Tarjeta
-            // 
-            this.Tarjeta.HeaderText = "Tarjeta";
-            this.Tarjeta.Name = "Tarjeta";
-            this.Tarjeta.ReadOnly = true;
-            // 
-            // VulnerabilidadTarjeta
-            // 
-            this.VulnerabilidadTarjeta.HeaderText = "Vulnerabilidad";
-            this.VulnerabilidadTarjeta.Name = "VulnerabilidadTarjeta";
-            this.VulnerabilidadTarjeta.ReadOnly = true;
             // 
             // ResumenVulnerabilidades
             // 
