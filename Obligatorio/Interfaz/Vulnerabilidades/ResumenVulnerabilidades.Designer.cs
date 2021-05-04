@@ -30,12 +30,6 @@ namespace Interfaz.Vulnerabilidades
         private void InitializeComponent()
         {
             this.dgvVulnerabilidadesTarjetas = new System.Windows.Forms.DataGridView();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tarjeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VulnerabilidadTarjeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFuentes = new System.Windows.Forms.Label();
             this.dgvVulnerabilidadesContrasenias = new System.Windows.Forms.DataGridView();
             this.CategoriaContrasenia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +39,11 @@ namespace Interfaz.Vulnerabilidades
             this.Vulnerabilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.chkFuenteLocal = new System.Windows.Forms.CheckBox();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tarjeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VulnerabilidadTarjeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVulnerabilidadesTarjetas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVulnerabilidadesContrasenias)).BeginInit();
             this.SuspendLayout();
@@ -60,49 +59,12 @@ namespace Interfaz.Vulnerabilidades
             this.Nombre,
             this.Tipo,
             this.Tarjeta,
-            this.VulnerabilidadTarjeta,
-            this.Column1});
+            this.VulnerabilidadTarjeta});
             this.dgvVulnerabilidadesTarjetas.Location = new System.Drawing.Point(3, 16);
             this.dgvVulnerabilidadesTarjetas.Name = "dgvVulnerabilidadesTarjetas";
             this.dgvVulnerabilidadesTarjetas.ReadOnly = true;
             this.dgvVulnerabilidadesTarjetas.Size = new System.Drawing.Size(437, 110);
             this.dgvVulnerabilidadesTarjetas.TabIndex = 1;
-            // 
-            // Categoria
-            // 
-            this.Categoria.HeaderText = "Categoría";
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Tipo
-            // 
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            // 
-            // Tarjeta
-            // 
-            this.Tarjeta.HeaderText = "Tarjeta";
-            this.Tarjeta.Name = "Tarjeta";
-            this.Tarjeta.ReadOnly = true;
-            // 
-            // VulnerabilidadTarjeta
-            // 
-            this.VulnerabilidadTarjeta.HeaderText = "Vulnerabilidad";
-            this.VulnerabilidadTarjeta.Name = "VulnerabilidadTarjeta";
-            this.VulnerabilidadTarjeta.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
             // 
             // lblFuentes
             // 
@@ -181,6 +143,36 @@ namespace Interfaz.Vulnerabilidades
             this.chkFuenteLocal.Text = "Fuente Local";
             this.chkFuenteLocal.UseVisualStyleBackColor = true;
             // 
+            // Categoria
+            // 
+            this.Categoria.HeaderText = "Categoría";
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            // 
+            // Tarjeta
+            // 
+            this.Tarjeta.HeaderText = "Tarjeta";
+            this.Tarjeta.Name = "Tarjeta";
+            this.Tarjeta.ReadOnly = true;
+            // 
+            // VulnerabilidadTarjeta
+            // 
+            this.VulnerabilidadTarjeta.HeaderText = "Vulnerabilidad";
+            this.VulnerabilidadTarjeta.Name = "VulnerabilidadTarjeta";
+            this.VulnerabilidadTarjeta.ReadOnly = true;
+            // 
             // ResumenVulnerabilidades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,12 +196,6 @@ namespace Interfaz.Vulnerabilidades
         private System.Windows.Forms.DataGridView dgvVulnerabilidadesTarjetas;
         private System.Windows.Forms.Label lblFuentes;
         private System.Windows.Forms.DataGridView dgvVulnerabilidadesContrasenias;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tarjeta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VulnerabilidadTarjeta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn CategoriaContrasenia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sitio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
@@ -217,5 +203,10 @@ namespace Interfaz.Vulnerabilidades
         private System.Windows.Forms.DataGridViewTextBoxColumn Vulnerabilidad;
         private System.Windows.Forms.Button btnRefrescar;
         private System.Windows.Forms.CheckBox chkFuenteLocal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tarjeta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VulnerabilidadTarjeta;
     }
 }

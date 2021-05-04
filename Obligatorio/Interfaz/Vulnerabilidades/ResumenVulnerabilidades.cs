@@ -1,5 +1,6 @@
 ﻿using Negocio;
 using Negocio.Contrasenias;
+using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,25 +17,31 @@ namespace Interfaz.Vulnerabilidades
     {
         private Sesion Sesion = Sesion.Singleton;
         private List<Contrasenia> contraseniasVulnerables;
+        private List<TarjetaCredito> tarjetasVulnerables;
 
         public ResumenVulnerabilidades()
         {
             InitializeComponent();
 
             this.contraseniasVulnerables = new List<Contrasenia>();
+            this.tarjetasVulnerables = new List<TarjetaCredito>();
 
-            DataGridViewButtonColumn columnaBotonVerTarjeta = new DataGridViewButtonColumn();
-            columnaBotonVerTarjeta.Name = "columnaVer";
-            columnaBotonVerTarjeta.Text = "Ver";
-            this.dgvVulnerabilidadesTarjetas.Columns.Add(columnaBotonVerTarjeta);
-            columnaBotonVerTarjeta.UseColumnTextForButtonValue = true;
+            this.chkFuenteLocal.Checked = true;
 
-            DataGridViewButtonColumn columnaBotonVerContrasenia = new DataGridViewButtonColumn();
-            columnaBotonVerContrasenia.Name = "columnaVer";
-            columnaBotonVerContrasenia.Text = "Ver";
-            this.dgvVulnerabilidadesContrasenias.Columns.Add(columnaBotonVerContrasenia);
-            columnaBotonVerContrasenia.UseColumnTextForButtonValue = true;
+            //DataGridViewButtonColumn columnaBotonVerTarjeta = new DataGridViewButtonColumn();
+            //columnaBotonVerTarjeta.Name = "columnaVer";
+            //columnaBotonVerTarjeta.Text = "Ver";
+            //this.dgvVulnerabilidadesTarjetas.Columns.Add(columnaBotonVerTarjeta);
+            //columnaBotonVerTarjeta.UseColumnTextForButtonValue = true;
 
+            DataGridViewButtonColumn columnaBotonModificarContrasenia = new DataGridViewButtonColumn();
+            columnaBotonModificarContrasenia.Name = "columnaModificar";
+            columnaBotonModificarContrasenia.Text = "Modificar";
+            this.dgvVulnerabilidadesContrasenias.Columns.Add(columnaBotonModificarContrasenia);
+            columnaBotonModificarContrasenia.UseColumnTextForButtonValue = true;
+
+            CargarTablaContraseniasVulnerables(Sesion.MisFuentes);
+            CargarTablaTarjetasVulnerables(Sesion.MisFuentes);
         }
 
         private void btnRefrescar_Click(object sender, EventArgs e)
@@ -45,35 +52,15 @@ namespace Interfaz.Vulnerabilidades
                 fuentesAVerificar.Add(Sesion.MisFuentes[0]);
             }
 
-            List<Contrasenia> contraseniaVulnerableTemporal = new List<Contrasenia>();
-            this.dgvVulnerabilidadesContrasenias.Rows.Clear();
-            foreach(IFuente fuente in fuentesAVerificar)
-            {
-                contraseniaVulnerableTemporal = Sesion.ContraseniasVulnerables(fuente);
-                foreach(Contrasenia contrasenia in contraseniaVulnerableTemporal)
-                {
-                    if (!this.contraseniasVulnerables.Contains(contrasenia))
-                    {
-                        contraseniasVulnerables.Add(contrasenia);
-                        string[] fila = {
-                            contrasenia.Categoria.Nombre,
-                            contrasenia.Sitio,
-                            contrasenia.Usuario,
-                            contrasenia.Password,
-                            "Encontrada vulnerable " + Convert.ToString( contrasenia.CantidadVecesEncontradaVulnerable) + " veces."
-                        };
-                        this.dgvVulnerabilidadesContrasenias.Rows.Add(fila);
-                    }
-                }
-            }
-            //CargarTablaContraseniasVulnerables();
+            CargarTablaContraseniasVulnerables(fuentesAVerificar);
+            CargarTablaTarjetasVulnerables(fuentesAVerificar);
         }
 
-        private void CargarTablaContraseniasVulnerables()
+        private void CargarTablaContraseniasVulnerables(List<IFuente> fuentes)
         {
             List<Contrasenia> contraseniaVulnerableTemporal = new List<Contrasenia>();
             this.dgvVulnerabilidadesContrasenias.Rows.Clear();
-            foreach (IFuente fuente in Sesion.MisFuentes)
+            foreach (IFuente fuente in fuentes)
             {
                 contraseniaVulnerableTemporal = Sesion.ContraseniasVulnerables(fuente);
                 foreach (Contrasenia contrasenia in contraseniaVulnerableTemporal)
@@ -89,6 +76,31 @@ namespace Interfaz.Vulnerabilidades
                             "Encontrada vulnerable " + Convert.ToString( contrasenia.CantidadVecesEncontradaVulnerable) + " veces."
                         };
                         this.dgvVulnerabilidadesContrasenias.Rows.Add(fila);
+                    }
+                }
+            }
+        }
+
+        private void CargarTablaTarjetasVulnerables(List<IFuente> fuentes)
+        {
+            List<TarjetaCredito> tarjetasVulnerableTemporal = new List<TarjetaCredito>();
+            this.dgvVulnerabilidadesTarjetas.Rows.Clear();
+            foreach (IFuente fuente in fuentes)
+            {
+                tarjetasVulnerableTemporal = Sesion.TarjetasCreditoVulnerables(fuente);
+                foreach (TarjetaCredito tarjeta in tarjetasVulnerableTemporal)
+                {
+                    if (!this.tarjetasVulnerables.Contains(tarjeta))
+                    {
+                        tarjetasVulnerables.Add(tarjeta);
+                        string[] fila = {
+                            tarjeta.Categoria.Nombre,
+                            tarjeta.Nombre,
+                            tarjeta.Tipo,
+                            tarjeta.Numero.ToString(),
+                            "Encontrada vulnerable " + Convert.ToString( tarjeta.CantidadVecesEncontradaVulnerable) + " veces."
+                        };
+                        this.dgvVulnerabilidadesTarjetas.Rows.Add(fila);
                     }
                 }
             }
