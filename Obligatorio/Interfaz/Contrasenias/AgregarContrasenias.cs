@@ -26,7 +26,7 @@ namespace Interfaz.Contrasenias
         {
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
             BindingSource bSource = new BindingSource();
-            bSource.DataSource = this.Sesion.GestorCategoria.ListarCategorias();
+            bSource.DataSource = this.Sesion.GestorCategoria.ObtenerTodasLasCategorias();
             this.cmbCategoria.DataSource = bSource;
         }
 

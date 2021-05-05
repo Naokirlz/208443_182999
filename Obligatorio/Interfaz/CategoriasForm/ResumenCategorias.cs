@@ -19,7 +19,7 @@ namespace Interfaz.CategoriasForm
         {
             Sesion Sesion = Sesion.Singleton;
             InitializeComponent();
-            List<Categoria> categorias = Sesion.GestorCategoria.ListarCategorias();
+            IEnumerable<Categoria> categorias = Sesion.GestorCategoria.ObtenerTodasLasCategorias();
             foreach (Categoria categoria in categorias)
             {
                 string[] fila = {

@@ -12,19 +12,17 @@ namespace Negocio.Categorias
         
         public int Id { get; set; }
         public string Nombre { get; set; }
-                
-        public Categoria(string unNombre)
+        
+        public Categoria(string nombre)
         {
-            this.Nombre = unNombre;
+            this.Nombre = nombre;
             
         }
-
-        public Categoria(string unNombre, int unId) :this(unNombre)
+        public Categoria(string nombre, int id) :this(nombre)
         {
-            this.Id = unId;
+            this.Id = id;
         }
-
-
+        
         public override string ToString()
         {
             return this.Nombre;

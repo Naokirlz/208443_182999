@@ -29,7 +29,7 @@ namespace Interfaz
         {
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
             BindingSource bSource = new BindingSource();
-            bSource.DataSource = this.sis.GestorCategoria.ListarCategorias();
+            bSource.DataSource = this.sis.GestorCategoria.ObtenerTodasLasCategorias();
             this.cmbCategoria.DataSource = bSource;
         }
 

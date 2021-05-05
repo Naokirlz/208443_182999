@@ -9,9 +9,9 @@ namespace Negocio.Categorias
 {
     public class RepositorioCategorias
     {
-        private List<Categoria> Categorias { get; set; }
         private static int autonumerado = 1;
-
+        private List<Categoria> Categorias { get; set; }
+        
         public RepositorioCategorias()
         {
             this.Categorias = new List<Categoria>();
@@ -28,22 +28,21 @@ namespace Negocio.Categorias
 
         internal void Baja(int id)
         {
-            Categorias.Remove(BuscarCategoriaPorId(id));
-           
+            Categoria eliminar = BuscarCategoriaPorId(id);
+            Categorias.Remove(eliminar);
         }
 
         public void Modificacion(int id, string nuevoNombre)
         {
             Categoria Modificar = BuscarCategoriaPorId(id);
             Modificar.Nombre = nuevoNombre;
-            
-        }
+         }
 
-        public bool ExisteCategoria(string unNombre)
+        public bool ExisteCategoria(string nombre)
         {
             foreach (var categoria in this.Categorias)
             {
-                if (categoria.Nombre.Equals(unNombre)) return true;
+                if (categoria.Nombre.Equals(nombre)) return true;
             }
             return false;
         }
@@ -52,23 +51,30 @@ namespace Negocio.Categorias
         {
             foreach (Categoria categoria in this.Categorias)
             {
-                if (categoria.Id == id) { return categoria; }
+                if (categoria.Id == id)
+                { 
+                    return categoria; 
+                }
             }
-            throw new ExcepcionElementoNoExiste();
+            throw new ExcepcionElementoNoExiste("Error: Categoría No Existe !!!");
         }
 
-        public List<Categoria> ListarCategorias()
+        //public List<Categoria> ObtenerTodasLasCategorias()
+        //{
+
+        //    List<Categoria> categorias = new List<Categoria>();
+        //    foreach (Categoria categoria in Categorias)
+        //    {
+        //        Categoria clonCat = new Categoria(categoria.Nombre, categoria.Id);
+        //        categorias.Add(clonCat);
+        //    }
+        //    return categorias;
+        //}
+
+        public IEnumerable<Categoria> ObtenerTodasLasCategorias()
         {
-            List<Categoria> clon = new List<Categoria>();
-            foreach (Categoria cat in Categorias)
-            {
-                Categoria clonCat = new Categoria(cat.Nombre, cat.Id);
-                clon.Add(clonCat);
-            }
-            return clon;
+            return this.Categorias;
         }
 
-
-       
     }
 }

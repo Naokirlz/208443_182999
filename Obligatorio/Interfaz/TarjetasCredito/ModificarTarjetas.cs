@@ -32,7 +32,7 @@ namespace Interfaz.TarjetasCredito
 
             BindingList<Categoria> bindinglist2 = new BindingList<Categoria>();
             BindingSource bSource2 = new BindingSource();
-            bSource2.DataSource = this.Sesion.GestorCategoria.ListarCategorias();
+            bSource2.DataSource = this.Sesion.GestorCategoria.ObtenerTodasLasCategorias();
             this.cmbCategoria.DataSource = bSource2;
 
             CargarDatosTarjeta();

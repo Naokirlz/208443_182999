@@ -20,11 +20,11 @@ namespace Negocio.Categorias
         {
             ValidarCategoria(nombre);
 
-            if (ExisteNombreCategoria(nombre)) { 
-            
+            if (ExisteNombreCategoria(nombre)) 
+            { 
                 throw new ExcepcionElementoYaExiste(); 
-            
             }
+            
             Categoria nueva = Repositorio.Alta(nombre);
             return nueva;
         }
@@ -35,12 +35,15 @@ namespace Negocio.Categorias
             Repositorio.Baja(id);
         }
 
-        public void Modificacion(int id, string nuevoNombre)
+        public void Modificacion(int id, string nombreNuevo)
         {
-            ValidarCategoria(nuevoNombre);
-            if (ExisteNombreCategoria(nuevoNombre)) throw new ExcepcionElementoYaExiste();
-            Repositorio.Modificacion(id, nuevoNombre);
-          
+            ValidarCategoria(nombreNuevo);
+
+            if (ExisteNombreCategoria(nombreNuevo)) 
+            {
+                throw new ExcepcionElementoYaExiste();
+            } 
+            Repositorio.Modificacion(id, nombreNuevo);
         }
 
         public Categoria BuscarCategoriaPorId(int id)
@@ -48,17 +51,17 @@ namespace Negocio.Categorias
             return Repositorio.BuscarCategoriaPorId(id);
         }
 
-        private bool ExisteNombreCategoria(string unNombre)
+        public IEnumerable<Categoria> ObtenerTodasLasCategorias()
         {
-           return Repositorio.ExisteCategoria(unNombre);
+            return Repositorio.ObtenerTodasLasCategorias();
         }
 
-        public List<Categoria> ListarCategorias()
+        private bool ExisteNombreCategoria(string nombre)
         {
-            return Repositorio.ListarCategorias();
+           return Repositorio.ExisteCategoria(nombre);
         }
-
-        private static void ValidarCategoria(string unNombre)
+         
+        private void ValidarCategoria(string unNombre)
         {
             if (unNombre.Length < 3 || unNombre.Length > 15)
             {
@@ -66,7 +69,6 @@ namespace Negocio.Categorias
             }
 
         }
-
 
     }
 }

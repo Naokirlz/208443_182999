@@ -128,7 +128,7 @@ namespace PruebasUnitarias
             bool categoriaDif = false;
 
 
-            List<Categoria> Lista = Gestor2.ListarCategorias();
+            IEnumerable<Categoria> Lista = Gestor2.ObtenerTodasLasCategorias();
 
             foreach (Categoria categoria in Lista)
             {
@@ -150,7 +150,7 @@ namespace PruebasUnitarias
             GestorCategorias Gestor2 = new GestorCategorias();
             Categoria categoria1 = Gestor2.Alta("Categoria1");
 
-            List<Categoria> Lista = Gestor2.ListarCategorias();
+            IEnumerable<Categoria> Lista = Gestor2.ObtenerTodasLasCategorias();
 
             Categoria modificadaDeLista = Lista[0];
             modificadaDeLista.Nombre = "aaaaaaaa";
@@ -178,7 +178,7 @@ namespace PruebasUnitarias
             Categoria categoria1 = Gestor4.Alta("Categoria1");
             int id = categoria1.Id;
             Gestor4.Baja(id);
-            List<Categoria> lista = Gestor4.ListarCategorias();
+            IEnumerable<Categoria> lista = Gestor4.ObtenerTodasLasCategorias();
             bool esta = false;
             foreach (Categoria cat in lista)
             {
