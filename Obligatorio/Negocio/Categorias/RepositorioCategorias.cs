@@ -59,17 +59,6 @@ namespace Negocio.Categorias
             throw new ExcepcionElementoNoExiste("Error: Categoría No Existe !!!");
         }
 
-        //public List<Categoria> ObtenerTodasLasCategorias()
-        //{
-
-        //    List<Categoria> categorias = new List<Categoria>();
-        //    foreach (Categoria categoria in Categorias)
-        //    {
-        //        Categoria clonCat = new Categoria(categoria.Nombre, categoria.Id);
-        //        categorias.Add(clonCat);
-        //    }
-        //    return categorias;
-        //}
 
         public IEnumerable<Categoria> ObtenerTodasLasCategorias()
         {
