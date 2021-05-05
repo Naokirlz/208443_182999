@@ -21,6 +21,11 @@ namespace Negocio.Contrasenias
         public int CantidadVecesEncontradaVulnerable { get; set; }
        
 
+        public Contrasenia()
+        {
+
+        }
+
         public override string ToString()
         {
             return this.Sitio + " | " + this.Usuario;

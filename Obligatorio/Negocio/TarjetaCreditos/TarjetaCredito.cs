@@ -9,7 +9,6 @@ namespace Negocio.TarjetaCreditos
 {
     public class TarjetaCredito: IComparable<TarjetaCredito>
     {
-       
         public int IdTarjeta { get; set; }
         public Categoria Categoria { get; set; }
         public string Nombre { get; set; }
@@ -21,6 +20,12 @@ namespace Negocio.TarjetaCreditos
         public string Nota { get; set; }
 
         public int CantidadVecesEncontradaVulnerable { get; set; }
+
+        public TarjetaCredito()
+        {
+
+        }
+
 
         public int CompareTo(TarjetaCredito otraTarjeta)
         {
