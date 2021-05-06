@@ -25,6 +25,8 @@ namespace PruebasUnitarias
         public void InicializarPruebas()
         {
             sesionPrueba = Sesion.Singleton;
+            sesionPrueba.GuardarPrimerPassword("secreto");
+            sesionPrueba.Login("secreto");
             Fuente = new FuenteLocal();
 
             this.nuevoTarjeta = new TarjetaCredito()
@@ -78,6 +80,21 @@ namespace PruebasUnitarias
         public void NoSePuedeIniciarSesionSinIngresarElPrimerPassword()
         {
             sesionPrueba.Login("");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarAltaCategoriaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.AltaCategoria("cat uno");
+        }
+
+        [TestMethod]
+        public void SePuedeEjecutarAltaCategoriaSiSeEstaLogueado()
+        {
+            sesionPrueba.AltaCategoria("cat uno dos");
+            Assert.AreEqual(1, sesionPrueba.ObtenerTodasLasCategorias().Count()) ;
         }
 
         [TestMethod]

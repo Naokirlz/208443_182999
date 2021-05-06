@@ -15,6 +15,7 @@ namespace Negocio
         public GestorTarjetaCredito GestorTarjetaCredito { get; set; }
         public List<IFuente> MisFuentes { get; set; }
         public string PasswordMaestro { get; set; }
+        private bool Logueado { get; set; }
        
         private Sesion()
         {
@@ -23,6 +24,7 @@ namespace Negocio
             GestorTarjetaCredito = new GestorTarjetaCredito();
             MisFuentes = new List<IFuente>();
             PasswordMaestro = "";
+            this.Logueado = false;
         }
 
         public static Sesion Singleton
@@ -38,10 +40,12 @@ namespace Negocio
         public void Login(string password)
         {
             if (password != PasswordMaestro || PasswordMaestro == "") throw new ExcepcionAccesoDenegado();
+            this.Logueado = true;
         }
 
         public List<Contrasenia> ContraseniasVulnerables(IFuente fuente)
         {
+            
             List<Contrasenia> contrasenias = new List<Contrasenia>();
             
             foreach (Contrasenia contrasenia in this.GestorContrasenia.ListarContrasenias())
@@ -80,6 +84,22 @@ namespace Negocio
             primerPassword = primerPassword.Trim();
             ControlLargoTexto(primerPassword, 5, 25);
             this.PasswordMaestro = primerPassword;
+        }
+
+        public void AltaCategoria(string v)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            this.GestorCategoria.Alta(v);
+        }
+
+        public IEnumerable<Categoria> ObtenerTodasLasCategorias()
+        {
+            return this.GestorCategoria.ObtenerTodasLasCategorias();
+        }
+
+        public void LogOut()
+        {
+            this.Logueado = false;
         }
 
         private int BuscarContraseniaEnFuente(Contrasenia item, IFuente fuente)
