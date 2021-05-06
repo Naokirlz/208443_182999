@@ -9,7 +9,7 @@ using Negocio.Categorias;
 
 namespace Negocio.Contrasenias
 {
-    public class Contrasenia
+    public class Contrasenia: IComparable<Contrasenia>
     {
         public int Id { get; set; }
         public string Sitio { get; set; }
@@ -25,6 +25,14 @@ namespace Negocio.Contrasenias
         {
 
         }
+
+        public int CompareTo(Contrasenia otraContrasenia)
+        {
+            return this.Categoria.Nombre.CompareTo(otraContrasenia.Categoria.Nombre);
+
+        }
+
+
 
         public override string ToString()
         {
