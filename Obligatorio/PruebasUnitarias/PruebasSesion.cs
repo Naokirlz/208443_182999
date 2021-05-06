@@ -2,6 +2,7 @@
 using Negocio;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
+using Negocio.Excepciones;
 using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
@@ -45,8 +46,7 @@ namespace PruebasUnitarias
                 Password = "dalevo111!!!",
                 Categoria = new Categoria("Fake"),
                 Notas = "Sin"
-
-        };
+            };
 
             sesionPrueba.GestorTarjetaCredito.Alta(nuevoTarjeta);
             sesionPrueba.GestorContrasenia.Alta(pruebaContrasenia);
@@ -62,26 +62,42 @@ namespace PruebasUnitarias
             sesionPrueba.GestorContrasenia = new GestorContrasenias();
             sesionPrueba.GestorTarjetaCredito = new GestorTarjetaCredito();
             sesionPrueba.MisFuentes = new List<IFuente>();
-           
-            
-    }
+        }
 
         [TestMethod]
         public void InicioSesionCorrecto()
         {
+            sesionPrueba.GuardarPrimerPassword("secreto");
             Assert.IsTrue(sesionPrueba.Login("secreto"));
-
         }
 
         [TestMethod]
         public void LaSesionGuardaLaPrimerContraseniaQueSeIngresa()
         {
             string primerPassword = "nuevoPasswrod";
-            Sesion.GuardarPrimerPassword(primerPassword);
+            sesionPrueba.GuardarPrimerPassword(primerPassword);
             Assert.IsTrue(sesionPrueba.Login("nuevoPasswrod"));
-
         }
 
+        [TestMethod]
+        public void NoSePuedeIniciarSesionSinIngresarElPrimerPassword()
+        {
+            Assert.IsFalse(sesionPrueba.Login(""));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeGuardarElPasswordMaestroMenorA5Caracteres()
+        {
+            sesionPrueba.GuardarPrimerPassword("aaaa");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeGuardarElPasswordMaestroMayorA25Caracteres()
+        {
+            sesionPrueba.GuardarPrimerPassword("12345123451234512345123451");
+        }
 
         [TestMethod]
         public void AgregarContraseniaOTarjetaVulnerableAFuente()
@@ -89,7 +105,6 @@ namespace PruebasUnitarias
             sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("admin123");
             int cantidadVecesEncontrada = sesionPrueba.MisFuentes[0].BuscarPasswordOContraseniaEnFuente("admin123");
             Assert.AreEqual(cantidadVecesEncontrada, 1);
-
         }
 
         [TestMethod]

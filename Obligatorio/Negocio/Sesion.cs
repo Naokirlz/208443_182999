@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
+using Negocio.Excepciones;
 using Negocio.TarjetaCreditos;
 
 namespace Negocio
@@ -13,6 +14,7 @@ namespace Negocio
         public GestorContrasenias GestorContrasenia { get; set; }
         public GestorTarjetaCredito GestorTarjetaCredito { get; set; }
         public List<IFuente> MisFuentes { get; set; }
+        public string PasswordMaestro { get; set; }
        
         private Sesion()
         {
@@ -20,6 +22,7 @@ namespace Negocio
             GestorContrasenia = new GestorContrasenias();
             GestorTarjetaCredito = new GestorTarjetaCredito();
             MisFuentes = new List<IFuente>();
+            PasswordMaestro = "";
         }
 
         public static Sesion Singleton
@@ -34,7 +37,7 @@ namespace Negocio
 
         public bool Login(string password)
         {
-            return password == "secreto";
+            return password == PasswordMaestro && PasswordMaestro != "";
         }
 
         public List<Contrasenia> ContraseniasVulnerables(IFuente fuente)
@@ -72,9 +75,10 @@ namespace Negocio
 
         }
 
-        public static void GuardarPrimerPassword(string primerPassword)
+        public void GuardarPrimerPassword(string primerPassword)
         {
-            throw new NotImplementedException();
+            ControlLargoTexto(primerPassword, 5, 25);
+            this.PasswordMaestro = primerPassword;
         }
 
         private int BuscarContraseniaEnFuente(Contrasenia item, IFuente fuente)
@@ -102,6 +106,15 @@ namespace Negocio
             return fuente.BuscarPasswordOContraseniaEnFuente(item.Numero);
         }
 
+        private void ControlLargoTexto(string texto, int minimo, int maximo)
+        {
+
+            if (texto.Length < minimo || texto.Length > maximo)
+            {
+                throw new ExcepcionLargoTexto("El largo de texto debe ser entre " + minimo.ToString() + " y " + maximo.ToString() + " caracteres.");
+            }
+
+        }
 
     }
 }
