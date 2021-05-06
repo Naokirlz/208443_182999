@@ -100,6 +100,13 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void SeDebeTrimarElPasswordMaestro()
+        {
+            sesionPrueba.GuardarPrimerPassword("aaaa       ");
+        }
+
+        [TestMethod]
         public void AgregarContraseniaOTarjetaVulnerableAFuente()
         {
             sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("admin123");

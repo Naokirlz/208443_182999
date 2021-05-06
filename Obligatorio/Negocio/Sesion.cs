@@ -77,6 +77,7 @@ namespace Negocio
 
         public void GuardarPrimerPassword(string primerPassword)
         {
+            primerPassword = primerPassword.Trim();
             ControlLargoTexto(primerPassword, 5, 25);
             this.PasswordMaestro = primerPassword;
         }
