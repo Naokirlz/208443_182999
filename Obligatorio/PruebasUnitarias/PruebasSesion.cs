@@ -73,6 +73,15 @@ namespace PruebasUnitarias
 
         }
 
+        [TestMethod]
+        public void LaSesionGuardaLaPrimerContraseniaQueSeIngresa()
+        {
+            string primerPassword = "nuevoPasswrod";
+            Sesion.GuardarPrimerPassword(primerPassword);
+            Assert.IsTrue(sesionPrueba.Login("nuevoPasswrod"));
+
+        }
+
 
         [TestMethod]
         public void AgregarContraseniaOTarjetaVulnerableAFuente()

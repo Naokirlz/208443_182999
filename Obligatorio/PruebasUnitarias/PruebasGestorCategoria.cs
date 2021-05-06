@@ -151,13 +151,16 @@ namespace PruebasUnitarias
             Categoria categoria1 = Gestor2.Alta("Categoria1");
 
             IEnumerable<Categoria> Lista = Gestor2.ObtenerTodasLasCategorias();
+            int id = 0;
 
-            Categoria modificadaDeLista = Lista[0];
-            modificadaDeLista.Nombre = "aaaaaaaa";
+            foreach (Categoria cat in Lista)
+            {
+                cat.Nombre = "aaaaaaaa";
+                id = cat.Id;
+            }
 
-            Categoria posCero = Gestor2.BuscarCategoriaPorId(modificadaDeLista.Id);
+            Categoria posCero = Gestor2.BuscarCategoriaPorId(id);
             Assert.AreNotEqual("aaaaaaaa", posCero.Nombre);
-            Assert.AreEqual("Categoria1", posCero.Nombre);
         }
 
         [TestMethod]

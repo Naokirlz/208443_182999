@@ -72,6 +72,11 @@ namespace Negocio
 
         }
 
+        public static void GuardarPrimerPassword(string primerPassword)
+        {
+            throw new NotImplementedException();
+        }
+
         private int BuscarContraseniaEnFuente(Contrasenia item, IFuente fuente)
         {
             string desencriptado = this.GestorContrasenia.MostrarPassword(item.Password);
