@@ -600,5 +600,43 @@ namespace PruebasUnitarias
 
             Assert.IsFalse(todosIguales);
         }
+
+        [TestMethod]
+        public void ListarContraseniaOrdenadaPorNombreCategoria()
+        {
+            ContraseniaCompleta.Categoria.Nombre = "ZZZZZZ";
+            Gestor.Alta(ContraseniaCompleta);
+
+            Contrasenia nuevaContrasena = new Contrasenia()
+            {
+                Categoria = new Categoria("AAAAAA"),
+                Usuario = "usuario",
+                Sitio = "netflix",
+                Notas = "clave de netflix",
+                FechaUltimaModificacion = DateTime.Now,
+                Password = "secreto555"
+            };
+            Gestor.Alta(nuevaContrasena);
+
+            Contrasenia nuevaContrasena2 = new Contrasenia()
+            {
+                Categoria = new Categoria("BBBBBB"),
+                Usuario = "usuario2",
+                Sitio = "tcc",
+                Notas = "clave de tcc",
+                FechaUltimaModificacion = DateTime.Now,
+                Password = "secreto555"
+            };
+            Gestor.Alta(nuevaContrasena2);
+
+
+            List<Contrasenia> contrasenias = Gestor.ListarContrasenias();
+
+            Assert.AreEqual("AAAAAA", contrasenias[0].Categoria.Nombre);
+            Assert.AreEqual("BBBBBB", contrasenias[1].Categoria.Nombre);
+            Assert.AreEqual("ZZZZZZ", contrasenias[2].Categoria.Nombre);
+
+
+        }
     }
 }

@@ -42,7 +42,10 @@ namespace Negocio.Contrasenias
 
         public List<Contrasenia> ListarContrasenias()
         {
-            return Repositorio.ListarContrasenias();
+
+            List<Contrasenia> retorno = Repositorio.ListarContrasenias();
+            retorno.Sort();
+            return retorno;
         }
 
         public string VerificarFortaleza(Contrasenia nuevaContrasenia)

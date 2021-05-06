@@ -155,12 +155,12 @@ namespace PruebasUnitarias
 
             foreach (Categoria cat in Lista)
             {
-                cat.Nombre = "aaaaaaaa";
+                cat.Nombre = "modificoObjeto";
                 id = cat.Id;
             }
 
             Categoria posCero = Gestor2.BuscarCategoriaPorId(id);
-            Assert.AreNotEqual("aaaaaaaa", posCero.Nombre);
+            Assert.AreNotEqual("modificoObjeto", posCero.Nombre);
         }
 
         [TestMethod]
