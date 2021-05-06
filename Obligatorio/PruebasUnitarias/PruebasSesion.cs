@@ -68,21 +68,16 @@ namespace PruebasUnitarias
         public void InicioSesionCorrecto()
         {
             sesionPrueba.GuardarPrimerPassword("secreto");
-            Assert.IsTrue(sesionPrueba.Login("secreto"));
+            sesionPrueba.Login("secreto");
+            sesionPrueba.GestorCategoria.Alta("cat uno");
+            Assert.AreEqual(1, sesionPrueba.GestorCategoria.ObtenerTodasLasCategorias().Count());
         }
 
         [TestMethod]
-        public void LaSesionGuardaLaPrimerContraseniaQueSeIngresa()
-        {
-            string primerPassword = "nuevoPasswrod";
-            sesionPrueba.GuardarPrimerPassword(primerPassword);
-            Assert.IsTrue(sesionPrueba.Login("nuevoPasswrod"));
-        }
-
-        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void NoSePuedeIniciarSesionSinIngresarElPrimerPassword()
         {
-            Assert.IsFalse(sesionPrueba.Login(""));
+            sesionPrueba.Login("");
         }
 
         [TestMethod]
@@ -104,6 +99,15 @@ namespace PruebasUnitarias
         public void SeDebeTrimarElPasswordMaestro()
         {
             sesionPrueba.GuardarPrimerPassword("aaaa       ");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void FallaElLoginConPasswordIncorrecto()
+        {
+            string primerPassword = "nuevoPasswrod";
+            sesionPrueba.GuardarPrimerPassword(primerPassword);
+            sesionPrueba.Login("assassa");
         }
 
         [TestMethod]

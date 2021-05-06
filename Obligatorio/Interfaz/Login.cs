@@ -1,4 +1,5 @@
 ﻿using Negocio;
+using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,15 +28,16 @@ namespace Interfaz
 
         private void RealizarLogin()
         {
-            if (this.sis.Login(this.txtIngresar.Text))
+            try
             {
+                this.sis.Login(this.txtIngresar.Text);
                 PantallaPrincipal nuevaPantalla = new PantallaPrincipal();
                 this.Hide();
                 nuevaPantalla.Show();
             }
-            else
+            catch(ExcepcionAccesoDenegado denegado)
             {
-                MessageBox.Show("Contraseña Incorrecta");
+                MessageBox.Show(denegado.Message);
             }
         }
 

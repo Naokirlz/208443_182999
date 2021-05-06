@@ -35,9 +35,9 @@ namespace Negocio
 
         }
 
-        public bool Login(string password)
+        public void Login(string password)
         {
-            return password == PasswordMaestro && PasswordMaestro != "";
+            if (password != PasswordMaestro || PasswordMaestro == "") throw new ExcepcionAccesoDenegado();
         }
 
         public List<Contrasenia> ContraseniasVulnerables(IFuente fuente)
