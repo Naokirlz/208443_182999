@@ -62,7 +62,7 @@ namespace Interfaz.Contrasenias
             // 
             // Sitio
             // 
-            this.Sitio.HeaderText = "Sitio";
+            this.Sitio.HeaderText = "Sitio o Aplicación";
             this.Sitio.Name = "Sitio";
             this.Sitio.ReadOnly = true;
             // 

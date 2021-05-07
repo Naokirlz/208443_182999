@@ -81,7 +81,6 @@ namespace Negocio
 
         public void GuardarPrimerPassword(string primerPassword)
         {
-            primerPassword = primerPassword.Trim();
             ControlLargoTexto(primerPassword, 5, 25);
             this.PasswordMaestro = primerPassword;
         }
@@ -89,7 +88,6 @@ namespace Negocio
         public void CambiarPassword(string v)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
-            v = v.Trim();
             ControlLargoTexto(v, 5, 25);
             this.PasswordMaestro = v;
         }
@@ -157,7 +155,7 @@ namespace Negocio
 
         private void ControlLargoTexto(string texto, int minimo, int maximo)
         {
-
+            texto = texto.Trim();
             if (texto.Length < minimo || texto.Length > maximo)
             {
                 throw new ExcepcionLargoTexto("El largo de texto debe ser entre " + minimo.ToString() + " y " + maximo.ToString() + " caracteres.");

@@ -165,14 +165,14 @@ namespace Interfaz.Contrasenias
             // cmbCategoria
             // 
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(84, 54);
+            this.cmbCategoria.Location = new System.Drawing.Point(102, 54);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(141, 21);
             this.cmbCategoria.TabIndex = 31;
             // 
             // txtNotas
             // 
-            this.txtNotas.Location = new System.Drawing.Point(84, 133);
+            this.txtNotas.Location = new System.Drawing.Point(102, 133);
             this.txtNotas.Multiline = true;
             this.txtNotas.Name = "txtNotas";
             this.txtNotas.Size = new System.Drawing.Size(141, 113);
@@ -205,7 +205,7 @@ namespace Interfaz.Contrasenias
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(84, 107);
+            this.txtUsuario.Location = new System.Drawing.Point(102, 107);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(141, 20);
             this.txtUsuario.TabIndex = 26;
@@ -221,7 +221,7 @@ namespace Interfaz.Contrasenias
             // 
             // txtSitio
             // 
-            this.txtSitio.Location = new System.Drawing.Point(84, 81);
+            this.txtSitio.Location = new System.Drawing.Point(102, 81);
             this.txtSitio.Name = "txtSitio";
             this.txtSitio.Size = new System.Drawing.Size(141, 20);
             this.txtSitio.TabIndex = 24;
@@ -231,9 +231,9 @@ namespace Interfaz.Contrasenias
             this.lblSitio.AutoSize = true;
             this.lblSitio.Location = new System.Drawing.Point(12, 88);
             this.lblSitio.Name = "lblSitio";
-            this.lblSitio.Size = new System.Drawing.Size(27, 13);
+            this.lblSitio.Size = new System.Drawing.Size(88, 13);
             this.lblSitio.TabIndex = 23;
-            this.lblSitio.Text = "Sitio";
+            this.lblSitio.Text = "Sitio o Aplicación";
             // 
             // lblContrasenia
             // 
@@ -247,7 +247,7 @@ namespace Interfaz.Contrasenias
             // cmbContrasenia
             // 
             this.cmbContrasenia.FormattingEnabled = true;
-            this.cmbContrasenia.Location = new System.Drawing.Point(84, 15);
+            this.cmbContrasenia.Location = new System.Drawing.Point(102, 15);
             this.cmbContrasenia.Name = "cmbContrasenia";
             this.cmbContrasenia.Size = new System.Drawing.Size(141, 21);
             this.cmbContrasenia.TabIndex = 42;

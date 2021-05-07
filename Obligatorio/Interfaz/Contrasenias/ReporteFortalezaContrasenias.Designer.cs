@@ -33,12 +33,12 @@ namespace Interfaz.Contrasenias
             this.Grupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvContraseniasPorGrupo = new System.Windows.Forms.DataGridView();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sitio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UltimaModificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnVolver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContrasenias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContraseniasPorGrupo)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +91,16 @@ namespace Interfaz.Contrasenias
             this.dgvContraseniasPorGrupo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContraseniasPorGrupo_CellClick);
             this.dgvContraseniasPorGrupo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvContraseniasPorGrupo_CellFormatting);
             // 
+            // btnVolver
+            // 
+            this.btnVolver.Location = new System.Drawing.Point(274, 296);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(75, 23);
+            this.btnVolver.TabIndex = 4;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
             // Categoria
             // 
             this.Categoria.HeaderText = "Categoría";
@@ -99,7 +109,7 @@ namespace Interfaz.Contrasenias
             // 
             // Sitio
             // 
-            this.Sitio.HeaderText = "Sitio";
+            this.Sitio.HeaderText = "Sitio o Aplicación";
             this.Sitio.Name = "Sitio";
             this.Sitio.ReadOnly = true;
             // 
@@ -120,16 +130,6 @@ namespace Interfaz.Contrasenias
             this.Password.HeaderText = "Contraseña";
             this.Password.Name = "Password";
             this.Password.ReadOnly = true;
-            // 
-            // btnVolver
-            // 
-            this.btnVolver.Location = new System.Drawing.Point(274, 296);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(75, 23);
-            this.btnVolver.TabIndex = 4;
-            this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // ReporteFortalezaContrasenias
             // 
@@ -152,11 +152,11 @@ namespace Interfaz.Contrasenias
         private System.Windows.Forms.DataGridViewTextBoxColumn Grupo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridView dgvContraseniasPorGrupo;
+        private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sitio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn UltimaModificacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
-        private System.Windows.Forms.Button btnVolver;
     }
 }

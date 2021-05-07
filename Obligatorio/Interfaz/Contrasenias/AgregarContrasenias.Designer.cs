@@ -56,20 +56,20 @@ namespace Interfaz.Contrasenias
             this.lblSitio.AutoSize = true;
             this.lblSitio.Location = new System.Drawing.Point(23, 85);
             this.lblSitio.Name = "lblSitio";
-            this.lblSitio.Size = new System.Drawing.Size(27, 13);
+            this.lblSitio.Size = new System.Drawing.Size(88, 13);
             this.lblSitio.TabIndex = 0;
-            this.lblSitio.Text = "Sitio";
+            this.lblSitio.Text = "Sitio o Aplicación";
             // 
             // txtSitio
             // 
-            this.txtSitio.Location = new System.Drawing.Point(95, 78);
+            this.txtSitio.Location = new System.Drawing.Point(110, 78);
             this.txtSitio.Name = "txtSitio";
             this.txtSitio.Size = new System.Drawing.Size(141, 20);
             this.txtSitio.TabIndex = 1;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(95, 104);
+            this.txtUsuario.Location = new System.Drawing.Point(110, 104);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(141, 20);
             this.txtUsuario.TabIndex = 3;
@@ -101,7 +101,7 @@ namespace Interfaz.Contrasenias
             // 
             // txtNotas
             // 
-            this.txtNotas.Location = new System.Drawing.Point(95, 130);
+            this.txtNotas.Location = new System.Drawing.Point(110, 130);
             this.txtNotas.Multiline = true;
             this.txtNotas.Name = "txtNotas";
             this.txtNotas.Size = new System.Drawing.Size(141, 113);
@@ -128,7 +128,7 @@ namespace Interfaz.Contrasenias
             // cmbCategoria
             // 
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(95, 51);
+            this.cmbCategoria.Location = new System.Drawing.Point(110, 51);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(141, 21);
             this.cmbCategoria.TabIndex = 8;

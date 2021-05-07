@@ -148,7 +148,7 @@ namespace PruebasUnitarias
         public void SePuedeEjecutarAltaCategoriaSiSeEstaLogueado()
         {
             int cantidadAntes = sesionPrueba.ObtenerTodasLasCategorias().Count();
-            sesionPrueba.AltaCategoria("cat uno dos");
+            sesionPrueba.AltaCategoria("cat 123");
             int cantidadDespues = sesionPrueba.ObtenerTodasLasCategorias().Count();
             
             Assert.AreEqual(1, cantidadDespues - cantidadAntes) ;
