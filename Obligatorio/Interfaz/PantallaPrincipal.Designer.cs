@@ -34,6 +34,7 @@ namespace Interfaz
             this.btnGestionContrasenia = new System.Windows.Forms.Button();
             this.btnGestionTarjetaCredito = new System.Windows.Forms.Button();
             this.btnVerificarVulnerabilidad = new System.Windows.Forms.Button();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGestionCategoria
@@ -83,11 +84,22 @@ namespace Interfaz
             this.btnVerificarVulnerabilidad.UseVisualStyleBackColor = true;
             this.btnVerificarVulnerabilidad.Click += new System.EventHandler(this.btnVerificarVulnerabilidad_Click);
             // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Location = new System.Drawing.Point(12, 269);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(185, 23);
+            this.btnCerrarSesion.TabIndex = 5;
+            this.btnCerrarSesion.Text = "Cerrar Sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
             // PantallaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(969, 419);
+            this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.btnVerificarVulnerabilidad);
             this.Controls.Add(this.btnGestionTarjetaCredito);
             this.Controls.Add(this.btnGestionContrasenia);
@@ -107,6 +119,7 @@ namespace Interfaz
         private System.Windows.Forms.Button btnGestionContrasenia;
         private System.Windows.Forms.Button btnGestionTarjetaCredito;
         private System.Windows.Forms.Button btnVerificarVulnerabilidad;
+        private System.Windows.Forms.Button btnCerrarSesion;
     }
 }
 

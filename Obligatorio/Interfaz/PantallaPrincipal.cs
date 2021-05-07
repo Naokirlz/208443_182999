@@ -16,7 +16,7 @@ namespace Interfaz
 {
     public partial class PantallaPrincipal : Form
     {
-        
+        private Sesion Sesion = Sesion.Singleton;
         public PantallaPrincipal()
         {
            InitializeComponent();
@@ -53,6 +53,14 @@ namespace Interfaz
             pnlPanelPrincipal.Controls.Clear();
             UserControl gestorVulnerabilidades = new GestionVulnerabilidades();
             pnlPanelPrincipal.Controls.Add(gestorVulnerabilidades);
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Sesion.LogOut();
+            Login pantallaLogin = new Login();
+            this.Hide();
+            pantallaLogin.Show();
         }
     }
 }
