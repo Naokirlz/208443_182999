@@ -30,20 +30,20 @@ namespace Interfaz.TarjetasCredito
         private void InitializeComponent()
         {
             this.lblCategoria = new System.Windows.Forms.Label();
-            this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtTipo = new System.Windows.Forms.TextBox();
             this.lblTipo = new System.Windows.Forms.Label();
             this.lblNumero = new System.Windows.Forms.Label();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtNotas = new System.Windows.Forms.RichTextBox();
             this.lblNotas = new System.Windows.Forms.Label();
             this.lblVencimiento = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.dtpVencimiento = new System.Windows.Forms.DateTimePicker();
+            this.txtNumero = new System.Windows.Forms.MaskedTextBox();
+            this.txtCodigo = new System.Windows.Forms.MaskedTextBox();
+            this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblCategoria
@@ -54,14 +54,6 @@ namespace Interfaz.TarjetasCredito
             this.lblCategoria.Size = new System.Drawing.Size(54, 13);
             this.lblCategoria.TabIndex = 3;
             this.lblCategoria.Text = "Categoría";
-            // 
-            // cmbCategoria
-            // 
-            this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(85, 13);
-            this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(168, 21);
-            this.cmbCategoria.TabIndex = 2;
             // 
             // lblNombre
             // 
@@ -98,30 +90,16 @@ namespace Interfaz.TarjetasCredito
             // lblNumero
             // 
             this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(3, 99);
+            this.lblNumero.Location = new System.Drawing.Point(3, 125);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(44, 13);
             this.lblNumero.TabIndex = 8;
             this.lblNumero.Text = "Número";
             // 
-            // txtNumero
-            // 
-            this.txtNumero.Location = new System.Drawing.Point(85, 92);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(168, 20);
-            this.txtNumero.TabIndex = 9;
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Location = new System.Drawing.Point(85, 118);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(168, 20);
-            this.txtCodigo.TabIndex = 10;
-            // 
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(3, 125);
+            this.lblCodigo.Location = new System.Drawing.Point(3, 99);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(40, 13);
             this.lblCodigo.TabIndex = 11;
@@ -165,31 +143,60 @@ namespace Interfaz.TarjetasCredito
             // 
             // dtpVencimiento
             // 
+            this.dtpVencimiento.CustomFormat = "MM/yy";
             this.dtpVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpVencimiento.Location = new System.Drawing.Point(265, 40);
             this.dtpVencimiento.Name = "dtpVencimiento";
             this.dtpVencimiento.Size = new System.Drawing.Size(248, 20);
             this.dtpVencimiento.TabIndex = 19;
             // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(85, 118);
+            this.txtNumero.Mask = "0000 0000 0000 0000";
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(168, 20);
+            this.txtNumero.TabIndex = 20;
+            this.txtNumero.Click += new System.EventHandler(this.txtCodigo_Click);
+            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Location = new System.Drawing.Point(85, 92);
+            this.txtCodigo.Mask = "999";
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(168, 20);
+            this.txtCodigo.TabIndex = 21;
+            this.txtCodigo.ValidatingType = typeof(int);
+            this.txtCodigo.Click += new System.EventHandler(this.txtNumero_Click);
+            // 
+            // cmbCategoria
+            // 
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategoria.Location = new System.Drawing.Point(85, 13);
+            this.cmbCategoria.Name = "cmbCategoria";
+            this.cmbCategoria.Size = new System.Drawing.Size(168, 21);
+            this.cmbCategoria.TabIndex = 22;
+            // 
             // AgregarTarjetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cmbCategoria);
+            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.dtpVencimiento);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblVencimiento);
             this.Controls.Add(this.lblNotas);
             this.Controls.Add(this.txtNotas);
             this.Controls.Add(this.lblCodigo);
-            this.Controls.Add(this.txtCodigo);
-            this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.lblNumero);
             this.Controls.Add(this.txtTipo);
             this.Controls.Add(this.lblTipo);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCategoria);
-            this.Controls.Add(this.cmbCategoria);
             this.Name = "AgregarTarjetas";
             this.Size = new System.Drawing.Size(516, 332);
             this.ResumeLayout(false);
@@ -200,19 +207,19 @@ namespace Interfaz.TarjetasCredito
         #endregion
 
         private System.Windows.Forms.Label lblCategoria;
-        private System.Windows.Forms.ComboBox cmbCategoria;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtTipo;
         private System.Windows.Forms.Label lblTipo;
         private System.Windows.Forms.Label lblNumero;
-        private System.Windows.Forms.TextBox txtNumero;
-        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.RichTextBox txtNotas;
         private System.Windows.Forms.Label lblNotas;
         private System.Windows.Forms.Label lblVencimiento;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.DateTimePicker dtpVencimiento;
+        private System.Windows.Forms.MaskedTextBox txtNumero;
+        private System.Windows.Forms.MaskedTextBox txtCodigo;
+        private System.Windows.Forms.ComboBox cmbCategoria;
     }
 }

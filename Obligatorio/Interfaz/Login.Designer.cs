@@ -48,9 +48,10 @@ namespace Interfaz
             // 
             this.txtIngresar.Location = new System.Drawing.Point(66, 124);
             this.txtIngresar.Name = "txtIngresar";
-            this.txtIngresar.PasswordChar = '*';
+            this.txtIngresar.PasswordChar = '•';
             this.txtIngresar.Size = new System.Drawing.Size(138, 20);
             this.txtIngresar.TabIndex = 1;
+            this.txtIngresar.Text = "cosas";
             this.txtIngresar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIngresar_KeyDown);
             // 
             // lblPassword

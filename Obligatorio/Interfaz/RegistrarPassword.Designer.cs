@@ -49,9 +49,10 @@ namespace Interfaz
             // 
             this.txtPassword.Location = new System.Drawing.Point(47, 83);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(138, 20);
             this.txtPassword.TabIndex = 4;
+            this.txtPassword.Text = "cosas";
             // 
             // btnRegistrar
             // 
@@ -76,9 +77,10 @@ namespace Interfaz
             // 
             this.txtRepetirPassword.Location = new System.Drawing.Point(47, 124);
             this.txtRepetirPassword.Name = "txtRepetirPassword";
-            this.txtRepetirPassword.PasswordChar = '*';
+            this.txtRepetirPassword.PasswordChar = '•';
             this.txtRepetirPassword.Size = new System.Drawing.Size(138, 20);
             this.txtRepetirPassword.TabIndex = 6;
+            this.txtRepetirPassword.Text = "cosas";
             // 
             // RegistrarPassword
             // 

@@ -55,15 +55,15 @@ namespace Negocio.TarjetaCreditos
         private void ControlAltaYModificar(TarjetaCredito tarjeta)
         {
             CategoriaExiste(tarjeta.Categoria);
-            ControlLargoTexto(tarjeta.Nombre, 3, 25);
+            ControlLargoTexto(tarjeta.Nombre, 3, 25, "nombre");
             NombreTarjetaRepetido(tarjeta);
-            ControlLargoTexto(tarjeta.Tipo, 3, 25);
-            ControlLargoTexto(tarjeta.Numero, 16, 16);
+            ControlLargoTexto(tarjeta.Tipo, 3, 25, "tipo");
+            ControlLargoTexto(tarjeta.Numero, 16, 16, "número");
             NumeroTarjetaRepetido(tarjeta);
             ControlSoloNumeros(tarjeta.Numero);
-            ControlLargoTexto(tarjeta.Codigo, 3, 3);
+            ControlLargoTexto(tarjeta.Codigo, 3, 3, "código");
             ControlSoloNumeros(tarjeta.Codigo);
-            ControlLargoTexto(tarjeta.Nota, -1, 250);
+            ControlLargoTexto(tarjeta.Nota, -1, 250, "nota");
             
         }
 
@@ -74,12 +74,12 @@ namespace Negocio.TarjetaCreditos
 
         }
 
-        private void ControlLargoTexto(string texto, int minimo, int maximo)
+        private void ControlLargoTexto(string texto, int minimo, int maximo, string campo)
         {
-
+            texto = texto.Trim();
             if (texto.Length < minimo || texto.Length > maximo)
             {
-                throw new ExcepcionLargoTexto();
+                throw new ExcepcionLargoTexto("El campo " + campo + " debe tener entre " + minimo.ToString() + " y " + maximo.ToString() + " caracteres.");
             }
 
         }

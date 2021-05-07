@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Interfaz.TarjetasCredito
 {
@@ -47,6 +48,9 @@ namespace Interfaz.TarjetasCredito
                 string codigo = this.txtCodigo.Text;
                 string notas = this.txtNotas.Text;
                 DateTime vencimiento = this.dtpVencimiento.Value;
+
+                numero = numero.Replace(" ", "");
+
                 TarjetaCredito nuevaTarjeta = new TarjetaCredito() { 
                     Nombre = nombre,
                     Categoria = categoria,
@@ -71,12 +75,40 @@ namespace Interfaz.TarjetasCredito
         }
         private void LimpiarCampos()
         {
-            this.txtCodigo.Text = "";
+            this.txtNumero.Text = "";
             this.txtTipo.Text = "";
             this.txtNombre.Text = "";
-            this.txtNumero.Text = "";
+            this.txtCodigo.Text = "";
             this.txtNotas.Text = "";
             this.dtpVencimiento.Value = DateTime.Now;
+        }
+
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Regex.IsMatch(this.Text + e.KeyChar, "^[0-9]*$")) e.Handled = true;
+            else base.OnKeyPress(e);
+        }
+
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Regex.IsMatch(this.Text + e.KeyChar, "^[0-9]*$"))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                base.OnKeyPress(e);
+            }
+        }
+
+        private void txtCodigo_Click(object sender, EventArgs e)
+        {
+            this.txtNumero.Select(0, 0);
+        }
+
+        private void txtNumero_Click(object sender, EventArgs e)
+        {
+            this.txtCodigo.Select(0, 0);
         }
     }
 }
