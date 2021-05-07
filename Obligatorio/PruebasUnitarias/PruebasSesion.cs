@@ -84,6 +84,27 @@ namespace PruebasUnitarias
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeCambiarElPasswordSinEstarLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.CambiarPassword("cambio password");
+        }
+
+        [TestMethod]
+        public void SePuedeCambiarElPasswordEstandoLogueado()
+        {
+            sesionPrueba.CambiarPassword("cambio password");
+            sesionPrueba.LogOut();
+            sesionPrueba.Login("cambio password");
+            int cantidadAntes = sesionPrueba.ObtenerTodasLasCategorias().Count();
+            sesionPrueba.AltaCategoria("cat uno dos");
+            int cantidadDespues = sesionPrueba.ObtenerTodasLasCategorias().Count();
+
+            Assert.AreEqual(1, cantidadDespues - cantidadAntes);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void NoSePuedeEjecutarAltaCategoriaSiNoSeEstaLogueado()
         {
             sesionPrueba.LogOut();
@@ -137,11 +158,11 @@ namespace PruebasUnitarias
         public void SePuedeEjecutarModificacionCategoriaSiSeEstaLogueado()
         {
 
-            Categoria nuevaCategoria = sesionPrueba.AltaCategoria("viejaCategoria");
+            Categoria nuevaCategoria = sesionPrueba.AltaCategoria("algunaCategoria");
             int id = nuevaCategoria.Id;
-            sesionPrueba.ModificacionCategoria(id, "nuevaCategoria");
+            sesionPrueba.ModificacionCategoria(id, "modAlgunaCat");
 
-            Assert.AreEqual("nuevaCategoria", sesionPrueba.BuscarCategoriaPorId(id).Nombre);
+            Assert.AreEqual("modAlgunaCat", sesionPrueba.BuscarCategoriaPorId(id).Nombre);
 
         }
 

@@ -86,6 +86,12 @@ namespace Negocio
             this.PasswordMaestro = primerPassword;
         }
 
+        public void CambiarPassword(string v)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            this.PasswordMaestro = v;
+        }
+
         public Categoria AltaCategoria(string v)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
