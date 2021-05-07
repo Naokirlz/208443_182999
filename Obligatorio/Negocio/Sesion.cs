@@ -86,10 +86,10 @@ namespace Negocio
             this.PasswordMaestro = primerPassword;
         }
 
-        public void AltaCategoria(string v)
+        public Categoria AltaCategoria(string v)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
-            this.GestorCategoria.Alta(v);
+            return this.GestorCategoria.Alta(v);
         }
 
         public void BajaCategoria(int id)

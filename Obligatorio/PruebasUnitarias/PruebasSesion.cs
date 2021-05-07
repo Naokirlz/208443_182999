@@ -123,15 +123,41 @@ namespace PruebasUnitarias
         }
 
 
-
-
-
         [TestMethod]
         public void SePuedeEjecutarAltaCategoriaSiSeEstaLogueado()
         {
+            int cantidadAntes = sesionPrueba.ObtenerTodasLasCategorias().Count();
             sesionPrueba.AltaCategoria("cat uno dos");
-            Assert.AreEqual(1, sesionPrueba.ObtenerTodasLasCategorias().Count()) ;
+            int cantidadDespues = sesionPrueba.ObtenerTodasLasCategorias().Count();
+            
+            Assert.AreEqual(1, cantidadDespues - cantidadAntes) ;
         }
+
+        [TestMethod]
+        public void SePuedeEjecutarModificacionCategoriaSiSeEstaLogueado()
+        {
+
+            Categoria nuevaCategoria = sesionPrueba.AltaCategoria("viejaCategoria");
+            int id = nuevaCategoria.Id;
+            sesionPrueba.ModificacionCategoria(id, "nuevaCategoria");
+
+            Assert.AreEqual("nuevaCategoria", sesionPrueba.BuscarCategoriaPorId(id).Nombre);
+
+        }
+
+        [TestMethod]
+        public void SePuedeEjecutarBuscarCategoriaPorIdSiSeEstaLogueado()
+        {
+            Categoria nuevaCategoria = sesionPrueba.AltaCategoria("viejaCategoria");
+            int id = nuevaCategoria.Id;
+
+            Categoria categoriaBuscada = sesionPrueba.BuscarCategoriaPorId(id);
+           
+            Assert.IsNotNull(categoriaBuscada);
+
+        }
+
+
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
