@@ -196,6 +196,20 @@ namespace PruebasUnitarias
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeCambiarElPasswordMaestroMayorA25Caracteres()
+        {
+            sesionPrueba.CambiarPassword("12345123451234512345123451");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void NoSePuedeCambiarElPasswordMaestroMenorA5Caracteres()
+        {
+            sesionPrueba.CambiarPassword("aaaa");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void SeDebeTrimarElPasswordMaestro()
         {
             sesionPrueba.GuardarPrimerPassword("aaaa       ");

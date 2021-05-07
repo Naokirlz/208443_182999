@@ -35,6 +35,7 @@ namespace Interfaz
             this.btnGestionTarjetaCredito = new System.Windows.Forms.Button();
             this.btnVerificarVulnerabilidad = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.btnConfiguracion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGestionCategoria
@@ -94,11 +95,22 @@ namespace Interfaz
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
+            // btnConfiguracion
+            // 
+            this.btnConfiguracion.Location = new System.Drawing.Point(12, 185);
+            this.btnConfiguracion.Name = "btnConfiguracion";
+            this.btnConfiguracion.Size = new System.Drawing.Size(185, 23);
+            this.btnConfiguracion.TabIndex = 6;
+            this.btnConfiguracion.Text = "Configuración";
+            this.btnConfiguracion.UseVisualStyleBackColor = true;
+            this.btnConfiguracion.Click += new System.EventHandler(this.btnConfiguracion_Click);
+            // 
             // PantallaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(969, 419);
+            this.Controls.Add(this.btnConfiguracion);
             this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.btnVerificarVulnerabilidad);
             this.Controls.Add(this.btnGestionTarjetaCredito);
@@ -120,6 +132,7 @@ namespace Interfaz
         private System.Windows.Forms.Button btnGestionTarjetaCredito;
         private System.Windows.Forms.Button btnVerificarVulnerabilidad;
         private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.Button btnConfiguracion;
     }
 }
 

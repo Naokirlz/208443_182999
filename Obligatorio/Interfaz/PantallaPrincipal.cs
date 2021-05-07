@@ -62,5 +62,12 @@ namespace Interfaz
             this.Hide();
             pantallaLogin.Show();
         }
+
+        private void btnConfiguracion_Click(object sender, EventArgs e)
+        {
+            pnlPanelPrincipal.Controls.Clear();
+            UserControl configuracion = new Configuracion();
+            pnlPanelPrincipal.Controls.Add(configuracion);
+        }
     }
 }

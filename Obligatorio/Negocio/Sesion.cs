@@ -89,6 +89,8 @@ namespace Negocio
         public void CambiarPassword(string v)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            v = v.Trim();
+            ControlLargoTexto(v, 5, 25);
             this.PasswordMaestro = v;
         }
 
