@@ -91,11 +91,73 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarBajaCategoriaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.BajaCategoria(1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarModificarCategoriaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.ModificacionCategoria(1, "nuevoNombre");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarBuscarCategoriaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.BuscarCategoriaPorId(1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarObtenerTodasLasCategoriaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.ObtenerTodasLasCategorias();
+        }
+
+
+        [TestMethod]
         public void SePuedeEjecutarAltaCategoriaSiSeEstaLogueado()
         {
+            int cantidadAntes = sesionPrueba.ObtenerTodasLasCategorias().Count();
             sesionPrueba.AltaCategoria("cat uno dos");
-            Assert.AreEqual(1, sesionPrueba.ObtenerTodasLasCategorias().Count()) ;
+            int cantidadDespues = sesionPrueba.ObtenerTodasLasCategorias().Count();
+            
+            Assert.AreEqual(1, cantidadDespues - cantidadAntes) ;
         }
+
+        [TestMethod]
+        public void SePuedeEjecutarModificacionCategoriaSiSeEstaLogueado()
+        {
+
+            Categoria nuevaCategoria = sesionPrueba.AltaCategoria("viejaCategoria");
+            int id = nuevaCategoria.Id;
+            sesionPrueba.ModificacionCategoria(id, "nuevaCategoria");
+
+            Assert.AreEqual("nuevaCategoria", sesionPrueba.BuscarCategoriaPorId(id).Nombre);
+
+        }
+
+        [TestMethod]
+        public void SePuedeEjecutarBuscarCategoriaPorIdSiSeEstaLogueado()
+        {
+            Categoria nuevaCategoria = sesionPrueba.AltaCategoria("viejaCategoria");
+            int id = nuevaCategoria.Id;
+
+            Categoria categoriaBuscada = sesionPrueba.BuscarCategoriaPorId(id);
+           
+            Assert.IsNotNull(categoriaBuscada);
+
+        }
+
+
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]

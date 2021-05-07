@@ -86,14 +86,34 @@ namespace Negocio
             this.PasswordMaestro = primerPassword;
         }
 
-        public void AltaCategoria(string v)
+        public Categoria AltaCategoria(string v)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
-            this.GestorCategoria.Alta(v);
+            return this.GestorCategoria.Alta(v);
         }
+
+        public void BajaCategoria(int id)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            this.GestorCategoria.Baja(id);
+        }
+
+        public void ModificacionCategoria(int id, string nombreNuevo)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            this.GestorCategoria.Modificacion(id, nombreNuevo);
+        }
+
+        public Categoria BuscarCategoriaPorId(int id)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            return GestorCategoria.BuscarCategoriaPorId(id);
+        }
+
 
         public IEnumerable<Categoria> ObtenerTodasLasCategorias()
         {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
             return this.GestorCategoria.ObtenerTodasLasCategorias();
         }
 
