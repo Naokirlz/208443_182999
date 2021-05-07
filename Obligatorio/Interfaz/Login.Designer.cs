@@ -72,6 +72,7 @@ namespace Interfaz
             this.Controls.Add(this.btnIngresar);
             this.Name = "Login";
             this.Text = "Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
