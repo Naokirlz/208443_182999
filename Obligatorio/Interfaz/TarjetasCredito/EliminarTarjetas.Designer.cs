@@ -45,7 +45,7 @@ namespace Interfaz.TarjetasCredito
             // 
             // cmbTarjeta
             // 
-            this.cmbTarjeta.FormattingEnabled = true;
+            this.cmbTarjeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTarjeta.Location = new System.Drawing.Point(114, 77);
             this.cmbTarjeta.Name = "cmbTarjeta";
             this.cmbTarjeta.Size = new System.Drawing.Size(168, 21);

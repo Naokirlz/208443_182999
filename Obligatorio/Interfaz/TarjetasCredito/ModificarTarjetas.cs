@@ -9,6 +9,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -63,6 +64,7 @@ namespace Interfaz.TarjetasCredito
                 string notas = this.txtNotas.Text;
                 DateTime vencimiento = this.dtpVencimiento.Value;
                 int id = tarjetaSeleccionada.IdTarjeta;
+                numero = numero.Replace(" ", "");
 
                 TarjetaCredito tarjetaAModificar = new TarjetaCredito()
                 {
@@ -125,6 +127,28 @@ namespace Interfaz.TarjetasCredito
         private void cmbContrasenias_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarDatosTarjeta();
+        }
+
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Regex.IsMatch(this.Text + e.KeyChar, "^[0-9]*$")) e.Handled = true;
+            else base.OnKeyPress(e);
+        }
+
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Regex.IsMatch(this.Text + e.KeyChar, "^[0-9]*$")) e.Handled = true;
+            else base.OnKeyPress(e);
+        }
+
+        private void txtNumero_Click(object sender, EventArgs e)
+        {
+            this.txtNumero.Select(0, 0);
+        }
+
+        private void txtCodigo_Click(object sender, EventArgs e)
+        {
+            this.txtCodigo.Select(0, 0);
         }
     }
 }

@@ -85,8 +85,7 @@ namespace Interfaz.TarjetasCredito
 
         private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Regex.IsMatch(this.Text + e.KeyChar, "^[0-9]*$")) e.Handled = true;
-            else base.OnKeyPress(e);
+
         }
 
         private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
@@ -109,6 +108,12 @@ namespace Interfaz.TarjetasCredito
         private void txtNumero_Click(object sender, EventArgs e)
         {
             this.txtCodigo.Select(0, 0);
+        }
+
+        private void txtCodigo_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!Regex.IsMatch(this.Text + e.KeyChar, "^[0-9]*$")) e.Handled = true;
+            else base.OnKeyPress(e);
         }
     }
 }

@@ -35,8 +35,6 @@ namespace Interfaz.TarjetasCredito
             this.lblNotas = new System.Windows.Forms.Label();
             this.txtNotas = new System.Windows.Forms.RichTextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.txtNumero = new System.Windows.Forms.TextBox();
             this.lblNumero = new System.Windows.Forms.Label();
             this.txtTipo = new System.Windows.Forms.TextBox();
             this.lblTipo = new System.Windows.Forms.Label();
@@ -46,10 +44,13 @@ namespace Interfaz.TarjetasCredito
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.lblTarjeta = new System.Windows.Forms.Label();
             this.cmbTarjetas = new System.Windows.Forms.ComboBox();
+            this.txtCodigo = new System.Windows.Forms.MaskedTextBox();
+            this.txtNumero = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // dtpVencimiento
             // 
+            this.dtpVencimiento.CustomFormat = "MM/yy";
             this.dtpVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpVencimiento.Location = new System.Drawing.Point(263, 39);
             this.dtpVencimiento.Name = "dtpVencimiento";
@@ -95,30 +96,16 @@ namespace Interfaz.TarjetasCredito
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(7, 223);
+            this.lblCodigo.Location = new System.Drawing.Point(7, 201);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(40, 13);
             this.lblCodigo.TabIndex = 29;
             this.lblCodigo.Text = "Código";
             // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Location = new System.Drawing.Point(89, 216);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(168, 20);
-            this.txtCodigo.TabIndex = 28;
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Location = new System.Drawing.Point(89, 190);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(168, 20);
-            this.txtNumero.TabIndex = 27;
-            // 
             // lblNumero
             // 
             this.lblNumero.AutoSize = true;
-            this.lblNumero.Location = new System.Drawing.Point(7, 197);
+            this.lblNumero.Location = new System.Drawing.Point(7, 227);
             this.lblNumero.Name = "lblNumero";
             this.lblNumero.Size = new System.Drawing.Size(44, 13);
             this.lblNumero.TabIndex = 26;
@@ -167,6 +154,7 @@ namespace Interfaz.TarjetasCredito
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Location = new System.Drawing.Point(89, 111);
             this.cmbCategoria.Name = "cmbCategoria";
@@ -184,6 +172,7 @@ namespace Interfaz.TarjetasCredito
             // 
             // cmbTarjetas
             // 
+            this.cmbTarjetas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTarjetas.FormattingEnabled = true;
             this.cmbTarjetas.Location = new System.Drawing.Point(89, 39);
             this.cmbTarjetas.Name = "cmbTarjetas";
@@ -192,10 +181,33 @@ namespace Interfaz.TarjetasCredito
             this.cmbTarjetas.SelectedIndexChanged += new System.EventHandler(this.cmbContrasenias_SelectedIndexChanged);
             this.cmbTarjetas.SelectionChangeCommitted += new System.EventHandler(this.cmbTarjeta_SelectionChangeCommitted);
             // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Location = new System.Drawing.Point(89, 194);
+            this.txtCodigo.Mask = "999";
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(168, 20);
+            this.txtCodigo.TabIndex = 38;
+            this.txtCodigo.ValidatingType = typeof(int);
+            this.txtCodigo.Click += new System.EventHandler(this.txtCodigo_Click);
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(89, 220);
+            this.txtNumero.Mask = "0000 0000 0000 0000";
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(168, 20);
+            this.txtNumero.TabIndex = 37;
+            this.txtNumero.Click += new System.EventHandler(this.txtNumero_Click);
+            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
+            // 
             // ModificarTarjetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.lblTarjeta);
             this.Controls.Add(this.cmbTarjetas);
             this.Controls.Add(this.dtpVencimiento);
@@ -204,8 +216,6 @@ namespace Interfaz.TarjetasCredito
             this.Controls.Add(this.lblNotas);
             this.Controls.Add(this.txtNotas);
             this.Controls.Add(this.lblCodigo);
-            this.Controls.Add(this.txtCodigo);
-            this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.lblNumero);
             this.Controls.Add(this.txtTipo);
             this.Controls.Add(this.lblTipo);
@@ -228,8 +238,6 @@ namespace Interfaz.TarjetasCredito
         private System.Windows.Forms.Label lblNotas;
         private System.Windows.Forms.RichTextBox txtNotas;
         private System.Windows.Forms.Label lblCodigo;
-        private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label lblNumero;
         private System.Windows.Forms.TextBox txtTipo;
         private System.Windows.Forms.Label lblTipo;
@@ -239,5 +247,7 @@ namespace Interfaz.TarjetasCredito
         private System.Windows.Forms.ComboBox cmbCategoria;
         private System.Windows.Forms.Label lblTarjeta;
         private System.Windows.Forms.ComboBox cmbTarjetas;
+        private System.Windows.Forms.MaskedTextBox txtCodigo;
+        private System.Windows.Forms.MaskedTextBox txtNumero;
     }
 }

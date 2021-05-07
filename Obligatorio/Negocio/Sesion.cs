@@ -41,6 +41,7 @@ namespace Negocio
         {
             if (password != PasswordMaestro || PasswordMaestro == "") throw new ExcepcionAccesoDenegado();
             this.Logueado = true;
+            InsertarDatosDeMuestra();
         }
 
         public List<Contrasenia> ContraseniasVulnerables(IFuente fuente)
@@ -161,6 +162,16 @@ namespace Negocio
                 throw new ExcepcionLargoTexto("El largo de texto debe ser entre " + minimo.ToString() + " y " + maximo.ToString() + " caracteres.");
             }
 
+        }
+
+        private void InsertarDatosDeMuestra()
+        {
+            AltaCategoria("Estudio");
+            AltaCategoria("Hogar");
+            AltaCategoria("Familia");
+            AltaCategoria("Trabajo");
+
+            
         }
 
     }

@@ -158,7 +158,7 @@ namespace Interfaz.TarjetasCredito
             this.txtNumero.Size = new System.Drawing.Size(168, 20);
             this.txtNumero.TabIndex = 20;
             this.txtNumero.Click += new System.EventHandler(this.txtCodigo_Click);
-            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
+            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress_1);
             // 
             // txtCodigo
             // 
@@ -169,6 +169,7 @@ namespace Interfaz.TarjetasCredito
             this.txtCodigo.TabIndex = 21;
             this.txtCodigo.ValidatingType = typeof(int);
             this.txtCodigo.Click += new System.EventHandler(this.txtNumero_Click);
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress_1);
             // 
             // cmbCategoria
             // 
