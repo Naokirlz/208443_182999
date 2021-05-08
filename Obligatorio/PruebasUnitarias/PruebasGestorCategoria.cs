@@ -144,24 +144,6 @@ namespace PruebasUnitarias
 
         }
 
-        [TestMethod]
-        public void NoSeEnviaLaListaOriginalPorParametro()
-        {
-            GestorCategorias Gestor2 = new GestorCategorias();
-            Categoria categoria1 = Gestor2.Alta("Categoria1");
-
-            IEnumerable<Categoria> Lista = Gestor2.ObtenerTodasLasCategorias();
-            int id = 0;
-
-            foreach (Categoria cat in Lista)
-            {
-                cat.Nombre = "modificoObjeto";
-                id = cat.Id;
-            }
-
-            Categoria posCero = Gestor2.BuscarCategoriaPorId(id);
-            Assert.AreNotEqual("modificoObjeto", posCero.Nombre);
-        }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]

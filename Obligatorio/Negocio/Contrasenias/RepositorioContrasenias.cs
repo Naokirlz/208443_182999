@@ -45,7 +45,14 @@ namespace Negocio.Contrasenias
             Contrasenia anterior = BuscarPorId(aModificarContrasenia.Id);
             anterior.Sitio = aModificarContrasenia.Sitio;
             anterior.Usuario = aModificarContrasenia.Usuario;
+                        
+            if (!anterior.Password.Equals(aModificarContrasenia.Password))
+            {
+                anterior.FechaUltimaModificacion = DateTime.Now;
+            }
+
             anterior.Password = Encriptar(aModificarContrasenia.Password);
+            
             anterior.Categoria = aModificarContrasenia.Categoria;
             anterior.Notas = aModificarContrasenia.Notas;
             Contrasenia clonModificada = ClonarContrasenia(anterior);

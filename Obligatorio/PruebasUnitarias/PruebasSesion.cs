@@ -462,21 +462,21 @@ namespace PruebasUnitarias
 
         [TestMethod]
        
-        //no pasa la prueba queda atrapado infinito en el while
+        
         public void SePuedeEjecutarGenerarPasswordEstandoLogueado()
         {
             string password = "Nada generado";
-            password = sesionPrueba.GenerarPassword(5, false, false, false, false);
+            password = sesionPrueba.GenerarPassword(5, true, false, false, false);
             Assert.AreNotEqual("Nada generado", password);
         }
 
         [TestMethod]
         
-        public void NoSePuedeEjecutarMostrarPasswordEstandoLogueado()
+        public void SePuedeEjecutarMostrarPasswordEstandoLogueado()
         {
-            string encriptado = sesionPrueba.GenerarPassword(5, false, false, false, false);
+            string encriptado = sesionPrueba.GenerarPassword(5, true, false, false, false);
             string password = sesionPrueba.MostrarPassword(encriptado);
-            Assert.AreNotEqual(encriptado, password);
+            Assert.AreEqual(encriptado, password);
         }
 
         [TestMethod]

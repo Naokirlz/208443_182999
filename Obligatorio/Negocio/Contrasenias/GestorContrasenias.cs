@@ -29,7 +29,6 @@ namespace Negocio.Contrasenias
         public Contrasenia ModificarContrasenia(Contrasenia aModificarContrasenia)
         {
             ValidarCampos(aModificarContrasenia);
-            aModificarContrasenia.FechaUltimaModificacion = DateTime.Now;
             return Repositorio.ModificarContrasenia(aModificarContrasenia);
         }
 

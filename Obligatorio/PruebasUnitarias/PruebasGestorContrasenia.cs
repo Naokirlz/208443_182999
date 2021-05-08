@@ -638,5 +638,63 @@ namespace PruebasUnitarias
 
 
         }
+        
+        [TestMethod]
+        public void NoActualizaFechaActualizacionAlModificarOtroAtributoQueNoSeaPassword()
+        {
+            Gestor.Alta(ContraseniaCompleta);
+            Contrasenia vieja = Gestor.ListarContrasenias()[0];
+            DateTime fechaVieja = vieja.FechaUltimaModificacion;
+            int id = vieja.Id;
+
+
+            Contrasenia contraseniaNueva = new Contrasenia()
+            {
+                Sitio = "OTRO SITIO",
+                Categoria = vieja.Categoria,
+                Usuario = vieja.Usuario,
+                Notas = vieja.Notas,
+                FechaUltimaModificacion = vieja.FechaUltimaModificacion,
+                Id = vieja.Id,
+                Password = vieja.Password
+            };
+
+            Gestor.ModificarContrasenia(contraseniaNueva);
+            Contrasenia nueva = Gestor.Buscar(id);
+            DateTime fechaNueva = nueva.FechaUltimaModificacion;
+            Assert.AreEqual(fechaVieja, fechaNueva);
+
+        }
+
+        [TestMethod]
+        public void SeActualizaFechaActualizacionAlModificarPassword()
+        {
+            Gestor.Alta(ContraseniaCompleta);
+            Contrasenia vieja = Gestor.ListarContrasenias()[0];
+            DateTime fechaVieja = vieja.FechaUltimaModificacion;
+            int id = vieja.Id;
+
+
+            Contrasenia contraseniaNueva = new Contrasenia()
+            {
+                Sitio = vieja.Sitio,
+                Categoria = vieja.Categoria,
+                Usuario = vieja.Usuario,
+                Notas = vieja.Notas,
+                FechaUltimaModificacion = vieja.FechaUltimaModificacion,
+                Id= vieja.Id,
+                Password = "Nuevo PASSWORD"
+            };
+
+            Gestor.ModificarContrasenia(contraseniaNueva);
+            Contrasenia nueva = Gestor.Buscar(id);
+            DateTime fechaNueva = nueva.FechaUltimaModificacion;
+            Assert.AreNotEqual(fechaVieja, fechaNueva);
+
+        }
+
+
+
+
     }
 }
