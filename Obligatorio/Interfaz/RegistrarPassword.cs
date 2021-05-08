@@ -32,9 +32,9 @@ namespace Interfaz
                 }
                 Sesion sesion = Sesion.Singleton;
                 sesion.GuardarPrimerPassword(passwordRepetido);
-                Login pantallaLogin = new Login();
+                InicioSesion inicioSesion = new InicioSesion();
                 this.Hide();
-                pantallaLogin.Show();
+                inicioSesion.Show();
             }
             catch(ExcepcionLargoTexto errorLargoTexto)
             {
