@@ -31,7 +31,8 @@ namespace Interfaz
             try
             {
                 this.sis.Login(this.txtIngresar.Text);
-                PantallaPrincipal nuevaPantalla = new PantallaPrincipal();
+                MenuPrincipal nuevaPantalla = new MenuPrincipal();
+                //PantallaPrincipal nuevaPantalla = new PantallaPrincipal();
                 this.Hide();
                 nuevaPantalla.Show();
             }
