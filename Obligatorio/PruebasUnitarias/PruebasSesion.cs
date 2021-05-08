@@ -534,6 +534,15 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void AgregarContraseniaOTarjetaVulnerableAFuenteMayorA50Caracteres()
+        {
+            string texto = ArmarTextoDeLargoVariable(51);
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable(texto);
+           
+        }
+
+        [TestMethod]
         public void Agregar2VecesLaMismaContraseniaOTarjetaVulnerableAFuente()
         {
             sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("admin123");
@@ -608,6 +617,20 @@ namespace PruebasUnitarias
             List<TarjetaCredito> tarjetasVulnerables = sesionPrueba.TarjetasCreditoVulnerables(Fuente);
 
             Assert.AreEqual(1, tarjetasVulnerables.Count());
+
+        }
+
+        private string ArmarTextoDeLargoVariable(int largo)
+        {
+
+            string retorno = "";
+            for (int i = 0; i < largo; i++)
+            {
+                retorno += "a";
+
+            }
+
+            return retorno;
 
         }
 

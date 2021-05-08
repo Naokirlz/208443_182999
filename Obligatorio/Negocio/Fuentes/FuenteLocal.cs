@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio.Excepciones;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,10 @@ namespace Negocio
 
         public void AgregarPasswordOContraseniaVulnerable(string passwordOContraseniaVulnerable)
         {
+            if(passwordOContraseniaVulnerable.Length > 50) 
+            {
+                throw new ExcepcionLargoTexto("El largo de texto debe ser menor a 50 caracteres.");
+            }
             ContraseniasYTarjetasVulnerables.Add(passwordOContraseniaVulnerable);
         }
 
