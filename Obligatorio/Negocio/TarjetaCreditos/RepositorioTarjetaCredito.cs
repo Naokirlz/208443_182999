@@ -19,18 +19,18 @@ namespace Negocio.TarjetaCreditos
         }
 
 
-        public TarjetaCredito Alta(TarjetaCredito nuevaTarjeta)
+        public int Alta(TarjetaCredito nuevaTarjeta)
         {
             nuevaTarjeta.IdTarjeta = autonumerado;
             autonumerado++;
             Tarjetas.Add(nuevaTarjeta);
-            return nuevaTarjeta;
+            return nuevaTarjeta.IdTarjeta;
 
         }
 
-        public void Baja(TarjetaCredito bajaTarjeta)
+        public void Baja(int bajaTarjeta)
         {
-            Tarjetas.Remove(bajaTarjeta);
+            Tarjetas.Remove(BuscarPorId(bajaTarjeta));
             
         }
 

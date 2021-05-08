@@ -19,31 +19,31 @@ namespace Negocio.TarjetaCreditos
         }
 
 
-        public TarjetaCredito Alta(TarjetaCredito nuevaTarjeta)
+        public int Alta(TarjetaCredito nuevaTarjeta)
         {
             ControlAltaYModificar(nuevaTarjeta);
             return Repositorio.Alta(nuevaTarjeta);
         }
 
 
-        public void Baja(TarjetaCredito bajaTarjeta)
+        public void Baja(int idBajaTarjeta)
         {
-            bajaTarjeta = Buscar(bajaTarjeta);
-            Repositorio.Baja(bajaTarjeta);
+            Buscar(idBajaTarjeta);
+            Repositorio.Baja(idBajaTarjeta);
         }
 
 
         public void ModificarTarjeta(TarjetaCredito modificada)
         {
-            Buscar(modificada);
+            Buscar(modificada.IdTarjeta);
             ControlAltaYModificar(modificada);
             Repositorio.ModificarTarjeta(modificada);
         }
 
 
-        public TarjetaCredito Buscar(TarjetaCredito buscada)
+        public TarjetaCredito Buscar(int buscada)
         {
-            return Repositorio.BuscarPorId(buscada.IdTarjeta);
+            return Repositorio.BuscarPorId(buscada);
         }
 
 

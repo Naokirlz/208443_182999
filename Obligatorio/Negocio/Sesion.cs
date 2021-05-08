@@ -124,13 +124,13 @@ namespace Negocio
             return this.GestorCategoria.ObtenerTodasLasCategorias();
         }
 
-        public TarjetaCredito AltaTarjetaCredito(TarjetaCredito nuevaTarjeta)
+        public int AltaTarjetaCredito(TarjetaCredito nuevaTarjeta)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
             return this.GestorTarjetaCredito.Alta(nuevaTarjeta);
         }
 
-        public void BajaTarjetaCredito(TarjetaCredito bajaTarjeta)
+        public void BajaTarjetaCredito(int bajaTarjeta)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
             GestorTarjetaCredito.Baja(bajaTarjeta);
@@ -142,10 +142,10 @@ namespace Negocio
             GestorTarjetaCredito.ModificarTarjeta(modificada);
         }
 
-        public TarjetaCredito BuscarTarjeta(TarjetaCredito buscada)
+        public TarjetaCredito BuscarTarjeta(int idBuscada)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
-            return GestorTarjetaCredito.Buscar(buscada);
+            return GestorTarjetaCredito.Buscar(idBuscada);
         }
 
         public List<TarjetaCredito> ObtenerTodasLasTarjetas()

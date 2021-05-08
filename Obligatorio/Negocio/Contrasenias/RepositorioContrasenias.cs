@@ -48,7 +48,7 @@ namespace Negocio.Contrasenias
                         
             if (!anterior.Password.Equals(aModificarContrasenia.Password))
             {
-                anterior.FechaUltimaModificacion = DateTime.Now;
+                anterior.FechaUltimaModificacion = DateTime.Now.AddSeconds(1);
             }
 
             anterior.Password = Encriptar(aModificarContrasenia.Password);

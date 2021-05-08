@@ -62,7 +62,7 @@ namespace PruebasUnitarias
         [TestMethod]
         public void AltaTarjetaDeCredito()
         {
-            TarjetaDePruebaUno = Gestor.Alta(TarjetaDePruebaUno);
+            int idTarjetaDePruebaUno = Gestor.Alta(TarjetaDePruebaUno);
             Assert.IsNotNull(TarjetaDePruebaUno);
         }
 
@@ -163,8 +163,8 @@ namespace PruebasUnitarias
         public void AltaTarjetaDeCreditoNumerovalido()
         {
             TarjetaDePruebaUno.Numero = "1234123412341234";
-            TarjetaCredito prueba = Gestor.Alta(TarjetaDePruebaUno);
-            Assert.IsNotNull(prueba);
+            int idPrueba = Gestor.Alta(TarjetaDePruebaUno);
+            Assert.IsNotNull(idPrueba);
 
 
         }
@@ -173,8 +173,8 @@ namespace PruebasUnitarias
         public void AltaTarjetaDeCreditoCodigovalido()
         {
             TarjetaDePruebaUno.Codigo = "123";
-            TarjetaCredito prueba = Gestor.Alta(TarjetaDePruebaUno);
-            Assert.IsNotNull(prueba);
+            int idPrueba = Gestor.Alta(TarjetaDePruebaUno);
+            Assert.IsNotNull(idPrueba);
 
         }
 
@@ -205,9 +205,10 @@ namespace PruebasUnitarias
         [TestMethod]
         public void ModificarNombreTarjetaCredito()
         {
-            TarjetaCredito modificada = Gestor.Alta(TarjetaDePruebaUno);
-            modificada.Nombre = "Nuevo Nombre";
-            Gestor.ModificarTarjeta(modificada);
+            int modificada = Gestor.Alta(TarjetaDePruebaUno);
+            TarjetaDePruebaUno = Gestor.Buscar(modificada);
+            TarjetaDePruebaUno.Nombre = "Nuevo Nombre";
+            Gestor.ModificarTarjeta(TarjetaDePruebaUno);
             Assert.AreEqual("Nuevo Nombre", Gestor.Buscar(modificada).Nombre);
 
         }
@@ -217,11 +218,12 @@ namespace PruebasUnitarias
         public void ModificarNombreTarjetaCreditoNombreRepetido()
         {
             Gestor.Alta(TarjetaDePruebaUno);
-            Gestor.Alta(TarjetaDePruebaDos);
+            int idTarjeta2 = Gestor.Alta(TarjetaDePruebaDos);
 
-            TarjetaCredito modificada = Gestor.Alta(TarjetaDePruebaUno);
-            modificada.Nombre = TarjetaDePruebaDos.Nombre;
-            Gestor.ModificarTarjeta(modificada);
+            TarjetaDePruebaDos = Gestor.Buscar(idTarjeta2);
+            TarjetaDePruebaDos.Nombre = TarjetaDePruebaUno.Nombre;
+
+            Gestor.ModificarTarjeta(TarjetaDePruebaDos);
 
 
         }
@@ -231,11 +233,12 @@ namespace PruebasUnitarias
         public void ModificarNumeroTarjetaCreditoNumeroRepetido()
         {
             Gestor.Alta(TarjetaDePruebaUno);
-            Gestor.Alta(TarjetaDePruebaDos);
+            int idTarjeta2 = Gestor.Alta(TarjetaDePruebaDos);
 
-            TarjetaCredito modificada = Gestor.Alta(TarjetaDePruebaUno);
-            modificada.Numero = TarjetaDePruebaDos.Numero;
-            Gestor.ModificarTarjeta(modificada);
+            TarjetaDePruebaDos = Gestor.Buscar(idTarjeta2);
+            TarjetaDePruebaDos.Numero = TarjetaDePruebaUno.Numero;
+
+            Gestor.ModificarTarjeta(TarjetaDePruebaDos);
 
 
         }
@@ -290,13 +293,10 @@ namespace PruebasUnitarias
 
         public void EliminarTarjetaCredito()
         {
-
-            TarjetaCredito prueba = Gestor.Alta(TarjetaDePruebaDos);
+            int prueba = Gestor.Alta(TarjetaDePruebaDos);
             Assert.AreEqual(1, Gestor.ObtenerTodas().Count());
             Gestor.Baja(prueba);
             Assert.AreEqual(0, Gestor.ObtenerTodas().Count());
-
-
 
         }
 
@@ -304,7 +304,7 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void EliminarTarjetaCreditoQuenNoExiste()
         {
-            Gestor.Baja(TarjetaDePruebaDos);
+            Gestor.Baja(TarjetaDePruebaDos.IdTarjeta + 200);
 
         }
 
