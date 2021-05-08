@@ -17,13 +17,13 @@ namespace Negocio.Categorias
             this.Categorias = new List<Categoria>();
         }
 
-        public Categoria Alta(string nombre)
+        public int Alta(string nombre)
         {
             Categoria nueva = new Categoria(nombre);
             nueva.Id = autonumerado;
             autonumerado++;
             this.Categorias.Add(nueva);
-            return nueva;
+            return nueva.Id;
         }
 
         internal void Baja(int id)

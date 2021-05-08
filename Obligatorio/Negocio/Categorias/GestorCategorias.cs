@@ -16,7 +16,7 @@ namespace Negocio.Categorias
             this.Repositorio = new RepositorioCategorias();
         }
 
-        public Categoria Alta(string nombre)
+        public int Alta(string nombre)
         {
             ValidarCategoria(nombre);
 
@@ -24,9 +24,7 @@ namespace Negocio.Categorias
             { 
                 throw new ExcepcionElementoYaExiste(); 
             }
-            
-            Categoria nueva = Repositorio.Alta(nombre);
-            return nueva;
+            return Repositorio.Alta(nombre);
         }
 
         public void Baja(int id)

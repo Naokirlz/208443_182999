@@ -30,87 +30,78 @@ namespace PruebasUnitarias
         public void SeGuardaCorrectamenteElNombre()
         {
 
-            Categoria NuevaCategoria = Gestor.Alta("ElNombre");
+            int idCategoria = Gestor.Alta("ElNombre");
             string nombre = "ElNombre";
-            Assert.AreEqual(nombre, NuevaCategoria.Nombre);
+            Assert.AreEqual(nombre, Gestor.BuscarCategoriaPorId(idCategoria).Nombre);
         }
 
         [TestMethod]
         public void SeAsignaElIdAutoincremental()
         {
-            Categoria UnaCategoria = Gestor.Alta("Incremental");
-            Categoria OtraCategoria = Gestor.Alta("Incremental2");
-            int diferencia = OtraCategoria.Id - UnaCategoria.Id;
-            Assert.AreEqual(1, diferencia);
+            int UnaCategoria = Gestor.Alta("Incremental");
+            int OtraCategoria = Gestor.Alta("Incremental2");
+            Assert.AreEqual(1, OtraCategoria - UnaCategoria);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionElementoYaExiste))]
         public void NoSePuedeCrearCategoriaRepetida()
         {
-            Categoria UnaCategoria = Gestor.Alta("CateRepetida");
-            Categoria RepetidaCategoria = Gestor.Alta("CateRepetida");
+            int UnaCategoria = Gestor.Alta("CateRepetida");
+            int RepetidaCategoria = Gestor.Alta("CateRepetida");
         }
 
         [TestMethod]
         public void BuscarUnaCategoriaExistente()
         {
-            Categoria UnaCategoria = Gestor.Alta("BuscarCategoria");
-            int id = UnaCategoria.Id;
-            Categoria Buscada = Gestor.BuscarCategoriaPorId(id);
-            Assert.AreEqual(UnaCategoria, Buscada);
+            int UnaCategoria = Gestor.Alta("BuscarCategoria");
+            Categoria Buscada = Gestor.BuscarCategoriaPorId(UnaCategoria);
+            Assert.AreEqual("BuscarCategoria", Buscada.Nombre);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void BuscarUnaCategoriaNoExistente()
         {
-            Categoria UnaCategoria = Gestor.Alta("BuscOtraCat");
-            int id = UnaCategoria.Id + 1;
-            Categoria Buscada = Gestor.BuscarCategoriaPorId(id);
+            int UnaCategoria = Gestor.Alta("BuscOtraCat");
+            int IdABuscar = UnaCategoria + 20;
+            Categoria Buscada = Gestor.BuscarCategoriaPorId(IdABuscar);
         }
 
         [TestMethod]
         public void ModificarUnaCategoriaExistente()
         {
-            Categoria UnaCategoria = Gestor.Alta("BuscarCate1");
-            int id = UnaCategoria.Id;
-            Assert.AreEqual(UnaCategoria.Nombre, "BuscarCate1");
-            string nombreNuevo = "BuscarCate2";
-            Gestor.Modificacion(id, nombreNuevo);
-            Assert.AreEqual(UnaCategoria.Nombre, nombreNuevo);
+            int UnaCategoria = Gestor.Alta("BuscarCate1");
+            Gestor.Modificacion(UnaCategoria, "nombre Nuevo");
+            Assert.AreEqual("nombre Nuevo", Gestor.BuscarCategoriaPorId(UnaCategoria).Nombre);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionElementoYaExiste))]
         public void NoModificarUnaCategoriaNombreRepetido()
         {
-            Categoria UnaCategoria = Gestor.Alta("BuscarCate1");
-            Categoria UnaDCategoria = Gestor.Alta("BuscarCate3");
-
-            int id = UnaCategoria.Id;
+            int UnaCategoria = Gestor.Alta("BuscarCate1");
+            int otraCategoria = Gestor.Alta("BuscarCateNuevo");
             string nombreNuevo = "BuscarCate1";
-            Gestor.Modificacion(id, nombreNuevo);
+            Gestor.Modificacion(otraCategoria, nombreNuevo);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoModificarUnaCategoriaNombreCorto()
         {
-            Categoria UnaCategoria = Gestor.Alta("BuscarCate1");
-            int id = UnaCategoria.Id;
+            int UnaCategoria = Gestor.Alta("BuscarCate1");
             string nombreNuevo = "Bu";
-            Gestor.Modificacion(id, nombreNuevo);
+            Gestor.Modificacion(UnaCategoria, nombreNuevo);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoModificarUnaCategoriaNombreLargo()
         {
-            Categoria UnaCategoria = Gestor.Alta("BuscarCate4");
-            int id = UnaCategoria.Id;
+            int UnaCategoria = Gestor.Alta("BuscarCate4");
             string nombreNuevo = "1234567891234567";
-            Gestor.Modificacion(id, nombreNuevo);
+            Gestor.Modificacion(UnaCategoria, nombreNuevo);
         }
 
 
@@ -118,9 +109,9 @@ namespace PruebasUnitarias
         public void SePuedenVerTodasLasCategorias()
         {
             GestorCategorias Gestor2 = new GestorCategorias();
-            Categoria categoria1 = Gestor2.Alta("Categoria1");
-            Categoria categoria2 = Gestor2.Alta("Categoria2");
-            Categoria categoria3 = Gestor2.Alta("Categoria3");
+            int categoria1 = Gestor2.Alta("Categoria1");
+            int categoria2 = Gestor2.Alta("Categoria2");
+            int categoria3 = Gestor2.Alta("Categoria3");
 
             bool estaCat1 = false;
             bool estaCat2 = false;
@@ -133,9 +124,9 @@ namespace PruebasUnitarias
             foreach (Categoria categoria in Lista)
             {
 
-                if (categoria.Nombre == categoria1.Nombre && categoria.Id == categoria1.Id) { estaCat1 = true; }
-                else if (categoria.Nombre == categoria2.Nombre && categoria.Id == categoria2.Id) { estaCat2 = true; }
-                else if (categoria.Nombre == categoria3.Nombre && categoria.Id == categoria3.Id) { estaCat3 = true; }
+                if (categoria.Id == categoria1) { estaCat1 = true; }
+                else if (categoria.Id == categoria2) { estaCat2 = true; }
+                else if (categoria.Id == categoria3) { estaCat3 = true; }
                 else { categoriaDif = true; }
 
             }
@@ -150,8 +141,8 @@ namespace PruebasUnitarias
         public void EliminarElementoNoExistente()
         {
             GestorCategorias Gestor3 = new GestorCategorias();
-            Categoria categoria1 = Gestor3.Alta("Categoria1");
-            int id = categoria1.Id + 2;
+            int categoria1 = Gestor3.Alta("Categoria1");
+            int id = categoria1 + 200;
             Gestor3.Baja(id);
 
         }
@@ -160,14 +151,14 @@ namespace PruebasUnitarias
         public void PruebaEliminarCategoria()
         {
             GestorCategorias Gestor4 = new GestorCategorias();
-            Categoria categoria1 = Gestor4.Alta("Categoria1");
-            int id = categoria1.Id;
-            Gestor4.Baja(id);
+            int categoria1 = Gestor4.Alta("Categoria1");
+            Gestor4.Baja(categoria1);
+
             IEnumerable<Categoria> lista = Gestor4.ObtenerTodasLasCategorias();
             bool esta = false;
             foreach (Categoria cat in lista)
             {
-                if (cat.Id == categoria1.Id) esta = true;
+                if (cat.Id == categoria1) esta = true;
             }
             Assert.IsFalse(esta);
         }
@@ -175,8 +166,9 @@ namespace PruebasUnitarias
         [TestMethod]
         public void ElMetodoToStringDevuelveElNombre()
         {
-            Categoria categoria = Gestor.Alta("Categoria10");
-            string nombre = categoria.ToString();
+            int idCategoria = Gestor.Alta("Categoria10");
+            Categoria buscada = Gestor.BuscarCategoriaPorId(idCategoria);
+            string nombre = buscada.ToString();
             Assert.AreEqual("Categoria10", nombre);
         }
     }

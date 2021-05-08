@@ -93,7 +93,7 @@ namespace Negocio
             this.PasswordMaestro = v;
         }
 
-        public Categoria AltaCategoria(string v)
+        public int AltaCategoria(string v)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
             return this.GestorCategoria.Alta(v);

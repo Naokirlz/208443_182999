@@ -159,21 +159,20 @@ namespace PruebasUnitarias
         public void SePuedeEjecutarModificacionCategoriaSiSeEstaLogueado()
         {
 
-            Categoria nuevaCategoria = sesionPrueba.AltaCategoria("algunaCategoria");
-            int id = nuevaCategoria.Id;
-            sesionPrueba.ModificacionCategoria(id, "modAlgunaCat");
+            int nuevaCategoria = sesionPrueba.AltaCategoria("algunaCategoria");
+            
+            sesionPrueba.ModificacionCategoria(nuevaCategoria, "modAlgunaCat");
 
-            Assert.AreEqual("modAlgunaCat", sesionPrueba.BuscarCategoriaPorId(id).Nombre);
+            Assert.AreEqual("modAlgunaCat", sesionPrueba.BuscarCategoriaPorId(nuevaCategoria).Nombre);
 
         }
 
         [TestMethod]
         public void SePuedeEjecutarBuscarCategoriaPorIdSiSeEstaLogueado()
         {
-            Categoria nuevaCategoria = sesionPrueba.AltaCategoria("viejaCategoria");
-            int id = nuevaCategoria.Id;
-
-            Categoria categoriaBuscada = sesionPrueba.BuscarCategoriaPorId(id);
+            int nuevaCategoria = sesionPrueba.AltaCategoria("viejaCategoria");
+            
+            Categoria categoriaBuscada = sesionPrueba.BuscarCategoriaPorId(nuevaCategoria);
            
             Assert.IsNotNull(categoriaBuscada);
 
