@@ -155,26 +155,54 @@ namespace Negocio
         }
 
 
+        public Contrasenia AltaContrasenia(Contrasenia unaContrasena)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            return GestorContrasenia.Alta(unaContrasena);
+        }
 
+        public void BajaContrasenia(int id)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            GestorContrasenia.Baja(id);
+        }
 
+        public Contrasenia ModificarContrasenia(Contrasenia aModificarContrasenia)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            return GestorContrasenia.ModificarContrasenia(aModificarContrasenia);
+        }
 
+        public Contrasenia BuscarContrasenia(int id)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            return GestorContrasenia.Buscar(id);
 
+        }
+        public List<Contrasenia> ListarContrasenias()
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            return GestorContrasenia.ListarContrasenias();
+        }
 
+        public string VerificarFortaleza(Contrasenia nuevaContrasenia)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            return GestorContrasenia.VerificarFortaleza(nuevaContrasenia);
+        }
 
+        public string GenerarPassword(int largo, bool mayuscula, bool minuscula, bool numero, bool especial)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            return GestorContrasenia.GenerarPassword( largo,  mayuscula,  minuscula,  numero,  especial);
+        }
 
+        public string MostrarPassword(string password)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            return GestorContrasenia.MostrarPassword(password);
 
-
-
-
-
-
-
-
-
-
-
-
-
+        }
 
         public void LogOut()
         {

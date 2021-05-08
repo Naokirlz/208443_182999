@@ -281,10 +281,21 @@ namespace PruebasUnitarias
         
         public void SePuedeEjecutarBuscarTarjetaEstandoLogueado()
         {
-            TarjetaCredito buscada = new TarjetaCredito();
-            buscada.IdTarjeta = 1;
-            buscada = sesionPrueba.BuscarTarjeta(buscada);
-            Assert.AreEqual("PruebaNombre", buscada.Nombre);
+             TarjetaCredito buscada = new TarjetaCredito()
+            {
+                Categoria = new Categoria("Prueba"),
+                Nombre = "tarjeta a Buscar",
+                Tipo = "PruebaTipo2",
+                Numero = "5555123412344444",
+                Codigo = "123",
+                Vencimiento = DateTime.Now,
+                Nota = "Nota Opcional",
+                
+            };
+
+            int idTarjeta = sesionPrueba.AltaTarjetaCredito(buscada).IdTarjeta;
+            TarjetaCredito encontrada = sesionPrueba.BuscarTarjeta(buscada);
+            Assert.AreEqual(idTarjeta, encontrada.IdTarjeta);
             
         }
 
@@ -300,11 +311,182 @@ namespace PruebasUnitarias
 
 
         [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarAltaContraseniaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.AltaContrasenia(new Contrasenia());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarBajaContraseniaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.BajaContrasenia(1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarModificarContraseniaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.ModificarContrasenia(new Contrasenia());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarBuscarContraseniaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.BuscarContrasenia(1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarListarContraseniasSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.ListarContrasenias();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarVerificarFortalezaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.VerificarFortaleza(new Contrasenia());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarGenerarPasswordSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.GenerarPassword(1,false,false,false,false);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarMostrarPasswordSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.MostrarPassword("password");
+        }
+
+        //
+
+        [TestMethod]
+        
+        public void SePuedeEjecutarAltaContraseniaEstandoLogueado()
+        {
+            int cantidadAntes = sesionPrueba.ListarContrasenias().Count();
+            
+            Contrasenia contraseniaPrueba = new Contrasenia()
+            {
+                Sitio = "deremate.com.ar",
+                Usuario = "fedexAlta",
+                Password = "dale%%vo111!!!",
+                Categoria = new Categoria("Fake"),
+                Notas = "Sin"
+            };
+
+            sesionPrueba.AltaContrasenia(contraseniaPrueba);
+            Assert.AreEqual(1, sesionPrueba.ListarContrasenias().Count() - cantidadAntes);
+
+        }
+
+        [TestMethod]
+        
+        public void SePuedeEjecutarBajaContraseniaEstandoLogueado()
+        {
+           int cantidadAntes = sesionPrueba.ListarContrasenias().Count();
+           sesionPrueba.BajaContrasenia(pruebaContrasenia.Id);
+           int cantidadDespues = sesionPrueba.ListarContrasenias().Count();
+           Assert.AreEqual(1, cantidadAntes - cantidadDespues);
+
+        }
+
+        [TestMethod]
+        
+        public void SePuedeEjecutarModificarContraseniaEstandoLogueado()
+        {
+
+            Contrasenia anterior = sesionPrueba.ListarContrasenias()[0];
+            string sitioViejo = anterior.Sitio;
+                        
+            Contrasenia contraseniaModificar = new Contrasenia()
+            {
+                Sitio = "sitio nuevo",
+                Usuario = "fedexAlta",
+                Password = "dale%%vo111!!!",
+                Categoria = new Categoria("Fake"),
+                Notas = "Sin",
+                Id = anterior.Id
+            };
+
+            sesionPrueba.ModificarContrasenia(contraseniaModificar);
+
+            Contrasenia nueva = sesionPrueba.ListarContrasenias()[0];
+            string sitioNuevo = anterior.Sitio;
+
+            Assert.AreNotEqual(sitioViejo, sitioNuevo);
+
+        }
+
+        [TestMethod]
+       
+        public void SePuedeEjecutarBuscarContraseniaEstandoLogueado()
+        {
+            int id = sesionPrueba.ListarContrasenias()[0].Id;
+            Contrasenia buscada = sesionPrueba.BuscarContrasenia(id);
+            Assert.IsNotNull(buscada);
+        }
+
+        [TestMethod]
+       
+        public void SePuedeEjecutarListarContraseniasEstandoLogueado()
+        {
+            Contrasenia buscada = sesionPrueba.ListarContrasenias()[0];
+            Assert.IsNotNull(buscada);
+        }
+
+        [TestMethod]
+        
+        public void SePuedeEjecutarVerificarFortalezaEstandoLogueado()
+        {
+            string fortaleza = "Nada que Reportar";
+            fortaleza = sesionPrueba.VerificarFortaleza(pruebaContrasenia);
+            Assert.AreNotEqual("Nada que Reportar", fortaleza);
+        }
+
+        [TestMethod]
+       
+        //no pasa la prueba queda atrapado infinito en el while
+        public void SePuedeEjecutarGenerarPasswordEstandoLogueado()
+        {
+            string password = "Nada generado";
+            password = sesionPrueba.GenerarPassword(5, false, false, false, false);
+            Assert.AreNotEqual("Nada generado", password);
+        }
+
+        [TestMethod]
+        
+        public void NoSePuedeEjecutarMostrarPasswordEstandoLogueado()
+        {
+            string encriptado = sesionPrueba.GenerarPassword(5, false, false, false, false);
+            string password = sesionPrueba.MostrarPassword(encriptado);
+            Assert.AreNotEqual(encriptado, password);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeGuardarElPasswordMaestroMenorA5Caracteres()
         {
             sesionPrueba.GuardarPrimerPassword("aaaa");
         }
+
+
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
