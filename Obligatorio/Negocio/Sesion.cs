@@ -188,7 +188,7 @@ namespace Negocio
         public string VerificarFortaleza(Contrasenia nuevaContrasenia)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
-            return GestorContrasenia.VerificarFortaleza(nuevaContrasenia);
+            return nuevaContrasenia.ColorPassword.ToString();
         }
 
         public string GenerarPassword(int largo, bool mayuscula, bool minuscula, bool numero, bool especial)

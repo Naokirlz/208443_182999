@@ -366,72 +366,7 @@ namespace PruebasUnitarias
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
         }
 
-        /************************************************
-         *    VALIDACIONES DE PASSWORD
-         * ************************************************/
-        // se puede detectar password en rojo
-        [TestMethod]
-        public void SePuedeDetectarPasswordRojo()
-        {
-            ContraseniaCompleta.Password = "1234567";
-            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
-            string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
-            Assert.AreEqual("ROJO", fortaleza);
-        }
-
-        // se puede detectar password en NARANJA
-        [TestMethod]
-        public void SePuedeDetectarPasswordNaranja()
-        {
-            ContraseniaCompleta.Password = "12345678";
-            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
-            string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
-            Assert.AreEqual("NARANJA", fortaleza);
-        }
-
-        // se puede detectar password en AMARILLO
-        [TestMethod]
-        public void SePuedeDetectarPasswordAmarilloSoloMinusculas()
-        {
-            ContraseniaCompleta.Password = "aaaaaaaaaaaaaaa";
-            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
-            string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
-            Assert.AreEqual("AMARILLO", fortaleza);
-        }
-        [TestMethod]
-        public void SePuedeDetectarPasswordAmarilloSoloMayusculas()
-        {
-            ContraseniaCompleta.Password = "AAAAAAAAAAAAAAA";
-            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
-            string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
-            Assert.AreEqual("AMARILLO", fortaleza);
-        }
-
-        // se puede detectar password en VERDE CLARO
-        [TestMethod]
-        public void SePuedeDetectarPasswordVerdeClaro()
-        {
-            ContraseniaCompleta.Password = "AAAAAAaAAAAAAAA";
-            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
-            string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
-            Assert.AreEqual("VERDE CLARO", fortaleza);
-        }
-
-        // se puede detectar password en VERDE OSCURO
-        [TestMethod]
-        public void SePuedeDetectarPasswordVerdeOscuro()
-        {
-            ContraseniaCompleta.Password = "AAAAAAaAAAA$AA1";
-            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
-            string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
-            Assert.AreEqual("VERDE OSCURO", fortaleza);
-        }
+        
 
         //se puede autogenerar la password en una cantidad correcta de caracteres
         [TestMethod]

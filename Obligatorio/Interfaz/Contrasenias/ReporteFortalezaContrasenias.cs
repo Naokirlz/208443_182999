@@ -90,7 +90,7 @@ namespace Interfaz.Contrasenias
                 foreach (Contrasenia contrasenia in contrasenias)
                 {
                     string password = Sesion.GestorContrasenia.MostrarPassword(contrasenia.Password);
-                    if (Sesion.GestorContrasenia.VerificarFortaleza(contrasenia) == grupo.ToUpper())
+                    if (contrasenia.ColorPassword.ToString() == grupo.ToUpper())
                     {
                         nuevo.Cantidad = nuevo.Cantidad + 1;
                         nuevo.Contrasenias.Add(contrasenia);

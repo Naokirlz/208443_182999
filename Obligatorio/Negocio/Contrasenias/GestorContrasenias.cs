@@ -41,39 +41,12 @@ namespace Negocio.Contrasenias
 
         public List<Contrasenia> ListarContrasenias()
         {
-
             List<Contrasenia> retorno = Repositorio.ListarContrasenias();
             retorno.Sort();
             return retorno;
         }
 
-        public string VerificarFortaleza(Contrasenia nuevaContrasenia)
-        {
-            bool mayusculas = false;
-            bool minusculas = false;
-            bool numeros = false;
-            bool especiales = false;
-            string password = Repositorio.MostrarPassword(nuevaContrasenia.Password);
-            int largo = password.Length;
-
-            foreach (char caracter in password)
-            {
-                if (caracter >= 65 && caracter <= 90) mayusculas = true;
-                else if (caracter >= 97 && caracter <= 122) minusculas = true;
-                else if (caracter >= 48 && caracter <= 57) numeros = true;
-                else if (caracter >= 32 && caracter <= 47) especiales = true;
-                else if (caracter >= 58 && caracter <= 64) especiales = true;
-                else if (caracter >= 91 && caracter <= 96) especiales = true;
-                else if (caracter >= 123 && caracter <= 126) especiales = true;
-            }
-
-            if (largo > 14 && mayusculas && minusculas && numeros && especiales) return "VERDE OSCURO";
-            if (largo > 14 && mayusculas && minusculas && !numeros && !especiales) return "VERDE CLARO";
-            if (largo > 14 && mayusculas && !minusculas && !numeros && !especiales) return "AMARILLO";
-            if (largo > 14 && !mayusculas && minusculas && !numeros && !especiales) return "AMARILLO";
-            if (largo >= 8) return "NARANJA";
-            return "ROJO";
-        }
+        
 
         public string GenerarPassword(int largo, bool mayuscula, bool minuscula, bool numero, bool especial)
         {
@@ -169,9 +142,6 @@ namespace Negocio.Contrasenias
         {
             if (unaFecha > DateTime.Now) throw new ExcepcionFechaIncorrecta();
         }
-
-        
-        
 
         private string GenerarCaracter(bool mayuscula, bool minuscula, bool numero, bool especial, Random random)
         {

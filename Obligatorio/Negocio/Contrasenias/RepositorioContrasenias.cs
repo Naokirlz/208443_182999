@@ -27,9 +27,14 @@ namespace Negocio.Contrasenias
             }
             unaContrasenia.Id = autonumerado;
             autonumerado++;
+
+            unaContrasenia.CalcularFortaleza();
+            
             unaContrasenia.Password = Encriptar(unaContrasenia.Password);
             Contrasenia clonada = ClonarContrasenia(unaContrasenia);
+
             this.Contrasenias.Add(clonada);
+
             return unaContrasenia.Id;
         }
 

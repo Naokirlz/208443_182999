@@ -9,7 +9,28 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasContrasena
     {
-        [TestCleanup]
+
+        
+        private Contrasenia ContraseniaCompleta;
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            Contrasenia contraseniaCompleta = new Contrasenia()
+            {
+                Sitio = "unsitio.com",
+                Categoria = new Categoria("Categoria"),
+                Usuario = "usuario",
+                Notas = "clave de netflix",
+                FechaUltimaModificacion = DateTime.Now,
+                Password = "secreto"
+            };
+            this.ContraseniaCompleta = contraseniaCompleta;
+        }
+
+
+
+
 
         [TestMethod]
         public void SePuedeCrearUnaContrasenaConSitioCorrecto()
@@ -20,8 +41,7 @@ namespace PruebasUnitarias
             };
             Assert.AreEqual("12345", nuevaContrasenia.Sitio);
         }
-
-        
+                
 
         [TestMethod]
         public void SePuedeCrearUnaContrasenaConUsuarioCorrecto()
@@ -33,9 +53,6 @@ namespace PruebasUnitarias
             Assert.AreEqual("12345", nuevaContrasenia.Usuario);
         }
 
-        
-
-        
 
         [TestMethod]
         public void SePuedeCrearUnaContrasenaConPasswordCorrecto()
@@ -46,11 +63,6 @@ namespace PruebasUnitarias
             };
             Assert.AreEqual("12345", nuevaContrasenia.Password);
         }
-
-        
-        
-
-        
 
         
 
@@ -98,6 +110,61 @@ namespace PruebasUnitarias
             };
             string texto = nuevaContrasenia.ToString();
             Assert.AreEqual("deremate.com | fede", texto);
+        }
+
+        /************************************************
+         *    VALIDACIONES DE PASSWORD
+         * ************************************************/
+        // se puede detectar password en rojo
+        [TestMethod]
+        public void SePuedeDetectarPasswordRojo()
+        {
+            ContraseniaCompleta.Password = "1234567";
+            string fortaleza = ContraseniaCompleta.ColorPassword.ToString();
+            Assert.AreEqual("ROJO", fortaleza);
+        }
+
+        // se puede detectar password en NARANJA
+        [TestMethod]
+        public void SePuedeDetectarPasswordNaranja()
+        {
+            ContraseniaCompleta.Password = "12345678";
+            string fortaleza = ContraseniaCompleta.ColorPassword.ToString();
+            Assert.AreEqual("NARANJA", fortaleza);
+        }
+
+        // se puede detectar password en AMARILLO
+        [TestMethod]
+        public void SePuedeDetectarPasswordAmarilloSoloMinusculas()
+        {
+            ContraseniaCompleta.Password = "aaaaaaaaaaaaaaa";
+            string fortaleza = ContraseniaCompleta.ColorPassword.ToString();
+            Assert.AreEqual("AMARILLO", fortaleza);
+        }
+        [TestMethod]
+        public void SePuedeDetectarPasswordAmarilloSoloMayusculas()
+        {
+            ContraseniaCompleta.Password = "AAAAAAAAAAAAAAA";
+            string fortaleza = ContraseniaCompleta.ColorPassword.ToString();
+            Assert.AreEqual("AMARILLO", fortaleza);
+        }
+
+        // se puede detectar password en VERDE CLARO
+        [TestMethod]
+        public void SePuedeDetectarPasswordVerdeClaro()
+        {
+            ContraseniaCompleta.Password = "AAAAAAaAAAAAAAA";
+            string fortaleza = ContraseniaCompleta.ColorPassword.ToString();
+            Assert.AreEqual("VERDE_CLARO", fortaleza);
+        }
+
+        // se puede detectar password en VERDE OSCURO
+        [TestMethod]
+        public void SePuedeDetectarPasswordVerdeOscuro()
+        {
+            ContraseniaCompleta.Password = "AAAAAAaAAAA$AA1";
+            string fortaleza = ContraseniaCompleta.ColorPassword.ToString();
+            Assert.AreEqual("VERDE_OSCURO", fortaleza);
         }
     }
 }
