@@ -63,17 +63,18 @@ namespace PruebasUnitarias
         {
             sesionPrueba.GestorContrasenia = new GestorContrasenias();
             sesionPrueba.GestorTarjetaCredito = new GestorTarjetaCredito();
+            sesionPrueba.GestorCategoria = new GestorCategorias();
             sesionPrueba.MisFuentes = new List<IFuente>();
         }
 
-        [TestMethod]
-        public void InicioSesionCorrecto()
-        {
-            sesionPrueba.GuardarPrimerPassword("secreto");
-            sesionPrueba.Login("secreto");
-            sesionPrueba.GestorCategoria.Alta("cat uno");
-            Assert.AreEqual(1, sesionPrueba.GestorCategoria.ObtenerTodasLasCategorias().Count());
-        }
+        //[TestMethod]
+        //public void InicioSesionCorrecto()
+        //{
+        //    sesionPrueba.GuardarPrimerPassword("secreto");
+        //    sesionPrueba.Login("secreto");
+        //    sesionPrueba.GestorCategoria.Alta("cat uno");
+        //    Assert.AreEqual(1, sesionPrueba.GestorCategoria.ObtenerTodasLasCategorias().Count());
+        //}
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
@@ -178,6 +179,124 @@ namespace PruebasUnitarias
 
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarAltaTarjetaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.AltaTarjetaCredito(new TarjetaCredito());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarBajaTarjetaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.BajaTarjetaCredito(new TarjetaCredito());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarModificarTarjetaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.ModificarTarjeta(new TarjetaCredito());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarBuscarTarjetaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.BuscarTarjeta(new TarjetaCredito());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEjecutarObtenerTodasTarjetaSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.ObtenerTodasLasTarjetas();
+        }
+
+        
+        [TestMethod]
+        
+        public void SePuedeEjecutarAltaTarjetaEstandoLogueado()
+        {
+                TarjetaCredito nuevoTarjetaPrueba = new TarjetaCredito()
+            {
+                Categoria = new Categoria("Prueba"),
+                Nombre = "PruebaNombre2",
+                Tipo = "PruebaTipo2",
+                Numero = "1234123412344444",
+                Codigo = "123",
+                Vencimiento = DateTime.Now,
+                Nota = "Nota Opcional",
+
+            };
+
+            int antes = sesionPrueba.ObtenerTodasLasTarjetas().Count();
+            sesionPrueba.AltaTarjetaCredito(nuevoTarjetaPrueba);
+            int despues = sesionPrueba.ObtenerTodasLasTarjetas().Count();
+            Assert.AreEqual(1,despues - antes);
+        }
+
+        [TestMethod]
+        
+        public void SePuedeEjecutarBajaTarjetaEstandoLogueado()
+        {
+            int antes = sesionPrueba.ObtenerTodasLasTarjetas().Count();
+            sesionPrueba.BajaTarjetaCredito(nuevoTarjeta);
+            int despues = sesionPrueba.ObtenerTodasLasTarjetas().Count();
+            Assert.AreEqual(1, antes - despues);
+
+        }
+
+        [TestMethod]
+        
+        public void SePuedeEjecutarModificarTarjetaEstandoLogueado()
+        {
+            int id = nuevoTarjeta.IdTarjeta;
+            string nombreAnterior = nuevoTarjeta.Nombre;
+
+            TarjetaCredito modificadaTarjetaPrueba = new TarjetaCredito()
+            {
+                Categoria = new Categoria("Prueba"),
+                Nombre = "nombreModificado",
+                Tipo = "PruebaTipo2",
+                Numero = "1234123412344444",
+                Codigo = "123",
+                Vencimiento = DateTime.Now,
+                Nota = "Nota Opcional",
+                IdTarjeta = id
+            };
+
+            sesionPrueba.ModificarTarjeta(modificadaTarjetaPrueba);
+            string nombreActual = sesionPrueba.BuscarTarjeta(nuevoTarjeta).Nombre;
+            Assert.AreNotEqual(nombreActual, nombreAnterior);
+        }
+
+        [TestMethod]
+        
+        public void SePuedeEjecutarBuscarTarjetaEstandoLogueado()
+        {
+            TarjetaCredito buscada = new TarjetaCredito();
+            buscada.IdTarjeta = 1;
+            buscada = sesionPrueba.BuscarTarjeta(buscada);
+            Assert.AreEqual("PruebaNombre", buscada.Nombre);
+            
+        }
+
+        [TestMethod]
+        
+        public void SePuedeEjecutarObtenerTodasTarjetaEstandoLogueado()
+        {
+           int cantidad = sesionPrueba.ObtenerTodasLasTarjetas().Count();
+           sesionPrueba.BajaTarjetaCredito(nuevoTarjeta);
+           Assert.AreEqual(1, cantidad - sesionPrueba.ObtenerTodasLasTarjetas().Count());
+
+        }
 
 
         [TestMethod]

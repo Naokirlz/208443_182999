@@ -41,7 +41,7 @@ namespace Negocio
         {
             if (password != PasswordMaestro || PasswordMaestro == "") throw new ExcepcionAccesoDenegado();
             this.Logueado = true;
-            InsertarDatosDeMuestra();
+            //InsertarDatosDeMuestra();
         }
 
         public List<Contrasenia> ContraseniasVulnerables(IFuente fuente)
@@ -124,6 +124,58 @@ namespace Negocio
             return this.GestorCategoria.ObtenerTodasLasCategorias();
         }
 
+        public TarjetaCredito AltaTarjetaCredito(TarjetaCredito nuevaTarjeta)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            return this.GestorTarjetaCredito.Alta(nuevaTarjeta);
+        }
+
+        public void BajaTarjetaCredito(TarjetaCredito bajaTarjeta)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            GestorTarjetaCredito.Baja(bajaTarjeta);
+        }
+
+        public void ModificarTarjeta(TarjetaCredito modificada)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            GestorTarjetaCredito.ModificarTarjeta(modificada);
+        }
+
+        public TarjetaCredito BuscarTarjeta(TarjetaCredito buscada)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            return GestorTarjetaCredito.Buscar(buscada);
+        }
+
+        public List<TarjetaCredito> ObtenerTodasLasTarjetas()
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            return GestorTarjetaCredito.ObtenerTodas();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public void LogOut()
         {
             this.Logueado = false;
@@ -164,13 +216,16 @@ namespace Negocio
 
         }
 
+
+
+
+
         private void InsertarDatosDeMuestra()
         {
             AltaCategoria("Estudio");
             AltaCategoria("Hogar");
             AltaCategoria("Familia");
             AltaCategoria("Trabajo");
-
             
         }
 
