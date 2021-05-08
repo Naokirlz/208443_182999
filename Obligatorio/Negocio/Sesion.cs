@@ -155,7 +155,7 @@ namespace Negocio
         }
 
 
-        public Contrasenia AltaContrasenia(Contrasenia unaContrasena)
+        public int AltaContrasenia(Contrasenia unaContrasena)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
             return GestorContrasenia.Alta(unaContrasena);

@@ -164,7 +164,8 @@ namespace PruebasUnitarias
         {
             DateTime fechaIncorrecta = DateTime.Now.AddDays(-1);
             ContraseniaCompleta.FechaUltimaModificacion = fechaIncorrecta;
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             Assert.AreNotEqual(fechaIncorrecta, nuevaContrasenia.FechaUltimaModificacion);
             Assert.AreEqual(DateTime.Now.Date, nuevaContrasenia.FechaUltimaModificacion.Date);
         }
@@ -174,7 +175,8 @@ namespace PruebasUnitarias
         public void SePuedeModificarElSitio()
         {
             ContraseniaCompleta.Sitio = "sitioviejo.com";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Sitio = "nuevositio.com";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
             Assert.AreEqual("nuevositio.com", modificada.Sitio);
@@ -185,7 +187,8 @@ namespace PruebasUnitarias
         public void NoSePuedeModificarElSitioConMenos3Caracteres()
         {
             ContraseniaCompleta.Sitio = "sitioviejo.com";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Sitio = "nu";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
         }
@@ -195,7 +198,8 @@ namespace PruebasUnitarias
         public void NoSePuedeModificarElSitioConMas25Caracteres()
         {
             ContraseniaCompleta.Sitio = "sitioviejo.com";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Sitio = "12345123451234512345123451";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
         }
@@ -204,7 +208,8 @@ namespace PruebasUnitarias
         public void AlGuardarUnaContraseniaCreadaNoSeModificaMandadaPorParametro()
         {
             ContraseniaCompleta.Sitio = "sitioviejo.com";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Sitio = "12345123451234512345123451";
             Assert.AreNotEqual("12345123451234512345123451", Gestor.Buscar(nuevaContrasenia.Id).Sitio);
         }
@@ -212,7 +217,8 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeBuscarUnaContrasenia()
         {
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             Contrasenia buscada = Gestor.Buscar(nuevaContrasenia.Id);
             Assert.AreEqual(nuevaContrasenia.Sitio, buscada.Sitio);
         }
@@ -221,7 +227,8 @@ namespace PruebasUnitarias
         public void AlModificarUnaContraseniaCreadaNoSeModificaMandadaPorParametro()
         {
             ContraseniaCompleta.Sitio = "sitioviejo.com";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Sitio = "1234512345";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
             modificada.Sitio = "12345123451234512345123451";
@@ -232,7 +239,9 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SeAsignaElIdAutoincremental()
         {
-            Contrasenia unaContrasenia = Gestor.Alta(ContraseniaCompleta);
+                        
+            int idUnaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            
             Contrasenia nuevaContrasenia = new Contrasenia() {
                 Sitio = "otrositio.com",
                 Categoria = new Categoria("Categoria"),
@@ -241,8 +250,10 @@ namespace PruebasUnitarias
                 FechaUltimaModificacion = DateTime.Now,
                 Password = "secreto"
             };
-            Contrasenia otraContrasenia = Gestor.Alta(nuevaContrasenia);
-            int diferencia = otraContrasenia.Id - unaContrasenia.Id;
+
+            int idOtraContrasenia = Gestor.Alta(nuevaContrasenia);
+            
+            int diferencia = idOtraContrasenia - idUnaContrasenia;
             Assert.AreEqual(1, diferencia);
         }
 
@@ -251,7 +262,8 @@ namespace PruebasUnitarias
         public void SePuedeModificarElUsuario()
         {
             ContraseniaCompleta.Usuario = "usuario anterior";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Usuario = "usuario nuevo";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
             Assert.AreEqual("usuario nuevo", modificada.Usuario);
@@ -261,7 +273,8 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeModificarElUsuarioConMenos5Caracteres()
         {
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Usuario = "usua";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
         }
@@ -270,7 +283,8 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeModificarElUsuarioConMas25Caracteres()
         {
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Usuario = "12345123451234512345123451";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
         }
@@ -280,7 +294,8 @@ namespace PruebasUnitarias
         public void SePuedeModificarElPassword()
         {
             ContraseniaCompleta.Password = "secretoAnterior";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Password = "secretoNuevo";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
             Assert.AreEqual("secretoNuevo", Gestor.MostrarPassword(modificada.Password));
@@ -290,7 +305,8 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeModificarElPasswordConMenos5Caracteres()
         {
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Password = "1234";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
         }
@@ -299,7 +315,8 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeModificarElPasswordConMas25Caracteres()
         {
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Password = "12345123451234512345123451";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
         }
@@ -309,7 +326,8 @@ namespace PruebasUnitarias
         public void SePuedeModificarLaCategoria()
         {
             Categoria nuevaCat = new Categoria("categoria nueva");
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Categoria = nuevaCat;
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
             Assert.AreEqual(nuevaCat.Nombre, modificada.Categoria.Nombre);
@@ -329,7 +347,8 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeModificarLasNotas()
         {
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Notas = "nuevas notas";
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
             Assert.AreEqual("nuevas notas", modificada.Notas);
@@ -341,7 +360,8 @@ namespace PruebasUnitarias
         {
             string unaNota = "";
             for (int caracter = 0; caracter <= 250; caracter++) unaNota += "a";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Notas = unaNota;
             Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
         }
@@ -354,7 +374,8 @@ namespace PruebasUnitarias
         public void SePuedeDetectarPasswordRojo()
         {
             ContraseniaCompleta.Password = "1234567";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
             Assert.AreEqual("ROJO", fortaleza);
         }
@@ -364,7 +385,8 @@ namespace PruebasUnitarias
         public void SePuedeDetectarPasswordNaranja()
         {
             ContraseniaCompleta.Password = "12345678";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
             Assert.AreEqual("NARANJA", fortaleza);
         }
@@ -374,7 +396,8 @@ namespace PruebasUnitarias
         public void SePuedeDetectarPasswordAmarilloSoloMinusculas()
         {
             ContraseniaCompleta.Password = "aaaaaaaaaaaaaaa";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
             Assert.AreEqual("AMARILLO", fortaleza);
         }
@@ -382,7 +405,8 @@ namespace PruebasUnitarias
         public void SePuedeDetectarPasswordAmarilloSoloMayusculas()
         {
             ContraseniaCompleta.Password = "AAAAAAAAAAAAAAA";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
             Assert.AreEqual("AMARILLO", fortaleza);
         }
@@ -392,7 +416,8 @@ namespace PruebasUnitarias
         public void SePuedeDetectarPasswordVerdeClaro()
         {
             ContraseniaCompleta.Password = "AAAAAAaAAAAAAAA";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
             Assert.AreEqual("VERDE CLARO", fortaleza);
         }
@@ -402,7 +427,8 @@ namespace PruebasUnitarias
         public void SePuedeDetectarPasswordVerdeOscuro()
         {
             ContraseniaCompleta.Password = "AAAAAAaAAAA$AA1";
-            Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             string fortaleza = Gestor.VerificarFortaleza(nuevaContrasenia);
             Assert.AreEqual("VERDE OSCURO", fortaleza);
         }
@@ -526,7 +552,8 @@ namespace PruebasUnitarias
         public void SeGuardaElPasswordCodificado()
         {
             ContraseniaCompleta.Password = "secreto";
-            Contrasenia nueva = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nueva = Gestor.Buscar(idNuevaContrasenia);
             Assert.AreNotEqual("secreto", nueva.Password);
         }
 
@@ -535,7 +562,8 @@ namespace PruebasUnitarias
         public void SePuedeDesencriptarElPassword()
         {
             ContraseniaCompleta.Password = "secreto";
-            Contrasenia nueva = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nueva = Gestor.Buscar(idNuevaContrasenia);
             Assert.AreEqual("secreto", Gestor.MostrarPassword(nueva.Password));
         }
 
@@ -552,9 +580,14 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedePuedenListarLasContrasenias()
         {
-            Contrasenia unaC = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia unaC = Gestor.Buscar(idNuevaContrasenia);
+            
             ContraseniaCompleta.Sitio = "otro sitio distinto";
-            Contrasenia dosC = Gestor.Alta(ContraseniaCompleta);
+            
+            int idOtraNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia dosC = Gestor.Buscar(idNuevaContrasenia);
+                        
             Assert.AreEqual(2, Gestor.ListarContrasenias().Count);
         }
 
@@ -562,7 +595,8 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SeGuardaLaContraseniaQueSeMandaPorParametro()
         {
-            Contrasenia unaC = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia unaC = Gestor.Buscar(idNuevaContrasenia);
             ContraseniaCompleta.Sitio = "otro sitio distinto";
             Contrasenia guardada = Gestor.Buscar(unaC.Id);
             Assert.AreNotEqual("otro sitio distinto", guardada.Sitio);
@@ -579,7 +613,9 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeBorrarUnaContrasenia()
         {
-            Contrasenia nuevaConstrasenia = Gestor.Alta(ContraseniaCompleta);
+            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaConstrasenia = Gestor.Buscar(idNuevaContrasenia);
+            
             Gestor.Baja(nuevaConstrasenia.Id);
             Assert.AreEqual(0, Gestor.ListarContrasenias().Count);
         }

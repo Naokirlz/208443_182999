@@ -17,7 +17,7 @@ namespace Negocio.Contrasenias
             this.Contrasenias = new List<Contrasenia>();
         }
 
-        public Contrasenia Alta(Contrasenia unaContrasenia)
+        public int Alta(Contrasenia unaContrasenia)
         {
             foreach (var contrasenia in this.Contrasenias)
             {
@@ -30,7 +30,7 @@ namespace Negocio.Contrasenias
             unaContrasenia.Password = Encriptar(unaContrasenia.Password);
             Contrasenia clonada = ClonarContrasenia(unaContrasenia);
             this.Contrasenias.Add(clonada);
-            return unaContrasenia;
+            return unaContrasenia.Id;
         }
 
         internal void Baja(int id)

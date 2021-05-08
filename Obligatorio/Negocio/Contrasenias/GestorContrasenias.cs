@@ -14,7 +14,7 @@ namespace Negocio.Contrasenias
             this.Repositorio = new RepositorioContrasenias();
         }
 
-        public Contrasenia Alta(Contrasenia unaContrasena)
+        public int Alta(Contrasenia unaContrasena)
         {
             ValidarCampos(unaContrasena);
             unaContrasena.FechaUltimaModificacion = DateTime.Now;
