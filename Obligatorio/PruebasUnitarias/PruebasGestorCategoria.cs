@@ -72,7 +72,7 @@ namespace PruebasUnitarias
         public void ModificarUnaCategoriaExistente()
         {
             int UnaCategoria = Gestor.Alta("BuscarCate1");
-            Gestor.Modificacion(UnaCategoria, "nombre Nuevo");
+            Gestor.ModificarCategoria(UnaCategoria, "nombre Nuevo");
             Assert.AreEqual("nombre Nuevo", Gestor.BuscarCategoriaPorId(UnaCategoria).Nombre);
         }
 
@@ -83,7 +83,7 @@ namespace PruebasUnitarias
             int UnaCategoria = Gestor.Alta("BuscarCate1");
             int otraCategoria = Gestor.Alta("BuscarCateNuevo");
             string nombreNuevo = "BuscarCate1";
-            Gestor.Modificacion(otraCategoria, nombreNuevo);
+            Gestor.ModificarCategoria(otraCategoria, nombreNuevo);
         }
 
         [TestMethod]
@@ -92,7 +92,7 @@ namespace PruebasUnitarias
         {
             int UnaCategoria = Gestor.Alta("BuscarCate1");
             string nombreNuevo = "Bu";
-            Gestor.Modificacion(UnaCategoria, nombreNuevo);
+            Gestor.ModificarCategoria(UnaCategoria, nombreNuevo);
         }
 
         [TestMethod]
@@ -101,7 +101,7 @@ namespace PruebasUnitarias
         {
             int UnaCategoria = Gestor.Alta("BuscarCate4");
             string nombreNuevo = "1234567891234567";
-            Gestor.Modificacion(UnaCategoria, nombreNuevo);
+            Gestor.ModificarCategoria(UnaCategoria, nombreNuevo);
         }
 
 
@@ -119,7 +119,7 @@ namespace PruebasUnitarias
             bool categoriaDif = false;
 
 
-            IEnumerable<Categoria> Lista = Gestor2.ObtenerTodasLasCategorias();
+            IEnumerable<Categoria> Lista = Gestor2.ObtenerTodas();
 
             foreach (Categoria categoria in Lista)
             {
@@ -154,7 +154,7 @@ namespace PruebasUnitarias
             int categoria1 = Gestor4.Alta("Categoria1");
             Gestor4.Baja(categoria1);
 
-            IEnumerable<Categoria> lista = Gestor4.ObtenerTodasLasCategorias();
+            IEnumerable<Categoria> lista = Gestor4.ObtenerTodas();
             bool esta = false;
             foreach (Categoria cat in lista)
             {

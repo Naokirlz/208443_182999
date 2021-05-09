@@ -29,7 +29,7 @@ namespace Interfaz
         {
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
             BindingSource bSource = new BindingSource();
-            bSource.DataSource = this.sis.GestorCategoria.ObtenerTodasLasCategorias();
+            bSource.DataSource = this.sis.GestorCategoria.ObtenerTodas();
             this.cmbCategoria.DataSource = bSource;
         }
 
@@ -46,7 +46,7 @@ namespace Interfaz
                 }
                 int id = aCambiar.Id;
                 string nuevoNombre = this.txtNuevoNombre.Text;
-                this.sis.GestorCategoria.Modificacion(id, nuevoNombre);
+                this.sis.GestorCategoria.ModificarCategoria(id, nuevoNombre);
                 this.txtNuevoNombre.Clear();
                 Refrescar();
                 Alerta("Categoría modificada con éxito!!", AlertaToast.enmTipo.Exito);

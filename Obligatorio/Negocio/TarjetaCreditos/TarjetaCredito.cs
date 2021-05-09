@@ -9,7 +9,7 @@ namespace Negocio.TarjetaCreditos
 {
     public class TarjetaCredito: IComparable<TarjetaCredito>
     {
-        public int IdTarjeta { get; set; }
+        public int Id { get; set; }
         public Categoria Categoria { get; set; }
         public string Nombre { get; set; }
         // ver si despues el tipo conviene que sea una clase

@@ -19,6 +19,7 @@ namespace Negocio.Categorias
 
         public int Alta(string nombre)
         {
+            ExisteCategoria(nombre);
             Categoria nueva = new Categoria(nombre);
             nueva.Id = autonumerado;
             autonumerado++;
@@ -28,25 +29,16 @@ namespace Negocio.Categorias
 
         internal void Baja(int id)
         {
-            Categoria eliminar = BuscarCategoriaPorId(id);
-            Categorias.Remove(eliminar);
+            Categorias.Remove(BuscarCategoriaPorId(id));
         }
 
-        public void Modificacion(int id, string nuevoNombre)
+        public void ModificarCategoria(int id, string nuevoNombre)
         {
+            ExisteCategoria(nuevoNombre);
             Categoria Modificar = BuscarCategoriaPorId(id);
             Modificar.Nombre = nuevoNombre;
          }
-
-        public bool ExisteCategoria(string nombre)
-        {
-            foreach (var categoria in this.Categorias)
-            {
-                if (categoria.Nombre.Equals(nombre)) return true;
-            }
-            return false;
-        }
-
+        
         public Categoria BuscarCategoriaPorId(int id)
         {
             foreach (Categoria categoria in this.Categorias)
@@ -59,11 +51,18 @@ namespace Negocio.Categorias
             throw new ExcepcionElementoNoExiste("Error: Categoría No Existe !!!");
         }
 
-
         public IEnumerable<Categoria> ObtenerTodasLasCategorias()
         {
             return this.Categorias;
         }
 
+        private void ExisteCategoria(string nombre)
+        {
+            foreach (var categoria in this.Categorias)
+            {
+                if (categoria.Nombre.Equals(nombre))
+                    throw new ExcepcionElementoYaExiste("Ya existe categoría con ese nombre.");
+            }
+        }
     }
 }

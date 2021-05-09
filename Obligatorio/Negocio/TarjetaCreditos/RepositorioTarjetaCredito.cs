@@ -1,9 +1,7 @@
 ﻿using Negocio.Excepciones;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+
 
 namespace Negocio.TarjetaCreditos
 {
@@ -12,7 +10,6 @@ namespace Negocio.TarjetaCreditos
         private List<TarjetaCredito> Tarjetas { get; set; }
         private static int autonumerado = 1;
 
-
         public RepositorioTarjetaCredito()
         {
             this.Tarjetas = new List<TarjetaCredito>();
@@ -20,22 +17,24 @@ namespace Negocio.TarjetaCreditos
 
         public int Alta(TarjetaCredito nuevaTarjeta)
         {
-            nuevaTarjeta.IdTarjeta = autonumerado;
+            NombreTarjetaRepetido(nuevaTarjeta);
+            NumeroTarjetaRepetido(nuevaTarjeta);
+            nuevaTarjeta.Id = autonumerado;
             autonumerado++;
             Tarjetas.Add(nuevaTarjeta);
-            return nuevaTarjeta.IdTarjeta;
-
+            return nuevaTarjeta.Id;
         }
 
-        public void Baja(int bajaTarjeta)
+        public void Baja(int id)
         {
-            Tarjetas.Remove(BuscarPorId(bajaTarjeta));
-            
+            Tarjetas.Remove(BuscarPorId(id));
         }
 
         public void ModificarTarjeta(TarjetaCredito modificarTarjeta)
         {
-            TarjetaCredito anterior = BuscarPorId(modificarTarjeta.IdTarjeta);
+            TarjetaCredito anterior = BuscarPorId(modificarTarjeta.Id);
+            NombreTarjetaRepetido(modificarTarjeta);
+            NumeroTarjetaRepetido(modificarTarjeta);
 
             anterior.Categoria = modificarTarjeta.Categoria;
             anterior.Nombre = modificarTarjeta.Nombre;
@@ -44,20 +43,15 @@ namespace Negocio.TarjetaCreditos
             anterior.Codigo = modificarTarjeta.Codigo;
             anterior.Vencimiento = modificarTarjeta.Vencimiento;
             anterior.Nota = modificarTarjeta.Nota;
-            anterior.IdTarjeta = modificarTarjeta.IdTarjeta;
+            anterior.Id = modificarTarjeta.Id;
             anterior.CantidadVecesEncontradaVulnerable = modificarTarjeta.CantidadVecesEncontradaVulnerable;
-
-        }
+       }
 
         public TarjetaCredito BuscarPorId(int id) {
 
             foreach (TarjetaCredito item in Tarjetas)
-            {
-                 if (item.IdTarjeta == id) return item;
-
-            }
-             throw new ExcepcionElementoNoExiste();
-
+                if (item.Id == id) return item;
+            throw new ExcepcionElementoNoExiste();
         }
                 
         public IEnumerable<TarjetaCredito> ObtenerTodas()
@@ -65,6 +59,28 @@ namespace Negocio.TarjetaCreditos
             this.Tarjetas.Sort();
             return this.Tarjetas;
 
+        }
+
+        private void NumeroTarjetaRepetido(TarjetaCredito tarjeta)
+        {
+            foreach (TarjetaCredito item in Tarjetas)
+            {
+                if (item.Numero.Equals(tarjeta.Numero) && tarjeta.Id != item.Id)
+                { throw new ExcepcionElementoYaExiste(); }
+            }
+        }
+
+        private void NombreTarjetaRepetido(TarjetaCredito tarjeta)
+        {
+            
+            foreach (TarjetaCredito item in Tarjetas)
+            {
+                if (item.Nombre.ToLower().Equals(tarjeta.Nombre.ToLower())
+                    && tarjeta.Id != item.Id)
+                {
+                    throw new ExcepcionElementoYaExiste();
+                }
+            }
         }
 
 

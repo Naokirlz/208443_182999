@@ -1,10 +1,7 @@
 ﻿using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
+
 
 namespace Negocio.Contrasenias
 {
@@ -12,27 +9,26 @@ namespace Negocio.Contrasenias
     {
         public RepositorioContrasenias Repositorio;
                 
-        public GestorContrasenias() {
+        public GestorContrasenias() 
+        {
             this.Repositorio = new RepositorioContrasenias();
         }
         
         public int Alta(Contrasenia unaContrasena)
         {
             ValidarCampos(unaContrasena);
-            unaContrasena.FechaUltimaModificacion = DateTime.Now;
             return Repositorio.Alta(unaContrasena);
         }
-        
+
         public void Baja(int id)
         {
             Repositorio.Baja(id);
         }
         
-        public void ModificarContrasenia(Contrasenia aModificarContrasenia)
+        public void ModificarContrasenia(Contrasenia modificada)
         {
-            ValidarCampos(aModificarContrasenia);
-            Repositorio.ModificarContrasenia(aModificarContrasenia);
-            
+            ValidarCampos(modificada);
+            Repositorio.ModificarContrasenia(modificada);
         }
         
         public Contrasenia Buscar(int id)
@@ -43,7 +39,6 @@ namespace Negocio.Contrasenias
         public IEnumerable<Contrasenia> ObtenerTodas()
         {
             return Repositorio.ObtenerTodas();
-             
         }
 
         public string MostrarPassword(Contrasenia password)
@@ -59,25 +54,15 @@ namespace Negocio.Contrasenias
                 aValidarContrasenia.Categoria == null)
                 throw new ExcepcionFaltaAtributo("Debe completar los campos obligatorios.");
 
-            ValidarFecha(aValidarContrasenia.FechaUltimaModificacion);
-            ValidarLargoTexto(aValidarContrasenia.Sitio, 25, 3, "sitio");
-            ValidarLargoTexto(aValidarContrasenia.Usuario, 25, 5, "usuario");
-            ValidarLargoTexto(aValidarContrasenia.Password.Clave, 25, 5, "contraseña");
-            ValidarLargoTexto(aValidarContrasenia.Notas, 250, 0, "notas");
+            Validaciones.ValidarFecha(aValidarContrasenia.FechaUltimaModificacion);
+            Validaciones.ValidarLargoTexto(aValidarContrasenia.Sitio, 25, 3, "sitio");
+            Validaciones.ValidarLargoTexto(aValidarContrasenia.Usuario, 25, 5, "usuario");
+            Validaciones.ValidarLargoTexto(aValidarContrasenia.Password.Clave, 25, 5, "contraseña");
+            Validaciones.ValidarLargoTexto(aValidarContrasenia.Notas, 250, 0, "notas");
         }
 
-
-        private void ValidarLargoTexto(string texto, int largoMax, int largoMin, string campo)
-        {
-            texto = texto.Trim();
-            if (texto.Length > largoMax || texto.Length < largoMin) throw new ExcepcionLargoTexto("El largo del campo " + campo
-                + " debe ser de entre " + largoMin.ToString() + " y " + largoMax.ToString() + " caracteres.");
-        }
         
-        private void ValidarFecha(DateTime unaFecha)
-        {
-            if (unaFecha > DateTime.Now) throw new ExcepcionFechaIncorrecta("La fecha de modificación no puede ser futura.");
-        }
+        
 
         
     }

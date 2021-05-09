@@ -191,7 +191,7 @@ namespace PruebasUnitarias
         public void NoSePuedeEjecutarBajaTarjetaSiNoSeEstaLogueado()
         {
             sesionPrueba.LogOut();
-            sesionPrueba.BajaTarjetaCredito(new TarjetaCredito().IdTarjeta);
+            sesionPrueba.BajaTarjetaCredito(new TarjetaCredito().Id);
         }
 
         [TestMethod]
@@ -207,7 +207,7 @@ namespace PruebasUnitarias
         public void NoSePuedeEjecutarBuscarTarjetaSiNoSeEstaLogueado()
         {
             sesionPrueba.LogOut();
-            sesionPrueba.BuscarTarjeta(new TarjetaCredito().IdTarjeta);
+            sesionPrueba.BuscarTarjeta(new TarjetaCredito().Id);
         }
 
         [TestMethod]
@@ -246,7 +246,7 @@ namespace PruebasUnitarias
         public void SePuedeEjecutarBajaTarjetaEstandoLogueado()
         {
             int antes = sesionPrueba.ObtenerTodasLasTarjetas().Count();
-            sesionPrueba.BajaTarjetaCredito(nuevoTarjeta.IdTarjeta);
+            sesionPrueba.BajaTarjetaCredito(nuevoTarjeta.Id);
             int despues = sesionPrueba.ObtenerTodasLasTarjetas().Count();
             Assert.AreEqual(1, antes - despues);
 
@@ -256,7 +256,7 @@ namespace PruebasUnitarias
         
         public void SePuedeEjecutarModificarTarjetaEstandoLogueado()
         {
-            int id = nuevoTarjeta.IdTarjeta;
+            int id = nuevoTarjeta.Id;
             string nombreAnterior = nuevoTarjeta.Nombre;
 
             TarjetaCredito modificadaTarjetaPrueba = new TarjetaCredito()
@@ -268,11 +268,11 @@ namespace PruebasUnitarias
                 Codigo = "123",
                 Vencimiento = DateTime.Now,
                 Nota = "Nota Opcional",
-                IdTarjeta = id
+                Id = id
             };
 
             sesionPrueba.ModificarTarjeta(modificadaTarjetaPrueba);
-            string nombreActual = sesionPrueba.BuscarTarjeta(nuevoTarjeta.IdTarjeta).Nombre;
+            string nombreActual = sesionPrueba.BuscarTarjeta(nuevoTarjeta.Id).Nombre;
             Assert.AreNotEqual(nombreActual, nombreAnterior);
         }
 
@@ -294,7 +294,7 @@ namespace PruebasUnitarias
 
             int idTarjeta = sesionPrueba.AltaTarjetaCredito(buscada);
             TarjetaCredito encontrada = sesionPrueba.BuscarTarjeta(idTarjeta);
-            Assert.AreEqual(idTarjeta, encontrada.IdTarjeta);
+            Assert.AreEqual(idTarjeta, encontrada.Id);
             
         }
 
@@ -303,7 +303,7 @@ namespace PruebasUnitarias
         public void SePuedeEjecutarObtenerTodasTarjetaEstandoLogueado()
         {
            int cantidad = sesionPrueba.ObtenerTodasLasTarjetas().Count();
-           sesionPrueba.BajaTarjetaCredito(nuevoTarjeta.IdTarjeta);
+           sesionPrueba.BajaTarjetaCredito(nuevoTarjeta.Id);
            Assert.AreEqual(1, cantidad - sesionPrueba.ObtenerTodasLasTarjetas().Count());
 
         }
@@ -566,7 +566,7 @@ namespace PruebasUnitarias
         {
             
             sesionPrueba.TarjetasCreditoVulnerables(Fuente);
-            nuevoTarjeta = sesionPrueba.GestorTarjetaCredito.Buscar(nuevoTarjeta.IdTarjeta);
+            nuevoTarjeta = sesionPrueba.GestorTarjetaCredito.Buscar(nuevoTarjeta.Id);
             Assert.AreEqual(nuevoTarjeta.CantidadVecesEncontradaVulnerable, 1);
 
         }
@@ -577,7 +577,7 @@ namespace PruebasUnitarias
             sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
 
             sesionPrueba.TarjetasCreditoVulnerables(Fuente);
-            nuevoTarjeta = sesionPrueba.GestorTarjetaCredito.Buscar(nuevoTarjeta.IdTarjeta);
+            nuevoTarjeta = sesionPrueba.GestorTarjetaCredito.Buscar(nuevoTarjeta.Id);
             Assert.AreEqual(nuevoTarjeta.CantidadVecesEncontradaVulnerable, 2);
 
         }

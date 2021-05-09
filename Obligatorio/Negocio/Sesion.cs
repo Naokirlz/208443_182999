@@ -115,7 +115,7 @@ namespace Negocio
         public void ModificacionCategoria(int id, string nombreNuevo)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
-            this.GestorCategoria.Modificacion(id, nombreNuevo);
+            this.GestorCategoria.ModificarCategoria(id, nombreNuevo);
         }
 
         public Categoria BuscarCategoriaPorId(int id)
@@ -128,7 +128,7 @@ namespace Negocio
         public IEnumerable<Categoria> ObtenerTodasLasCategorias()
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
-            return this.GestorCategoria.ObtenerTodasLasCategorias();
+            return this.GestorCategoria.ObtenerTodas();
         }
 
         public int AltaTarjetaCredito(TarjetaCredito nuevaTarjeta)

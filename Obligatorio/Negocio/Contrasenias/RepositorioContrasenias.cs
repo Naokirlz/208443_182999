@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 
-using System.Text;
 
 namespace Negocio.Contrasenias
 {
@@ -11,7 +10,6 @@ namespace Negocio.Contrasenias
         private List<Contrasenia> Contrasenias { get; set; }
         private static int autonumerado = 1;
         
-
         public RepositorioContrasenias()
         {
             this.Contrasenias = new List<Contrasenia>();
@@ -19,8 +17,9 @@ namespace Negocio.Contrasenias
 
         public int Alta(Contrasenia unaContrasenia)
         {
-            unaContrasenia.Id = autonumerado;
             ContraseniaNoExiste(unaContrasenia);
+            unaContrasenia.Id = autonumerado;
+            unaContrasenia.FechaUltimaModificacion = DateTime.Now;
             this.Contrasenias.Add(ClonarContrasenia(unaContrasenia));
             autonumerado++;
             return unaContrasenia.Id;
@@ -31,38 +30,36 @@ namespace Negocio.Contrasenias
             Contrasenias.Remove(BuscarContraeniaOriginal(id));
         }
 
-        public void ModificarContrasenia(Contrasenia aModificarContrasenia)
+        public void ModificarContrasenia(Contrasenia modificarContrasenia)
         {
-            Contrasenia anterior = BuscarContraeniaOriginal(aModificarContrasenia.Id);
-            anterior.Sitio = aModificarContrasenia.Sitio;
-            anterior.Usuario = aModificarContrasenia.Usuario;
+            Contrasenia anterior = BuscarContraeniaOriginal(modificarContrasenia.Id);
+            anterior.Sitio = modificarContrasenia.Sitio;
+            anterior.Usuario = modificarContrasenia.Usuario;
                         
-            if (!anterior.Password.Equals(aModificarContrasenia.Password))
+            if (!anterior.Password.Equals(modificarContrasenia.Password))
             {
                 anterior.FechaUltimaModificacion = DateTime.Now.AddSeconds(1);
             }
             
-            anterior.Categoria = aModificarContrasenia.Categoria;
-            anterior.Notas = aModificarContrasenia.Notas;
+            anterior.Categoria = modificarContrasenia.Categoria;
+            anterior.Notas = modificarContrasenia.Notas;
             Contrasenia clonModificada = ClonarContrasenia(anterior);
             
-        }
-
-        public IEnumerable<Contrasenia> ObtenerTodas()
-        {
-            List<Contrasenia> retorno = this.Contrasenias;
-            retorno.Sort();
-            return retorno;
         }
 
         public Contrasenia BuscarPorId(int id)
         {
             foreach (Contrasenia item in Contrasenias)
                 if (item.Id == id) return ClonarContrasenia(item);
-
             throw new ExcepcionElementoNoExiste();
         }
 
+        public IEnumerable<Contrasenia> ObtenerTodas()
+        {
+            this.Contrasenias.Sort();
+            return this.Contrasenias;
+        }
+ 
         private Contrasenia BuscarContraeniaOriginal(int id)
         {
             foreach (Contrasenia item in Contrasenias)

@@ -304,7 +304,7 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void EliminarTarjetaCreditoQuenNoExiste()
         {
-            Gestor.Baja(TarjetaDePruebaDos.IdTarjeta + 200);
+            Gestor.Baja(TarjetaDePruebaDos.Id + 200);
 
         }
 

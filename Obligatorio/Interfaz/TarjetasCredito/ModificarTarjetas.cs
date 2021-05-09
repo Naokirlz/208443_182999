@@ -33,7 +33,7 @@ namespace Interfaz.TarjetasCredito
 
             BindingList<Categoria> bindinglist2 = new BindingList<Categoria>();
             BindingSource bSource2 = new BindingSource();
-            bSource2.DataSource = this.Sesion.GestorCategoria.ObtenerTodasLasCategorias();
+            bSource2.DataSource = this.Sesion.GestorCategoria.ObtenerTodas();
             this.cmbCategoria.DataSource = bSource2;
 
             CargarDatosTarjeta();
@@ -63,12 +63,12 @@ namespace Interfaz.TarjetasCredito
                 string codigo = this.txtCodigo.Text;
                 string notas = this.txtNotas.Text;
                 DateTime vencimiento = this.dtpVencimiento.Value;
-                int id = tarjetaSeleccionada.IdTarjeta;
+                int id = tarjetaSeleccionada.Id;
                 numero = numero.Replace(" ", "");
 
                 TarjetaCredito tarjetaAModificar = new TarjetaCredito()
                 {
-                    IdTarjeta = id,
+                    Id = id,
                     Nombre = nombre,
                     Categoria = categoria,
                     Tipo = tipo,
