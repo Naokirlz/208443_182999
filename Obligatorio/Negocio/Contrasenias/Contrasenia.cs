@@ -9,15 +9,7 @@ using Negocio.Categorias;
 
 namespace Negocio.Contrasenias
 {
-     public enum EnumColor
-    {
-        ROJO,
-        NARANJA,
-        AMARILLO,
-        VERDE_CLARO,
-        VERDE_OSCURO
-    }
-
+     
     public class Contrasenia: IComparable<Contrasenia>
     {
         public int Id { get; set; }
@@ -56,11 +48,15 @@ namespace Negocio.Contrasenias
                 else if (caracter >= 91 && caracter <= 96) especiales = true;
                 else if (caracter >= 123 && caracter <= 126) especiales = true;
             }
+            if (largo > 14) {
 
-            if (largo > 14 && mayusculas && minusculas && numeros && especiales) return EnumColor.VERDE_OSCURO;
-            else if (largo > 14 && mayusculas && minusculas && !numeros && !especiales) return EnumColor.VERDE_CLARO;
-            else if (largo > 14 && mayusculas && !minusculas && !numeros && !especiales) return EnumColor.AMARILLO;
-            else if (largo > 14 && !mayusculas && minusculas && !numeros && !especiales) return EnumColor.AMARILLO;
+                 if( mayusculas && minusculas && numeros && especiales) return EnumColor.VERDE_OSCURO;
+                 else if (mayusculas && minusculas) return EnumColor.VERDE_CLARO;
+                 else if (mayusculas && especiales && numeros) return EnumColor.VERDE_CLARO;
+                 else if (minusculas && especiales && numeros) return EnumColor.VERDE_CLARO;
+                 else return EnumColor.AMARILLO;
+                 
+            }
             else if (largo >= 8) return EnumColor.NARANJA;
             return EnumColor.ROJO;
         }
@@ -76,5 +72,14 @@ namespace Negocio.Contrasenias
         {
             return this.Sitio + " | " + this.Usuario;
         }
+    }
+
+    public enum EnumColor
+    {
+        ROJO,
+        NARANJA,
+        AMARILLO,
+        VERDE_CLARO,
+        VERDE_OSCURO
     }
 }
