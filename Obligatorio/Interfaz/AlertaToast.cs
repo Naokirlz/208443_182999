@@ -49,12 +49,14 @@ namespace Interfaz
                     this.icoIcono.IconColor = Color.DarkGreen;
                     this.BackColor = Color.LightGreen;
                     this.lblMensaje.ForeColor = Color.DarkGreen;
+                    this.btnCerrar.IconColor = Color.DarkGreen;
                     break;
                 case enmTipo.Error:
                     this.icoIcono.IconChar = FontAwesome.Sharp.IconChar.ExclamationCircle;
-                    this.icoIcono.IconColor = Color.Red;
-                    this.BackColor = Color.Orange;
-                    this.lblMensaje.ForeColor = Color.Red;
+                    this.icoIcono.IconColor = Color.White;
+                    this.BackColor = Color.Red;
+                    this.lblMensaje.ForeColor = Color.White;
+                    this.btnCerrar.IconColor = Color.White;
                     break;
             }
 

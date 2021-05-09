@@ -31,7 +31,7 @@ namespace Interfaz.Contrasenias
 
             BindingList<Contrasenia> bindinglist2 = new BindingList<Contrasenia>();
             BindingSource bSource2 = new BindingSource();
-            bSource2.DataSource = this.Sesion.ObtenerTodasLasCategorias();
+            bSource2.DataSource = this.Sesion.ListarContrasenias();
             this.cmbContrasenia.DataSource = bSource2;
 
             CargarDatosContrasenia();
@@ -58,14 +58,14 @@ namespace Interfaz.Contrasenias
                 Contrasenia contraseniaSeleccionada = (Contrasenia)this.cmbContrasenia.SelectedItem;
                 if (contraseniaSeleccionada == null)
                 {
-                    MessageBox.Show("Seleccione al menos una categoría");
+                    Alerta("Seleccione al menos una contraseña", AlertaToast.enmTipo.Error);
                     return;
                 }
 
                 Categoria categoria = (Categoria)this.cmbCategoria.SelectedItem;
                 if (categoria == null)
                 {
-                    MessageBox.Show("Seleccione al menos una categoría");
+                    Alerta("Seleccione al menos una categoría", AlertaToast.enmTipo.Error);
                     return;
                 }
 
@@ -74,18 +74,18 @@ namespace Interfaz.Contrasenias
                 contraseniaSeleccionada.Notas = this.txtNotas.Text;
                 contraseniaSeleccionada.Password.Clave = this.txtPassword.Text;
 
-                this.Sesion.GestorContrasenia.ModificarContrasenia(contraseniaSeleccionada);
-                MessageBox.Show("Contraseña " + contraseniaSeleccionada + " fue modificada con éxito!!");
+                this.Sesion.ModificarContrasenia(contraseniaSeleccionada);
+                Alerta("Contraseña " + contraseniaSeleccionada + " fue modificada con éxito!!", AlertaToast.enmTipo.Exito);
                 LimpiarCampos();
                 Refrescar();
             }
             catch (ExcepcionElementoYaExiste unaExcepcion)
             {
-                MessageBox.Show(unaExcepcion.Message);
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
             }
             catch (ExcepcionLargoTexto unaExcepcion)
             {
-                MessageBox.Show(unaExcepcion.Message);
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
             }
         }
 
@@ -111,7 +111,7 @@ namespace Interfaz.Contrasenias
             int largo = (int)this.numLargo.Value;
             if (!mayusculas && !minusculas && !digitos && !especiales)
             {
-                MessageBox.Show("Seleccione al menos una tipo de Caracter");
+                Alerta("Seleccione al menos una tipo de Caracter", AlertaToast.enmTipo.Error);
                 return;
             }
             
@@ -131,6 +131,12 @@ namespace Interfaz.Contrasenias
         private void cmbContrasenia_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarDatosContrasenia();
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }

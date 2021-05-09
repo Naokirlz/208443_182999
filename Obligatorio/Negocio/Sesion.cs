@@ -145,25 +145,25 @@ namespace Negocio
 
         public Contrasenia BuscarContrasenia(int id)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
             return GestorContrasenia.Buscar(id);
         }
 
         public IEnumerable<Contrasenia> ListarContrasenias()
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
             return GestorContrasenia.ObtenerTodas();
         }
 
         public string VerificarFortaleza(Contrasenia nuevaContrasenia)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
             return nuevaContrasenia.Password.ColorPassword.ToString();
         }
        
         public string MostrarPassword(Contrasenia contrasenia)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
             return GestorContrasenia.MostrarPassword(contrasenia);
         }
 

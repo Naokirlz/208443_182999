@@ -40,9 +40,8 @@ namespace Interfaz
             // icoIcono
             // 
             this.icoIcono.BackColor = System.Drawing.Color.Transparent;
-            this.icoIcono.ForeColor = System.Drawing.Color.Red;
             this.icoIcono.IconChar = FontAwesome.Sharp.IconChar.ExclamationCircle;
-            this.icoIcono.IconColor = System.Drawing.Color.Red;
+            this.icoIcono.IconColor = System.Drawing.Color.White;
             this.icoIcono.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.icoIcono.IconSize = 52;
             this.icoIcono.Location = new System.Drawing.Point(15, 17);
@@ -57,7 +56,7 @@ namespace Interfaz
             this.btnCerrar.FlatAppearance.BorderSize = 0;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.IconChar = FontAwesome.Sharp.IconChar.Times;
-            this.btnCerrar.IconColor = System.Drawing.Color.DimGray;
+            this.btnCerrar.IconColor = System.Drawing.Color.Gainsboro;
             this.btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCerrar.IconSize = 25;
             this.btnCerrar.Location = new System.Drawing.Point(564, 2);
@@ -71,7 +70,7 @@ namespace Interfaz
             // 
             this.lblMensaje.AutoSize = true;
             this.lblMensaje.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensaje.ForeColor = System.Drawing.Color.Red;
+            this.lblMensaje.ForeColor = System.Drawing.Color.White;
             this.lblMensaje.Location = new System.Drawing.Point(66, 30);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(57, 21);
@@ -86,7 +85,7 @@ namespace Interfaz
             // AlertaToast
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.Orange;
+            this.BackColor = System.Drawing.Color.Red;
             this.ClientSize = new System.Drawing.Size(594, 79);
             this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.btnCerrar);
