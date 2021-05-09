@@ -89,7 +89,7 @@ namespace Interfaz.Contrasenias
                 List<Contrasenia> contrasenias = Sesion.GestorContrasenia.ListarContrasenias();
                 foreach (Contrasenia contrasenia in contrasenias)
                 {
-                    string password = Sesion.GestorContrasenia.MostrarPassword(contrasenia.Password);
+                    string password = Sesion.MostrarPassword(contrasenia.Password);
                     if (contrasenia.ColorPassword.ToString() == grupo.ToUpper())
                     {
                         nuevo.Cantidad = nuevo.Cantidad + 1;
@@ -118,7 +118,7 @@ namespace Interfaz.Contrasenias
             this.dgvContraseniasPorGrupo.Rows.Clear();
             foreach (Contrasenia contrasenia in grupo.Contrasenias)
             {
-                string password = new String('\u25CF', Sesion.GestorContrasenia.MostrarPassword(contrasenia.Password).Length);
+                string password = new String('\u25CF', Sesion.MostrarPassword(contrasenia.Password).Length);
                 string[] fila = {
                     contrasenia.Categoria.Nombre,
                     contrasenia.Sitio,
@@ -139,7 +139,7 @@ namespace Interfaz.Contrasenias
             {
                 if(dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value.ToString() == "Revelar")
                 {
-                    password = Sesion.GestorContrasenia.MostrarPassword(password);
+                    password = Sesion.MostrarPassword(password);
                     dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value = password;
                     dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value = "Ocultar";
                 }
@@ -153,7 +153,7 @@ namespace Interfaz.Contrasenias
             }
             else if(e.ColumnIndex == 6)
             {
-                string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", Sesion.GestorContrasenia.MostrarPassword(password));
+                string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", Sesion.MostrarPassword(password));
                 //string password = (string)dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value;
                 if (nuevoPassword == "") return;
                 Contrasenia aModificar = grupoMostrando.Contrasenias[e.RowIndex];

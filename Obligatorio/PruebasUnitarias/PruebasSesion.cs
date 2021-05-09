@@ -619,6 +619,40 @@ namespace PruebasUnitarias
 
         }
 
+        [TestMethod]
+        public void SePuedeDesencriptarElPassword()
+        {
+            Contrasenia nueva = new Contrasenia()
+            {
+                Sitio = "aulas.com",
+                Usuario = "Cristian",
+                Password = "secreto",
+                Categoria = new Categoria("Fake"),
+                Notas = "Sin"
+            };
+
+            int idNuevaContrasenia = sesionPrueba.AltaContrasenia(nueva);
+            nueva = sesionPrueba.BuscarContrasenia(idNuevaContrasenia);
+            
+            Assert.AreEqual("secreto", sesionPrueba.MostrarPassword(nueva.Password));
+        }
+
+        //se puede cambiar el password
+        [TestMethod]
+        public void SePuedeModificarElPassword()
+        {
+            Contrasenia aModificar = sesionPrueba.ListarContrasenias()[0];
+            int idPass = aModificar.Id;
+            string passAnterior = sesionPrueba.MostrarPassword(aModificar.Password);
+            aModificar.Password = "secretoNuevo";
+            sesionPrueba.ModificarContrasenia(aModificar);
+
+            Contrasenia modificada = sesionPrueba.BuscarContrasenia(idPass);
+            string passActual = sesionPrueba.MostrarPassword(aModificar.Password);
+
+            Assert.AreNotEqual(passAnterior, passActual);
+        }
+
         private string ArmarTextoDeLargoVariable(int largo)
         {
 

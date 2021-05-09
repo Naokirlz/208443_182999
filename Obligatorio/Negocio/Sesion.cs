@@ -167,10 +167,10 @@ namespace Negocio
             GestorContrasenia.Baja(id);
         }
 
-        public Contrasenia ModificarContrasenia(Contrasenia aModificarContrasenia)
+        public void ModificarContrasenia(Contrasenia aModificarContrasenia)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
-            return GestorContrasenia.ModificarContrasenia(aModificarContrasenia);
+            GestorContrasenia.ModificarContrasenia(aModificarContrasenia);
         }
 
         public Contrasenia BuscarContrasenia(int id)
