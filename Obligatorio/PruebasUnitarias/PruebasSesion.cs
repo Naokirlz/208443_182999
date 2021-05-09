@@ -45,7 +45,7 @@ namespace PruebasUnitarias
             {
                 Sitio = "deremate.com",
                 Usuario = "fedex",
-                Password = "dalevo111!!!",
+                Password = new Password("dalevo111!!!"),
                 Categoria = new Categoria("Fake"),
                 Notas = "Sin"
             };
@@ -357,22 +357,7 @@ namespace PruebasUnitarias
             sesionPrueba.VerificarFortaleza(new Contrasenia());
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
-        public void NoSePuedeEjecutarGenerarPasswordSiNoSeEstaLogueado()
-        {
-            sesionPrueba.LogOut();
-            sesionPrueba.GenerarPassword(1,false,false,false,false);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
-        public void NoSePuedeEjecutarMostrarPasswordSiNoSeEstaLogueado()
-        {
-            sesionPrueba.LogOut();
-            sesionPrueba.MostrarPassword("password");
-        }
-
+      
         //
 
         [TestMethod]
@@ -385,7 +370,7 @@ namespace PruebasUnitarias
             {
                 Sitio = "deremate.com.ar",
                 Usuario = "fedexAlta",
-                Password = "dale%%vo111!!!",
+                Password = new Password("dale%%vo111!!!"),
                 Categoria = new Categoria("Fake"),
                 Notas = "Sin"
             };
@@ -418,7 +403,7 @@ namespace PruebasUnitarias
             {
                 Sitio = "sitio nuevo",
                 Usuario = "fedexAlta",
-                Password = "dale%%vo111!!!",
+                Password = new Password("dale%%vo111!!!"),
                 Categoria = new Categoria("Fake"),
                 Notas = "Sin",
                 Id = anterior.Id
@@ -459,16 +444,7 @@ namespace PruebasUnitarias
             Assert.AreNotEqual("Nada que Reportar", fortaleza);
         }
 
-        [TestMethod]
        
-        
-        public void SePuedeEjecutarGenerarPasswordEstandoLogueado()
-        {
-            string password = "Nada generado";
-            password = sesionPrueba.GenerarPassword(5, true, false, false, false);
-            Assert.AreNotEqual("Nada generado", password);
-        }
-
         //[TestMethod]
         //ver luego porque falla
         //public void SePuedeEjecutarMostrarPasswordEstandoLogueado()
@@ -626,7 +602,7 @@ namespace PruebasUnitarias
             {
                 Sitio = "aulas.com",
                 Usuario = "Cristian",
-                Password = "secreto",
+                Password = new Password("secreto"),
                 Categoria = new Categoria("Fake"),
                 Notas = "Sin"
             };
@@ -634,7 +610,7 @@ namespace PruebasUnitarias
             int idNuevaContrasenia = sesionPrueba.AltaContrasenia(nueva);
             nueva = sesionPrueba.BuscarContrasenia(idNuevaContrasenia);
             
-            Assert.AreEqual("secreto", sesionPrueba.MostrarPassword(nueva.Password));
+            Assert.AreEqual("secreto", sesionPrueba.MostrarPassword(nueva.Password.Clave));
         }
 
         //se puede cambiar el password
@@ -643,12 +619,12 @@ namespace PruebasUnitarias
         {
             Contrasenia aModificar = sesionPrueba.ListarContrasenias().First();
             int idPass = aModificar.Id;
-            string passAnterior = sesionPrueba.MostrarPassword(aModificar.Password);
-            aModificar.Password = "secretoNuevo";
+            string passAnterior = sesionPrueba.MostrarPassword(aModificar.Password.Clave);
+            aModificar.Password.Clave = "secretoNuevo";
             sesionPrueba.ModificarContrasenia(aModificar);
 
             Contrasenia modificada = sesionPrueba.BuscarContrasenia(idPass);
-            string passActual = sesionPrueba.MostrarPassword(aModificar.Password);
+            string passActual = sesionPrueba.MostrarPassword(aModificar.Password.Clave);
 
             Assert.AreNotEqual(passAnterior, passActual);
         }

@@ -73,7 +73,7 @@ namespace Negocio
             if (cantidadVecesEnFuente > 0)
             {
                 contrasenia.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
-                contrasenia.Password = this.GestorContrasenia.MostrarPassword(contrasenia.Password);
+                contrasenia.Password.Clave = this.GestorContrasenia.MostrarPassword(contrasenia.Password.Clave);
                 this.GestorContrasenia.ModificarContrasenia(contrasenia);
                 contrasenias.Add(contrasenia);
             }
@@ -188,15 +188,10 @@ namespace Negocio
         public string VerificarFortaleza(Contrasenia nuevaContrasenia)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
-            return nuevaContrasenia.ColorPassword.ToString();
+            return nuevaContrasenia.Password.ColorPassword.ToString();
         }
 
-        public string GenerarPassword(int largo, bool mayuscula, bool minuscula, bool numero, bool especial)
-        {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
-            return GestorContrasenia.GenerarPassword( largo,  mayuscula,  minuscula,  numero,  especial);
-        }
-
+       
         public string MostrarPassword(string password)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
@@ -211,7 +206,7 @@ namespace Negocio
 
         private int BuscarContraseniaEnFuente(Contrasenia item, IFuente fuente)
         {
-            string desencriptado = this.GestorContrasenia.MostrarPassword(item.Password);
+            string desencriptado = this.GestorContrasenia.MostrarPassword(item.Password.Clave);
             return fuente.BuscarPasswordOContraseniaEnFuente(desencriptado);
 
         }

@@ -89,8 +89,8 @@ namespace Interfaz.Contrasenias
                 IEnumerable<Contrasenia> contrasenias = Sesion.GestorContrasenia.ObtenerTodas();
                 foreach (Contrasenia contrasenia in contrasenias)
                 {
-                    string password = Sesion.MostrarPassword(contrasenia.Password);
-                    if (contrasenia.ColorPassword.ToString() == grupo.ToUpper())
+                    string password = Sesion.MostrarPassword(contrasenia.Password.Clave);
+                    if (contrasenia.Password.ColorPassword.ToString() == grupo.ToUpper())
                     {
                         nuevo.Cantidad = nuevo.Cantidad + 1;
                         nuevo.Contrasenias.Add(contrasenia);
@@ -118,7 +118,7 @@ namespace Interfaz.Contrasenias
             this.dgvContraseniasPorGrupo.Rows.Clear();
             foreach (Contrasenia contrasenia in grupo.Contrasenias)
             {
-                string password = new String('\u25CF', Sesion.MostrarPassword(contrasenia.Password).Length);
+                string password = new String('\u25CF', Sesion.MostrarPassword(contrasenia.Password.Clave).Length);
                 string[] fila = {
                     contrasenia.Categoria.Nombre,
                     contrasenia.Sitio,
@@ -133,7 +133,7 @@ namespace Interfaz.Contrasenias
         private void dgvContraseniasPorGrupo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Grupo grupoMostrando = Grupos[this.GrupoMostrando];
-            string password = grupoMostrando.Contrasenias[e.RowIndex].Password;
+            string password = grupoMostrando.Contrasenias[e.RowIndex].Password.Clave;
 
             if (e.ColumnIndex == 5)
             {
@@ -164,7 +164,7 @@ namespace Interfaz.Contrasenias
                     Notas=aModificar.Notas,
                     Usuario=aModificar.Usuario
                 }; 
-                modificada.Password = nuevoPassword;
+                modificada.Password.Clave = nuevoPassword;
                 try
                 {
                     Sesion.GestorContrasenia.ModificarContrasenia(modificada);

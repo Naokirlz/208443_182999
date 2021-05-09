@@ -44,6 +44,7 @@
     <Compile Include="Categorias\Categoria.cs" />
     <Compile Include="Contrasenias\Contrasenia.cs" />
     <Compile Include="Categorias\GestorCategorias.cs" />
+    <Compile Include="Contrasenias\Password.cs" />
     <Compile Include="Excepciones\ExcepcionAccesoDenegado.cs" />
     <Compile Include="Fuentes\FuenteLocal.cs" />
     <Compile Include="Fuentes\IFuente.cs" />

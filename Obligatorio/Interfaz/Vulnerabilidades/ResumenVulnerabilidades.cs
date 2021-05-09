@@ -77,7 +77,7 @@ namespace Interfaz.Vulnerabilidades
                     if (!this.contraseniasVulnerables.Contains(contrasenia))
                     {
                         contraseniasVulnerables.Add(contrasenia);
-                        string password = Sesion.MostrarPassword(contrasenia.Password);
+                        string password = Sesion.MostrarPassword(contrasenia.Password.Clave);
 
                         string[] fila = {
                             contrasenia.Categoria.Nombre,
@@ -126,7 +126,7 @@ namespace Interfaz.Vulnerabilidades
                 
                 Contrasenia aModificar = this.contraseniasVulnerables[e.RowIndex];
 
-                string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", Sesion.MostrarPassword(aModificar.Password));
+                string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", Sesion.MostrarPassword(aModificar.Password.Clave));
                 //string password = (string)dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value;
                 if (nuevoPassword == "") return;
 
@@ -139,7 +139,7 @@ namespace Interfaz.Vulnerabilidades
                     Notas = aModificar.Notas,
                     Usuario = aModificar.Usuario
                 };
-                modificada.Password = nuevoPassword;
+                modificada.Password.Clave = nuevoPassword;
                 try
                 {
                     Sesion.GestorContrasenia.ModificarContrasenia(modificada);

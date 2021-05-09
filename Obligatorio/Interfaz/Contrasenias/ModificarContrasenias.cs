@@ -46,7 +46,7 @@ namespace Interfaz.Contrasenias
                 this.txtSitio.Text = contraseniaSeleccionada.Sitio;
                 this.txtUsuario.Text = contraseniaSeleccionada.Usuario;
                 this.txtNotas.Text = contraseniaSeleccionada.Notas;
-                this.txtPassword.Text = Sesion.MostrarPassword(contraseniaSeleccionada.Password);
+                this.txtPassword.Text = Sesion.MostrarPassword(contraseniaSeleccionada.Password.Clave);
             }
             
         }
@@ -72,7 +72,7 @@ namespace Interfaz.Contrasenias
                 contraseniaSeleccionada.Sitio = this.txtSitio.Text;
                 contraseniaSeleccionada.Usuario = this.txtUsuario.Text;
                 contraseniaSeleccionada.Notas = this.txtNotas.Text;
-                contraseniaSeleccionada.Password = this.txtPassword.Text;
+                contraseniaSeleccionada.Password.Clave = this.txtPassword.Text;
 
                 this.Sesion.GestorContrasenia.ModificarContrasenia(contraseniaSeleccionada);
                 MessageBox.Show("Contraseña " + contraseniaSeleccionada + " fue modificada con éxito!!");
@@ -114,8 +114,18 @@ namespace Interfaz.Contrasenias
                 MessageBox.Show("Seleccione al menos una tipo de Caracter");
                 return;
             }
-            string password = Sesion.GestorContrasenia.GenerarPassword(largo, mayusculas, minusculas, digitos, especiales);
-            this.txtPassword.Text = password;
+            
+            Password nuevo = new Password("")
+            {
+                Largo = largo,
+                Mayuscula = mayusculas,
+                Minuscula = minusculas,
+                Numero = digitos,
+                Especial = especiales
+            };
+            
+            nuevo.GenerarPassword();
+            this.txtPassword.Text = nuevo.Clave;
         }
 
         private void cmbContrasenia_SelectedIndexChanged(object sender, EventArgs e)

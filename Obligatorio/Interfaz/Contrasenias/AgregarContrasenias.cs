@@ -42,7 +42,18 @@ namespace Interfaz.Contrasenias
                 MessageBox.Show("Seleccione al menos una tipo de Caracter");
                 return;
             }
-            string password = Sesion.GestorContrasenia.GenerarPassword(largo, mayusculas, minusculas, digitos, especiales);
+
+            Password nuevo = new Password("")
+            {
+                Largo = largo,
+                Mayuscula = mayusculas,
+                Minuscula = minusculas,
+                Numero = digitos,
+                Especial = especiales
+            };
+            nuevo.GenerarPassword();
+
+            string password = nuevo.Clave;
             this.txtPassword.Text = password;
 
         }
@@ -68,7 +79,7 @@ namespace Interfaz.Contrasenias
                     Categoria = categoria,
                     Usuario = usuario,
                     Notas = notas,
-                    Password = password,
+                    Password = new Password(password),
                 };
 
                 this.Sesion.GestorContrasenia.Alta(nuevaContrasenia);

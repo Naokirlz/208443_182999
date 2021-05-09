@@ -29,7 +29,7 @@ namespace PruebasUnitarias
                 Usuario = "usuario",
                 Notas = "clave de netflix",
                 FechaUltimaModificacion = DateTime.Now,
-                Password = "secreto"
+                Password = new Password("secreto")
             };
             this.ContraseniaCompleta = contraseniaCompleta;
         }
@@ -46,7 +46,7 @@ namespace PruebasUnitarias
                 Sitio = "netflix",
                 Notas = "clave de netflix",
                 FechaUltimaModificacion = DateTime.Now,
-                Password = "secreto"
+                Password = new Password("secreto")
             };
             Gestor.Alta(nuevaContrasena);
             IEnumerable<Contrasenia> contrasenias = Gestor.ObtenerTodas();
@@ -78,7 +78,7 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConPasswordfMayor25Caracteres()
         {
-            ContraseniaCompleta.Password = "12345123451234512345123451";
+            ContraseniaCompleta.Password.Clave = "12345123451234512345123451";
             Gestor.Alta(ContraseniaCompleta);
         }
 
@@ -86,7 +86,7 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaContrasenaConPasswordMenor5Caracteres()
         {
-            ContraseniaCompleta.Password = "1234";
+            ContraseniaCompleta.Password.Clave = "1234";
             Gestor.Alta(ContraseniaCompleta);
         }
 
@@ -247,7 +247,7 @@ namespace PruebasUnitarias
                 Usuario = "usuario",
                 Notas = "clave de netflix",
                 FechaUltimaModificacion = DateTime.Now,
-                Password = "secreto"
+                Password = new Password("secreto")
             };
 
             int idOtraContrasenia = Gestor.Alta(nuevaContrasenia);
@@ -296,7 +296,7 @@ namespace PruebasUnitarias
         {
             int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
-            nuevaContrasenia.Password = "1234";
+            nuevaContrasenia.Password.Clave = "1234";
             Gestor.ModificarContrasenia(nuevaContrasenia);
         }
 
@@ -306,7 +306,7 @@ namespace PruebasUnitarias
         {
             int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
-            nuevaContrasenia.Password = "12345123451234512345123451";
+            nuevaContrasenia.Password.Clave = "12345123451234512345123451";
             Gestor.ModificarContrasenia(nuevaContrasenia);
         }
 
@@ -360,8 +360,18 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeGenerarPasswordPorCaracteres()
         {
-            string password = Gestor.GenerarPassword(13, false,true,false,false);
-            Assert.AreEqual(13, password.Length);
+            Password nuevo = new Password("")
+            {
+                Largo = 13,
+                Mayuscula = false,
+                Minuscula = true,
+                Numero = false,
+                Especial = false
+            };
+
+            nuevo.GenerarPassword();
+
+            Assert.AreEqual(13, nuevo.Clave.Length);
         }
 
         //se puede autogenerar la password en una cantidad correcta de tipos de caracteres
@@ -369,11 +379,20 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeGenerarPasswordConMinusculas()
         {
-            string password = Gestor.GenerarPassword(13, false, true, false, false);
             bool hayMinuscula = false;
             bool NohayOtro = true;
 
-            foreach (char caracter in password)
+            Password nuevo = new Password("")
+            {
+                Largo = 13,
+                Mayuscula = false,
+                Minuscula = true,
+                Numero = false,
+                Especial = false
+            };
+            nuevo.GenerarPassword();
+
+            foreach (char caracter in nuevo.Clave)
             {
                 if (caracter >= 97 && caracter <= 122) hayMinuscula = true;
                 else NohayOtro = false;
@@ -384,11 +403,20 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeGenerarPasswordConMayusculas()
         {
-            string password = Gestor.GenerarPassword(13, true, false, false, false);
             bool hayMayuscula = false;
             bool NohayOtro = true;
 
-            foreach (char caracter in password)
+            Password nuevo = new Password("")
+            {
+                Largo = 13,
+                Mayuscula = true,
+                Minuscula = false,
+                Numero = false,
+                Especial = false
+            };
+            nuevo.GenerarPassword();
+
+            foreach (char caracter in nuevo.Clave)
             {
                 if (caracter >= 65 && caracter <= 90) hayMayuscula = true;
                 else NohayOtro = false;
@@ -399,12 +427,21 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeGenerarPasswordConMayusculasYMinusculas()
         {
-            string password = Gestor.GenerarPassword(13, true, true, false, false);
             bool hayMayuscula = false;
             bool hayMinuscula = false;
             bool NohayOtro = true;
 
-            foreach (char caracter in password)
+            Password nuevo = new Password("")
+            {
+                Largo = 13,
+                Mayuscula = true,
+                Minuscula = true,
+                Numero = false,
+                Especial = false
+            };
+            nuevo.GenerarPassword();
+            
+            foreach (char caracter in nuevo.Clave)
             {
                 if (caracter >= 65 && caracter <= 90) hayMayuscula = true;
                 else if (caracter >= 97 && caracter <= 122) hayMinuscula = true;
@@ -416,11 +453,20 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeGenerarPasswordConNumeross()
         {
-            string password = Gestor.GenerarPassword(13, false, false, true, false);
             bool hayNumeros = false;
             bool NohayOtro = true;
 
-            foreach (char caracter in password)
+            Password nuevo = new Password("")
+            {
+                Largo = 13,
+                Mayuscula = false,
+                Minuscula = false,
+                Numero = true,
+                Especial = false
+            };
+            nuevo.GenerarPassword();
+            
+            foreach (char caracter in nuevo.Clave)
             {
                 if (caracter >= 48 && caracter <= 57) hayNumeros = true;
                 else NohayOtro = false;
@@ -431,11 +477,21 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeGenerarPasswordConEspeciales()
         {
-            string password = Gestor.GenerarPassword(13, false, false, false, true);
             bool hayEspeciales = false;
             bool NohayOtro = true;
 
-            foreach (char caracter in password)
+            Password nuevo = new Password("")
+            {
+                Largo = 13,
+                Mayuscula = false,
+                Minuscula = false,
+                Numero = false,
+                Especial = true
+            };
+            nuevo.GenerarPassword();
+
+
+            foreach (char caracter in nuevo.Clave)
             {
                 if (caracter >= 32 && caracter <= 47) hayEspeciales = true;
                 else if(caracter >= 58 && caracter <= 64) hayEspeciales = true;
@@ -449,14 +505,24 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeGenerarPasswordConTodosLosTipos()
         {
-            string password = Gestor.GenerarPassword(13, true, true, true, true);
             bool hayMayuscula = false;
             bool hayMinuscula = false;
             bool hayEspeciales = false;
             bool hayNumeros = false;
             bool NohayOtro = true;
 
-            foreach (char caracter in password)
+            Password nuevo = new Password("")
+            {
+                Largo = 13,
+                Mayuscula = true,
+                Minuscula = true,
+                Numero = true,
+                Especial = true
+            };
+            nuevo.GenerarPassword();
+
+
+            foreach (char caracter in nuevo.Clave)
             {
                 if (caracter >= 65 && caracter <= 90) hayMayuscula = true;
                 else if (caracter >= 97 && caracter <= 122) hayMinuscula = true;
@@ -474,7 +540,7 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SeGuardaElPasswordCodificado()
         {
-            ContraseniaCompleta.Password = "secreto";
+            ContraseniaCompleta.Password.Clave = "secreto";
             int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             Contrasenia nueva = Gestor.Buscar(idNuevaContrasenia);
             Assert.AreNotEqual("secreto", nueva.Password);
@@ -540,7 +606,18 @@ namespace PruebasUnitarias
         public void AlAutogenerarUnPasswordNoMeDevuelveTodosLosCaracteresIguales()
         {
             //no sería una buena prueba, hay que refactorizar, el que no me devuelva dos caracteres seguidos iguales surge porque devolvía todos los caracteres iguales, la intención es que no los devolviera todos iguales, pero dos iguales podía haber, pero para lograrlo a veces pasa y otras no, hay que verlo
-            string password = Gestor.GenerarPassword(4, false, true, false, false);
+            
+            Password nuevo = new Password("")
+            {
+                Largo = 4,
+                Mayuscula = false,
+                Minuscula = true,
+                Numero = false,
+                Especial = false
+            };
+            nuevo.GenerarPassword();
+
+            string password = nuevo.Clave;
             bool todosIguales = true;
             char caracterAnterior = new char();
 
@@ -566,7 +643,7 @@ namespace PruebasUnitarias
                 Sitio = "netflix",
                 Notas = "clave de netflix",
                 FechaUltimaModificacion = DateTime.Now,
-                Password = "secreto555"
+                Password = new Password("secreto555")
             };
             Gestor.Alta(nuevaContrasena);
 
@@ -577,7 +654,7 @@ namespace PruebasUnitarias
                 Sitio = "tcc",
                 Notas = "clave de tcc",
                 FechaUltimaModificacion = DateTime.Now,
-                Password = "secreto555"
+                Password = new Password("secreto555")
             };
             Gestor.Alta(nuevaContrasena2);
 
@@ -635,7 +712,7 @@ namespace PruebasUnitarias
                 Notas = vieja.Notas,
                 FechaUltimaModificacion = vieja.FechaUltimaModificacion,
                 Id= vieja.Id,
-                Password = "Nuevo PASSWORD"
+                Password = new Password("Nuevo PASSWORD")
             };
 
             Gestor.ModificarContrasenia(contraseniaNueva);
