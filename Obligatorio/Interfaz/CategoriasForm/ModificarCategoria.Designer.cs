@@ -38,34 +38,43 @@ namespace Interfaz
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(41)))), ((int)(((byte)(103)))));
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategoria.Location = new System.Drawing.Point(161, 66);
+            this.cmbCategoria.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategoria.Location = new System.Drawing.Point(274, 73);
             this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(185, 21);
+            this.cmbCategoria.Size = new System.Drawing.Size(286, 29);
             this.cmbCategoria.TabIndex = 0;
             // 
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(24, 74);
+            this.lblCategoria.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoria.ForeColor = System.Drawing.Color.White;
+            this.lblCategoria.Location = new System.Drawing.Point(41, 82);
             this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(131, 13);
+            this.lblCategoria.Size = new System.Drawing.Size(214, 21);
             this.lblCategoria.TabIndex = 1;
             this.lblCategoria.Text = "Seleccione una Categoría";
             // 
             // txtNuevoNombre
             // 
-            this.txtNuevoNombre.Location = new System.Drawing.Point(161, 109);
+            this.txtNuevoNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(41)))), ((int)(((byte)(103)))));
+            this.txtNuevoNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNuevoNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNuevoNombre.Location = new System.Drawing.Point(274, 137);
             this.txtNuevoNombre.Name = "txtNuevoNombre";
-            this.txtNuevoNombre.Size = new System.Drawing.Size(185, 20);
+            this.txtNuevoNombre.Size = new System.Drawing.Size(286, 20);
             this.txtNuevoNombre.TabIndex = 2;
             // 
             // lblNuevoNombre
             // 
             this.lblNuevoNombre.AutoSize = true;
-            this.lblNuevoNombre.Location = new System.Drawing.Point(24, 116);
+            this.lblNuevoNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNuevoNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNuevoNombre.Location = new System.Drawing.Point(126, 136);
             this.lblNuevoNombre.Name = "lblNuevoNombre";
-            this.lblNuevoNombre.Size = new System.Drawing.Size(79, 13);
+            this.lblNuevoNombre.Size = new System.Drawing.Size(129, 21);
             this.lblNuevoNombre.TabIndex = 3;
             this.lblNuevoNombre.Text = "Nuevo Nombre";
             // 
