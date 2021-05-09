@@ -32,29 +32,15 @@ namespace Interfaz.Contrasenias
 
         private void LimpiarCampos()
         {
-            bool mayusculas = this.chkMayusculas.Checked;
-            bool minusculas = this.chkMinusculas.Checked;
-            bool digitos = this.chkDigitos.Checked;
-            bool especiales = this.chkEspeciales.Checked;
-            int largo = (int)this.numLargo.Value;
-            if(!mayusculas && !minusculas && !digitos && !especiales)
-            {
-                MessageBox.Show("Seleccione al menos una tipo de Caracter");
-                return;
-            }
-
-            Password nuevo = new Password("")
-            {
-                Largo = largo,
-                Mayuscula = mayusculas,
-                Minuscula = minusculas,
-                Numero = digitos,
-                Especial = especiales
-            };
-            nuevo.GenerarPassword();
-
-            string password = nuevo.Clave;
-            this.txtPassword.Text = password;
+            this.txtNotas.Text = "";
+            this.txtSitio.Text = "";
+            this.txtUsuario.Text = "";
+            this.txtPassword.Text = "";
+            this.numLargo.Value = 5;
+            this.chkDigitos.Checked = false;
+            this.chkMayusculas.Checked = false;
+            this.chkMinusculas.Checked = false;
+            this.chkEspeciales.Checked = false;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)

@@ -27,7 +27,7 @@ namespace Interfaz.Contrasenias
                     contrasenia.Usuario,
                     contrasenia.FechaUltimaModificacion.ToShortDateString(),
                 };
-                this.dgvTarjetas.Rows.Add(fila);
+                this.dgvContrasenias.Rows.Add(fila);
             }
         }
     }
