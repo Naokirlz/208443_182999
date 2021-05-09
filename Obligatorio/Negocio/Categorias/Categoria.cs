@@ -11,11 +11,7 @@ namespace Negocio.Categorias
         {
             this.Nombre = nombre;
         }
-        public Categoria(string nombre, int id) :this(nombre)
-        {
-            this.Id = id;
-        }
-        
+               
         public override string ToString()
         {
             return this.Nombre;

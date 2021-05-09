@@ -158,11 +158,35 @@ namespace PruebasUnitarias
             Assert.AreEqual("VERDE_CLARO", fortaleza);
         }
 
+        [TestMethod]
+        public void SePuedeDetectarMayusculasEspecialesNumerosMayor14VerdeClaro()
+        {
+            ContraseniaCompleta.Password.Clave = " AAAA1@ AAAAAAA";
+            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            Assert.AreEqual("VERDE_CLARO", fortaleza);
+        }
+
+        [TestMethod]
+        public void SePuedeDetectarMinusculasEspecialesNumerosMayor14VerdeClaro()
+        {
+            ContraseniaCompleta.Password.Clave = "aaaaa1@aaaaaaaa";
+            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            Assert.AreEqual("VERDE_CLARO", fortaleza);
+        }
+
         // se puede detectar password en VERDE OSCURO
         [TestMethod]
         public void SePuedeDetectarPasswordVerdeOscuro()
         {
             ContraseniaCompleta.Password.Clave = "AAAAAAaAAAA$AA1";
+            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            Assert.AreEqual("VERDE_OSCURO", fortaleza);
+        }
+
+        [TestMethod]
+        public void SePuedeDetectarOtroPasswordVerdeOscuro()
+        {
+            ContraseniaCompleta.Password.Clave = "^ AA;AaA}}AA#AA1";
             string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
             Assert.AreEqual("VERDE_OSCURO", fortaleza);
         }

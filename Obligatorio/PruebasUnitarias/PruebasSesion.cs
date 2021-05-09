@@ -67,15 +67,6 @@ namespace PruebasUnitarias
             sesionPrueba.MisFuentes = new List<IFuente>();
         }
 
-        //[TestMethod]
-        //public void InicioSesionCorrecto()
-        //{
-        //    sesionPrueba.GuardarPrimerPassword("secreto");
-        //    sesionPrueba.Login("secreto");
-        //    sesionPrueba.GestorCategoria.Alta("cat uno");
-        //    Assert.AreEqual(1, sesionPrueba.GestorCategoria.ObtenerTodasLasCategorias().Count());
-        //}
-
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void NoSePuedeIniciarSesionSinIngresarElPrimerPassword()
@@ -121,6 +112,17 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
+        public void SePuedeEjecutarBajaCategoriaEstandoLogueado()
+        {
+            int id = sesionPrueba.AltaCategoria("NuevaCategoria");
+            int cantidadAntes = sesionPrueba.ObtenerTodasLasCategorias().Count();
+            sesionPrueba.BajaCategoria(id);
+            int cantidadDespues = sesionPrueba.ObtenerTodasLasCategorias().Count();
+            Assert.AreEqual(1, cantidadAntes - cantidadDespues);
+
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void NoSePuedeEjecutarModificarCategoriaSiNoSeEstaLogueado()
         {
@@ -144,7 +146,6 @@ namespace PruebasUnitarias
             sesionPrueba.ObtenerTodasLasCategorias();
         }
 
-
         [TestMethod]
         public void SePuedeEjecutarAltaCategoriaSiSeEstaLogueado()
         {
@@ -160,9 +161,7 @@ namespace PruebasUnitarias
         {
 
             int nuevaCategoria = sesionPrueba.AltaCategoria("algunaCategoria");
-            
             sesionPrueba.ModificacionCategoria(nuevaCategoria, "modAlgunaCat");
-
             Assert.AreEqual("modAlgunaCat", sesionPrueba.BuscarCategoriaPorId(nuevaCategoria).Nombre);
 
         }
@@ -171,11 +170,8 @@ namespace PruebasUnitarias
         public void SePuedeEjecutarBuscarCategoriaPorIdSiSeEstaLogueado()
         {
             int nuevaCategoria = sesionPrueba.AltaCategoria("viejaCategoria");
-            
             Categoria categoriaBuscada = sesionPrueba.BuscarCategoriaPorId(nuevaCategoria);
-           
             Assert.IsNotNull(categoriaBuscada);
-
         }
 
         [TestMethod]
@@ -220,8 +216,7 @@ namespace PruebasUnitarias
 
         
         [TestMethod]
-        
-        public void SePuedeEjecutarAltaTarjetaEstandoLogueado()
+       public void SePuedeEjecutarAltaTarjetaEstandoLogueado()
         {
                 TarjetaCredito nuevoTarjetaPrueba = new TarjetaCredito()
             {
@@ -242,7 +237,6 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        
         public void SePuedeEjecutarBajaTarjetaEstandoLogueado()
         {
             int antes = sesionPrueba.ObtenerTodasLasTarjetas().Count();
@@ -253,7 +247,6 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        
         public void SePuedeEjecutarModificarTarjetaEstandoLogueado()
         {
             int id = nuevoTarjeta.Id;
@@ -277,7 +270,6 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        
         public void SePuedeEjecutarBuscarTarjetaEstandoLogueado()
         {
              TarjetaCredito buscada = new TarjetaCredito()
@@ -299,7 +291,6 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        
         public void SePuedeEjecutarObtenerTodasTarjetaEstandoLogueado()
         {
            int cantidad = sesionPrueba.ObtenerTodasLasTarjetas().Count();
@@ -357,11 +348,8 @@ namespace PruebasUnitarias
             sesionPrueba.VerificarFortaleza(new Contrasenia());
         }
 
-      
-        //
-
+     
         [TestMethod]
-        
         public void SePuedeEjecutarAltaContraseniaEstandoLogueado()
         {
             int cantidadAntes = sesionPrueba.ListarContrasenias().Count();
@@ -381,7 +369,6 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        
         public void SePuedeEjecutarBajaContraseniaEstandoLogueado()
         {
            int cantidadAntes = sesionPrueba.ListarContrasenias().Count();
@@ -392,7 +379,6 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        
         public void SePuedeEjecutarModificarContraseniaEstandoLogueado()
         {
 
@@ -419,7 +405,6 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-       
         public void SePuedeEjecutarBuscarContraseniaEstandoLogueado()
         {
             int id = sesionPrueba.ListarContrasenias().First().Id;
@@ -428,7 +413,6 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-       
         public void SePuedeEjecutarListarContraseniasEstandoLogueado()
         {
             Contrasenia buscada = sesionPrueba.ListarContrasenias().First();
@@ -436,7 +420,15 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoPuedeEjecutarMostrarPasswordNoEstandoLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.MostrarPassword(new Contrasenia());
+
+        }
+
+        [TestMethod]
         public void SePuedeEjecutarVerificarFortalezaEstandoLogueado()
         {
             string fortaleza = "Nada que Reportar";
@@ -444,15 +436,12 @@ namespace PruebasUnitarias
             Assert.AreNotEqual("Nada que Reportar", fortaleza);
         }
 
-       
-        //[TestMethod]
-        //ver luego porque falla
-        //public void SePuedeEjecutarMostrarPasswordEstandoLogueado()
-        //{
-        //    string encriptado = sesionPrueba.GenerarPassword(5, true, false, false, false);
-        //    string password = sesionPrueba.MostrarPassword(encriptado);
-        //    Assert.AreEqual(encriptado, password);
-        //}
+        [TestMethod]
+        public void SePuedeEjecutarMostrarPasswordEstandoLogueado()
+        {
+            string password = sesionPrueba.MostrarPassword(pruebaContrasenia);
+            Assert.AreEqual(pruebaContrasenia.Password.Clave, password);
+        }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
@@ -460,8 +449,6 @@ namespace PruebasUnitarias
         {
             sesionPrueba.GuardarPrimerPassword("aaaa");
         }
-
-
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
@@ -527,7 +514,6 @@ namespace PruebasUnitarias
 
         }
 
-
         [TestMethod]
         public void EncuentraContraseniaVulnerableEnFuente()
         {
@@ -542,11 +528,9 @@ namespace PruebasUnitarias
         public void Encuentra2VecesUnaContraseniaVulnerableEnUnaFuente()
         {
             sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("dalevo111!!!");
-           
             sesionPrueba.ContraseniasVulnerables(Fuente);
             pruebaContrasenia = sesionPrueba.GestorContrasenia.Buscar(pruebaContrasenia.Id);
             Assert.AreEqual(pruebaContrasenia.CantidadVecesEncontradaVulnerable, 2);
-           
            
         }
 
@@ -559,7 +543,6 @@ namespace PruebasUnitarias
             Assert.AreEqual(contrasenias.Count(), contrasenias2.Count());
 
         }
-
 
         [TestMethod]
         public void EncuentraTarjetaVulnerableEnFuente()
@@ -575,7 +558,6 @@ namespace PruebasUnitarias
         public void Encuentra2VecesTarjetaVulnerableEnUnaFuente()
         {
             sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
-
             sesionPrueba.TarjetasCreditoVulnerables(Fuente);
             nuevoTarjeta = sesionPrueba.GestorTarjetaCredito.Buscar(nuevoTarjeta.Id);
             Assert.AreEqual(nuevoTarjeta.CantidadVecesEncontradaVulnerable, 2);
@@ -588,9 +570,7 @@ namespace PruebasUnitarias
 
             sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
             sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
-
             IEnumerable<TarjetaCredito> tarjetasVulnerables = sesionPrueba.TarjetasCreditoVulnerables(Fuente);
-
             Assert.AreEqual(1, tarjetasVulnerables.Count());
 
         }
@@ -613,7 +593,6 @@ namespace PruebasUnitarias
             Assert.AreEqual("secreto", sesionPrueba.MostrarPassword(nueva));
         }
 
-        //se puede cambiar el password
         [TestMethod]
         public void SePuedeModificarElPassword()
         {

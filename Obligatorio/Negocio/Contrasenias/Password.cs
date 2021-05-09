@@ -23,7 +23,7 @@ namespace Negocio.Contrasenias
             "ABCDEFGHJKLMNOPQRSTUVWXYZ",    // MAYUSCULAS 
             "abcdefghijkmnopqrstuvwxyz",    // MINUSCULAS
             "0123456789",                   // NUMEROS
-            "!@$?_-"                        // ESPECIALES
+            "!#$%&'()*+,-./: ;<=>?@[]^_`{|}~"  // ESPECIALES
         };
 
         public void GenerarPassword()
@@ -53,37 +53,34 @@ namespace Negocio.Contrasenias
 
         public EnumColor CalcularFortaleza()
         {
-            bool mayusculas = false;
-            bool minusculas = false;
-            bool numeros = false;
-            bool especiales = false;
-            string password = this.Clave;
-            int largo = password.Length;
-
-            foreach (char caracter in password)
-            {
-                if (caracter >= 65 && caracter <= 90) mayusculas = true;
-                else if (caracter >= 97 && caracter <= 122) minusculas = true;
-                else if (caracter >= 48 && caracter <= 57) numeros = true;
-                else if (caracter >= 32 && caracter <= 47) especiales = true;
-                else if (caracter >= 58 && caracter <= 64) especiales = true;
-                else if (caracter >= 91 && caracter <= 96) especiales = true;
-                else if (caracter >= 123 && caracter <= 126) especiales = true;
-            }
-            if (largo > 14)
+            this.Largo = Clave.Length;
+            SeteoPassword();
+           
+            if (this.Largo > 14)
             {
 
-                if (mayusculas && minusculas && numeros && especiales) return EnumColor.VERDE_OSCURO;
-                else if (mayusculas && minusculas) return EnumColor.VERDE_CLARO;
-                else if (mayusculas && especiales && numeros) return EnumColor.VERDE_CLARO;
-                else if (minusculas && especiales && numeros) return EnumColor.VERDE_CLARO;
+                if (this.Mayuscula && this.Minuscula && this.Numero && this.Especial) return EnumColor.VERDE_OSCURO;
+                else if (this.Mayuscula && this.Minuscula) return EnumColor.VERDE_CLARO;
+                else if (this.Mayuscula && this.Especial && this.Numero) return EnumColor.VERDE_CLARO;
+                else if (this.Minuscula && this.Especial && this.Numero) return EnumColor.VERDE_CLARO;
                 else return EnumColor.AMARILLO;
 
             }
-            else if (largo >= 8) return EnumColor.NARANJA;
+            else if (this.Largo >= 8) return EnumColor.NARANJA;
             return EnumColor.ROJO;
         }
-               
+
+        private void SeteoPassword()
+        {
+            foreach (char caracter in this.Clave)
+            {
+                if (caracteresRandom[0].IndexOf(caracter) > -1) this.Mayuscula = true;
+                if (caracteresRandom[1].IndexOf(caracter) > -1) this.Minuscula = true;
+                if (caracteresRandom[2].IndexOf(caracter) > -1) this.Numero = true;
+                if (caracteresRandom[3].IndexOf(caracter) > -1) this.Especial = true;
+            }
+
+        }
     }
     public enum EnumColor
     {

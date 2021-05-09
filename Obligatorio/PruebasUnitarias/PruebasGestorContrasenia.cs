@@ -224,6 +224,21 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ExcepcionElementoNoExiste))]
+        public void NoSePuedeBuscarUnaContraseniaQueNoExiste()
+        {
+           Contrasenia buscada = Gestor.Buscar(-2);
+           
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionElementoNoExiste))]
+        public void NoSePuedeEliminarUnaContraseniaQueNoExisteEnRepositorio()
+        {
+           Gestor.Repositorio.Baja(-2);
+        }
+
+        [TestMethod]
         public void AlModificarUnaContraseniaCreadaNoSeModificaMandadaPorParametro()
         {
             int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
