@@ -610,7 +610,7 @@ namespace PruebasUnitarias
             int idNuevaContrasenia = sesionPrueba.AltaContrasenia(nueva);
             nueva = sesionPrueba.BuscarContrasenia(idNuevaContrasenia);
             
-            Assert.AreEqual("secreto", sesionPrueba.MostrarPassword(nueva.Password.Clave));
+            Assert.AreEqual("secreto", sesionPrueba.MostrarPassword(nueva));
         }
 
         //se puede cambiar el password
@@ -619,12 +619,12 @@ namespace PruebasUnitarias
         {
             Contrasenia aModificar = sesionPrueba.ListarContrasenias().First();
             int idPass = aModificar.Id;
-            string passAnterior = sesionPrueba.MostrarPassword(aModificar.Password.Clave);
+            string passAnterior = sesionPrueba.MostrarPassword(aModificar);
             aModificar.Password.Clave = "secretoNuevo";
             sesionPrueba.ModificarContrasenia(aModificar);
 
             Contrasenia modificada = sesionPrueba.BuscarContrasenia(idPass);
-            string passActual = sesionPrueba.MostrarPassword(aModificar.Password.Clave);
+            string passActual = sesionPrueba.MostrarPassword(aModificar);
 
             Assert.AreNotEqual(passAnterior, passActual);
         }

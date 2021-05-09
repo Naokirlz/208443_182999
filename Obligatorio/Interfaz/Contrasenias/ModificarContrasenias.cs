@@ -46,7 +46,7 @@ namespace Interfaz.Contrasenias
                 this.txtSitio.Text = contraseniaSeleccionada.Sitio;
                 this.txtUsuario.Text = contraseniaSeleccionada.Usuario;
                 this.txtNotas.Text = contraseniaSeleccionada.Notas;
-                this.txtPassword.Text = Sesion.MostrarPassword(contraseniaSeleccionada.Password.Clave);
+                this.txtPassword.Text = Sesion.MostrarPassword(contraseniaSeleccionada);
             }
             
         }
