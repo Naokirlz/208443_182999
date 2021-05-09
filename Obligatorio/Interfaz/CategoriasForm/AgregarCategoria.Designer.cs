@@ -29,22 +29,10 @@ namespace Interfaz
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.BackColor = System.Drawing.SystemColors.Window;
-            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtNombre.Location = new System.Drawing.Point(253, 154);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(5);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(327, 20);
-            this.txtNombre.TabIndex = 5;
             // 
             // lblNombre
             // 
@@ -72,13 +60,21 @@ namespace Interfaz
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // txtNombre
+            // 
+            this.txtNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Location = new System.Drawing.Point(251, 150);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(290, 27);
+            this.txtNombre.TabIndex = 9;
+            // 
             // AgregarCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
-            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblNombre);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
@@ -91,9 +87,8 @@ namespace Interfaz
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.TextBox txtNombre;
     }
 }

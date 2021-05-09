@@ -70,11 +70,11 @@ namespace Interfaz
             // lblMensaje
             // 
             this.lblMensaje.AutoSize = true;
-            this.lblMensaje.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensaje.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.Red;
-            this.lblMensaje.Location = new System.Drawing.Point(81, 28);
+            this.lblMensaje.Location = new System.Drawing.Point(66, 26);
             this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(65, 22);
+            this.lblMensaje.Size = new System.Drawing.Size(57, 21);
             this.lblMensaje.TabIndex = 4;
             this.lblMensaje.Text = "label1";
             // 

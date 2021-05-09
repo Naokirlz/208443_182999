@@ -30,82 +30,124 @@ namespace Interfaz.Contrasenias
         private void InitializeComponent()
         {
             this.pnlGestor = new System.Windows.Forms.Panel();
-            this.btnAgregarContrasenia = new System.Windows.Forms.Button();
-            this.btnModificarContrasenias = new System.Windows.Forms.Button();
-            this.btnEliminarContrasenias = new System.Windows.Forms.Button();
-            this.btnResumenContrasenias = new System.Windows.Forms.Button();
-            this.btnReporteFortaleza = new System.Windows.Forms.Button();
+            this.btnResumen = new FontAwesome.Sharp.IconButton();
+            this.btnAgregar = new FontAwesome.Sharp.IconButton();
+            this.btnModificar = new FontAwesome.Sharp.IconButton();
+            this.btnEliminar = new FontAwesome.Sharp.IconButton();
+            this.btnFortaleza = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // pnlGestor
             // 
-            this.pnlGestor.Location = new System.Drawing.Point(186, 10);
+            this.pnlGestor.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlGestor.Location = new System.Drawing.Point(0, 133);
             this.pnlGestor.Name = "pnlGestor";
-            this.pnlGestor.Size = new System.Drawing.Size(471, 322);
+            this.pnlGestor.Size = new System.Drawing.Size(814, 384);
             this.pnlGestor.TabIndex = 0;
             // 
-            // btnAgregarContrasenia
+            // btnResumen
             // 
-            this.btnAgregarContrasenia.Location = new System.Drawing.Point(0, 67);
-            this.btnAgregarContrasenia.Name = "btnAgregarContrasenia";
-            this.btnAgregarContrasenia.Size = new System.Drawing.Size(185, 23);
-            this.btnAgregarContrasenia.TabIndex = 3;
-            this.btnAgregarContrasenia.Text = "Agregar Contraseña";
-            this.btnAgregarContrasenia.UseVisualStyleBackColor = true;
-            this.btnAgregarContrasenia.Click += new System.EventHandler(this.btnAgregarTarjeta_Click);
+            this.btnResumen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResumen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResumen.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResumen.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnResumen.IconChar = FontAwesome.Sharp.IconChar.ChartLine;
+            this.btnResumen.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnResumen.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnResumen.Location = new System.Drawing.Point(30, 28);
+            this.btnResumen.Name = "btnResumen";
+            this.btnResumen.Size = new System.Drawing.Size(104, 84);
+            this.btnResumen.TabIndex = 8;
+            this.btnResumen.Text = "Resumen";
+            this.btnResumen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnResumen.UseVisualStyleBackColor = true;
+            this.btnResumen.Click += new System.EventHandler(this.btnResumen_Click);
             // 
-            // btnModificarContrasenias
+            // btnAgregar
             // 
-            this.btnModificarContrasenias.Location = new System.Drawing.Point(0, 96);
-            this.btnModificarContrasenias.Name = "btnModificarContrasenias";
-            this.btnModificarContrasenias.Size = new System.Drawing.Size(185, 23);
-            this.btnModificarContrasenias.TabIndex = 4;
-            this.btnModificarContrasenias.Text = "Modificar Contraseña";
-            this.btnModificarContrasenias.UseVisualStyleBackColor = true;
-            this.btnModificarContrasenias.Click += new System.EventHandler(this.btnModificarContrasenias_Click);
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnAgregar.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            this.btnAgregar.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAgregar.Location = new System.Drawing.Point(182, 28);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(104, 84);
+            this.btnAgregar.TabIndex = 9;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // btnEliminarContrasenias
+            // btnModificar
             // 
-            this.btnEliminarContrasenias.Location = new System.Drawing.Point(0, 125);
-            this.btnEliminarContrasenias.Name = "btnEliminarContrasenias";
-            this.btnEliminarContrasenias.Size = new System.Drawing.Size(185, 23);
-            this.btnEliminarContrasenias.TabIndex = 5;
-            this.btnEliminarContrasenias.Text = "Eliminar Contraseña";
-            this.btnEliminarContrasenias.UseVisualStyleBackColor = true;
-            this.btnEliminarContrasenias.Click += new System.EventHandler(this.button1_Click);
+            this.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnModificar.IconChar = FontAwesome.Sharp.IconChar.Edit;
+            this.btnModificar.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnModificar.Location = new System.Drawing.Point(343, 28);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(104, 84);
+            this.btnModificar.TabIndex = 10;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // btnResumenContrasenias
+            // btnEliminar
             // 
-            this.btnResumenContrasenias.Location = new System.Drawing.Point(0, 38);
-            this.btnResumenContrasenias.Name = "btnResumenContrasenias";
-            this.btnResumenContrasenias.Size = new System.Drawing.Size(185, 23);
-            this.btnResumenContrasenias.TabIndex = 6;
-            this.btnResumenContrasenias.Text = "Resumen";
-            this.btnResumenContrasenias.UseVisualStyleBackColor = true;
-            this.btnResumenContrasenias.Click += new System.EventHandler(this.btnResumenContrasenias_Click);
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnEliminar.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnEliminar.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnEliminar.Location = new System.Drawing.Point(506, 28);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(104, 84);
+            this.btnEliminar.TabIndex = 11;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // btnReporteFortaleza
+            // btnFortaleza
             // 
-            this.btnReporteFortaleza.Location = new System.Drawing.Point(0, 154);
-            this.btnReporteFortaleza.Name = "btnReporteFortaleza";
-            this.btnReporteFortaleza.Size = new System.Drawing.Size(185, 23);
-            this.btnReporteFortaleza.TabIndex = 7;
-            this.btnReporteFortaleza.Text = "Reporte de Fortalezas";
-            this.btnReporteFortaleza.UseVisualStyleBackColor = true;
-            this.btnReporteFortaleza.Click += new System.EventHandler(this.btnReporteFortaleza_Click);
+            this.btnFortaleza.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFortaleza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFortaleza.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFortaleza.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnFortaleza.IconChar = FontAwesome.Sharp.IconChar.Dumbbell;
+            this.btnFortaleza.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnFortaleza.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnFortaleza.Location = new System.Drawing.Point(667, 28);
+            this.btnFortaleza.Name = "btnFortaleza";
+            this.btnFortaleza.Size = new System.Drawing.Size(104, 84);
+            this.btnFortaleza.TabIndex = 12;
+            this.btnFortaleza.Text = "Fortaleza";
+            this.btnFortaleza.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnFortaleza.UseVisualStyleBackColor = true;
+            this.btnFortaleza.Click += new System.EventHandler(this.btnFortaleza_Click);
             // 
             // GestionContrasenias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnReporteFortaleza);
-            this.Controls.Add(this.btnResumenContrasenias);
-            this.Controls.Add(this.btnEliminarContrasenias);
-            this.Controls.Add(this.btnModificarContrasenias);
-            this.Controls.Add(this.btnAgregarContrasenia);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.Controls.Add(this.btnFortaleza);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.btnResumen);
             this.Controls.Add(this.pnlGestor);
             this.Name = "GestionContrasenias";
-            this.Size = new System.Drawing.Size(668, 346);
+            this.Size = new System.Drawing.Size(814, 517);
             this.ResumeLayout(false);
 
         }
@@ -113,10 +155,10 @@ namespace Interfaz.Contrasenias
         #endregion
 
         private System.Windows.Forms.Panel pnlGestor;
-        private System.Windows.Forms.Button btnAgregarContrasenia;
-        private System.Windows.Forms.Button btnModificarContrasenias;
-        private System.Windows.Forms.Button btnEliminarContrasenias;
-        private System.Windows.Forms.Button btnResumenContrasenias;
-        private System.Windows.Forms.Button btnReporteFortaleza;
+        private FontAwesome.Sharp.IconButton btnResumen;
+        private FontAwesome.Sharp.IconButton btnAgregar;
+        private FontAwesome.Sharp.IconButton btnModificar;
+        private FontAwesome.Sharp.IconButton btnEliminar;
+        private FontAwesome.Sharp.IconButton btnFortaleza;
     }
 }

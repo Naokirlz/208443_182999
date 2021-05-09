@@ -156,7 +156,7 @@ namespace Negocio
 
         public Contrasenia AltaContrasenia(Contrasenia unaContrasena)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
             return GestorContrasenia.Alta(unaContrasena);
         }
 
