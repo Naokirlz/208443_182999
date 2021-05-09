@@ -141,12 +141,6 @@
     <Compile Include="InicioSesion.Designer.cs">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
     <Compile Include="CategoriasForm\ModificarCategoria.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -166,6 +160,12 @@
     </Compile>
     <Compile Include="RegistrarPassword.Designer.cs">
       <DependentUpon>RegistrarPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroPassword.Designer.cs">
+      <DependentUpon>RegistroPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="TarjetasCredito\AgregarTarjetas.cs">
       <SubType>UserControl</SubType>
@@ -251,9 +251,6 @@
     <EmbeddedResource Include="InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CategoriasForm\ModificarCategoria.resx">
       <DependentUpon>ModificarCategoria.cs</DependentUpon>
     </EmbeddedResource>
@@ -271,6 +268,9 @@
     </Compile>
     <EmbeddedResource Include="RegistrarPassword.resx">
       <DependentUpon>RegistrarPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroPassword.resx">
+      <DependentUpon>RegistroPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TarjetasCredito\AgregarTarjetas.resx">
       <DependentUpon>AgregarTarjetas.cs</DependentUpon>

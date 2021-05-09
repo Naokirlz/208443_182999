@@ -127,7 +127,7 @@ namespace Interfaz
         {
             BotonActivo(sender, RGBColores.Color6);
             Sesion.LogOut();
-            Login pantallaLogin = new Login();
+            InicioSesion pantallaLogin = new InicioSesion();
             this.Hide();
             pantallaLogin.Show();
         }
