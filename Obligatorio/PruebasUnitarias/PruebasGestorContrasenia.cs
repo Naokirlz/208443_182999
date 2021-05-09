@@ -389,6 +389,23 @@ namespace PruebasUnitarias
             Assert.AreEqual(13, nuevo.Clave.Length);
         }
 
+        [TestMethod]
+        public void SePuedeGenerarPasswordPorCaracteresConDistintosCaracteres()
+        {
+            Password nuevo = new Password("")
+            {
+                Largo = 13,
+                Mayuscula = true,
+                Minuscula = true,
+                Numero = false,
+                Especial = false
+            };
+
+            nuevo.GenerarPassword();
+
+            Assert.AreEqual(13, nuevo.Clave.Length);
+        }
+
         //se puede autogenerar la password en una cantidad correcta de tipos de caracteres
         //se puede autogenerar password con minusculas
         [TestMethod]
