@@ -38,9 +38,12 @@ namespace Interfaz
             // 
             // cmbCategoria
             // 
-            this.cmbCategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(41)))), ((int)(((byte)(103)))));
+            this.cmbCategoria.BackColor = System.Drawing.SystemColors.Window;
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbCategoria.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategoria.ForeColor = System.Drawing.Color.Black;
+            this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Location = new System.Drawing.Point(274, 73);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(286, 29);
@@ -59,12 +62,14 @@ namespace Interfaz
             // 
             // txtNuevoNombre
             // 
-            this.txtNuevoNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(41)))), ((int)(((byte)(103)))));
+            this.txtNuevoNombre.BackColor = System.Drawing.SystemColors.Window;
             this.txtNuevoNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNuevoNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNuevoNombre.Location = new System.Drawing.Point(274, 137);
+            this.txtNuevoNombre.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtNuevoNombre.Location = new System.Drawing.Point(274, 126);
+            this.txtNuevoNombre.Multiline = true;
             this.txtNuevoNombre.Name = "txtNuevoNombre";
-            this.txtNuevoNombre.Size = new System.Drawing.Size(286, 20);
+            this.txtNuevoNombre.Size = new System.Drawing.Size(286, 31);
             this.txtNuevoNombre.TabIndex = 2;
             // 
             // lblNuevoNombre

@@ -22,6 +22,14 @@ namespace Interfaz
             Refrescar();
         }
 
+        private void Refrescar()
+        {
+            BindingList<Categoria> bindinglist = new BindingList<Categoria>();
+            BindingSource bSource = new BindingSource();
+            bSource.DataSource = this.sis.GestorCategoria.ObtenerTodasLasCategorias();
+            this.cmbCategoria.DataSource = bSource;
+        }
+
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
@@ -43,14 +51,6 @@ namespace Interfaz
             {
                 MessageBox.Show(unaExcepcion.Message);
             }
-        }
-
-        private void Refrescar()
-        {
-            BindingList<Categoria> bindinglist = new BindingList<Categoria>();
-            BindingSource bSource = new BindingSource();
-            bSource.DataSource = this.sis.GestorCategoria.ObtenerTodasLasCategorias();
-            this.cmbCategoria.DataSource = bSource;
         }
     }
 }

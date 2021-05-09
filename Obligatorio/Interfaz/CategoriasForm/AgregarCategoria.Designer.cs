@@ -36,10 +36,10 @@ namespace Interfaz
             // 
             // txtNombre
             // 
-            this.txtNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(41)))), ((int)(((byte)(103)))));
+            this.txtNombre.BackColor = System.Drawing.SystemColors.Window;
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.ForeColor = System.Drawing.Color.White;
+            this.txtNombre.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtNombre.Location = new System.Drawing.Point(253, 154);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(5);
             this.txtNombre.Name = "txtNombre";
