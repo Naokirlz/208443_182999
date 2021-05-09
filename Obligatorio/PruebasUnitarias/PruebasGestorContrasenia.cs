@@ -49,7 +49,7 @@ namespace PruebasUnitarias
                 Password = "secreto"
             };
             Gestor.Alta(nuevaContrasena);
-            IEnumerable<Contrasenia> contrasenias = Gestor.ListarContrasenias();
+            IEnumerable<Contrasenia> contrasenias = Gestor.ObtenerTodas();
             bool existe = contrasenias.Any(c => c.Usuario == nuevaContrasena.Usuario && c.Sitio == nuevaContrasena.Sitio);
             Assert.IsTrue(existe);
         }
@@ -504,7 +504,7 @@ namespace PruebasUnitarias
             int idOtraNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             Contrasenia dosC = Gestor.Buscar(idNuevaContrasenia);
                         
-            Assert.AreEqual(2, Gestor.ListarContrasenias().Count());
+            Assert.AreEqual(2, Gestor.ObtenerTodas().Count());
         }
 
         //no se guarda la contraseña que mando por parámetro
@@ -530,9 +530,9 @@ namespace PruebasUnitarias
         public void SePuedeBorrarUnaContrasenia()
         {
             int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            int cantidadAntes = Gestor.ListarContrasenias().Count();
+            int cantidadAntes = Gestor.ObtenerTodas().Count();
             Gestor.Baja(idNuevaContrasenia);
-            int cantidadDespues = Gestor.ListarContrasenias().Count();
+            int cantidadDespues = Gestor.ObtenerTodas().Count();
             Assert.AreEqual(1 , cantidadAntes - cantidadDespues);
         }
 
@@ -582,7 +582,7 @@ namespace PruebasUnitarias
             Gestor.Alta(nuevaContrasena2);
 
 
-            IEnumerable<Contrasenia> contrasenias = Gestor.ListarContrasenias();
+            IEnumerable<Contrasenia> contrasenias = Gestor.ObtenerTodas();
 
             Assert.AreEqual("AAAAAA", contrasenias.ElementAt(0).Categoria.Nombre);
             Assert.AreEqual("BBBBBB", contrasenias.ElementAt(1).Categoria.Nombre);
@@ -595,7 +595,7 @@ namespace PruebasUnitarias
         public void NoActualizaFechaActualizacionAlModificarOtroAtributoQueNoSeaPassword()
         {
             Gestor.Alta(ContraseniaCompleta);
-            Contrasenia vieja = Gestor.ListarContrasenias().First();
+            Contrasenia vieja = Gestor.ObtenerTodas().First();
             DateTime fechaVieja = vieja.FechaUltimaModificacion;
             int id = vieja.Id;
 
@@ -622,7 +622,7 @@ namespace PruebasUnitarias
         public void SeActualizaFechaActualizacionAlModificarPassword()
         {
             Gestor.Alta(ContraseniaCompleta);
-            Contrasenia vieja = Gestor.ListarContrasenias().First();
+            Contrasenia vieja = Gestor.ObtenerTodas().First();
             DateTime fechaVieja = vieja.FechaUltimaModificacion;
             int id = vieja.Id;
 

@@ -61,7 +61,6 @@ namespace Negocio.Contrasenias
             return EnumColor.ROJO;
         }
 
-
         public int CompareTo(Contrasenia otraContrasenia)
         {
             return this.Categoria.Nombre.CompareTo(otraContrasenia.Categoria.Nombre);

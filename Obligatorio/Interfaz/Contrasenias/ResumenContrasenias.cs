@@ -18,7 +18,7 @@ namespace Interfaz.Contrasenias
         {
             Sesion Sesion = Sesion.Singleton;
             InitializeComponent();
-            IEnumerable<Contrasenia> contrasenias = Sesion.GestorContrasenia.ListarContrasenias();
+            IEnumerable<Contrasenia> contrasenias = Sesion.GestorContrasenia.ObtenerTodas();
             foreach (Contrasenia contrasenia in contrasenias)
             {
                 string[] fila = {

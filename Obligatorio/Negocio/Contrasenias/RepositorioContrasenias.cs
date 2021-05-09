@@ -21,7 +21,6 @@ namespace Negocio.Contrasenias
         {
             unaContrasenia.Id = autonumerado;
             ContraseniaNoExiste(unaContrasenia);
-            //unaContrasenia.Password = Encriptar(unaContrasenia.Password);
             this.Contrasenias.Add(ClonarContrasenia(unaContrasenia));
             autonumerado++;
             return unaContrasenia.Id;
@@ -31,7 +30,6 @@ namespace Negocio.Contrasenias
         {
             Contrasenias.Remove(BuscarContraeniaOriginal(id));
         }
-
 
         public void ModificarContrasenia(Contrasenia aModificarContrasenia)
         {
@@ -43,8 +41,6 @@ namespace Negocio.Contrasenias
             {
                 anterior.FechaUltimaModificacion = DateTime.Now.AddSeconds(1);
             }
-
-            //anterior.Password = Encriptar(aModificarContrasenia.Password);
             
             anterior.Categoria = aModificarContrasenia.Categoria;
             anterior.Notas = aModificarContrasenia.Notas;
@@ -52,14 +48,12 @@ namespace Negocio.Contrasenias
             
         }
 
-
-        public IEnumerable<Contrasenia> ListarContrasenias()
+        public IEnumerable<Contrasenia> ObtenerTodas()
         {
             List<Contrasenia> retorno = this.Contrasenias;
             retorno.Sort();
             return retorno;
         }
-
 
         public Contrasenia BuscarPorId(int id)
         {

@@ -49,7 +49,7 @@ namespace Negocio
             
             List<Contrasenia> contrasenias = new List<Contrasenia>();
             
-            foreach (Contrasenia contrasenia in this.GestorContrasenia.ListarContrasenias())
+            foreach (Contrasenia contrasenia in this.GestorContrasenia.ObtenerTodas())
             {
                 AgregarContraseniaSiEsVulnerable(contrasenias, contrasenia, fuente);
             }
@@ -182,7 +182,7 @@ namespace Negocio
         public IEnumerable<Contrasenia> ListarContrasenias()
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
-            return GestorContrasenia.ListarContrasenias();
+            return GestorContrasenia.ObtenerTodas();
         }
 
         public string VerificarFortaleza(Contrasenia nuevaContrasenia)

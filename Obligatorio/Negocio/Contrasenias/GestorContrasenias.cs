@@ -43,18 +43,26 @@ namespace Negocio.Contrasenias
         }
 
 
-        public IEnumerable<Contrasenia> ListarContrasenias()
+        public IEnumerable<Contrasenia> ObtenerTodas()
         {
-            IEnumerable<Contrasenia> retorno = Repositorio.ListarContrasenias();
-            return retorno;
+            return Repositorio.ObtenerTodas();
+             
         }
-                
+
+        internal string MostrarPassword(string password)
+        {
+            return DesEncriptar(password);
+        }
+
         public string GenerarPassword(int largo, bool mayuscula, bool minuscula, bool numero, bool especial)
         {
             string password = "";
 
             //documentacion de Random
-            //El valor de inicialización predeterminado se deriva del reloj del sistema y tiene una resolución finita. Como resultado, diferentes Random objetos que se crean en estrecha sucesión mediante una llamada al constructor predeterminado tendrán valores de inicialización predeterminados idénticos y, por consiguiente, generarán conjuntos idénticos de números aleatorios.
+            //El valor de inicialización predeterminado se deriva del reloj del sistema y tiene una resolución finita. Como resultado,
+            //diferentes Random objetos que se crean en estrecha sucesión mediante una llamada al constructor predeterminado tendrán valores de inicialización predeterminados idénticos y,
+            //por consiguiente, generarán conjuntos idénticos de números aleatorios.
+            
             var random = new Random();
             int largoOriginal = largo;
 
@@ -238,10 +246,7 @@ namespace Negocio.Contrasenias
             return UTF8Encoding.UTF8.GetString(resultArray);
         }
 
-        internal string MostrarPassword(string password)
-        {
-            return DesEncriptar(password);
-        }
+        
 
 
     }
