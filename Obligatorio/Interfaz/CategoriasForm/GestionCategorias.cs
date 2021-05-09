@@ -26,7 +26,7 @@ namespace Interfaz
 
         private void btnResumen_Click(object sender, EventArgs e)
         {
-            BotonActivo(sender, RGBColores.Color1);
+            BotonActivo(sender, Color.FromArgb(172, 126, 241));
             pnlGestor.Controls.Clear();
             UserControl resumenCategoria = new ResumenCategorias();
             pnlGestor.Controls.Add(resumenCategoria);
@@ -34,7 +34,7 @@ namespace Interfaz
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            BotonActivo(sender, RGBColores.Color2);
+            BotonActivo(sender, Color.FromArgb(172, 126, 241));
             pnlGestor.Controls.Clear();
             UserControl agregarCategoria = new AgregarCategoria();
             pnlGestor.Controls.Add(agregarCategoria);
@@ -42,7 +42,7 @@ namespace Interfaz
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            BotonActivo(sender, RGBColores.Color3);
+            BotonActivo(sender, Color.FromArgb(172, 126, 241));
             pnlGestor.Controls.Clear();
             UserControl modificarCategoria = new ModificarCategoria();
             pnlGestor.Controls.Add(modificarCategoria);
@@ -50,7 +50,7 @@ namespace Interfaz
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            BotonActivo(sender, RGBColores.Color4);
+            BotonActivo(sender, Color.FromArgb(172, 126, 241));
             pnlGestor.Controls.Clear();
             UserControl eliminarCategoria = new EliminarCategorias();
             pnlGestor.Controls.Add(eliminarCategoria);
@@ -76,14 +76,6 @@ namespace Interfaz
                 BotonSeleccionado.ForeColor = Color.Gainsboro;
                 BotonSeleccionado.IconColor = Color.Gainsboro;
             }
-        }
-
-        private struct RGBColores
-        {
-            public static Color Color1 = Color.FromArgb(172, 126, 241);
-            public static Color Color2 = Color.FromArgb(249, 118, 176);
-            public static Color Color3 = Color.FromArgb(253, 138, 114);
-            public static Color Color4 = Color.FromArgb(95, 77, 221);
         }
     }
 }
