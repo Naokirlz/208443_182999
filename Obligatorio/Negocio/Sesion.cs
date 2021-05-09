@@ -172,14 +172,14 @@ namespace Negocio
             this.Logueado = false;
         }
 
-        private void InsertarDatosDeMuestra()
-        {
-            AltaCategoria("Estudio");
-            AltaCategoria("Hogar");
-            AltaCategoria("Familia");
-            AltaCategoria("Trabajo");
+        //private void InsertarDatosDeMuestra()
+        //{
+        //    AltaCategoria("Estudio");
+        //    AltaCategoria("Hogar");
+        //    AltaCategoria("Familia");
+        //    AltaCategoria("Trabajo");
             
-        }
+        //}
 
     }
 }

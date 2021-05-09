@@ -22,11 +22,12 @@ namespace Negocio
 
         public static bool EsNumero(char digito)
         {
-            if (Convert.ToInt32(digito) >= 48 && Convert.ToInt32(digito) <= 57)
-            {
-                return true;
-            }
-            return false;
+            int convertido = Convert.ToInt32(digito);
+
+            if(convertido > 57) return false;
+            else if(convertido < 48) return false;
+            return true;          
+
         }
 
         public static void ValidarFecha(DateTime unaFecha)

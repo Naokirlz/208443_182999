@@ -160,6 +160,15 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ExcepcionNumeroNoValido))]
+        public void AltaTarjetaDeCreditoOtroNumeroInvalido()
+        {
+            TarjetaDePruebaUno.Numero = "!!!!!!!!!!!!!!!!";
+            Gestor.Alta(TarjetaDePruebaUno);
+
+        }
+
+        [TestMethod]
         public void AltaTarjetaDeCreditoNumerovalido()
         {
             TarjetaDePruebaUno.Numero = "1234123412341234";
