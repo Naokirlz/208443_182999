@@ -64,7 +64,7 @@ namespace Negocio.Contrasenias
             foreach (Contrasenia item in Contrasenias)
                 if (item.Id == id) return item;
 
-            throw new ExcepcionElementoNoExiste();
+            throw new ExcepcionElementoNoExiste("La contraseña buscada no existe.");
         }
 
 

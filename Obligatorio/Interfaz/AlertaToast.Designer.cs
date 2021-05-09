@@ -45,7 +45,7 @@ namespace Interfaz
             this.icoIcono.IconColor = System.Drawing.Color.Red;
             this.icoIcono.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.icoIcono.IconSize = 52;
-            this.icoIcono.Location = new System.Drawing.Point(15, 14);
+            this.icoIcono.Location = new System.Drawing.Point(15, 17);
             this.icoIcono.Name = "icoIcono";
             this.icoIcono.Size = new System.Drawing.Size(60, 52);
             this.icoIcono.TabIndex = 0;
@@ -60,9 +60,9 @@ namespace Interfaz
             this.btnCerrar.IconColor = System.Drawing.Color.DimGray;
             this.btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCerrar.IconSize = 25;
-            this.btnCerrar.Location = new System.Drawing.Point(545, 5);
+            this.btnCerrar.Location = new System.Drawing.Point(564, 2);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(44, 42);
+            this.btnCerrar.Size = new System.Drawing.Size(27, 26);
             this.btnCerrar.TabIndex = 3;
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
@@ -72,7 +72,7 @@ namespace Interfaz
             this.lblMensaje.AutoSize = true;
             this.lblMensaje.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.Red;
-            this.lblMensaje.Location = new System.Drawing.Point(66, 26);
+            this.lblMensaje.Location = new System.Drawing.Point(66, 30);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(57, 21);
             this.lblMensaje.TabIndex = 4;

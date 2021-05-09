@@ -26,7 +26,7 @@ namespace Interfaz.Contrasenias
         {
             BindingList<Contrasenia> bindinglist = new BindingList<Contrasenia>();
             BindingSource bSource = new BindingSource();
-            bSource.DataSource = this.Sesion.GestorContrasenia.ListarContrasenias();
+            bSource.DataSource = this.Sesion.ListarContrasenias();
             this.cmbContrasenia.DataSource = bSource;
         }
 
@@ -37,19 +37,25 @@ namespace Interfaz.Contrasenias
                 Contrasenia contraseniaSeleccionada = (Contrasenia)this.cmbContrasenia.SelectedItem;
                 if (contraseniaSeleccionada == null)
                 {
-                    MessageBox.Show("Seleccione al menos una Contraseña");
+                    Alerta("Seleccione al menos una Contraseña", AlertaToast.enmTipo.Error);
                     return;
                 }
 
-                this.Sesion.GestorContrasenia.Baja(contraseniaSeleccionada.Id);
-                MessageBox.Show("Contraseña Eliminada con éxito!!");
+                this.Sesion.BajaContrasenia(contraseniaSeleccionada.Id);
+                Alerta("Contraseña Eliminada con éxito!!", AlertaToast.enmTipo.Exito);
                 this.cmbContrasenia.Text = "";
                 Refrescar();
             }
             catch (ExcepcionElementoNoExiste unaExcepcion)
             {
-                MessageBox.Show(unaExcepcion.Message);
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
             }
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }

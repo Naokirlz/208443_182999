@@ -162,13 +162,13 @@ namespace Negocio
 
         public void BajaContrasenia(int id)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
             GestorContrasenia.Baja(id);
         }
 
         public Contrasenia ModificarContrasenia(Contrasenia aModificarContrasenia)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
             return GestorContrasenia.ModificarContrasenia(aModificarContrasenia);
         }
 
