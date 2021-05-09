@@ -47,7 +47,7 @@ namespace Negocio.Contrasenias
             return Repositorio.ObtenerTodas();
              
         }
-        
+      
         internal string MostrarPassword(string password)
         {
             return DesEncriptar(password);
@@ -153,9 +153,7 @@ namespace Negocio.Contrasenias
             //se regresa en forma de cadena
             return UTF8Encoding.UTF8.GetString(resultArray);
         }
-
-        
-
+                
 
     }
 }

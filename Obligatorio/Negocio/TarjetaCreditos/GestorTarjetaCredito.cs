@@ -47,9 +47,9 @@ namespace Negocio.TarjetaCreditos
         }
 
 
-        public List<TarjetaCredito> ObtenerTodas()
+        public IEnumerable<TarjetaCredito> ObtenerTodas()
         {
-            return Repositorio.RetornarListaRepositorioClonada();
+            return Repositorio.ObtenerTodas();
         }
 
         private void ControlAltaYModificar(TarjetaCredito tarjeta)
@@ -117,7 +117,7 @@ namespace Negocio.TarjetaCreditos
 
         private void NumeroTarjetaRepetido(TarjetaCredito tarjeta)
         {
-            List<TarjetaCredito> tarjetas = Repositorio.RetornarListaRepositorioClonada();
+            IEnumerable<TarjetaCredito> tarjetas = Repositorio.ObtenerTodas();
             foreach (TarjetaCredito item in tarjetas)
             {
                 if (item.Numero.Equals(tarjeta.Numero) && tarjeta.IdTarjeta != item.IdTarjeta)
@@ -127,7 +127,7 @@ namespace Negocio.TarjetaCreditos
 
         private void NombreTarjetaRepetido(TarjetaCredito tarjeta)
         {
-            List<TarjetaCredito> tarjetas = Repositorio.RetornarListaRepositorioClonada();
+            IEnumerable<TarjetaCredito> tarjetas = Repositorio.ObtenerTodas();
             foreach (TarjetaCredito item in tarjetas)
             {
                 if (item.Nombre.ToLower().Equals(tarjeta.Nombre.ToLower()) 

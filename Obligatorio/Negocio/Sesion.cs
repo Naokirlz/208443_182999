@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.Excepciones;
 using Negocio.TarjetaCreditos;
+using System.Linq;
 
 namespace Negocio
 {
@@ -44,27 +46,34 @@ namespace Negocio
             //InsertarDatosDeMuestra();
         }
 
-        public List<Contrasenia> ContraseniasVulnerables(IFuente fuente)
+        public IEnumerable<Contrasenia> ContraseniasVulnerables(IFuente fuente)
         {
             
             List<Contrasenia> contrasenias = new List<Contrasenia>();
-            
-            foreach (Contrasenia contrasenia in this.GestorContrasenia.ObtenerTodas())
+            IEnumerable<Contrasenia> todasLasContrasenias = this.GestorContrasenia.ObtenerTodas();
+            int cantidad = todasLasContrasenias.Count();
+
+            for (int i = 0; i < cantidad; i++)
             {
-                AgregarContraseniaSiEsVulnerable(contrasenias, contrasenia, fuente);
+                AgregarContraseniaSiEsVulnerable(contrasenias, todasLasContrasenias.ElementAt(i), fuente);
             }
             return contrasenias;
         }
  
-        public List<TarjetaCredito> TarjetasCreditoVulnerables(IFuente fuente)
+        public IEnumerable<TarjetaCredito> TarjetasCreditoVulnerables(IFuente fuente)
         {
             List<TarjetaCredito> tarjetasVulnerables = new List<TarjetaCredito>();
-            
-            foreach (TarjetaCredito tarjeta in this.GestorTarjetaCredito.ObtenerTodas())
+            IEnumerable<TarjetaCredito> todasLasTarjetas = this.GestorTarjetaCredito.ObtenerTodas();
+            int cantidad = todasLasTarjetas.Count();
+
+            for (int i=0; i<cantidad; i++)
             {
-                AgregarTarjetaSiEsVulnerable(tarjetasVulnerables, tarjeta, fuente);
+                AgregarTarjetaSiEsVulnerable(tarjetasVulnerables, todasLasTarjetas.ElementAt(i), fuente);
             }
-            return tarjetasVulnerables;
+
+            return tarjetasVulnerables; 
+            
+            
         }
 
         private void AgregarContraseniaSiEsVulnerable(List<Contrasenia> contrasenias, Contrasenia contrasenia, IFuente fuente)
@@ -148,7 +157,7 @@ namespace Negocio
             return GestorTarjetaCredito.Buscar(idBuscada);
         }
 
-        public List<TarjetaCredito> ObtenerTodasLasTarjetas()
+        public IEnumerable<TarjetaCredito> ObtenerTodasLasTarjetas()
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
             return GestorTarjetaCredito.ObtenerTodas();
@@ -220,7 +229,6 @@ namespace Negocio
                 this.GestorTarjetaCredito.ModificarTarjeta(item);
                 tarjetas.Add(item);
             }
-
 
         }
 

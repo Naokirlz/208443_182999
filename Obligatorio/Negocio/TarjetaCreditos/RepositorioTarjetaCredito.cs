@@ -18,7 +18,6 @@ namespace Negocio.TarjetaCreditos
             this.Tarjetas = new List<TarjetaCredito>();
         }
 
-
         public int Alta(TarjetaCredito nuevaTarjeta)
         {
             nuevaTarjeta.IdTarjeta = autonumerado;
@@ -60,45 +59,13 @@ namespace Negocio.TarjetaCreditos
              throw new ExcepcionElementoNoExiste();
 
         }
-
-
-        //ver otra solucion sin clon porque roba tiempo hacer el clon
-        public List<TarjetaCredito> RetornarListaRepositorioClonada()
+                
+        public IEnumerable<TarjetaCredito> ObtenerTodas()
         {
-            List<TarjetaCredito> clonTarjetas = new List<TarjetaCredito>();
-
-            foreach (TarjetaCredito item in Tarjetas)
-            {
-                clonTarjetas.Add(ClonarTarjeta(item));
-
-            }
-            clonTarjetas.Sort();
-
-            return clonTarjetas;
+            this.Tarjetas.Sort();
+            return this.Tarjetas;
 
         }
-
-
-        private TarjetaCredito ClonarTarjeta(TarjetaCredito original) {
-
-
-            TarjetaCredito clon = new TarjetaCredito()
-            {
-                Categoria = original.Categoria,
-                Nombre = original.Nombre,
-                Tipo = original.Tipo,
-                Numero = original.Numero,
-                Codigo = original.Codigo,
-                Vencimiento = original.Vencimiento,
-                Nota = original.Nota,
-                IdTarjeta = original.IdTarjeta,
-                CantidadVecesEncontradaVulnerable = original.CantidadVecesEncontradaVulnerable
-            };
-
-            return clon;
-
-        }
-
 
 
 

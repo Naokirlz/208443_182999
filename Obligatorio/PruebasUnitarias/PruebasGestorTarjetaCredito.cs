@@ -248,12 +248,12 @@ namespace PruebasUnitarias
         {
 
             Gestor.Alta(TarjetaDePruebaUno);
-            List<TarjetaCredito> tarjetas = Gestor.ObtenerTodas();
-            Assert.AreEqual(1, tarjetas.Count);
+            IEnumerable<TarjetaCredito> tarjetas = Gestor.ObtenerTodas();
+            Assert.AreEqual(1, tarjetas.Count());
 
             Gestor.Alta(TarjetaDePruebaDos);
             tarjetas = Gestor.ObtenerTodas();
-            Assert.AreEqual(2, tarjetas.Count);
+            Assert.AreEqual(2, tarjetas.Count());
 
         }
 
@@ -280,11 +280,11 @@ namespace PruebasUnitarias
             Gestor.Alta(tarjetaPrueba);
 
 
-            List<TarjetaCredito> tarjetas = Gestor.ObtenerTodas();
+            IEnumerable<TarjetaCredito> tarjetas = Gestor.ObtenerTodas();
 
-            Assert.AreEqual("AAAAAA", tarjetas[0].Categoria.Nombre);
-            Assert.AreEqual("BBBBBB", tarjetas[1].Categoria.Nombre);
-            Assert.AreEqual("ZZZZZZ", tarjetas[2].Categoria.Nombre);
+            Assert.AreEqual("AAAAAA", tarjetas.ElementAt(0).Categoria.Nombre);
+            Assert.AreEqual("BBBBBB", tarjetas.ElementAt(1).Categoria.Nombre);
+            Assert.AreEqual("ZZZZZZ", tarjetas.ElementAt(2).Categoria.Nombre);
 
 
         }
@@ -308,20 +308,6 @@ namespace PruebasUnitarias
 
         }
 
-
-        [TestMethod]
-
-        public void EliminarClonNoMoficaListaOriginal()
-        {
-
-            Gestor.Alta(TarjetaDePruebaUno);
-            Gestor.Alta(TarjetaDePruebaDos);
-            List<TarjetaCredito> clon = Gestor.ObtenerTodas();
-            clon.Clear();
-
-            Assert.AreNotEqual(0, Gestor.ObtenerTodas().Count);
-
-        }
 
         [TestMethod]
         public void ElMetodoToStringDevuelveElNombre()

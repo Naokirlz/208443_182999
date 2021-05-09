@@ -554,8 +554,8 @@ namespace PruebasUnitarias
         public void AciertaDosVecesLasContraseniasVulnerables()
         {
 
-            List<Contrasenia> contrasenias = sesionPrueba.ContraseniasVulnerables(Fuente);
-            List<Contrasenia> contrasenias2 = sesionPrueba.ContraseniasVulnerables(Fuente);
+            IEnumerable<Contrasenia> contrasenias = sesionPrueba.ContraseniasVulnerables(Fuente);
+            IEnumerable<Contrasenia> contrasenias2 = sesionPrueba.ContraseniasVulnerables(Fuente);
             Assert.AreEqual(contrasenias.Count(), contrasenias2.Count());
 
         }
@@ -589,7 +589,7 @@ namespace PruebasUnitarias
             sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
             sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
 
-            List<TarjetaCredito> tarjetasVulnerables = sesionPrueba.TarjetasCreditoVulnerables(Fuente);
+            IEnumerable<TarjetaCredito> tarjetasVulnerables = sesionPrueba.TarjetasCreditoVulnerables(Fuente);
 
             Assert.AreEqual(1, tarjetasVulnerables.Count());
 

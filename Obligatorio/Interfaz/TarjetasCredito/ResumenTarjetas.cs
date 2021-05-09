@@ -18,7 +18,7 @@ namespace Interfaz.TarjetasCredito
         public ResumenTarjetas()
         {
             InitializeComponent();
-            List<TarjetaCredito> tarjetas = Sesion.GestorTarjetaCredito.ObtenerTodas();
+            IEnumerable<TarjetaCredito> tarjetas = Sesion.GestorTarjetaCredito.ObtenerTodas();
             foreach(TarjetaCredito tarjeta in tarjetas)
             {
                 string[] fila = { 

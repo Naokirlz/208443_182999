@@ -66,7 +66,7 @@ namespace Interfaz.Vulnerabilidades
 
         private void CargarTablaContraseniasVulnerables(List<IFuente> fuentes)
         {
-            List<Contrasenia> contraseniaVulnerableTemporal = new List<Contrasenia>();
+            IEnumerable<Contrasenia> contraseniaVulnerableTemporal = new List<Contrasenia>();
             this.dgvVulnerabilidadesContrasenias.Rows.Clear();
             this.contraseniasVulnerables.Clear();
             foreach (IFuente fuente in fuentes)
@@ -94,7 +94,7 @@ namespace Interfaz.Vulnerabilidades
 
         private void CargarTablaTarjetasVulnerables(List<IFuente> fuentes)
         {
-            List<TarjetaCredito> tarjetasVulnerableTemporal = new List<TarjetaCredito>();
+            IEnumerable<TarjetaCredito> tarjetasVulnerableTemporal = new List<TarjetaCredito>();
             this.dgvVulnerabilidadesTarjetas.Rows.Clear();
             this.tarjetasVulnerables.Clear();
             foreach (IFuente fuente in fuentes)
