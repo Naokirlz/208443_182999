@@ -29,7 +29,7 @@ namespace Interfaz
             {
                 fnombre = "alerta" + form.ToString();
                 AlertaToast alerta = (AlertaToast)Application.OpenForms[fnombre];
-                //this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+
                 if (alerta == null)
                 {
                     this.Name = fnombre;

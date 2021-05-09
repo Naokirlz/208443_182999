@@ -22,7 +22,7 @@ namespace Negocio.Categorias
 
             if (ExisteNombreCategoria(nombre)) 
             { 
-                throw new ExcepcionElementoYaExiste(); 
+                throw new ExcepcionElementoYaExiste("Ya existe categoría con ese nombre."); 
             }
             
             Categoria nueva = Repositorio.Alta(nombre);
@@ -65,7 +65,7 @@ namespace Negocio.Categorias
         {
             if (unNombre.Length < 3 || unNombre.Length > 15)
             {
-                throw new ExcepcionLargoTexto();
+                throw new ExcepcionLargoTexto("El nombre debe tener entre 3 y 15 caracteres");
             }
 
         }

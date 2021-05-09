@@ -58,7 +58,7 @@ namespace Interfaz
             }
             catch (ExcepcionElementoNoExiste unaExcepcion)
             {
-                MessageBox.Show(unaExcepcion.Message);
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
             }
         }
 
