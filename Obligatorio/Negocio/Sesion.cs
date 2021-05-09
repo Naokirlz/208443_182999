@@ -39,9 +39,8 @@ namespace Negocio
 
         public void Login(string password)
         {
-            if (password != PasswordMaestro || PasswordMaestro == "") throw new ExcepcionAccesoDenegado();
+            if (password != PasswordMaestro || PasswordMaestro == "") throw new ExcepcionAccesoDenegado("El usuario o contraseña no son coinciden.");
             this.Logueado = true;
-            //InsertarDatosDeMuestra();
         }
 
         public List<Contrasenia> ContraseniasVulnerables(IFuente fuente)

@@ -48,7 +48,7 @@ namespace Interfaz
                 {
                     if (passwordInicial != passwordRepetido)
                     {
-                        MessageBox.Show("Los passwords deben coincidir.");
+                        Alerta("Los passwords deben coincidir.", AlertaToast.enmTipo.Error);
                         return;
                     }
                     Sesion sesion = Sesion.Singleton;
@@ -59,13 +59,19 @@ namespace Interfaz
                 }
                 catch (ExcepcionLargoTexto errorLargoTexto)
                 {
-                    MessageBox.Show(errorLargoTexto.Message);
+                    Alerta(errorLargoTexto.Message, AlertaToast.enmTipo.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Debe rellenar los campos primero.");
+                Alerta("Debe rellenar los campos primero.", AlertaToast.enmTipo.Error);
             }
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
 
         private void txtRepetirPassword_KeyDown(object sender, KeyEventArgs e)

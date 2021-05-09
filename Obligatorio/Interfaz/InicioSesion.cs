@@ -116,15 +116,20 @@ namespace Interfaz
                 }
                 catch (ExcepcionAccesoDenegado denegado)
                 {
-                    MessageBox.Show(denegado.Message);
+                    Alerta(denegado.Message, AlertaToast.enmTipo.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Debe rellenar los campos primero.");
+                Alerta("Debe rellenar los campos primero.", AlertaToast.enmTipo.Error);
             }
         }
 
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
+        }
         private void txtIngresar_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
