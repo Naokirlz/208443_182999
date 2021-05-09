@@ -38,7 +38,7 @@ namespace Interfaz
             string nombre = this.txtNuevoNombre.Text;
             try
             {
-                Categoria aCambiar = (Categoria) this.cmbCategoria.SelectedItem;
+                Categoria aCambiar = (Categoria)this.cmbCategoria.SelectedItem;
                 if (aCambiar == null)
                 {
                     MessageBox.Show("Seleccione al menos una categoría");
