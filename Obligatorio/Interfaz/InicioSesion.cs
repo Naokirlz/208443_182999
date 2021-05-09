@@ -105,16 +105,23 @@ namespace Interfaz
 
         private void RealizarLogin()
         {
-            try
+            if (txtIngresar.PasswordChar == "•".ToCharArray()[0])
             {
-                Sesion.Login(this.txtIngresar.Text);
-                MenuPrincipal nuevaPantalla = new MenuPrincipal();
-                this.Hide();
-                nuevaPantalla.Show();
+                try
+                {
+                    Sesion.Login(this.txtIngresar.Text);
+                    MenuPrincipal nuevaPantalla = new MenuPrincipal();
+                    this.Hide();
+                    nuevaPantalla.Show();
+                }
+                catch (ExcepcionAccesoDenegado denegado)
+                {
+                    MessageBox.Show(denegado.Message);
+                }
             }
-            catch (ExcepcionAccesoDenegado denegado)
+            else
             {
-                MessageBox.Show(denegado.Message);
+                MessageBox.Show("Debe rellenar los campos primero.");
             }
         }
 
@@ -123,6 +130,15 @@ namespace Interfaz
             if (e.KeyCode == Keys.Enter)
             {
                 RealizarLogin();
+            }
+        }
+
+        private void txtIngresar_Enter(object sender, EventArgs e)
+        {
+            if (txtIngresar.PasswordChar != "•".ToCharArray()[0])
+            {
+                txtIngresar.Text = "";
+                txtIngresar.PasswordChar = "•".ToCharArray()[0];
             }
         }
     }

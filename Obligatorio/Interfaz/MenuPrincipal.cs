@@ -176,20 +176,6 @@ namespace Interfaz
             Application.Exit();
         }
 
-        private void btnMaxMin_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal)
-            {
-                btnMaxMin.IconChar = IconChar.CompressArrowsAlt;
-                WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                btnMaxMin.IconChar = IconChar.ExpandArrowsAlt;
-                WindowState = FormWindowState.Normal;
-            }
-        }
-
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;

@@ -75,6 +75,7 @@ namespace Interfaz
             this.icoPassword.Name = "icoPassword";
             this.icoPassword.Size = new System.Drawing.Size(47, 38);
             this.icoPassword.TabIndex = 4;
+            this.icoPassword.TabStop = false;
             this.icoPassword.UseVisualStyleBackColor = true;
             this.icoPassword.Click += new System.EventHandler(this.icoPassword_Click);
             this.icoPassword.MouseLeave += new System.EventHandler(this.icoPassword_MouseLeave);
@@ -82,7 +83,7 @@ namespace Interfaz
             // 
             // txtIngresar
             // 
-            this.txtIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.txtIngresar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtIngresar.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIngresar.ForeColor = System.Drawing.Color.DarkGray;
@@ -91,10 +92,10 @@ namespace Interfaz
             this.txtIngresar.Name = "txtIngresar";
             this.txtIngresar.Size = new System.Drawing.Size(205, 24);
             this.txtIngresar.TabIndex = 5;
-            this.txtIngresar.TabStop = false;
             this.txtIngresar.Text = "Contraseña";
             this.txtIngresar.Click += new System.EventHandler(this.txtIngresar_Click);
             this.txtIngresar.TextChanged += new System.EventHandler(this.txtIngresar_TextChanged);
+            this.txtIngresar.Enter += new System.EventHandler(this.txtIngresar_Enter);
             this.txtIngresar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIngresar_KeyDown);
             this.txtIngresar.Leave += new System.EventHandler(this.txtIngresar_Leave);
             this.txtIngresar.MouseLeave += new System.EventHandler(this.txtIngresar_MouseLeave);
@@ -135,6 +136,7 @@ namespace Interfaz
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(26, 23);
             this.btnCerrar.TabIndex = 8;
+            this.btnCerrar.TabStop = false;
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
@@ -142,7 +144,7 @@ namespace Interfaz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.ClientSize = new System.Drawing.Size(340, 530);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnIngresar);
