@@ -31,7 +31,8 @@ namespace Interfaz
                 this.txtNombre.Clear();
                 MessageBox.Show("Categoría " + nombre + " fue creada con éxito!!");
             }
-            catch (ExcepcionElementoYaExiste unaExcepcion){
+            catch (ExcepcionElementoYaExiste unaExcepcion)
+            {
                 MessageBox.Show(unaExcepcion.Message);
                 this.txtNombre.Focus();
             }
@@ -40,7 +41,6 @@ namespace Interfaz
                 MessageBox.Show(unaExcepcion.Message);
                 this.txtNombre.Focus();
             }
-            
         }
     }
 }
