@@ -1,9 +1,4 @@
-﻿using Negocio.Excepciones;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Negocio.Categorias;
 
 
@@ -20,16 +15,10 @@ namespace Negocio.Contrasenias
         public Categoria Categoria { get; set; }
         public DateTime FechaUltimaModificacion { get; set; }
         public int CantidadVecesEncontradaVulnerable { get; set; }
-
-        public Contrasenia()
-        {
-            
-        }
          
         public int CompareTo(Contrasenia otraContrasenia)
         {
             return this.Categoria.Nombre.CompareTo(otraContrasenia.Categoria.Nombre);
-
         }
 
         public override string ToString()

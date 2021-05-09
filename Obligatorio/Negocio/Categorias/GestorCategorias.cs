@@ -1,5 +1,4 @@
-﻿using Negocio.Excepciones;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Negocio.Categorias
 {
@@ -38,7 +37,6 @@ namespace Negocio.Categorias
         {
             return Repositorio.ObtenerTodasLasCategorias();
         }
-
 
     }
 }

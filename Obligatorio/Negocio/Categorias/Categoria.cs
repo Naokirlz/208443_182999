@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Negocio.Excepciones;
-
+﻿
 namespace Negocio.Categorias
 {
     public class Categoria
@@ -16,7 +10,6 @@ namespace Negocio.Categorias
         public Categoria(string nombre)
         {
             this.Nombre = nombre;
-            
         }
         public Categoria(string nombre, int id) :this(nombre)
         {
@@ -27,7 +20,6 @@ namespace Negocio.Categorias
         {
             return this.Nombre;
         }
-
 
     }
 }

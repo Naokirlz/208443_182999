@@ -4,7 +4,6 @@ namespace Negocio.Excepciones
 {
     public class ExcepcionLargoTexto : Exception
     {
-        
             public ExcepcionLargoTexto() : base() { }
 
             public ExcepcionLargoTexto(string message) : base(message) { }

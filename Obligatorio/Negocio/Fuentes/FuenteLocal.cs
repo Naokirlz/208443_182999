@@ -1,9 +1,5 @@
 ﻿using Negocio.Excepciones;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio
 {
@@ -18,17 +14,12 @@ namespace Negocio
         public int BuscarPasswordOContraseniaEnFuente(string buscado)
         {
             int cantidadAparaceEnFuente = 0;
-
             foreach (var item in ContraseniasYTarjetasVulnerables)
             {
-                if (item.Equals(buscado))
-                {
-                    cantidadAparaceEnFuente++;
-                }
+                if (item.Equals(buscado)) cantidadAparaceEnFuente++;
             }
             return cantidadAparaceEnFuente;
         }
-
 
         public void AgregarPasswordOContraseniaVulnerable(string passwordOContraseniaVulnerable)
         {

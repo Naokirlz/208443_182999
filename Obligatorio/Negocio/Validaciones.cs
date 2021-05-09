@@ -1,9 +1,5 @@
 ﻿using Negocio.Excepciones;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio
 {
@@ -13,10 +9,8 @@ namespace Negocio
         {
             texto = texto.Trim();
             if (texto.Length > largoMax || texto.Length < largoMin)
-            {
-                throw new ExcepcionLargoTexto("El largo del campo " + campo + " debe ser de entre " + largoMin.ToString() + " y " + largoMax.ToString() + " caracteres.");
-            }
-
+                throw new ExcepcionLargoTexto("El largo del campo " + campo + " debe ser de entre " + 
+                                              largoMin.ToString() + " y " + largoMax.ToString() + " caracteres.");
         }
         public static void ValidarSoloNumeros(string texto)
         {

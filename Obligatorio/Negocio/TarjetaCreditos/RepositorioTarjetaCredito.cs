@@ -1,8 +1,6 @@
 ﻿using Negocio.Excepciones;
 using System.Collections.Generic;
 
-
-
 namespace Negocio.TarjetaCreditos
 {
     public class RepositorioTarjetaCredito

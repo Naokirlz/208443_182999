@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Negocio.Categorias;
 
 namespace Negocio.TarjetaCreditos
@@ -12,7 +8,6 @@ namespace Negocio.TarjetaCreditos
         public int Id { get; set; }
         public Categoria Categoria { get; set; }
         public string Nombre { get; set; }
-        // ver si despues el tipo conviene que sea una clase
         public string Tipo { get; set; }
         public string Numero { get; set; }
         public string Codigo { get; set; }
@@ -21,16 +16,9 @@ namespace Negocio.TarjetaCreditos
 
         public int CantidadVecesEncontradaVulnerable { get; set; }
 
-        public TarjetaCredito()
-        {
-
-        }
-
-
         public int CompareTo(TarjetaCredito otraTarjeta)
         {
           return this.Categoria.Nombre.CompareTo(otraTarjeta.Categoria.Nombre);
-
         }
 
         public override string ToString()

@@ -2,14 +2,13 @@
 using System;
 using System.Collections.Generic;
 
-
 namespace Negocio.Contrasenias
 {
     public class RepositorioContrasenias
     {
-        private List<Contrasenia> Contrasenias { get; set; }
         private static int autonumerado = 1;
-        
+        private List<Contrasenia> Contrasenias { get; set; }
+                
         public RepositorioContrasenias()
         {
             this.Contrasenias = new List<Contrasenia>();

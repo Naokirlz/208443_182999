@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.Excepciones;
 using Negocio.TarjetaCreditos;
-using System.Linq;
 
 namespace Negocio
 {
@@ -36,68 +33,36 @@ namespace Negocio
                 if (Instancia == null) Instancia = new Sesion();
                 return Instancia;
             }
-
         }
 
         public void Login(string password)
         {
-            if (password != PasswordMaestro || PasswordMaestro == "") throw new ExcepcionAccesoDenegado("El usuario o contraseña no son coinciden.");
+            if (password != PasswordMaestro || PasswordMaestro == "") 
+                throw new ExcepcionAccesoDenegado("El usuario o contraseña no son coinciden.");
             this.Logueado = true;
         }
 
         public IEnumerable<Contrasenia> ContraseniasVulnerables(IFuente fuente)
         {
-            
-            List<Contrasenia> contrasenias = new List<Contrasenia>();
-            IEnumerable<Contrasenia> todasLasContrasenias = this.GestorContrasenia.ObtenerTodas();
-            int cantidad = todasLasContrasenias.Count();
-
-            for (int i = 0; i < cantidad; i++)
-            {
-                AgregarContraseniaSiEsVulnerable(contrasenias, todasLasContrasenias.ElementAt(i), fuente);
-            }
-            return contrasenias;
+            return this.GestorContrasenia.ObtenerContraseniasVulnerables(fuente);
         }
  
         public IEnumerable<TarjetaCredito> TarjetasCreditoVulnerables(IFuente fuente)
         {
-            List<TarjetaCredito> tarjetasVulnerables = new List<TarjetaCredito>();
-            IEnumerable<TarjetaCredito> todasLasTarjetas = this.GestorTarjetaCredito.ObtenerTodas();
-            int cantidad = todasLasTarjetas.Count();
-
-            for (int i=0; i<cantidad; i++)
-            {
-                AgregarTarjetaSiEsVulnerable(tarjetasVulnerables, todasLasTarjetas.ElementAt(i), fuente);
-            }
-
-            return tarjetasVulnerables; 
-            
-            
+            return this.GestorTarjetaCredito.ObtenerTarjetasVulnerables(fuente);
         }
-
-        private void AgregarContraseniaSiEsVulnerable(List<Contrasenia> contrasenias, Contrasenia contrasenia, IFuente fuente)
-        {
-            int cantidadVecesEnFuente = BuscarContraseniaEnFuente(contrasenia, fuente);
-            if (cantidadVecesEnFuente > 0)
-            {
-                contrasenia.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
-                this.GestorContrasenia.ModificarContrasenia(contrasenia);
-                contrasenias.Add(contrasenia);
-            }
-
-        }
-
+        
         public void GuardarPrimerPassword(string primerPassword)
         {
-            ControlLargoTexto(primerPassword, 5, 25);
+            Validaciones.ValidarLargoTexto(primerPassword, 25, 5, "primer password");
             this.PasswordMaestro = primerPassword;
         }
 
-        public void CambiarPassword(string v)
+        public void CambiarPassword(string nuevoPass)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
-            ControlLargoTexto(v, 5, 25);
-            this.PasswordMaestro = v;
+            Validaciones.ValidarLargoTexto(nuevoPass, 25, 5, "nuevo password");
+            this.PasswordMaestro = nuevoPass;
         }
 
         public int AltaCategoria(string v)
@@ -123,7 +88,6 @@ namespace Negocio
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
             return GestorCategoria.BuscarCategoriaPorId(id);
         }
-
 
         public IEnumerable<Categoria> ObtenerTodasLasCategorias()
         {
@@ -161,7 +125,6 @@ namespace Negocio
             return GestorTarjetaCredito.ObtenerTodas();
         }
 
-
         public int AltaContrasenia(Contrasenia unaContrasena)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
@@ -184,8 +147,8 @@ namespace Negocio
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
             return GestorContrasenia.Buscar(id);
-
         }
+
         public IEnumerable<Contrasenia> ListarContrasenias()
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
@@ -197,57 +160,17 @@ namespace Negocio
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
             return nuevaContrasenia.Password.ColorPassword.ToString();
         }
-
        
         public string MostrarPassword(Contrasenia contrasenia)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
             return GestorContrasenia.MostrarPassword(contrasenia);
-
         }
 
         public void LogOut()
         {
             this.Logueado = false;
         }
-
-        private int BuscarContraseniaEnFuente(Contrasenia item, IFuente fuente)
-        {
-            string password = this.GestorContrasenia.MostrarPassword(item);
-            return fuente.BuscarPasswordOContraseniaEnFuente(password);
-
-        }
-
-        private void AgregarTarjetaSiEsVulnerable(List<TarjetaCredito> tarjetas, TarjetaCredito item, IFuente fuente)
-        {
-            int cantidadVecesEnFuente = BuscarTarjetaCreditoEnFuente(item, fuente);
-            if (cantidadVecesEnFuente > 0)
-            {
-                item.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
-                this.GestorTarjetaCredito.ModificarTarjeta(item);
-                tarjetas.Add(item);
-            }
-
-        }
-
-        private int BuscarTarjetaCreditoEnFuente(TarjetaCredito item, IFuente fuente)
-        {
-            return fuente.BuscarPasswordOContraseniaEnFuente(item.Numero);
-        }
-
-        private void ControlLargoTexto(string texto, int minimo, int maximo)
-        {
-            texto = texto.Trim();
-            if (texto.Length < minimo || texto.Length > maximo)
-            {
-                throw new ExcepcionLargoTexto("El largo de texto debe ser entre " + minimo.ToString() + " y " + maximo.ToString() + " caracteres.");
-            }
-
-        }
-
-
-
-
 
         private void InsertarDatosDeMuestra()
         {

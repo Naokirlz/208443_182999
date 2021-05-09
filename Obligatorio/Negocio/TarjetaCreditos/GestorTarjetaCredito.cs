@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Negocio.Categorias;
+using System.Linq;
 
 namespace Negocio.TarjetaCreditos
 {
@@ -38,6 +39,37 @@ namespace Negocio.TarjetaCreditos
         {
             return Repositorio.ObtenerTodas();
         }
+        
+        public IEnumerable<TarjetaCredito> ObtenerTarjetasVulnerables(IFuente fuente)
+        {
+            List<TarjetaCredito> tarjetasVulnerables = new List<TarjetaCredito>();
+            IEnumerable<TarjetaCredito> todasLasTarjetas = this.ObtenerTodas();
+            int cantidad = todasLasTarjetas.Count();
+
+            for (int i = 0; i < cantidad; i++)
+            {
+                AgregarTarjetaSiEsVulnerable(tarjetasVulnerables, todasLasTarjetas.ElementAt(i), fuente);
+            }
+
+            return tarjetasVulnerables;
+        }
+
+        private void AgregarTarjetaSiEsVulnerable(List<TarjetaCredito> tarjetas, TarjetaCredito item, IFuente fuente)
+        {
+            int cantidadVecesEnFuente = BuscarTarjetaCreditoEnFuente(item, fuente);
+            if (cantidadVecesEnFuente > 0)
+            {
+                item.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
+                this.ModificarTarjeta(item);
+                tarjetas.Add(item);
+            }
+
+        }
+
+        private int BuscarTarjetaCreditoEnFuente(TarjetaCredito item, IFuente fuente)
+        {
+            return fuente.BuscarPasswordOContraseniaEnFuente(item.Numero);
+        }
 
         private void ValidarCampos(TarjetaCredito tarjeta)
         {
@@ -48,8 +80,7 @@ namespace Negocio.TarjetaCreditos
             Validaciones.ValidarSoloNumeros(tarjeta.Numero);
             Validaciones.ValidarLargoTexto(tarjeta.Codigo, 3, 3, "código");
             Validaciones.ValidarSoloNumeros(tarjeta.Codigo);
-            Validaciones.ValidarLargoTexto(tarjeta.Nota,  250,-1, "nota");
-         
+            Validaciones.ValidarLargoTexto(tarjeta.Nota, 250, -1, "nota");
         }
 
         private bool CategoriaExiste(Categoria categoria)
@@ -57,9 +88,5 @@ namespace Negocio.TarjetaCreditos
             //buscar categoria en lista de categorias existentes
             return true;
         }
-
-   
-
-       
     }
 }

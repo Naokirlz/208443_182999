@@ -1,6 +1,6 @@
 ﻿using Negocio.Excepciones;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace Negocio.Contrasenias
@@ -30,7 +30,7 @@ namespace Negocio.Contrasenias
             ValidarCampos(modificada);
             Repositorio.ModificarContrasenia(modificada);
         }
-        
+      
         public Contrasenia Buscar(int id)
         {
             return Repositorio.BuscarPorId(id);
@@ -44,6 +44,38 @@ namespace Negocio.Contrasenias
         public string MostrarPassword(Contrasenia password)
         {
             return password.Password.Clave;
+        }
+        
+        public List<Contrasenia> ObtenerContraseniasVulnerables(IFuente fuente)
+        {
+            List<Contrasenia> contraseniasVulnerables = new List<Contrasenia>();
+            IEnumerable<Contrasenia> todasLasContrasenias = this.ObtenerTodas();
+            int cantidad = todasLasContrasenias.Count();
+
+            for (int i = 0; i < cantidad; i++)
+            {
+                AgregarContraseniaSiEsVulnerable(contraseniasVulnerables, todasLasContrasenias.ElementAt(i), fuente);
+            }
+
+            return contraseniasVulnerables;
+        }
+        private void AgregarContraseniaSiEsVulnerable(List<Contrasenia> contrasenias, Contrasenia contrasenia, IFuente fuente)
+        {
+            int cantidadVecesEnFuente = BuscarContraseniaEnFuente(contrasenia, fuente);
+            if (cantidadVecesEnFuente > 0)
+            {
+                contrasenia.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
+                this.ModificarContrasenia(contrasenia);
+                contrasenias.Add(contrasenia);
+            }
+
+        }
+
+        private int BuscarContraseniaEnFuente(Contrasenia item, IFuente fuente)
+        {
+            string password = this.MostrarPassword(item);
+            return fuente.BuscarPasswordOContraseniaEnFuente(password);
+
         }
 
         private void ValidarCampos(Contrasenia aValidarContrasenia)
@@ -60,10 +92,5 @@ namespace Negocio.Contrasenias
             Validaciones.ValidarLargoTexto(aValidarContrasenia.Password.Clave, 25, 5, "contraseña");
             Validaciones.ValidarLargoTexto(aValidarContrasenia.Notas, 250, 0, "notas");
         }
-
-        
-        
-
-        
     }
 }
