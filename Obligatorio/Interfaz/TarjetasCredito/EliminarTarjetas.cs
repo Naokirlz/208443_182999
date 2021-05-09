@@ -41,7 +41,7 @@ namespace Interfaz.TarjetasCredito
                     return;
                 }
 
-                this.Sesion.GestorTarjetaCredito.Baja(tarjetaSeleccionada.IdTarjeta);
+                this.Sesion.BajaTarjetaCredito(tarjetaSeleccionada.IdTarjeta);
                 MessageBox.Show("Tarjeta Eliminada con éxito!!");
                 this.cmbTarjeta.Text = "";
                 Refrescar();

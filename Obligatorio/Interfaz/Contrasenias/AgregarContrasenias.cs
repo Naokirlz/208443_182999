@@ -108,8 +108,17 @@ namespace Interfaz.Contrasenias
                 Alerta("Seleccione al menos una tipo de Caracter", AlertaToast.enmTipo.Error);
                 return;
             }
-            string password = Sesion.GenerarPassword(largo, mayusculas, minusculas, digitos, especiales);
-            this.txtPassword.Text = password;
+            Password password = new Password("")
+            {
+                Largo = largo,
+                Mayuscula = mayusculas,
+                Minuscula = minusculas,
+                Numero = digitos,
+                Especial = especiales
+            };
+
+            password.GenerarPassword();
+            this.txtPassword.Text = password.Clave;
         }
 
         private void Alerta(string mensaje, AlertaToast.enmTipo tipo)

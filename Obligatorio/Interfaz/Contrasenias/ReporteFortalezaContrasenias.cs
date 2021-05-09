@@ -86,7 +86,7 @@ namespace Interfaz.Contrasenias
                 {
                     Tipo = grupo
                 };
-                IEnumerable<Contrasenia> contrasenias = Sesion.GestorContrasenia.ObtenerTodas();
+                IEnumerable<Contrasenia> contrasenias = Sesion.ListarContrasenias();
                 foreach (Contrasenia contrasenia in contrasenias)
                 {
                     string password = Sesion.MostrarPassword(contrasenia.Password.Clave);

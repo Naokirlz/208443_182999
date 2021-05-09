@@ -31,7 +31,7 @@ namespace Interfaz.Contrasenias
 
             BindingList<Contrasenia> bindinglist2 = new BindingList<Contrasenia>();
             BindingSource bSource2 = new BindingSource();
-            bSource2.DataSource = this.Sesion.GestorContrasenia.ObtenerTodas();
+            bSource2.DataSource = this.Sesion.ObtenerTodasLasCategorias();
             this.cmbContrasenia.DataSource = bSource2;
 
             CargarDatosContrasenia();

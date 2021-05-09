@@ -64,7 +64,7 @@ namespace Negocio.Contrasenias
             ValidarFecha(aValidarContrasenia.FechaUltimaModificacion);
             ValidarLargoTexto(aValidarContrasenia.Sitio, 25, 3, "sitio");
             ValidarLargoTexto(aValidarContrasenia.Usuario, 25, 5, "usuario");
-            ValidarLargoTexto(aValidarContrasenia.Password, 25, 5, "contraseña");
+            ValidarLargoTexto(aValidarContrasenia.Password.Clave, 25, 5, "contraseña");
             ValidarLargoTexto(aValidarContrasenia.Notas, 250, 0, "notas");
         }
 
