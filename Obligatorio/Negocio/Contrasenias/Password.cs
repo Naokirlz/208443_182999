@@ -31,20 +31,32 @@ namespace Negocio.Contrasenias
             Random Rand = new Random(Environment.TickCount);
             List<char> palabras = new List<char>();
             
-            for (int i = palabras.Count; i < Largo; i++)
+            for (int i = 0; i < Largo; )
             {
             if (Mayuscula)
-                palabras.Insert(Rand.Next(0, palabras.Count),
+                {
+                  palabras.Insert(Rand.Next(0, palabras.Count),
                     caracteresRandom[0][Rand.Next(0, caracteresRandom[0].Length)]);
-            if (Minuscula)
-                palabras.Insert(Rand.Next(0, palabras.Count),
-                    caracteresRandom[1][Rand.Next(0, caracteresRandom[1].Length)]);
-            if (Numero)
-                palabras.Insert(Rand.Next(0, palabras.Count),
-                    caracteresRandom[2][Rand.Next(0, caracteresRandom[2].Length)]);
-            if (Especial)
-                palabras.Insert(Rand.Next(0, palabras.Count),
-                    caracteresRandom[3][Rand.Next(0, caracteresRandom[3].Length)]);
+                  i++;
+                }
+            if (i < Largo && Minuscula)
+                {
+                    palabras.Insert(Rand.Next(0, palabras.Count),
+                        caracteresRandom[1][Rand.Next(0, caracteresRandom[1].Length)]);
+                    i++;
+                }
+            if (i < Largo && Numero)
+                {
+                    palabras.Insert(Rand.Next(0, palabras.Count),
+                   caracteresRandom[2][Rand.Next(0, caracteresRandom[2].Length)]);
+                    i++;
+                }
+               
+            if (i < Largo && Especial) { 
+                    palabras.Insert(Rand.Next(0, palabras.Count),
+                        caracteresRandom[3][Rand.Next(0, caracteresRandom[3].Length)]);
+                    i++;
+                }
             }
 
             string resultado = new string(palabras.ToArray());
