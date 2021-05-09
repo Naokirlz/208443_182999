@@ -38,10 +38,10 @@ namespace Interfaz
             string nombre = this.txtNuevoNombre.Text;
             try
             {
-                Categoria aCambiar = (Categoria) this.cmbCategoria.SelectedItem;
+                Categoria aCambiar = (Categoria)this.cmbCategoria.SelectedItem;
                 if (aCambiar == null)
                 {
-                    MessageBox.Show("Seleccione al menos una categoría");
+                    Alerta("Seleccione al menos una categoría", AlertaToast.enmTipo.Error);
                     return;
                 }
                 int id = aCambiar.Id;
@@ -49,18 +49,24 @@ namespace Interfaz
                 this.sis.GestorCategoria.Modificacion(id, nuevoNombre);
                 this.txtNuevoNombre.Clear();
                 Refrescar();
-                MessageBox.Show("Categoría " + nuevoNombre + " fue modificada con éxito!!");
+                Alerta("Categoría modificada con éxito!!", AlertaToast.enmTipo.Exito);
             }
             catch (ExcepcionElementoYaExiste unaExcepcion)
             {
-                MessageBox.Show(unaExcepcion.Message);
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
                 this.txtNuevoNombre.Focus();
             }
             catch (ExcepcionLargoTexto unaExcepcion)
             {
-                MessageBox.Show(unaExcepcion.Message);
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
                 this.txtNuevoNombre.Focus();
             }
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Interfaz.CategoriasForm
     {
         public ResumenCategorias()
         {
+            
             Sesion Sesion = Sesion.Singleton;
             InitializeComponent();
             IEnumerable<Categoria> categorias = Sesion.GestorCategoria.ObtenerTodasLasCategorias();

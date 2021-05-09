@@ -52,6 +52,9 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -66,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlertaToast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlertaToast.Designer.cs">
+      <DependentUpon>AlertaToast.cs</DependentUpon>
+    </Compile>
     <Compile Include="CategoriasForm\AgregarCategoria.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -132,11 +141,11 @@
     <Compile Include="Contrasenias\ResumenContrasenias.Designer.cs">
       <DependentUpon>ResumenContrasenias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="InicioSesion.Designer.cs">
+      <DependentUpon>InicioSesion.cs</DependentUpon>
     </Compile>
     <Compile Include="CategoriasForm\ModificarCategoria.cs">
       <SubType>UserControl</SubType>
@@ -144,19 +153,19 @@
     <Compile Include="CategoriasForm\ModificarCategoria.Designer.cs">
       <DependentUpon>ModificarCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="PantallaPrincipal.cs">
+    <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PantallaPrincipal.Designer.cs">
-      <DependentUpon>PantallaPrincipal.cs</DependentUpon>
+    <Compile Include="MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistrarPassword.cs">
+    <Compile Include="RegistroPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistrarPassword.Designer.cs">
-      <DependentUpon>RegistrarPassword.cs</DependentUpon>
+    <Compile Include="RegistroPassword.Designer.cs">
+      <DependentUpon>RegistroPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="TarjetasCredito\AgregarTarjetas.cs">
       <SubType>UserControl</SubType>
@@ -206,6 +215,9 @@
     <Compile Include="Vulnerabilidades\ResumenVulnerabilidades.Designer.cs">
       <DependentUpon>ResumenVulnerabilidades.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AlertaToast.resx">
+      <DependentUpon>AlertaToast.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CategoriasForm\AgregarCategoria.resx">
       <DependentUpon>AgregarCategoria.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,14 +251,14 @@
     <EmbeddedResource Include="Contrasenias\ResumenContrasenias.resx">
       <DependentUpon>ResumenContrasenias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="InicioSesion.resx">
+      <DependentUpon>InicioSesion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CategoriasForm\ModificarCategoria.resx">
       <DependentUpon>ModificarCategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PantallaPrincipal.resx">
-      <DependentUpon>PantallaPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -257,8 +269,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RegistrarPassword.resx">
-      <DependentUpon>RegistrarPassword.cs</DependentUpon>
+    <EmbeddedResource Include="RegistroPassword.resx">
+      <DependentUpon>RegistroPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TarjetasCredito\AgregarTarjetas.resx">
       <DependentUpon>AgregarTarjetas.cs</DependentUpon>
@@ -284,6 +296,7 @@
     <EmbeddedResource Include="Vulnerabilidades\ResumenVulnerabilidades.resx">
       <DependentUpon>ResumenVulnerabilidades.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

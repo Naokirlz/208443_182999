@@ -30,70 +30,104 @@ namespace Interfaz
         private void InitializeComponent()
         {
             this.pnlGestor = new System.Windows.Forms.Panel();
-            this.btnAgregarCategoria = new System.Windows.Forms.Button();
-            this.btnEliminarCategorias = new System.Windows.Forms.Button();
-            this.btnModificarCategoria = new System.Windows.Forms.Button();
-            this.btnResumenCategorias = new System.Windows.Forms.Button();
+            this.btnResumen = new FontAwesome.Sharp.IconButton();
+            this.btnAgregar = new FontAwesome.Sharp.IconButton();
+            this.btnModificar = new FontAwesome.Sharp.IconButton();
+            this.btnEliminar = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // pnlGestor
             // 
-            this.pnlGestor.Location = new System.Drawing.Point(200, 19);
+            this.pnlGestor.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlGestor.Location = new System.Drawing.Point(0, 135);
             this.pnlGestor.Name = "pnlGestor";
-            this.pnlGestor.Size = new System.Drawing.Size(431, 303);
+            this.pnlGestor.Size = new System.Drawing.Size(814, 382);
             this.pnlGestor.TabIndex = 0;
             // 
-            // btnAgregarCategoria
+            // btnResumen
             // 
-            this.btnAgregarCategoria.Location = new System.Drawing.Point(9, 72);
-            this.btnAgregarCategoria.Name = "btnAgregarCategoria";
-            this.btnAgregarCategoria.Size = new System.Drawing.Size(185, 23);
-            this.btnAgregarCategoria.TabIndex = 1;
-            this.btnAgregarCategoria.Text = "Agregar Categorías";
-            this.btnAgregarCategoria.UseVisualStyleBackColor = true;
-            this.btnAgregarCategoria.Click += new System.EventHandler(this.btnAgregarCategoria_Click);
+            this.btnResumen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResumen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResumen.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResumen.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnResumen.IconChar = FontAwesome.Sharp.IconChar.ChartLine;
+            this.btnResumen.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnResumen.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnResumen.Location = new System.Drawing.Point(59, 27);
+            this.btnResumen.Name = "btnResumen";
+            this.btnResumen.Size = new System.Drawing.Size(104, 84);
+            this.btnResumen.TabIndex = 7;
+            this.btnResumen.Text = "Resumen";
+            this.btnResumen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnResumen.UseVisualStyleBackColor = true;
+            this.btnResumen.Click += new System.EventHandler(this.btnResumen_Click);
             // 
-            // btnEliminarCategorias
+            // btnAgregar
             // 
-            this.btnEliminarCategorias.Location = new System.Drawing.Point(9, 130);
-            this.btnEliminarCategorias.Name = "btnEliminarCategorias";
-            this.btnEliminarCategorias.Size = new System.Drawing.Size(185, 23);
-            this.btnEliminarCategorias.TabIndex = 5;
-            this.btnEliminarCategorias.Text = "Eliminar Categorías";
-            this.btnEliminarCategorias.UseVisualStyleBackColor = true;
-            this.btnEliminarCategorias.Click += new System.EventHandler(this.btnEliminarCategorias_Click);
+            this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnAgregar.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            this.btnAgregar.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAgregar.Location = new System.Drawing.Point(247, 27);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(104, 84);
+            this.btnAgregar.TabIndex = 8;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // btnModificarCategoria
+            // btnModificar
             // 
-            this.btnModificarCategoria.Location = new System.Drawing.Point(9, 101);
-            this.btnModificarCategoria.Name = "btnModificarCategoria";
-            this.btnModificarCategoria.Size = new System.Drawing.Size(185, 23);
-            this.btnModificarCategoria.TabIndex = 4;
-            this.btnModificarCategoria.Text = "Modificar Categorías";
-            this.btnModificarCategoria.UseVisualStyleBackColor = true;
-            this.btnModificarCategoria.Click += new System.EventHandler(this.btnModificarCategoria_Click);
+            this.btnModificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnModificar.IconChar = FontAwesome.Sharp.IconChar.Edit;
+            this.btnModificar.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnModificar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnModificar.Location = new System.Drawing.Point(443, 27);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(104, 84);
+            this.btnModificar.TabIndex = 9;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // btnResumenCategorias
+            // btnEliminar
             // 
-            this.btnResumenCategorias.Location = new System.Drawing.Point(9, 43);
-            this.btnResumenCategorias.Name = "btnResumenCategorias";
-            this.btnResumenCategorias.Size = new System.Drawing.Size(185, 23);
-            this.btnResumenCategorias.TabIndex = 6;
-            this.btnResumenCategorias.Text = "Resumen";
-            this.btnResumenCategorias.UseVisualStyleBackColor = true;
-            this.btnResumenCategorias.Click += new System.EventHandler(this.btnResumenCategorias_Click);
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnEliminar.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnEliminar.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnEliminar.Location = new System.Drawing.Point(639, 27);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(104, 84);
+            this.btnEliminar.TabIndex = 10;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // GestionCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnResumenCategorias);
-            this.Controls.Add(this.btnEliminarCategorias);
-            this.Controls.Add(this.btnModificarCategoria);
-            this.Controls.Add(this.btnAgregarCategoria);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.btnResumen);
             this.Controls.Add(this.pnlGestor);
             this.Name = "GestionCategorias";
-            this.Size = new System.Drawing.Size(648, 339);
+            this.Size = new System.Drawing.Size(814, 517);
             this.ResumeLayout(false);
 
         }
@@ -101,9 +135,9 @@ namespace Interfaz
         #endregion
 
         private System.Windows.Forms.Panel pnlGestor;
-        private System.Windows.Forms.Button btnAgregarCategoria;
-        private System.Windows.Forms.Button btnEliminarCategorias;
-        private System.Windows.Forms.Button btnModificarCategoria;
-        private System.Windows.Forms.Button btnResumenCategorias;
+        private FontAwesome.Sharp.IconButton btnResumen;
+        private FontAwesome.Sharp.IconButton btnAgregar;
+        private FontAwesome.Sharp.IconButton btnModificar;
+        private FontAwesome.Sharp.IconButton btnEliminar;
     }
 }

@@ -41,9 +41,8 @@ namespace Negocio
 
         public void Login(string password)
         {
-            if (password != PasswordMaestro || PasswordMaestro == "") throw new ExcepcionAccesoDenegado();
+            if (password != PasswordMaestro || PasswordMaestro == "") throw new ExcepcionAccesoDenegado("El usuario o contraseña no son coinciden.");
             this.Logueado = true;
-            //InsertarDatosDeMuestra();
         }
 
         public IEnumerable<Contrasenia> ContraseniasVulnerables(IFuente fuente)
@@ -166,19 +165,19 @@ namespace Negocio
 
         public int AltaContrasenia(Contrasenia unaContrasena)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
             return GestorContrasenia.Alta(unaContrasena);
         }
 
         public void BajaContrasenia(int id)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
             GestorContrasenia.Baja(id);
         }
 
         public void ModificarContrasenia(Contrasenia aModificarContrasenia)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
             GestorContrasenia.ModificarContrasenia(aModificarContrasenia);
         }
 

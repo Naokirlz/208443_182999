@@ -38,64 +38,77 @@ namespace Interfaz
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.BackColor = System.Drawing.SystemColors.Window;
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategoria.Location = new System.Drawing.Point(215, 81);
-            this.cmbCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbCategoria.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbCategoria.ForeColor = System.Drawing.Color.Black;
+            this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Location = new System.Drawing.Point(274, 73);
             this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(245, 24);
+            this.cmbCategoria.Size = new System.Drawing.Size(286, 29);
             this.cmbCategoria.TabIndex = 0;
             // 
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(32, 91);
-            this.lblCategoria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCategoria.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategoria.ForeColor = System.Drawing.Color.White;
+            this.lblCategoria.Location = new System.Drawing.Point(41, 82);
             this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(170, 17);
+            this.lblCategoria.Size = new System.Drawing.Size(214, 21);
             this.lblCategoria.TabIndex = 1;
             this.lblCategoria.Text = "Seleccione una Categoría";
             // 
             // txtNuevoNombre
             // 
-            this.txtNuevoNombre.Location = new System.Drawing.Point(215, 134);
-            this.txtNuevoNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNuevoNombre.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNuevoNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNuevoNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNuevoNombre.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtNuevoNombre.Location = new System.Drawing.Point(274, 126);
+            this.txtNuevoNombre.Multiline = true;
             this.txtNuevoNombre.Name = "txtNuevoNombre";
-            this.txtNuevoNombre.Size = new System.Drawing.Size(245, 22);
+            this.txtNuevoNombre.Size = new System.Drawing.Size(286, 31);
             this.txtNuevoNombre.TabIndex = 2;
             // 
             // lblNuevoNombre
             // 
             this.lblNuevoNombre.AutoSize = true;
-            this.lblNuevoNombre.Location = new System.Drawing.Point(32, 143);
-            this.lblNuevoNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNuevoNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNuevoNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNuevoNombre.Location = new System.Drawing.Point(126, 136);
             this.lblNuevoNombre.Name = "lblNuevoNombre";
-            this.lblNuevoNombre.Size = new System.Drawing.Size(103, 17);
+            this.lblNuevoNombre.Size = new System.Drawing.Size(129, 21);
             this.lblNuevoNombre.TabIndex = 3;
             this.lblNuevoNombre.Text = "Nuevo Nombre";
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(343, 233);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnGuardar.Location = new System.Drawing.Point(640, 327);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(100, 28);
-            this.btnGuardar.TabIndex = 4;
+            this.btnGuardar.Size = new System.Drawing.Size(147, 33);
+            this.btnGuardar.TabIndex = 9;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // ModificarCategoria
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblNuevoNombre);
             this.Controls.Add(this.txtNuevoNombre);
             this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.cmbCategoria);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ModificarCategoria";
-            this.Size = new System.Drawing.Size(512, 305);
+            this.Size = new System.Drawing.Size(814, 382);
             this.ResumeLayout(false);
             this.PerformLayout();
 

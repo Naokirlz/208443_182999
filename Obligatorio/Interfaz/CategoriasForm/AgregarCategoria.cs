@@ -14,7 +14,7 @@ namespace Interfaz
 {
     public partial class AgregarCategoria : UserControl
     {
-        public Sesion sis = Sesion.Singleton;
+        public Sesion Sesion = Sesion.Singleton;
          
         public AgregarCategoria()
         {
@@ -27,20 +27,26 @@ namespace Interfaz
             string nombre = this.txtNombre.Text;
             try
             {
-                this.sis.GestorCategoria.Alta(nombre);
+                this.Sesion.AltaCategoria(nombre);
                 this.txtNombre.Clear();
-                MessageBox.Show("Categoría " + nombre + " fue creada con éxito!!");
+                Alerta("Categoría creada con éxito!!", AlertaToast.enmTipo.Exito);
             }
-            catch (ExcepcionElementoYaExiste unaExcepcion){
-                MessageBox.Show(unaExcepcion.Message);
+            catch (ExcepcionElementoYaExiste unaExcepcion)
+            {
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
                 this.txtNombre.Focus();
             }
             catch (ExcepcionLargoTexto unaExcepcion)
             {
-                MessageBox.Show(unaExcepcion.Message);
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
                 this.txtNombre.Focus();
             }
-            
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }
