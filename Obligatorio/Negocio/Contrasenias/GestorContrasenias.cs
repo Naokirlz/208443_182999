@@ -36,24 +36,16 @@ namespace Negocio.Contrasenias
             aModificarContrasenia.Password = Encriptar(aModificarContrasenia.Password);
         }
 
-        private bool CambioPassword(Contrasenia aModificarContrasenia)
-        {
-            string anterior = Buscar(aModificarContrasenia.Id).Password;
-            anterior = DesEncriptar(anterior);
-            return aModificarContrasenia.Password.Equals(anterior);
-
-        }
-
+        
         public Contrasenia Buscar(int id)
         {
             return Repositorio.BuscarPorId(id);
         }
 
 
-        public List<Contrasenia> ListarContrasenias()
+        public IEnumerable<Contrasenia> ListarContrasenias()
         {
-            List<Contrasenia> retorno = Repositorio.ListarContrasenias();
-            retorno.Sort();
+            IEnumerable<Contrasenia> retorno = Repositorio.ListarContrasenias();
             return retorno;
         }
                 

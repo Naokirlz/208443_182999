@@ -53,9 +53,11 @@ namespace Negocio.Contrasenias
         }
 
 
-        public List<Contrasenia> ListarContrasenias()
+        public IEnumerable<Contrasenia> ListarContrasenias()
         {
-            return this.Contrasenias;
+            List<Contrasenia> retorno = this.Contrasenias;
+            retorno.Sort();
+            return retorno;
         }
 
 

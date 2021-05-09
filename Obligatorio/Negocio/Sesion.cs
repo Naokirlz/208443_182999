@@ -179,7 +179,7 @@ namespace Negocio
             return GestorContrasenia.Buscar(id);
 
         }
-        public List<Contrasenia> ListarContrasenias()
+        public IEnumerable<Contrasenia> ListarContrasenias()
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
             return GestorContrasenia.ListarContrasenias();
