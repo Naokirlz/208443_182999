@@ -29,7 +29,8 @@ namespace Interfaz
             {
                 this.sis.GestorCategoria.Alta(nombre);
                 this.txtNombre.Clear();
-                MessageBox.Show("Categoría " + nombre + " fue creada con éxito!!");
+                Alerta("Categoría creada con éxito!!", AlertaToast.enmTipo.Exito);
+                //MessageBox.Show("Categoría " + nombre + " fue creada con éxito!!");
             }
             catch (ExcepcionElementoYaExiste unaExcepcion)
             {
@@ -41,6 +42,12 @@ namespace Interfaz
                 MessageBox.Show(unaExcepcion.Message);
                 this.txtNombre.Focus();
             }
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }

@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlertaToast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AlertaToast.Designer.cs">
+      <DependentUpon>AlertaToast.cs</DependentUpon>
+    </Compile>
     <Compile Include="CategoriasForm\AgregarCategoria.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -209,6 +215,9 @@
     <Compile Include="Vulnerabilidades\ResumenVulnerabilidades.Designer.cs">
       <DependentUpon>ResumenVulnerabilidades.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AlertaToast.resx">
+      <DependentUpon>AlertaToast.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CategoriasForm\AgregarCategoria.resx">
       <DependentUpon>AgregarCategoria.cs</DependentUpon>
     </EmbeddedResource>

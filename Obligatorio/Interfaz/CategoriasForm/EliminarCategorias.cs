@@ -15,7 +15,7 @@ namespace Interfaz
 {
     public partial class EliminarCategorias : UserControl
     {
-        public Sesion sis = Sesion.Singleton;
+        public Sesion Sesion = Sesion.Singleton;
         public EliminarCategorias()
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace Interfaz
         {
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
             BindingSource bSource = new BindingSource();
-            bSource.DataSource = this.sis.GestorCategoria.ObtenerTodasLasCategorias();
+            bSource.DataSource = this.Sesion.ObtenerTodasLasCategorias();
             this.cmbCategoria.DataSource = bSource;
         }
 
@@ -37,20 +37,35 @@ namespace Interfaz
                 Categoria aEliminar = (Categoria)this.cmbCategoria.SelectedItem;
                 if (aEliminar == null)
                 {
-                    MessageBox.Show("Seleccione al menos una categoría");
+                    Alerta("Seleccione al menos una categoría", AlertaToast.enmTipo.Error);
                     return;
                 }
                 int id = aEliminar.Id;
                 string nombre = aEliminar.Nombre;
 
-                this.sis.GestorCategoria.Baja(id);
-                Refrescar();
-                MessageBox.Show("Categoría " + nombre + " fue eliminada con éxito!!");
+                DialogResult respuesta = MessageBox.Show("Realmente desea eliminar la categoría " + nombre + "?", 
+                    "Alerta", 
+                    MessageBoxButtons.YesNoCancel, 
+                    MessageBoxIcon.Warning);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    this.Sesion.BajaCategoria(id);
+                    Refrescar();
+                    Alerta("Categoría eliminada con éxito!!", AlertaToast.enmTipo.Exito);
+                }
+                
             }
             catch (ExcepcionElementoNoExiste unaExcepcion)
             {
                 MessageBox.Show(unaExcepcion.Message);
             }
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje,tipo);
         }
     }
 }
