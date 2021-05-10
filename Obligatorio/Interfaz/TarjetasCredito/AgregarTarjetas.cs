@@ -17,7 +17,7 @@ namespace Interfaz.TarjetasCredito
 {
     public partial class AgregarTarjetas : UserControl
     {
-        public Sesion sis = Sesion.Singleton;
+        public Sesion Sesion = Sesion.Singleton;
         public AgregarTarjetas()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace Interfaz.TarjetasCredito
         {
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
             BindingSource bSource = new BindingSource();
-            bSource.DataSource = this.sis.GestorCategoria.ObtenerTodas();
+            bSource.DataSource = Sesion.ObtenerTodasLasCategorias();
             this.cmbCategoria.DataSource = bSource;
         }
 
@@ -39,7 +39,7 @@ namespace Interfaz.TarjetasCredito
                 Categoria categoria = (Categoria)this.cmbCategoria.SelectedItem;
                 if (categoria == null)
                 {
-                    MessageBox.Show("Seleccione al menos una categoría");
+                    Alerta("Seleccione al menos una categoría", AlertaToast.enmTipo.Error);
                     return;
                 }
                 string nombre = this.txtNombre.Text;
@@ -60,17 +60,17 @@ namespace Interfaz.TarjetasCredito
                     Nota = notas,
                     Vencimiento = vencimiento
                 };
-                this.sis.GestorTarjetaCredito.Alta(nuevaTarjeta);
-                MessageBox.Show("Tarjeta " + nuevaTarjeta + " fue guardada con éxito!!");
+                Sesion.AltaTarjetaCredito(nuevaTarjeta);
+                Alerta("Tarjeta guardada con éxito!!", AlertaToast.enmTipo.Exito);
                 LimpiarCampos();
             }
             catch (ExcepcionElementoYaExiste unaExcepcion)
             {
-                MessageBox.Show(unaExcepcion.Message);
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
             }
             catch (ExcepcionLargoTexto unaExcepcion)
             {
-                MessageBox.Show(unaExcepcion.Message);
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
             }
         }
         private void LimpiarCampos()
@@ -81,11 +81,6 @@ namespace Interfaz.TarjetasCredito
             this.txtCodigo.Text = "";
             this.txtNotas.Text = "";
             this.dtpVencimiento.Value = DateTime.Now;
-        }
-
-        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
         }
 
         private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
@@ -114,6 +109,12 @@ namespace Interfaz.TarjetasCredito
         {
             if (!Regex.IsMatch(this.Text + e.KeyChar, "^[0-9]*$")) e.Handled = true;
             else base.OnKeyPress(e);
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }

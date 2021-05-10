@@ -67,61 +67,61 @@ namespace Negocio
 
         public int AltaCategoria(string v)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
             return this.GestorCategoria.Alta(v);
         }
 
         public void BajaCategoria(int id)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
             this.GestorCategoria.Baja(id);
         }
 
         public void ModificacionCategoria(int id, string nombreNuevo)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
             this.GestorCategoria.ModificarCategoria(id, nombreNuevo);
         }
 
         public Categoria BuscarCategoriaPorId(int id)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
             return GestorCategoria.BuscarCategoriaPorId(id);
         }
 
         public IEnumerable<Categoria> ObtenerTodasLasCategorias()
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
             return this.GestorCategoria.ObtenerTodas();
         }
 
         public int AltaTarjetaCredito(TarjetaCredito nuevaTarjeta)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
             return this.GestorTarjetaCredito.Alta(nuevaTarjeta);
         }
 
         public void BajaTarjetaCredito(int bajaTarjeta)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
             GestorTarjetaCredito.Baja(bajaTarjeta);
         }
 
         public void ModificarTarjeta(TarjetaCredito modificada)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
             GestorTarjetaCredito.ModificarTarjeta(modificada);
         }
 
         public TarjetaCredito BuscarTarjeta(int idBuscada)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
             return GestorTarjetaCredito.Buscar(idBuscada);
         }
 
         public IEnumerable<TarjetaCredito> ObtenerTodasLasTarjetas()
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
             return GestorTarjetaCredito.ObtenerTodas();
         }
 
@@ -172,14 +172,14 @@ namespace Negocio
             this.Logueado = false;
         }
 
-        //private void InsertarDatosDeMuestra()
-        //{
-        //    AltaCategoria("Estudio");
-        //    AltaCategoria("Hogar");
-        //    AltaCategoria("Familia");
-        //    AltaCategoria("Trabajo");
+        private void InsertarDatosDeMuestra()
+        {
+            AltaCategoria("Estudio");
+            AltaCategoria("Hogar");
+            AltaCategoria("Familia");
+            AltaCategoria("Trabajo");
             
-        //}
+        }
 
     }
 }
