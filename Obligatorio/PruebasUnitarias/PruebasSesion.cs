@@ -28,10 +28,13 @@ namespace PruebasUnitarias
             sesionPrueba.GuardarPrimerPassword("secreto");
             sesionPrueba.Login("secreto");
             Fuente = new FuenteLocal();
+            int id = sesionPrueba.AltaCategoria("Cosas");
+            Categoria nuevaCategoriaPrueba = sesionPrueba.BuscarCategoriaPorId(id);
+
 
             this.nuevoTarjeta = new TarjetaCredito()
             {
-                Categoria = new Categoria("Fake"),
+                Categoria = nuevaCategoriaPrueba,
                 Nombre = "PruebaNombre",
                 Tipo = "PruebaTipo",
                 Numero = "1234123412341234",
@@ -46,7 +49,7 @@ namespace PruebasUnitarias
                 Sitio = "deremate.com",
                 Usuario = "fedex",
                 Password = new Password("dalevo111!!!"),
-                Categoria = new Categoria("Fake"),
+                Categoria = nuevaCategoriaPrueba,
                 Notas = "Sin"
             };
 
@@ -219,9 +222,12 @@ namespace PruebasUnitarias
         [TestMethod]
        public void SePuedeEjecutarAltaTarjetaEstandoLogueado()
         {
-                TarjetaCredito nuevoTarjetaPrueba = new TarjetaCredito()
+            int id = sesionPrueba.AltaCategoria("fake");
+            Categoria nuevaCat = sesionPrueba.BuscarCategoriaPorId(id);
+
+            TarjetaCredito nuevoTarjetaPrueba = new TarjetaCredito()
             {
-                Categoria = new Categoria("Prueba"),
+                Categoria = nuevaCat,
                 Nombre = "PruebaNombre2",
                 Tipo = "PruebaTipo2",
                 Numero = "1234123412344444",
@@ -273,9 +279,12 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeEjecutarBuscarTarjetaEstandoLogueado()
         {
-             TarjetaCredito buscada = new TarjetaCredito()
+            int id = sesionPrueba.AltaCategoria("fake");
+            Categoria nuevaCat = sesionPrueba.BuscarCategoriaPorId(id);
+
+            TarjetaCredito buscada = new TarjetaCredito()
             {
-                Categoria = new Categoria("Prueba"),
+                Categoria = nuevaCat,
                 Nombre = "tarjeta a Buscar",
                 Tipo = "PruebaTipo2",
                 Numero = "5555123412344444",
@@ -354,13 +363,15 @@ namespace PruebasUnitarias
         public void SePuedeEjecutarAltaContraseniaEstandoLogueado()
         {
             int cantidadAntes = sesionPrueba.ObtenerTodasLasContrasenias().Count();
-            
+            int id = sesionPrueba.AltaCategoria("fake");
+            Categoria nuevaCat = sesionPrueba.BuscarCategoriaPorId(id);
+
             Contrasenia contraseniaPrueba = new Contrasenia()
             {
                 Sitio = "deremate.com.ar",
                 Usuario = "fedexAlta",
                 Password = new Password("dale%%vo111!!!"),
-                Categoria = new Categoria("Fake"),
+                Categoria = nuevaCat,
                 Notas = "Sin"
             };
 
@@ -577,24 +588,6 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        public void SePuedeDesencriptarElPassword()
-        {
-            Contrasenia nueva = new Contrasenia()
-            {
-                Sitio = "aulas.com",
-                Usuario = "Cristian",
-                Password = new Password("secreto"),
-                Categoria = new Categoria("Fake"),
-                Notas = "Sin"
-            };
-
-            int idNuevaContrasenia = sesionPrueba.AltaContrasenia(nueva);
-            nueva = sesionPrueba.BuscarContrasenia(idNuevaContrasenia);
-            
-            Assert.AreEqual("secreto", sesionPrueba.MostrarPassword(nueva));
-        }
-
-        [TestMethod]
         public void SePuedeModificarElPassword()
         {
             Contrasenia aModificar = sesionPrueba.ObtenerTodasLasContrasenias().First();
@@ -607,6 +600,42 @@ namespace PruebasUnitarias
             string passActual = sesionPrueba.MostrarPassword(aModificar);
 
             Assert.AreNotEqual(passAnterior, passActual);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionElementoNoExiste))]
+        public void NoSePuedeAgregarUnaContraseniaSiNoExisteLaCategoria()
+        {
+            Contrasenia nueva = new Contrasenia()
+            {
+                Categoria = new Categoria("Nombre X")
+                {
+                    Id = 50
+                },
+                Password = new Password("passs"),
+                Sitio = "un sitio X",
+                Usuario= "un usuario X"
+            };
+            sesionPrueba.AltaContrasenia(nueva);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionElementoNoExiste))]
+        public void NoSePuedeAgregarUnaTarjetaSiNoExisteLaCategoria()
+        {
+            TarjetaCredito nueva = new TarjetaCredito()
+            {
+                Categoria = new Categoria("Nombre X")
+                {
+                    Id = 50
+                },
+                Codigo="123",
+                Numero="1231231231231231",
+                Nombre="tarjeta x",
+                Tipo="Tarjeta",
+                Vencimiento = DateTime.Now
+            };
+            sesionPrueba.AltaTarjetaCredito(nueva);
         }
 
         private string ArmarTextoDeLargoVariable(int largo)

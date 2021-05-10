@@ -101,6 +101,7 @@ namespace Negocio
         public int AltaTarjetaCredito(TarjetaCredito nuevaTarjeta)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
+            BuscarCategoriaPorId(nuevaTarjeta.Categoria.Id);
             return this.GestorTarjetaCredito.Alta(nuevaTarjeta);
         }
 
@@ -131,6 +132,7 @@ namespace Negocio
         public int AltaContrasenia(Contrasenia unaContrasena)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            GestorCategoria.BuscarCategoriaPorId(unaContrasena.Categoria.Id);
             return GestorContrasenia.Alta(unaContrasena);
         }
 
