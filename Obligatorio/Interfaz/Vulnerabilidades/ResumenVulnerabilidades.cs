@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using Negocio;
 using Negocio.Contrasenias;
+using Negocio.Excepciones;
 using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
@@ -36,14 +37,8 @@ namespace Interfaz.Vulnerabilidades
                 this.chkFuenteLocal.Checked = true;
             }
 
-            //DataGridViewButtonColumn columnaBotonVerTarjeta = new DataGridViewButtonColumn();
-            //columnaBotonVerTarjeta.Name = "columnaVer";
-            //columnaBotonVerTarjeta.Text = "Ver";
-            //this.dgvVulnerabilidadesTarjetas.Columns.Add(columnaBotonVerTarjeta);
-            //columnaBotonVerTarjeta.UseColumnTextForButtonValue = true;
-
             DataGridViewButtonColumn columnaBotonModificarContrasenia = new DataGridViewButtonColumn();
-            columnaBotonModificarContrasenia.Name = "columnaModificar";
+            columnaBotonModificarContrasenia.Name = "Modificar";
             columnaBotonModificarContrasenia.Text = "Modificar";
             this.dgvVulnerabilidadesContrasenias.Columns.Add(columnaBotonModificarContrasenia);
             columnaBotonModificarContrasenia.UseColumnTextForButtonValue = true;
@@ -80,11 +75,11 @@ namespace Interfaz.Vulnerabilidades
                         string password = Sesion.MostrarPassword(contrasenia);
 
                         string[] fila = {
+                            contrasenia.Id.ToString(),
                             contrasenia.Categoria.Nombre,
                             contrasenia.Sitio,
                             contrasenia.Usuario,
-                            new String('\u25CF', password.Length),
-                            "Encontrada vulnerable " + Convert.ToString( contrasenia.CantidadVecesEncontradaVulnerable) + " veces."
+                            "Vulnerable " + Convert.ToString( contrasenia.CantidadVecesEncontradaVulnerable) + " veces."
                         };
                         this.dgvVulnerabilidadesContrasenias.Rows.Add(fila);
                     }
@@ -106,11 +101,12 @@ namespace Interfaz.Vulnerabilidades
                     {
                         tarjetasVulnerables.Add(tarjeta);
                         string[] fila = {
+                            tarjeta.Id.ToString(),
                             tarjeta.Categoria.Nombre,
                             tarjeta.Nombre,
                             tarjeta.Tipo,
-                            tarjeta.Numero.ToString(),
-                            "Encontrada vulnerable " + Convert.ToString( tarjeta.CantidadVecesEncontradaVulnerable) + " veces."
+                            FormatoANumeroDeTarjeta(tarjeta.Numero.ToString()),
+                            "Vulnerable " + Convert.ToString( tarjeta.CantidadVecesEncontradaVulnerable) + " veces."
                         };
                         this.dgvVulnerabilidadesTarjetas.Rows.Add(fila);
                     }
@@ -120,42 +116,85 @@ namespace Interfaz.Vulnerabilidades
 
         private void dgvVulnerabilidadesContrasenias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            if (e.ColumnIndex == 5)
+            if (e.RowIndex != -1)
             {
-                
-                Contrasenia aModificar = this.contraseniasVulnerables[e.RowIndex];
-
-                string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", (aModificar.Password.Clave));
-                //string password = (string)dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value;
-                if (nuevoPassword == "") return;
-
-
-                Contrasenia modificada = new Contrasenia()
+                if (e.ColumnIndex == 5)
                 {
-                    Sitio = aModificar.Sitio,
-                    Categoria = aModificar.Categoria,
-                    Id = aModificar.Id,
-                    Notas = aModificar.Notas,
-                    Usuario = aModificar.Usuario
-                };
-                modificada.Password.Clave = nuevoPassword;
-                try
-                {
-                    Sesion.GestorContrasenia.ModificarContrasenia(modificada);
-                    List<IFuente> fuentesAVerificar = new List<IFuente>();
-                    if (chkFuenteLocal.Checked)
+                    string id = dgvVulnerabilidadesContrasenias.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Contrasenia contraseniaSeleccionada = null;
+                    foreach (Contrasenia contrasenia in contraseniasVulnerables)
                     {
-                        fuentesAVerificar.Add(Sesion.MisFuentes[0]);
+                        if (contrasenia.Id.ToString() == id) contraseniaSeleccionada = contrasenia;
                     }
-                    CargarTablaContraseniasVulnerables(fuentesAVerificar);
-                }
-                catch (Exception excep)
-                {
-                    MessageBox.Show(excep.Message);
-                }
 
+                    string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", (contraseniaSeleccionada.Password.Clave));
+                    //string password = (string)dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value;
+                    if (nuevoPassword == "") return;
+
+
+                    Contrasenia modificada = new Contrasenia()
+                    {
+                        Sitio = contraseniaSeleccionada.Sitio,
+                        Categoria = contraseniaSeleccionada.Categoria,
+                        Id = contraseniaSeleccionada.Id,
+                        Notas = contraseniaSeleccionada.Notas,
+                        Usuario = contraseniaSeleccionada.Usuario,
+                        Password = contraseniaSeleccionada.Password
+                    };
+                    
+                    try
+                    {
+                        modificada.Password.Clave = nuevoPassword;
+                        Sesion.ModificarContrasenia(modificada);
+                        List<IFuente> fuentesAVerificar = new List<IFuente>();
+                        if (chkFuenteLocal.Checked)
+                        {
+                            fuentesAVerificar.Add(Sesion.MisFuentes[0]);
+                        }
+                        CargarTablaContraseniasVulnerables(fuentesAVerificar);
+                        Alerta("Contraseña modificada con éxito!!", AlertaToast.enmTipo.Exito);
+                    }
+                    catch (ExcepcionLargoTexto unaExcepcion)
+                    {
+                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
+                    }
+
+                }
             }
+        }
+
+        private string FormatoANumeroDeTarjeta(string numeroTarjeta)
+        {
+            string conFormato = "";
+            int contador = 1;
+
+            foreach (char caracter in numeroTarjeta)
+            {
+                if (contador > 12)
+                {
+                    conFormato += caracter;
+                }
+                else
+                {
+                    if (contador % 4 == 0)
+                    {
+                        conFormato += "X-";
+                    }
+                    else
+                    {
+                        conFormato += "X";
+                    }
+                }
+                contador++;
+            }
+
+            return conFormato;
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }
