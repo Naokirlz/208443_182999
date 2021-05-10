@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using Negocio;
 using Negocio.Contrasenias;
+using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -173,20 +174,29 @@ namespace Interfaz.Contrasenias
                         Id = contraseniaSeleccionada.Id,
                         Notas = contraseniaSeleccionada.Notas,
                         Usuario = contraseniaSeleccionada.Usuario,
-                        Password = nuevoPass
+                        Password = nuevoPass,
                     };
                     
                     try
                     {
                         Sesion.ModificarContrasenia(modificada);
+                        Alerta("Contraseña modificada con éxito!!", AlertaToast.enmTipo.Exito);
                         GenerarGrupos();
                         Grupo grupoActualizado = Grupos[this.GrupoMostrando];
                         CargarTablaPorGrupo(grupoActualizado);
                         CargarTabla();
                     }
-                    catch (Exception excep)
+                    catch (ExcepcionElementoYaExiste unaExcepcion)
                     {
-                        MessageBox.Show(excep.Message);
+                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
+                    }
+                    catch (ExcepcionLargoTexto unaExcepcion)
+                    {
+                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
+                    }
+                    catch (ExcepcionElementoNoExiste unaExcepcion)
+                    {
+                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
                     }
                 }
             }
@@ -227,7 +237,13 @@ namespace Interfaz.Contrasenias
                 //e.Value = "Lavado";
             }
         }
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
+        }
     }
+
 
     internal class Grupo
     {

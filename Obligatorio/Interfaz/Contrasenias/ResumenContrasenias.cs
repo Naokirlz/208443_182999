@@ -138,6 +138,14 @@ namespace Interfaz.Contrasenias
                         }
 
                     }
+                    catch (ExcepcionElementoYaExiste unaExcepcion)
+                    {
+                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
+                    }
+                    catch (ExcepcionLargoTexto unaExcepcion)
+                    {
+                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
+                    }
                     catch (ExcepcionElementoNoExiste unaExcepcion)
                     {
                         Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);

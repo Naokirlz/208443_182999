@@ -74,7 +74,8 @@ namespace Interfaz.Contrasenias
                     Sitio = this.txtSitio.Text,
                     Usuario = this.txtUsuario.Text,
                     Notas = this.txtNotas.Text,
-                    Password = nuevoPass
+                    Password = nuevoPass,
+                    Id = contraseniaSeleccionada.Id
                 };
 
                 this.Sesion.ModificarContrasenia(aModificar);
@@ -87,6 +88,10 @@ namespace Interfaz.Contrasenias
                 Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
             }
             catch (ExcepcionLargoTexto unaExcepcion)
+            {
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
+            }
+            catch (ExcepcionElementoNoExiste unaExcepcion)
             {
                 Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
             }
