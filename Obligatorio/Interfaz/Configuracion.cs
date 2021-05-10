@@ -27,19 +27,25 @@ namespace Interfaz
             {
                 if (passwordInicial != passwordRepetido)
                 {
-                    MessageBox.Show("Los passwords deben coincidir.");
+                    Alerta("Los passwords deben coincidir.", AlertaToast.enmTipo.Error);
                     return;
                 }
                 Sesion sesion = Sesion.Singleton;
                 sesion.CambiarPassword(passwordRepetido);
                 this.txtPassword.Text = "";
                 this.txtRepetirPassword.Text = "";
-                MessageBox.Show("Los cambios fueron configurados con éxito");
+                Alerta("Los cambios fueron configurados con éxito", AlertaToast.enmTipo.Exito);
             }
             catch (ExcepcionLargoTexto errorLargoTexto)
             {
-                MessageBox.Show(errorLargoTexto.Message);
+                Alerta(errorLargoTexto.Message, AlertaToast.enmTipo.Error);
             }
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }

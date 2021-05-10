@@ -41,7 +41,7 @@ namespace Negocio
             if (password != PasswordMaestro || PasswordMaestro == "") 
                 throw new ExcepcionAccesoDenegado("El usuario o contraseña no son coinciden.");
             this.Logueado = true;
-            InsertarDatosDeMuestra();
+            //InsertarDatosDeMuestra();
         }
 
         public IEnumerable<Contrasenia> ContraseniasVulnerables(IFuente fuente)
