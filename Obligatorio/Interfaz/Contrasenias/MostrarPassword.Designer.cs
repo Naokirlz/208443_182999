@@ -125,7 +125,7 @@ namespace Interfaz.Contrasenias
             // 
             this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(64)))));
             this.iconPictureBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(118)))), ((int)(((byte)(176)))));
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Lock;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.LockOpen;
             this.iconPictureBox1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(118)))), ((int)(((byte)(176)))));
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconPictureBox1.IconSize = 52;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.Excepciones;
@@ -40,6 +41,7 @@ namespace Negocio
             if (password != PasswordMaestro || PasswordMaestro == "") 
                 throw new ExcepcionAccesoDenegado("El usuario o contraseña no son coinciden.");
             this.Logueado = true;
+            InsertarDatosDeMuestra();
         }
 
         public IEnumerable<Contrasenia> ContraseniasVulnerables(IFuente fuente)
@@ -174,11 +176,22 @@ namespace Negocio
 
         private void InsertarDatosDeMuestra()
         {
-            AltaCategoria("Estudio");
+            int idestudio = AltaCategoria("Estudio");
+            Categoria estudio = GestorCategoria.BuscarCategoriaPorId(idestudio);
             AltaCategoria("Hogar");
             AltaCategoria("Familia");
             AltaCategoria("Trabajo");
-            
+
+
+            TarjetaCredito nueva = new TarjetaCredito() { 
+                Categoria = estudio,
+                Codigo = 123.ToString(),
+                Nombre = "Visa República",
+                Numero = "1231231231231231",
+                Tipo = "Visa",
+                Vencimiento = DateTime.Now
+            };
+            AltaTarjetaCredito(nueva);
         }
 
     }

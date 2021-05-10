@@ -80,7 +80,9 @@ namespace Negocio.TarjetaCreditos
             Validaciones.ValidarSoloNumeros(tarjeta.Numero);
             Validaciones.ValidarLargoTexto(tarjeta.Codigo, 3, 3, "código");
             Validaciones.ValidarSoloNumeros(tarjeta.Codigo);
-            Validaciones.ValidarLargoTexto(tarjeta.Nota, 250, -1, "nota");
+            if(tarjeta.Nota != null){
+                Validaciones.ValidarLargoTexto(tarjeta.Nota, 250, -1, "nota");
+            }
         }
 
         private bool CategoriaExiste(Categoria categoria)

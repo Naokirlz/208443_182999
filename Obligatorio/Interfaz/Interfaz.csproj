@@ -191,11 +191,23 @@
     <Compile Include="TarjetasCredito\GestionTarjetas.Designer.cs">
       <DependentUpon>GestionTarjetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="TarjetasCredito\ModificarTarjeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TarjetasCredito\ModificarTarjeta.Designer.cs">
+      <DependentUpon>ModificarTarjeta.cs</DependentUpon>
+    </Compile>
     <Compile Include="TarjetasCredito\ModificarTarjetas.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="TarjetasCredito\ModificarTarjetas.Designer.cs">
       <DependentUpon>ModificarTarjetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TarjetasCredito\MostrarTarjeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TarjetasCredito\MostrarTarjeta.Designer.cs">
+      <DependentUpon>MostrarTarjeta.cs</DependentUpon>
     </Compile>
     <Compile Include="TarjetasCredito\ResumenTarjetas.cs">
       <SubType>UserControl</SubType>
@@ -290,8 +302,14 @@
     <EmbeddedResource Include="TarjetasCredito\GestionTarjetas.resx">
       <DependentUpon>GestionTarjetas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TarjetasCredito\ModificarTarjeta.resx">
+      <DependentUpon>ModificarTarjeta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TarjetasCredito\ModificarTarjetas.resx">
       <DependentUpon>ModificarTarjetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TarjetasCredito\MostrarTarjeta.resx">
+      <DependentUpon>MostrarTarjeta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TarjetasCredito\ResumenTarjetas.resx">
       <DependentUpon>ResumenTarjetas.cs</DependentUpon>

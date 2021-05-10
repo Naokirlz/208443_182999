@@ -39,7 +39,7 @@ namespace Interfaz
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.ForeColor = System.Drawing.Color.White;
-            this.lblNombre.Location = new System.Drawing.Point(170, 153);
+            this.lblNombre.Location = new System.Drawing.Point(58, 73);
             this.lblNombre.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(73, 21);
@@ -63,7 +63,7 @@ namespace Interfaz
             // txtNombre
             // 
             this.txtNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(251, 150);
+            this.txtNombre.Location = new System.Drawing.Point(139, 70);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(290, 27);
             this.txtNombre.TabIndex = 9;
