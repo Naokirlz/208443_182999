@@ -12,11 +12,11 @@ namespace Negocio
                 throw new ExcepcionLargoTexto("El largo del campo " + campo + " debe ser de entre " + 
                                               largoMin.ToString() + " y " + largoMax.ToString() + " caracteres.");
         }
-        public static void ValidarSoloNumeros(string texto)
+        public static void ValidarSoloNumeros(string texto, string campo)
         {
             foreach (char digito in texto)
             {
-                if (!EsNumero(digito)) throw new ExcepcionNumeroNoValido();
+                if (!EsNumero(digito)) throw new ExcepcionNumeroNoValido("Debe introducir sólo números en el campo " + campo);
             }
        }
 

@@ -77,9 +77,9 @@ namespace Negocio.TarjetaCreditos
             Validaciones.ValidarLargoTexto(tarjeta.Nombre, 25, 3, "nombre");
             Validaciones.ValidarLargoTexto(tarjeta.Tipo, 25, 3, "tipo");
             Validaciones.ValidarLargoTexto(tarjeta.Numero, 16, 16, "número");
-            Validaciones.ValidarSoloNumeros(tarjeta.Numero);
+            Validaciones.ValidarSoloNumeros(tarjeta.Numero, "número");
             Validaciones.ValidarLargoTexto(tarjeta.Codigo, 3, 3, "código");
-            Validaciones.ValidarSoloNumeros(tarjeta.Codigo);
+            Validaciones.ValidarSoloNumeros(tarjeta.Codigo, "código");
             if(tarjeta.Nota != null){
                 Validaciones.ValidarLargoTexto(tarjeta.Nota, 250, -1, "nota");
             }

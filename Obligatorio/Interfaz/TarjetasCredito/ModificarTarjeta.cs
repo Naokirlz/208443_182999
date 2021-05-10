@@ -85,6 +85,11 @@ namespace Interfaz.TarjetasCredito
             {
                 Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
             }
+            catch (ExcepcionNumeroNoValido unaExcepcion)
+            {
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
+            }
+            
         }
 
         private void Alerta(string mensaje, AlertaToast.enmTipo tipo)

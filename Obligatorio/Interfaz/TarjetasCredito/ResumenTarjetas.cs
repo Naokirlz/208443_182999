@@ -136,7 +136,6 @@ namespace Interfaz.TarjetasCredito
                             CargarTabla();
                             Alerta("Tarjeta eliminada con éxito!!", AlertaToast.enmTipo.Exito);
                         }
-
                     }
                     catch (ExcepcionElementoNoExiste unaExcepcion)
                     {
