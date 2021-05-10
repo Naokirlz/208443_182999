@@ -70,8 +70,8 @@ namespace Negocio.Contrasenias
         {
             foreach (var contrasenia in this.Contrasenias)
             {
-                if (contrasenia.Sitio.Equals(unaContrasenia.Sitio) &&
-                    contrasenia.Usuario.Equals(unaContrasenia.Usuario))
+                if (contrasenia.Sitio.ToUpper().Equals(unaContrasenia.Sitio.ToUpper()) &&
+                    contrasenia.Usuario.ToUpper().Equals(unaContrasenia.Usuario.ToUpper()))
                     throw new ExcepcionElementoYaExiste();
             }
 
