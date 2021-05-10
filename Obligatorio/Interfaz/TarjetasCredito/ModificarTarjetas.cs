@@ -46,14 +46,14 @@ namespace Interfaz.TarjetasCredito
                 TarjetaCredito tarjetaSeleccionada = (TarjetaCredito)this.cmbTarjetas.SelectedItem;
                 if (tarjetaSeleccionada == null)
                 {
-                    MessageBox.Show("Seleccione al menos una Tarjeta de Crédito");
+                    Alerta("Seleccione al menos una Tarjeta de Crédito", AlertaToast.enmTipo.Error);
                     return;
                 }
 
                 Categoria categoria = (Categoria)this.cmbCategoria.SelectedItem;
                 if (categoria == null)
                 {
-                    MessageBox.Show("Seleccione al menos una categoría");
+                    Alerta("Seleccione al menos una categoría", AlertaToast.enmTipo.Error);
                     return;
                 }
 
@@ -78,18 +78,18 @@ namespace Interfaz.TarjetasCredito
                     Vencimiento = vencimiento
                 };
 
-                this.Sesion.GestorTarjetaCredito.ModificarTarjeta(tarjetaAModificar);
-                MessageBox.Show("Tarjeta " + tarjetaAModificar + " fue modificada con éxito!!");
+                this.Sesion.ModificarTarjeta(tarjetaAModificar);
+                Alerta("Tarjeta modificada con éxito!!", AlertaToast.enmTipo.Exito);
                 LimpiarCampos();
                 Refrescar();
             }
             catch (ExcepcionElementoYaExiste unaExcepcion)
             {
-                MessageBox.Show(unaExcepcion.Message);
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
             }
             catch (ExcepcionLargoTexto unaExcepcion)
             {
-                MessageBox.Show(unaExcepcion.Message);
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
             }
         }
 
@@ -149,6 +149,12 @@ namespace Interfaz.TarjetasCredito
         private void txtCodigo_Click(object sender, EventArgs e)
         {
             this.txtCodigo.Select(0, 0);
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }
