@@ -50,7 +50,7 @@ namespace Negocio.TarjetaCreditos
 
             foreach (TarjetaCredito item in Tarjetas)
                 if (item.Id == id) return item;
-            throw new ExcepcionElementoNoExiste();
+            throw new ExcepcionElementoNoExiste("La tarjeta buscada no existe.");
         }
                 
         public IEnumerable<TarjetaCredito> ObtenerTodas()
@@ -65,7 +65,7 @@ namespace Negocio.TarjetaCreditos
             foreach (TarjetaCredito item in Tarjetas)
             {
                 if (item.Numero.Equals(tarjeta.Numero) && tarjeta.Id != item.Id)
-                { throw new ExcepcionElementoYaExiste(); }
+                { throw new ExcepcionElementoYaExiste("La tarjeta buscada ya existe."); }
             }
         }
 
@@ -77,12 +77,9 @@ namespace Negocio.TarjetaCreditos
                 if (item.Nombre.ToLower().Equals(tarjeta.Nombre.ToLower())
                     && tarjeta.Id != item.Id)
                 {
-                    throw new ExcepcionElementoYaExiste();
+                    throw new ExcepcionElementoYaExiste("La tarjeta buscada ya existe.");
                 }
             }
         }
-
-
-
     }
 }

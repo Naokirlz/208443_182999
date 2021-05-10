@@ -50,7 +50,7 @@ namespace Negocio.Contrasenias
         {
             foreach (Contrasenia item in Contrasenias)
                 if (item.Id == id) return item;
-            throw new ExcepcionElementoNoExiste();
+            throw new ExcepcionElementoNoExiste("La contraseña buscada no existe.");
         }
 
         public IEnumerable<Contrasenia> ObtenerTodas()
@@ -73,12 +73,8 @@ namespace Negocio.Contrasenias
             {
                 if (contrasenia.Sitio.ToUpper().Equals(unaContrasenia.Sitio.ToUpper()) &&
                     contrasenia.Usuario.ToUpper().Equals(unaContrasenia.Usuario.ToUpper()))
-                    throw new ExcepcionElementoYaExiste();
+                    throw new ExcepcionElementoYaExiste("La contraseña buscada ya existe.");
             }
-
         }
-
-        
-
     }
 }

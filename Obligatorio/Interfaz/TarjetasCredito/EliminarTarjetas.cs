@@ -50,7 +50,6 @@ namespace Interfaz.TarjetasCredito
                 {
                     this.Sesion.BajaTarjetaCredito(tarjetaSeleccionada.Id);
                     Alerta("Tarjeta Eliminada con éxito!!", AlertaToast.enmTipo.Exito);
-                    MessageBox.Show("Tarjeta Eliminada con éxito!!");
                     this.cmbTarjeta.Text = "";
                     Refrescar();
                 }
