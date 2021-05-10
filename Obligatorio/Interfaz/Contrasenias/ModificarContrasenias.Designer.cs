@@ -58,7 +58,7 @@ namespace Interfaz.Contrasenias
             this.chkEspeciales.AutoSize = true;
             this.chkEspeciales.ForeColor = System.Drawing.Color.White;
             this.chkEspeciales.Location = new System.Drawing.Point(550, 218);
-            this.chkEspeciales.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.chkEspeciales.Margin = new System.Windows.Forms.Padding(5);
             this.chkEspeciales.Name = "chkEspeciales";
             this.chkEspeciales.Size = new System.Drawing.Size(167, 25);
             this.chkEspeciales.TabIndex = 39;
@@ -70,7 +70,7 @@ namespace Interfaz.Contrasenias
             this.chkDigitos.AutoSize = true;
             this.chkDigitos.ForeColor = System.Drawing.Color.White;
             this.chkDigitos.Location = new System.Drawing.Point(550, 181);
-            this.chkDigitos.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.chkDigitos.Margin = new System.Windows.Forms.Padding(5);
             this.chkDigitos.Name = "chkDigitos";
             this.chkDigitos.Size = new System.Drawing.Size(148, 25);
             this.chkDigitos.TabIndex = 38;
@@ -82,7 +82,7 @@ namespace Interfaz.Contrasenias
             this.chkMinusculas.AutoSize = true;
             this.chkMinusculas.ForeColor = System.Drawing.Color.White;
             this.chkMinusculas.Location = new System.Drawing.Point(550, 144);
-            this.chkMinusculas.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.chkMinusculas.Margin = new System.Windows.Forms.Padding(5);
             this.chkMinusculas.Name = "chkMinusculas";
             this.chkMinusculas.Size = new System.Drawing.Size(185, 25);
             this.chkMinusculas.TabIndex = 37;
@@ -94,7 +94,7 @@ namespace Interfaz.Contrasenias
             this.chkMayusculas.AutoSize = true;
             this.chkMayusculas.ForeColor = System.Drawing.Color.White;
             this.chkMayusculas.Location = new System.Drawing.Point(550, 107);
-            this.chkMayusculas.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.chkMayusculas.Margin = new System.Windows.Forms.Padding(5);
             this.chkMayusculas.Name = "chkMayusculas";
             this.chkMayusculas.Size = new System.Drawing.Size(194, 25);
             this.chkMayusculas.TabIndex = 36;
@@ -104,7 +104,7 @@ namespace Interfaz.Contrasenias
             // numLargo
             // 
             this.numLargo.Location = new System.Drawing.Point(660, 57);
-            this.numLargo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.numLargo.Margin = new System.Windows.Forms.Padding(5);
             this.numLargo.Maximum = new decimal(new int[] {
             25,
             0,
@@ -162,7 +162,7 @@ namespace Interfaz.Contrasenias
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Location = new System.Drawing.Point(160, 54);
-            this.cmbCategoria.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cmbCategoria.Margin = new System.Windows.Forms.Padding(5);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(232, 29);
             this.cmbCategoria.TabIndex = 31;
@@ -170,7 +170,7 @@ namespace Interfaz.Contrasenias
             // txtNotas
             // 
             this.txtNotas.Location = new System.Drawing.Point(160, 204);
-            this.txtNotas.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtNotas.Margin = new System.Windows.Forms.Padding(5);
             this.txtNotas.Multiline = true;
             this.txtNotas.Name = "txtNotas";
             this.txtNotas.Size = new System.Drawing.Size(232, 163);
@@ -190,8 +190,9 @@ namespace Interfaz.Contrasenias
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(160, 167);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(5);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(232, 27);
             this.txtPassword.TabIndex = 28;
             // 
@@ -209,7 +210,7 @@ namespace Interfaz.Contrasenias
             // txtUsuario
             // 
             this.txtUsuario.Location = new System.Drawing.Point(160, 130);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(5);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(232, 27);
             this.txtUsuario.TabIndex = 26;
@@ -228,7 +229,7 @@ namespace Interfaz.Contrasenias
             // txtSitio
             // 
             this.txtSitio.Location = new System.Drawing.Point(158, 93);
-            this.txtSitio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtSitio.Margin = new System.Windows.Forms.Padding(5);
             this.txtSitio.Name = "txtSitio";
             this.txtSitio.Size = new System.Drawing.Size(232, 27);
             this.txtSitio.TabIndex = 24;
@@ -260,7 +261,7 @@ namespace Interfaz.Contrasenias
             this.cmbContrasenia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbContrasenia.FormattingEnabled = true;
             this.cmbContrasenia.Location = new System.Drawing.Point(160, 15);
-            this.cmbContrasenia.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cmbContrasenia.Margin = new System.Windows.Forms.Padding(5);
             this.cmbContrasenia.Name = "cmbContrasenia";
             this.cmbContrasenia.Size = new System.Drawing.Size(232, 29);
             this.cmbContrasenia.TabIndex = 42;
@@ -322,7 +323,7 @@ namespace Interfaz.Contrasenias
             this.Controls.Add(this.lblSitio);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ModificarContrasenias";
             this.Size = new System.Drawing.Size(814, 384);
             ((System.ComponentModel.ISupportInitialize)(this.numLargo)).EndInit();

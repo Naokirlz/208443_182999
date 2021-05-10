@@ -26,35 +26,33 @@ namespace Interfaz.Contrasenias
             this.btnVolver.Visible = false;
 
             DataGridViewButtonColumn columnaBotonVer = new DataGridViewButtonColumn();
-            columnaBotonVer.Name = "columnaVer";
+            columnaBotonVer.Name = "Ver";
             columnaBotonVer.Text = "Ver";
             int columnIndex = 2;
-            if (dgvContrasenias.Columns["columnaVer"] == null)
+            if (dgvContrasenias.Columns["Ver"] == null)
             {
                 this.dgvContrasenias.Columns.Insert(columnIndex, columnaBotonVer);
                 columnaBotonVer.UseColumnTextForButtonValue = true;
             }
 
             DataGridViewButtonColumn columnaBotonRevelar = new DataGridViewButtonColumn();
-            columnaBotonRevelar.Name = "columnaRevelar";
+            columnaBotonRevelar.Name = "Revelar";
             columnaBotonRevelar.Text = "Revelar";
             columnaBotonRevelar.HeaderText = "Revelar";
             int columnRevelarIndex = 5;
-            if (dgvContraseniasPorGrupo.Columns["columnaRevelar"] == null)
+            if (dgvContraseniasPorGrupo.Columns["Revelar"] == null)
             {
                 this.dgvContraseniasPorGrupo.Columns.Insert(columnRevelarIndex, columnaBotonRevelar);
-                //columnaBotonRevelar.UseColumnTextForButtonValue = true;
             }
-            //columnaBotonRevelar.UseColumnTextForButtonValue = true;
 
-            DataGridViewButtonColumn columnaBotonGuardar = new DataGridViewButtonColumn();
-            columnaBotonGuardar.Name = "columnaGuardar";
-            columnaBotonGuardar.Text = "Modficar";
+            DataGridViewButtonColumn columnaBotonModificar = new DataGridViewButtonColumn();
+            columnaBotonModificar.Name = "Modficar";
+            columnaBotonModificar.Text = "Modficar";
             int columnGuardarIndex = 6;
-            if (dgvContraseniasPorGrupo.Columns["columnaGuardar"] == null)
+            if (dgvContraseniasPorGrupo.Columns["Modficar"] == null)
             {
-                this.dgvContraseniasPorGrupo.Columns.Insert(columnGuardarIndex, columnaBotonGuardar);
-                columnaBotonGuardar.UseColumnTextForButtonValue = true;
+                this.dgvContraseniasPorGrupo.Columns.Insert(columnGuardarIndex, columnaBotonModificar);
+                columnaBotonModificar.UseColumnTextForButtonValue = true;
             }
 
 
@@ -102,14 +100,16 @@ namespace Interfaz.Contrasenias
 
         private void dgvContrasenias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 2 && e.RowIndex < 5)
+            if (e.RowIndex != -1)
             {
-                this.dgvContrasenias.Visible = false;
-                this.dgvContraseniasPorGrupo.Visible = true;
-                this.btnVolver.Visible = true;
-                this.GrupoMostrando = e.RowIndex;
-                CargarTablaPorGrupo(Grupos[e.RowIndex]);
-                MessageBox.Show(Grupos[e.RowIndex].Tipo);
+                if (e.ColumnIndex == 2 && e.RowIndex < 5)
+                {
+                    this.dgvContrasenias.Visible = false;
+                    this.dgvContraseniasPorGrupo.Visible = true;
+                    this.btnVolver.Visible = true;
+                    this.GrupoMostrando = e.RowIndex;
+                    CargarTablaPorGrupo(Grupos[e.RowIndex]);
+                }
             }
         }
 
@@ -120,10 +120,10 @@ namespace Interfaz.Contrasenias
             {
                 string password = new String('\u25CF', Sesion.MostrarPassword(contrasenia).Length);
                 string[] fila = {
+                    contrasenia.Id.ToString(),
                     contrasenia.Categoria.Nombre,
                     contrasenia.Sitio,
                     contrasenia.Usuario,
-                    contrasenia.FechaUltimaModificacion.ToShortDateString(),
                     password
                 };
                 this.dgvContraseniasPorGrupo.Rows.Add(fila);
@@ -135,20 +135,27 @@ namespace Interfaz.Contrasenias
             if (e.RowIndex != -1)
             {
                 Grupo grupoMostrando = Grupos[this.GrupoMostrando];
-                string password = grupoMostrando.Contrasenias[e.RowIndex].Password.Clave;
+                string id = dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[0].Value.ToString();
+                Contrasenia contraseniaSeleccionada = null;
+                foreach (Contrasenia contrasenia in grupoMostrando.Contrasenias)
+                {
+                    if (contrasenia.Id.ToString() == id) contraseniaSeleccionada = contrasenia;
+                }
+                
+                string password = contraseniaSeleccionada.Password.Clave;
 
                 if (e.ColumnIndex == 5)
                 {
-                    if (dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value.ToString() == "Revelar")
+                    if (dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["Revelar"].Value.ToString() == "Revelar")
                     {
                         dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value = password;
-                        dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value = "Ocultar";
+                        dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["Revelar"].Value = "Ocultar";
                     }
                     else
                     {
                         password = new String('\u25CF', password.Length);
                         dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value = password;
-                        dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value = "Revelar";
+                        dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["Revelar"].Value = "Revelar";
                     }
 
                 }
@@ -157,18 +164,20 @@ namespace Interfaz.Contrasenias
                     string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", password);
                     //string password = (string)dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value;
                     if (nuevoPassword == "") return;
-                    Contrasenia aModificar = grupoMostrando.Contrasenias[e.RowIndex];
+
                     Contrasenia modificada = new Contrasenia()
                     {
-                        Sitio = aModificar.Sitio,
-                        Categoria = aModificar.Categoria,
-                        Id = aModificar.Id,
-                        Notas = aModificar.Notas,
-                        Usuario = aModificar.Usuario
+                        Sitio = contraseniaSeleccionada.Sitio,
+                        Categoria = contraseniaSeleccionada.Categoria,
+                        Id = contraseniaSeleccionada.Id,
+                        Notas = contraseniaSeleccionada.Notas,
+                        Usuario = contraseniaSeleccionada.Usuario,
+                        Password = contraseniaSeleccionada.Password
                     };
-                    modificada.Password.Clave = nuevoPassword;
+                    
                     try
                     {
+                        modificada.Password.Clave = nuevoPassword;
                         Sesion.GestorContrasenia.ModificarContrasenia(modificada);
                         GenerarGrupos();
                         Grupo grupoActualizado = Grupos[this.GrupoMostrando];
@@ -197,7 +206,7 @@ namespace Interfaz.Contrasenias
                 return;
 
             // Si formatea su columna deseada, establezca el valor
-            if (e.ColumnIndex == this.dgvContraseniasPorGrupo.Columns["columnaRevelar"].Index)
+            if (e.ColumnIndex == this.dgvContraseniasPorGrupo.Columns["Revelar"].Index)
             {
                 //Puedes poner tu lógica dinámica aquí
                 //y usa diferentes valores basados en otros valores de celda,
@@ -207,10 +216,10 @@ namespace Interfaz.Contrasenias
 
 
                 if (valor.Contains(charOculto))
-                    dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value = "Revelar";
+                    dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["Revelar"].Value = "Revelar";
                 else
                 {
-                    dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value = "Ocultar";
+                    dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["Revelar"].Value = "Ocultar";
                 }
 
 
