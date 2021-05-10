@@ -66,7 +66,7 @@ namespace Interfaz.Contrasenias
         private void CargarTabla()
         {
             dgvContrasenias.Rows.Clear();
-            Contrasenias = Sesion.ListarContrasenias();
+            Contrasenias = Sesion.ObtenerTodasLasContrasenias();
             foreach (Contrasenia contrasenia in Contrasenias)
             {
                 string[] fila = {

@@ -26,7 +26,7 @@ namespace Interfaz.Contrasenias
         {
             BindingList<Contrasenia> bindinglist = new BindingList<Contrasenia>();
             BindingSource bSource = new BindingSource();
-            bSource.DataSource = this.Sesion.ListarContrasenias();
+            bSource.DataSource = this.Sesion.ObtenerTodasLasContrasenias();
             this.cmbContrasenia.DataSource = bSource;
         }
 

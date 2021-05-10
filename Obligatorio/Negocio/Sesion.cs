@@ -4,6 +4,7 @@ using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.Excepciones;
 using Negocio.TarjetaCreditos;
+using System.Linq;
 
 namespace Negocio
 {
@@ -151,7 +152,7 @@ namespace Negocio
             return GestorContrasenia.Buscar(id);
         }
 
-        public IEnumerable<Contrasenia> ListarContrasenias()
+        public IEnumerable<Contrasenia> ObtenerTodasLasContrasenias()
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
             return GestorContrasenia.ObtenerTodas();

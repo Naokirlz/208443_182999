@@ -5,8 +5,9 @@ namespace Negocio.TarjetaCreditos
 {
     public class RepositorioTarjetaCredito
     {
-        private List<TarjetaCredito> Tarjetas { get; set; }
         private static int autonumerado = 1;
+        private List<TarjetaCredito> Tarjetas { get; set; }
+        
 
         public RepositorioTarjetaCredito()
         {

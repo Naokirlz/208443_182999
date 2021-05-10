@@ -19,7 +19,7 @@ namespace Negocio.Contrasenias
             ContraseniaNoExiste(unaContrasenia);
             unaContrasenia.Id = autonumerado;
             unaContrasenia.FechaUltimaModificacion = DateTime.Now;
-            this.Contrasenias.Add(ClonarContrasenia(unaContrasenia));
+            this.Contrasenias.Add(unaContrasenia);
             autonumerado++;
             return unaContrasenia.Id;
         }
@@ -42,14 +42,13 @@ namespace Negocio.Contrasenias
             
             anterior.Categoria = modificarContrasenia.Categoria;
             anterior.Notas = modificarContrasenia.Notas;
-            Contrasenia clonModificada = ClonarContrasenia(anterior);
-            
+                        
         }
 
         public Contrasenia BuscarPorId(int id)
         {
             foreach (Contrasenia item in Contrasenias)
-                if (item.Id == id) return ClonarContrasenia(item);
+                if (item.Id == id) return item;
             throw new ExcepcionElementoNoExiste();
         }
 
@@ -76,22 +75,6 @@ namespace Negocio.Contrasenias
                     throw new ExcepcionElementoYaExiste();
             }
 
-        }
-
-        private Contrasenia ClonarContrasenia(Contrasenia unaContrasenia)
-        {
-            Contrasenia clonada = new Contrasenia()
-            {
-                Id = unaContrasenia.Id,
-                Sitio = unaContrasenia.Sitio,
-                Notas = unaContrasenia.Notas,
-                Password = unaContrasenia.Password,
-                Usuario = unaContrasenia.Usuario,
-                Categoria = unaContrasenia.Categoria,
-                FechaUltimaModificacion = unaContrasenia.FechaUltimaModificacion,
-                CantidadVecesEncontradaVulnerable = unaContrasenia.CantidadVecesEncontradaVulnerable
-            };
-            return clonada;
         }
 
         

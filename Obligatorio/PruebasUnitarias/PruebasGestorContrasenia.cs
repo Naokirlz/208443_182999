@@ -204,16 +204,7 @@ namespace PruebasUnitarias
             Gestor.ModificarContrasenia(ContraseniaCompleta);
         }
 
-        [TestMethod]
-        public void AlGuardarUnaContraseniaCreadaNoSeModificaMandadaPorParametro()
-        {
-            ContraseniaCompleta.Sitio = "sitioviejo.com";
-            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
-            nuevaContrasenia.Sitio = "12345123451234512345123451";
-            Assert.AreNotEqual("12345123451234512345123451", Gestor.Buscar(nuevaContrasenia.Id).Sitio);
-        }
-
+      
         [TestMethod]
         public void SePuedeBuscarUnaContrasenia()
         {
@@ -238,18 +229,7 @@ namespace PruebasUnitarias
            Gestor.Repositorio.Baja(-2);
         }
 
-        [TestMethod]
-        public void AlModificarUnaContraseniaCreadaNoSeModificaMandadaPorParametro()
-        {
-            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
-            string datoAnterior = nuevaContrasenia.Sitio;
-            nuevaContrasenia.Sitio = "12345123451234512345123451";
-           
-            Contrasenia buscada = Gestor.Buscar(idNuevaContrasenia);
-            Assert.AreNotEqual("12345123451234512345123451", buscada.Sitio);
-        }
-
+     
         [TestMethod]
         public void SeAsignaElIdAutoincremental()
         {
@@ -592,31 +572,27 @@ namespace PruebasUnitarias
 
         //se pueden listar las contrasenias
         [TestMethod]
-        public void SePuedePuedenListarLasContrasenias()
+        public void SePuedenListarLasContrasenias()
         {
             int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             Contrasenia unaC = Gestor.Buscar(idNuevaContrasenia);
-            
-            ContraseniaCompleta.Sitio = "otro sitio distinto";
-            
-            int idOtraNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            Contrasenia dosC = Gestor.Buscar(idNuevaContrasenia);
-                        
+
+            Contrasenia nuevaContrasenia = new Contrasenia()
+            {
+                Sitio = "otrositio.com",
+                Categoria = new Categoria("Categoria"),
+                Usuario = "usuario",
+                Notas = "clave de netflix",
+                FechaUltimaModificacion = DateTime.Now,
+                Password = new Password("secreto")
+            };
+
+            int idOtraNuevaContrasenia = Gestor.Alta(nuevaContrasenia);
+                                    
             Assert.AreEqual(2, Gestor.ObtenerTodas().Count());
         }
 
-        //no se guarda la contraseña que mando por parámetro
-        [TestMethod]
-        public void SeGuardaLaContraseniaQueSeMandaPorParametro()
-        {
-            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            Contrasenia unaC = Gestor.Buscar(idNuevaContrasenia);
-            ContraseniaCompleta.Sitio = "otro sitio distinto";
-            Contrasenia guardada = Gestor.Buscar(unaC.Id);
-            Assert.AreNotEqual("otro sitio distinto", guardada.Sitio);
-        }
-
-        //No se encuentra una contraseña que no existe
+              
         [TestMethod]
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void NoSeEncuentraContraseniaQueNoExiste()

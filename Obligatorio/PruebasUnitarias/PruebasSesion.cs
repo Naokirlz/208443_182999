@@ -337,7 +337,7 @@ namespace PruebasUnitarias
         public void NoSePuedeEjecutarListarContraseniasSiNoSeEstaLogueado()
         {
             sesionPrueba.LogOut();
-            sesionPrueba.ListarContrasenias();
+            sesionPrueba.ObtenerTodasLasContrasenias();
         }
 
         [TestMethod]
@@ -352,7 +352,7 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeEjecutarAltaContraseniaEstandoLogueado()
         {
-            int cantidadAntes = sesionPrueba.ListarContrasenias().Count();
+            int cantidadAntes = sesionPrueba.ObtenerTodasLasContrasenias().Count();
             
             Contrasenia contraseniaPrueba = new Contrasenia()
             {
@@ -364,16 +364,16 @@ namespace PruebasUnitarias
             };
 
             sesionPrueba.AltaContrasenia(contraseniaPrueba);
-            Assert.AreEqual(1, sesionPrueba.ListarContrasenias().Count() - cantidadAntes);
+            Assert.AreEqual(1, sesionPrueba.ObtenerTodasLasContrasenias().Count() - cantidadAntes);
 
         }
 
         [TestMethod]
         public void SePuedeEjecutarBajaContraseniaEstandoLogueado()
         {
-           int cantidadAntes = sesionPrueba.ListarContrasenias().Count();
+           int cantidadAntes = sesionPrueba.ObtenerTodasLasContrasenias().Count();
            sesionPrueba.BajaContrasenia(pruebaContrasenia.Id);
-           int cantidadDespues = sesionPrueba.ListarContrasenias().Count();
+           int cantidadDespues = sesionPrueba.ObtenerTodasLasContrasenias().Count();
            Assert.AreEqual(1, cantidadAntes - cantidadDespues);
 
         }
@@ -382,7 +382,7 @@ namespace PruebasUnitarias
         public void SePuedeEjecutarModificarContraseniaEstandoLogueado()
         {
 
-            Contrasenia anterior = sesionPrueba.ListarContrasenias().First();
+            Contrasenia anterior = sesionPrueba.ObtenerTodasLasContrasenias().First();
             string sitioViejo = anterior.Sitio;
                         
             Contrasenia contraseniaModificar = new Contrasenia()
@@ -397,7 +397,7 @@ namespace PruebasUnitarias
 
             sesionPrueba.ModificarContrasenia(contraseniaModificar);
 
-            Contrasenia nueva = sesionPrueba.ListarContrasenias().First();
+            Contrasenia nueva = sesionPrueba.ObtenerTodasLasContrasenias().First();
             string sitioNuevo = anterior.Sitio;
 
             Assert.AreNotEqual(sitioViejo, sitioNuevo);
@@ -407,7 +407,7 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeEjecutarBuscarContraseniaEstandoLogueado()
         {
-            int id = sesionPrueba.ListarContrasenias().First().Id;
+            int id = sesionPrueba.ObtenerTodasLasContrasenias().First().Id;
             Contrasenia buscada = sesionPrueba.BuscarContrasenia(id);
             Assert.IsNotNull(buscada);
         }
@@ -415,7 +415,7 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeEjecutarListarContraseniasEstandoLogueado()
         {
-            Contrasenia buscada = sesionPrueba.ListarContrasenias().First();
+            Contrasenia buscada = sesionPrueba.ObtenerTodasLasContrasenias().First();
             Assert.IsNotNull(buscada);
         }
 
@@ -596,7 +596,7 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeModificarElPassword()
         {
-            Contrasenia aModificar = sesionPrueba.ListarContrasenias().First();
+            Contrasenia aModificar = sesionPrueba.ObtenerTodasLasContrasenias().First();
             int idPass = aModificar.Id;
             string passAnterior = sesionPrueba.MostrarPassword(aModificar);
             aModificar.Password.Clave = "secretoNuevo";
