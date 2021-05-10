@@ -41,11 +41,19 @@ namespace Interfaz.TarjetasCredito
                     return;
                 }
 
-                this.Sesion.BajaTarjetaCredito(tarjetaSeleccionada.Id);
-                Alerta("Tarjeta Eliminada con éxito!!", AlertaToast.enmTipo.Exito);
-                MessageBox.Show("Tarjeta Eliminada con éxito!!");
-                this.cmbTarjeta.Text = "";
-                Refrescar();
+                DialogResult respuesta = MessageBox.Show("Realmente desea eliminar la tarjeta?",
+                            "Alerta",
+                            MessageBoxButtons.YesNoCancel,
+                            MessageBoxIcon.Warning);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    this.Sesion.BajaTarjetaCredito(tarjetaSeleccionada.Id);
+                    Alerta("Tarjeta Eliminada con éxito!!", AlertaToast.enmTipo.Exito);
+                    MessageBox.Show("Tarjeta Eliminada con éxito!!");
+                    this.cmbTarjeta.Text = "";
+                    Refrescar();
+                }
             }
             catch (ExcepcionElementoNoExiste unaExcepcion)
             {

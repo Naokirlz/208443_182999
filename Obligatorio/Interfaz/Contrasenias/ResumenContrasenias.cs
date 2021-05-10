@@ -116,9 +116,17 @@ namespace Interfaz.Contrasenias
                         CargarTabla();
                         Alerta("Contraseña modificada con éxito!!", AlertaToast.enmTipo.Exito);
                     }
-                    catch (ExcepcionLargoTexto excep)
+                    catch (ExcepcionElementoYaExiste unaExcepcion)
                     {
-                        Alerta(excep.Message, AlertaToast.enmTipo.Error);
+                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
+                    }
+                    catch (ExcepcionLargoTexto unaExcepcion)
+                    {
+                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
+                    }
+                    catch (ExcepcionElementoNoExiste unaExcepcion)
+                    {
+                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
                     }
                 }
                 else if (e.ColumnIndex == 7)
