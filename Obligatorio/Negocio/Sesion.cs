@@ -15,7 +15,7 @@ namespace Negocio
         private GestorContrasenias GestorContrasenia { get; set; }
         private GestorTarjetaCredito GestorTarjetaCredito { get; set; }
         public List<IFuente> MisFuentes { get; set; }
-        public string PasswordMaestro { get; set; }
+        private string PasswordMaestro { get; set; }
         private bool Logueado { get; set; }
        
         private Sesion()
@@ -42,7 +42,7 @@ namespace Negocio
             if (password != PasswordMaestro || PasswordMaestro == "") 
                 throw new ExcepcionAccesoDenegado("El usuario o contraseña no son coinciden.");
             this.Logueado = true;
-            //InsertarDatosDeMuestra();
+           
         }
 
         public IEnumerable<Contrasenia> ContraseniasVulnerables(IFuente fuente)
@@ -183,14 +183,13 @@ namespace Negocio
             this.MisFuentes = new List<IFuente>();
         }
 
-        private void InsertarDatosDeMuestra()
+        public void InsertarDatosDeMuestra()
         {
             int idestudio = AltaCategoria("Estudio");
             Categoria estudio = GestorCategoria.BuscarCategoriaPorId(idestudio);
             AltaCategoria("Hogar");
             AltaCategoria("Familia");
             AltaCategoria("Trabajo");
-
 
             TarjetaCredito nueva = new TarjetaCredito() { 
                 Categoria = estudio,
