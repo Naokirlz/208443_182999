@@ -11,9 +11,9 @@ namespace Negocio
     public class Sesion
     {
         private static Sesion Instancia;
-        public GestorCategorias GestorCategoria { get; set; }
-        public GestorContrasenias GestorContrasenia { get; set; }
-        public GestorTarjetaCredito GestorTarjetaCredito { get; set; }
+        private GestorCategorias GestorCategoria { get; set; }
+        private GestorContrasenias GestorContrasenia { get; set; }
+        private GestorTarjetaCredito GestorTarjetaCredito { get; set; }
         public List<IFuente> MisFuentes { get; set; }
         public string PasswordMaestro { get; set; }
         private bool Logueado { get; set; }
@@ -173,6 +173,14 @@ namespace Negocio
         public void LogOut()
         {
             this.Logueado = false;
+        }
+
+        public void VaciarDatosPrueba()
+        {
+            this.GestorContrasenia = new GestorContrasenias();
+            this.GestorTarjetaCredito = new GestorTarjetaCredito();
+            this.GestorCategoria = new GestorCategorias();
+            this.MisFuentes = new List<IFuente>();
         }
 
         private void InsertarDatosDeMuestra()

@@ -1,7 +1,6 @@
 ﻿using System;
 using Negocio.Categorias;
 
-
 namespace Negocio.Contrasenias
 {
      

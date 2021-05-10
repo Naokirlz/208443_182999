@@ -178,7 +178,7 @@ namespace Interfaz.Contrasenias
                     try
                     {
                         modificada.Password.Clave = nuevoPassword;
-                        Sesion.GestorContrasenia.ModificarContrasenia(modificada);
+                        Sesion.ModificarContrasenia(modificada);
                         GenerarGrupos();
                         Grupo grupoActualizado = Grupos[this.GrupoMostrando];
                         CargarTablaPorGrupo(grupoActualizado);

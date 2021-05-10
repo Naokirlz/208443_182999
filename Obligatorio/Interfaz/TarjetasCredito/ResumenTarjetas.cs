@@ -20,7 +20,7 @@ namespace Interfaz.TarjetasCredito
         public ResumenTarjetas()
         {
             InitializeComponent();
-            Tarjetas = Sesion.GestorTarjetaCredito.ObtenerTodas();
+            Tarjetas = Sesion.ObtenerTodasLasTarjetas();
 
             DataGridViewButtonColumn columnaBotonVer = new DataGridViewButtonColumn();
             columnaBotonVer.Name = "columnaBotonVer";
