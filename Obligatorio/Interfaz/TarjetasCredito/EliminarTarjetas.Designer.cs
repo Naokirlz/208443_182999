@@ -37,39 +37,49 @@ namespace Interfaz.TarjetasCredito
             // lblTarjeta
             // 
             this.lblTarjeta.AutoSize = true;
-            this.lblTarjeta.Location = new System.Drawing.Point(32, 85);
+            this.lblTarjeta.ForeColor = System.Drawing.Color.White;
+            this.lblTarjeta.Location = new System.Drawing.Point(55, 64);
+            this.lblTarjeta.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblTarjeta.Name = "lblTarjeta";
-            this.lblTarjeta.Size = new System.Drawing.Size(43, 13);
+            this.lblTarjeta.Size = new System.Drawing.Size(69, 21);
             this.lblTarjeta.TabIndex = 38;
             this.lblTarjeta.Text = "Tarjeta ";
             // 
             // cmbTarjeta
             // 
             this.cmbTarjeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTarjeta.Location = new System.Drawing.Point(114, 77);
+            this.cmbTarjeta.Location = new System.Drawing.Point(161, 61);
+            this.cmbTarjeta.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.cmbTarjeta.Name = "cmbTarjeta";
-            this.cmbTarjeta.Size = new System.Drawing.Size(168, 21);
+            this.cmbTarjeta.Size = new System.Drawing.Size(348, 29);
             this.cmbTarjeta.TabIndex = 37;
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(345, 155);
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnEliminar.Location = new System.Drawing.Point(646, 333);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(98, 26);
-            this.btnEliminar.TabIndex = 39;
+            this.btnEliminar.Size = new System.Drawing.Size(147, 33);
+            this.btnEliminar.TabIndex = 44;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // EliminarTarjetas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.lblTarjeta);
             this.Controls.Add(this.cmbTarjeta);
+            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "EliminarTarjetas";
-            this.Size = new System.Drawing.Size(516, 332);
+            this.Size = new System.Drawing.Size(814, 384);
             this.ResumeLayout(false);
             this.PerformLayout();
 

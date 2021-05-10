@@ -26,7 +26,7 @@ namespace Interfaz.TarjetasCredito
         {
             BindingList<TarjetaCredito> bindinglist = new BindingList<TarjetaCredito>();
             BindingSource bSource = new BindingSource();
-            bSource.DataSource = this.Sesion.GestorTarjetaCredito.ObtenerTodas();
+            bSource.DataSource = this.Sesion.ObtenerTodasLasTarjetas();
             this.cmbTarjeta.DataSource = bSource;
         }
 
@@ -37,19 +37,26 @@ namespace Interfaz.TarjetasCredito
                 TarjetaCredito tarjetaSeleccionada = (TarjetaCredito)this.cmbTarjeta.SelectedItem;
                 if (tarjetaSeleccionada == null)
                 {
-                    MessageBox.Show("Seleccione al menos una Tarjeta de Crédito");
+                    Alerta("Seleccione al menos una Tarjeta de Crédito", AlertaToast.enmTipo.Error);
                     return;
                 }
 
                 this.Sesion.BajaTarjetaCredito(tarjetaSeleccionada.Id);
+                Alerta("Tarjeta Eliminada con éxito!!", AlertaToast.enmTipo.Exito);
                 MessageBox.Show("Tarjeta Eliminada con éxito!!");
                 this.cmbTarjeta.Text = "";
                 Refrescar();
             }
             catch (ExcepcionElementoNoExiste unaExcepcion)
             {
-                MessageBox.Show(unaExcepcion.Message);
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
             }
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }
