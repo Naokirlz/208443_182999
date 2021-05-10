@@ -46,12 +46,44 @@ namespace Interfaz.Vulnerabilidades
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            if(this.txtEntradaFuenteLocal.Text.Length > 32767)
+            {
+                Alerta("El texto ha superado el límite de caracteres.", AlertaToast.enmTipo.Error);
+            }
             string[] fuentes = this.txtEntradaFuenteLocal.Text.Split('\n');
+            
             foreach(string fila in fuentes)
             {
-                FuenteLocal.AgregarPasswordOContraseniaVulnerable(fila.TrimEnd('\r'));
+                string texto = fila.TrimEnd('\r');
+                
+                string sinEspacios = texto.Replace(" ", "");
+                bool soloNum = true;
+                foreach (char digito in sinEspacios)
+                {
+                    if (!EsNumero(digito)) soloNum = false;
+                }
+                if (soloNum) texto = sinEspacios;
+
+                FuenteLocal.AgregarPasswordOContraseniaVulnerable(texto);
             }
             this.txtEntradaFuenteLocal.Text = "";
+            Alerta("La lista ha sido guardada con éxito!", AlertaToast.enmTipo.Exito);
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
+        }
+
+        public static bool EsNumero(char digito)
+        {
+            int convertido = Convert.ToInt32(digito);
+
+            if (convertido > 57) return false;
+            else if (convertido < 48) return false;
+            return true;
+
         }
     }
 }
