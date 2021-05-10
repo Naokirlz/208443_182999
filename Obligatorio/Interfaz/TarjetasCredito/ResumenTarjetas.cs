@@ -26,7 +26,7 @@ namespace Interfaz.TarjetasCredito
             columnaBotonVer.Name = "columnaBotonVer";
             columnaBotonVer.Text = "Ver";
             columnaBotonVer.HeaderText = "Ver";
-            int columnRevelarIndex = 6;
+            int columnRevelarIndex = 5;
             if (dgvTarjetas.Columns["columnaBotonVer"] == null)
             {
                 this.dgvTarjetas.Columns.Insert(columnRevelarIndex, columnaBotonVer);
@@ -37,7 +37,7 @@ namespace Interfaz.TarjetasCredito
             columnaBotonModificar.Name = "columnaBotonModificar";
             columnaBotonModificar.Text = "Modificar";
             columnaBotonModificar.HeaderText = "Modificar";
-            int columnModificarIndex = 7;
+            int columnModificarIndex = 6;
             if (dgvTarjetas.Columns["columnaBotonModificar"] == null)
             {
                 this.dgvTarjetas.Columns.Insert(columnModificarIndex, columnaBotonModificar);
@@ -48,7 +48,7 @@ namespace Interfaz.TarjetasCredito
             columnaBotonEliminar.Name = "columnaBotonEliminar";
             columnaBotonEliminar.Text = "Eliminar";
             columnaBotonEliminar.HeaderText = "Eliminar";
-            int columnEliminarIndex = 8;
+            int columnEliminarIndex = 7;
             if (dgvTarjetas.Columns["columnaBotonEliminar"] == null)
             {
                 this.dgvTarjetas.Columns.Insert(columnEliminarIndex, columnaBotonEliminar);
@@ -70,7 +70,6 @@ namespace Interfaz.TarjetasCredito
                     tarjeta.Nombre,
                     tarjeta.Tipo,
                     FormatoANumeroDeTarjeta(tarjeta.Numero),
-                    tarjeta.Vencimiento.ToShortDateString(),
                 };
                 this.dgvTarjetas.Rows.Add(fila);
             }
@@ -114,15 +113,15 @@ namespace Interfaz.TarjetasCredito
                 {
                     if (tarjeta.Id.ToString() == id) tarjetaSeleccionada = tarjeta;
                 }
-                if (e.ColumnIndex == 6)
+                if (e.ColumnIndex == 5)
                 {
                     MostrarTarjeta formMostrar = new MostrarTarjeta(tarjetaSeleccionada);
-                }else if(e.ColumnIndex == 7)
+                }else if(e.ColumnIndex == 6)
                 {
                     ModificarTarjeta formModificar = new ModificarTarjeta(tarjetaSeleccionada);
                     CargarTabla();
                 }
-                else if (e.ColumnIndex == 8)
+                else if (e.ColumnIndex == 7)
                 {
                     try
                     {

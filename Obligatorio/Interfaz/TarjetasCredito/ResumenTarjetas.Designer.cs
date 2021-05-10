@@ -39,7 +39,6 @@ namespace Interfaz.TarjetasCredito
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tarjeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTarjetas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,8 +65,7 @@ namespace Interfaz.TarjetasCredito
             this.Categoria,
             this.Nombre,
             this.Tipo,
-            this.Tarjeta,
-            this.Vencimiento});
+            this.Tarjeta});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -137,13 +135,6 @@ namespace Interfaz.TarjetasCredito
             this.Tarjeta.ReadOnly = true;
             this.Tarjeta.Width = 88;
             // 
-            // Vencimiento
-            // 
-            this.Vencimiento.HeaderText = "Vencimiento";
-            this.Vencimiento.Name = "Vencimiento";
-            this.Vencimiento.ReadOnly = true;
-            this.Vencimiento.Width = 132;
-            // 
             // ResumenTarjetas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -167,6 +158,5 @@ namespace Interfaz.TarjetasCredito
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tarjeta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Vencimiento;
     }
 }

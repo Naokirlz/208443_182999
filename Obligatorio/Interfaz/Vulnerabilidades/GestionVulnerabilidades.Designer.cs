@@ -30,46 +30,67 @@ namespace Interfaz.Vulnerabilidades
         private void InitializeComponent()
         {
             this.pnlGestor = new System.Windows.Forms.Panel();
-            this.btnResumenVulnerabilidades = new System.Windows.Forms.Button();
-            this.btnModificarFuenteLocal = new System.Windows.Forms.Button();
+            this.btnResumen = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // pnlGestor
             // 
-            this.pnlGestor.Location = new System.Drawing.Point(193, 22);
+            this.pnlGestor.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlGestor.Location = new System.Drawing.Point(0, 146);
+            this.pnlGestor.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.pnlGestor.Name = "pnlGestor";
-            this.pnlGestor.Size = new System.Drawing.Size(516, 332);
+            this.pnlGestor.Size = new System.Drawing.Size(814, 371);
             this.pnlGestor.TabIndex = 2;
             // 
-            // btnResumenVulnerabilidades
+            // btnResumen
             // 
-            this.btnResumenVulnerabilidades.Location = new System.Drawing.Point(3, 90);
-            this.btnResumenVulnerabilidades.Name = "btnResumenVulnerabilidades";
-            this.btnResumenVulnerabilidades.Size = new System.Drawing.Size(185, 23);
-            this.btnResumenVulnerabilidades.TabIndex = 9;
-            this.btnResumenVulnerabilidades.Text = "Resumen";
-            this.btnResumenVulnerabilidades.UseVisualStyleBackColor = true;
-            this.btnResumenVulnerabilidades.Click += new System.EventHandler(this.btnResumenVulnerabilidades_Click);
+            this.btnResumen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnResumen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResumen.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResumen.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnResumen.IconChar = FontAwesome.Sharp.IconChar.ChartLine;
+            this.btnResumen.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnResumen.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnResumen.Location = new System.Drawing.Point(45, 32);
+            this.btnResumen.Name = "btnResumen";
+            this.btnResumen.Size = new System.Drawing.Size(104, 84);
+            this.btnResumen.TabIndex = 13;
+            this.btnResumen.Text = "Resumen";
+            this.btnResumen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnResumen.UseVisualStyleBackColor = true;
+            this.btnResumen.Click += new System.EventHandler(this.btnResumenVulnerabilidades_Click);
             // 
-            // btnModificarFuenteLocal
+            // iconButton1
             // 
-            this.btnModificarFuenteLocal.Location = new System.Drawing.Point(3, 119);
-            this.btnModificarFuenteLocal.Name = "btnModificarFuenteLocal";
-            this.btnModificarFuenteLocal.Size = new System.Drawing.Size(185, 23);
-            this.btnModificarFuenteLocal.TabIndex = 8;
-            this.btnModificarFuenteLocal.Text = "Fuente Local";
-            this.btnModificarFuenteLocal.UseVisualStyleBackColor = true;
-            this.btnModificarFuenteLocal.Click += new System.EventHandler(this.btnModificarFuenteLocal_Click);
+            this.iconButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.ClipboardList;
+            this.iconButton1.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.Location = new System.Drawing.Point(203, 32);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Size = new System.Drawing.Size(104, 84);
+            this.iconButton1.TabIndex = 14;
+            this.iconButton1.Text = "Fuente";
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconButton1.UseVisualStyleBackColor = true;
+            this.iconButton1.Click += new System.EventHandler(this.btnModificarFuenteLocal_Click);
             // 
             // GestionVulnerabilidades
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnResumenVulnerabilidades);
-            this.Controls.Add(this.btnModificarFuenteLocal);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.Controls.Add(this.iconButton1);
+            this.Controls.Add(this.btnResumen);
             this.Controls.Add(this.pnlGestor);
+            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "GestionVulnerabilidades";
-            this.Size = new System.Drawing.Size(729, 376);
+            this.Size = new System.Drawing.Size(814, 517);
             this.ResumeLayout(false);
 
         }
@@ -77,7 +98,7 @@ namespace Interfaz.Vulnerabilidades
         #endregion
 
         private System.Windows.Forms.Panel pnlGestor;
-        private System.Windows.Forms.Button btnResumenVulnerabilidades;
-        private System.Windows.Forms.Button btnModificarFuenteLocal;
+        private FontAwesome.Sharp.IconButton btnResumen;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }
