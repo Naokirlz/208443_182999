@@ -132,49 +132,53 @@ namespace Interfaz.Contrasenias
 
         private void dgvContraseniasPorGrupo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Grupo grupoMostrando = Grupos[this.GrupoMostrando];
-            string password = grupoMostrando.Contrasenias[e.RowIndex].Password.Clave;
-
-            if (e.ColumnIndex == 5)
+            if (e.RowIndex != -1)
             {
-                if(dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value.ToString() == "Revelar")
-                {
-                    dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value = password;
-                    dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value = "Ocultar";
-                }
-                else
-                {
-                    password = new String('\u25CF', password.Length);
-                    dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value = password;
-                    dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value = "Revelar";
-                }
+                Grupo grupoMostrando = Grupos[this.GrupoMostrando];
+                string password = grupoMostrando.Contrasenias[e.RowIndex].Password.Clave;
 
-            }
-            else if(e.ColumnIndex == 6)
-            {
-                string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", password);
-                //string password = (string)dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value;
-                if (nuevoPassword == "") return;
-                Contrasenia aModificar = grupoMostrando.Contrasenias[e.RowIndex];
-                Contrasenia modificada = new Contrasenia() { 
-                    Sitio=aModificar.Sitio,
-                    Categoria = aModificar.Categoria,
-                    Id=aModificar.Id,
-                    Notas=aModificar.Notas,
-                    Usuario=aModificar.Usuario
-                }; 
-                modificada.Password.Clave = nuevoPassword;
-                try
+                if (e.ColumnIndex == 5)
                 {
-                    Sesion.GestorContrasenia.ModificarContrasenia(modificada);
-                    GenerarGrupos();
-                    Grupo grupoActualizado = Grupos[this.GrupoMostrando];
-                    CargarTablaPorGrupo(grupoActualizado);
-                    CargarTabla();
+                    if (dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value.ToString() == "Revelar")
+                    {
+                        dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value = password;
+                        dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value = "Ocultar";
+                    }
+                    else
+                    {
+                        password = new String('\u25CF', password.Length);
+                        dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value = password;
+                        dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["columnaRevelar"].Value = "Revelar";
+                    }
+
                 }
-                catch(Exception excep)
+                else if (e.ColumnIndex == 6)
                 {
-                    MessageBox.Show(excep.Message);
+                    string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", password);
+                    //string password = (string)dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value;
+                    if (nuevoPassword == "") return;
+                    Contrasenia aModificar = grupoMostrando.Contrasenias[e.RowIndex];
+                    Contrasenia modificada = new Contrasenia()
+                    {
+                        Sitio = aModificar.Sitio,
+                        Categoria = aModificar.Categoria,
+                        Id = aModificar.Id,
+                        Notas = aModificar.Notas,
+                        Usuario = aModificar.Usuario
+                    };
+                    modificada.Password.Clave = nuevoPassword;
+                    try
+                    {
+                        Sesion.GestorContrasenia.ModificarContrasenia(modificada);
+                        GenerarGrupos();
+                        Grupo grupoActualizado = Grupos[this.GrupoMostrando];
+                        CargarTablaPorGrupo(grupoActualizado);
+                        CargarTabla();
+                    }
+                    catch (Exception excep)
+                    {
+                        MessageBox.Show(excep.Message);
+                    }
                 }
             }
         }

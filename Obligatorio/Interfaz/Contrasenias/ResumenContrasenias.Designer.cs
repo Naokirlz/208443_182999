@@ -34,6 +34,7 @@ namespace Interfaz.Contrasenias
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvContrasenias = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sitio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +61,7 @@ namespace Interfaz.Contrasenias
             this.dgvContrasenias.ColumnHeadersHeight = 30;
             this.dgvContrasenias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvContrasenias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.Categoria,
             this.Sitio,
             this.Usuario,
@@ -95,6 +97,14 @@ namespace Interfaz.Contrasenias
             this.dgvContrasenias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvContrasenias.Size = new System.Drawing.Size(808, 340);
             this.dgvContrasenias.TabIndex = 3;
+            this.dgvContrasenias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContrasenias_CellClick);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "#";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 42;
             // 
             // Categoria
             // 
@@ -133,6 +143,7 @@ namespace Interfaz.Contrasenias
             this.Controls.Add(this.dgvContrasenias);
             this.Name = "ResumenContrasenias";
             this.Size = new System.Drawing.Size(814, 384);
+            this.Click += new System.EventHandler(this.ResumenContrasenias_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dgvContrasenias)).EndInit();
             this.ResumeLayout(false);
 
@@ -140,6 +151,7 @@ namespace Interfaz.Contrasenias
 
         #endregion
         private System.Windows.Forms.DataGridView dgvContrasenias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sitio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
