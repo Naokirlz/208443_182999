@@ -190,5 +190,13 @@ namespace PruebasUnitarias
             string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
             Assert.AreEqual("VERDE_OSCURO", fortaleza);
         }
+
+        [TestMethod]
+        public void SePuedeDetectarPasswordVerdeOscuroPorBug()
+        {
+            ContraseniaCompleta.Password.Clave = "u9_ANu9_ANu9_ANu9_AN";
+            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            Assert.AreEqual("VERDE_OSCURO", fortaleza);
+        }
     }
 }

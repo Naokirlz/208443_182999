@@ -78,7 +78,7 @@ namespace Interfaz.Contrasenias
         private void GenerarGrupos()
         {
             this.Grupos.Clear();
-            string[] grupos = { "Rojo", "Naranja", "Amarillo", "Verde Claro", "Verde Oscuro" };
+            string[] grupos = { "Rojo", "Naranja", "Amarillo", "Verde_Claro", "Verde_Oscuro" };
             foreach(string grupo in grupos)
             {
                 Grupo nuevo = new Grupo()
