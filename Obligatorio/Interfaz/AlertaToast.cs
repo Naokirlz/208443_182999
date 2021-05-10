@@ -70,7 +70,7 @@ namespace Interfaz
             switch (this.Accion)
             {
                 case enmAccion.esperar:
-                    timTransicion.Interval = 7500;
+                    timTransicion.Interval = 5000;
                     Accion = enmAccion.cerrar;
                     break;
                 case enmAccion.iniciar:

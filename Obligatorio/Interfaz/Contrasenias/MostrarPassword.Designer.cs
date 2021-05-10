@@ -67,7 +67,7 @@ namespace Interfaz.Contrasenias
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(64)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(416, 0);
+            this.panel2.Location = new System.Drawing.Point(442, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(5);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(8, 437);
@@ -80,7 +80,7 @@ namespace Interfaz.Contrasenias
             this.panel3.Location = new System.Drawing.Point(8, 429);
             this.panel3.Margin = new System.Windows.Forms.Padding(5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(408, 8);
+            this.panel3.Size = new System.Drawing.Size(434, 8);
             this.panel3.TabIndex = 2;
             // 
             // panel4
@@ -93,7 +93,7 @@ namespace Interfaz.Contrasenias
             this.panel4.Location = new System.Drawing.Point(8, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(5);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(408, 81);
+            this.panel4.Size = new System.Drawing.Size(434, 81);
             this.panel4.TabIndex = 3;
             // 
             // btnCerrar
@@ -105,7 +105,7 @@ namespace Interfaz.Contrasenias
             this.btnCerrar.IconColor = System.Drawing.Color.Gainsboro;
             this.btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCerrar.IconSize = 15;
-            this.btnCerrar.Location = new System.Drawing.Point(382, 3);
+            this.btnCerrar.Location = new System.Drawing.Point(408, 3);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(26, 23);
             this.btnCerrar.TabIndex = 3;
@@ -153,7 +153,7 @@ namespace Interfaz.Contrasenias
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.Enabled = false;
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(168, 104);
+            this.cmbCategoria.Location = new System.Drawing.Point(200, 104);
             this.cmbCategoria.Margin = new System.Windows.Forms.Padding(5);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(232, 29);
@@ -162,7 +162,7 @@ namespace Interfaz.Contrasenias
             // txtNotas
             // 
             this.txtNotas.Enabled = false;
-            this.txtNotas.Location = new System.Drawing.Point(168, 254);
+            this.txtNotas.Location = new System.Drawing.Point(200, 254);
             this.txtNotas.Margin = new System.Windows.Forms.Padding(5);
             this.txtNotas.Multiline = true;
             this.txtNotas.Name = "txtNotas";
@@ -183,7 +183,7 @@ namespace Interfaz.Contrasenias
             // txtPassword
             // 
             this.txtPassword.Enabled = false;
-            this.txtPassword.Location = new System.Drawing.Point(168, 217);
+            this.txtPassword.Location = new System.Drawing.Point(200, 217);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(232, 27);
@@ -203,7 +203,7 @@ namespace Interfaz.Contrasenias
             // txtUsuario
             // 
             this.txtUsuario.Enabled = false;
-            this.txtUsuario.Location = new System.Drawing.Point(168, 180);
+            this.txtUsuario.Location = new System.Drawing.Point(200, 180);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(5);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(232, 27);
@@ -223,7 +223,7 @@ namespace Interfaz.Contrasenias
             // txtSitio
             // 
             this.txtSitio.Enabled = false;
-            this.txtSitio.Location = new System.Drawing.Point(168, 143);
+            this.txtSitio.Location = new System.Drawing.Point(200, 143);
             this.txtSitio.Margin = new System.Windows.Forms.Padding(5);
             this.txtSitio.Name = "txtSitio";
             this.txtSitio.Size = new System.Drawing.Size(232, 27);
@@ -249,7 +249,7 @@ namespace Interfaz.Contrasenias
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(424, 437);
+            this.ClientSize = new System.Drawing.Size(450, 437);
             this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.cmbCategoria);
             this.Controls.Add(this.txtNotas);

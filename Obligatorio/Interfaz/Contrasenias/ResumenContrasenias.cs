@@ -97,6 +97,7 @@ namespace Interfaz.Contrasenias
                 else if (e.ColumnIndex == 6)
                 {
                     string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", contraseniaSeleccionada.Password.Clave);
+                    Password nuevoPass = new Password(nuevoPassword);
 
                     if (nuevoPassword == "") return;
                     Contrasenia modificada = new Contrasenia()
@@ -106,12 +107,11 @@ namespace Interfaz.Contrasenias
                         Id = contraseniaSeleccionada.Id,
                         Notas = contraseniaSeleccionada.Notas,
                         Usuario = contraseniaSeleccionada.Usuario,
-                        Password = contraseniaSeleccionada.Password
+                        Password = nuevoPass
                     };
                     
                     try
                     {
-                        modificada.Password.Clave = nuevoPassword;
                         Sesion.ModificarContrasenia(modificada);
                         CargarTabla();
                         Alerta("Contraseña modificada con éxito!!", AlertaToast.enmTipo.Exito);

@@ -164,6 +164,7 @@ namespace Interfaz.Contrasenias
                     string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", password);
                     //string password = (string)dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value;
                     if (nuevoPassword == "") return;
+                    Password nuevoPass = new Password(nuevoPassword);
 
                     Contrasenia modificada = new Contrasenia()
                     {
@@ -172,12 +173,11 @@ namespace Interfaz.Contrasenias
                         Id = contraseniaSeleccionada.Id,
                         Notas = contraseniaSeleccionada.Notas,
                         Usuario = contraseniaSeleccionada.Usuario,
-                        Password = contraseniaSeleccionada.Password
+                        Password = nuevoPass
                     };
                     
                     try
                     {
-                        modificada.Password.Clave = nuevoPassword;
                         Sesion.ModificarContrasenia(modificada);
                         GenerarGrupos();
                         Grupo grupoActualizado = Grupos[this.GrupoMostrando];

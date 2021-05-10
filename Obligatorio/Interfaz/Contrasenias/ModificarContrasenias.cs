@@ -68,15 +68,17 @@ namespace Interfaz.Contrasenias
                     Alerta("Seleccione al menos una categoría", AlertaToast.enmTipo.Error);
                     return;
                 }
+                Password nuevoPass = new Password(this.txtPassword.Text);
+                Contrasenia aModificar = new Contrasenia() {
+                    Categoria = (Categoria)cmbCategoria.SelectedItem,
+                    Sitio = this.txtSitio.Text,
+                    Usuario = this.txtUsuario.Text,
+                    Notas = this.txtNotas.Text,
+                    Password = nuevoPass
+                };
 
-                contraseniaSeleccionada.Categoria = (Categoria)cmbCategoria.SelectedItem;
-                contraseniaSeleccionada.Sitio = this.txtSitio.Text;
-                contraseniaSeleccionada.Usuario = this.txtUsuario.Text;
-                contraseniaSeleccionada.Notas = this.txtNotas.Text;
-                contraseniaSeleccionada.Password.Clave = this.txtPassword.Text;
-
-                this.Sesion.ModificarContrasenia(contraseniaSeleccionada);
-                Alerta("Contraseña " + contraseniaSeleccionada + " fue modificada con éxito!!", AlertaToast.enmTipo.Exito);
+                this.Sesion.ModificarContrasenia(aModificar);
+                Alerta("Contraseña " + aModificar + " fue modificada con éxito!!", AlertaToast.enmTipo.Exito);
                 LimpiarCampos();
                 Refrescar();
             }

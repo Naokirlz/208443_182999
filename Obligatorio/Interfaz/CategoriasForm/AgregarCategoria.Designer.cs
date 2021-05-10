@@ -63,7 +63,7 @@ namespace Interfaz
             // txtNombre
             // 
             this.txtNombre.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(139, 70);
+            this.txtNombre.Location = new System.Drawing.Point(172, 70);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(290, 27);
             this.txtNombre.TabIndex = 9;

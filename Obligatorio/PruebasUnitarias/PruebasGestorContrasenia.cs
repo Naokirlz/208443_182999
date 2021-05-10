@@ -317,17 +317,6 @@ namespace PruebasUnitarias
             Assert.AreEqual(nuevaCat.Nombre, Gestor.Buscar(idNuevaContrasenia).Categoria.Nombre);
         }
 
-        //se modifica la fecha de modificacion correctamente cuando se modifica un atributo
-        //[TestMethod]
-        //public void SeModificaLaFechaDeModificacionAlModificarAtributos()
-        //{
-        //    Contrasenia nuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-        //    nuevaContrasenia.Sitio = "sitio nuevo";
-        //    Contrasenia modificada = Gestor.ModificarContrasenia(nuevaContrasenia);
-        //    Assert.AreNotEqual(nuevaContrasenia.FechaUltimaModificacion, modificada.FechaUltimaModificacion);
-        //}
-
-        //se puede cambiar las notas
         [TestMethod]
         public void SePuedeModificarLasNotas()
         {
@@ -485,7 +474,7 @@ namespace PruebasUnitarias
             }
             Assert.IsTrue(hayNumeros && NohayOtro);
         }
-        //se puede autogenerar password con especiales
+        
         [TestMethod]
         public void SePuedeGenerarPasswordConEspeciales()
         {
@@ -513,7 +502,7 @@ namespace PruebasUnitarias
             }
             Assert.IsTrue(hayEspeciales && NohayOtro);
         }
-        //se puede autogenerar password con todos los tipos
+     
         [TestMethod]
         public void SePuedeGenerarPasswordConTodosLosTipos()
         {
@@ -546,22 +535,8 @@ namespace PruebasUnitarias
                 else NohayOtro = false;
             }
             Assert.IsTrue(hayMayuscula && hayMinuscula && hayEspeciales && hayNumeros && NohayOtro);
-        }
+        }    
 
-        //la password no se guarda en texto plano
-        [TestMethod]
-        public void SeGuardaElPasswordCodificado()
-        {
-            ContraseniaCompleta.Password.Clave = "secreto";
-            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            Contrasenia nueva = Gestor.Buscar(idNuevaContrasenia);
-            Assert.AreNotEqual("secreto", nueva.Password);
-        }
-
-        //se puede desencriptar el password
-      
-
-        //sitio y usuario tienen solo una contraseña
         [TestMethod]
         [ExpectedException(typeof(ExcepcionElementoYaExiste))]
         public void NoSePuedenGuardarDosPasswrodConMismoUsuarioYSitio()
@@ -570,7 +545,6 @@ namespace PruebasUnitarias
             Gestor.Alta(ContraseniaCompleta);
         }
 
-        //se pueden listar las contrasenias
         [TestMethod]
         public void SePuedenListarLasContrasenias()
         {
@@ -613,7 +587,6 @@ namespace PruebasUnitarias
         [TestMethod]
         public void AlAutogenerarUnPasswordNoMeDevuelveTodosLosCaracteresIguales()
         {
-            //no sería una buena prueba, hay que refactorizar, el que no me devuelva dos caracteres seguidos iguales surge porque devolvía todos los caracteres iguales, la intención es que no los devolviera todos iguales, pero dos iguales podía haber, pero para lograrlo a veces pasa y otras no, hay que verlo
             
             Password nuevo = new Password("")
             {
@@ -672,8 +645,6 @@ namespace PruebasUnitarias
             Assert.AreEqual("AAAAAA", contrasenias.ElementAt(0).Categoria.Nombre);
             Assert.AreEqual("BBBBBB", contrasenias.ElementAt(1).Categoria.Nombre);
             Assert.AreEqual("ZZZZZZ", contrasenias.ElementAt(2).Categoria.Nombre);
-
-
         }
         
         [TestMethod]
@@ -730,7 +701,25 @@ namespace PruebasUnitarias
 
         }
 
+        [TestMethod]
+        public void SePuedeModificarPassword()
+        {
+            Gestor.Alta(ContraseniaCompleta);
+            Contrasenia modificada =  new Contrasenia()
+            {
+                Sitio = ContraseniaCompleta.Sitio,
+                Categoria = ContraseniaCompleta.Categoria,
+                Usuario = ContraseniaCompleta.Usuario,
+                Notas = ContraseniaCompleta.Notas,
+                FechaUltimaModificacion = ContraseniaCompleta.FechaUltimaModificacion,
+                Id = ContraseniaCompleta.Id,
+                Password = new Password("Nuevo PASSWORD")
+            };
 
+            Gestor.ModificarContrasenia(modificada);
+            Assert.AreEqual("Nuevo PASSWORD", ContraseniaCompleta.Password.Clave);
+
+        }
 
 
     }
