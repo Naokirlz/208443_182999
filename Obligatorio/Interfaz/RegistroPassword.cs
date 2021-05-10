@@ -1,13 +1,7 @@
 ﻿using Negocio;
 using Negocio.Excepciones;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz
@@ -18,19 +12,54 @@ namespace Interfaz
         {
             InitializeComponent();
         }
-
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-        
-
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            NavegarALogin();
+            if (txtRepetirPassword.PasswordChar == "•".ToCharArray()[0])
+            {
+                GuardarPassword();
+            }
+            else
+            {
+                Alerta("Debe rellenar los campos primero.", AlertaToast.enmTipo.Error);
+            }
+        }
+        private void GuardarPassword()
+        {
+            string passwordInicial = this.txtPassword.Text;
+            string passwordRepetido = this.txtRepetirPassword.Text;
+            try
+            {
+                if (passwordInicial != passwordRepetido)
+                {
+                    Alerta("Los passwords deben coincidir.", AlertaToast.enmTipo.Error);
+                    return;
+                }
+                Sesion sesion = Sesion.Singleton;
+                sesion.GuardarPrimerPassword(passwordRepetido);
+                NavegarALogin();
+            }
+            catch (ExcepcionLargoTexto errorLargoTexto)
+            {
+                Alerta(errorLargoTexto.Message, AlertaToast.enmTipo.Error);
+            }
+        }
+        private void NavegarALogin()
+        {
+            InicioSesion inicioSesion = new InicioSesion();
+            this.Hide();
+            inicioSesion.Show();
+        }
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
 
+        #region Comportamiento Visual
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
@@ -38,42 +67,6 @@ namespace Interfaz
                 txtRepetirPassword.Focus();
             }
         }
-
-        private void NavegarALogin()
-        {
-            if (txtRepetirPassword.PasswordChar == "•".ToCharArray()[0]) {
-                string passwordInicial = this.txtPassword.Text;
-                string passwordRepetido = this.txtRepetirPassword.Text;
-                try
-                {
-                    if (passwordInicial != passwordRepetido)
-                    {
-                        Alerta("Los passwords deben coincidir.", AlertaToast.enmTipo.Error);
-                        return;
-                    }
-                    Sesion sesion = Sesion.Singleton;
-                    sesion.GuardarPrimerPassword(passwordRepetido);
-                    InicioSesion inicioSesion = new InicioSesion();
-                    this.Hide();
-                    inicioSesion.Show();
-                }
-                catch (ExcepcionLargoTexto errorLargoTexto)
-                {
-                    Alerta(errorLargoTexto.Message, AlertaToast.enmTipo.Error);
-                }
-            }
-            else
-            {
-                Alerta("Debe rellenar los campos primero.", AlertaToast.enmTipo.Error);
-            }
-        }
-
-        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
-        {
-            AlertaToast alerta = new AlertaToast();
-            alerta.MostrarAlerta(mensaje, tipo);
-        }
-
         private void txtRepetirPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -84,51 +77,38 @@ namespace Interfaz
                 NavegarALogin();
             }
         }
-
         private void txtPassword_MouseHover(object sender, EventArgs e)
         {
             ResaltarColorPassword();
         }
-
         private void txtRepetirPassword_MouseHover(object sender, EventArgs e)
         {
             ResaltarColorRepetir();
         }
-
-
-
         private void txtPassword_MouseLeave(object sender, EventArgs e)
         {
             VolverColorPassword();
         }
-
-        
-
         private void txtPassword_Leave(object sender, EventArgs e)
         {
             VolverColorPassword();
         }
-
         private void txtRepetirPassword_Leave(object sender, EventArgs e)
         {
             VolverColorRepetir();
         }
-
         private void txtRepetirPassword_MouseLeave(object sender, EventArgs e)
         {
             VolverColorRepetir();
         }
-
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
             ResaltarColorPassword();
         }
-
         private void txtRepetirPassword_TextChanged(object sender, EventArgs e)
         {
             ResaltarColorRepetir();
         }
-
         private void ResaltarColorPassword()
         {
             VolverColorRepetir();
@@ -136,7 +116,6 @@ namespace Interfaz
             icoPassword.IconColor = Color.WhiteSmoke;
             pnlLinea.BackColor = Color.WhiteSmoke;
         }
-
         private void ResaltarColorRepetir()
         {
             VolverColorPassword();
@@ -144,7 +123,6 @@ namespace Interfaz
             icoRepetirPassword.IconColor = Color.WhiteSmoke;
             pnlRepetirPassword.BackColor = Color.WhiteSmoke;
         }
-
         private void VolverColorPassword()
         {
             if (txtPassword.Text == "" && !txtPassword.Focused)
@@ -162,7 +140,6 @@ namespace Interfaz
                 pnlLinea.BackColor = Color.DarkGray;
             }
         }
-
         private void VolverColorRepetir()
         {
             if (txtRepetirPassword.Text == "" && !txtRepetirPassword.Focused)
@@ -180,37 +157,30 @@ namespace Interfaz
                 pnlRepetirPassword.BackColor = Color.DarkGray;
             }
         }
-
         private void icoPassword_Click(object sender, EventArgs e)
         {
             txtPassword.Focus();
         }
-
         private void icoRepetirPassword_Click(object sender, EventArgs e)
         {
             txtRepetirPassword.Focus();
         }
-
         private void icoPassword_MouseHover(object sender, EventArgs e)
         {
             ResaltarColorPassword();
         }
-
         private void icoPassword_MouseLeave(object sender, EventArgs e)
         {
             VolverColorPassword();
         }
-
         private void icoRepetirPassword_MouseHover(object sender, EventArgs e)
         {
             ResaltarColorRepetir();
         }
-
         private void icoRepetirPassword_MouseLeave(object sender, EventArgs e)
         {
             VolverColorRepetir();
         }
-
         private void txtPassword_Click(object sender, EventArgs e)
         {
             if (txtPassword.PasswordChar != "•".ToCharArray()[0])
@@ -219,7 +189,6 @@ namespace Interfaz
                 txtPassword.PasswordChar = "•".ToCharArray()[0];
             }
         }
-
         private void txtRepetirPassword_Click(object sender, EventArgs e)
         {
             if (txtRepetirPassword.PasswordChar != "•".ToCharArray()[0])
@@ -228,7 +197,6 @@ namespace Interfaz
                 txtRepetirPassword.PasswordChar = "•".ToCharArray()[0];
             }
         }
-
         private void txtRepetirPassword_Enter(object sender, EventArgs e)
         {
             VolverColorPassword();
@@ -238,7 +206,6 @@ namespace Interfaz
                 txtRepetirPassword.PasswordChar = "•".ToCharArray()[0];
             }
         }
-
         private void txtPassword_Enter(object sender, EventArgs e)
         {
             VolverColorRepetir();
@@ -248,5 +215,6 @@ namespace Interfaz
                 txtPassword.PasswordChar = "•".ToCharArray()[0];
             }
         }
+        #endregion
     }
 }

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz
@@ -18,7 +12,6 @@ namespace Interfaz
         {
             InitializeComponent();
         }
-
         public void MostrarAlerta(string mensaje, enmTipo tipo)
         {
             this.Opacity = 0.0;
@@ -67,13 +60,11 @@ namespace Interfaz
             timTransicion.Interval = 1;
             timTransicion.Start();
         }
-
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             timTransicion.Interval = 1;
             Accion = enmAccion.cerrar;
         }
-
         private void timTransicion_Tick(object sender, EventArgs e)
         {
             switch (this.Accion)
@@ -108,14 +99,12 @@ namespace Interfaz
                     break;
             }
         }
-
         public enum enmAccion
         {
             esperar,
             iniciar,
             cerrar
         }
-
         public enum enmTipo
         {
             Exito,

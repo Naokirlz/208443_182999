@@ -161,7 +161,6 @@ namespace Interfaz
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de Sesion";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.InicioSesion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imgIconoCentral)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
