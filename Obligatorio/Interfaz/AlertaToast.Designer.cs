@@ -30,6 +30,7 @@ namespace Interfaz
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AlertaToast));
             this.icoIcono = new FontAwesome.Sharp.IconPictureBox();
             this.btnCerrar = new FontAwesome.Sharp.IconButton();
             this.lblMensaje = new System.Windows.Forms.Label();
@@ -69,11 +70,11 @@ namespace Interfaz
             // lblMensaje
             // 
             this.lblMensaje.AutoSize = true;
-            this.lblMensaje.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensaje.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.White;
-            this.lblMensaje.Location = new System.Drawing.Point(66, 30);
+            this.lblMensaje.Location = new System.Drawing.Point(63, 32);
             this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(57, 21);
+            this.lblMensaje.Size = new System.Drawing.Size(53, 20);
             this.lblMensaje.TabIndex = 4;
             this.lblMensaje.Text = "label1";
             // 
@@ -92,6 +93,7 @@ namespace Interfaz
             this.Controls.Add(this.icoIcono);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AlertaToast";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AlertaToast";

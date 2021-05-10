@@ -348,6 +348,7 @@ namespace Interfaz
             this.Controls.Add(this.pnlSombra);
             this.Controls.Add(this.pnlBarraTitulo);
             this.Controls.Add(this.pnlMenuLateral);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1050, 640);
             this.Name = "MenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

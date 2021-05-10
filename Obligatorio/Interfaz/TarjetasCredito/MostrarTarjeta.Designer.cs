@@ -30,13 +30,14 @@ namespace Interfaz.TarjetasCredito
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MostrarTarjeta));
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.btnCerrar = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.timMuestraTarjeta = new System.Windows.Forms.Timer(this.components);
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.txtCodigo = new System.Windows.Forms.MaskedTextBox();
@@ -68,6 +69,31 @@ namespace Interfaz.TarjetasCredito
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(416, 81);
             this.panel4.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(138)))), ((int)(((byte)(114)))));
+            this.label2.Location = new System.Drawing.Point(70, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(220, 21);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Mostrar Tarjeta  de Crédito";
+            // 
+            // iconPictureBox2
+            // 
+            this.iconPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(64)))));
+            this.iconPictureBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(138)))), ((int)(((byte)(114)))));
+            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.CreditCard;
+            this.iconPictureBox2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(138)))), ((int)(((byte)(114)))));
+            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox2.IconSize = 52;
+            this.iconPictureBox2.Location = new System.Drawing.Point(6, 14);
+            this.iconPictureBox2.Margin = new System.Windows.Forms.Padding(5);
+            this.iconPictureBox2.Name = "iconPictureBox2";
+            this.iconPictureBox2.Size = new System.Drawing.Size(53, 52);
+            this.iconPictureBox2.TabIndex = 4;
+            this.iconPictureBox2.TabStop = false;
             // 
             // btnCerrar
             // 
@@ -114,31 +140,6 @@ namespace Interfaz.TarjetasCredito
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(8, 483);
             this.panel1.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(138)))), ((int)(((byte)(114)))));
-            this.label2.Location = new System.Drawing.Point(70, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(220, 21);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Mostrar Tarjeta  de Crédito";
-            // 
-            // iconPictureBox2
-            // 
-            this.iconPictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(64)))));
-            this.iconPictureBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(138)))), ((int)(((byte)(114)))));
-            this.iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.CreditCard;
-            this.iconPictureBox2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(138)))), ((int)(((byte)(114)))));
-            this.iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox2.IconSize = 52;
-            this.iconPictureBox2.Location = new System.Drawing.Point(6, 14);
-            this.iconPictureBox2.Margin = new System.Windows.Forms.Padding(5);
-            this.iconPictureBox2.Name = "iconPictureBox2";
-            this.iconPictureBox2.Size = new System.Drawing.Size(53, 52);
-            this.iconPictureBox2.TabIndex = 4;
-            this.iconPictureBox2.TabStop = false;
             // 
             // timMuestraTarjeta
             // 
@@ -317,7 +318,8 @@ namespace Interfaz.TarjetasCredito
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "MostrarTarjeta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MostrarTarjeta";
