@@ -60,7 +60,7 @@ namespace Interfaz
             this.btnCerrar.IconColor = System.Drawing.Color.Gainsboro;
             this.btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCerrar.IconSize = 25;
-            this.btnCerrar.Location = new System.Drawing.Point(564, 2);
+            this.btnCerrar.Location = new System.Drawing.Point(720, 2);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(27, 26);
             this.btnCerrar.TabIndex = 3;
@@ -87,7 +87,7 @@ namespace Interfaz
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Red;
-            this.ClientSize = new System.Drawing.Size(594, 79);
+            this.ClientSize = new System.Drawing.Size(750, 79);
             this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.icoIcono);

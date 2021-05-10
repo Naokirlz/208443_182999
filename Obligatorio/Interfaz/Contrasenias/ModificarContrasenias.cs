@@ -69,6 +69,7 @@ namespace Interfaz.Contrasenias
                     return;
                 }
 
+                contraseniaSeleccionada.Categoria = (Categoria)cmbCategoria.SelectedItem;
                 contraseniaSeleccionada.Sitio = this.txtSitio.Text;
                 contraseniaSeleccionada.Usuario = this.txtUsuario.Text;
                 contraseniaSeleccionada.Notas = this.txtNotas.Text;

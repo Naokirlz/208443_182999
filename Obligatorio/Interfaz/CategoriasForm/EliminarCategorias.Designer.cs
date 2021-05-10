@@ -49,7 +49,7 @@ namespace Interfaz
             // 
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbCategoria.ForeColor = System.Drawing.Color.White;
+            this.cmbCategoria.ForeColor = System.Drawing.Color.Black;
             this.cmbCategoria.Location = new System.Drawing.Point(331, 93);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(293, 29);

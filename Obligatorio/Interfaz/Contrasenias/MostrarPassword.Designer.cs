@@ -151,6 +151,7 @@ namespace Interfaz.Contrasenias
             // cmbCategoria
             // 
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategoria.Enabled = false;
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Location = new System.Drawing.Point(168, 104);
             this.cmbCategoria.Margin = new System.Windows.Forms.Padding(5);
