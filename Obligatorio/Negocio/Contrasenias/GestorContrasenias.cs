@@ -46,7 +46,7 @@ namespace Negocio.Contrasenias
             return password.Password.Clave;
         }
         
-        public List<Contrasenia> ObtenerContraseniasVulnerables(IFuente fuente)
+        public IEnumerable<Contrasenia> ObtenerContraseniasVulnerables(IFuente fuente)
         {
             List<Contrasenia> contraseniasVulnerables = new List<Contrasenia>();
             IEnumerable<Contrasenia> todasLasContrasenias = this.ObtenerTodas();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio.Utilidades;
+using System;
 using System.Collections.Generic;
 
 namespace Negocio.Contrasenias
@@ -19,7 +20,7 @@ namespace Negocio.Contrasenias
             this.Clave = clave;
         }
 
-        string[] caracteresRandom = new[] {
+        private string[] caracteresRandom = new[] {
             "ABCDEFGHJKLMNOPQRSTUVWXYZ",    // MAYUSCULAS 
             "abcdefghijkmnopqrstuvwxyz",    // MINUSCULAS
             "0123456789",                   // NUMEROS
@@ -94,12 +95,5 @@ namespace Negocio.Contrasenias
 
         }
     }
-    public enum EnumColor
-    {
-        ROJO,
-        NARANJA,
-        AMARILLO,
-        VERDE_CLARO,
-        VERDE_OSCURO
-    }
+   
 }
