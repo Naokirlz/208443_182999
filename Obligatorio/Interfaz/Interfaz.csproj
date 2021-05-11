@@ -132,6 +132,12 @@
     <Compile Include="Contrasenias\ModificarContrasenias.Designer.cs">
       <DependentUpon>ModificarContrasenias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Contrasenias\ModificarPasswordVentana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contrasenias\ModificarPasswordVentana.Designer.cs">
+      <DependentUpon>ModificarPasswordVentana.cs</DependentUpon>
+    </Compile>
     <Compile Include="Contrasenias\MostrarPassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -265,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Contrasenias\ModificarContrasenias.resx">
       <DependentUpon>ModificarContrasenias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contrasenias\ModificarPasswordVentana.resx">
+      <DependentUpon>ModificarPasswordVentana.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contrasenias\MostrarPassword.resx">
       <DependentUpon>MostrarPassword.cs</DependentUpon>
