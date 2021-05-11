@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
-using Negocio.Utilidades;
+using Negocio.Excepciones;
 using Negocio.TarjetaCreditos;
-
+using System.Linq;
 
 namespace Negocio
 {
@@ -17,16 +17,7 @@ namespace Negocio
         public List<IFuente> MisFuentes { get; set; }
         private string PasswordMaestro { get; set; }
         private bool Logueado { get; set; }
-
-        public static Sesion Singleton
-        {
-            get
-            {
-                if (Instancia == null) Instancia = new Sesion();
-                return Instancia;
-            }
-        }
-
+       
         private Sesion()
         {
             GestorCategoria = new GestorCategorias();
@@ -37,7 +28,14 @@ namespace Negocio
             this.Logueado = false;
         }
 
-      
+        public static Sesion Singleton
+        {
+            get
+            {
+                if (Instancia == null) Instancia = new Sesion();
+                return Instancia;
+            }
+        }
 
         public void Login(string password)
         {
@@ -63,17 +61,17 @@ namespace Negocio
             this.PasswordMaestro = primerPassword;
         }
 
-        public void CambiarPassword(string nuevoPassword)
+        public void CambiarPassword(string nuevoPass)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado();
-            Validaciones.ValidarLargoTexto(nuevoPassword, 25, 5, "nuevo password");
-            this.PasswordMaestro = nuevoPassword;
+            Validaciones.ValidarLargoTexto(nuevoPass, 25, 5, "nuevo password");
+            this.PasswordMaestro = nuevoPass;
         }
 
-        public int AltaCategoria(string nombreCategoria)
+        public int AltaCategoria(string v)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
-            return this.GestorCategoria.Alta(nombreCategoria);
+            return this.GestorCategoria.Alta(v);
         }
 
         public void BajaCategoria(int id)
@@ -82,7 +80,7 @@ namespace Negocio
             this.GestorCategoria.Baja(id);
         }
 
-        public void ModificarCategoria(int id, string nombreNuevo)
+        public void ModificacionCategoria(int id, string nombreNuevo)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
             this.GestorCategoria.ModificarCategoria(id, nombreNuevo);
@@ -107,10 +105,10 @@ namespace Negocio
             return this.GestorTarjetaCredito.Alta(nuevaTarjeta);
         }
 
-        public void BajaTarjetaCredito(int id)
+        public void BajaTarjetaCredito(int bajaTarjeta)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
-            GestorTarjetaCredito.Baja(id);
+            GestorTarjetaCredito.Baja(bajaTarjeta);
         }
 
         public void ModificarTarjeta(TarjetaCredito modificada)
@@ -119,10 +117,10 @@ namespace Negocio
             GestorTarjetaCredito.ModificarTarjeta(modificada);
         }
 
-        public TarjetaCredito BuscarTarjeta(int id)
+        public TarjetaCredito BuscarTarjeta(int idBuscada)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
-            return GestorTarjetaCredito.Buscar(id);
+            return GestorTarjetaCredito.Buscar(idBuscada);
         }
 
         public IEnumerable<TarjetaCredito> ObtenerTodasLasTarjetas()
@@ -144,10 +142,10 @@ namespace Negocio
             GestorContrasenia.Baja(id);
         }
 
-        public void ModificarContrasenia(Contrasenia modificada)
+        public void ModificarContrasenia(Contrasenia aModificarContrasenia)
         {
             if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
-            GestorContrasenia.ModificarContrasenia(modificada);
+            GestorContrasenia.ModificarContrasenia(aModificarContrasenia);
         }
 
         public Contrasenia BuscarContrasenia(int id)
@@ -162,11 +160,11 @@ namespace Negocio
             return GestorContrasenia.ObtenerTodas();
         }
 
-        //public string VerificarFortaleza(Contrasenia contrasenia)
-        //{
-        //    if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
-        //    return contrasenia.Password.ColorPassword.ToString();
-        //}
+        public string VerificarFortaleza(Contrasenia nuevaContrasenia)
+        {
+            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            return nuevaContrasenia.Password.ColorPassword.ToString();
+        }
        
         public string MostrarPassword(Contrasenia contrasenia)
         {

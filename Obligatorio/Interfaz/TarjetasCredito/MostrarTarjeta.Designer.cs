@@ -69,6 +69,7 @@ namespace Interfaz.TarjetasCredito
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(416, 81);
             this.panel4.TabIndex = 7;
+            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
             // 
             // label2
             // 
