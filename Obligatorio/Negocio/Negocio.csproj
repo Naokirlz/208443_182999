@@ -45,9 +45,9 @@
     <Compile Include="Contrasenias\Contrasenia.cs" />
     <Compile Include="Categorias\GestorCategorias.cs" />
     <Compile Include="Contrasenias\Password.cs" />
-    <Compile Include="Utilidades\ExcepcionAccesoDenegado.cs" />
-    <Compile Include="Utilidades\FuenteLocal.cs" />
-    <Compile Include="Utilidades\IFuente.cs" />
+    <Compile Include="Excepciones\ExcepcionAccesoDenegado.cs" />
+    <Compile Include="Fuentes\FuenteLocal.cs" />
+    <Compile Include="Fuentes\IFuente.cs" />
     <Compile Include="TarjetaCreditos\GestorTarjetaCredito.cs" />
     <Compile Include="Categorias\RepositorioCategorias.cs" />
     <Compile Include="TarjetaCreditos\RepositorioTarjetaCredito.cs" />
@@ -55,14 +55,14 @@
     <Compile Include="TarjetaCreditos\TarjetaCredito.cs" />
     <Compile Include="Contrasenias\GestorContrasenias.cs" />
     <Compile Include="Contrasenias\RepositorioContrasenias.cs" />
-    <Compile Include="Utilidades\ExcepcionElementoNoExiste.cs" />
-    <Compile Include="Utilidades\ExcepcionElementoYaExiste.cs" />
-    <Compile Include="Utilidades\ExcepcionFaltaAtributo.cs" />
-    <Compile Include="Utilidades\ExcepcionFechaIncorrecta.cs" />
-    <Compile Include="Utilidades\ExcepcionLargoTexto.cs" />
-    <Compile Include="Utilidades\ExcepcionNumeroNoValido.cs" />
+    <Compile Include="Excepciones\ExcepcionElementoNoExiste.cs" />
+    <Compile Include="Excepciones\ExcepcionElementoYaExiste.cs" />
+    <Compile Include="Excepciones\ExcepcionFaltaAtributo.cs" />
+    <Compile Include="Excepciones\ExcepcionFechaIncorrecta.cs" />
+    <Compile Include="Excepciones\ExcepcionLargoTexto.cs" />
+    <Compile Include="Excepciones\ExcepcionNumeroNoValido.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilidades\Validaciones.cs" />
+    <Compile Include="Validaciones.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

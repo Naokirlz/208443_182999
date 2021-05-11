@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Negocio.Utilidades
+namespace Negocio.Excepciones
 {
     public class ExcepcionNumeroNoValido : Exception
     {

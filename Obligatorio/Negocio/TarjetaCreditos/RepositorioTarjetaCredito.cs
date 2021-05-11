@@ -1,4 +1,4 @@
-﻿using Negocio.Utilidades;
+﻿using Negocio.Excepciones;
 using System.Collections.Generic;
 
 namespace Negocio.TarjetaCreditos
@@ -16,8 +16,8 @@ namespace Negocio.TarjetaCreditos
 
         public int Alta(TarjetaCredito nuevaTarjeta)
         {
-            VerificarNombreTarjetaRepetido(nuevaTarjeta);
-            VerificarNumeroTarjetaRepetido(nuevaTarjeta);
+            NombreTarjetaRepetido(nuevaTarjeta);
+            NumeroTarjetaRepetido(nuevaTarjeta);
             nuevaTarjeta.Id = autonumerado;
             autonumerado++;
             Tarjetas.Add(nuevaTarjeta);
@@ -29,21 +29,21 @@ namespace Negocio.TarjetaCreditos
             Tarjetas.Remove(BuscarPorId(id));
         }
 
-        public void ModificarTarjeta(TarjetaCredito modificada)
+        public void ModificarTarjeta(TarjetaCredito modificarTarjeta)
         {
-            TarjetaCredito anterior = BuscarPorId(modificada.Id);
-            VerificarNombreTarjetaRepetido(modificada);
-            VerificarNumeroTarjetaRepetido(modificada);
+            TarjetaCredito anterior = BuscarPorId(modificarTarjeta.Id);
+            NombreTarjetaRepetido(modificarTarjeta);
+            NumeroTarjetaRepetido(modificarTarjeta);
 
-            anterior.Categoria = modificada.Categoria;
-            anterior.Nombre = modificada.Nombre;
-            anterior.Tipo = modificada.Tipo;
-            anterior.Numero = modificada.Numero;
-            anterior.Codigo = modificada.Codigo;
-            anterior.Vencimiento = modificada.Vencimiento;
-            anterior.Nota = modificada.Nota;
-            anterior.Id = modificada.Id;
-            anterior.CantidadVecesEncontradaVulnerable = modificada.CantidadVecesEncontradaVulnerable;
+            anterior.Categoria = modificarTarjeta.Categoria;
+            anterior.Nombre = modificarTarjeta.Nombre;
+            anterior.Tipo = modificarTarjeta.Tipo;
+            anterior.Numero = modificarTarjeta.Numero;
+            anterior.Codigo = modificarTarjeta.Codigo;
+            anterior.Vencimiento = modificarTarjeta.Vencimiento;
+            anterior.Nota = modificarTarjeta.Nota;
+            anterior.Id = modificarTarjeta.Id;
+            anterior.CantidadVecesEncontradaVulnerable = modificarTarjeta.CantidadVecesEncontradaVulnerable;
        }
 
         public TarjetaCredito BuscarPorId(int id) {
@@ -60,7 +60,7 @@ namespace Negocio.TarjetaCreditos
 
         }
 
-        private void VerificarNumeroTarjetaRepetido(TarjetaCredito tarjeta)
+        private void NumeroTarjetaRepetido(TarjetaCredito tarjeta)
         {
             foreach (TarjetaCredito item in Tarjetas)
             {
@@ -69,7 +69,7 @@ namespace Negocio.TarjetaCreditos
             }
         }
 
-        private void VerificarNombreTarjetaRepetido(TarjetaCredito tarjeta)
+        private void NombreTarjetaRepetido(TarjetaCredito tarjeta)
         {
             
             foreach (TarjetaCredito item in Tarjetas)

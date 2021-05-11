@@ -1,4 +1,4 @@
-﻿using Negocio.Utilidades;
+﻿using Negocio.Excepciones;
 using System.Collections.Generic;
 
 namespace Negocio.Categorias
@@ -23,7 +23,7 @@ namespace Negocio.Categorias
             return nueva.Id;
         }
 
-        public void Baja(int id)
+        internal void Baja(int id)
         {
             Categorias.Remove(BuscarCategoriaPorId(id));
         }

@@ -1,11 +1,10 @@
-﻿using Negocio.Utilidades;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Negocio.Categorias
 {
     public class GestorCategorias
     {
-        private RepositorioCategorias Repositorio;
+        public RepositorioCategorias Repositorio;
 
         public GestorCategorias()
         {
