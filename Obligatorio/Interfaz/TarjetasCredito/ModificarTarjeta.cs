@@ -1,6 +1,6 @@
 ﻿using Negocio;
 using Negocio.Categorias;
-using Negocio.Excepciones;
+using Negocio.Utilidades;
 using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;

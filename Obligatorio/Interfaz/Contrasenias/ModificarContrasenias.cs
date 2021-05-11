@@ -1,7 +1,7 @@
 ﻿using Negocio;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
-using Negocio.Excepciones;
+using Negocio.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

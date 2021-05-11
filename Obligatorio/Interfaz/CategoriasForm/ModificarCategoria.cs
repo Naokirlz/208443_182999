@@ -1,6 +1,6 @@
 ﻿using Negocio;
 using Negocio.Categorias;
-using Negocio.Excepciones;
+using Negocio.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,7 +46,7 @@ namespace Interfaz
                 }
                 int id = aCambiar.Id;
                 string nuevoNombre = this.txtNuevoNombre.Text;
-                this.sesion.ModificacionCategoria(id, nuevoNombre);
+                this.sesion.ModificarCategoria(id, nuevoNombre);
                 this.txtNuevoNombre.Clear();
                 Refrescar();
                 Alerta("Categoría modificada con éxito!!", AlertaToast.enmTipo.Exito);

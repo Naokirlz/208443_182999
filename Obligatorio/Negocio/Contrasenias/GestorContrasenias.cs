@@ -1,4 +1,4 @@
-﻿using Negocio.Excepciones;
+﻿using Negocio.Utilidades;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +7,7 @@ namespace Negocio.Contrasenias
 {
     public class GestorContrasenias
     {
-        public RepositorioContrasenias Repositorio;
+        private RepositorioContrasenias Repositorio;
                 
         public GestorContrasenias() 
         {
@@ -71,26 +71,26 @@ namespace Negocio.Contrasenias
 
         }
 
-        private int BuscarContraseniaEnFuente(Contrasenia item, IFuente fuente)
+        private int BuscarContraseniaEnFuente(Contrasenia contrasenia, IFuente fuente)
         {
-            string password = this.MostrarPassword(item);
+            string password = this.MostrarPassword(contrasenia);
             return fuente.BuscarPasswordOContraseniaEnFuente(password);
 
         }
 
-        private void ValidarCampos(Contrasenia aValidarContrasenia)
+        private void ValidarCampos(Contrasenia contrasenia)
         {
-            if (aValidarContrasenia.Sitio == null ||
-                aValidarContrasenia.Usuario == null ||
-                aValidarContrasenia.Password == null ||
-                aValidarContrasenia.Categoria == null)
+            if (contrasenia.Sitio == null ||
+                contrasenia.Usuario == null ||
+                contrasenia.Password == null ||
+                contrasenia.Categoria == null)
                 throw new ExcepcionFaltaAtributo("Debe completar los campos obligatorios.");
 
-            Validaciones.ValidarFecha(aValidarContrasenia.FechaUltimaModificacion);
-            Validaciones.ValidarLargoTexto(aValidarContrasenia.Sitio, 25, 3, "sitio");
-            Validaciones.ValidarLargoTexto(aValidarContrasenia.Usuario, 25, 5, "usuario");
-            Validaciones.ValidarLargoTexto(aValidarContrasenia.Password.Clave, 25, 5, "contraseña");
-            Validaciones.ValidarLargoTexto(aValidarContrasenia.Notas, 250, 0, "notas");
+            Validaciones.ValidarFecha(contrasenia.FechaUltimaModificacion);
+            Validaciones.ValidarLargoTexto(contrasenia.Sitio, 25, 3, "sitio");
+            Validaciones.ValidarLargoTexto(contrasenia.Usuario, 25, 5, "usuario");
+            Validaciones.ValidarLargoTexto(contrasenia.Password.Clave, 25, 5, "contraseña");
+            Validaciones.ValidarLargoTexto(contrasenia.Notas, 250, 0, "notas");
         }
     }
 }

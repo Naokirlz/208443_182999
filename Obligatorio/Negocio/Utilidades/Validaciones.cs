@@ -1,8 +1,7 @@
-﻿using Negocio.Excepciones;
+﻿using Negocio.Utilidades;
 using System;
 
-namespace Negocio
-{
+namespace Negocio.Utilidades { 
     public class Validaciones
     {
         public static void ValidarLargoTexto(string texto, int largoMax, int largoMin, string campo)

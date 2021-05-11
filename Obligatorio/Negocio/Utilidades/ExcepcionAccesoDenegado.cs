@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Negocio.Excepciones
+namespace Negocio.Utilidades
 {
     public class ExcepcionAccesoDenegado : Exception
     {

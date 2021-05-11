@@ -1,4 +1,4 @@
-﻿using Negocio.Excepciones;
+﻿using Negocio.Utilidades;
 using System;
 using System.Collections.Generic;
 
@@ -16,7 +16,7 @@ namespace Negocio.Contrasenias
 
         public int Alta(Contrasenia unaContrasenia)
         {
-            ContraseniaNoExiste(unaContrasenia);
+            VerificarSiExisteContrasenia(unaContrasenia);
             unaContrasenia.Id = autonumerado;
             unaContrasenia.FechaUltimaModificacion = DateTime.Now;
             this.Contrasenias.Add(unaContrasenia);
@@ -26,12 +26,12 @@ namespace Negocio.Contrasenias
 
         public void Baja(int id)
         {
-            Contrasenias.Remove(BuscarContraeniaOriginal(id));
+            Contrasenias.Remove(BuscarPorId(id));
         }
 
         public void ModificarContrasenia(Contrasenia modificarContrasenia)
         {
-            Contrasenia anterior = BuscarContraeniaOriginal(modificarContrasenia.Id);
+            Contrasenia anterior = BuscarPorId(modificarContrasenia.Id);
             anterior.Sitio = modificarContrasenia.Sitio;
             anterior.Usuario = modificarContrasenia.Usuario;
                         
@@ -58,16 +58,8 @@ namespace Negocio.Contrasenias
             this.Contrasenias.Sort();
             return this.Contrasenias;
         }
- 
-        private Contrasenia BuscarContraeniaOriginal(int id)
-        {
-            foreach (Contrasenia item in Contrasenias)
-                if (item.Id == id) return item;
-
-            throw new ExcepcionElementoNoExiste("La contraseña buscada no existe.");
-        }
-
-        private void ContraseniaNoExiste(Contrasenia unaContrasenia)
+   
+        private void VerificarSiExisteContrasenia(Contrasenia unaContrasenia)
         {
             foreach (var contrasenia in this.Contrasenias)
             {

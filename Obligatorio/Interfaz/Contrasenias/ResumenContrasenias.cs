@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
 using Microsoft.VisualBasic;
-using Negocio.Excepciones;
+using Negocio.Utilidades;
 
 namespace Interfaz.Contrasenias
 {
