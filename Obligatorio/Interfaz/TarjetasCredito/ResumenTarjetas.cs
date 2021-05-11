@@ -1,14 +1,8 @@
 ﻿using Negocio;
-using Negocio.Excepciones;
 using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz.TarjetasCredito
@@ -22,6 +16,13 @@ namespace Interfaz.TarjetasCredito
             InitializeComponent();
             Tarjetas = Sesion.ObtenerTodasLasTarjetas();
 
+            CargarColumnaBotones();
+
+            CargarTabla();
+        }
+
+        private void CargarColumnaBotones()
+        {
             DataGridViewButtonColumn columnaBotonVer = new DataGridViewButtonColumn();
             columnaBotonVer.Name = "columnaBotonVer";
             columnaBotonVer.Text = "Ver";
@@ -54,8 +55,6 @@ namespace Interfaz.TarjetasCredito
                 this.dgvTarjetas.Columns.Insert(columnEliminarIndex, columnaBotonEliminar);
                 columnaBotonEliminar.UseColumnTextForButtonValue = true;
             }
-
-            CargarTabla();
         }
 
         private void CargarTabla()
@@ -107,12 +106,9 @@ namespace Interfaz.TarjetasCredito
         {
             if (e.RowIndex != -1)
             {
-                string id = dgvTarjetas.Rows[e.RowIndex].Cells[0].Value.ToString();
-                TarjetaCredito tarjetaSeleccionada = null;
-                foreach (TarjetaCredito tarjeta in Tarjetas)
-                {
-                    if (tarjeta.Id.ToString() == id) tarjetaSeleccionada = tarjeta;
-                }
+                int id = Int32.Parse(dgvTarjetas.Rows[e.RowIndex].Cells[0].Value.ToString());
+                TarjetaCredito tarjetaSeleccionada = Tarjetas.ToList().Find(c => c.Id == id);
+
                 if (e.ColumnIndex == 5)
                 {
                     MostrarTarjeta formMostrar = new MostrarTarjeta(tarjetaSeleccionada);
