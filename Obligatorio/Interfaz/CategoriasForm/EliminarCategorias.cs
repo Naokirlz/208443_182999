@@ -41,20 +41,16 @@ namespace Interfaz
                     return;
                 }
                 int id = aEliminar.Id;
-                string nombre = aEliminar.Nombre;
 
-                DialogResult respuesta = MessageBox.Show("Realmente desea eliminar la categoría " + nombre + "?", 
-                    "Alerta", 
-                    MessageBoxButtons.YesNoCancel, 
-                    MessageBoxIcon.Warning);
-
-                if (respuesta == DialogResult.Yes)
+                VentanaConfirmar frmConfirmar = new VentanaConfirmar(id, Sesion.BajaCategoria)
                 {
-                    this.Sesion.BajaCategoria(id);
-                    Refrescar();
-                    Alerta("Categoría eliminada con éxito!!", AlertaToast.enmTipo.Exito);
-                }
-                
+                    MsgConfirmación = "Categoría eliminada con éxito!!",
+                    MsgPregunta = "Desea eliminar la categoría??"
+                };
+
+                frmConfirmar.CargarFormulario();
+                Refrescar();
+
             }
             catch (ExcepcionElementoNoExiste unaExcepcion)
             {

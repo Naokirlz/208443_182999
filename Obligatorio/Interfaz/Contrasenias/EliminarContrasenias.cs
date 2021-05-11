@@ -41,17 +41,13 @@ namespace Interfaz.Contrasenias
                     return;
                 }
 
-                DialogResult respuesta = MessageBox.Show("Realmente desea eliminar la contraseña?",
-                            "Alerta",
-                            MessageBoxButtons.YesNoCancel,
-                            MessageBoxIcon.Warning);
-
-                if (respuesta == DialogResult.Yes) { 
-                    this.Sesion.BajaContrasenia(contraseniaSeleccionada.Id);
-                    Alerta("Contraseña Eliminada con éxito!!", AlertaToast.enmTipo.Exito);
-                    this.cmbContrasenia.Text = "";
-                    Refrescar();
-                }
+                VentanaConfirmar frmConfirmar = new VentanaConfirmar(contraseniaSeleccionada.Id, Sesion.BajaContrasenia)
+                {
+                    MsgConfirmación = "Contraseña Eliminada con éxito!!",
+                    MsgPregunta = "Realmente desea eliminar la contraseña??"
+                };
+                frmConfirmar.CargarFormulario();
+                Refrescar();
             }
             catch (ExcepcionElementoNoExiste unaExcepcion)
             {

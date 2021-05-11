@@ -32,32 +32,21 @@ namespace Interfaz.TarjetasCredito
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            try
+            TarjetaCredito tarjetaSeleccionada = (TarjetaCredito)this.cmbTarjeta.SelectedItem;
+            if (tarjetaSeleccionada == null)
             {
-                TarjetaCredito tarjetaSeleccionada = (TarjetaCredito)this.cmbTarjeta.SelectedItem;
-                if (tarjetaSeleccionada == null)
-                {
-                    Alerta("Seleccione al menos una Tarjeta de Crédito", AlertaToast.enmTipo.Error);
-                    return;
-                }
-
-                DialogResult respuesta = MessageBox.Show("Realmente desea eliminar la tarjeta?",
-                            "Alerta",
-                            MessageBoxButtons.YesNoCancel,
-                            MessageBoxIcon.Warning);
-
-                if (respuesta == DialogResult.Yes)
-                {
-                    this.Sesion.BajaTarjetaCredito(tarjetaSeleccionada.Id);
-                    Alerta("Tarjeta Eliminada con éxito!!", AlertaToast.enmTipo.Exito);
-                    this.cmbTarjeta.Text = "";
-                    Refrescar();
-                }
+                Alerta("Seleccione al menos una Tarjeta de Crédito", AlertaToast.enmTipo.Error);
+                return;
             }
-            catch (ExcepcionElementoNoExiste unaExcepcion)
+
+            VentanaConfirmar frmConfirmar = new VentanaConfirmar(tarjetaSeleccionada.Id, Sesion.BajaTarjetaCredito)
             {
-                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-            }
+                MsgConfirmación = "Tarjeta Eliminada con éxito!!",
+                MsgPregunta = "Realmente desea eliminar la tarjeta??"
+            };
+            frmConfirmar.CargarFormulario();
+
+            Refrescar();
         }
 
         private void Alerta(string mensaje, AlertaToast.enmTipo tipo)

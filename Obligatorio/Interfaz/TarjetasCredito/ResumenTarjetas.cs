@@ -123,24 +123,13 @@ namespace Interfaz.TarjetasCredito
                 }
                 else if (e.ColumnIndex == 7)
                 {
-                    try
+                    VentanaConfirmar frmConfirmar = new VentanaConfirmar(tarjetaSeleccionada.Id, Sesion.BajaTarjetaCredito)
                     {
-                        DialogResult respuesta = MessageBox.Show("Realmente desea eliminar la tarjeta?",
-                            "Alerta",
-                            MessageBoxButtons.YesNoCancel,
-                            MessageBoxIcon.Warning);
-
-                        if (respuesta == DialogResult.Yes)
-                        {
-                            this.Sesion.BajaTarjetaCredito(tarjetaSeleccionada.Id);
-                            CargarTabla();
-                            Alerta("Tarjeta eliminada con éxito!!", AlertaToast.enmTipo.Exito);
-                        }
-                    }
-                    catch (ExcepcionElementoNoExiste unaExcepcion)
-                    {
-                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-                    }
+                        MsgConfirmación = "Tarjeta Eliminada con éxito!!",
+                        MsgPregunta = "Realmente desea eliminar la tarjeta??"
+                    };
+                    frmConfirmar.CargarFormulario();
+                    CargarTabla();
                 }
             }
         }
