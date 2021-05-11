@@ -11,7 +11,7 @@ namespace Interfaz.TarjetasCredito
 {
     public partial class ModificarTarjeta : Form
     {
-        private Sesion Sesion = Sesion.Singleton;
+        private Sesion Sesion = Sesion.ObtenerInstancia();
         private TarjetaCredito tarjetaSeleccionada;
 
         public ModificarTarjeta(TarjetaCredito tarjetaSeleccionada)

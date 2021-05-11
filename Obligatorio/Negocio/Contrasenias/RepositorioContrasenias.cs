@@ -7,11 +7,11 @@ namespace Negocio.Contrasenias
     public class RepositorioContrasenias
     {
         private static int autonumerado = 1;
-        private List<Contrasenia> Contrasenias { get; set; }
+        private List<Contrasenia> contrasenias;
                 
         public RepositorioContrasenias()
         {
-            this.Contrasenias = new List<Contrasenia>();
+            this.contrasenias = new List<Contrasenia>();
         }
 
         public int Alta(Contrasenia unaContrasenia)
@@ -19,14 +19,14 @@ namespace Negocio.Contrasenias
             VerificarSiExisteContrasenia(unaContrasenia);
             unaContrasenia.Id = autonumerado;
             unaContrasenia.FechaUltimaModificacion = DateTime.Now;
-            this.Contrasenias.Add(unaContrasenia);
+            this.contrasenias.Add(unaContrasenia);
             autonumerado++;
             return unaContrasenia.Id;
         }
 
         public void Baja(int id)
         {
-            Contrasenias.Remove(BuscarPorId(id));
+            contrasenias.Remove(BuscarPorId(id));
         }
 
         public void ModificarContrasenia(Contrasenia modificarContrasenia)
@@ -48,20 +48,20 @@ namespace Negocio.Contrasenias
 
         public Contrasenia BuscarPorId(int id)
         {
-            foreach (Contrasenia item in Contrasenias)
+            foreach (Contrasenia item in contrasenias)
                 if (item.Id == id) return item;
             throw new ExcepcionElementoNoExiste("La contraseña buscada no existe.");
         }
 
         public IEnumerable<Contrasenia> ObtenerTodas()
         {
-            this.Contrasenias.Sort();
-            return this.Contrasenias;
+            this.contrasenias.Sort();
+            return this.contrasenias;
         }
    
         private void VerificarSiExisteContrasenia(Contrasenia unaContrasenia)
         {
-            foreach (var contrasenia in this.Contrasenias)
+            foreach (var contrasenia in this.contrasenias)
             {
                 if (contrasenia.Sitio.ToUpper().Equals(unaContrasenia.Sitio.ToUpper()) &&
                     contrasenia.Usuario.ToUpper().Equals(unaContrasenia.Usuario.ToUpper()))

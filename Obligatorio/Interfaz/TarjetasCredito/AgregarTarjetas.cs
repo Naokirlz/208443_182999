@@ -11,7 +11,7 @@ namespace Interfaz.TarjetasCredito
 {
     public partial class AgregarTarjetas : UserControl
     {
-        public Sesion Sesion = Sesion.Singleton;
+        public Sesion Sesion = Sesion.ObtenerInstancia();
         public AgregarTarjetas()
         {
             InitializeComponent();

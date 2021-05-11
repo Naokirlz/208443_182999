@@ -7,7 +7,7 @@ namespace Interfaz
 {
     public partial class AgregarCategoria : UserControl
     {
-        public Sesion Sesion = Sesion.Singleton;
+        public Sesion Sesion = Sesion.ObtenerInstancia();
          
         public AgregarCategoria()
         {

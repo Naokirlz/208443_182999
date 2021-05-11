@@ -10,167 +10,164 @@ namespace Negocio
 {
     public class Sesion
     {
-        private static Sesion Instancia;
-        private GestorCategorias GestorCategoria { get; set; }
-        private GestorContrasenias GestorContrasenia { get; set; }
-        private GestorTarjetaCredito GestorTarjetaCredito { get; set; }
+        private static Sesion instancia;
+        private GestorCategorias gestorCategoria;
+        private GestorContrasenias gestorContrasenia;
+        private GestorTarjetaCredito gestorTarjetaCredito;
         public List<IFuente> MisFuentes { get; set; }
-        private string PasswordMaestro { get; set; }
-        private bool Logueado { get; set; }
+        private string passwordMaestro;
+        private bool logueado;
 
-        public static Sesion Singleton
+        public static Sesion ObtenerInstancia()
         {
-            get
-            {
-                if (Instancia == null) Instancia = new Sesion();
-                return Instancia;
-            }
+            if (instancia == null) instancia = new Sesion();
+            return instancia;
         }
 
         private Sesion()
         {
-            GestorCategoria = new GestorCategorias();
-            GestorContrasenia = new GestorContrasenias();
-            GestorTarjetaCredito = new GestorTarjetaCredito();
+            gestorCategoria = new GestorCategorias();
+            gestorContrasenia = new GestorContrasenias();
+            gestorTarjetaCredito = new GestorTarjetaCredito();
             MisFuentes = new List<IFuente>();
-            PasswordMaestro = "";
-            this.Logueado = false;
+            passwordMaestro = "";
+            this.logueado = false;
         }
 
       
 
         public void Login(string password)
         {
-            if (password != PasswordMaestro || PasswordMaestro == "") 
+            if (password != passwordMaestro || passwordMaestro == "") 
                 throw new ExcepcionAccesoDenegado("El usuario o contraseña no son coinciden.");
-            this.Logueado = true;
+            this.logueado = true;
            
         }
 
         public IEnumerable<Contrasenia> ContraseniasVulnerables(IFuente fuente)
         {
-            return this.GestorContrasenia.ObtenerContraseniasVulnerables(fuente);
+            return this.gestorContrasenia.ObtenerContraseniasVulnerables(fuente);
         }
  
         public IEnumerable<TarjetaCredito> TarjetasCreditoVulnerables(IFuente fuente)
         {
-            return this.GestorTarjetaCredito.ObtenerTarjetasVulnerables(fuente);
+            return this.gestorTarjetaCredito.ObtenerTarjetasVulnerables(fuente);
         }
         
         public void GuardarPrimerPassword(string primerPassword)
         {
             Validaciones.ValidarLargoTexto(primerPassword, 25, 5, "primer password");
-            this.PasswordMaestro = primerPassword;
+            this.passwordMaestro = primerPassword;
         }
 
         public void CambiarPassword(string nuevoPassword)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado();
+            if (!this.logueado) throw new ExcepcionAccesoDenegado();
             Validaciones.ValidarLargoTexto(nuevoPassword, 25, 5, "nuevo password");
-            this.PasswordMaestro = nuevoPassword;
+            this.passwordMaestro = nuevoPassword;
         }
 
         public int AltaCategoria(string nombreCategoria)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
-            return this.GestorCategoria.Alta(nombreCategoria);
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
+            return this.gestorCategoria.Alta(nombreCategoria);
         }
 
         public void BajaCategoria(int id)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
-            this.GestorCategoria.Baja(id);
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
+            this.gestorCategoria.Baja(id);
         }
 
         public void ModificarCategoria(int id, string nombreNuevo)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
-            this.GestorCategoria.ModificarCategoria(id, nombreNuevo);
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
+            this.gestorCategoria.ModificarCategoria(id, nombreNuevo);
         }
 
         public Categoria BuscarCategoriaPorId(int id)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
-            return GestorCategoria.BuscarCategoriaPorId(id);
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
+            return gestorCategoria.BuscarCategoriaPorId(id);
         }
 
         public IEnumerable<Categoria> ObtenerTodasLasCategorias()
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
-            return this.GestorCategoria.ObtenerTodas();
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
+            return this.gestorCategoria.ObtenerTodas();
         }
 
         public int AltaTarjetaCredito(TarjetaCredito nuevaTarjeta)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
             BuscarCategoriaPorId(nuevaTarjeta.Categoria.Id);
-            return this.GestorTarjetaCredito.Alta(nuevaTarjeta);
+            return this.gestorTarjetaCredito.Alta(nuevaTarjeta);
         }
 
         public void BajaTarjetaCredito(int id)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
-            GestorTarjetaCredito.Baja(id);
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
+            gestorTarjetaCredito.Baja(id);
         }
 
         public void ModificarTarjeta(TarjetaCredito modificada)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
-            GestorTarjetaCredito.ModificarTarjeta(modificada);
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
+            gestorTarjetaCredito.ModificarTarjeta(modificada);
         }
 
         public TarjetaCredito BuscarTarjeta(int id)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
-            return GestorTarjetaCredito.Buscar(id);
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
+            return gestorTarjetaCredito.Buscar(id);
         }
 
         public IEnumerable<TarjetaCredito> ObtenerTodasLasTarjetas()
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
-            return GestorTarjetaCredito.ObtenerTodas();
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe estar logueado para realizar esta acción.");
+            return gestorTarjetaCredito.ObtenerTodas();
         }
 
         public int AltaContrasenia(Contrasenia unaContrasena)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
-            GestorCategoria.BuscarCategoriaPorId(unaContrasena.Categoria.Id);
-            return GestorContrasenia.Alta(unaContrasena);
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            gestorCategoria.BuscarCategoriaPorId(unaContrasena.Categoria.Id);
+            return gestorContrasenia.Alta(unaContrasena);
         }
 
         public void BajaContrasenia(int id)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
-            GestorContrasenia.Baja(id);
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            gestorContrasenia.Baja(id);
         }
 
         public void ModificarContrasenia(Contrasenia modificada)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
-            GestorContrasenia.ModificarContrasenia(modificada);
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            gestorContrasenia.ModificarContrasenia(modificada);
         }
 
         public Contrasenia BuscarContrasenia(int id)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
-            return GestorContrasenia.Buscar(id);
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            return gestorContrasenia.Buscar(id);
         }
 
         public IEnumerable<Contrasenia> ObtenerTodasLasContrasenias()
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
-            return GestorContrasenia.ObtenerTodas();
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            return gestorContrasenia.ObtenerTodas();
         }
        
         public string MostrarPassword(Contrasenia contrasenia)
         {
-            if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
-            return GestorContrasenia.MostrarPassword(contrasenia);
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            return gestorContrasenia.MostrarPassword(contrasenia);
         }
 
         public void LogOut()
         {
-            this.Logueado = false;
+            this.logueado = false;
         }
 
         /* 
@@ -180,16 +177,16 @@ namespace Negocio
          */
         public void VaciarDatosPrueba()
         {
-            this.GestorContrasenia = new GestorContrasenias();
-            this.GestorTarjetaCredito = new GestorTarjetaCredito();
-            this.GestorCategoria = new GestorCategorias();
+            this.gestorContrasenia = new GestorContrasenias();
+            this.gestorTarjetaCredito = new GestorTarjetaCredito();
+            this.gestorCategoria = new GestorCategorias();
             this.MisFuentes = new List<IFuente>();
         }
 
         public void InsertarDatosDeMuestra()
         {
             int idestudio = AltaCategoria("Estudio");
-            Categoria estudio = GestorCategoria.BuscarCategoriaPorId(idestudio);
+            Categoria estudio = gestorCategoria.BuscarCategoriaPorId(idestudio);
             AltaCategoria("Hogar");
             AltaCategoria("Familia");
             AltaCategoria("Trabajo");

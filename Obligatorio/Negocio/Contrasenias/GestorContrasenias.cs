@@ -7,38 +7,38 @@ namespace Negocio.Contrasenias
 {
     public class GestorContrasenias
     {
-        private RepositorioContrasenias Repositorio;
+        private RepositorioContrasenias repositorio;
                 
         public GestorContrasenias() 
         {
-            this.Repositorio = new RepositorioContrasenias();
+            this.repositorio = new RepositorioContrasenias();
         }
         
         public int Alta(Contrasenia unaContrasena)
         {
             ValidarCampos(unaContrasena);
-            return Repositorio.Alta(unaContrasena);
+            return repositorio.Alta(unaContrasena);
         }
 
         public void Baja(int id)
         {
-            Repositorio.Baja(id);
+            repositorio.Baja(id);
         }
         
         public void ModificarContrasenia(Contrasenia modificada)
         {
             ValidarCampos(modificada);
-            Repositorio.ModificarContrasenia(modificada);
+            repositorio.ModificarContrasenia(modificada);
         }
       
         public Contrasenia Buscar(int id)
         {
-            return Repositorio.BuscarPorId(id);
+            return repositorio.BuscarPorId(id);
         }
         
         public IEnumerable<Contrasenia> ObtenerTodas()
         {
-            return Repositorio.ObtenerTodas();
+            return repositorio.ObtenerTodas();
         }
 
         public string MostrarPassword(Contrasenia password)

@@ -8,7 +8,7 @@ namespace Interfaz.Contrasenias
 {
     public partial class ReporteFortalezaContrasenias : UserControl
     {
-        private Sesion Sesion = Sesion.Singleton;
+        private Sesion Sesion = Sesion.ObtenerInstancia();
         private List<Grupo> Grupos;
         private int GrupoMostrando;
 

@@ -8,7 +8,7 @@ namespace Interfaz.TarjetasCredito
 {
     public partial class EliminarTarjetas : UserControl
     {
-        private Sesion Sesion = Sesion.Singleton;
+        private Sesion Sesion = Sesion.ObtenerInstancia();
         public EliminarTarjetas()
         {
             InitializeComponent();

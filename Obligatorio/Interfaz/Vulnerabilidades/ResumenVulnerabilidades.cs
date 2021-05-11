@@ -11,7 +11,7 @@ namespace Interfaz.Vulnerabilidades
 {
     public partial class ResumenVulnerabilidades : UserControl
     {
-        private Sesion Sesion = Sesion.Singleton;
+        private Sesion Sesion = Sesion.ObtenerInstancia();
         private List<Contrasenia> contraseniasVulnerables;
         private List<TarjetaCredito> tarjetasVulnerables;
 

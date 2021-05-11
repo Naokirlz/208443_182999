@@ -9,7 +9,7 @@ namespace Interfaz
 {
     public partial class EliminarCategorias : UserControl
     {
-        public Sesion Sesion = Sesion.Singleton;
+        public Sesion Sesion = Sesion.ObtenerInstancia();
         public EliminarCategorias()
         {
             InitializeComponent();

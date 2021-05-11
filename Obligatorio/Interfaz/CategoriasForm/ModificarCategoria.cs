@@ -9,7 +9,7 @@ namespace Interfaz
 {
     public partial class ModificarCategoria : UserControl
     {
-        public Sesion sesion = Sesion.Singleton;
+        private Sesion Sesion = Sesion.ObtenerInstancia();
 
         public ModificarCategoria()
         {
@@ -21,7 +21,7 @@ namespace Interfaz
         {
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
             BindingSource bSource = new BindingSource();
-            bSource.DataSource = this.sesion.ObtenerTodasLasCategorias();
+            bSource.DataSource = this.Sesion.ObtenerTodasLasCategorias();
             this.cmbCategoria.DataSource = bSource;
         }
 
@@ -38,7 +38,7 @@ namespace Interfaz
                 }
                 int id = aCambiar.Id;
                 string nuevoNombre = this.txtNuevoNombre.Text;
-                this.sesion.ModificarCategoria(id, nuevoNombre);
+                this.Sesion.ModificarCategoria(id, nuevoNombre);
                 this.txtNuevoNombre.Clear();
                 Refrescar();
                 Alerta("Categoría modificada con éxito!!", AlertaToast.enmTipo.Exito);

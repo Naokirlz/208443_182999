@@ -11,7 +11,7 @@ namespace Interfaz.TarjetasCredito
 {
     public partial class ModificarTarjetas : UserControl
     {
-        private Sesion Sesion = Sesion.Singleton;
+        private Sesion Sesion = Sesion.ObtenerInstancia();
 
         public ModificarTarjetas()
         {

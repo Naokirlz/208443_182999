@@ -9,7 +9,7 @@ namespace Interfaz.TarjetasCredito
 {
     public partial class ResumenTarjetas : UserControl
     {
-        private Sesion Sesion = Sesion.Singleton;
+        private Sesion Sesion = Sesion.ObtenerInstancia();
         private IEnumerable<TarjetaCredito> Tarjetas;
         public ResumenTarjetas()
         {

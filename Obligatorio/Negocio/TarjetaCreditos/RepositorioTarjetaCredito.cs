@@ -6,12 +6,12 @@ namespace Negocio.TarjetaCreditos
     public class RepositorioTarjetaCredito
     {
         private static int autonumerado = 1;
-        private List<TarjetaCredito> Tarjetas { get; set; }
+        private List<TarjetaCredito> tarjetas;
         
 
         public RepositorioTarjetaCredito()
         {
-            this.Tarjetas = new List<TarjetaCredito>();
+            this.tarjetas = new List<TarjetaCredito>();
         }
 
         public int Alta(TarjetaCredito nuevaTarjeta)
@@ -20,13 +20,13 @@ namespace Negocio.TarjetaCreditos
             VerificarNumeroTarjetaRepetido(nuevaTarjeta);
             nuevaTarjeta.Id = autonumerado;
             autonumerado++;
-            Tarjetas.Add(nuevaTarjeta);
+            tarjetas.Add(nuevaTarjeta);
             return nuevaTarjeta.Id;
         }
 
         public void Baja(int id)
         {
-            Tarjetas.Remove(BuscarPorId(id));
+            tarjetas.Remove(BuscarPorId(id));
         }
 
         public void ModificarTarjeta(TarjetaCredito modificada)
@@ -48,21 +48,21 @@ namespace Negocio.TarjetaCreditos
 
         public TarjetaCredito BuscarPorId(int id) {
 
-            foreach (TarjetaCredito item in Tarjetas)
+            foreach (TarjetaCredito item in tarjetas)
                 if (item.Id == id) return item;
             throw new ExcepcionElementoNoExiste("La tarjeta buscada no existe.");
         }
                 
         public IEnumerable<TarjetaCredito> ObtenerTodas()
         {
-            this.Tarjetas.Sort();
-            return this.Tarjetas;
+            this.tarjetas.Sort();
+            return this.tarjetas;
 
         }
 
         private void VerificarNumeroTarjetaRepetido(TarjetaCredito tarjeta)
         {
-            foreach (TarjetaCredito item in Tarjetas)
+            foreach (TarjetaCredito item in tarjetas)
             {
                 if (item.Numero.Equals(tarjeta.Numero) && tarjeta.Id != item.Id)
                 { throw new ExcepcionElementoYaExiste("La tarjeta buscada ya existe."); }
@@ -72,7 +72,7 @@ namespace Negocio.TarjetaCreditos
         private void VerificarNombreTarjetaRepetido(TarjetaCredito tarjeta)
         {
             
-            foreach (TarjetaCredito item in Tarjetas)
+            foreach (TarjetaCredito item in tarjetas)
             {
                 if (item.Nombre.ToLower().Equals(tarjeta.Nombre.ToLower())
                     && tarjeta.Id != item.Id)

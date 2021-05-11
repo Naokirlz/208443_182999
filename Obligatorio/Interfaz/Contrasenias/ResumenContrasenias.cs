@@ -9,7 +9,7 @@ namespace Interfaz.Contrasenias
 {
     public partial class ResumenContrasenias : UserControl
     {
-        private Sesion Sesion = Sesion.Singleton;
+        private Sesion Sesion = Sesion.ObtenerInstancia();
         private IEnumerable<Contrasenia> Contrasenias;
         private MostrarPassword FormModificar;
 

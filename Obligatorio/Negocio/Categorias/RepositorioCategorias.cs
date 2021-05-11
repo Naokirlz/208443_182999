@@ -6,11 +6,11 @@ namespace Negocio.Categorias
     public class RepositorioCategorias
     {
         private static int autonumerado = 1;
-        private List<Categoria> Categorias { get; set; }
+        private List<Categoria> categorias;
         
         public RepositorioCategorias()
         {
-            this.Categorias = new List<Categoria>();
+            this.categorias = new List<Categoria>();
         }
 
         public int Alta(string nombre)
@@ -19,13 +19,13 @@ namespace Negocio.Categorias
             Categoria nueva = new Categoria(nombre);
             nueva.Id = autonumerado;
             autonumerado++;
-            this.Categorias.Add(nueva);
+            this.categorias.Add(nueva);
             return nueva.Id;
         }
 
         public void Baja(int id)
         {
-            Categorias.Remove(BuscarCategoriaPorId(id));
+            categorias.Remove(BuscarCategoriaPorId(id));
         }
 
         public void ModificarCategoria(int id, string nuevoNombre)
@@ -37,7 +37,7 @@ namespace Negocio.Categorias
         
         public Categoria BuscarCategoriaPorId(int id)
         {
-            foreach (Categoria categoria in this.Categorias)
+            foreach (Categoria categoria in this.categorias)
             {
                 if (categoria.Id == id)
                 { 
@@ -49,12 +49,12 @@ namespace Negocio.Categorias
 
         public IEnumerable<Categoria> ObtenerTodasLasCategorias()
         {
-            return this.Categorias;
+            return this.categorias;
         }
 
         private void ExisteCategoria(string nombre)
         {
-            foreach (var categoria in this.Categorias)
+            foreach (var categoria in this.categorias)
             {
                 if (categoria.Nombre.Equals(nombre))
                     throw new ExcepcionElementoYaExiste("Ya existe categoría con ese nombre.");

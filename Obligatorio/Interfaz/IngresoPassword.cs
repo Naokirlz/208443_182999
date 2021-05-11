@@ -14,7 +14,7 @@ namespace Interfaz
         public IngresoPassword(Contrasenia contrasenia)
         {
             InitializeComponent();
-            Sesion = Sesion.Singleton;
+            Sesion = Sesion.ObtenerInstancia();
             this.Contrasenia = contrasenia;
             this.txtPassword.Text = Sesion.MostrarPassword(Contrasenia);
 

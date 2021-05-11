@@ -12,7 +12,7 @@ namespace Interfaz
 {
     public partial class MenuPrincipal : Form
     {
-        private Sesion Sesion = Sesion.Singleton;
+        private Sesion Sesion = Sesion.ObtenerInstancia();
 
         private IconButton BotonSeleccionado;
         private Panel BordeIzquierdoDelBoton;

@@ -4,16 +4,16 @@ namespace Negocio.Utilidades
 {
     public class FuenteLocal : IFuente
     {
-        public List<string> ContraseniasYTarjetasVulnerables { get; set; }
+        private List<string> contraseniasYTarjetasVulnerables;
         public FuenteLocal()
         {
-            ContraseniasYTarjetasVulnerables = new List<string>();
+            contraseniasYTarjetasVulnerables = new List<string>();
         }
 
         public int BuscarPasswordOContraseniaEnFuente(string buscado)
         {
             int cantidadAparaceEnFuente = 0;
-            foreach (var item in ContraseniasYTarjetasVulnerables)
+            foreach (var item in contraseniasYTarjetasVulnerables)
             {
                 if (item.Equals(buscado)) cantidadAparaceEnFuente++;
             }
@@ -26,7 +26,7 @@ namespace Negocio.Utilidades
             {
                 throw new ExcepcionLargoTexto("El largo de texto debe ser menor a 50 caracteres.");
             }
-            ContraseniasYTarjetasVulnerables.Add(passwordOContraseniaVulnerable);
+            contraseniasYTarjetasVulnerables.Add(passwordOContraseniaVulnerable);
         }
 
 

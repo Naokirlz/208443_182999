@@ -10,7 +10,7 @@ namespace Interfaz.Contrasenias
 {
     public partial class ModificarContrasenias : UserControl
     {
-        private Sesion Sesion = Sesion.Singleton;
+        private Sesion Sesion = Sesion.ObtenerInstancia();
         public ModificarContrasenias()
         {
             InitializeComponent();

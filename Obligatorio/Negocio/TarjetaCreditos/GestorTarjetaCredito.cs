@@ -6,38 +6,38 @@ namespace Negocio.TarjetaCreditos
 {
     public class GestorTarjetaCredito 
     {
-        private RepositorioTarjetaCredito Repositorio;
+        private RepositorioTarjetaCredito repositorio;
       
         public GestorTarjetaCredito()
         {
-            this.Repositorio = new RepositorioTarjetaCredito();
+            this.repositorio = new RepositorioTarjetaCredito();
         }
 
         public int Alta(TarjetaCredito unaTarjeta)
         {
             ValidarCampos(unaTarjeta);
-            return Repositorio.Alta(unaTarjeta);
+            return repositorio.Alta(unaTarjeta);
         }
 
         public void Baja(int id)
         {
-            Repositorio.Baja(id);
+            repositorio.Baja(id);
         }
 
         public void ModificarTarjeta(TarjetaCredito modificada)
         {
             ValidarCampos(modificada);
-            Repositorio.ModificarTarjeta(modificada);
+            repositorio.ModificarTarjeta(modificada);
         }
 
         public TarjetaCredito Buscar(int id)
         {
-            return Repositorio.BuscarPorId(id);
+            return repositorio.BuscarPorId(id);
         }
 
         public IEnumerable<TarjetaCredito> ObtenerTodas()
         {
-            return Repositorio.ObtenerTodas();
+            return repositorio.ObtenerTodas();
         }
         
         public IEnumerable<TarjetaCredito> ObtenerTarjetasVulnerables(IFuente fuente)

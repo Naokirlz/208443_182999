@@ -10,8 +10,7 @@ namespace Interfaz
     public partial class GestionCategorias : UserControl
     {
         private IconButton BotonSeleccionado;
-        //public GestorCategorias GestorCategorias;
-        public Sesion sis = Sesion.Singleton;
+        public Sesion sis = Sesion.ObtenerInstancia();
 
         public GestionCategorias()
         {

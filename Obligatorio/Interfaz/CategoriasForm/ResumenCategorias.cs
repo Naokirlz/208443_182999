@@ -9,7 +9,7 @@ namespace Interfaz.CategoriasForm
     {
         public ResumenCategorias()
         {
-            Sesion Sesion = Sesion.Singleton;
+            Sesion Sesion = Sesion.ObtenerInstancia();
             InitializeComponent();
             IEnumerable<Categoria> categorias = Sesion.ObtenerTodasLasCategorias();
             foreach (Categoria categoria in categorias)

@@ -17,7 +17,7 @@ namespace Interfaz.Contrasenias
         {
             InitializeComponent();
 
-            Sesion = Sesion.Singleton;
+            Sesion = Sesion.ObtenerInstancia();
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
             BindingSource bSource = new BindingSource();
             bSource.DataSource = this.Sesion.ObtenerTodasLasCategorias();

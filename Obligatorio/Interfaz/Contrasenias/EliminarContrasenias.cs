@@ -8,7 +8,7 @@ namespace Interfaz.Contrasenias
 {
     public partial class EliminarContrasenias : UserControl
     {
-        private Sesion Sesion = Sesion.Singleton;
+        private Sesion Sesion = Sesion.ObtenerInstancia();
         public EliminarContrasenias()
         {
             InitializeComponent();

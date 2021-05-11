@@ -24,7 +24,7 @@ namespace PruebasUnitarias
         [TestInitialize]
         public void InicializarPruebas()
         {
-            sesionPrueba = Sesion.Singleton;
+            sesionPrueba = Sesion.ObtenerInstancia();
             sesionPrueba.GuardarPrimerPassword("secreto");
             sesionPrueba.Login("secreto");
             Fuente = new FuenteLocal();

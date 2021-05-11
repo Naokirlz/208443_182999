@@ -8,7 +8,7 @@ namespace Interfaz
 {
     public partial class InicioSesion : Form
     {
-        private Sesion Sesion = Sesion.Singleton;
+        private Sesion Sesion = Sesion.ObtenerInstancia();
         public InicioSesion()
         {
             InitializeComponent();

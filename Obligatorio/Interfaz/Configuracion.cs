@@ -30,7 +30,7 @@ namespace Interfaz
                     Alerta("Los passwords deben coincidir.", AlertaToast.enmTipo.Error);
                     return;
                 }
-                Sesion sesion = Sesion.Singleton;
+                Sesion sesion = Sesion.ObtenerInstancia();
                 sesion.CambiarPassword(passwordRepetido);
                 this.txtPassword.Text = "";
                 this.txtRepetirPassword.Text = "";
