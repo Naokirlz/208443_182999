@@ -2,7 +2,7 @@
 using Negocio;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
-using Negocio.Excepciones;
+using Negocio.Utilidades;
 using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
@@ -131,7 +131,7 @@ namespace PruebasUnitarias
         public void NoSePuedeEjecutarModificarCategoriaSiNoSeEstaLogueado()
         {
             sesionPrueba.LogOut();
-            sesionPrueba.ModificacionCategoria(1, "nuevoNombre");
+            sesionPrueba.ModificarCategoria(1, "nuevoNombre");
         }
 
         [TestMethod]
@@ -165,7 +165,7 @@ namespace PruebasUnitarias
         {
 
             int nuevaCategoria = sesionPrueba.AltaCategoria("algunaCategoria");
-            sesionPrueba.ModificacionCategoria(nuevaCategoria, "modAlgunaCat");
+            sesionPrueba.ModificarCategoria(nuevaCategoria, "modAlgunaCat");
             Assert.AreEqual("modAlgunaCat", sesionPrueba.BuscarCategoriaPorId(nuevaCategoria).Nombre);
 
         }
@@ -350,13 +350,13 @@ namespace PruebasUnitarias
             sesionPrueba.ObtenerTodasLasContrasenias();
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
-        public void NoSePuedeEjecutarVerificarFortalezaSiNoSeEstaLogueado()
-        {
-            sesionPrueba.LogOut();
-            sesionPrueba.VerificarFortaleza(new Contrasenia());
-        }
+        //[TestMethod]
+        //[ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        //public void NoSePuedeEjecutarVerificarFortalezaSiNoSeEstaLogueado()
+        //{
+        //    sesionPrueba.LogOut();
+        //    sesionPrueba.VerificarFortaleza(new Contrasenia());
+        //}
 
      
         [TestMethod]
@@ -440,13 +440,13 @@ namespace PruebasUnitarias
 
         }
 
-        [TestMethod]
-        public void SePuedeEjecutarVerificarFortalezaEstandoLogueado()
-        {
-            string fortaleza = "Nada que Reportar";
-            fortaleza = sesionPrueba.VerificarFortaleza(pruebaContrasenia);
-            Assert.AreNotEqual("Nada que Reportar", fortaleza);
-        }
+        //[TestMethod]
+        //public void SePuedeEjecutarVerificarFortalezaEstandoLogueado()
+        //{
+        //    string fortaleza = "Nada que Reportar";
+        //    fortaleza = sesionPrueba.VerificarFortaleza(pruebaContrasenia);
+        //    Assert.AreNotEqual("Nada que Reportar", fortaleza);
+        //}
 
         [TestMethod]
         public void SePuedeEjecutarMostrarPasswordEstandoLogueado()

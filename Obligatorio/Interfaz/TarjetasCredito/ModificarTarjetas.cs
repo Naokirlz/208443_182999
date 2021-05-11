@@ -1,10 +1,16 @@
 ﻿using Negocio;
 using Negocio.Categorias;
-using Negocio.Excepciones;
+using Negocio.Utilidades;
 using Negocio.TarjetaCreditos;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz.TarjetasCredito

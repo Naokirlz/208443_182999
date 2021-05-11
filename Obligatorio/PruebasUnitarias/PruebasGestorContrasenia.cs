@@ -2,7 +2,7 @@
 using Negocio;
 using Negocio.Contrasenias;
 using Negocio.Categorias;
-using Negocio.Excepciones;
+using Negocio.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -226,7 +226,7 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void NoSePuedeEliminarUnaContraseniaQueNoExisteEnRepositorio()
         {
-           Gestor.Repositorio.Baja(-2);
+           Gestor.Baja(-2);
         }
 
      

@@ -1,5 +1,5 @@
 ﻿
-namespace Negocio
+namespace Negocio.Utilidades
 {
     public interface IFuente
     {

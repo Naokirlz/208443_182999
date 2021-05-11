@@ -1,7 +1,6 @@
-﻿using Negocio.Excepciones;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Negocio
+namespace Negocio.Utilidades
 {
     public class FuenteLocal : IFuente
     {

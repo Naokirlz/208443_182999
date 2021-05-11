@@ -1,7 +1,14 @@
 ﻿using Negocio;
+using Negocio.Utilidades;
 using Negocio.TarjetaCreditos;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz.TarjetasCredito
@@ -25,21 +32,32 @@ namespace Interfaz.TarjetasCredito
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            TarjetaCredito tarjetaSeleccionada = (TarjetaCredito)this.cmbTarjeta.SelectedItem;
-            if (tarjetaSeleccionada == null)
+            try
             {
-                Alerta("Seleccione al menos una Tarjeta de Crédito", AlertaToast.enmTipo.Error);
-                return;
+                TarjetaCredito tarjetaSeleccionada = (TarjetaCredito)this.cmbTarjeta.SelectedItem;
+                if (tarjetaSeleccionada == null)
+                {
+                    Alerta("Seleccione al menos una Tarjeta de Crédito", AlertaToast.enmTipo.Error);
+                    return;
+                }
+
+                DialogResult respuesta = MessageBox.Show("Realmente desea eliminar la tarjeta?",
+                            "Alerta",
+                            MessageBoxButtons.YesNoCancel,
+                            MessageBoxIcon.Warning);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    this.Sesion.BajaTarjetaCredito(tarjetaSeleccionada.Id);
+                    Alerta("Tarjeta Eliminada con éxito!!", AlertaToast.enmTipo.Exito);
+                    this.cmbTarjeta.Text = "";
+                    Refrescar();
+                }
             }
-
-            VentanaConfirmar frmConfirmar = new VentanaConfirmar(tarjetaSeleccionada.Id, Sesion.BajaTarjetaCredito)
+            catch (ExcepcionElementoNoExiste unaExcepcion)
             {
-                MsgConfirmación = "Tarjeta Eliminada con éxito!!",
-                MsgPregunta = "Realmente desea eliminar la tarjeta??"
-            };
-            frmConfirmar.CargarFormulario();
-
-            Refrescar();
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
+            }
         }
 
         private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
