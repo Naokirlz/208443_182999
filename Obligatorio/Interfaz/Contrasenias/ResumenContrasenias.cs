@@ -1,16 +1,12 @@
 ﻿using Negocio.Contrasenias;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
 using Microsoft.VisualBasic;
 using Negocio.Utilidades;
+
+
 
 namespace Interfaz.Contrasenias
 {
@@ -26,6 +22,14 @@ namespace Interfaz.Contrasenias
 
             FormModificar = null;
 
+            CargarColumnasBotones();
+
+            CargarTabla();
+            
+        }
+
+        private void CargarColumnasBotones()
+        {
             DataGridViewButtonColumn columnaBotonVer = new DataGridViewButtonColumn();
             columnaBotonVer.Name = "columnaBotonVer";
             columnaBotonVer.Text = "Ver";
@@ -58,9 +62,6 @@ namespace Interfaz.Contrasenias
                 this.dgvContrasenias.Columns.Insert(columnRevelarIndex, columnaBotonEliminar);
                 columnaBotonEliminar.UseColumnTextForButtonValue = true;
             }
-
-            CargarTabla();
-            
         }
 
         private void CargarTabla()
@@ -84,12 +85,9 @@ namespace Interfaz.Contrasenias
         {
             if (e.RowIndex != -1)
             {
-                string id = dgvContrasenias.Rows[e.RowIndex].Cells[0].Value.ToString();
-                Contrasenia contraseniaSeleccionada = null;
-                foreach (Contrasenia contrasenia in Contrasenias)
-                {
-                    if (contrasenia.Id.ToString() == id) contraseniaSeleccionada = contrasenia;
-                }
+                int id = Int32.Parse(dgvContrasenias.Rows[e.RowIndex].Cells[0].Value.ToString());
+                Contrasenia contraseniaSeleccionada = Contrasenias.ToList().Find(c => c.Id == id);
+
                 if (e.ColumnIndex == 5)
                 {
                     FormModificar = new MostrarPassword(contraseniaSeleccionada);
@@ -101,33 +99,13 @@ namespace Interfaz.Contrasenias
                 }
                 else if (e.ColumnIndex == 7)
                 {
-                    try
+                    VentanaConfirmar frmConfirmar = new VentanaConfirmar(contraseniaSeleccionada.Id, Sesion.BajaContrasenia)
                     {
-                        DialogResult respuesta = MessageBox.Show("Realmente desea eliminar la contraseña?",
-                            "Alerta",
-                            MessageBoxButtons.YesNoCancel,
-                            MessageBoxIcon.Warning);
-
-                        if (respuesta == DialogResult.Yes)
-                        {
-                            this.Sesion.BajaContrasenia(contraseniaSeleccionada.Id);
-                            CargarTabla();
-                            Alerta("Contraseña eliminada con éxito!!", AlertaToast.enmTipo.Exito);
-                        }
-
-                    }
-                    catch (ExcepcionElementoYaExiste unaExcepcion)
-                    {
-                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-                    }
-                    catch (ExcepcionLargoTexto unaExcepcion)
-                    {
-                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-                    }
-                    catch (ExcepcionElementoNoExiste unaExcepcion)
-                    {
-                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-                    }
+                        MsgConfirmación = "Contraseña Eliminada con éxito!!",
+                        MsgPregunta = "Realmente desea eliminar la contraseña??"
+                    };
+                    frmConfirmar.CargarFormulario();
+                    CargarTabla();
                 }
             }
         }

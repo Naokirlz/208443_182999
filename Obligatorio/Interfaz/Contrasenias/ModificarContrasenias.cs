@@ -3,13 +3,7 @@ using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.Utilidades;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz.Contrasenias
@@ -48,7 +42,6 @@ namespace Interfaz.Contrasenias
                 this.txtNotas.Text = contraseniaSeleccionada.Notas;
                 this.txtPassword.Text = Sesion.MostrarPassword(contraseniaSeleccionada);
             }
-            
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
