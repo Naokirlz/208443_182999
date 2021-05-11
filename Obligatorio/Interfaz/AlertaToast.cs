@@ -82,7 +82,7 @@ namespace Interfaz
                     }
                     else
                     {
-                        if (this.Opacity == 1.0)
+                        if (this.Opacity == 0.9)
                         {
                             Accion = enmAccion.esperar;
                         }
