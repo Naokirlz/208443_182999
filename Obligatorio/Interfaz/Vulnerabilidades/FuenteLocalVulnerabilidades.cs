@@ -1,4 +1,5 @@
 ﻿using Negocio;
+using Negocio.Utilidades;
 using System;
 using System.Windows.Forms;
 
@@ -11,7 +12,14 @@ namespace Interfaz.Vulnerabilidades
         public FuenteLocalVulnerabilidades()
         {
             InitializeComponent();
+            //acá debería buscar si alguna de las fuentes es la fuente local, y a esa le pongo el contenido
+            //esto tiene que ser de sesión
+            
 
+            //acá agrego lo de fuente local, que siempre debería aparecer
+            //si tengo más fuentes las agrego en la ventana de validación, con la lista de fuentes que tenga
+
+            //esto sacarlo después
             bool encontre = false;
             foreach (IFuente fuente in Sesion.MisFuentes)
             {
@@ -46,7 +54,7 @@ namespace Interfaz.Vulnerabilidades
                 bool soloNum = true;
                 foreach (char digito in sinEspacios)
                 {
-                    if (!Validaciones.EsNumero(digito)) soloNum = false;
+                    if (!EsNumero(digito)) soloNum = false;
                 }
                 if (soloNum) texto = sinEspacios;
 
@@ -60,6 +68,16 @@ namespace Interfaz.Vulnerabilidades
         {
             AlertaToast alerta = new AlertaToast();
             alerta.MostrarAlerta(mensaje, tipo);
+        }
+
+        public static bool EsNumero(char digito)
+        {
+            int convertido = Convert.ToInt32(digito);
+
+            if (convertido > 57) return false;
+            else if (convertido < 48) return false;
+            return true;
+
         }
     }
 }

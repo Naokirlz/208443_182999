@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using Negocio.Categorias;
 using System.Linq;
+using Negocio.Utilidades;
 
 namespace Negocio.TarjetaCreditos
 {
     public class GestorTarjetaCredito 
     {
-        public RepositorioTarjetaCredito Repositorio;
+        private RepositorioTarjetaCredito Repositorio;
       
         public GestorTarjetaCredito()
         {
@@ -73,7 +74,6 @@ namespace Negocio.TarjetaCreditos
 
         private void ValidarCampos(TarjetaCredito tarjeta)
         {
-            CategoriaExiste(tarjeta.Categoria);
             Validaciones.ValidarLargoTexto(tarjeta.Nombre, 25, 3, "nombre");
             Validaciones.ValidarLargoTexto(tarjeta.Tipo, 25, 3, "tipo");
             Validaciones.ValidarLargoTexto(tarjeta.Numero, 16, 16, "número");
@@ -84,11 +84,6 @@ namespace Negocio.TarjetaCreditos
                 Validaciones.ValidarLargoTexto(tarjeta.Nota, 250, -1, "nota");
             }
         }
-
-        private bool CategoriaExiste(Categoria categoria)
-        {
-            //buscar categoria en lista de categorias existentes
-            return true;
-        }
+       
     }
 }

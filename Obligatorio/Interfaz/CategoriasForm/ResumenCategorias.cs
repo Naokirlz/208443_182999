@@ -1,7 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
 using Negocio.Categorias;
+using Negocio.Contrasenias;
 
 namespace Interfaz.CategoriasForm
 {
@@ -9,6 +17,7 @@ namespace Interfaz.CategoriasForm
     {
         public ResumenCategorias()
         {
+            
             Sesion Sesion = Sesion.Singleton;
             InitializeComponent();
             IEnumerable<Categoria> categorias = Sesion.ObtenerTodasLasCategorias();

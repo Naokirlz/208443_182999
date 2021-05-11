@@ -64,7 +64,6 @@ namespace Interfaz.Contrasenias
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(451, 81);
             this.panel4.TabIndex = 4;
-            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
             // 
             // btnCerrar
             // 
