@@ -1,5 +1,4 @@
-﻿using Negocio.Utilidades;
-using System;
+﻿using System;
 
 namespace Negocio.Utilidades { 
     public class Validaciones

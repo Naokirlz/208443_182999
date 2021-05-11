@@ -161,12 +161,6 @@ namespace Negocio
             if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
             return GestorContrasenia.ObtenerTodas();
         }
-
-        //public string VerificarFortaleza(Contrasenia contrasenia)
-        //{
-        //    if (!this.Logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
-        //    return contrasenia.Password.ColorPassword.ToString();
-        //}
        
         public string MostrarPassword(Contrasenia contrasenia)
         {
@@ -179,6 +173,11 @@ namespace Negocio
             this.Logueado = false;
         }
 
+        /* 
+         * Método que se realiza para limpiar los datos de las pruebas unitarias
+         * de sesión, debido a que la sesión es Singleton, no se limpian los datos
+         * vacindo las listas.
+         */
         public void VaciarDatosPrueba()
         {
             this.GestorContrasenia = new GestorContrasenias();
