@@ -126,38 +126,14 @@ namespace Interfaz.Vulnerabilidades
                     {
                         if (contrasenia.Id.ToString() == id) contraseniaSeleccionada = contrasenia;
                     }
+                    IngresoPassword frmIngresoPassword = new IngresoPassword(contraseniaSeleccionada);
 
-                    string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", (contraseniaSeleccionada.Password.Clave));
-                    //string password = (string)dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value;
-                    if (nuevoPassword == "") return;
-
-
-                    Contrasenia modificada = new Contrasenia()
+                    List<IFuente> fuentesAVerificar = new List<IFuente>();
+                    if (chkFuenteLocal.Checked)
                     {
-                        Sitio = contraseniaSeleccionada.Sitio,
-                        Categoria = contraseniaSeleccionada.Categoria,
-                        Id = contraseniaSeleccionada.Id,
-                        Notas = contraseniaSeleccionada.Notas,
-                        Usuario = contraseniaSeleccionada.Usuario,
-                        Password = contraseniaSeleccionada.Password
-                    };
-                    
-                    try
-                    {
-                        modificada.Password.Clave = nuevoPassword;
-                        Sesion.ModificarContrasenia(modificada);
-                        List<IFuente> fuentesAVerificar = new List<IFuente>();
-                        if (chkFuenteLocal.Checked)
-                        {
-                            fuentesAVerificar.Add(Sesion.MisFuentes[0]);
-                        }
-                        CargarTablaContraseniasVulnerables(fuentesAVerificar);
-                        Alerta("Contraseña modificada con éxito!!", AlertaToast.enmTipo.Exito);
+                        fuentesAVerificar.Add(Sesion.MisFuentes[0]);
                     }
-                    catch (ExcepcionLargoTexto unaExcepcion)
-                    {
-                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-                    }
+                    CargarTablaContraseniasVulnerables(fuentesAVerificar);
 
                 }
             }

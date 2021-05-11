@@ -162,42 +162,11 @@ namespace Interfaz.Contrasenias
                 }
                 else if (e.ColumnIndex == 6)
                 {
-                    string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", password);
-                    //string password = (string)dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells[4].Value;
-                    if (nuevoPassword == "") return;
-                    Password nuevoPass = new Password(nuevoPassword);
-
-                    Contrasenia modificada = new Contrasenia()
-                    {
-                        Sitio = contraseniaSeleccionada.Sitio,
-                        Categoria = contraseniaSeleccionada.Categoria,
-                        Id = contraseniaSeleccionada.Id,
-                        Notas = contraseniaSeleccionada.Notas,
-                        Usuario = contraseniaSeleccionada.Usuario,
-                        Password = nuevoPass,
-                    };
-                    
-                    try
-                    {
-                        Sesion.ModificarContrasenia(modificada);
-                        Alerta("Contraseña modificada con éxito!!", AlertaToast.enmTipo.Exito);
-                        GenerarGrupos();
-                        Grupo grupoActualizado = Grupos[this.GrupoMostrando];
-                        CargarTablaPorGrupo(grupoActualizado);
-                        CargarTabla();
-                    }
-                    catch (ExcepcionElementoYaExiste unaExcepcion)
-                    {
-                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-                    }
-                    catch (ExcepcionLargoTexto unaExcepcion)
-                    {
-                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-                    }
-                    catch (ExcepcionElementoNoExiste unaExcepcion)
-                    {
-                        Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-                    }
+                    IngresoPassword frmIngresoPassword = new IngresoPassword(contraseniaSeleccionada);
+                    GenerarGrupos();
+                    Grupo grupoActualizado = Grupos[this.GrupoMostrando];
+                    CargarTablaPorGrupo(grupoActualizado);
+                    CargarTabla();
                 }
             }
         }

@@ -71,6 +71,7 @@ namespace Interfaz.Contrasenias
                 };
 
                 this.Sesion.ModificarContrasenia(aModificar);
+                Alerta("Contraseña modificada con éxito!!", AlertaToast.enmTipo.Exito);
                 this.Close();
             }
             catch (ExcepcionElementoYaExiste unaExcepcion)

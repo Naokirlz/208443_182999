@@ -98,39 +98,6 @@ namespace Interfaz.Contrasenias
                 {
                     ModificarPasswordVentana frmModificar = new ModificarPasswordVentana(contraseniaSeleccionada);
                     CargarTabla();
-                    Alerta("Contraseña modificada con éxito!!", AlertaToast.enmTipo.Exito);
-                    //string nuevoPassword = Interaction.InputBox("Cual es la nueva contraseña?", "Modificar Contraseña", contraseniaSeleccionada.Password.Clave);
-                    //Password nuevoPass = new Password(nuevoPassword);
-
-                    //if (nuevoPassword == "") return;
-                    //Contrasenia modificada = new Contrasenia()
-                    //{
-                    //    Sitio = contraseniaSeleccionada.Sitio,
-                    //    Categoria = contraseniaSeleccionada.Categoria,
-                    //    Id = contraseniaSeleccionada.Id,
-                    //    Notas = contraseniaSeleccionada.Notas,
-                    //    Usuario = contraseniaSeleccionada.Usuario,
-                    //    Password = nuevoPass
-                    //};
-
-                    //try
-                    //{
-                    //    Sesion.ModificarContrasenia(modificada);
-                    //    CargarTabla();
-                    //    Alerta("Contraseña modificada con éxito!!", AlertaToast.enmTipo.Exito);
-                    //}
-                    //catch (ExcepcionElementoYaExiste unaExcepcion)
-                    //{
-                    //    Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-                    //}
-                    //catch (ExcepcionLargoTexto unaExcepcion)
-                    //{
-                    //    Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-                    //}
-                    //catch (ExcepcionElementoNoExiste unaExcepcion)
-                    //{
-                    //    Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-                    //}
                 }
                 else if (e.ColumnIndex == 7)
                 {
