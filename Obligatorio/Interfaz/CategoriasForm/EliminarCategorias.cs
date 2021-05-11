@@ -2,13 +2,7 @@
 using Negocio.Categorias;
 using Negocio.Excepciones;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz
@@ -32,30 +26,22 @@ namespace Interfaz
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            try
+            Categoria aEliminar = (Categoria)this.cmbCategoria.SelectedItem;
+            if (aEliminar == null)
             {
-                Categoria aEliminar = (Categoria)this.cmbCategoria.SelectedItem;
-                if (aEliminar == null)
-                {
-                    Alerta("Seleccione al menos una categoría", AlertaToast.enmTipo.Error);
-                    return;
-                }
-                int id = aEliminar.Id;
-
-                VentanaConfirmar frmConfirmar = new VentanaConfirmar(id, Sesion.BajaCategoria)
-                {
-                    MsgConfirmación = "Categoría eliminada con éxito!!",
-                    MsgPregunta = "Desea eliminar la categoría??"
-                };
-
-                frmConfirmar.CargarFormulario();
-                Refrescar();
-
+                Alerta("Seleccione al menos una categoría", AlertaToast.enmTipo.Error);
+                return;
             }
-            catch (ExcepcionElementoNoExiste unaExcepcion)
+            int id = aEliminar.Id;
+
+            VentanaConfirmar frmConfirmar = new VentanaConfirmar(id, Sesion.BajaCategoria)
             {
-                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-            }
+                MsgConfirmación = "Categoría eliminada con éxito!!",
+                MsgPregunta = "Desea eliminar la categoría??"
+            };
+
+            frmConfirmar.CargarFormulario();
+            Refrescar();
         }
 
         private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
