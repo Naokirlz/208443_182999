@@ -7,13 +7,13 @@
     <ProjectGuid>{9CBB1504-6688-4CBF-9B59-94DE15B4E0FC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Interfaz</RootNamespace>
-    <AssemblyName>PMP</AssemblyName>
+    <AssemblyName>Interfaz</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\fnico\Documents\GitHub\208443_182999\Instalador\</PublishUrl>
+    <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,9 +24,8 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -54,24 +53,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>IconoAplicacion.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>true</SignManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DelaySign>false</DelaySign>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>F734C27AE01423BD5B9A1EADE359025CFA826421</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>Interfaz_7_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -249,12 +230,6 @@
     <Compile Include="TarjetasCredito\ResumenTarjetas.Designer.cs">
       <DependentUpon>ResumenTarjetas.cs</DependentUpon>
     </Compile>
-    <Compile Include="VentanaConfirmar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VentanaConfirmar.Designer.cs">
-      <DependentUpon>VentanaConfirmar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Vulnerabilidades\FuenteLocalVulnerabilidades.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -360,9 +335,6 @@
     <EmbeddedResource Include="TarjetasCredito\ResumenTarjetas.resx">
       <DependentUpon>ResumenTarjetas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VentanaConfirmar.resx">
-      <DependentUpon>VentanaConfirmar.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Vulnerabilidades\FuenteLocalVulnerabilidades.resx">
       <DependentUpon>FuenteLocalVulnerabilidades.cs</DependentUpon>
     </EmbeddedResource>
@@ -372,7 +344,6 @@
     <EmbeddedResource Include="Vulnerabilidades\ResumenVulnerabilidades.resx">
       <DependentUpon>ResumenVulnerabilidades.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Interfaz_7_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

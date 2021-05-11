@@ -2,7 +2,13 @@
 using Negocio.Contrasenias;
 using Negocio.Utilidades;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz.Contrasenias
@@ -26,6 +32,8 @@ namespace Interfaz.Contrasenias
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            try
+            {
                 Contrasenia contraseniaSeleccionada = (Contrasenia)this.cmbContrasenia.SelectedItem;
                 if (contraseniaSeleccionada == null)
                 {
@@ -33,13 +41,22 @@ namespace Interfaz.Contrasenias
                     return;
                 }
 
-                VentanaConfirmar frmConfirmar = new VentanaConfirmar(contraseniaSeleccionada.Id, Sesion.BajaContrasenia)
-                {
-                    MsgConfirmación = "Contraseña Eliminada con éxito!!",
-                    MsgPregunta = "Realmente desea eliminar la contraseña??"
-                };
-                frmConfirmar.CargarFormulario();
-                Refrescar();
+                DialogResult respuesta = MessageBox.Show("Realmente desea eliminar la contraseña?",
+                            "Alerta",
+                            MessageBoxButtons.YesNoCancel,
+                            MessageBoxIcon.Warning);
+
+                if (respuesta == DialogResult.Yes) { 
+                    this.Sesion.BajaContrasenia(contraseniaSeleccionada.Id);
+                    Alerta("Contraseña Eliminada con éxito!!", AlertaToast.enmTipo.Exito);
+                    this.cmbContrasenia.Text = "";
+                    Refrescar();
+                }
+            }
+            catch (ExcepcionElementoNoExiste unaExcepcion)
+            {
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
+            }
         }
 
         private void Alerta(string mensaje, AlertaToast.enmTipo tipo)

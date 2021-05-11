@@ -28,8 +28,14 @@ namespace Interfaz.Vulnerabilidades
             this.contraseniasVulnerables = new List<Contrasenia>();
             this.tarjetasVulnerables = new List<TarjetaCredito>();
 
-            if(Sesion.MisFuentes.Count() == 0) this.chkFuenteLocal.Visible = false;
-                else this.chkFuenteLocal.Checked = true;
+            if(Sesion.MisFuentes.Count() == 0)
+            {
+                this.chkFuenteLocal.Visible = false;
+            }
+            else
+            {
+                this.chkFuenteLocal.Checked = true;
+            }
 
             DataGridViewButtonColumn columnaBotonModificarContrasenia = new DataGridViewButtonColumn();
             columnaBotonModificarContrasenia.Name = "Modificar";
@@ -114,9 +120,12 @@ namespace Interfaz.Vulnerabilidades
             {
                 if (e.ColumnIndex == 5)
                 {
-                    int id = Int32.Parse(dgvVulnerabilidadesContrasenias.Rows[e.RowIndex].Cells[0].Value.ToString());
-                    Contrasenia contraseniaSeleccionada = contraseniasVulnerables.ToList().Find(c => c.Id == id);
-
+                    string id = dgvVulnerabilidadesContrasenias.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Contrasenia contraseniaSeleccionada = null;
+                    foreach (Contrasenia contrasenia in contraseniasVulnerables)
+                    {
+                        if (contrasenia.Id.ToString() == id) contraseniaSeleccionada = contrasenia;
+                    }
                     IngresoPassword frmIngresoPassword = new IngresoPassword(contraseniaSeleccionada);
 
                     List<IFuente> fuentesAVerificar = new List<IFuente>();
@@ -125,6 +134,7 @@ namespace Interfaz.Vulnerabilidades
                         fuentesAVerificar.Add(Sesion.MisFuentes[0]);
                     }
                     CargarTablaContraseniasVulnerables(fuentesAVerificar);
+
                 }
             }
         }
@@ -155,6 +165,12 @@ namespace Interfaz.Vulnerabilidades
             }
 
             return conFormato;
+        }
+
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }

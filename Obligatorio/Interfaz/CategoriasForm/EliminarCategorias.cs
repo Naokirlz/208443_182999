@@ -2,7 +2,13 @@
 using Negocio.Categorias;
 using Negocio.Utilidades;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interfaz
@@ -26,22 +32,34 @@ namespace Interfaz
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Categoria aEliminar = (Categoria)this.cmbCategoria.SelectedItem;
-            if (aEliminar == null)
+            try
             {
-                Alerta("Seleccione al menos una categoría", AlertaToast.enmTipo.Error);
-                return;
+                Categoria aEliminar = (Categoria)this.cmbCategoria.SelectedItem;
+                if (aEliminar == null)
+                {
+                    Alerta("Seleccione al menos una categoría", AlertaToast.enmTipo.Error);
+                    return;
+                }
+                int id = aEliminar.Id;
+                string nombre = aEliminar.Nombre;
+
+                DialogResult respuesta = MessageBox.Show("Realmente desea eliminar la categoría " + nombre + "?", 
+                    "Alerta", 
+                    MessageBoxButtons.YesNoCancel, 
+                    MessageBoxIcon.Warning);
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    this.Sesion.BajaCategoria(id);
+                    Refrescar();
+                    Alerta("Categoría eliminada con éxito!!", AlertaToast.enmTipo.Exito);
+                }
+                
             }
-            int id = aEliminar.Id;
-
-            VentanaConfirmar frmConfirmar = new VentanaConfirmar(id, Sesion.BajaCategoria)
+            catch (ExcepcionElementoNoExiste unaExcepcion)
             {
-                MsgConfirmación = "Categoría eliminada con éxito!!",
-                MsgPregunta = "Desea eliminar la categoría??"
-            };
-
-            frmConfirmar.CargarFormulario();
-            Refrescar();
+                Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
+            }
         }
 
         private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
