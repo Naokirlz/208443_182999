@@ -68,7 +68,6 @@ namespace Interfaz.Contrasenias
             catch (ExcepcionElementoYaExiste unaExcepcion)
             {
                 Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
-                MessageBox.Show(unaExcepcion.Message);
             }
             catch (ExcepcionLargoTexto unaExcepcion)
             {
