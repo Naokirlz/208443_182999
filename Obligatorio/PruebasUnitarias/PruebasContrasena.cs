@@ -59,23 +59,21 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SeGuardaLaFechaDeModificacionCorrecta()
         {
-            DateTime fechaActual = DateTime.Now;
             Contrasenia nuevaContrasenia = new Contrasenia()
             {
-                FechaUltimaModificacion = fechaActual
+                FechaUltimaModificacion = DateTime.Now
             };
-            Assert.AreEqual(fechaActual, nuevaContrasenia.FechaUltimaModificacion);
+            Assert.AreEqual(DateTime.Now, nuevaContrasenia.FechaUltimaModificacion);
         }
 
         [TestMethod]
         public void SePuedeCrearUnaContraseniaConNotaCorrecta()
         {
-            string notas = "notas";
-            Contrasenia nuevaContrasenia = new Contrasenia()
+             Contrasenia nuevaContrasenia = new Contrasenia()
             {
-                Notas = notas
+                Notas = "notas"
             };
-            Assert.AreEqual(notas, nuevaContrasenia.Notas);
+            Assert.AreEqual("notas", nuevaContrasenia.Notas);
         }
 
         [TestMethod]
@@ -96,23 +94,23 @@ namespace PruebasUnitarias
                 Sitio = "deremate.com",
                 Usuario = "fede"
             };
-            string texto = nuevaContrasenia.ToString();
-            Assert.AreEqual("deremate.com | fede", texto);
+            
+            Assert.AreEqual("deremate.com | fede", nuevaContrasenia.ToString());
         }
 
         [TestMethod]
-        public void SePuedeDetectarPasswordRojo()
+        public void SePuedeDetectarPasswordColorRojo()
         {
             ContraseniaCompleta.Password.Clave = "1234567";
-            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            string fortaleza = ContraseniaCompleta.FortalezaDelPassword().ToString();
             Assert.AreEqual("ROJO", fortaleza);
         }
 
         [TestMethod]
-        public void SePuedeDetectarPasswordNaranja()
+        public void SePuedeDetectarPasswordColorNaranja()
         {
             ContraseniaCompleta.Password.Clave = "12345678";
-            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            string fortaleza = ContraseniaCompleta.FortalezaDelPassword().ToString();
             Assert.AreEqual("NARANJA", fortaleza);
         }
 
@@ -120,14 +118,14 @@ namespace PruebasUnitarias
         public void SePuedeDetectarPasswordAmarilloSoloMinusculas()
         {
             ContraseniaCompleta.Password.Clave = "aaaaaaaaaaaaaaa";
-            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            string fortaleza = ContraseniaCompleta.FortalezaDelPassword().ToString();
             Assert.AreEqual("AMARILLO", fortaleza);
         }
         [TestMethod]
         public void SePuedeDetectarPasswordAmarilloSoloMayusculas()
         {
             ContraseniaCompleta.Password.Clave = "AAAAAAAAAAAAAAA";
-            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            string fortaleza = ContraseniaCompleta.FortalezaDelPassword().ToString();
             Assert.AreEqual("AMARILLO", fortaleza);
         }
 
@@ -135,7 +133,7 @@ namespace PruebasUnitarias
         public void SePuedeDetectarPasswordVerdeClaro()
         {
             ContraseniaCompleta.Password.Clave = "AAAAAAaAAAAAAAA";
-            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            string fortaleza = ContraseniaCompleta.FortalezaDelPassword().ToString();
             Assert.AreEqual("VERDE_CLARO", fortaleza);
         }
 
@@ -143,7 +141,7 @@ namespace PruebasUnitarias
         public void SePuedeDetectarMayusculasEspecialesNumerosMayor14VerdeClaro()
         {
             ContraseniaCompleta.Password.Clave = " AAAA1@ AAAAAAA";
-            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            string fortaleza = ContraseniaCompleta.FortalezaDelPassword().ToString();
             Assert.AreEqual("VERDE_CLARO", fortaleza);
         }
 
@@ -151,7 +149,7 @@ namespace PruebasUnitarias
         public void SePuedeDetectarMinusculasEspecialesNumerosMayor14VerdeClaro()
         {
             ContraseniaCompleta.Password.Clave = "aaaaa1@aaaaaaaa";
-            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            string fortaleza = ContraseniaCompleta.FortalezaDelPassword().ToString();
             Assert.AreEqual("VERDE_CLARO", fortaleza);
         }
 
@@ -159,7 +157,7 @@ namespace PruebasUnitarias
         public void SePuedeDetectarPasswordVerdeOscuro()
         {
             ContraseniaCompleta.Password.Clave = "AAAAAAaAAAA$AA1";
-            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            string fortaleza = ContraseniaCompleta.FortalezaDelPassword().ToString();
             Assert.AreEqual("VERDE_OSCURO", fortaleza);
         }
 
@@ -167,7 +165,7 @@ namespace PruebasUnitarias
         public void SePuedeDetectarOtroPasswordVerdeOscuro()
         {
             ContraseniaCompleta.Password.Clave = "^ AA;AaA}}AA#AA1";
-            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            string fortaleza = ContraseniaCompleta.FortalezaDelPassword().ToString();
             Assert.AreEqual("VERDE_OSCURO", fortaleza);
         }
 
@@ -175,7 +173,7 @@ namespace PruebasUnitarias
         public void SePuedeDetectarPasswordVerdeOscuroPorBug()
         {
             ContraseniaCompleta.Password.Clave = "u9_ANu9_ANu9_ANu9_AN";
-            string fortaleza = ContraseniaCompleta.Password.ColorPassword.ToString();
+            string fortaleza = ContraseniaCompleta.FortalezaDelPassword().ToString();
             Assert.AreEqual("VERDE_OSCURO", fortaleza);
         }
     }

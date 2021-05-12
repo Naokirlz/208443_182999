@@ -1,5 +1,6 @@
 ﻿using System;
 using Negocio.Categorias;
+using Negocio.Utilidades;
 
 namespace Negocio.Contrasenias
 {
@@ -24,6 +25,12 @@ namespace Negocio.Contrasenias
         {
             return this.Sitio + " | " + this.Usuario;
         }
+
+        public EnumColor FortalezaDelPassword()
+        {
+            return this.Password.ColorPassword;
+        }
+
     }
 
     
