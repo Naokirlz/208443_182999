@@ -12,11 +12,7 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasGestorContrasenia
     {
-        //no se puede guardar una contraseña con categoria que no existe //hacer junto con Cristian
-        // validar categoria antes de crearla y antes de modificar
-        // se deja test de validar la fecha para luego
-        
-
+  
         private GestorContrasenias Gestor = new GestorContrasenias();
         private Contrasenia ContraseniaCompleta;
 
@@ -34,7 +30,6 @@ namespace PruebasUnitarias
             this.ContraseniaCompleta = contraseniaCompleta;
         }
 
-        // se puede guardar una contraseña correctamente
         [TestMethod]
         public void SePuedeGuardarCorrectamente()
         {
@@ -122,7 +117,6 @@ namespace PruebasUnitarias
             Gestor.Alta(ContraseniaCompleta);
         }
 
-        //no se puede guardar una contraseña sin sitio
         [TestMethod]
         [ExpectedException(typeof(ExcepcionFaltaAtributo))]
         public void NoSePuedeGuardarUnaContrasenaSinSitio()
@@ -131,7 +125,6 @@ namespace PruebasUnitarias
             Gestor.Alta(ContraseniaCompleta);
         }
 
-        //no se puede guardar una contraseña sin usuario
         [TestMethod]
         [ExpectedException(typeof(ExcepcionFaltaAtributo))]
         public void NoSePuedeGuardarUnaContrasenaSinUsuario()
@@ -140,7 +133,6 @@ namespace PruebasUnitarias
             Gestor.Alta(ContraseniaCompleta);
         }
 
-        //no se puede guardar una contraseña sin password
         [TestMethod]
         [ExpectedException(typeof(ExcepcionFaltaAtributo))]
         public void NoSePuedeGuardarUnaContrasenaSinPassword()
@@ -149,7 +141,6 @@ namespace PruebasUnitarias
             Gestor.Alta(ContraseniaCompleta);
         }
 
-        //no se puede guardar una contraseña sin categoria
         [TestMethod]
         [ExpectedException(typeof(ExcepcionFaltaAtributo))]
         public void NoSePuedeGuardarUnaContrasenaSinCategoria()
@@ -158,7 +149,6 @@ namespace PruebasUnitarias
             Gestor.Alta(ContraseniaCompleta);
         }
 
-        //se corrige la fecha de modificacién aunque se mande por parámetro
         [TestMethod]
         public void SeCorrigeLaFechaDeModificacionAunqueSeMandePorParametro()
         {
@@ -170,7 +160,6 @@ namespace PruebasUnitarias
             Assert.AreEqual(DateTime.Now.Date, nuevaContrasenia.FechaUltimaModificacion.Date);
         }
 
-        //se puede cambiar el sitio
         [TestMethod]
         public void SePuedeModificarElSitio()
         {
@@ -251,7 +240,6 @@ namespace PruebasUnitarias
             Assert.AreEqual(1, diferencia);
         }
 
-        //se puede cambiar el usuario
         [TestMethod]
         public void SePuedeModificarElUsuario()
         {
@@ -283,8 +271,6 @@ namespace PruebasUnitarias
             Gestor.ModificarContrasenia(nuevaContrasenia);
         }
 
-       
-
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeModificarElPasswordConMenos5Caracteres()
@@ -305,7 +291,6 @@ namespace PruebasUnitarias
             Gestor.ModificarContrasenia(nuevaContrasenia);
         }
 
-        //se puede cambiar la categoria
         [TestMethod]
         public void SePuedeModificarLaCategoria()
         {
@@ -340,7 +325,6 @@ namespace PruebasUnitarias
         }
         
 
-        //se puede autogenerar la password en una cantidad correcta de caracteres
         [TestMethod]
         public void SePuedeGenerarPasswordPorCaracteres()
         {
@@ -375,8 +359,6 @@ namespace PruebasUnitarias
             Assert.AreEqual(13, nuevo.Clave.Length);
         }
 
-        //se puede autogenerar la password en una cantidad correcta de tipos de caracteres
-        //se puede autogenerar password con minusculas
         [TestMethod]
         public void SePuedeGenerarPasswordConMinusculas()
         {
@@ -400,7 +382,8 @@ namespace PruebasUnitarias
             }
             Assert.IsTrue(hayMinuscula && NohayOtro);
         }
-        //se puede autogenerar password con mayusculas
+
+
         [TestMethod]
         public void SePuedeGenerarPasswordConMayusculas()
         {
@@ -424,7 +407,8 @@ namespace PruebasUnitarias
             }
             Assert.IsTrue(hayMayuscula && NohayOtro);
         }
-        //se puede autogenerar password con mayusculas y minusculas
+
+
         [TestMethod]
         public void SePuedeGenerarPasswordConMayusculasYMinusculas()
         {
@@ -450,7 +434,8 @@ namespace PruebasUnitarias
             }
             Assert.IsTrue(hayMayuscula && hayMinuscula && NohayOtro);
         }
-        //se puede autogenerar password con numeros
+
+
         [TestMethod]
         public void SePuedeGenerarPasswordConNumeross()
         {
