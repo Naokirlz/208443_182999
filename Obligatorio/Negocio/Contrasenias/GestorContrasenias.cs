@@ -89,7 +89,7 @@ namespace Negocio.Contrasenias
             Validaciones.ValidarFecha(contrasenia.FechaUltimaModificacion);
             Validaciones.ValidarLargoTexto(contrasenia.Sitio, 25, 3, "sitio");
             Validaciones.ValidarLargoTexto(contrasenia.Usuario, 25, 5, "usuario");
-            Validaciones.ValidarLargoTexto(contrasenia.Password.Clave, 25, 5, "contraseña");
+            Validaciones.ValidarPassword(contrasenia.Password.Clave, 25, 5);
             if (contrasenia.Notas != null) Validaciones.ValidarLargoTexto(contrasenia.Notas, 250, 0, "notas");
         }
     }

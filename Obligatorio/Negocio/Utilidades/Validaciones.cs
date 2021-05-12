@@ -33,5 +33,11 @@ namespace Negocio.Utilidades {
             if (unaFecha > DateTime.Now) throw new ExcepcionFechaIncorrecta("La fecha de modificación no puede ser futura.");
         }
 
+        public static void ValidarPassword(string clave, int maximo, int minimo)
+        {
+            if (clave.Length > maximo || clave.Length < minimo)
+                throw new ExcepcionLargoTexto("El largo de contraseña debe ser de entre " +
+                                              minimo.ToString() + " y " + maximo.ToString() + " caracteres.");
+        }
     }
 }

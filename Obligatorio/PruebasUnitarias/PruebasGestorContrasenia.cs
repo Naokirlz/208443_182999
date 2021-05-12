@@ -724,5 +724,23 @@ namespace PruebasUnitarias
             Assert.AreEqual(1, despues - antes);
         }
 
+        [TestMethod]
+        public void SePuedeGuardarUnaContraseniaSoloEspacios()
+        {
+            Contrasenia contrasenia = new Contrasenia()
+            {
+                Sitio = ContraseniaCompleta.Sitio,
+                Categoria = ContraseniaCompleta.Categoria,
+                Usuario = ContraseniaCompleta.Usuario,
+                FechaUltimaModificacion = ContraseniaCompleta.FechaUltimaModificacion,
+                Id = ContraseniaCompleta.Id,
+                Password = new Password("       ")
+            };
+            int antes = Gestor.ObtenerTodas().Count();
+            Gestor.Alta(contrasenia);
+            int despues = Gestor.ObtenerTodas().Count();
+            Assert.AreEqual(1, despues - antes);
+        }
+
     }
 }

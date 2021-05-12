@@ -123,7 +123,7 @@ namespace Interfaz
             Contrasenia contrasenia2 = new Contrasenia()
             {
                 Categoria = Sesion.ObtenerTodasLasCategorias().ToList()[0],
-                Password = new Password("AA ss1223AASasd[[3 faas da"),
+                Password = new Password("AA ss1223AASas[[3 faa da"),
                 Sitio = "canvas.com",
                 Usuario = "usucanvas"
             };
