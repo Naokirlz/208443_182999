@@ -86,6 +86,7 @@ namespace PruebasUnitarias
             sesionPrueba.CambiarPassword("cambio password");
             sesionPrueba.LogOut();
             sesionPrueba.Login("cambio password");
+            
             int cantidadAntes = sesionPrueba.ObtenerTodasLasCategorias().Count();
             sesionPrueba.AltaCategoria("cat uno dos");
             int cantidadDespues = sesionPrueba.ObtenerTodasLasCategorias().Count();

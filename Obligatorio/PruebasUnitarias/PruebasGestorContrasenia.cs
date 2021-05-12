@@ -32,16 +32,17 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeGuardarCorrectamente()
         {
-            Categoria categoria = new Categoria("Categoría");
+           
             Contrasenia nuevaContrasena = new Contrasenia()
             {
-                Categoria = categoria,
+                Categoria = new Categoria("Categoría"),
                 Usuario = "usuario",
                 Sitio = "netflix",
                 Notas = "clave de netflix",
                 FechaUltimaModificacion = DateTime.Now,
                 Password = new Password("secreto")
             };
+
             Gestor.Alta(nuevaContrasena);
             IEnumerable<Contrasenia> contrasenias = Gestor.ObtenerTodas();
             bool existe = contrasenias.Any(c => c.Usuario == nuevaContrasena.Usuario && c.Sitio == nuevaContrasena.Sitio);
@@ -151,11 +152,10 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SeCorrigeLaFechaDeModificacionAunqueSeMandePorParametro()
         {
-            DateTime fechaIncorrecta = DateTime.Now.AddDays(-1);
-            ContraseniaCompleta.FechaUltimaModificacion = fechaIncorrecta;
+            ContraseniaCompleta.FechaUltimaModificacion = DateTime.Now.AddDays(-1);
             int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
-            Assert.AreNotEqual(fechaIncorrecta, nuevaContrasenia.FechaUltimaModificacion);
+            Assert.AreNotEqual(DateTime.Now.AddDays(-1), nuevaContrasenia.FechaUltimaModificacion);
             Assert.AreEqual(DateTime.Now.Date, nuevaContrasenia.FechaUltimaModificacion.Date);
         }
 
@@ -206,7 +206,7 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void NoSePuedeBuscarUnaContraseniaQueNoExiste()
         {
-           Contrasenia buscada = Gestor.Buscar(-2);
+           Gestor.Buscar(-200);
            
         }
 
@@ -214,7 +214,7 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void NoSePuedeEliminarUnaContraseniaQueNoExisteEnRepositorio()
         {
-           Gestor.Baja(-2);
+           Gestor.Baja(-200);
         }
 
      
@@ -234,9 +234,8 @@ namespace PruebasUnitarias
             };
 
             int idOtraContrasenia = Gestor.Alta(nuevaContrasenia);
-            
-            int diferencia = idOtraContrasenia - idUnaContrasenia;
-            Assert.AreEqual(1, diferencia);
+                        
+            Assert.AreEqual(1, idOtraContrasenia - idUnaContrasenia);
         }
 
         [TestMethod]
@@ -359,7 +358,7 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        public void SePuedeGenerarPasswordConMinusculas()
+        public void SePuedeGenerarPasswordSoloMinusculas()
         {
             bool hayMinuscula = false;
             bool NohayOtro = true;
@@ -384,7 +383,7 @@ namespace PruebasUnitarias
 
 
         [TestMethod]
-        public void SePuedeGenerarPasswordConMayusculas()
+        public void SePuedeGenerarPasswordSoloMayusculas()
         {
             bool hayMayuscula = false;
             bool NohayOtro = true;
@@ -436,7 +435,7 @@ namespace PruebasUnitarias
 
 
         [TestMethod]
-        public void SePuedeGenerarPasswordConNumeross()
+        public void SePuedeGenerarPasswordSoloNumeros()
         {
             bool hayNumeros = false;
             bool NohayOtro = true;
@@ -460,7 +459,7 @@ namespace PruebasUnitarias
         }
         
         [TestMethod]
-        public void SePuedeGenerarPasswordConEspeciales()
+        public void SePuedeGenerarPasswordSoloConCaracteresEspeciales()
         {
             bool hayEspeciales = false;
             bool NohayOtro = true;
@@ -545,7 +544,7 @@ namespace PruebasUnitarias
                 Password = new Password("secreto")
             };
 
-            int idOtraNuevaContrasenia = Gestor.Alta(nuevaContrasenia);
+            Gestor.Alta(nuevaContrasenia);
                                     
             Assert.AreEqual(2, Gestor.ObtenerTodas().Count());
         }
@@ -555,7 +554,7 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void NoSeEncuentraContraseniaQueNoExiste()
         {
-            Gestor.Buscar(75);
+            Gestor.Buscar(-200);
         }
 
         [TestMethod]

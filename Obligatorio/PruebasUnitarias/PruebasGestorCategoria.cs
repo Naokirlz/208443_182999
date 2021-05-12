@@ -45,8 +45,8 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoYaExiste))]
         public void NoSePuedeCrearCategoriaRepetida()
         {
-            int idUnaCategoria = Gestor.Alta("CateRepetida");
-            int idRepetidaCategoria = Gestor.Alta("CateRepetida");
+            Gestor.Alta("CateRepetida");
+            Gestor.Alta("CateRepetida");
         }
 
         [TestMethod]
@@ -61,9 +61,7 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void BuscarUnaCategoriaNoExistente()
         {
-            int idUnaCategoria = Gestor.Alta("BuscOtraCat");
-            int idABuscar = idUnaCategoria + 20;
-            Gestor.BuscarCategoriaPorId(idABuscar);
+            Gestor.BuscarCategoriaPorId(-200);
         }
 
         [TestMethod]
@@ -137,11 +135,10 @@ namespace PruebasUnitarias
         [TestMethod]
         public void PruebaEliminarCategoria()
         {
-            GestorCategorias Gestor4 = new GestorCategorias();
-            int idCategoria1 = Gestor4.Alta("Categoria1");
-            int cantidadAntes = Gestor4.ObtenerTodas().Count();
-            Gestor4.Baja(idCategoria1);
-            int cantidadDespues = Gestor4.ObtenerTodas().Count();
+            int idCategoriaAlta = Gestor.Alta("CategoriaAlta");
+            int cantidadAntes = Gestor.ObtenerTodas().Count();
+            Gestor.Baja(idCategoriaAlta);
+            int cantidadDespues = Gestor.ObtenerTodas().Count();
             Assert.AreEqual(1, cantidadAntes - cantidadDespues);
         }
 
