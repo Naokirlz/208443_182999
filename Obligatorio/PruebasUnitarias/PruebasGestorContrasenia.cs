@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Negocio;
 using Negocio.Contrasenias;
 using Negocio.Categorias;
 using Negocio.Utilidades;
@@ -664,9 +663,9 @@ namespace PruebasUnitarias
         {
             Gestor.Alta(ContraseniaCompleta);
             Contrasenia vieja = Gestor.ObtenerTodas().First();
-            DateTime fechaVieja = vieja.FechaUltimaModificacion;
+            DateTime fechaVieja = vieja.FechaUltimaModificacion.AddDays(-3);
+            vieja.FechaUltimaModificacion = fechaVieja;
             int id = vieja.Id;
-
 
             Contrasenia contraseniaNueva = new Contrasenia()
             {
@@ -683,7 +682,7 @@ namespace PruebasUnitarias
             Contrasenia nueva = Gestor.Buscar(id);
             DateTime fechaNueva = nueva.FechaUltimaModificacion;
             Assert.AreNotEqual(fechaVieja, fechaNueva);
-
+            Assert.AreEqual(DateTime.Now, fechaNueva);
         }
 
         [TestMethod]

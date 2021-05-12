@@ -462,13 +462,6 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ExcepcionLargoTexto))]
-        public void SeDebeTrimarElPasswordMaestro()
-        {
-            sesionPrueba.GuardarPrimerPassword("aaaa       ");
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void FallaElLoginConPasswordIncorrecto()
         {
