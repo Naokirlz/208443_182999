@@ -156,12 +156,18 @@ namespace Interfaz
                 Usuario = "palmaCristian"
             };
 
-            Sesion.AltaContrasenia(contrasenia1);
-            Sesion.AltaContrasenia(contrasenia2);
-            Sesion.AltaContrasenia(contrasenia3);
-            Sesion.AltaContrasenia(contrasenia4);
-            Sesion.AltaContrasenia(contrasenia5);
-            Sesion.AltaContrasenia(contrasenia6);
+            int id1 = Sesion.AltaContrasenia(contrasenia1);
+            int id2 = Sesion.AltaContrasenia(contrasenia2);
+            int id3 = Sesion.AltaContrasenia(contrasenia3);
+            int id4 = Sesion.AltaContrasenia(contrasenia4);
+            int id5 = Sesion.AltaContrasenia(contrasenia5);
+            int id6 = Sesion.AltaContrasenia(contrasenia6);
+            Sesion.BuscarContrasenia(id1).FechaUltimaModificacion = DateTime.Now.AddDays(-8);
+            Sesion.BuscarContrasenia(id2).FechaUltimaModificacion = DateTime.Now.AddDays(-10);
+            Sesion.BuscarContrasenia(id3).FechaUltimaModificacion = DateTime.Now.AddDays(-30);
+            Sesion.BuscarContrasenia(id4).FechaUltimaModificacion = DateTime.Now.AddDays(-1);
+            Sesion.BuscarContrasenia(id5).FechaUltimaModificacion = DateTime.Now.AddDays(-15);
+            Sesion.BuscarContrasenia(id6).FechaUltimaModificacion = DateTime.Now.AddDays(-7);
         }
         private void CargarVulnerabilidades()
         {
