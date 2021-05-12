@@ -182,25 +182,5 @@ namespace Negocio
             this.gestorCategoria = new GestorCategorias();
             this.MisFuentes = new List<IFuente>();
         }
-
-        public void InsertarDatosDeMuestra()
-        {
-            int idestudio = AltaCategoria("Estudio");
-            Categoria estudio = gestorCategoria.BuscarCategoriaPorId(idestudio);
-            AltaCategoria("Hogar");
-            AltaCategoria("Familia");
-            AltaCategoria("Trabajo");
-
-            TarjetaCredito nueva = new TarjetaCredito() { 
-                Categoria = estudio,
-                Codigo = 123.ToString(),
-                Nombre = "Visa República",
-                Numero = "1231231231231231",
-                Tipo = "Visa",
-                Vencimiento = DateTime.Now
-            };
-            AltaTarjetaCredito(nueva);
-        }
-
     }
 }
