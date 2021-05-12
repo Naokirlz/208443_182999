@@ -706,6 +706,23 @@ namespace PruebasUnitarias
 
         }
 
+        [TestMethod]
+        public void SePuedeGuardarUnaContraseniaSinNotas()
+        {
+            Contrasenia contrasenia = new Contrasenia()
+            {
+                Sitio = ContraseniaCompleta.Sitio,
+                Categoria = ContraseniaCompleta.Categoria,
+                Usuario = ContraseniaCompleta.Usuario,
+                FechaUltimaModificacion = ContraseniaCompleta.FechaUltimaModificacion,
+                Id = ContraseniaCompleta.Id,
+                Password = new Password("Nuevo PASSWORD")
+            };
+            int antes = Gestor.ObtenerTodas().Count();
+            Gestor.Alta(contrasenia);
+            int despues = Gestor.ObtenerTodas().Count();
+            Assert.AreEqual(1, despues - antes);
+        }
 
     }
 }
