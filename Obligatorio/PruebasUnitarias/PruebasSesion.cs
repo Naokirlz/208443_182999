@@ -7,8 +7,6 @@ using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PruebasUnitarias
 {
@@ -65,10 +63,6 @@ namespace PruebasUnitarias
         public void LimpiarPruebas()
         {
             sesionPrueba.VaciarDatosPrueba();
-            //sesionPrueba.GestorContrasenia = new GestorContrasenias();
-            //sesionPrueba.GestorTarjetaCredito = new GestorTarjetaCredito();
-            //sesionPrueba.GestorCategoria = new GestorCategorias();
-            //sesionPrueba.MisFuentes = new List<IFuente>();
         }
 
         [TestMethod]
@@ -350,14 +344,6 @@ namespace PruebasUnitarias
             sesionPrueba.ObtenerTodasLasContrasenias();
         }
 
-        //[TestMethod]
-        //[ExpectedException(typeof(ExcepcionAccesoDenegado))]
-        //public void NoSePuedeEjecutarVerificarFortalezaSiNoSeEstaLogueado()
-        //{
-        //    sesionPrueba.LogOut();
-        //    sesionPrueba.VerificarFortaleza(new Contrasenia());
-        //}
-
      
         [TestMethod]
         public void SePuedeEjecutarAltaContraseniaEstandoLogueado()
@@ -439,14 +425,6 @@ namespace PruebasUnitarias
             sesionPrueba.MostrarPassword(new Contrasenia());
 
         }
-
-        //[TestMethod]
-        //public void SePuedeEjecutarVerificarFortalezaEstandoLogueado()
-        //{
-        //    string fortaleza = "Nada que Reportar";
-        //    fortaleza = sesionPrueba.VerificarFortaleza(pruebaContrasenia);
-        //    Assert.AreNotEqual("Nada que Reportar", fortaleza);
-        //}
 
         [TestMethod]
         public void SePuedeEjecutarMostrarPasswordEstandoLogueado()
@@ -647,7 +625,6 @@ namespace PruebasUnitarias
                 retorno += "a";
 
             }
-
             return retorno;
 
         }

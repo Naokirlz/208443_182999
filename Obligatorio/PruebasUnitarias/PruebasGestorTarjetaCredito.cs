@@ -156,7 +156,6 @@ namespace PruebasUnitarias
             TarjetaDePruebaUno.Numero = "aaaaaaaaaaaaaaaa";
             Gestor.Alta(TarjetaDePruebaUno);
 
-
         }
 
         [TestMethod]
@@ -175,7 +174,6 @@ namespace PruebasUnitarias
             int idPrueba = Gestor.Alta(TarjetaDePruebaUno);
             Assert.IsNotNull(idPrueba);
 
-
         }
 
         [TestMethod]
@@ -187,17 +185,12 @@ namespace PruebasUnitarias
 
         }
 
-
-
-
         [TestMethod]
         [ExpectedException(typeof(ExcepcionNumeroNoValido))]
         public void AltaTarjetaDeCreditoCodigoInvalido()
         {
             TarjetaDePruebaUno.Codigo = "aaa";
             Gestor.Alta(TarjetaDePruebaUno);
-
-
         }
 
 
@@ -207,8 +200,6 @@ namespace PruebasUnitarias
         {
             TarjetaDePruebaUno.Nota = ArmarTextoDeLargoVariable(251);
             Gestor.Alta(TarjetaDePruebaUno);
-
-
         }
 
         [TestMethod]
@@ -219,7 +210,6 @@ namespace PruebasUnitarias
             TarjetaDePruebaUno.Nombre = "Nuevo Nombre";
             Gestor.ModificarTarjeta(TarjetaDePruebaUno);
             Assert.AreEqual("Nuevo Nombre", Gestor.Buscar(modificada).Nombre);
-
         }
 
         [TestMethod]
@@ -233,8 +223,6 @@ namespace PruebasUnitarias
             TarjetaDePruebaDos.Nombre = TarjetaDePruebaUno.Nombre;
 
             Gestor.ModificarTarjeta(TarjetaDePruebaDos);
-
-
         }
 
         [TestMethod]
@@ -248,7 +236,6 @@ namespace PruebasUnitarias
             TarjetaDePruebaDos.Numero = TarjetaDePruebaUno.Numero;
 
             Gestor.ModificarTarjeta(TarjetaDePruebaDos);
-
 
         }
 
@@ -288,14 +275,10 @@ namespace PruebasUnitarias
 
             Gestor.Alta(tarjetaPrueba);
 
-
             IEnumerable<TarjetaCredito> tarjetas = Gestor.ObtenerTodas();
-
             Assert.AreEqual("AAAAAA", tarjetas.ElementAt(0).Categoria.Nombre);
             Assert.AreEqual("BBBBBB", tarjetas.ElementAt(1).Categoria.Nombre);
             Assert.AreEqual("ZZZZZZ", tarjetas.ElementAt(2).Categoria.Nombre);
-
-
         }
 
         [TestMethod]
@@ -306,7 +289,6 @@ namespace PruebasUnitarias
             Assert.AreEqual(1, Gestor.ObtenerTodas().Count());
             Gestor.Baja(prueba);
             Assert.AreEqual(0, Gestor.ObtenerTodas().Count());
-
         }
 
         [TestMethod]
@@ -314,7 +296,6 @@ namespace PruebasUnitarias
         public void EliminarTarjetaCreditoQuenNoExiste()
         {
             Gestor.Baja(TarjetaDePruebaDos.Id + 200);
-
         }
 
 
@@ -328,8 +309,6 @@ namespace PruebasUnitarias
             string nombre = tarjeta.ToString();
             Assert.AreEqual("Nombre", nombre);
         }
-
-
 
 
         private string ArmarTextoDeLargoVariable(int largo)

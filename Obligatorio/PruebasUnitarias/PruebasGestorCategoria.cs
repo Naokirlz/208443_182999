@@ -112,12 +112,10 @@ namespace PruebasUnitarias
             int categoria1 = Gestor2.Alta("Categoria1");
             int categoria2 = Gestor2.Alta("Categoria2");
             int categoria3 = Gestor2.Alta("Categoria3");
-
             bool estaCat1 = false;
             bool estaCat2 = false;
             bool estaCat3 = false;
             bool categoriaDif = false;
-
 
             IEnumerable<Categoria> Lista = Gestor2.ObtenerTodas();
 
@@ -130,9 +128,7 @@ namespace PruebasUnitarias
                 else { categoriaDif = true; }
 
             }
-
             Assert.IsTrue(estaCat1 && estaCat2 && estaCat3 && !categoriaDif);
-
         }
 
 

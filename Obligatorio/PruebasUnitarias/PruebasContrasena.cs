@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Negocio.Contrasenias;
 using Negocio.Categorias;
-using Negocio.Utilidades;
 using System;
 
 namespace PruebasUnitarias
@@ -9,8 +8,7 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasContrasena
     {
-
-        
+   
         private Contrasenia ContraseniaCompleta;
 
         [TestInitialize]
@@ -28,10 +26,6 @@ namespace PruebasUnitarias
             this.ContraseniaCompleta = contraseniaCompleta;
         }
 
-
-
-
-
         [TestMethod]
         public void SePuedeCrearUnaContrasenaConSitioCorrecto()
         {
@@ -41,8 +35,7 @@ namespace PruebasUnitarias
             };
             Assert.AreEqual("12345", nuevaContrasenia.Sitio);
         }
-                
-
+    
         [TestMethod]
         public void SePuedeCrearUnaContrasenaConUsuarioCorrecto()
         {
@@ -53,7 +46,6 @@ namespace PruebasUnitarias
             Assert.AreEqual("12345", nuevaContrasenia.Usuario);
         }
 
-
         [TestMethod]
         public void SePuedeCrearUnaContrasenaConPasswordCorrecto()
         {
@@ -63,9 +55,7 @@ namespace PruebasUnitarias
             };
             Assert.AreEqual("12345", nuevaContrasenia.Password.Clave);
         }
-
-        
-
+      
         [TestMethod]
         public void SeGuardaLaFechaDeModificacionCorrecta()
         {
@@ -85,8 +75,6 @@ namespace PruebasUnitarias
             {
                 Notas = notas
             };
-            //Contrasenia nuevaContrasenia = new Contrasenia();
-            //nuevaContrasenia.SetNotas(notas);
             Assert.AreEqual(notas, nuevaContrasenia.Notas);
         }
 
@@ -112,10 +100,6 @@ namespace PruebasUnitarias
             Assert.AreEqual("deremate.com | fede", texto);
         }
 
-        /************************************************
-         *    VALIDACIONES DE PASSWORD
-         * ************************************************/
-        // se puede detectar password en rojo
         [TestMethod]
         public void SePuedeDetectarPasswordRojo()
         {
@@ -124,7 +108,6 @@ namespace PruebasUnitarias
             Assert.AreEqual("ROJO", fortaleza);
         }
 
-        // se puede detectar password en NARANJA
         [TestMethod]
         public void SePuedeDetectarPasswordNaranja()
         {
@@ -133,7 +116,6 @@ namespace PruebasUnitarias
             Assert.AreEqual("NARANJA", fortaleza);
         }
 
-        // se puede detectar password en AMARILLO
         [TestMethod]
         public void SePuedeDetectarPasswordAmarilloSoloMinusculas()
         {
@@ -149,7 +131,6 @@ namespace PruebasUnitarias
             Assert.AreEqual("AMARILLO", fortaleza);
         }
 
-        // se puede detectar password en VERDE CLARO
         [TestMethod]
         public void SePuedeDetectarPasswordVerdeClaro()
         {
@@ -174,7 +155,6 @@ namespace PruebasUnitarias
             Assert.AreEqual("VERDE_CLARO", fortaleza);
         }
 
-        // se puede detectar password en VERDE OSCURO
         [TestMethod]
         public void SePuedeDetectarPasswordVerdeOscuro()
         {
