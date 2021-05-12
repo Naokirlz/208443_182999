@@ -100,28 +100,28 @@
     <Compile Include="AlertaToast.Designer.cs">
       <DependentUpon>AlertaToast.cs</DependentUpon>
     </Compile>
-    <Compile Include="CategoriasForm\AgregarCategoria.cs">
+    <Compile Include="Categorias\AgregarCategoria.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CategoriasForm\AgregarCategoria.Designer.cs">
+    <Compile Include="Categorias\AgregarCategoria.Designer.cs">
       <DependentUpon>AgregarCategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="CategoriasForm\EliminarCategorias.cs">
+    <Compile Include="Categorias\EliminarCategorias.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CategoriasForm\EliminarCategorias.Designer.cs">
+    <Compile Include="Categorias\EliminarCategorias.Designer.cs">
       <DependentUpon>EliminarCategorias.cs</DependentUpon>
     </Compile>
-    <Compile Include="CategoriasForm\GestionCategorias.cs">
+    <Compile Include="Categorias\GestionCategorias.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CategoriasForm\GestionCategorias.Designer.cs">
+    <Compile Include="Categorias\GestionCategorias.Designer.cs">
       <DependentUpon>GestionCategorias.cs</DependentUpon>
     </Compile>
-    <Compile Include="CategoriasForm\ResumenCategorias.cs">
+    <Compile Include="Categorias\ResumenCategorias.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CategoriasForm\ResumenCategorias.Designer.cs">
+    <Compile Include="Categorias\ResumenCategorias.Designer.cs">
       <DependentUpon>ResumenCategorias.cs</DependentUpon>
     </Compile>
     <Compile Include="Configuracion.cs">
@@ -190,10 +190,10 @@
     <Compile Include="InicioSesion.Designer.cs">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </Compile>
-    <Compile Include="CategoriasForm\ModificarCategoria.cs">
+    <Compile Include="Categorias\ModificarCategoria.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CategoriasForm\ModificarCategoria.Designer.cs">
+    <Compile Include="Categorias\ModificarCategoria.Designer.cs">
       <DependentUpon>ModificarCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuPrincipal.cs">
@@ -279,16 +279,16 @@
     <EmbeddedResource Include="AlertaToast.resx">
       <DependentUpon>AlertaToast.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CategoriasForm\AgregarCategoria.resx">
+    <EmbeddedResource Include="Categorias\AgregarCategoria.resx">
       <DependentUpon>AgregarCategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CategoriasForm\EliminarCategorias.resx">
+    <EmbeddedResource Include="Categorias\EliminarCategorias.resx">
       <DependentUpon>EliminarCategorias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CategoriasForm\GestionCategorias.resx">
+    <EmbeddedResource Include="Categorias\GestionCategorias.resx">
       <DependentUpon>GestionCategorias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CategoriasForm\ResumenCategorias.resx">
+    <EmbeddedResource Include="Categorias\ResumenCategorias.resx">
       <DependentUpon>ResumenCategorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Configuracion.resx">
@@ -324,7 +324,7 @@
     <EmbeddedResource Include="InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CategoriasForm\ModificarCategoria.resx">
+    <EmbeddedResource Include="Categorias\ModificarCategoria.resx">
       <DependentUpon>ModificarCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">

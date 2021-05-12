@@ -3,7 +3,7 @@ using Negocio.Utilidades;
 using System;
 using System.Windows.Forms;
 
-namespace Interfaz
+namespace Interfaz.Categorias
 {
     public partial class AgregarCategoria : UserControl
     {

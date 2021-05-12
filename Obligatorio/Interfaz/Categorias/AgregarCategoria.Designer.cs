@@ -1,5 +1,5 @@
 ﻿
-namespace Interfaz
+namespace Interfaz.Categorias
 {
     partial class AgregarCategoria
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace Interfaz.CategoriasForm
+namespace Interfaz.Categorias
 {
     partial class ResumenCategorias
     {

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using Negocio;
 using Negocio.Categorias;
 
-namespace Interfaz.CategoriasForm
+namespace Interfaz.Categorias
 {
     public partial class ResumenCategorias : UserControl
     {

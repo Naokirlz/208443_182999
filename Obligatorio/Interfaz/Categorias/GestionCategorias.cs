@@ -1,11 +1,10 @@
 ﻿using FontAwesome.Sharp;
-using Interfaz.CategoriasForm;
 using Negocio;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Interfaz
+namespace Interfaz.Categorias
 {
     public partial class GestionCategorias : UserControl
     {

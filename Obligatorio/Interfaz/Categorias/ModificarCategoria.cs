@@ -5,7 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace Interfaz
+namespace Interfaz.Categorias
 {
     public partial class ModificarCategoria : UserControl
     {
