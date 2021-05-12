@@ -56,7 +56,7 @@ namespace Negocio
         
         public void GuardarPrimerPassword(string primerPassword)
         {
-            Validaciones.ValidarLargoTexto(primerPassword, 25, 5, "primer password");
+            Validaciones.ValidarPassword(primerPassword, 25, 5);
             this.passwordMaestro = primerPassword;
         }
 
