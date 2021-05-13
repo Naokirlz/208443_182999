@@ -8,8 +8,6 @@ ___Versión 1.0___
 
 **Integrantes: Cristian Palma, Federico Alonso.**
 
-Publicado para 13 de mayo de 2021
-
 **URL del repositorio: https://github.com/ORT-DA1/208443_182999.git**
 
-# Proximamente se publicará el mismo
+Ver la [Documentación](Documentacion/Documentacion.pdf).
