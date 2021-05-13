@@ -22,8 +22,8 @@ namespace Interfaz.Vulnerabilidades
             this.contraseniasVulnerables = new List<Contrasenia>();
             this.tarjetasVulnerables = new List<TarjetaCredito>();
 
-            if(Sesion.MisFuentes.Count() == 0) this.chkFuenteLocal.Visible = false;
-                else this.chkFuenteLocal.Checked = true;
+            //if(Sesion.MisFuentes.Count() == 0) this.chkFuenteLocal.Visible = false;
+            //    else this.chkFuenteLocal.Checked = true;
 
             DataGridViewButtonColumn columnaBotonModificarContrasenia = new DataGridViewButtonColumn();
             columnaBotonModificarContrasenia.Name = "Modificar";
@@ -40,7 +40,14 @@ namespace Interfaz.Vulnerabilidades
             List<IFuente> fuentesAVerificar = new List<IFuente>();
             if (chkFuenteLocal.Checked)
             {
-                fuentesAVerificar.Add(Sesion.MisFuentes[0]);
+                foreach (IFuente fuente in Sesion.MisFuentes)
+                {
+                    string tipoFuente = fuente.GetType().ToString();
+                    if (tipoFuente == "Negocio.FuenteLocal")
+                    {
+                        fuentesAVerificar.Add(fuente);
+                    }
+                }
             }
 
             CargarTablaContraseniasVulnerables(fuentesAVerificar);
