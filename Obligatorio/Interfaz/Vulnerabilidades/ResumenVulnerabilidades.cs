@@ -14,6 +14,7 @@ namespace Interfaz.Vulnerabilidades
         private Sesion Sesion = Sesion.ObtenerInstancia();
         private List<Contrasenia> contraseniasVulnerables;
         private List<TarjetaCredito> tarjetasVulnerables;
+        private List<IFuente> fuentesAVerificar;
 
         public ResumenVulnerabilidades()
         {
@@ -21,6 +22,7 @@ namespace Interfaz.Vulnerabilidades
 
             this.contraseniasVulnerables = new List<Contrasenia>();
             this.tarjetasVulnerables = new List<TarjetaCredito>();
+            this.fuentesAVerificar = new List<IFuente>();
 
             //if(Sesion.MisFuentes.Count() == 0) this.chkFuenteLocal.Visible = false;
             //    else this.chkFuenteLocal.Checked = true;
@@ -31,27 +33,36 @@ namespace Interfaz.Vulnerabilidades
             this.dgvVulnerabilidadesContrasenias.Columns.Add(columnaBotonModificarContrasenia);
             columnaBotonModificarContrasenia.UseColumnTextForButtonValue = true;
 
-            CargarTablaContraseniasVulnerables(Sesion.MisFuentes);
-            CargarTablaTarjetasVulnerables(Sesion.MisFuentes);
+            CargarTablasVulnerables();
         }
 
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
-            List<IFuente> fuentesAVerificar = new List<IFuente>();
+            CargarTablasVulnerables();
+        }
+
+        private void CargarTablasVulnerables()
+        {
+            ChequearFuentes();
+
+            CargarTablaContraseniasVulnerables(fuentesAVerificar);
+            CargarTablaTarjetasVulnerables(fuentesAVerificar);
+        }
+
+        private void ChequearFuentes()
+        {
+            fuentesAVerificar.Clear();
             if (chkFuenteLocal.Checked)
             {
                 foreach (IFuente fuente in Sesion.MisFuentes)
                 {
                     string tipoFuente = fuente.GetType().ToString();
-                    if (tipoFuente == "Negocio.FuenteLocal")
+                    if (tipoFuente == "Negocio.Utilidades.FuenteLocal")
                     {
                         fuentesAVerificar.Add(fuente);
                     }
                 }
             }
-
-            CargarTablaContraseniasVulnerables(fuentesAVerificar);
-            CargarTablaTarjetasVulnerables(fuentesAVerificar);
         }
 
         private void CargarTablaContraseniasVulnerables(List<IFuente> fuentes)
