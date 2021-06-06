@@ -64,7 +64,7 @@
     <Compile Include="Utilidades\IFuente.cs" />
     <Compile Include="TarjetaCreditos\GestorTarjetaCredito.cs" />
     <Compile Include="Persistencia\RepositorioCategoriasMemoria.cs" />
-    <Compile Include="TarjetaCreditos\RepositorioTarjetaCredito.cs" />
+    <Compile Include="Persistencia\RepositorioTarjetaCreditoMemoria.cs" />
     <Compile Include="Sesion.cs" />
     <Compile Include="TarjetaCreditos\TarjetaCredito.cs" />
     <Compile Include="Contrasenias\GestorContrasenias.cs" />
