@@ -11,7 +11,8 @@ namespace Negocio.TarjetaCreditos
       
         public GestorTarjetaCredito()
         {
-            this.repositorio = new RepositorioTarjetaCreditoMemoria();
+            //this.repositorio = new RepositorioTarjetaCreditoMemoria();
+            this.repositorio = new RepositorioTarjetaCreditoEntity();
         }
 
         public int Alta(TarjetaCredito unaTarjeta)

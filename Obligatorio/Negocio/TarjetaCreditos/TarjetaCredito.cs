@@ -38,8 +38,8 @@ namespace Negocio.TarjetaCreditos
         public int CantidadVecesEncontradaVulnerable { get; set; }
 
 
-        [ForeignKey("Categoria")]
-        public int IdCategoria { get; set; }
+        //[ForeignKey("Categoria")]
+        //public int IdCategoria { get; set; }
 
         public int CompareTo(TarjetaCredito otraTarjeta)
         {
