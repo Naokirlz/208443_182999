@@ -92,5 +92,19 @@ namespace Interfaz.Contrasenias
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.PasswordChar.Equals('•'))
+            {
+                txtPassword.PasswordChar = '\0';
+                btnMostrar.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            }
+            else
+            {
+                txtPassword.PasswordChar = '•';
+                btnMostrar.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            }
+        }
     }
 }

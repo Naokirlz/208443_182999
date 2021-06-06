@@ -139,5 +139,19 @@ namespace Interfaz.Contrasenias
             AlertaToast alerta = new AlertaToast();
             alerta.MostrarAlerta(mensaje, tipo);
         }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.PasswordChar.Equals('•'))
+            {
+                txtPassword.PasswordChar = '\0';
+                btnMostrar.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
+            }
+            else
+            {
+                txtPassword.PasswordChar = '•';
+                btnMostrar.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            }
+        }
     }
 }

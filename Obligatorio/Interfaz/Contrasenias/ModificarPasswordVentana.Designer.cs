@@ -48,6 +48,7 @@ namespace Interfaz.Contrasenias
             this.txtSitio = new System.Windows.Forms.TextBox();
             this.lblSitio = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnMostrar = new FontAwesome.Sharp.IconButton();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -88,7 +89,7 @@ namespace Interfaz.Contrasenias
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(118)))), ((int)(((byte)(176)))));
             this.label1.Location = new System.Drawing.Point(76, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 21);
+            this.label1.Size = new System.Drawing.Size(160, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Modificar Contraseña";
             // 
@@ -144,7 +145,7 @@ namespace Interfaz.Contrasenias
             this.lblCategoria.Location = new System.Drawing.Point(70, 98);
             this.lblCategoria.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(91, 21);
+            this.lblCategoria.Size = new System.Drawing.Size(78, 20);
             this.lblCategoria.TabIndex = 63;
             this.lblCategoria.Text = "Categoría";
             // 
@@ -155,7 +156,7 @@ namespace Interfaz.Contrasenias
             this.cmbCategoria.Location = new System.Drawing.Point(190, 95);
             this.cmbCategoria.Margin = new System.Windows.Forms.Padding(5);
             this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(232, 29);
+            this.cmbCategoria.Size = new System.Drawing.Size(232, 28);
             this.cmbCategoria.TabIndex = 62;
             // 
             // txtNotas
@@ -174,7 +175,7 @@ namespace Interfaz.Contrasenias
             this.lblNotas.Location = new System.Drawing.Point(105, 248);
             this.lblNotas.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNotas.Name = "lblNotas";
-            this.lblNotas.Size = new System.Drawing.Size(56, 21);
+            this.lblNotas.Size = new System.Drawing.Size(51, 20);
             this.lblNotas.TabIndex = 60;
             this.lblNotas.Text = "Notas";
             // 
@@ -183,7 +184,7 @@ namespace Interfaz.Contrasenias
             this.txtPassword.Location = new System.Drawing.Point(190, 208);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(5);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(232, 27);
+            this.txtPassword.Size = new System.Drawing.Size(232, 26);
             this.txtPassword.TabIndex = 59;
             // 
             // lblPassword
@@ -193,7 +194,7 @@ namespace Interfaz.Contrasenias
             this.lblPassword.Location = new System.Drawing.Point(58, 212);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(103, 21);
+            this.lblPassword.Size = new System.Drawing.Size(92, 20);
             this.lblPassword.TabIndex = 58;
             this.lblPassword.Text = "Contraseña";
             // 
@@ -202,7 +203,7 @@ namespace Interfaz.Contrasenias
             this.txtUsuario.Location = new System.Drawing.Point(190, 171);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(5);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(232, 27);
+            this.txtUsuario.Size = new System.Drawing.Size(232, 26);
             this.txtUsuario.TabIndex = 57;
             // 
             // lblUsuario
@@ -212,7 +213,7 @@ namespace Interfaz.Contrasenias
             this.lblUsuario.Location = new System.Drawing.Point(95, 174);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(66, 21);
+            this.lblUsuario.Size = new System.Drawing.Size(64, 20);
             this.lblUsuario.TabIndex = 56;
             this.lblUsuario.Text = "Usuario";
             // 
@@ -221,7 +222,7 @@ namespace Interfaz.Contrasenias
             this.txtSitio.Location = new System.Drawing.Point(190, 134);
             this.txtSitio.Margin = new System.Windows.Forms.Padding(5);
             this.txtSitio.Name = "txtSitio";
-            this.txtSitio.Size = new System.Drawing.Size(232, 27);
+            this.txtSitio.Size = new System.Drawing.Size(232, 26);
             this.txtSitio.TabIndex = 55;
             // 
             // lblSitio
@@ -231,7 +232,7 @@ namespace Interfaz.Contrasenias
             this.lblSitio.Location = new System.Drawing.Point(18, 140);
             this.lblSitio.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblSitio.Name = "lblSitio";
-            this.lblSitio.Size = new System.Drawing.Size(143, 21);
+            this.lblSitio.Size = new System.Drawing.Size(129, 20);
             this.lblSitio.TabIndex = 54;
             this.lblSitio.Text = "Sitio o Aplicación";
             // 
@@ -239,7 +240,7 @@ namespace Interfaz.Contrasenias
             // 
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.Black;
             this.btnGuardar.Location = new System.Drawing.Point(275, 422);
             this.btnGuardar.Name = "btnGuardar";
@@ -249,12 +250,29 @@ namespace Interfaz.Contrasenias
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // btnMostrar
+            // 
+            this.btnMostrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMostrar.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnMostrar.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            this.btnMostrar.IconColor = System.Drawing.Color.Black;
+            this.btnMostrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMostrar.IconSize = 26;
+            this.btnMostrar.Location = new System.Drawing.Point(158, 208);
+            this.btnMostrar.Name = "btnMostrar";
+            this.btnMostrar.Size = new System.Drawing.Size(30, 26);
+            this.btnMostrar.TabIndex = 65;
+            this.btnMostrar.UseVisualStyleBackColor = true;
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
+            // 
             // ModificarPasswordVentana
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(451, 471);
+            this.Controls.Add(this.btnMostrar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblCategoria);
             this.Controls.Add(this.cmbCategoria);
@@ -270,7 +288,7 @@ namespace Interfaz.Contrasenias
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel4);
-            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -305,5 +323,6 @@ namespace Interfaz.Contrasenias
         private System.Windows.Forms.TextBox txtSitio;
         private System.Windows.Forms.Label lblSitio;
         private System.Windows.Forms.Button btnGuardar;
+        private FontAwesome.Sharp.IconButton btnMostrar;
     }
 }
