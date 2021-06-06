@@ -33,6 +33,7 @@ namespace Interfaz.Vulnerabilidades
             this.btnResumen = new FontAwesome.Sharp.IconButton();
             this.btnFuenteLocal = new FontAwesome.Sharp.IconButton();
             this.btnCargarFuente = new FontAwesome.Sharp.IconButton();
+            this.btnHistorial = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // pnlGestor
@@ -98,11 +99,30 @@ namespace Interfaz.Vulnerabilidades
             this.btnCargarFuente.UseVisualStyleBackColor = true;
             this.btnCargarFuente.Click += new System.EventHandler(this.btnCargarFuente_Click);
             // 
+            // btnHistorial
+            // 
+            this.btnHistorial.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHistorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistorial.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnHistorial.IconChar = FontAwesome.Sharp.IconChar.History;
+            this.btnHistorial.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnHistorial.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnHistorial.Location = new System.Drawing.Point(523, 32);
+            this.btnHistorial.Name = "btnHistorial";
+            this.btnHistorial.Size = new System.Drawing.Size(104, 84);
+            this.btnHistorial.TabIndex = 16;
+            this.btnHistorial.Text = "Historial Chequeos";
+            this.btnHistorial.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnHistorial.UseVisualStyleBackColor = true;
+            this.btnHistorial.Click += new System.EventHandler(this.btnHistorial_Click);
+            // 
             // GestionVulnerabilidades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.Controls.Add(this.btnHistorial);
             this.Controls.Add(this.btnCargarFuente);
             this.Controls.Add(this.btnFuenteLocal);
             this.Controls.Add(this.btnResumen);
@@ -121,5 +141,6 @@ namespace Interfaz.Vulnerabilidades
         private FontAwesome.Sharp.IconButton btnResumen;
         private FontAwesome.Sharp.IconButton btnFuenteLocal;
         private FontAwesome.Sharp.IconButton btnCargarFuente;
+        private FontAwesome.Sharp.IconButton btnHistorial;
     }
 }

@@ -36,6 +36,13 @@ namespace Interfaz.Vulnerabilidades
             UserControl cargarFuenteVulnerabilidades = new CargarFuenteVulnerabilidades();
             pnlGestor.Controls.Add(cargarFuenteVulnerabilidades);
         }
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            BotonActivo(sender, Color.FromArgb(95, 77, 221));
+            pnlGestor.Controls.Clear();
+            UserControl historialVulnerabilidades = new HistorialVulnerabilidades();
+            pnlGestor.Controls.Add(historialVulnerabilidades);
+        }
         private void BotonActivo(object senderBtn, Color color)
         {
             if (senderBtn != null)
