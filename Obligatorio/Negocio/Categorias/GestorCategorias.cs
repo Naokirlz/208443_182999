@@ -10,7 +10,8 @@ namespace Negocio.Categorias
 
         public GestorCategorias()
         {
-            this.repositorio = new RepositorioCategoriasMemoria();
+            //this.repositorio = new RepositorioCategoriasMemoria();
+            this.repositorio = new RepositorioCategoriasEntity();
 
         }
 
