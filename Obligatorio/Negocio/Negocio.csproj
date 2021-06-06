@@ -86,7 +86,7 @@
     <Compile Include="Sesion.cs" />
     <Compile Include="TarjetaCreditos\TarjetaCredito.cs" />
     <Compile Include="Contrasenias\GestorContrasenias.cs" />
-    <Compile Include="Contrasenias\RepositorioContrasenias.cs" />
+    <Compile Include="Persistencia\RepositorioContraseniasMemoria.cs" />
     <Compile Include="Utilidades\ExcepcionElementoNoExiste.cs" />
     <Compile Include="Utilidades\ExcepcionElementoYaExiste.cs" />
     <Compile Include="Utilidades\ExcepcionFaltaAtributo.cs" />
