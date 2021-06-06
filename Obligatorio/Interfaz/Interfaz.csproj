@@ -258,6 +258,12 @@
     <Compile Include="VentanaConfirmar.Designer.cs">
       <DependentUpon>VentanaConfirmar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vulnerabilidades\CargarFuenteVulnerabilidades.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vulnerabilidades\CargarFuenteVulnerabilidades.Designer.cs">
+      <DependentUpon>CargarFuenteVulnerabilidades.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vulnerabilidades\FuenteLocalVulnerabilidades.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -365,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaConfirmar.resx">
       <DependentUpon>VentanaConfirmar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vulnerabilidades\CargarFuenteVulnerabilidades.resx">
+      <DependentUpon>CargarFuenteVulnerabilidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vulnerabilidades\FuenteLocalVulnerabilidades.resx">
       <DependentUpon>FuenteLocalVulnerabilidades.cs</DependentUpon>
