@@ -23,6 +23,10 @@ namespace Interfaz.Contrasenias
             bSource.DataSource = this.Sesion.ObtenerTodasLasCategorias();
             this.cmbCategoria.DataSource = bSource;
 
+            this.lblContrasenaFiltrada.Text = "";
+            this.lblContrasenaInsegura.Text = "";
+            this.lblContrasenaRepetida.Text = "";
+
             this.Contrasenia = contrasenia;
 
             this.cmbCategoria.SelectedItem = Contrasenia.Categoria;
@@ -105,6 +109,14 @@ namespace Interfaz.Contrasenias
                 txtPassword.PasswordChar = '•';
                 btnMostrar.IconChar = FontAwesome.Sharp.IconChar.Eye;
             }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            //verificar passwoird repetido
+            //verificar password inseguro
+            //verificar password filtrado
+            //marcar cada vulnerabilidad en el lbl que corresponda.
         }
     }
 }

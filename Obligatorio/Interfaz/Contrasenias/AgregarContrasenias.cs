@@ -35,6 +35,9 @@ namespace Interfaz.Contrasenias
             this.chkMayusculas.Checked = false;
             this.chkMinusculas.Checked = false;
             this.chkEspeciales.Checked = false;
+            this.lblContrasenaFiltrada.Text = "";
+            this.lblContrasenaInsegura.Text = "";
+            this.lblContrasenaRepetida.Text = "";
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -118,6 +121,14 @@ namespace Interfaz.Contrasenias
                 txtPassword.PasswordChar = '•';
                 btnMostrar.IconChar = FontAwesome.Sharp.IconChar.Eye;
             }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            //verificar passwoird repetido
+            //verificar password inseguro
+            //verificar password filtrado
+            //marcar cada vulnerabilidad en el lbl que corresponda.
         }
     }
 }

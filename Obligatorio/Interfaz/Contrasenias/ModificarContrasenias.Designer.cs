@@ -51,6 +51,9 @@ namespace Interfaz.Contrasenias
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnMostrar = new FontAwesome.Sharp.IconButton();
+            this.lblContrasenaInsegura = new System.Windows.Forms.Label();
+            this.lblContrasenaRepetida = new System.Windows.Forms.Label();
+            this.lblContrasenaFiltrada = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numLargo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -174,7 +177,7 @@ namespace Interfaz.Contrasenias
             this.txtNotas.Margin = new System.Windows.Forms.Padding(5);
             this.txtNotas.Multiline = true;
             this.txtNotas.Name = "txtNotas";
-            this.txtNotas.Size = new System.Drawing.Size(232, 163);
+            this.txtNotas.Size = new System.Drawing.Size(232, 106);
             this.txtNotas.TabIndex = 30;
             // 
             // lblNotas
@@ -196,6 +199,7 @@ namespace Interfaz.Contrasenias
             this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(232, 26);
             this.txtPassword.TabIndex = 28;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // lblPassword
             // 
@@ -312,11 +316,47 @@ namespace Interfaz.Contrasenias
             this.btnMostrar.UseVisualStyleBackColor = true;
             this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
+            // lblContrasenaInsegura
+            // 
+            this.lblContrasenaInsegura.AutoSize = true;
+            this.lblContrasenaInsegura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContrasenaInsegura.ForeColor = System.Drawing.Color.Red;
+            this.lblContrasenaInsegura.Location = new System.Drawing.Point(7, 356);
+            this.lblContrasenaInsegura.Name = "lblContrasenaInsegura";
+            this.lblContrasenaInsegura.Size = new System.Drawing.Size(51, 20);
+            this.lblContrasenaInsegura.TabIndex = 71;
+            this.lblContrasenaInsegura.Text = "Notas";
+            // 
+            // lblContrasenaRepetida
+            // 
+            this.lblContrasenaRepetida.AutoSize = true;
+            this.lblContrasenaRepetida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContrasenaRepetida.ForeColor = System.Drawing.Color.Red;
+            this.lblContrasenaRepetida.Location = new System.Drawing.Point(7, 339);
+            this.lblContrasenaRepetida.Name = "lblContrasenaRepetida";
+            this.lblContrasenaRepetida.Size = new System.Drawing.Size(51, 20);
+            this.lblContrasenaRepetida.TabIndex = 70;
+            this.lblContrasenaRepetida.Text = "Notas";
+            // 
+            // lblContrasenaFiltrada
+            // 
+            this.lblContrasenaFiltrada.AutoSize = true;
+            this.lblContrasenaFiltrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContrasenaFiltrada.ForeColor = System.Drawing.Color.Red;
+            this.lblContrasenaFiltrada.Location = new System.Drawing.Point(7, 322);
+            this.lblContrasenaFiltrada.Name = "lblContrasenaFiltrada";
+            this.lblContrasenaFiltrada.Size = new System.Drawing.Size(51, 20);
+            this.lblContrasenaFiltrada.TabIndex = 69;
+            this.lblContrasenaFiltrada.Text = "Notas";
+            // 
             // ModificarContrasenias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.Controls.Add(this.lblContrasenaInsegura);
+            this.Controls.Add(this.lblContrasenaRepetida);
+            this.Controls.Add(this.lblContrasenaFiltrada);
             this.Controls.Add(this.btnMostrar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnGenerar);
@@ -373,5 +413,8 @@ namespace Interfaz.Contrasenias
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.Button btnGuardar;
         private FontAwesome.Sharp.IconButton btnMostrar;
+        private System.Windows.Forms.Label lblContrasenaInsegura;
+        private System.Windows.Forms.Label lblContrasenaRepetida;
+        private System.Windows.Forms.Label lblContrasenaFiltrada;
     }
 }
