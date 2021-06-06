@@ -10,6 +10,8 @@ using System.Linq;
 
 namespace PruebasUnitarias
 {
+    //LAS PRUEBAS SE ROMPEN PORQUE ESTAN USANDO EL REPOSITORIO ENTITY
+
     [TestClass]
     public class PruebasSesion
     {
@@ -26,9 +28,9 @@ namespace PruebasUnitarias
             sesionPrueba.GuardarPrimerPassword("secreto");
             sesionPrueba.Login("secreto");
             Fuente = new FuenteLocal();
+            
             int id = sesionPrueba.AltaCategoria("Cosas");
             Categoria nuevaCategoriaPrueba = sesionPrueba.BuscarCategoriaPorId(id);
-
 
             this.nuevoTarjeta = new TarjetaCredito()
             {

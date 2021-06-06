@@ -55,9 +55,19 @@
     <Compile Include="Contrasenias\Contrasenia.cs" />
     <Compile Include="Categorias\GestorCategorias.cs" />
     <Compile Include="Contrasenias\Password.cs" />
+    <Compile Include="Migrations\202106062059237_InitialCreate.cs" />
+    <Compile Include="Migrations\202106062059237_InitialCreate.designer.cs">
+      <DependentUpon>202106062059237_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106062154022_RestriccionesCategoria.cs" />
+    <Compile Include="Migrations\202106062154022_RestriccionesCategoria.designer.cs">
+      <DependentUpon>202106062154022_RestriccionesCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistencia\Contexto.cs" />
     <Compile Include="Persistencia\IRepositorio.cs" />
     <Compile Include="Persistencia\RepositorioCategoriasEntity.cs" />
+    <Compile Include="Persistencia\RepositorioTarjetaCreditoEntity.cs" />
     <Compile Include="Utilidades\EnumColor.cs" />
     <Compile Include="Utilidades\ExcepcionAccesoDenegado.cs" />
     <Compile Include="Utilidades\FuenteLocal.cs" />
@@ -81,6 +91,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202106062059237_InitialCreate.resx">
+      <DependentUpon>202106062059237_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106062154022_RestriccionesCategoria.resx">
+      <DependentUpon>202106062154022_RestriccionesCategoria.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

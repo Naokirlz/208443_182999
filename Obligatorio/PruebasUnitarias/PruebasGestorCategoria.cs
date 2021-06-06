@@ -4,18 +4,31 @@ using Negocio.Categorias;
 using Negocio.Utilidades;
 using System.Linq;
 using System.Collections.Generic;
+using Negocio.Persistencia;
 
 namespace PruebasUnitarias
 {
     [TestClass]
     public class PruebasGestorCategoria
     {
-        private GestorCategorias Gestor = new GestorCategorias();
+        private GestorCategorias Gestor;
 
-        [TestMethod]
+        [TestInitialize]
+        public void InicializarPruebas()
+        {
+
+            Gestor = new GestorCategorias();
+            Gestor.repositorio = new RepositorioCategoriasMemoria();
+
+        }
+
+
+
+            [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaCategoriaConNombreMenor3Caracteres()
         {
+           
             Gestor.Alta("12");
         }
 
@@ -102,6 +115,8 @@ namespace PruebasUnitarias
         public void SePuedenVerTodasLasCategorias()
         {
             GestorCategorias Gestor2 = new GestorCategorias();
+            Gestor2.repositorio = new RepositorioCategoriasMemoria();
+
             int categoria1 = Gestor2.Alta("Categoria1");
             int categoria2 = Gestor2.Alta("Categoria2");
             int categoria3 = Gestor2.Alta("Categoria3");

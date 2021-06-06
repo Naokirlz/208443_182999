@@ -5,8 +5,8 @@ using System.Collections.Generic;
 namespace Negocio.Categorias
 {
     public class GestorCategorias
-    {//ATENCIOON CAMBIARLO LUEGO el acceso no publico!
-        private IRepositorio<Categoria> repositorio;
+    {//ATENCIOON CAMBIARLO LUEGO el acceso no publico! lo hice para setear las pruebas unitarias
+        public IRepositorio<Categoria> repositorio;
 
         public GestorCategorias()
         {

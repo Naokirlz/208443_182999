@@ -1,4 +1,5 @@
 ﻿using Negocio.Categorias;
+using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,6 +14,7 @@ namespace Negocio.Persistencia
     {
 
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<TarjetaCredito> Tarjetas { get; set; }
 
         public Contexto() : base("name=Contexto")
         {
