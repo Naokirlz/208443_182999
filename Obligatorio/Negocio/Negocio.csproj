@@ -63,6 +63,10 @@
     <Compile Include="Migrations\202106062154022_RestriccionesCategoria.designer.cs">
       <DependentUpon>202106062154022_RestriccionesCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106062206131_RestriccionesTarjetaCredito.cs" />
+    <Compile Include="Migrations\202106062206131_RestriccionesTarjetaCredito.designer.cs">
+      <DependentUpon>202106062206131_RestriccionesTarjetaCredito.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistencia\Contexto.cs" />
     <Compile Include="Persistencia\IRepositorio.cs" />
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106062154022_RestriccionesCategoria.resx">
       <DependentUpon>202106062154022_RestriccionesCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106062206131_RestriccionesTarjetaCredito.resx">
+      <DependentUpon>202106062206131_RestriccionesTarjetaCredito.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
