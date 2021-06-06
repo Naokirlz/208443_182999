@@ -22,7 +22,7 @@ namespace Interfaz.Vulnerabilidades
 
             this.contraseniasVulnerables = new List<Contrasenia>();
             this.tarjetasVulnerables = new List<TarjetaCredito>();
-            this.fuentesAVerificar = new List<IFuente>();
+            this.fuentesAVerificar = Sesion.MisFuentes;
 
             //if(Sesion.MisFuentes.Count() == 0) this.chkFuenteLocal.Visible = false;
             //    else this.chkFuenteLocal.Checked = true;
@@ -43,26 +43,8 @@ namespace Interfaz.Vulnerabilidades
 
         private void CargarTablasVulnerables()
         {
-            ChequearFuentes();
-
             CargarTablaContraseniasVulnerables(fuentesAVerificar);
             CargarTablaTarjetasVulnerables(fuentesAVerificar);
-        }
-
-        private void ChequearFuentes()
-        {
-            fuentesAVerificar.Clear();
-            if (chkFuenteLocal.Checked)
-            {
-                foreach (IFuente fuente in Sesion.MisFuentes)
-                {
-                    string tipoFuente = fuente.GetType().ToString();
-                    if (tipoFuente == "Negocio.Utilidades.FuenteLocal")
-                    {
-                        fuentesAVerificar.Add(fuente);
-                    }
-                }
-            }
         }
 
         private void CargarTablaContraseniasVulnerables(List<IFuente> fuentes)
@@ -131,11 +113,6 @@ namespace Interfaz.Vulnerabilidades
 
                     IngresoPassword frmIngresoPassword = new IngresoPassword(contraseniaSeleccionada);
 
-                    List<IFuente> fuentesAVerificar = new List<IFuente>();
-                    if (chkFuenteLocal.Checked)
-                    {
-                        fuentesAVerificar.Add(Sesion.MisFuentes[0]);
-                    }
                     CargarTablaContraseniasVulnerables(fuentesAVerificar);
                 }
             }
