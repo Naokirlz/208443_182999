@@ -28,9 +28,12 @@ namespace Negocio.Contrasenias
 
         public EnumColor ColorPassword { get { return CalcularFortaleza(); } }
 
-        
-        
-        
+
+        public Password()
+        {
+           
+        }
+
         public Password(string clave)
         {
             this.Clave = clave;

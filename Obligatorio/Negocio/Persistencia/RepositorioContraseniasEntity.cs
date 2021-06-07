@@ -33,6 +33,7 @@ namespace Negocio.Persistencia
             using (Contexto context = new Contexto())
             {
                 Contrasenia aEliminar = context.Contrasenias.FirstOrDefault(c => c.ContraseniaId == entity.ContraseniaId);
+                context.Passwords.Remove(aEliminar.Password);
                 context.Contrasenias.Remove(aEliminar);
                 context.SaveChanges();
             }
@@ -65,7 +66,7 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
-                return context.Contrasenias.Include(c => c.Password).ToList();
+                return context.Contrasenias.Include(c => c.Password).Include(c => c.Categoria).ToList();
 
             }
         }
