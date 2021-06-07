@@ -68,7 +68,7 @@ namespace Interfaz.Contrasenias
             foreach (Contrasenia contrasenia in Contrasenias)
             {
                 string[] fila = {
-                    contrasenia.Id.ToString(),
+                    contrasenia.ContraseniaId.ToString(),
                     contrasenia.Categoria.Nombre,
                     contrasenia.Sitio,
                     contrasenia.Usuario,
@@ -83,7 +83,7 @@ namespace Interfaz.Contrasenias
             if (e.RowIndex != -1)
             {
                 int id = Int32.Parse(dgvContrasenias.Rows[e.RowIndex].Cells[0].Value.ToString());
-                Contrasenia contraseniaSeleccionada = Contrasenias.ToList().Find(c => c.Id == id);
+                Contrasenia contraseniaSeleccionada = Contrasenias.ToList().Find(c => c.ContraseniaId == id);
 
                 if (e.ColumnIndex == 5)
                 {
@@ -96,7 +96,7 @@ namespace Interfaz.Contrasenias
                 }
                 else if (e.ColumnIndex == 7)
                 {
-                    VentanaConfirmar frmConfirmar = new VentanaConfirmar(contraseniaSeleccionada.Id, Sesion.BajaContrasenia)
+                    VentanaConfirmar frmConfirmar = new VentanaConfirmar(contraseniaSeleccionada.ContraseniaId, Sesion.BajaContrasenia)
                     {
                         MsgConfirmación = "Contraseña Eliminada con éxito!!",
                         MsgPregunta = "Realmente desea eliminar la contraseña??"

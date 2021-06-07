@@ -62,7 +62,7 @@ namespace Interfaz.Contrasenias
                     Usuario = this.txtUsuario.Text,
                     Notas = this.txtNotas.Text,
                     Password = nuevoPass,
-                    Id = Contrasenia.Id
+                    ContraseniaId = Contrasenia.ContraseniaId
                 };
 
                 this.Sesion.ModificarContrasenia(aModificar);

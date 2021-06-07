@@ -71,6 +71,10 @@
     <Compile Include="Migrations\202106062305093_CambiosTarjetaCredito.designer.cs">
       <DependentUpon>202106062305093_CambiosTarjetaCredito.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106070033154_RestriccionesContrasenia.cs" />
+    <Compile Include="Migrations\202106070033154_RestriccionesContrasenia.designer.cs">
+      <DependentUpon>202106070033154_RestriccionesContrasenia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistencia\Contexto.cs" />
     <Compile Include="Persistencia\IRepositorio.cs" />
@@ -112,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106062305093_CambiosTarjetaCredito.resx">
       <DependentUpon>202106062305093_CambiosTarjetaCredito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106070033154_RestriccionesContrasenia.resx">
+      <DependentUpon>202106070033154_RestriccionesContrasenia.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

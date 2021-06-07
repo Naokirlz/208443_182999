@@ -32,7 +32,7 @@ namespace Interfaz.Contrasenias
                     return;
                 }
 
-                VentanaConfirmar frmConfirmar = new VentanaConfirmar(contraseniaSeleccionada.Id, Sesion.BajaContrasenia)
+                VentanaConfirmar frmConfirmar = new VentanaConfirmar(contraseniaSeleccionada.ContraseniaId, Sesion.BajaContrasenia)
                 {
                     MsgConfirmación = "Contraseña Eliminada con éxito!!",
                     MsgPregunta = "Realmente desea eliminar la contraseña??"

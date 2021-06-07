@@ -198,7 +198,7 @@ namespace PruebasUnitarias
         {
             int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
-            Contrasenia buscada = Gestor.Buscar(nuevaContrasenia.Id);
+            Contrasenia buscada = Gestor.Buscar(nuevaContrasenia.ContraseniaId);
             Assert.AreEqual(nuevaContrasenia.Sitio, buscada.Sitio);
         }
 
@@ -636,7 +636,7 @@ namespace PruebasUnitarias
             Gestor.Alta(ContraseniaCompleta);
             Contrasenia vieja = Gestor.ObtenerTodas().First();
             DateTime fechaVieja = vieja.FechaUltimaModificacion;
-            int id = vieja.Id;
+            int id = vieja.ContraseniaId;
 
 
             Contrasenia contraseniaNueva = new Contrasenia()
@@ -646,7 +646,7 @@ namespace PruebasUnitarias
                 Usuario = vieja.Usuario,
                 Notas = vieja.Notas,
                 FechaUltimaModificacion = vieja.FechaUltimaModificacion,
-                Id = vieja.Id,
+                ContraseniaId = vieja.ContraseniaId,
                 Password = vieja.Password
             };
 
@@ -664,7 +664,7 @@ namespace PruebasUnitarias
             Contrasenia vieja = Gestor.ObtenerTodas().First();
             DateTime fechaVieja = vieja.FechaUltimaModificacion.AddDays(-3);
             vieja.FechaUltimaModificacion = fechaVieja;
-            int id = vieja.Id;
+            int id = vieja.ContraseniaId;
 
             Contrasenia contraseniaNueva = new Contrasenia()
             {
@@ -673,7 +673,7 @@ namespace PruebasUnitarias
                 Usuario = vieja.Usuario,
                 Notas = vieja.Notas,
                 FechaUltimaModificacion = vieja.FechaUltimaModificacion,
-                Id= vieja.Id,
+                ContraseniaId= vieja.ContraseniaId,
                 Password = new Password("Nuevo PASSWORD")
             };
 
@@ -695,7 +695,7 @@ namespace PruebasUnitarias
                 Usuario = ContraseniaCompleta.Usuario,
                 Notas = ContraseniaCompleta.Notas,
                 FechaUltimaModificacion = ContraseniaCompleta.FechaUltimaModificacion,
-                Id = ContraseniaCompleta.Id,
+                ContraseniaId = ContraseniaCompleta.ContraseniaId,
                 Password = new Password("Nuevo PASSWORD")
             };
 
@@ -713,7 +713,7 @@ namespace PruebasUnitarias
                 Categoria = ContraseniaCompleta.Categoria,
                 Usuario = ContraseniaCompleta.Usuario,
                 FechaUltimaModificacion = ContraseniaCompleta.FechaUltimaModificacion,
-                Id = ContraseniaCompleta.Id,
+                ContraseniaId = ContraseniaCompleta.ContraseniaId,
                 Password = new Password("Nuevo PASSWORD")
             };
             int antes = Gestor.ObtenerTodas().Count();
@@ -731,7 +731,7 @@ namespace PruebasUnitarias
                 Categoria = ContraseniaCompleta.Categoria,
                 Usuario = ContraseniaCompleta.Usuario,
                 FechaUltimaModificacion = ContraseniaCompleta.FechaUltimaModificacion,
-                Id = ContraseniaCompleta.Id,
+                ContraseniaId = ContraseniaCompleta.ContraseniaId,
                 Password = new Password("       ")
             };
             int antes = Gestor.ObtenerTodas().Count();

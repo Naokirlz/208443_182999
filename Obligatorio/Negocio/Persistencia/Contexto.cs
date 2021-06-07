@@ -1,4 +1,5 @@
 ﻿using Negocio.Categorias;
+using Negocio.Contrasenias;
 using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,9 @@ namespace Negocio.Persistencia
 
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<TarjetaCredito> Tarjetas { get; set; }
+
+        public DbSet<Contrasenia> Contrasenias { get; set; }
+        public DbSet<Password> Passwords { get; set; }
 
         public Contexto() : base("name=Contexto")
         {

@@ -373,7 +373,7 @@ namespace PruebasUnitarias
         public void SePuedeEjecutarBajaContraseniaEstandoLogueado()
         {
            int cantidadAntes = sesionPrueba.ObtenerTodasLasContrasenias().Count();
-           sesionPrueba.BajaContrasenia(pruebaContrasenia.Id);
+           sesionPrueba.BajaContrasenia(pruebaContrasenia.ContraseniaId);
            int cantidadDespues = sesionPrueba.ObtenerTodasLasContrasenias().Count();
            Assert.AreEqual(1, cantidadAntes - cantidadDespues);
 
@@ -393,7 +393,7 @@ namespace PruebasUnitarias
                 Password = new Password("dale%%vo111!!!"),
                 Categoria = new Categoria("Fake"),
                 Notas = "Sin",
-                Id = anterior.Id
+                ContraseniaId = anterior.ContraseniaId
             };
 
             sesionPrueba.ModificarContrasenia(contraseniaModificar);
@@ -408,7 +408,7 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeEjecutarBuscarContraseniaEstandoLogueado()
         {
-            int id = sesionPrueba.ObtenerTodasLasContrasenias().First().Id;
+            int id = sesionPrueba.ObtenerTodasLasContrasenias().First().ContraseniaId;
             Contrasenia buscada = sesionPrueba.BuscarContrasenia(id);
             Assert.IsNotNull(buscada);
         }
@@ -505,7 +505,7 @@ namespace PruebasUnitarias
         {
        
             sesionPrueba.ContraseniasVulnerables(Fuente);
-            pruebaContrasenia = sesionPrueba.BuscarContrasenia(pruebaContrasenia.Id);
+            pruebaContrasenia = sesionPrueba.BuscarContrasenia(pruebaContrasenia.ContraseniaId);
             Assert.AreEqual(pruebaContrasenia.CantidadVecesEncontradaVulnerable, 1);
 
         }
@@ -515,7 +515,7 @@ namespace PruebasUnitarias
         {
             sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("dalevo111!!!");
             sesionPrueba.ContraseniasVulnerables(Fuente);
-            pruebaContrasenia = sesionPrueba.BuscarContrasenia(pruebaContrasenia.Id);
+            pruebaContrasenia = sesionPrueba.BuscarContrasenia(pruebaContrasenia.ContraseniaId);
             Assert.AreEqual(pruebaContrasenia.CantidadVecesEncontradaVulnerable, 2);
            
         }
@@ -565,7 +565,7 @@ namespace PruebasUnitarias
         public void SePuedeModificarElPassword()
         {
             Contrasenia aModificar = sesionPrueba.ObtenerTodasLasContrasenias().First();
-            int idPass = aModificar.Id;
+            int idPass = aModificar.ContraseniaId;
             string passAnterior = sesionPrueba.MostrarPassword(aModificar);
             aModificar.Password.Clave = "secretoNuevo";
             sesionPrueba.ModificarContrasenia(aModificar);

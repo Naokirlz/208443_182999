@@ -25,7 +25,7 @@ namespace Negocio.Contrasenias
         {
             Contrasenia eliminar = new Contrasenia()
             {
-                Id = id
+                ContraseniaId = id
             };
             repositorio.Baja(eliminar);
         }
@@ -40,7 +40,7 @@ namespace Negocio.Contrasenias
         {
             Contrasenia buscar = new Contrasenia()
             {
-                Id = id
+                ContraseniaId = id
             };
             return repositorio.Buscar(buscar);
         }

@@ -81,7 +81,7 @@ namespace Interfaz.Vulnerabilidades
                         string password = Sesion.MostrarPassword(contrasenia);
 
                         string[] fila = {
-                            contrasenia.Id.ToString(),
+                            contrasenia.ContraseniaId.ToString(),
                             contrasenia.Categoria.Nombre,
                             contrasenia.Sitio,
                             contrasenia.Usuario,
@@ -127,7 +127,7 @@ namespace Interfaz.Vulnerabilidades
                 if (e.ColumnIndex == 5)
                 {
                     int id = Int32.Parse(dgvVulnerabilidadesContrasenias.Rows[e.RowIndex].Cells[0].Value.ToString());
-                    Contrasenia contraseniaSeleccionada = contraseniasVulnerables.ToList().Find(c => c.Id == id);
+                    Contrasenia contraseniaSeleccionada = contraseniasVulnerables.ToList().Find(c => c.ContraseniaId == id);
 
                     IngresoPassword frmIngresoPassword = new IngresoPassword(contraseniaSeleccionada);
 

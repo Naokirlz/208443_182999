@@ -18,11 +18,11 @@ namespace Negocio.Persistencia
         public int Alta(Contrasenia unaContrasenia)
         {
             VerificarSiExisteContrasenia(unaContrasenia);
-            unaContrasenia.Id = autonumerado;
+            unaContrasenia.ContraseniaId = autonumerado;
             unaContrasenia.FechaUltimaModificacion = DateTime.Now;
             this.contrasenias.Add(unaContrasenia);
             autonumerado++;
-            return unaContrasenia.Id;
+            return unaContrasenia.ContraseniaId;
         }
 
         public void Baja(Contrasenia eliminar)
@@ -50,7 +50,7 @@ namespace Negocio.Persistencia
         public Contrasenia Buscar(Contrasenia buscada)
         {
             foreach (Contrasenia item in contrasenias)
-                if (item.Id == buscada.Id) return item;
+                if (item.ContraseniaId == buscada.ContraseniaId) return item;
             throw new ExcepcionElementoNoExiste("La contraseña buscada no existe.");
         }
 
