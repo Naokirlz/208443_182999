@@ -29,6 +29,7 @@ namespace Negocio.Persistencia
         {
             //usa los DataAnnotation
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<Contrasenia>().Property(e => e.FechaUltimaModificacion).HasColumnType("datetime2");
             //modelBuilder.Configurations.Add(new CatogoriaTypeConfiguration());
         }
     }

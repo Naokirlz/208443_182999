@@ -75,10 +75,15 @@
     <Compile Include="Migrations\202106070033154_RestriccionesContrasenia.designer.cs">
       <DependentUpon>202106070033154_RestriccionesContrasenia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106070100456_ErrorDataTime.cs" />
+    <Compile Include="Migrations\202106070100456_ErrorDataTime.designer.cs">
+      <DependentUpon>202106070100456_ErrorDataTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistencia\Contexto.cs" />
     <Compile Include="Persistencia\IRepositorio.cs" />
     <Compile Include="Persistencia\RepositorioCategoriasEntity.cs" />
+    <Compile Include="Persistencia\RepositorioContraseniasEntity.cs" />
     <Compile Include="Persistencia\RepositorioTarjetaCreditoEntity.cs" />
     <Compile Include="Utilidades\EnumColor.cs" />
     <Compile Include="Utilidades\ExcepcionAccesoDenegado.cs" />
@@ -119,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106070033154_RestriccionesContrasenia.resx">
       <DependentUpon>202106070033154_RestriccionesContrasenia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106070100456_ErrorDataTime.resx">
+      <DependentUpon>202106070100456_ErrorDataTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

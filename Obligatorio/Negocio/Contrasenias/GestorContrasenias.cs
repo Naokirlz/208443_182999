@@ -8,11 +8,12 @@ namespace Negocio.Contrasenias
 {
     public class GestorContrasenias
     {
-        private RepositorioContraseniasMemoria repositorio;
+        private IRepositorio<Contrasenia> repositorio;
                 
         public GestorContrasenias() 
         {
-            this.repositorio = new RepositorioContraseniasMemoria();
+            //this.repositorio = new RepositorioContraseniasMemoria();
+            this.repositorio = new RepositorioContraseniasEntity();
         }
         
         public int Alta(Contrasenia unaContrasena)

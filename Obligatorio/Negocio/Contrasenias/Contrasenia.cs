@@ -28,8 +28,7 @@ namespace Negocio.Contrasenias
         public Categoria Categoria { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
-        public DateTime FechaUltimaModificacion { get; set; }
+        public DateTime  FechaUltimaModificacion { get; set; }
         public int CantidadVecesEncontradaVulnerable { get; set; }
          
         public int CompareTo(Contrasenia otraContrasenia)

@@ -1,5 +1,4 @@
-﻿using Negocio.Categorias;
-using Negocio.TarjetaCreditos;
+﻿using Negocio.Contrasenias;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,65 +8,65 @@ using System.Data.Entity;
 
 namespace Negocio.Persistencia
 {
-    public class RepositorioTarjetaCreditoEntity : IRepositorio<TarjetaCredito>
+    public class RepositorioContraseniasEntity : IRepositorio<Contrasenia>
     {
-        public int Alta(TarjetaCredito entity)
+        public int Alta(Contrasenia entity)
         {
             using (Contexto context = new Contexto())
             {
                 context.Categorias.Attach(entity.Categoria);
-                context.Tarjetas.Add(entity);
+                context.Contrasenias.Add(entity);
                 try
                 {
                     context.SaveChanges();
-                    return entity.Id;
+                    return entity.ContraseniaId;
                 }
                 catch (Exception ex)
                 {
                     throw ex;
                 }
-             }
+            }
         }
 
-        public void Baja(TarjetaCredito entity)
+        public void Baja(Contrasenia entity)
         {
             using (Contexto context = new Contexto())
             {
-                TarjetaCredito aEliminar = context.Tarjetas.FirstOrDefault(c => c.Id == entity.Id);
-                context.Tarjetas.Remove(aEliminar);
+                Contrasenia aEliminar = context.Contrasenias.FirstOrDefault(c => c.ContraseniaId == entity.ContraseniaId);
+                context.Contrasenias.Remove(aEliminar);
                 context.SaveChanges();
             }
         }
 
-        public TarjetaCredito Buscar(TarjetaCredito entity)
+        public Contrasenia Buscar(Contrasenia entity)
         {
             using (Contexto context = new Contexto())
             {
-                return context.Tarjetas.Find(entity.Id);
+                return context.Contrasenias.Find(entity.ContraseniaId);
             }
         }
 
-        public void Existe(TarjetaCredito entity)
+        public void Existe(Contrasenia entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Modificar(TarjetaCredito entity)
+        public void Modificar(Contrasenia entity)
         {
             using (Contexto context = new Contexto())
             {
-                TarjetaCredito tarjetaAModificar = context.Tarjetas.FirstOrDefault(c => c.Id == entity.Id);
-                tarjetaAModificar = entity;
+                Contrasenia aModificar = context.Contrasenias.FirstOrDefault(c => c.ContraseniaId == entity.ContraseniaId);
+                aModificar = entity;
                 context.SaveChanges();
             }
         }
 
-        public IEnumerable<TarjetaCredito> ObtenerTodas()
+        public IEnumerable<Contrasenia> ObtenerTodas()
         {
             using (Contexto context = new Contexto())
             {
-                return context.Tarjetas.Include(t => t.Categoria).ToList();
-                    
+                return context.Contrasenias.Include(c => c.Password).ToList();
+
             }
         }
     }
