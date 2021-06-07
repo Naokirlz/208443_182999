@@ -16,6 +16,7 @@ namespace Negocio.Persistencia
             {
                 context.Categorias.Attach(entity.Categoria);
                 context.Contrasenias.Add(entity);
+                
                 try
                 {
                     context.SaveChanges();
@@ -35,7 +36,14 @@ namespace Negocio.Persistencia
                 Contrasenia aEliminar = context.Contrasenias.FirstOrDefault(c => c.ContraseniaId == entity.ContraseniaId);
                 context.Passwords.Remove(aEliminar.Password);
                 context.Contrasenias.Remove(aEliminar);
-                context.SaveChanges();
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 
@@ -58,7 +66,14 @@ namespace Negocio.Persistencia
             {
                 Contrasenia aModificar = context.Contrasenias.FirstOrDefault(c => c.ContraseniaId == entity.ContraseniaId);
                 aModificar = entity;
-                context.SaveChanges();
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 

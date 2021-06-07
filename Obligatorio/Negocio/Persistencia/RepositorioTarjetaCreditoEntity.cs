@@ -35,7 +35,14 @@ namespace Negocio.Persistencia
             {
                 TarjetaCredito aEliminar = context.Tarjetas.FirstOrDefault(c => c.Id == entity.Id);
                 context.Tarjetas.Remove(aEliminar);
-                context.SaveChanges();
+                try
+                {
+                   context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 
@@ -58,7 +65,14 @@ namespace Negocio.Persistencia
             {
                 TarjetaCredito tarjetaAModificar = context.Tarjetas.FirstOrDefault(c => c.Id == entity.Id);
                 tarjetaAModificar = entity;
-                context.SaveChanges();
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 

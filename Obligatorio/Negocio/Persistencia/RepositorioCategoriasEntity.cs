@@ -16,9 +16,18 @@ namespace Negocio.Persistencia
             using (Contexto context = new Contexto())
             {
                 context.Categorias.Add(entity);
-                context.SaveChanges();
-                autonumerado++;
-                return entity.Id;
+                
+                try 
+                { 
+                    context.SaveChanges();
+                    autonumerado++;
+                    return entity.Id;
+                }
+                
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 
@@ -28,7 +37,15 @@ namespace Negocio.Persistencia
             {
                 Categoria aEliminar = context.Categorias.FirstOrDefault(c => c.Id == entity.Id);
                 context.Categorias.Remove(aEliminar);
-                context.SaveChanges();
+                
+                try 
+                { 
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 
@@ -58,8 +75,17 @@ namespace Negocio.Persistencia
             {
                 Categoria categoriaAModificar = context.Categorias.FirstOrDefault(c => c.Id == entity.Id);
                 categoriaAModificar.Nombre = entity.Nombre;
-                context.SaveChanges();
+                
+                try 
+                { 
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
+
         }
 
         public IEnumerable<Categoria> ObtenerTodas()
