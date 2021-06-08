@@ -1,4 +1,5 @@
-﻿using Negocio.Utilidades;
+﻿using Negocio.Persistencia;
+using Negocio.Utilidades;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,11 +8,12 @@ namespace Negocio.Contrasenias
 {
     public class GestorContrasenias
     {
-        private RepositorioContrasenias repositorio;
+        private IRepositorio<Contrasenia> repositorio;
                 
         public GestorContrasenias() 
         {
-            this.repositorio = new RepositorioContrasenias();
+            //this.repositorio = new RepositorioContraseniasMemoria();
+            this.repositorio = new RepositorioContraseniasEntity();
         }
         
         public int Alta(Contrasenia unaContrasena)
@@ -22,18 +24,26 @@ namespace Negocio.Contrasenias
 
         public void Baja(int id)
         {
-            repositorio.Baja(id);
+            Contrasenia eliminar = new Contrasenia()
+            {
+                ContraseniaId = id
+            };
+            repositorio.Baja(eliminar);
         }
         
         public void ModificarContrasenia(Contrasenia modificada)
         {
             ValidarCampos(modificada);
-            repositorio.ModificarContrasenia(modificada);
+            repositorio.Modificar(modificada);
         }
       
         public Contrasenia Buscar(int id)
         {
-            return repositorio.BuscarPorId(id);
+            Contrasenia buscar = new Contrasenia()
+            {
+                ContraseniaId = id
+            };
+            return repositorio.Buscar(buscar);
         }
         
         public IEnumerable<Contrasenia> ObtenerTodas()

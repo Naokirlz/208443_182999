@@ -33,7 +33,7 @@ namespace Interfaz
                     Usuario = Contrasenia.Usuario,
                     Notas = Contrasenia.Notas,
                     Password = nuevoPass,
-                    Id = Contrasenia.Id
+                    ContraseniaId = Contrasenia.ContraseniaId
                 };
 
                 this.Sesion.ModificarContrasenia(aModificar);

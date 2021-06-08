@@ -1,12 +1,25 @@
 ﻿using Negocio.Utilidades;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Negocio.Contrasenias
 {
+
+    
     public class Password
     {
+        
+        [Key, ForeignKey("Contrasenia")]
+        public int ContraseniaId { get; set; }
+
+        public virtual Contrasenia Contrasenia { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
         public string Clave { get; set; }
+        
         public bool Mayuscula { get; set; }
         public bool Minuscula { get; set; }
         public bool Numero { get; set; }
@@ -15,11 +28,19 @@ namespace Negocio.Contrasenias
 
         public EnumColor ColorPassword { get { return CalcularFortaleza(); } }
 
+
+        public Password()
+        {
+           
+        }
+
         public Password(string clave)
         {
             this.Clave = clave;
         }
 
+        
+        
         private string[] caracteresRandom = new[] {
             "ABCDEFGHJKLMNOPQRSTUVWXYZ",    // MAYUSCULAS 
             "abcdefghijkmnopqrstuvwxyz",    // MINUSCULAS

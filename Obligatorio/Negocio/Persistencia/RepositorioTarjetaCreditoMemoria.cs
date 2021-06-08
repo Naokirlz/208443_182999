@@ -1,15 +1,16 @@
-﻿using Negocio.Utilidades;
+﻿using Negocio.TarjetaCreditos;
+using Negocio.Utilidades;
 using System.Collections.Generic;
 
-namespace Negocio.TarjetaCreditos
+namespace Negocio.Persistencia
 {
-    public class RepositorioTarjetaCredito
+    public class RepositorioTarjetaCreditoMemoria:IRepositorio<TarjetaCredito>
     {
         private static int autonumerado = 1;
         private List<TarjetaCredito> tarjetas;
         
 
-        public RepositorioTarjetaCredito()
+        public RepositorioTarjetaCreditoMemoria()
         {
             this.tarjetas = new List<TarjetaCredito>();
         }
@@ -24,14 +25,14 @@ namespace Negocio.TarjetaCreditos
             return nuevaTarjeta.Id;
         }
 
-        public void Baja(int id)
+        public void Baja(TarjetaCredito bajaTarjeta)
         {
-            tarjetas.Remove(BuscarPorId(id));
+            tarjetas.Remove(Buscar(bajaTarjeta));
         }
 
-        public void ModificarTarjeta(TarjetaCredito modificada)
+        public void Modificar(TarjetaCredito modificada)
         {
-            TarjetaCredito anterior = BuscarPorId(modificada.Id);
+            TarjetaCredito anterior = Buscar(modificada);
             VerificarNombreTarjetaRepetido(modificada);
             VerificarNumeroTarjetaRepetido(modificada);
 
@@ -46,10 +47,10 @@ namespace Negocio.TarjetaCreditos
             anterior.CantidadVecesEncontradaVulnerable = modificada.CantidadVecesEncontradaVulnerable;
        }
 
-        public TarjetaCredito BuscarPorId(int id) {
+        public TarjetaCredito Buscar(TarjetaCredito buscada) {
 
             foreach (TarjetaCredito item in tarjetas)
-                if (item.Id == id) return item;
+                if (item.Id == buscada.Id) return item;
             throw new ExcepcionElementoNoExiste("La tarjeta buscada no existe.");
         }
                 
@@ -80,6 +81,11 @@ namespace Negocio.TarjetaCreditos
                     throw new ExcepcionElementoYaExiste("La tarjeta buscada ya existe.");
                 }
             }
+        }
+
+        public void Existe(TarjetaCredito entity)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

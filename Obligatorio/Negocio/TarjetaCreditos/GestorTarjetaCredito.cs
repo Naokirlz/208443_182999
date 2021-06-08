@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Negocio.Persistencia;
 using Negocio.Utilidades;
 
 namespace Negocio.TarjetaCreditos
 {
     public class GestorTarjetaCredito 
     {
-        private RepositorioTarjetaCredito repositorio;
+        private IRepositorio<TarjetaCredito> repositorio;
       
         public GestorTarjetaCredito()
         {
-            this.repositorio = new RepositorioTarjetaCredito();
+            //this.repositorio = new RepositorioTarjetaCreditoMemoria();
+            this.repositorio = new RepositorioTarjetaCreditoEntity();
         }
 
         public int Alta(TarjetaCredito unaTarjeta)
@@ -21,18 +23,26 @@ namespace Negocio.TarjetaCreditos
 
         public void Baja(int id)
         {
-            repositorio.Baja(id);
+            TarjetaCredito borrar = new TarjetaCredito()
+            {
+                Id = id
+            };
+            repositorio.Baja(borrar);
         }
 
         public void ModificarTarjeta(TarjetaCredito modificada)
         {
             ValidarCampos(modificada);
-            repositorio.ModificarTarjeta(modificada);
+            repositorio.Modificar(modificada);
         }
 
         public TarjetaCredito Buscar(int id)
         {
-            return repositorio.BuscarPorId(id);
+            TarjetaCredito buscada = new TarjetaCredito()
+            {
+                Id = id
+            };
+            return repositorio.Buscar(buscada);
         }
 
         public IEnumerable<TarjetaCredito> ObtenerTodas()

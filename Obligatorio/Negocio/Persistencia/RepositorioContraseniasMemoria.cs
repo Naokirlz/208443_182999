@@ -1,15 +1,16 @@
-﻿using Negocio.Utilidades;
+﻿using Negocio.Contrasenias;
+using Negocio.Utilidades;
 using System;
 using System.Collections.Generic;
 
-namespace Negocio.Contrasenias
+namespace Negocio.Persistencia
 {
-    public class RepositorioContrasenias
+    public class RepositorioContraseniasMemoria : IRepositorio<Contrasenia>
     {
         private static int autonumerado = 1;
         private List<Contrasenia> contrasenias;
                 
-        public RepositorioContrasenias()
+        public RepositorioContraseniasMemoria()
         {
             this.contrasenias = new List<Contrasenia>();
         }
@@ -17,21 +18,21 @@ namespace Negocio.Contrasenias
         public int Alta(Contrasenia unaContrasenia)
         {
             VerificarSiExisteContrasenia(unaContrasenia);
-            unaContrasenia.Id = autonumerado;
+            unaContrasenia.ContraseniaId = autonumerado;
             unaContrasenia.FechaUltimaModificacion = DateTime.Now;
             this.contrasenias.Add(unaContrasenia);
             autonumerado++;
-            return unaContrasenia.Id;
+            return unaContrasenia.ContraseniaId;
         }
 
-        public void Baja(int id)
+        public void Baja(Contrasenia eliminar)
         {
-            contrasenias.Remove(BuscarPorId(id));
+            contrasenias.Remove(Buscar(eliminar));
         }
 
-        public void ModificarContrasenia(Contrasenia modificarContrasenia)
+        public void Modificar(Contrasenia modificarContrasenia)
         {
-            Contrasenia anterior = BuscarPorId(modificarContrasenia.Id);
+            Contrasenia anterior = Buscar(modificarContrasenia);
             anterior.Sitio = modificarContrasenia.Sitio;
             anterior.Usuario = modificarContrasenia.Usuario;
                         
@@ -46,10 +47,10 @@ namespace Negocio.Contrasenias
                         
         }
 
-        public Contrasenia BuscarPorId(int id)
+        public Contrasenia Buscar(Contrasenia buscada)
         {
             foreach (Contrasenia item in contrasenias)
-                if (item.Id == id) return item;
+                if (item.ContraseniaId == buscada.ContraseniaId) return item;
             throw new ExcepcionElementoNoExiste("La contraseña buscada no existe.");
         }
 
@@ -67,6 +68,11 @@ namespace Negocio.Contrasenias
                     contrasenia.Usuario.ToUpper().Equals(unaContrasenia.Usuario.ToUpper()))
                     throw new ExcepcionElementoYaExiste("La contraseña buscada ya existe.");
             }
+        }
+
+        public void Existe(Contrasenia entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }
