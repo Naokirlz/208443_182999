@@ -286,6 +286,12 @@
     <Compile Include="Vulnerabilidades\GestionVulnerabilidades.Designer.cs">
       <DependentUpon>GestionVulnerabilidades.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vulnerabilidades\HistorialVulnerabilidades.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vulnerabilidades\HistorialVulnerabilidades.Designer.cs">
+      <DependentUpon>HistorialVulnerabilidades.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vulnerabilidades\ResumenVulnerabilidades.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -390,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vulnerabilidades\GestionVulnerabilidades.resx">
       <DependentUpon>GestionVulnerabilidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vulnerabilidades\HistorialVulnerabilidades.resx">
+      <DependentUpon>HistorialVulnerabilidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vulnerabilidades\ResumenVulnerabilidades.resx">
       <DependentUpon>ResumenVulnerabilidades.cs</DependentUpon>
