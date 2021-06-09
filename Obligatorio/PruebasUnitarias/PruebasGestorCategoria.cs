@@ -18,13 +18,19 @@ namespace PruebasUnitarias
         {
 
             Gestor = new GestorCategorias();
-            Gestor.repositorio = new RepositorioCategoriasMemoria();
+            
 
+        }
+        [TestCleanup]
+        public void LimpiarPruebas()
+        {
+            Gestor.LimpiarBD();
+            
         }
 
 
 
-            [TestMethod]
+        [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCrearUnaCategoriaConNombreMenor3Caracteres()
         {
@@ -74,7 +80,7 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void BuscarUnaCategoriaNoExistente()
         {
-            Gestor.BuscarCategoriaPorId(-200);
+            Gestor.BuscarCategoriaPorId(200);
         }
 
         [TestMethod]
@@ -115,7 +121,7 @@ namespace PruebasUnitarias
         public void SePuedenVerTodasLasCategorias()
         {
             GestorCategorias Gestor2 = new GestorCategorias();
-            Gestor2.repositorio = new RepositorioCategoriasMemoria();
+           
 
             int categoria1 = Gestor2.Alta("Categoria1");
             int categoria2 = Gestor2.Alta("Categoria2");

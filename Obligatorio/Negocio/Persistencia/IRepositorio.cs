@@ -16,6 +16,7 @@ namespace Negocio.Persistencia
         void Baja(T entity);
         void Modificar(T entity);
         void Existe(T entity);
+        void TestClear();
 
     }
 }

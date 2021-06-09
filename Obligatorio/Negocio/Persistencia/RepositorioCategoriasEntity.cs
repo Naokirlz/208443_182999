@@ -2,6 +2,7 @@
 using Negocio.Utilidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,8 +54,16 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
-                return context.Categorias.Find(entity.Id);
-            }
+                Categoria buscada;
+                
+                    buscada = context.Categorias.Find(entity.Id);
+                    if (buscada != null)
+                    {
+                        return buscada;
+                    }
+                    throw new ExcepcionElementoNoExiste("Error: Categoría No Existe !!!");
+             }
+
         }
 
         public void Existe(Categoria entity)
@@ -80,11 +89,23 @@ namespace Negocio.Persistencia
                 { 
                     context.SaveChanges();
                 }
-                catch (Exception ex)
+                catch (DbUpdateException ex)
                 {
-                    throw ex;
+                    
                 }
             }
+
+        }
+
+
+        public void TestClear()
+        {
+            using (Contexto context = new Contexto())
+            {
+                context.Categorias.RemoveRange(context.Categorias);
+                context.SaveChanges();
+            }
+
 
         }
 

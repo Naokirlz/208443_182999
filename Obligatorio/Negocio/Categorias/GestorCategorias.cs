@@ -1,12 +1,14 @@
 ﻿using Negocio.Persistencia;
 using Negocio.Utilidades;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 
 namespace Negocio.Categorias
 {
     public class GestorCategorias
-    {//ATENCIOON CAMBIARLO LUEGO el acceso no publico! lo hice para setear las pruebas unitarias
-        public IRepositorio<Categoria> repositorio;
+    {
+        private IRepositorio<Categoria> repositorio;
 
         public GestorCategorias()
         {
@@ -22,6 +24,11 @@ namespace Negocio.Categorias
 
         }
 
+        public void LimpiarBD()
+        {
+            repositorio.TestClear();
+        }
+
         public void Baja(int id)
         {
             Categoria borrar = new Categoria("Borrar")
@@ -33,13 +40,20 @@ namespace Negocio.Categorias
 
         public void ModificarCategoria(int id, string nombreNuevo)
         {
-            Validaciones.ValidarLargoTexto(nombreNuevo, 15, 3, "nombre");
+            //Validaciones.ValidarLargoTexto(nombreNuevo, 15, 3, "nombre");
             Categoria Modificar = new Categoria("Modificar")
             {
                 Id = id,
                 Nombre = nombreNuevo
             };
+            try { 
             repositorio.Modificar(Modificar);
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new ExcepcionElementoNoExiste("Error: En la Base de Datos",ex);
+
+            }
         }
 
         public Categoria BuscarCategoriaPorId(int id)
