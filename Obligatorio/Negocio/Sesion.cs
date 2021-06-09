@@ -177,9 +177,7 @@ namespace Negocio
          */
         public void VaciarDatosPrueba()
         {
-            this.gestorContrasenia = new GestorContrasenias();
-            this.gestorTarjetaCredito = new GestorTarjetaCredito();
-            this.gestorCategoria = new GestorCategorias();
+            this.gestorContrasenia.LimpiarBD();
             this.MisFuentes = new List<IFuente>();
         }
     }

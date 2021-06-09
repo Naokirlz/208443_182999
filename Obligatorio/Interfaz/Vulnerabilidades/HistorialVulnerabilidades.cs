@@ -21,7 +21,7 @@ namespace Interfaz.Vulnerabilidades
 
         private void CargarTablaHistorial()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
