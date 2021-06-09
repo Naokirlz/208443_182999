@@ -90,7 +90,7 @@ namespace Negocio.Persistencia
                 Existe(entity);
                 Categoria categoriaAModificar = context.Categorias.FirstOrDefault(c => c.Id == entity.Id);
                 categoriaAModificar.Nombre = entity.Nombre;
-             
+                
                 context.SaveChanges();
               
                

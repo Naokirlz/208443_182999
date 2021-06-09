@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using Negocio.Utilidades;
 
 namespace Negocio.Persistencia
 {
@@ -15,6 +16,8 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
+                Existe(entity);
+                entity.Categoria = context.Categorias.FirstOrDefault(c => c.Nombre == entity.Categoria.Nombre);
                 context.Categorias.Attach(entity.Categoria);
                 context.Tarjetas.Add(entity);
                 try
@@ -34,15 +37,20 @@ namespace Negocio.Persistencia
             using (Contexto context = new Contexto())
             {
                 TarjetaCredito aEliminar = context.Tarjetas.FirstOrDefault(c => c.Id == entity.Id);
-                context.Tarjetas.Remove(aEliminar);
-                try
+                
+                if (aEliminar != null)
                 {
-                   context.SaveChanges();
+                    context.Tarjetas.Remove(aEliminar);
+                    try
+                    {
+                        context.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                else throw new ExcepcionElementoNoExiste("Error: TarjetaCredito No Existe !!!");
             }
         }
 
@@ -56,7 +64,13 @@ namespace Negocio.Persistencia
 
         public void Existe(TarjetaCredito entity)
         {
-            throw new NotImplementedException();
+            using (Contexto context = new Contexto())
+            {
+                TarjetaCredito existe = context.Tarjetas.FirstOrDefault(c => (c.Numero == entity.Numero || c.Nombre == entity.Nombre) && c.Id != entity.Id);
+                
+                if (existe != null)
+                    throw new ExcepcionElementoYaExiste("Ya existe Tarjeta con ese nombre o numero.");
+            }
         }
 
         public void Modificar(TarjetaCredito entity)
@@ -64,7 +78,20 @@ namespace Negocio.Persistencia
             using (Contexto context = new Contexto())
             {
                 TarjetaCredito tarjetaAModificar = context.Tarjetas.FirstOrDefault(c => c.Id == entity.Id);
-                tarjetaAModificar = entity;
+                tarjetaAModificar.Id = entity.Id;
+
+                Existe(entity);
+
+                tarjetaAModificar.Categoria = entity.Categoria;
+                tarjetaAModificar.Nombre = entity.Nombre;
+                tarjetaAModificar.Tipo = entity.Tipo;
+                tarjetaAModificar.Numero = entity.Numero;
+                tarjetaAModificar.Codigo = entity.Codigo;
+                tarjetaAModificar.Vencimiento = entity.Vencimiento;
+                tarjetaAModificar.Nota = entity.Nota;
+                
+                tarjetaAModificar.CantidadVecesEncontradaVulnerable = entity.CantidadVecesEncontradaVulnerable;
+
                 try
                 {
                     context.SaveChanges();
@@ -80,8 +107,10 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
-                return context.Tarjetas.Include(t => t.Categoria).ToList();
-                    
+                List<TarjetaCredito> retorno;
+                retorno = context.Tarjetas.Include(t => t.Categoria).ToList();
+                retorno.Sort();
+                return retorno;
             }
         }
 

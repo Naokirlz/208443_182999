@@ -15,6 +15,7 @@ namespace PruebasUnitarias
     public class PruebasGestorTarjetaCredito
     {
         private GestorTarjetaCredito Gestor;
+        private GestorCategorias GestorCategoria;
         TarjetaCredito TarjetaDePruebaUno;
         TarjetaCredito TarjetaDePruebaDos;
 
@@ -23,10 +24,14 @@ namespace PruebasUnitarias
         {
 
             Gestor = new GestorTarjetaCredito();
-
+            GestorCategoria = new GestorCategorias();
+            Gestor.LimpiarBD();
+            Categoria c = new Categoria("Fake");
+            GestorCategoria.Alta("Fake");
+           
             TarjetaDePruebaUno = new TarjetaCredito()
             {
-                Categoria = new Categoria("Fake"),
+                Categoria = c,
                 Nombre = "PruebaNombre",
                 Tipo = "PruebaTipo",
                 Numero = "1234123412341234",
@@ -37,7 +42,7 @@ namespace PruebasUnitarias
 
             TarjetaDePruebaDos = new TarjetaCredito()
             {
-                Categoria = new Categoria("Fake"),
+                Categoria = c,
                 Nombre = "OtraTarjeta",
                 Tipo = "PruebaTipo",
                 Numero = "5234123412341235",
@@ -52,7 +57,6 @@ namespace PruebasUnitarias
         [TestCleanup]
         public void LimpiarPruebas()
         {
-
             Gestor = null;
             TarjetaDePruebaUno = null;
             TarjetaDePruebaDos = null;
@@ -258,15 +262,25 @@ namespace PruebasUnitarias
         [TestMethod]
         public void ListarTarjetasCreditoOrdenadaPorNombreCategoria()
         {
-            TarjetaDePruebaUno.Categoria.Nombre = "ZZZZZZ";
+            Categoria z = new Categoria("ZZZZZZ");
+            GestorCategoria.Alta("ZZZZZZ");
+
+            Categoria a = new Categoria("AAAAAA");
+            GestorCategoria.Alta("AAAAAA");
+
+            Categoria b = new Categoria("BBBBBB");
+            GestorCategoria.Alta("BBBBBB");
+
+
+            TarjetaDePruebaUno.Categoria = z;
             Gestor.Alta(TarjetaDePruebaUno);
 
-            TarjetaDePruebaDos.Categoria.Nombre = "AAAAAA";
+            TarjetaDePruebaDos.Categoria = a;
             Gestor.Alta(TarjetaDePruebaDos);
 
             TarjetaCredito tarjetaPrueba = new TarjetaCredito()
             {
-                Categoria = new Categoria("BBBBBB"),
+                Categoria = b,
                 Nombre = "bbbbbbb",
                 Tipo = "PruebaTipo",
                 Numero = "1234126412341234",
@@ -299,7 +313,7 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void EliminarTarjetaCreditoQuenNoExiste()
         {
-            Gestor.Baja(-200);
+            Gestor.Baja(20000);
         }
 
 

@@ -13,6 +13,7 @@ namespace PruebasUnitarias
     {
         private GestorCategorias Gestor;
 
+
         [TestInitialize]
         public void InicializarPruebas()
         {
