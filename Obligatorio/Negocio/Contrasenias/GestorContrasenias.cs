@@ -102,5 +102,13 @@ namespace Negocio.Contrasenias
             Validaciones.ValidarPassword(contrasenia.Password.Clave, 25, 5);
             if (contrasenia.Notas != null) Validaciones.ValidarLargoTexto(contrasenia.Notas, 250, 0, "notas");
         }
+
+
+        public void LimpiarBD()
+        {
+            repositorio.TestClear();
+        }
+
+
     }
 }

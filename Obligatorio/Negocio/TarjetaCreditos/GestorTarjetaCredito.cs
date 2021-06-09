@@ -93,6 +93,13 @@ namespace Negocio.TarjetaCreditos
                 Validaciones.ValidarLargoTexto(tarjeta.Nota, 250, -1, "nota");
             }
         }
-       
+
+
+        public void LimpiarBD()
+        {
+            repositorio.TestClear();
+        }
+
+
     }
 }

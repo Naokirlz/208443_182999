@@ -61,5 +61,10 @@ namespace Negocio.Persistencia
                     throw new ExcepcionElementoYaExiste("Ya existe categoría con ese nombre.");
             }
         }
+
+        public void TestClear()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

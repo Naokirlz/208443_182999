@@ -85,5 +85,18 @@ namespace Negocio.Persistencia
 
             }
         }
+
+        public void TestClear()
+        {
+               using (Contexto context = new Contexto())
+                {
+                    context.Tarjetas.RemoveRange(context.Tarjetas);
+                    context.Passwords.RemoveRange(context.Passwords);
+                    context.Contrasenias.RemoveRange(context.Contrasenias);
+                    context.Categorias.RemoveRange(context.Categorias);
+                    context.SaveChanges();
+                }
+   
+        }
     }
 }

@@ -74,5 +74,10 @@ namespace Negocio.Persistencia
         {
             throw new NotImplementedException();
         }
+
+        public void TestClear()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

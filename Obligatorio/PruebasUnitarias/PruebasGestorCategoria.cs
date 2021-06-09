@@ -16,18 +16,10 @@ namespace PruebasUnitarias
         [TestInitialize]
         public void InicializarPruebas()
         {
-
             Gestor = new GestorCategorias();
-            
-
-        }
-        [TestCleanup]
-        public void LimpiarPruebas()
-        {
             Gestor.LimpiarBD();
-            
         }
-
+        
 
 
         [TestMethod]
@@ -150,7 +142,7 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void EliminarElementoNoExistente()
         {
-            Gestor.Baja(-200);
+            Gestor.Baja(2000);
         }
 
         [TestMethod]

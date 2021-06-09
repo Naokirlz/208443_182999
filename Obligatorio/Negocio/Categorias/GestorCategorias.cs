@@ -40,20 +40,15 @@ namespace Negocio.Categorias
 
         public void ModificarCategoria(int id, string nombreNuevo)
         {
-            //Validaciones.ValidarLargoTexto(nombreNuevo, 15, 3, "nombre");
+            Validaciones.ValidarLargoTexto(nombreNuevo, 15, 3, "nombre");
             Categoria Modificar = new Categoria("Modificar")
             {
                 Id = id,
                 Nombre = nombreNuevo
             };
-            try { 
             repositorio.Modificar(Modificar);
-            }
-            catch (DbUpdateException ex)
-            {
-                throw new ExcepcionElementoNoExiste("Error: En la Base de Datos",ex);
-
-            }
+            
+           
         }
 
         public Categoria BuscarCategoriaPorId(int id)

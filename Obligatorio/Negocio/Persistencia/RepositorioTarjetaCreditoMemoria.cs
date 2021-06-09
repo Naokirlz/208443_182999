@@ -87,5 +87,10 @@ namespace Negocio.Persistencia
         {
             throw new System.NotImplementedException();
         }
+
+        public void TestClear()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

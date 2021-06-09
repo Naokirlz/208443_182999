@@ -16,8 +16,8 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
+                Existe(entity);
                 context.Categorias.Add(entity);
-                
                 try 
                 { 
                     context.SaveChanges();
@@ -37,16 +37,20 @@ namespace Negocio.Persistencia
             using (Contexto context = new Contexto())
             {
                 Categoria aEliminar = context.Categorias.FirstOrDefault(c => c.Id == entity.Id);
-                context.Categorias.Remove(aEliminar);
-                
-                try 
-                { 
-                    context.SaveChanges();
-                }
-                catch (Exception ex)
+
+                if (aEliminar != null)
                 {
-                    throw ex;
+                    context.Categorias.Remove(aEliminar);
+                    try
+                    {
+                        context.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
                 }
+                else throw new ExcepcionElementoNoExiste("Error: Categoría No Existe !!!");
             }
         }
 
@@ -82,17 +86,14 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
+
+                Existe(entity);
                 Categoria categoriaAModificar = context.Categorias.FirstOrDefault(c => c.Id == entity.Id);
                 categoriaAModificar.Nombre = entity.Nombre;
-                
-                try 
-                { 
-                    context.SaveChanges();
-                }
-                catch (DbUpdateException ex)
-                {
-                    
-                }
+             
+                context.SaveChanges();
+              
+               
             }
 
         }
@@ -102,6 +103,9 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
+                context.Tarjetas.RemoveRange(context.Tarjetas);
+                context.Passwords.RemoveRange(context.Passwords);
+                context.Contrasenias.RemoveRange(context.Contrasenias);
                 context.Categorias.RemoveRange(context.Categorias);
                 context.SaveChanges();
             }
