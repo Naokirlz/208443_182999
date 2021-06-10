@@ -289,7 +289,8 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeModificarLaCategoria()
         {
-            Categoria nuevaCat = new Categoria("categoria nueva");
+            int idcat = GestorCategoria.Alta("categoria nueva");
+            Categoria nuevaCat = GestorCategoria.BuscarCategoriaPorId(idcat);
             int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
             nuevaContrasenia.Categoria = nuevaCat;

@@ -8,7 +8,7 @@ namespace Negocio.Contrasenias
 {
 
     
-    public class Password
+    public class Password : IEquatable<Password>
     {
         
         [Key, ForeignKey("Contrasenia")]
@@ -113,6 +113,11 @@ namespace Negocio.Contrasenias
                 if (caracteresRandom[3].IndexOf(caracter) > -1) this.Especial = true;
             }
 
+        }
+
+        public bool Equals(Password other)
+        {
+            return this.Clave.Equals(other.Clave);
         }
     }
    

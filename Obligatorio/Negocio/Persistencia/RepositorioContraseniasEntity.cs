@@ -86,7 +86,7 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
-                Contrasenia aModificar = Buscar(entity);
+                Contrasenia aModificar = context.Contrasenias.Include(t => t.Categoria).Include(t => t.Password).FirstOrDefault(t => t.ContraseniaId == entity.ContraseniaId);
                 aModificar.ContraseniaId = entity.ContraseniaId;
                 
                 if(aModificar.Sitio != entity.Sitio || aModificar.Usuario != entity.Usuario) Existe(entity);
@@ -100,12 +100,14 @@ namespace Negocio.Persistencia
                     aModificar.FechaUltimaModificacion = DateTime.Now;
                 }
 
-                aModificar.Categoria = entity.Categoria;
+                aModificar.Categoria = context.Categorias.FirstOrDefault(c => c.Nombre == entity.Categoria.Nombre);
+
                 aModificar.Notas = entity.Notas;
 
 
                 try
                 {
+                    context.Categorias.Attach(aModificar.Categoria);
                     context.SaveChanges();
                 }
                 catch (Exception ex)
