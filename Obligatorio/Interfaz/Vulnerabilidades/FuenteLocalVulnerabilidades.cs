@@ -12,6 +12,8 @@ namespace Interfaz.Vulnerabilidades
         public FuenteLocalVulnerabilidades()
         {
             InitializeComponent();
+            Sesion.Fuente = new FuenteLocal();
+            FuenteLocal = Sesion.Fuente;
 
             //bool encontre = false;
             //foreach (IFuente fuente in Sesion.MisFuentes)
@@ -30,7 +32,7 @@ namespace Interfaz.Vulnerabilidades
             //    this.Sesion.MisFuentes.Add(this.FuenteLocal);
             //}
 
-            Sesion.Fuente = new FuenteLocal();
+
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
