@@ -554,7 +554,7 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionElementoNoExiste))]
         public void NoSeEncuentraContraseniaQueNoExiste()
         {
-            Gestor.Buscar(-200);
+            Gestor.Buscar(20000);
         }
 
         [TestMethod]
@@ -597,12 +597,22 @@ namespace PruebasUnitarias
         [TestMethod]
         public void ListarContraseniaOrdenadaPorNombreCategoria()
         {
-            ContraseniaCompleta.Categoria.Nombre = "ZZZZZZ";
+            Categoria z = new Categoria("ZZZZZZ");
+            GestorCategoria.Alta("ZZZZZZ");
+
+            Categoria a = new Categoria("AAAAAA");
+            GestorCategoria.Alta("AAAAAA");
+
+            Categoria b = new Categoria("BBBBBB");
+            GestorCategoria.Alta("BBBBBB");
+
+
+            ContraseniaCompleta.Categoria = z;
             Gestor.Alta(ContraseniaCompleta);
 
             Contrasenia nuevaContrasena = new Contrasenia()
             {
-                Categoria = new Categoria("AAAAAA"),
+                Categoria = a,
                 Usuario = "usuario",
                 Sitio = "netflix",
                 Notas = "clave de netflix",
@@ -613,7 +623,7 @@ namespace PruebasUnitarias
 
             Contrasenia nuevaContrasena2 = new Contrasenia()
             {
-                Categoria = new Categoria("BBBBBB"),
+                Categoria = b,
                 Usuario = "usuario2",
                 Sitio = "tcc",
                 Notas = "clave de tcc",
@@ -663,7 +673,7 @@ namespace PruebasUnitarias
             Gestor.Alta(ContraseniaCompleta);
             Contrasenia vieja = Gestor.ObtenerTodas().First();
             DateTime fechaVieja = vieja.FechaUltimaModificacion.AddDays(-3);
-            vieja.FechaUltimaModificacion = fechaVieja;
+            vieja.FechaUltimaModificacion = fechaVieja.Date;
             int id = vieja.ContraseniaId;
 
             Contrasenia contraseniaNueva = new Contrasenia()
@@ -681,7 +691,7 @@ namespace PruebasUnitarias
             Contrasenia nueva = Gestor.Buscar(id);
             DateTime fechaNueva = nueva.FechaUltimaModificacion;
             Assert.AreNotEqual(fechaVieja, fechaNueva);
-            Assert.AreEqual(DateTime.Now, fechaNueva);
+            Assert.AreEqual(DateTime.Now.Date, fechaNueva.Date);
         }
 
         [TestMethod]

@@ -58,7 +58,12 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
-                return context.Tarjetas.Find(entity.Id);
+                TarjetaCredito existe = context.Tarjetas.Include(t => t.Categoria).FirstOrDefault(t => t.Id == entity.Id);
+
+                if (existe != null) return existe;
+                throw new ExcepcionElementoNoExiste("No existe Tarjeta!");
+
+
             }
         }
 
