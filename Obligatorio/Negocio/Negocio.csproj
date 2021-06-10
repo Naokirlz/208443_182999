@@ -79,6 +79,10 @@
     <Compile Include="Migrations\202106070100456_ErrorDataTime.designer.cs">
       <DependentUpon>202106070100456_ErrorDataTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106100114137_CorregirClave.cs" />
+    <Compile Include="Migrations\202106100114137_CorregirClave.designer.cs">
+      <DependentUpon>202106100114137_CorregirClave.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistencia\Contexto.cs" />
     <Compile Include="Persistencia\IRepositorio.cs" />
@@ -127,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106070100456_ErrorDataTime.resx">
       <DependentUpon>202106070100456_ErrorDataTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106100114137_CorregirClave.resx">
+      <DependentUpon>202106100114137_CorregirClave.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
