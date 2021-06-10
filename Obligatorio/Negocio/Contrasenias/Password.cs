@@ -16,7 +16,7 @@ namespace Negocio.Contrasenias
 
         public virtual Contrasenia Contrasenia { get; set; }
 
-        [Required]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DataType(DataType.Password)]
         public string Clave { get; set; }
         
