@@ -709,7 +709,8 @@ namespace PruebasUnitarias
             };
 
             Gestor.ModificarContrasenia(modificada);
-            Assert.AreEqual("Nuevo PASSWORD", ContraseniaCompleta.Password.Clave);
+            Contrasenia mod = Gestor.Buscar(modificada.ContraseniaId);
+            Assert.AreEqual("Nuevo PASSWORD", mod.Password.Clave);
 
         }
 

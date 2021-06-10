@@ -57,9 +57,7 @@ namespace PruebasUnitarias
         [TestCleanup]
         public void LimpiarPruebas()
         {
-            Gestor = null;
-            TarjetaDePruebaUno = null;
-            TarjetaDePruebaDos = null;
+            Gestor.LimpiarBD();
         }
 
 
