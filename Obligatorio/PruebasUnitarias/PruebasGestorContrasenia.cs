@@ -156,15 +156,7 @@ namespace PruebasUnitarias
             Gestor.Alta(ContraseniaCompleta);
         }
 
-        [TestMethod]
-        public void SeCorrigeLaFechaDeModificacionAunqueSeMandePorParametro()
-        {
-            ContraseniaCompleta.FechaUltimaModificacion = DateTime.Now.AddDays(-1);
-            int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
-            Contrasenia nuevaContrasenia = Gestor.Buscar(idNuevaContrasenia);
-            Assert.AreNotEqual(DateTime.Now.AddDays(-1), nuevaContrasenia.FechaUltimaModificacion);
-            Assert.AreEqual(DateTime.Now.Date, nuevaContrasenia.FechaUltimaModificacion.Date);
-        }
+    
 
         [TestMethod]
         public void SePuedeModificarElSitio()

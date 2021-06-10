@@ -99,6 +99,7 @@ namespace Negocio.Persistencia
 
                 try
                 {
+                    context.Categorias.Attach(entity.Categoria);
                     context.SaveChanges();
                 }
                 catch (Exception ex)
