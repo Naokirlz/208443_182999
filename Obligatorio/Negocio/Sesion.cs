@@ -14,7 +14,7 @@ namespace Negocio
         private GestorCategorias gestorCategoria;
         private GestorContrasenias gestorContrasenia;
         private GestorTarjetaCredito gestorTarjetaCredito;
-        public List<IFuente> MisFuentes { get; set; }
+        public IFuente Fuente { get; set; }
         private string passwordMaestro;
         private bool logueado;
 
@@ -29,7 +29,7 @@ namespace Negocio
             gestorCategoria = new GestorCategorias();
             gestorContrasenia = new GestorContrasenias();
             gestorTarjetaCredito = new GestorTarjetaCredito();
-            MisFuentes = new List<IFuente>();
+            Fuente = new FuenteLocal();
             passwordMaestro = "";
             this.logueado = false;
         }
@@ -178,7 +178,7 @@ namespace Negocio
         public void VaciarDatosPrueba()
         {
             this.gestorContrasenia.LimpiarBD();
-            this.MisFuentes = new List<IFuente>();
+            this.Fuente = new FuenteLocal();
         }
     }
 }

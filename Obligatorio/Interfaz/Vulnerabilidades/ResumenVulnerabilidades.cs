@@ -14,7 +14,7 @@ namespace Interfaz.Vulnerabilidades
         private Sesion Sesion = Sesion.ObtenerInstancia();
         private List<Contrasenia> contraseniasVulnerables;
         private List<TarjetaCredito> tarjetasVulnerables;
-        private List<IFuente> fuentesAVerificar;
+        private IFuente fuenteVerificar;
 
         public ResumenVulnerabilidades()
         {
@@ -22,7 +22,7 @@ namespace Interfaz.Vulnerabilidades
 
             this.contraseniasVulnerables = new List<Contrasenia>();
             this.tarjetasVulnerables = new List<TarjetaCredito>();
-            this.fuentesAVerificar = Sesion.MisFuentes;
+            this.fuenteVerificar = Sesion.Fuente;
 
             //if(Sesion.MisFuentes.Count() == 0) this.chkFuenteLocal.Visible = false;
             //    else this.chkFuenteLocal.Checked = true;
@@ -43,17 +43,16 @@ namespace Interfaz.Vulnerabilidades
 
         private void CargarTablasVulnerables()
         {
-            CargarTablaContraseniasVulnerables(fuentesAVerificar);
-            CargarTablaTarjetasVulnerables(fuentesAVerificar);
+            CargarTablaContraseniasVulnerables(fuenteVerificar);
+            CargarTablaTarjetasVulnerables(fuenteVerificar);
         }
 
-        private void CargarTablaContraseniasVulnerables(List<IFuente> fuentes)
+        private void CargarTablaContraseniasVulnerables(IFuente fuente)
         {
             IEnumerable<Contrasenia> contraseniaVulnerableTemporal = new List<Contrasenia>();
             this.dgvVulnerabilidadesContrasenias.Rows.Clear();
             this.contraseniasVulnerables.Clear();
-            foreach (IFuente fuente in fuentes)
-            {
+            
                 contraseniaVulnerableTemporal = Sesion.ContraseniasVulnerables(fuente);
                 foreach (Contrasenia contrasenia in contraseniaVulnerableTemporal)
                 {
@@ -72,16 +71,16 @@ namespace Interfaz.Vulnerabilidades
                         this.dgvVulnerabilidadesContrasenias.Rows.Add(fila);
                     }
                 }
-            }
+            
         }
 
-        private void CargarTablaTarjetasVulnerables(List<IFuente> fuentes)
+        private void CargarTablaTarjetasVulnerables(IFuente fuente)
         {
             IEnumerable<TarjetaCredito> tarjetasVulnerableTemporal = new List<TarjetaCredito>();
             this.dgvVulnerabilidadesTarjetas.Rows.Clear();
             this.tarjetasVulnerables.Clear();
-            foreach (IFuente fuente in fuentes)
-            {
+            
+            
                 tarjetasVulnerableTemporal = Sesion.TarjetasCreditoVulnerables(fuente);
                 foreach (TarjetaCredito tarjeta in tarjetasVulnerableTemporal)
                 {
@@ -99,7 +98,7 @@ namespace Interfaz.Vulnerabilidades
                         this.dgvVulnerabilidadesTarjetas.Rows.Add(fila);
                     }
                 }
-            }
+            
         }
 
         private void dgvVulnerabilidadesContrasenias_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -113,7 +112,7 @@ namespace Interfaz.Vulnerabilidades
 
                     IngresoPassword frmIngresoPassword = new IngresoPassword(contraseniaSeleccionada);
 
-                    CargarTablaContraseniasVulnerables(fuentesAVerificar);
+                    CargarTablaContraseniasVulnerables(fuenteVerificar);
                 }
             }
         }

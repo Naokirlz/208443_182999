@@ -171,27 +171,29 @@ namespace Interfaz
         }
         private void CargarVulnerabilidades()
         {
-            bool encontre = false;
-            foreach (IFuente fuente in Sesion.MisFuentes)
-            {
-                string tipoFuente = fuente.GetType().ToString();
-                if (tipoFuente == "Negocio.FuenteLocal")
-                {
-                    this.FuenteLocal = fuente;
-                    encontre = true;
-                }
-            }
+            //bool encontre = false;
+            //foreach (IFuente fuente in Sesion.MisFuentes)
+            //{
+            //    string tipoFuente = fuente.GetType().ToString();
+            //    if (tipoFuente == "Negocio.FuenteLocal")
+            //    {
+            //        this.FuenteLocal = fuente;
+            //        encontre = true;
+            //    }
+            //}
 
-            if (!encontre)
-            {
-                this.FuenteLocal = new FuenteLocal();
-                this.Sesion.MisFuentes.Add(this.FuenteLocal);
-            }
+            //if (!encontre)
+            //{
+            //    this.FuenteLocal = new FuenteLocal();
+            //    this.Sesion.MisFuentes.Add(this.FuenteLocal);
+            //}
 
-            FuenteLocal.AgregarPasswordOContraseniaVulnerable("aaaaa");
-            FuenteLocal.AgregarPasswordOContraseniaVulnerable("secreTo");
-            FuenteLocal.AgregarPasswordOContraseniaVulnerable("1231231231231231");
-            FuenteLocal.AgregarPasswordOContraseniaVulnerable("8558954744542212");
+            Sesion.Fuente = new FuenteLocal();
+
+            Sesion.Fuente.AgregarPasswordOContraseniaVulnerable("aaaaa");
+            Sesion.Fuente.AgregarPasswordOContraseniaVulnerable("secreTo");
+            Sesion.Fuente.AgregarPasswordOContraseniaVulnerable("1231231231231231");
+            Sesion.Fuente.AgregarPasswordOContraseniaVulnerable("8558954744542212");
 
         }
 
