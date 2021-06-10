@@ -11,16 +11,23 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasGestorContrasenia
     {
-  
-        private GestorContrasenias Gestor = new GestorContrasenias();
+
+        private GestorContrasenias Gestor;
+        private GestorCategorias GestorCategoria;
         private Contrasenia ContraseniaCompleta;
 
         [TestInitialize]
         public void TestInitialize()
         {
+            Gestor = new GestorContrasenias();
+            GestorCategoria = new GestorCategorias();
+            Gestor.LimpiarBD();
+            Categoria c = new Categoria("Categoria");
+            GestorCategoria.Alta("Categoria");
+
             Contrasenia contraseniaCompleta = new Contrasenia() { 
                 Sitio="unsitio.com",
-                Categoria = new Categoria("Categoria"),
+                Categoria = c,
                 Usuario = "usuario",
                 Notas = "clave de netflix",
                 FechaUltimaModificacion = DateTime.Now,
@@ -32,10 +39,10 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeGuardarCorrectamente()
         {
-           
+            Categoria c = new Categoria("Categoria");
             Contrasenia nuevaContrasena = new Contrasenia()
             {
-                Categoria = new Categoria("Categoría"),
+                Categoria = c,
                 Usuario = "usuario",
                 Sitio = "netflix",
                 Notas = "clave de netflix",
@@ -45,7 +52,7 @@ namespace PruebasUnitarias
 
             Gestor.Alta(nuevaContrasena);
             IEnumerable<Contrasenia> contrasenias = Gestor.ObtenerTodas();
-            bool existe = contrasenias.Any(c => c.Usuario == nuevaContrasena.Usuario && c.Sitio == nuevaContrasena.Sitio);
+            bool existe = contrasenias.Any(d => d.Usuario == nuevaContrasena.Usuario && d.Sitio == nuevaContrasena.Sitio);
             Assert.IsTrue(existe);
         }
 
@@ -221,12 +228,12 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SeAsignaElIdAutoincremental()
         {
-                        
+            Categoria c = new Categoria("Categoria");
             int idUnaContrasenia = Gestor.Alta(ContraseniaCompleta);
             
             Contrasenia nuevaContrasenia = new Contrasenia() {
                 Sitio = "otrositio.com",
-                Categoria = new Categoria("Categoria"),
+                Categoria = c,
                 Usuario = "usuario",
                 Notas = "clave de netflix",
                 FechaUltimaModificacion = DateTime.Now,
@@ -531,6 +538,7 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedenListarLasContrasenias()
         {
+            Categoria c = new Categoria("Categoria");
             int idNuevaContrasenia = Gestor.Alta(ContraseniaCompleta);
             Contrasenia unaC = Gestor.Buscar(idNuevaContrasenia);
 
