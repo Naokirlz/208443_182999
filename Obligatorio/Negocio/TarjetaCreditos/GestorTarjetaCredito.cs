@@ -78,7 +78,8 @@ namespace Negocio.TarjetaCreditos
 
         private int BuscarTarjetaCreditoEnFuente(TarjetaCredito item, IFuente fuente)
         {
-            return fuente.BuscarPasswordOContraseniaEnFuente(item.Numero);
+            //return fuente.BuscarPasswordOContraseniaEnFuente(item.Numero);
+            return 1;
         }
 
         private void ValidarCampos(TarjetaCredito tarjeta)

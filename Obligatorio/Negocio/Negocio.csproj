@@ -91,6 +91,7 @@
     <Compile Include="Persistencia\RepositorioTarjetaCreditoEntity.cs" />
     <Compile Include="Utilidades\EnumColor.cs" />
     <Compile Include="Utilidades\ExcepcionAccesoDenegado.cs" />
+    <Compile Include="Utilidades\Fuente.cs" />
     <Compile Include="Utilidades\FuenteArchivo.cs" />
     <Compile Include="Utilidades\FuenteLocal.cs" />
     <Compile Include="Utilidades\IFuente.cs" />

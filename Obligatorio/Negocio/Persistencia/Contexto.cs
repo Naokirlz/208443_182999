@@ -1,6 +1,7 @@
 ﻿using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.TarjetaCreditos;
+using Negocio.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -19,6 +20,7 @@ namespace Negocio.Persistencia
 
         public DbSet<Contrasenia> Contrasenias { get; set; }
         public DbSet<Password> Passwords { get; set; }
+        public DbSet<Fuente> DataBreaches { get; set; }
 
         public Contexto() : base("name=Contexto")
         {
@@ -32,6 +34,8 @@ namespace Negocio.Persistencia
             modelBuilder.Entity<Contrasenia>().Property(e => e.FechaUltimaModificacion).HasColumnType("datetime2");
             modelBuilder.Entity<Password>().Property(e => e.Clave).IsRequired();
             //modelBuilder.Configurations.Add(new CatogoriaTypeConfiguration());
+            modelBuilder<Fuente>(e => e.Requires("Tipo").HasValue(1));
+            Map<SaleStatusPaid>(pk => pk.Requires("StatusType").HasValue(2));
         }
     }
 }
