@@ -9,16 +9,18 @@ using Negocio.Persistencia;
 
 namespace Negocio.Utilidades
 {
-    [Table("DataBreaches")]
+    
     public abstract class Fuente
     {
-        [Required]
-        public string[] Breaches;
-        [Required]
-        [Key]
-        public int Id;
-        public string FuenteType;
+
+        public static int autonumerado = 2;
+
+        public int Id { get; set; }
+        public string[] Breaches { get; set; }
+                
+        //public virtual List<DataBreach> List { get; set; }
         
+
         public abstract void CrearDatabreach(string databreach);
     }
 }

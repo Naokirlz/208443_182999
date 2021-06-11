@@ -1,15 +1,25 @@
 ﻿using Negocio.Persistencia;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Negocio.Utilidades
 {
+
     public class FuenteLocal : Fuente
     {
-        public FuenteLocal() { }
+      
+        public FuenteLocal() {
+
+            this.Id = Fuente.autonumerado;
+            Fuente.autonumerado++;
+
+        }
 
         public override void CrearDatabreach(string databreach)
         {
+            IList<DataBreach> textos = new List<DataBreach>();
 
             Breaches = databreach.Split('\n');
 
@@ -24,19 +34,30 @@ namespace Negocio.Utilidades
                     if (!Validaciones.EsNumero(digito)) soloNum = false;
                 }
                 if (soloNum) texto = sinEspacios;
+                
+
+                textos.Add(new DataBreach()
+                                {
+                                    FuenteId = this.Id,
+                                    Texto = texto,
+                                    Fuente = this
+                                }
+                           );
             }
 
             using (Contexto context = new Contexto())
             {
-                context.DataBreaches.Add(this);
-                try
+                
+                context.FuentesLocales.Add(this);
+
+               
+                foreach (DataBreach item in textos)
                 {
+                    context.Entry(this).State = System.Data.Entity.EntityState.Unchanged;
+                    context.DataBreaches.Add(item);
                     context.SaveChanges();
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+            
             }
         }
 

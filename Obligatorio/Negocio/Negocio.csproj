@@ -83,12 +83,25 @@
     <Compile Include="Migrations\202106100114137_CorregirClave.designer.cs">
       <DependentUpon>202106100114137_CorregirClave.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106110318375_TablaFuentes.cs" />
+    <Compile Include="Migrations\202106110318375_TablaFuentes.designer.cs">
+      <DependentUpon>202106110318375_TablaFuentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106110410527_TablaFuentesAttLista.cs" />
+    <Compile Include="Migrations\202106110410527_TablaFuentesAttLista.designer.cs">
+      <DependentUpon>202106110410527_TablaFuentesAttLista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106110441218_TablaDataBreaches.cs" />
+    <Compile Include="Migrations\202106110441218_TablaDataBreaches.designer.cs">
+      <DependentUpon>202106110441218_TablaDataBreaches.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistencia\Contexto.cs" />
     <Compile Include="Persistencia\IRepositorio.cs" />
     <Compile Include="Persistencia\RepositorioCategoriasEntity.cs" />
     <Compile Include="Persistencia\RepositorioContraseniasEntity.cs" />
     <Compile Include="Persistencia\RepositorioTarjetaCreditoEntity.cs" />
+    <Compile Include="Utilidades\DataBreach.cs" />
     <Compile Include="Utilidades\EnumColor.cs" />
     <Compile Include="Utilidades\ExcepcionAccesoDenegado.cs" />
     <Compile Include="Utilidades\Fuente.cs" />
@@ -136,6 +149,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106100114137_CorregirClave.resx">
       <DependentUpon>202106100114137_CorregirClave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106110318375_TablaFuentes.resx">
+      <DependentUpon>202106110318375_TablaFuentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106110410527_TablaFuentesAttLista.resx">
+      <DependentUpon>202106110410527_TablaFuentesAttLista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106110441218_TablaDataBreaches.resx">
+      <DependentUpon>202106110441218_TablaDataBreaches.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

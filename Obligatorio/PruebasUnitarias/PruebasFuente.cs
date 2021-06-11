@@ -9,7 +9,7 @@ using Negocio.Utilidades;
 namespace PruebasUnitarias
 {
     [TestClass]
-    public class PruebasIFuente
+    public class PruebasFuente
     {
 
         private FuenteArchivo fuenteArchivo;
@@ -24,15 +24,25 @@ namespace PruebasUnitarias
 
         }
 
-
         [TestMethod]
-        public void SePuedeLeerUnaContrasenaVulnerableDeUnFuenteLocal()
+        public void CrearDataBreaches()
         {
 
-            string contraseniaVulnerable = "secreto";
-            fuenteLocal.CrearDatabreach(contraseniaVulnerable);
+            string texto = "aaaaa '\n' bbbb";
+            fuenteLocal.CrearDatabreach(texto);
+
+            Assert.AreEqual(1, 1);
 
         }
+
+        //[TestMethod]
+        //public void SePuedeLeerUnaContrasenaVulnerableDeUnFuenteLocal()
+        //{
+
+        //    string contraseniaVulnerable = "secreto";
+        //    fuenteLocal.CrearDatabreach(contraseniaVulnerable);
+
+        //}
 
 
     }
