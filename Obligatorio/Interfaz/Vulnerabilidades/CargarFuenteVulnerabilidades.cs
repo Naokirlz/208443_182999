@@ -23,6 +23,7 @@ namespace Interfaz.Vulnerabilidades
         {
             if (txtRutaArchivo.Text != "")
             {
+
                 //Sesion.CargarArchivo(String ruta);
                 Alerta("El archivo ha sido cargado con éxito!", AlertaToast.enmTipo.Exito);
                 txtRutaArchivo.Text = "";
