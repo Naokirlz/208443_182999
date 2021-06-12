@@ -10,21 +10,19 @@ namespace Negocio.Utilidades
     public class FuenteLocal : Fuente
     {
       
-        public string[] Breaches { get; set; }
-
         public FuenteLocal() {
 
             this.Id = Fuente.autonumerado;
-            this.ttttttttt = new List<DataBreach>();
             Fuente.autonumerado++;
 
         }
 
-        public  void Cargarttttttttt(string dtb, char separador)
+        public override void CrearDatabreach(string databreach)
         {
-            
-            //Breaches = dtb.Split('\n');
-             Breaches = dtb.Split(separador);
+            IList<DataBreach> textos = new List<DataBreach>();
+
+            Breaches = databreach.Split('\n');
+
             foreach (string fila in Breaches)
             {
                 string texto = fila.TrimEnd('\r');
@@ -36,25 +34,16 @@ namespace Negocio.Utilidades
                     if (!Validaciones.EsNumero(digito)) soloNum = false;
                 }
                 if (soloNum) texto = sinEspacios;
+                
 
-
-                ttttttttt.Add(new DataBreach()
-                {
-                    FuenteId = this.Id,
-                    Texto = texto,
-                    Fuente = this
-                }
+                textos.Add(new DataBreach()
+                                {
+                                    FuenteId = this.Id,
+                                    Texto = texto,
+                                    Fuente = this
+                                }
                            );
             }
-
-
-
-        }
-
-        public override void CrearDatabreach(string texto)
-        {
-
-            Cargarttttttttt(texto, '\n');
 
             using (Contexto context = new Contexto())
             {
@@ -62,15 +51,13 @@ namespace Negocio.Utilidades
                 context.FuentesLocales.Add(this);
 
                
-                foreach (DataBreach item in ttttttttt)
+                foreach (DataBreach item in textos)
                 {
-                    
+                    context.Entry(this).State = System.Data.Entity.EntityState.Unchanged;
                     context.DataBreaches.Add(item);
-                    
+                    context.SaveChanges();
                 }
-
-                context.SaveChanges();
-
+            
             }
         }
 

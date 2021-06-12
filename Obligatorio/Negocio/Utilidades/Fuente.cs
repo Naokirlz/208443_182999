@@ -16,13 +16,11 @@ namespace Negocio.Utilidades
         public static int autonumerado = 2;
 
         public int Id { get; set; }
+        public string[] Breaches { get; set; }
                 
-        public List<DataBreach> ttttttttt { get; set; }
-
-        public abstract void CrearDatabreach(string texto);
-
+        //public virtual List<DataBreach> List { get; set; }
         
 
-
+        public abstract void CrearDatabreach(string databreach);
     }
 }

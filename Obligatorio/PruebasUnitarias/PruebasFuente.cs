@@ -28,7 +28,7 @@ namespace PruebasUnitarias
         public void CrearDataBreaches()
         {
 
-            string texto = "aaaaa" + '\t' + "bbbb";
+            string texto = "aaaaa '\n' bbbb";
             fuenteLocal.CrearDatabreach(texto);
 
             Assert.AreEqual(1, 1);
