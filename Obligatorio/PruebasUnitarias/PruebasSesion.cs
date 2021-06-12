@@ -57,8 +57,8 @@ namespace PruebasUnitarias
             sesionPrueba.AltaTarjetaCredito(nuevoTarjeta);
             sesionPrueba.AltaContrasenia(pruebaContrasenia);
             sesionPrueba.Fuente = fuente;
-            //sesionPrueba.Fuente.AgregarPasswordOContraseniaVulnerable("dalevo111!!!");
-            //sesionPrueba.Fuente.AgregarPasswordOContraseniaVulnerable("1234123412341234");
+            sesionPrueba.Fuente.AgregarPasswordOContraseniaVulnerable("dalevo111!!!");
+            sesionPrueba.Fuente.AgregarPasswordOContraseniaVulnerable("1234123412341234");
         }
 
 
@@ -479,22 +479,22 @@ namespace PruebasUnitarias
             sesionPrueba.Login("assassa");
         }
 
-        //[TestMethod]
-        //public void AgregarContraseniaOTarjetaVulnerableAFuente()
-        //{
-        //    sesionPrueba.Fuente.AgregarPasswordOContraseniaVulnerable("admin123");
-        //    int cantidadVecesEncontrada = sesionPrueba.Fuente.BuscarPasswordOContraseniaEnFuente("admin123");
-        //    Assert.AreEqual(cantidadVecesEncontrada, 1);
-        //}
+        [TestMethod]
+        public void AgregarContraseniaOTarjetaVulnerableAFuente()
+        {
+            sesionPrueba.Fuente.AgregarPasswordOContraseniaVulnerable("admin123");
+            int cantidadVecesEncontrada = sesionPrueba.Fuente.BuscarPasswordOContraseniaEnFuente("admin123");
+            Assert.AreEqual(cantidadVecesEncontrada, 1);
+        }
 
-        //[TestMethod]
-        //[ExpectedException(typeof(ExcepcionLargoTexto))]
-        //public void AgregarContraseniaOTarjetaVulnerableAFuenteMayorA50Caracteres()
-        //{
-        //    string texto = ArmarTextoDeLargoVariable(51);
-        //    sesionPrueba.Fuente.AgregarPasswordOContraseniaVulnerable(texto);
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionLargoTexto))]
+        public void AgregarContraseniaOTarjetaVulnerableAFuenteMayorA50Caracteres()
+        {
+            string texto = ArmarTextoDeLargoVariable(51);
+            sesionPrueba.Fuente.AgregarPasswordOContraseniaVulnerable(texto);
            
-        //}
+        }
 
         //[TestMethod]
         //public void Agregar2VecesLaMismaContraseniaOTarjetaVulnerableAFuente()

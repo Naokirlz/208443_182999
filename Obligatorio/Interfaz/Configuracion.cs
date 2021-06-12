@@ -190,10 +190,10 @@ namespace Interfaz
 
             Sesion.Fuente = new FuenteLocal();
 
-            //Sesion.Fuente.AgregarPasswordOContraseniaVulnerable("aaaaa");
-            //Sesion.Fuente.AgregarPasswordOContraseniaVulnerable("secreTo");
-            //Sesion.Fuente.AgregarPasswordOContraseniaVulnerable("1231231231231231");
-            //Sesion.Fuente.AgregarPasswordOContraseniaVulnerable("8558954744542212");
+            Sesion.Fuente.AgregarPasswordOContraseniaVulnerable("aaaaa");
+            Sesion.Fuente.AgregarPasswordOContraseniaVulnerable("secreTo");
+            Sesion.Fuente.AgregarPasswordOContraseniaVulnerable("1231231231231231");
+            Sesion.Fuente.AgregarPasswordOContraseniaVulnerable("8558954744542212");
 
         }
 

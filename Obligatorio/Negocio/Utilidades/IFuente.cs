@@ -3,6 +3,8 @@ namespace Negocio.Utilidades
 {
     public interface IFuente
     {
-        void CrearDatabreach(string databreach);
+        int BuscarPasswordOContraseniaEnFuente(string buscado);
+        void AgregarPasswordOContraseniaVulnerable(string passwordOContraseniaVulnerable);
+
     }
 }

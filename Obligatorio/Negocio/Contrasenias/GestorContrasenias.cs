@@ -84,8 +84,7 @@ namespace Negocio.Contrasenias
         private int BuscarContraseniaEnFuente(Contrasenia contrasenia, IFuente fuente)
         {
             string password = this.MostrarPassword(contrasenia);
-            return 1;
-            //return fuente.BuscarPasswordOContraseniaEnFuente(password);
+            return fuente.BuscarPasswordOContraseniaEnFuente(password);
 
         }
 

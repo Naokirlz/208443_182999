@@ -14,7 +14,7 @@ namespace Negocio
         private GestorCategorias gestorCategoria;
         private GestorContrasenias gestorContrasenia;
         private GestorTarjetaCredito gestorTarjetaCredito;
-        public Fuente Fuente { get; set; }
+        public IFuente Fuente { get; set; }
         private string passwordMaestro;
         private bool logueado;
 
