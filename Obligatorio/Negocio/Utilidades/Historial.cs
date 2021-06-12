@@ -13,6 +13,8 @@ namespace Negocio.Utilidades
     {
         
         [Key]
+        public int HistorialId { get; set; }
+
         [Required]
         public DateTime Fecha{ get; set; }
 
@@ -30,7 +32,7 @@ namespace Negocio.Utilidades
         }
 
 
-        public DateTime Guardar()
+        public int Guardar()
         {
             using (Contexto context = new Contexto())
             {
@@ -50,7 +52,7 @@ namespace Negocio.Utilidades
                 try
                 {
                     context.SaveChanges();
-                    return this.Fecha;
+                    return this.HistorialId;
                 }
                 catch (Exception ex)
                 {
@@ -65,13 +67,24 @@ namespace Negocio.Utilidades
             using (Contexto context = new Contexto())
             {
 
-                Historial existe = context.Historials.FirstOrDefault(t => t.Fecha == entity.Fecha);
-                existe.passwords = context.HistorialContrasenia.Where(t => t.Fecha == entity.Fecha).ToList();
-                existe.tarjetasVulnerables = context.HistorialTarjeta.Where(t => t.Fecha == entity.Fecha).ToList();
+                Historial existe = context.Historials.FirstOrDefault(t => t.HistorialId == entity.HistorialId);
+                existe.passwords = context.HistorialContrasenia.Where(t => t.HistorialId == entity.HistorialId).ToList();
+                existe.tarjetasVulnerables = context.HistorialTarjeta.Where(t => t.HistorialId == entity.HistorialId).ToList();
 
                 if (existe != null) return existe;
                 throw new ExcepcionElementoNoExiste("No existe Historial!");
 
+            }
+        }
+
+        public IEnumerable<Historial> DevolverHistoriales()
+        {
+            using (Contexto context = new Contexto())
+            {
+                List<Historial> retorno;
+                retorno = context.Historials.ToList();
+                //retorno.Sort();
+                return retorno;
             }
         }
     }

@@ -12,7 +12,7 @@ namespace Negocio.Utilidades
     {
 
         [ForeignKey("Historial")]
-        public DateTime Fecha { get; set; }
+        public int HistorialId { get; set; }
 
         public virtual Historial Historial { get; set; }
 

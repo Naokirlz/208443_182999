@@ -91,6 +91,10 @@
     <Compile Include="Migrations\202106122107548_TablaHistorialTarjetas.designer.cs">
       <DependentUpon>202106122107548_TablaHistorialTarjetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106122340101_SeAgregaHistorialId.cs" />
+    <Compile Include="Migrations\202106122340101_SeAgregaHistorialId.designer.cs">
+      <DependentUpon>202106122340101_SeAgregaHistorialId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistencia\Contexto.cs" />
     <Compile Include="Persistencia\IRepositorio.cs" />
@@ -152,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106122107548_TablaHistorialTarjetas.resx">
       <DependentUpon>202106122107548_TablaHistorialTarjetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106122340101_SeAgregaHistorialId.resx">
+      <DependentUpon>202106122340101_SeAgregaHistorialId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

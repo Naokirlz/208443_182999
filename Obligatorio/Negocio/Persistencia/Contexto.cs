@@ -37,11 +37,9 @@ namespace Negocio.Persistencia
             modelBuilder.Entity<Contrasenia>().Property(e => e.FechaUltimaModificacion).HasColumnType("datetime2");
             modelBuilder.Entity<Password>().Property(e => e.Clave).IsRequired();
             //modelBuilder.Configurations.Add(new CatogoriaTypeConfiguration());
-            modelBuilder.Entity<HistorialContrasenia>().HasKey(t => new { t.Fecha, t.ContraseniaId });
+            modelBuilder.Entity<HistorialContrasenia>().HasKey(t => new { t.HistorialId, t.ContraseniaId });
             modelBuilder.Entity<Historial>().Property(e => e.Fecha).HasColumnType("datetime2");
-            modelBuilder.Entity<HistorialContrasenia>().Property(e => e.Fecha).HasColumnType("datetime2");
-            modelBuilder.Entity<HistorialTarjetas>().Property(e => e.Fecha).HasColumnType("datetime2");
-            modelBuilder.Entity<HistorialTarjetas>().HasKey(t => new { t.Fecha, t.NumeroTarjeta });
+            modelBuilder.Entity<HistorialTarjetas>().HasKey(t => new { t.HistorialId, t.NumeroTarjeta });
         }
     }
 }

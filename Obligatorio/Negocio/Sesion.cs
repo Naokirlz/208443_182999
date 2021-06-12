@@ -181,7 +181,7 @@ namespace Negocio
             this.FuenteLocal = new FuenteLocal();
         }
 
-        public DateTime ConsultarVulnerabilidades()
+        public int ConsultarVulnerabilidades()
         {
             Historial historial = new Historial();
             historial.Fecha = DateTime.Now;
@@ -204,27 +204,33 @@ namespace Negocio
                 historial.tarjetasVulnerables.Add(nuevo);
             }
 
-            DateTime registroHistorial = historial.Guardar();
+            int registroHistorial = historial.Guardar();
 
             return registroHistorial;
         }
 
-        public IEnumerable<HistorialContrasenia> DevolverContraseniasVulnerables(DateTime historial)
+        public IEnumerable<HistorialContrasenia> DevolverContraseniasVulnerables(int historial)
         {
             Historial histo = new Historial();
-            histo.Fecha = historial;
+            histo.HistorialId = historial;
             Historial buscado = histo.ObtenerHistorial(histo);
 
             return buscado.passwords;
         }
 
-        public IEnumerable<HistorialTarjetas> DevolverTarjetasVulnerables(DateTime historial)
+        public IEnumerable<HistorialTarjetas> DevolverTarjetasVulnerables(int historial)
         {
             Historial histo = new Historial();
-            histo.Fecha = historial;
+            histo.HistorialId = historial;
             Historial buscado = histo.ObtenerHistorial(histo);
 
             return buscado.tarjetasVulnerables;
+        }
+
+        public IEnumerable<Historial> DevolverHistoriales()
+        {
+            Historial historial = new Historial();
+            return historial.DevolverHistoriales();
         }
     }
 }

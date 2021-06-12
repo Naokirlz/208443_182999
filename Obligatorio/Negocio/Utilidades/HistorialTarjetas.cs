@@ -11,7 +11,7 @@ namespace Negocio.Utilidades
     public class HistorialTarjetas
     {
         [ForeignKey("Historial")]
-        public DateTime Fecha { get; set; }
+        public int HistorialId { get; set; }
 
         public virtual Historial Historial { get; set; }
 

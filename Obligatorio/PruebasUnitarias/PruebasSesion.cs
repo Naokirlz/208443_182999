@@ -619,14 +619,14 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SePuedeGenerarUnHistorial()
         {
-            DateTime historial = sesionPrueba.ConsultarVulnerabilidades();
+            int historial = sesionPrueba.ConsultarVulnerabilidades();
             Assert.IsNotNull(historial);
         }
 
         [TestMethod]
         public void ElHistorialDevulveContraseniasVulnerables()
         {
-            DateTime historial = sesionPrueba.ConsultarVulnerabilidades();
+            int historial = sesionPrueba.ConsultarVulnerabilidades();
             IEnumerable<HistorialContrasenia> contraseniaVulnerable = sesionPrueba.DevolverContraseniasVulnerables(historial);
 
             Assert.AreEqual(1,contraseniaVulnerable.Count());
@@ -637,11 +637,21 @@ namespace PruebasUnitarias
         [TestMethod]
         public void ElHistorialDevulveTarjetasVulnerables()
         {
-            DateTime historial = sesionPrueba.ConsultarVulnerabilidades();
+            int historial = sesionPrueba.ConsultarVulnerabilidades();
             IEnumerable<HistorialTarjetas> tarjetasVulnerable = sesionPrueba.DevolverTarjetasVulnerables(historial);
 
             Assert.AreEqual(1, tarjetasVulnerable.Count());
             Assert.AreEqual("1234123412341234", tarjetasVulnerable.First().NumeroTarjeta);
+        }
+
+        [TestMethod]
+        public void SeDevulvenHistoriales()
+        {
+            int historial = sesionPrueba.ConsultarVulnerabilidades();
+            int historial2 = sesionPrueba.ConsultarVulnerabilidades();
+            IEnumerable<Historial> historiales = sesionPrueba.DevolverHistoriales();
+
+            Assert.AreEqual(2, historiales.Count());
         }
 
         private string ArmarTextoDeLargoVariable(int largo)
