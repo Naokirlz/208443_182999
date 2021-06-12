@@ -16,7 +16,7 @@ namespace PruebasUnitarias
     public class PruebasSesion
     {
         Sesion sesionPrueba;
-        FuenteLocal fuente;
+        FuenteLocal Fuente;
         private TarjetaCredito nuevoTarjeta;
         private Contrasenia pruebaContrasenia;
 
@@ -28,7 +28,7 @@ namespace PruebasUnitarias
             sesionPrueba.VaciarDatosPrueba();
             sesionPrueba.GuardarPrimerPassword("secreto");
             sesionPrueba.Login("secreto");
-            fuente = new FuenteLocal();
+            Fuente = new FuenteLocal();
             
             int id = sesionPrueba.AltaCategoria("Cosas");
             Categoria nuevaCategoriaPrueba = sesionPrueba.BuscarCategoriaPorId(id);
@@ -56,9 +56,9 @@ namespace PruebasUnitarias
 
             sesionPrueba.AltaTarjetaCredito(nuevoTarjeta);
             sesionPrueba.AltaContrasenia(pruebaContrasenia);
-            sesionPrueba.Fuente = fuente;
-            sesionPrueba.Fuente.AgregarPasswordOContraseniaVulnerable("dalevo111!!!");
-            sesionPrueba.Fuente.AgregarPasswordOContraseniaVulnerable("1234123412341234");
+            sesionPrueba.MisFuentes.Add(Fuente);
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("dalevo111!!!");
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
         }
 
 
@@ -482,8 +482,8 @@ namespace PruebasUnitarias
         [TestMethod]
         public void AgregarContraseniaOTarjetaVulnerableAFuente()
         {
-            sesionPrueba.Fuente.AgregarPasswordOContraseniaVulnerable("admin123");
-            int cantidadVecesEncontrada = sesionPrueba.Fuente.BuscarPasswordOContraseniaEnFuente("admin123");
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("admin123");
+            int cantidadVecesEncontrada = sesionPrueba.MisFuentes[0].BuscarPasswordOContraseniaEnFuente("admin123");
             Assert.AreEqual(cantidadVecesEncontrada, 1);
         }
 
@@ -492,7 +492,7 @@ namespace PruebasUnitarias
         public void AgregarContraseniaOTarjetaVulnerableAFuenteMayorA50Caracteres()
         {
             string texto = ArmarTextoDeLargoVariable(51);
-            sesionPrueba.Fuente.AgregarPasswordOContraseniaVulnerable(texto);
+            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable(texto);
            
         }
 

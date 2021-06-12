@@ -15,24 +15,22 @@ namespace Interfaz.Vulnerabilidades
             Sesion.Fuente = new FuenteLocal();
             FuenteLocal = Sesion.Fuente;
 
-            //bool encontre = false;
-            //foreach (IFuente fuente in Sesion.MisFuentes)
-            //{
-            //    string tipoFuente = fuente.GetType().ToString();
-            //    if (tipoFuente == "Negocio.FuenteLocal")
-            //    {
-            //        this.FuenteLocal = fuente;
-            //        encontre = true;
-            //    }
-            //}
+            bool encontre = false;
+            foreach (IFuente fuente in Sesion.MisFuentes)
+            {
+                string tipoFuente = fuente.GetType().ToString();
+                if (tipoFuente == "Negocio.FuenteLocal")
+                {
+                    this.FuenteLocal = fuente;
+                    encontre = true;
+                }
+            }
 
-            //if (!encontre)
-            //{
-            //    this.FuenteLocal = new FuenteLocal();
-            //    this.Sesion.MisFuentes.Add(this.FuenteLocal);
-            //}
-
-
+            if (!encontre)
+            {
+                this.FuenteLocal = new FuenteLocal();
+                this.Sesion.MisFuentes.Add(this.FuenteLocal);
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
