@@ -20,13 +20,24 @@ namespace Negocio.Utilidades
             return cantidadAparaceEnFuente;
         }
 
-        public void AgregarPasswordOContraseniaVulnerable(string passwordOContraseniaVulnerable)
+        public void CrearDataBreach(string passwordsOContraseniasVulnerables)
         {
-            if(passwordOContraseniaVulnerable.Length > 50) 
+            string[] fuentes = passwordsOContraseniasVulnerables.Split('\n');
+
+            foreach (string fila in fuentes)
             {
-                throw new ExcepcionLargoTexto("El largo de texto debe ser menor a 50 caracteres.");
+                string texto = fila.TrimEnd('\r');
+
+                string sinEspacios = texto.Replace(" ", "");
+                bool soloNum = true;
+                foreach (char digito in sinEspacios)
+                {
+                    if (!Validaciones.EsNumero(digito)) soloNum = false;
+                }
+                if (soloNum) texto = sinEspacios;
+
+                this.contraseniasYTarjetasVulnerables.Add(texto);
             }
-            contraseniasYTarjetasVulnerables.Add(passwordOContraseniaVulnerable);
         }
 
 

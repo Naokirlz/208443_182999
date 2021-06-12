@@ -29,7 +29,6 @@ namespace PruebasUnitarias
             sesionPrueba.GuardarPrimerPassword("secreto");
             sesionPrueba.Login("secreto");
             Fuente = new FuenteLocal();
-            
             int id = sesionPrueba.AltaCategoria("Cosas");
             Categoria nuevaCategoriaPrueba = sesionPrueba.BuscarCategoriaPorId(id);
 
@@ -57,8 +56,8 @@ namespace PruebasUnitarias
             sesionPrueba.AltaTarjetaCredito(nuevoTarjeta);
             sesionPrueba.AltaContrasenia(pruebaContrasenia);
             sesionPrueba.MisFuentes.Add(Fuente);
-            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("dalevo111!!!");
-            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
+            sesionPrueba.MisFuentes[0].CrearDataBreach("dalevo111!!!\n1234123412341234");
+            //sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
         }
 
 
@@ -482,19 +481,19 @@ namespace PruebasUnitarias
         [TestMethod]
         public void AgregarContraseniaOTarjetaVulnerableAFuente()
         {
-            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("admin123");
+            sesionPrueba.MisFuentes[0].CrearDataBreach("admin123");
             int cantidadVecesEncontrada = sesionPrueba.MisFuentes[0].BuscarPasswordOContraseniaEnFuente("admin123");
             Assert.AreEqual(cantidadVecesEncontrada, 1);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionLargoTexto))]
-        public void AgregarContraseniaOTarjetaVulnerableAFuenteMayorA50Caracteres()
-        {
-            string texto = ArmarTextoDeLargoVariable(51);
-            sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable(texto);
+        //[TestMethod]
+        //[ExpectedException(typeof(ExcepcionLargoTexto))]
+        //public void AgregarContraseniaOTarjetaVulnerableAFuenteMayorA50Caracteres()
+        //{
+        //    string texto = ArmarTextoDeLargoVariable(51);
+        //    sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable(texto);
            
-        }
+        //}
 
         //[TestMethod]
         //public void Agregar2VecesLaMismaContraseniaOTarjetaVulnerableAFuente()
