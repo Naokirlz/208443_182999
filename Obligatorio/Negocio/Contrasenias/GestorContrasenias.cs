@@ -85,7 +85,6 @@ namespace Negocio.Contrasenias
         {
             string password = this.MostrarPassword(contrasenia);
             return fuente.BuscarPasswordOContraseniaEnFuente(password);
-
         }
 
         private void ValidarCampos(Contrasenia contrasenia)

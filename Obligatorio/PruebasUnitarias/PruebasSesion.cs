@@ -28,7 +28,6 @@ namespace PruebasUnitarias
             sesionPrueba.VaciarDatosPrueba();
             sesionPrueba.GuardarPrimerPassword("secreto");
             sesionPrueba.Login("secreto");
-            Fuente = new FuenteLocal();
             int id = sesionPrueba.AltaCategoria("Cosas");
             Categoria nuevaCategoriaPrueba = sesionPrueba.BuscarCategoriaPorId(id);
 
@@ -55,9 +54,7 @@ namespace PruebasUnitarias
 
             sesionPrueba.AltaTarjetaCredito(nuevoTarjeta);
             sesionPrueba.AltaContrasenia(pruebaContrasenia);
-            sesionPrueba.MisFuentes.Add(Fuente);
-            sesionPrueba.MisFuentes[0].CrearDataBreach("dalevo111!!!\n1234123412341234");
-            //sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
+            sesionPrueba.FuenteLocal.CrearDataBreach("dalevo111!!!\n1234123412341234");
         }
 
 
@@ -481,90 +478,79 @@ namespace PruebasUnitarias
         [TestMethod]
         public void AgregarContraseniaOTarjetaVulnerableAFuente()
         {
-            sesionPrueba.MisFuentes[0].CrearDataBreach("admin123");
-            int cantidadVecesEncontrada = sesionPrueba.MisFuentes[0].BuscarPasswordOContraseniaEnFuente("admin123");
+            sesionPrueba.FuenteLocal.CrearDataBreach("admin123");
+            int cantidadVecesEncontrada = sesionPrueba.FuenteLocal.BuscarPasswordOContraseniaEnFuente("admin123");
             Assert.AreEqual(cantidadVecesEncontrada, 1);
         }
 
-        //[TestMethod]
-        //[ExpectedException(typeof(ExcepcionLargoTexto))]
-        //public void AgregarContraseniaOTarjetaVulnerableAFuenteMayorA50Caracteres()
-        //{
-        //    string texto = ArmarTextoDeLargoVariable(51);
-        //    sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable(texto);
-           
-        //}
+        [TestMethod]
+        public void Agregar2VecesLaMismaContraseniaOTarjetaVulnerableAFuente()
+        {
+            sesionPrueba.FuenteLocal.CrearDataBreach("admin123");
+            sesionPrueba.FuenteLocal.CrearDataBreach("admin123");
+            int cantidadVecesEncontrada = sesionPrueba.FuenteLocal.BuscarPasswordOContraseniaEnFuente("admin123");
+            Assert.AreEqual(cantidadVecesEncontrada, 2);
+        }
 
-        //[TestMethod]
-        //public void Agregar2VecesLaMismaContraseniaOTarjetaVulnerableAFuente()
-        //{
-        //    sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("admin123");
-        //    sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("admin123");
-        //    int cantidadVecesEncontrada = sesionPrueba.MisFuentes[0].BuscarPasswordOContraseniaEnFuente("admin123");
-        //    Assert.AreEqual(cantidadVecesEncontrada, 2);
+        [TestMethod]
+        public void EncuentraContraseniaVulnerableEnFuente()
+        {
 
-        //}
+            sesionPrueba.ContraseniasVulnerables();
+            Contrasenia vulnerable = sesionPrueba.BuscarContrasenia(pruebaContrasenia.ContraseniaId);
+            Assert.AreEqual(1, vulnerable.CantidadVecesEncontradaVulnerable);
 
-        //[TestMethod]
-        //public void EncuentraContraseniaVulnerableEnFuente()
-        //{
-       
-        //    sesionPrueba.ContraseniasVulnerables(Fuente);
-        //    Contrasenia vulnerable = sesionPrueba.BuscarContrasenia(pruebaContrasenia.ContraseniaId);
-        //    Assert.AreEqual(vulnerable.CantidadVecesEncontradaVulnerable, 1);
+        }
 
-        //}
+        [TestMethod]
+        public void Encuentra2VecesUnaContraseniaVulnerableEnUnaFuente()
+        {
+            sesionPrueba.FuenteLocal.CrearDataBreach("dalevo111!!!");
+            sesionPrueba.ContraseniasVulnerables();
+            pruebaContrasenia = sesionPrueba.BuscarContrasenia(pruebaContrasenia.ContraseniaId);
+            Assert.AreEqual(pruebaContrasenia.CantidadVecesEncontradaVulnerable, 2);
+        }
 
-        //[TestMethod]
-        //public void Encuentra2VecesUnaContraseniaVulnerableEnUnaFuente()
-        //{
-        //    sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("dalevo111!!!");
-        //    sesionPrueba.ContraseniasVulnerables(Fuente);
-        //    pruebaContrasenia = sesionPrueba.BuscarContrasenia(pruebaContrasenia.ContraseniaId);
-        //    Assert.AreEqual(pruebaContrasenia.CantidadVecesEncontradaVulnerable, 2);
-           
-        //}
+        [TestMethod]
+        public void AciertaDosVecesLasContraseniasVulnerables()
+        {
 
-        //[TestMethod]
-        //public void AciertaDosVecesLasContraseniasVulnerables()
-        //{
+            IEnumerable<Contrasenia> contrasenias = sesionPrueba.ContraseniasVulnerables();
+            IEnumerable<Contrasenia> contrasenias2 = sesionPrueba.ContraseniasVulnerables();
+            Assert.AreEqual(contrasenias.Count(), contrasenias2.Count());
 
-        //    IEnumerable<Contrasenia> contrasenias = sesionPrueba.ContraseniasVulnerables(Fuente);
-        //    IEnumerable<Contrasenia> contrasenias2 = sesionPrueba.ContraseniasVulnerables(Fuente);
-        //    Assert.AreEqual(contrasenias.Count(), contrasenias2.Count());
+        }
 
-        //}
+        [TestMethod]
+        public void EncuentraTarjetaVulnerableEnFuente()
+        {
 
-        //[TestMethod]
-        //public void EncuentraTarjetaVulnerableEnFuente()
-        //{
-            
-        //    sesionPrueba.TarjetasCreditoVulnerables(Fuente);
-        //    nuevoTarjeta = sesionPrueba.BuscarTarjeta(nuevoTarjeta.Id);
-        //    Assert.AreEqual(nuevoTarjeta.CantidadVecesEncontradaVulnerable, 1);
+            sesionPrueba.TarjetasCreditoVulnerables();
+            nuevoTarjeta = sesionPrueba.BuscarTarjeta(nuevoTarjeta.Id);
+            Assert.AreEqual(nuevoTarjeta.CantidadVecesEncontradaVulnerable, 1);
 
-        //}
+        }
 
-        //[TestMethod]
-        //public void Encuentra2VecesTarjetaVulnerableEnUnaFuente()
-        //{
-        //    sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
-        //    sesionPrueba.TarjetasCreditoVulnerables(Fuente);
-        //    nuevoTarjeta = sesionPrueba.BuscarTarjeta(nuevoTarjeta.Id);
-        //    Assert.AreEqual(nuevoTarjeta.CantidadVecesEncontradaVulnerable, 2);
+        [TestMethod]
+        public void Encuentra2VecesTarjetaVulnerableEnUnaFuente()
+        {
+            sesionPrueba.FuenteLocal.CrearDataBreach("1234123412341234");
+            sesionPrueba.TarjetasCreditoVulnerables();
+            nuevoTarjeta = sesionPrueba.BuscarTarjeta(nuevoTarjeta.Id);
+            Assert.AreEqual(nuevoTarjeta.CantidadVecesEncontradaVulnerable, 2);
 
-        //}
+        }
 
-        //[TestMethod]
-        //public void SiApareceMuchasVecesVulnerableDevuelveUnSoloObjeto()
-        //{
+        [TestMethod]
+        public void SiApareceMuchasVecesVulnerableDevuelveUnSoloObjeto()
+        {
 
-        //    sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
-        //    sesionPrueba.MisFuentes[0].AgregarPasswordOContraseniaVulnerable("1234123412341234");
-        //    IEnumerable<TarjetaCredito> tarjetasVulnerables = sesionPrueba.TarjetasCreditoVulnerables(Fuente);
-        //    Assert.AreEqual(1, tarjetasVulnerables.Count());
+            sesionPrueba.FuenteLocal.CrearDataBreach("1234123412341234");
+            sesionPrueba.FuenteLocal.CrearDataBreach("1234123412341234");
+            IEnumerable<TarjetaCredito> tarjetasVulnerables = sesionPrueba.TarjetasCreditoVulnerables();
+            Assert.AreEqual(1, tarjetasVulnerables.Count());
 
-        //}
+        }
 
         [TestMethod]
         public void SePuedeModificarElPassword()

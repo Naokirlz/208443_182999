@@ -37,7 +37,7 @@ namespace PruebasUnitarias
             {
                 Directory.CreateDirectory(rutaDirectorioOriginal);
             }
-            File.CreateText(rutaArchivoOriginal);
+            using (StreamWriter sw = File.CreateText(rutaArchivoOriginal)){}
 
             string rutaDestino = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos\\Fuente.txt";
             FuenteArchivo nueva = new FuenteArchivo();

@@ -14,7 +14,6 @@ namespace Interfaz.Vulnerabilidades
         private Sesion Sesion = Sesion.ObtenerInstancia();
         private List<Contrasenia> contraseniasVulnerables;
         private List<TarjetaCredito> tarjetasVulnerables;
-        private List<IFuente> fuentesAVerificar;
 
         public ResumenVulnerabilidades()
         {
@@ -22,10 +21,6 @@ namespace Interfaz.Vulnerabilidades
 
             this.contraseniasVulnerables = new List<Contrasenia>();
             this.tarjetasVulnerables = new List<TarjetaCredito>();
-            this.fuentesAVerificar = Sesion.MisFuentes;
-
-            //if(Sesion.MisFuentes.Count() == 0) this.chkFuenteLocal.Visible = false;
-            //    else this.chkFuenteLocal.Checked = true;
 
             DataGridViewButtonColumn columnaBotonModificarContrasenia = new DataGridViewButtonColumn();
             columnaBotonModificarContrasenia.Name = "Modificar";
@@ -43,61 +38,55 @@ namespace Interfaz.Vulnerabilidades
 
         private void CargarTablasVulnerables()
         {
-            CargarTablaContraseniasVulnerables(fuentesAVerificar);
-            CargarTablaTarjetasVulnerables(fuentesAVerificar);
+            CargarTablaContraseniasVulnerables();
+            CargarTablaTarjetasVulnerables();
         }
 
-        private void CargarTablaContraseniasVulnerables(List<IFuente> fuentes)
+        private void CargarTablaContraseniasVulnerables()
         {
             IEnumerable<Contrasenia> contraseniaVulnerableTemporal = new List<Contrasenia>();
             this.dgvVulnerabilidadesContrasenias.Rows.Clear();
             this.contraseniasVulnerables.Clear();
-            foreach (IFuente fuente in fuentes)
+            contraseniaVulnerableTemporal = Sesion.ContraseniasVulnerables();
+            foreach (Contrasenia contrasenia in contraseniaVulnerableTemporal)
             {
-                contraseniaVulnerableTemporal = Sesion.ContraseniasVulnerables(fuente);
-                foreach (Contrasenia contrasenia in contraseniaVulnerableTemporal)
+                if (!this.contraseniasVulnerables.Contains(contrasenia))
                 {
-                    if (!this.contraseniasVulnerables.Contains(contrasenia))
-                    {
-                        contraseniasVulnerables.Add(contrasenia);
-                        string password = Sesion.MostrarPassword(contrasenia);
+                    contraseniasVulnerables.Add(contrasenia);
+                    string password = Sesion.MostrarPassword(contrasenia);
 
-                        string[] fila = {
-                            contrasenia.ContraseniaId.ToString(),
-                            contrasenia.Categoria.Nombre,
-                            contrasenia.Sitio,
-                            contrasenia.Usuario,
-                            "Vulnerable " + Convert.ToString( contrasenia.CantidadVecesEncontradaVulnerable) + " veces."
-                        };
-                        this.dgvVulnerabilidadesContrasenias.Rows.Add(fila);
-                    }
+                    string[] fila = {
+                        contrasenia.ContraseniaId.ToString(),
+                        contrasenia.Categoria.Nombre,
+                        contrasenia.Sitio,
+                        contrasenia.Usuario,
+                        "Vulnerable " + Convert.ToString( contrasenia.CantidadVecesEncontradaVulnerable) + " veces."
+                    };
+                    this.dgvVulnerabilidadesContrasenias.Rows.Add(fila);
                 }
             }
         }
 
-        private void CargarTablaTarjetasVulnerables(List<IFuente> fuentes)
+        private void CargarTablaTarjetasVulnerables()
         {
             IEnumerable<TarjetaCredito> tarjetasVulnerableTemporal = new List<TarjetaCredito>();
             this.dgvVulnerabilidadesTarjetas.Rows.Clear();
             this.tarjetasVulnerables.Clear();
-            foreach (IFuente fuente in fuentes)
+            tarjetasVulnerableTemporal = Sesion.TarjetasCreditoVulnerables();
+            foreach (TarjetaCredito tarjeta in tarjetasVulnerableTemporal)
             {
-                tarjetasVulnerableTemporal = Sesion.TarjetasCreditoVulnerables(fuente);
-                foreach (TarjetaCredito tarjeta in tarjetasVulnerableTemporal)
+                if (!this.tarjetasVulnerables.Contains(tarjeta))
                 {
-                    if (!this.tarjetasVulnerables.Contains(tarjeta))
-                    {
-                        tarjetasVulnerables.Add(tarjeta);
-                        string[] fila = {
-                            tarjeta.Id.ToString(),
-                            tarjeta.Categoria.Nombre,
-                            tarjeta.Nombre,
-                            tarjeta.Tipo,
-                            FormatoANumeroDeTarjeta(tarjeta.Numero.ToString()),
-                            "Vulnerable " + Convert.ToString( tarjeta.CantidadVecesEncontradaVulnerable) + " veces."
-                        };
-                        this.dgvVulnerabilidadesTarjetas.Rows.Add(fila);
-                    }
+                    tarjetasVulnerables.Add(tarjeta);
+                    string[] fila = {
+                        tarjeta.Id.ToString(),
+                        tarjeta.Categoria.Nombre,
+                        tarjeta.Nombre,
+                        tarjeta.Tipo,
+                        FormatoANumeroDeTarjeta(tarjeta.Numero.ToString()),
+                        "Vulnerable " + Convert.ToString( tarjeta.CantidadVecesEncontradaVulnerable) + " veces."
+                    };
+                    this.dgvVulnerabilidadesTarjetas.Rows.Add(fila);
                 }
             }
         }
@@ -113,7 +102,7 @@ namespace Interfaz.Vulnerabilidades
 
                     IngresoPassword frmIngresoPassword = new IngresoPassword(contraseniaSeleccionada);
 
-                    CargarTablaContraseniasVulnerables(fuentesAVerificar);
+                    CargarTablaContraseniasVulnerables();
                 }
             }
         }

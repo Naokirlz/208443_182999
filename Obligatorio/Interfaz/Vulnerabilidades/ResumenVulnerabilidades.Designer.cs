@@ -37,7 +37,6 @@ namespace Interfaz.Vulnerabilidades
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.lblFuentes = new System.Windows.Forms.Label();
             this.btnRefrescar = new System.Windows.Forms.Button();
             this.dgvVulnerabilidadesTarjetas = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,17 +54,6 @@ namespace Interfaz.Vulnerabilidades
             ((System.ComponentModel.ISupportInitialize)(this.dgvVulnerabilidadesTarjetas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVulnerabilidadesContrasenias)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblFuentes
-            // 
-            this.lblFuentes.AutoSize = true;
-            this.lblFuentes.ForeColor = System.Drawing.Color.White;
-            this.lblFuentes.Location = new System.Drawing.Point(61, 4);
-            this.lblFuentes.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblFuentes.Name = "lblFuentes";
-            this.lblFuentes.Size = new System.Drawing.Size(393, 20);
-            this.lblFuentes.TabIndex = 2;
-            this.lblFuentes.Text = "Se han chequeado sus vulnerabilidades en 1 fuente(s)";
             // 
             // btnRefrescar
             // 
@@ -282,7 +270,6 @@ namespace Interfaz.Vulnerabilidades
             this.Controls.Add(this.dgvVulnerabilidadesContrasenias);
             this.Controls.Add(this.dgvVulnerabilidadesTarjetas);
             this.Controls.Add(this.btnRefrescar);
-            this.Controls.Add(this.lblFuentes);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ResumenVulnerabilidades";
@@ -290,12 +277,10 @@ namespace Interfaz.Vulnerabilidades
             ((System.ComponentModel.ISupportInitialize)(this.dgvVulnerabilidadesTarjetas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVulnerabilidadesContrasenias)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label lblFuentes;
         private System.Windows.Forms.Button btnRefrescar;
         private System.Windows.Forms.DataGridView dgvVulnerabilidadesTarjetas;
         private System.Windows.Forms.DataGridView dgvVulnerabilidadesContrasenias;

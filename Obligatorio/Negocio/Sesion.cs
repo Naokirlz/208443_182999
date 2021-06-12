@@ -14,7 +14,7 @@ namespace Negocio
         private GestorCategorias gestorCategoria;
         private GestorContrasenias gestorContrasenia;
         private GestorTarjetaCredito gestorTarjetaCredito;
-        public List<IFuente> MisFuentes { get; set; }
+        public IFuente FuenteLocal { get; set; }
         private string passwordMaestro;
         private bool logueado;
 
@@ -29,7 +29,7 @@ namespace Negocio
             gestorCategoria = new GestorCategorias();
             gestorContrasenia = new GestorContrasenias();
             gestorTarjetaCredito = new GestorTarjetaCredito();
-            MisFuentes = new List<IFuente>();
+            FuenteLocal = new FuenteLocal();
             passwordMaestro = "";
             this.logueado = false;
         }
@@ -44,14 +44,14 @@ namespace Negocio
            
         }
 
-        public IEnumerable<Contrasenia> ContraseniasVulnerables(IFuente fuente)
+        public IEnumerable<Contrasenia> ContraseniasVulnerables()
         {
-            return this.gestorContrasenia.ObtenerContraseniasVulnerables(fuente);
+            return this.gestorContrasenia.ObtenerContraseniasVulnerables(FuenteLocal);
         }
  
-        public IEnumerable<TarjetaCredito> TarjetasCreditoVulnerables(IFuente fuente)
+        public IEnumerable<TarjetaCredito> TarjetasCreditoVulnerables()
         {
-            return this.gestorTarjetaCredito.ObtenerTarjetasVulnerables(fuente);
+            return this.gestorTarjetaCredito.ObtenerTarjetasVulnerables(FuenteLocal);
         }
         
         public void GuardarPrimerPassword(string primerPassword)
@@ -178,7 +178,7 @@ namespace Negocio
         public void VaciarDatosPrueba()
         {
             this.gestorContrasenia.LimpiarBD();
-            this.MisFuentes = new List<IFuente>();
+            this.FuenteLocal = new FuenteLocal();
         }
     }
 }

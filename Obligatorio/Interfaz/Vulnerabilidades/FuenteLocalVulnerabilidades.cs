@@ -8,49 +8,9 @@ namespace Interfaz.Vulnerabilidades
     public partial class FuenteLocalVulnerabilidades : UserControl
     {
         Sesion Sesion = Sesion.ObtenerInstancia();
-        IFuente FuenteLocal;
         public FuenteLocalVulnerabilidades()
         {
             InitializeComponent();
-
-            bool encontre = false;
-            foreach (IFuente fuente in Sesion.MisFuentes)
-            {
-                string tipoFuente = fuente.GetType().ToString();
-                if (tipoFuente == "Negocio.FuenteLocal")
-                {
-                    this.FuenteLocal = fuente;
-                    encontre = true;
-                }
-            }
-
-            if (!encontre)
-            {
-                this.FuenteLocal = new FuenteLocal();
-                this.Sesion.MisFuentes.Add(this.FuenteLocal);
-            }
-            //bool encontre = false;
-            //foreach (IFuente fuente in Sesion.MisFuentes)
-            //{
-            //    string tipoFuente = fuente.GetType().ToString();
-            //    if (tipoFuente == "Negocio.FuenteLocal")
-            //    {
-            //        this.FuenteLocal = fuente;
-            //        encontre = true;
-            //    }
-            //}
-
-            //if (!encontre)
-            //{
-            //    this.FuenteLocal = new FuenteLocal();
-            //    this.Sesion.MisFuentes.Add(this.FuenteLocal);
-            //}
-
-            if (!encontre)
-            {
-                this.FuenteLocal = new FuenteLocal();
-                this.Sesion.MisFuentes.Add(this.FuenteLocal);
-            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -59,7 +19,7 @@ namespace Interfaz.Vulnerabilidades
             {
                 Alerta("El texto ha superado el límite de caracteres.", AlertaToast.enmTipo.Error);
             }
-            FuenteLocal.CrearDataBreach(this.txtEntradaFuenteLocal.Text);
+            Sesion.FuenteLocal.CrearDataBreach(this.txtEntradaFuenteLocal.Text);
             this.txtEntradaFuenteLocal.Text = "";
             Alerta("La lista ha sido guardada con éxito!", AlertaToast.enmTipo.Exito);
         }

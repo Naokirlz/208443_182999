@@ -13,8 +13,6 @@ namespace Interfaz
     {
         private Sesion Sesion = Sesion.ObtenerInstancia();
 
-        public IFuente FuenteLocal { get; private set; }
-
         public Configuracion()
         {
             InitializeComponent();
@@ -171,27 +169,7 @@ namespace Interfaz
         }
         private void CargarVulnerabilidades()
         {
-            bool encontre = false;
-            foreach (IFuente fuente in Sesion.MisFuentes)
-            {
-                string tipoFuente = fuente.GetType().ToString();
-                if (tipoFuente == "Negocio.FuenteLocal")
-                {
-                    this.FuenteLocal = fuente;
-                    encontre = true;
-                }
-            }
-
-            if (!encontre)
-            {
-                this.FuenteLocal = new FuenteLocal();
-                this.Sesion.MisFuentes.Add(this.FuenteLocal);
-            }
-
-            FuenteLocal.CrearDataBreach("aaaaa\nsecreTo\n1231231231231231\n8558954744542212");
-            //FuenteLocal.AgregarPasswordOContraseniaVulnerable("secreTo");
-            //FuenteLocal.AgregarPasswordOContraseniaVulnerable("1231231231231231");
-            //FuenteLocal.AgregarPasswordOContraseniaVulnerable("8558954744542212");
+            Sesion.FuenteLocal.CrearDataBreach("aaaaa\nsecreTo\n1231231231231231\n8558954744542212");
 
         }
 

@@ -101,7 +101,7 @@ namespace Negocio.Persistencia
                 }
 
                 aModificar.Categoria = context.Categorias.FirstOrDefault(c => c.Nombre == entity.Categoria.Nombre);
-
+                aModificar.CantidadVecesEncontradaVulnerable = entity.CantidadVecesEncontradaVulnerable;
                 aModificar.Notas = entity.Notas;
 
 
