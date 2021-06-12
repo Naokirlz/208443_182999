@@ -11,22 +11,22 @@ namespace PruebasUnitarias
     public class PruebasFuenteArchivo
     {
 
-        [TestInitialize]
-        public void InicializarPruebas()
+        [TestCleanup]
+        public void LimpiarPruebas()
         {
+            
             string rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
-            if (!Directory.Exists(rutaDirectorio))
+            if (Directory.Exists(rutaDirectorio))
             {
-                Directory.CreateDirectory(rutaDirectorio);
-            }
-            List<string> strFiles = Directory.GetFiles(rutaDirectorio, "*", SearchOption.AllDirectories).ToList();
+                List<string> strFiles = Directory.GetFiles(rutaDirectorio, "*", SearchOption.AllDirectories).ToList();
 
-            foreach (string fichero in strFiles)
-            {
-                File.Delete(fichero);
+                foreach (string fichero in strFiles)
+                {
+                    File.Delete(fichero);
+                }
             }
+
         }
-
 
         [TestMethod]
         public void SePuedeCopiarUnArchivoDeFileSystemALaCarpetaDeFuentes()

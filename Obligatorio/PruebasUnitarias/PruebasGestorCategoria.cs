@@ -19,9 +19,16 @@ namespace PruebasUnitarias
         {
             Gestor = new GestorCategorias();
             Gestor.LimpiarBD();
-        }
-        
 
+        }
+
+        //[TestCleanup]
+        //public void LimpiarPruebas()
+        //{
+
+        //    Gestor.LimpiarBD();
+
+        //}
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]

@@ -26,7 +26,7 @@ namespace PruebasUnitarias
         public void InicializarPruebas()
         {
             sesionPrueba = Sesion.ObtenerInstancia();
-            sesionPrueba.VaciarDatosPrueba();
+            
             sesionPrueba.GuardarPrimerPassword("secreto");
             sesionPrueba.Login("secreto");
             int id = sesionPrueba.AltaCategoria("Cosas");

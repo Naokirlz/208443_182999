@@ -25,7 +25,6 @@ namespace PruebasUnitarias
 
             Gestor = new GestorTarjetaCredito();
             GestorCategoria = new GestorCategorias();
-            Gestor.LimpiarBD();
             Categoria c = new Categoria("Fake");
             GestorCategoria.Alta("Fake");
            

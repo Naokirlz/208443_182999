@@ -103,9 +103,9 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
-                context.Tarjetas.RemoveRange(context.Tarjetas);
-                context.Passwords.RemoveRange(context.Passwords);
-                context.Contrasenias.RemoveRange(context.Contrasenias);
+                //context.Tarjetas.RemoveRange(context.Tarjetas);
+                //context.Passwords.RemoveRange(context.Passwords);
+               // context.Contrasenias.RemoveRange(context.Contrasenias);
                 context.Categorias.RemoveRange(context.Categorias);
                 context.SaveChanges();
             }

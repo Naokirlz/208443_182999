@@ -21,7 +21,7 @@ namespace PruebasUnitarias
         {
             Gestor = new GestorContrasenias();
             GestorCategoria = new GestorCategorias();
-            Gestor.LimpiarBD();
+            
             Categoria c = new Categoria("Categoria");
             GestorCategoria.Alta("Categoria");
 
@@ -34,6 +34,12 @@ namespace PruebasUnitarias
                 Password = new Password("secreto")
             };
             this.ContraseniaCompleta = contraseniaCompleta;
+        }
+        
+        [TestCleanup]
+        public void LimpiarPruebas()
+        {
+            Gestor.LimpiarBD();
         }
 
         [TestMethod]

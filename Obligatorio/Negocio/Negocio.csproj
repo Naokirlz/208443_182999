@@ -83,6 +83,14 @@
     <Compile Include="Migrations\202106100114137_CorregirClave.designer.cs">
       <DependentUpon>202106100114137_CorregirClave.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106122049359_TablaHistorialContrasenia.cs" />
+    <Compile Include="Migrations\202106122049359_TablaHistorialContrasenia.designer.cs">
+      <DependentUpon>202106122049359_TablaHistorialContrasenia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106122107548_TablaHistorialTarjetas.cs" />
+    <Compile Include="Migrations\202106122107548_TablaHistorialTarjetas.designer.cs">
+      <DependentUpon>202106122107548_TablaHistorialTarjetas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistencia\Contexto.cs" />
     <Compile Include="Persistencia\IRepositorio.cs" />
@@ -93,6 +101,9 @@
     <Compile Include="Utilidades\ExcepcionAccesoDenegado.cs" />
     <Compile Include="Utilidades\FuenteArchivo.cs" />
     <Compile Include="Utilidades\FuenteLocal.cs" />
+    <Compile Include="Utilidades\Historial.cs" />
+    <Compile Include="Utilidades\HistorialContrasenia.cs" />
+    <Compile Include="Utilidades\HistorialTarjetas.cs" />
     <Compile Include="Utilidades\IFuente.cs" />
     <Compile Include="TarjetaCreditos\GestorTarjetaCredito.cs" />
     <Compile Include="Persistencia\RepositorioCategoriasMemoria.cs" />
@@ -135,6 +146,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106100114137_CorregirClave.resx">
       <DependentUpon>202106100114137_CorregirClave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106122049359_TablaHistorialContrasenia.resx">
+      <DependentUpon>202106122049359_TablaHistorialContrasenia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106122107548_TablaHistorialTarjetas.resx">
+      <DependentUpon>202106122107548_TablaHistorialTarjetas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
