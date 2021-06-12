@@ -36,7 +36,7 @@ namespace Negocio.Persistencia
             modelBuilder.Entity<Contrasenia>().Property(e => e.FechaUltimaModificacion).HasColumnType("datetime2");
             modelBuilder.Entity<Password>().Property(e => e.Clave).IsRequired();
             modelBuilder.Entity<Fuente>().ToTable("Fuentes");
-
+            modelBuilder.Entity<DataBreach>().HasKey(t => new { t.FuenteId, t.Texto });
 
         }
     }
