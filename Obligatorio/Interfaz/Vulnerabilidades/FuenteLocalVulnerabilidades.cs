@@ -46,7 +46,11 @@ namespace Interfaz.Vulnerabilidades
             //    this.Sesion.MisFuentes.Add(this.FuenteLocal);
             //}
 
-            Sesion.Fuente = new FuenteLocal();
+            if (!encontre)
+            {
+                this.FuenteLocal = new FuenteLocal();
+                this.Sesion.MisFuentes.Add(this.FuenteLocal);
+            }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
