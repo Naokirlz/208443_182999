@@ -7,6 +7,7 @@ using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace PruebasUnitarias
 {
@@ -55,6 +56,7 @@ namespace PruebasUnitarias
             sesionPrueba.AltaTarjetaCredito(nuevoTarjeta);
             sesionPrueba.AltaContrasenia(pruebaContrasenia);
             sesionPrueba.FuenteLocal.CrearDataBreach("dalevo111!!!\n1234123412341234");
+
         }
 
 
@@ -62,6 +64,17 @@ namespace PruebasUnitarias
         public void LimpiarPruebas()
         {
             sesionPrueba.VaciarDatosPrueba();
+            string rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
+            if (Directory.Exists(rutaDirectorio))
+            {
+                List<string> strFiles = Directory.GetFiles(rutaDirectorio, "*", SearchOption.AllDirectories).ToList();
+
+                foreach (string fichero in strFiles)
+                {
+                    File.Delete(fichero);
+                }
+            }
+            
         }
 
         [TestMethod]
@@ -602,6 +615,43 @@ namespace PruebasUnitarias
             };
             sesionPrueba.AltaTarjetaCredito(nueva);
         }
+
+        //[TestMethod]
+        //public void SePuedeCargarUnaFuenteArchivoSiSeEstaLogueado()
+        //{
+        //    string rutaDirectorioOriginal = AppDomain.CurrentDomain.BaseDirectory + "\\ArchivosOriginales";
+        //    string rutaArchivoOriginal = AppDomain.CurrentDomain.BaseDirectory + "\\ArchivosOriginales\\Fuente.txt";
+        //    string rutaDestino = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos\\Fuente.txt";
+        //    if (!Directory.Exists(rutaDirectorioOriginal))
+        //    {
+        //        Directory.CreateDirectory(rutaDirectorioOriginal);
+        //    }
+        //    using (StreamWriter sw = File.CreateText(rutaArchivoOriginal))
+        //    {
+        //        sw.WriteLine("dalevo111!!!");
+        //    }
+        //    sesionPrueba.CargarFuenteArchivo(rutaArchivoOriginal);
+        //    Assert.IsTrue(File.Exists(rutaDestino));
+        //}
+
+        //[TestMethod]
+        //[ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        //public void NoPuedeCargarUnaFuenteArchivoNoEstandoLogueado()
+        //{
+        //    sesionPrueba.LogOut();
+        //    string rutaDirectorioOriginal = AppDomain.CurrentDomain.BaseDirectory + "\\ArchivosOriginales";
+        //    string rutaArchivoOriginal = AppDomain.CurrentDomain.BaseDirectory + "\\ArchivosOriginales\\Fuente.txt";
+        //    string rutaDestino = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos\\Fuente.txt";
+        //    if (!Directory.Exists(rutaDirectorioOriginal))
+        //    {
+        //        Directory.CreateDirectory(rutaDirectorioOriginal);
+        //    }
+        //    using (StreamWriter sw = File.CreateText(rutaArchivoOriginal))
+        //    {
+        //        sw.WriteLine("dalevo111!!!");
+        //    }
+        //    sesionPrueba.CargarFuenteArchivo(rutaArchivoOriginal);
+        //}
 
         private string ArmarTextoDeLargoVariable(int largo)
         {

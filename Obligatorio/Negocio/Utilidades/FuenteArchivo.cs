@@ -9,13 +9,17 @@ namespace Negocio.Utilidades
 {
     public class FuenteArchivo : IFuente
     {
-        public int BuscarPasswordOContraseniaEnFuente(string buscado)
+        private string rutaDirectorio;
+        public FuenteArchivo()
         {
-            string rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
+            this.rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
             if (!Directory.Exists(rutaDirectorio))
             {
                 Directory.CreateDirectory(rutaDirectorio);
             }
+        }
+        public int BuscarPasswordOContraseniaEnFuente(string buscado)
+        {
             int cantidad = 0;
             List<string> strFiles = Directory.GetFiles(rutaDirectorio, "*", SearchOption.AllDirectories).ToList();
 
@@ -33,11 +37,6 @@ namespace Negocio.Utilidades
 
         public void CrearDataBreach(string dataBreach)
         {
-            string rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
-            if (!Directory.Exists(rutaDirectorio))
-            {
-                Directory.CreateDirectory(rutaDirectorio);
-            }
             string[] rutaDetalle = dataBreach.Split('\\').ToArray();
             string nombrearchivo = rutaDetalle[rutaDetalle.Length - 1];
             string ruta = rutaDirectorio + "\\" + nombrearchivo;

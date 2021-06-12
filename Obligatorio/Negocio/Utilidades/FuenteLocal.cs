@@ -5,6 +5,7 @@ namespace Negocio.Utilidades
     public class FuenteLocal : IFuente
     {
         private List<string> contraseniasYTarjetasVulnerables;
+
         public FuenteLocal()
         {
             contraseniasYTarjetasVulnerables = new List<string>();

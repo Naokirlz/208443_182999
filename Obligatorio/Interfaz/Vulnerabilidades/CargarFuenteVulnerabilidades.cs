@@ -1,4 +1,5 @@
 ﻿using Negocio;
+using Negocio.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,8 @@ namespace Interfaz.Vulnerabilidades
         {
             if (txtRutaArchivo.Text != "")
             {
-                //Sesion.CargarArchivo(String ruta);
+                IFuente fuenteArchivo = new FuenteArchivo();
+                fuenteArchivo.CrearDataBreach(txtRutaArchivo.Text);
                 Alerta("El archivo ha sido cargado con éxito!", AlertaToast.enmTipo.Exito);
                 txtRutaArchivo.Text = "";
             }
@@ -37,7 +39,7 @@ namespace Interfaz.Vulnerabilidades
         {
             if (ofdSeleccionarArchivo.ShowDialog() == DialogResult.OK)
             {
-                txtRutaArchivo.Text = ofdSeleccionarArchivo.FileName;
+                 txtRutaArchivo.Text = ofdSeleccionarArchivo.FileName;
             }
         }
         private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
