@@ -63,6 +63,7 @@
     <Compile Include="PruebasGestorTarjetaCredito.cs" />
     <Compile Include="PruebasContrasena.cs" />
     <Compile Include="PruebasGestorContrasenia.cs" />
+    <Compile Include="PruebasFuenteArchivo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
