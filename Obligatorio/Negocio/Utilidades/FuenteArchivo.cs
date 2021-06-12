@@ -11,9 +11,13 @@ namespace Negocio.Utilidades
     {
         public int BuscarPasswordOContraseniaEnFuente(string buscado)
         {
+            string rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
+            if (!Directory.Exists(rutaDirectorio))
+            {
+                Directory.CreateDirectory(rutaDirectorio);
+            }
             int cantidad = 0;
-            string ruta = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
-            List<string> strFiles = Directory.GetFiles(ruta, "*", SearchOption.AllDirectories).ToList();
+            List<string> strFiles = Directory.GetFiles(rutaDirectorio, "*", SearchOption.AllDirectories).ToList();
 
             foreach (string fichero in strFiles)
             {
@@ -29,9 +33,14 @@ namespace Negocio.Utilidades
 
         public void CrearDataBreach(string dataBreach)
         {
+            string rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
+            if (!Directory.Exists(rutaDirectorio))
+            {
+                Directory.CreateDirectory(rutaDirectorio);
+            }
             string[] rutaDetalle = dataBreach.Split('\\').ToArray();
             string nombrearchivo = rutaDetalle[rutaDetalle.Length - 1];
-            string ruta = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos\\" + nombrearchivo;
+            string ruta = rutaDirectorio + "\\" + nombrearchivo;
             System.IO.File.Copy(dataBreach, ruta, true);
         }
     }
