@@ -95,6 +95,10 @@
     <Compile Include="Migrations\202106110441218_TablaDataBreaches.designer.cs">
       <DependentUpon>202106110441218_TablaDataBreaches.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106121222478_TablaDataBreachesKey.cs" />
+    <Compile Include="Migrations\202106121222478_TablaDataBreachesKey.designer.cs">
+      <DependentUpon>202106121222478_TablaDataBreachesKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistencia\Contexto.cs" />
     <Compile Include="Persistencia\IRepositorio.cs" />
@@ -158,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106110441218_TablaDataBreaches.resx">
       <DependentUpon>202106110441218_TablaDataBreaches.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106121222478_TablaDataBreachesKey.resx">
+      <DependentUpon>202106121222478_TablaDataBreachesKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

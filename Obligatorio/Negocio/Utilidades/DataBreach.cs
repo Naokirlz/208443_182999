@@ -15,7 +15,7 @@ namespace Negocio.Utilidades
         public int FuenteId { get; set; }
 
         public virtual Fuente Fuente { get; set; }
-
+                
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         [DataType(DataType.Password)]
         public string Texto { get; set; }

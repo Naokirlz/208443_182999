@@ -10,19 +10,21 @@ namespace Negocio.Utilidades
     public class FuenteLocal : Fuente
     {
       
+        public string[] Breaches { get; set; }
+
         public FuenteLocal() {
 
             this.Id = Fuente.autonumerado;
+            this.ttttttttt = new List<DataBreach>();
             Fuente.autonumerado++;
 
         }
 
-        public override void CrearDatabreach(string databreach)
+        public  void Cargarttttttttt(string dtb, char separador)
         {
-            IList<DataBreach> textos = new List<DataBreach>();
-
-            Breaches = databreach.Split('\n');
-
+            
+            //Breaches = dtb.Split('\n');
+             Breaches = dtb.Split(separador);
             foreach (string fila in Breaches)
             {
                 string texto = fila.TrimEnd('\r');
@@ -34,16 +36,25 @@ namespace Negocio.Utilidades
                     if (!Validaciones.EsNumero(digito)) soloNum = false;
                 }
                 if (soloNum) texto = sinEspacios;
-                
 
-                textos.Add(new DataBreach()
-                                {
-                                    FuenteId = this.Id,
-                                    Texto = texto,
-                                    Fuente = this
-                                }
+
+                ttttttttt.Add(new DataBreach()
+                {
+                    FuenteId = this.Id,
+                    Texto = texto,
+                    Fuente = this
+                }
                            );
             }
+
+
+
+        }
+
+        public override void CrearDatabreach(string texto)
+        {
+
+            Cargarttttttttt(texto, '\n');
 
             using (Contexto context = new Contexto())
             {
@@ -51,13 +62,15 @@ namespace Negocio.Utilidades
                 context.FuentesLocales.Add(this);
 
                
-                foreach (DataBreach item in textos)
+                foreach (DataBreach item in ttttttttt)
                 {
-                    context.Entry(this).State = System.Data.Entity.EntityState.Unchanged;
+                    
                     context.DataBreaches.Add(item);
-                    context.SaveChanges();
+                    
                 }
-            
+
+                context.SaveChanges();
+
             }
         }
 
