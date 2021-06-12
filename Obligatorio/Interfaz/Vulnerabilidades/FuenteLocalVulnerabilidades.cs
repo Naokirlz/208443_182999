@@ -12,19 +12,35 @@ namespace Interfaz.Vulnerabilidades
         public FuenteLocalVulnerabilidades()
         {
             InitializeComponent();
-            
+            Sesion.Fuente = new FuenteLocal();
+            FuenteLocal = Sesion.Fuente;
+
+            //bool encontre = false;
+            //foreach (IFuente fuente in Sesion.MisFuentes)
+            //{
+            //    string tipoFuente = fuente.GetType().ToString();
+            //    if (tipoFuente == "Negocio.FuenteLocal")
+            //    {
+            //        this.FuenteLocal = fuente;
+            //        encontre = true;
+            //    }
+            //}
+
+            //if (!encontre)
+            //{
+            //    this.FuenteLocal = new FuenteLocal();
+            //    this.Sesion.MisFuentes.Add(this.FuenteLocal);
+            //}
+
+
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if(this.txtEntradaFuenteLocal.Text.Length > 32767)
             {
-
                 Alerta("El texto ha superado el límite de caracteres.", AlertaToast.enmTipo.Error);
             }
-            
-            Sesion.Fuente = new FuenteLocal();
-            FuenteLocal = Sesion.Fuente;
             string[] fuentes = this.txtEntradaFuenteLocal.Text.Split('\n');
             
             foreach(string fila in fuentes)
