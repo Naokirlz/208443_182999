@@ -18,33 +18,33 @@ namespace Negocio.Utilidades
         public override void CrearDatabreach(string databreach)
         {
 
-            //Breaches = databreach.Split('\n');
+            Breaches = databreach.Split('\n');
 
-            //foreach (string fila in Breaches)
-            //{
-            //    string texto = fila.TrimEnd('\r');
+            foreach (string fila in Breaches)
+            {
+                string texto = fila.TrimEnd('\r');
 
-            //    string sinEspacios = texto.Replace(" ", "");
-            //    bool soloNum = true;
-            //    foreach (char digito in sinEspacios)
-            //    {
-            //        if (!Validaciones.EsNumero(digito)) soloNum = false;
-            //    }
-            //    if (soloNum) texto = sinEspacios;
-            //}
+                string sinEspacios = texto.Replace(" ", "");
+                bool soloNum = true;
+                foreach (char digito in sinEspacios)
+                {
+                    if (!Validaciones.EsNumero(digito)) soloNum = false;
+                }
+                if (soloNum) texto = sinEspacios;
+            }
 
-            //using (Contexto context = new Contexto())
-            //{
-            //    context.FuentesArchivos.Add(this);
-            //    try
-            //    {
-            //        context.SaveChanges();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        throw ex;
-            //    }
-            //}
+            using (Contexto context = new Contexto())
+            {
+                context.FuentesArchivos.Add(this);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
         }
 
 
