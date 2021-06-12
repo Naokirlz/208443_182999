@@ -90,7 +90,7 @@ namespace PruebasUnitarias
             nuevo2.NumeroTarjeta = "1234123412349999";
             historial.tarjetasVulnerables.Add(nuevo2);
             
-            DateTime registroHistorial = historial.Guardar();
+            int registroHistorial = historial.Guardar();
 
             Assert.IsNotNull(registroHistorial);
 
@@ -107,7 +107,7 @@ namespace PruebasUnitarias
             historial.passwords.Add(nuevo);
 
 
-            DateTime registroHistorial = historial.Guardar();
+            int registroHistorial = historial.Guardar();
 
             Assert.IsNotNull(registroHistorial);
 

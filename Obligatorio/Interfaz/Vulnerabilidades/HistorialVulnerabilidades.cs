@@ -1,5 +1,6 @@
 ﻿using Negocio;
 using Negocio.Contrasenias;
+using Negocio.TarjetaCreditos;
 using Negocio.Utilidades;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace Interfaz.Vulnerabilidades
             foreach (Historial historial in historiales)
             {
                 string[] fila = {
+                    historial.HistorialId.ToString(),
                     historial.Fecha.ToString()
                 };
                 this.dgvHistorial.Rows.Add(fila);
@@ -41,18 +43,18 @@ namespace Interfaz.Vulnerabilidades
         {
             if (e.RowIndex != -1)
             {
-                if (e.ColumnIndex == 1)
+                if (e.ColumnIndex == 2)
                 {
                     this.dgvDetalleTarjeta.Visible = true;
                     this.dgvDetalleContrasenia.Visible = true;
-                    DateTime historial = Convert.ToDateTime(dgvHistorial.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    int historial = Convert.ToInt32(dgvHistorial.Rows[e.RowIndex].Cells[0].Value.ToString());
                     CargarTablaContrasenias(historial);
-                    //CargarTablaTarjetas(historial);
+                    CargarTablaTarjetas(historial);
                 }
             }
         }
 
-        private void CargarTablaContrasenias(DateTime historial)
+        private void CargarTablaContrasenias(int historial)
         {
             IEnumerable<HistorialContrasenia> contrasenias = Sesion.DevolverContraseniasVulnerables(historial);
 
@@ -67,7 +69,21 @@ namespace Interfaz.Vulnerabilidades
                     contrasenia.Usuario,
                     histoCon.Clave // el boton cambia segun la clave
                 };
-                this.dgvHistorial.Rows.Add(fila);
+                this.dgvDetalleContrasenia.Rows.Add(fila);
+            }
+        }
+
+        private void CargarTablaTarjetas(int historial)
+        {
+            IEnumerable<HistorialTarjetas> tarjetas = Sesion.DevolverTarjetasVulnerables(historial);
+
+            this.dgvDetalleTarjeta.Rows.Clear();
+            foreach (HistorialTarjetas histoTar in tarjetas)
+            {
+                string[] fila = {
+                    histoTar.NumeroTarjeta
+                };
+                this.dgvDetalleTarjeta.Rows.Add(fila);
             }
         }
     }
