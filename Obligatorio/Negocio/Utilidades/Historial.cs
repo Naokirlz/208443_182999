@@ -38,6 +38,7 @@ namespace Negocio.Utilidades
 
                 foreach (HistorialContrasenia pas in passwords)
                 {
+                    pas.Clave =  context.Contrasenias.FirstOrDefault(c => c.ContraseniaId == pas.ContraseniaId).Password.Clave;
                     context.HistorialContrasenia.Add(pas);
                 }
                 foreach (HistorialTarjetas tar in tarjetasVulnerables)

@@ -96,6 +96,23 @@ namespace PruebasUnitarias
 
         }
 
+        [TestMethod]
+        public void SePuedeGuardiarHistorial2Contrasenia()
+        {
+            Historial historial = new Historial();
+            historial.Fecha = DateTime.Now;
+
+            HistorialContrasenia nuevo = new HistorialContrasenia();
+            nuevo.ContraseniaId = pruebaContrasenia.ContraseniaId;
+            historial.passwords.Add(nuevo);
+
+
+            DateTime registroHistorial = historial.Guardar();
+
+            Assert.IsNotNull(registroHistorial);
+
+        }
+
 
 
     }
