@@ -11,8 +11,6 @@ namespace Negocio.Utilidades
 {
     public class FuenteArchivo : Fuente
     {
-
-        
         public FuenteArchivo() { }
         
         public override void CrearDatabreach(string databreach)
@@ -35,7 +33,7 @@ namespace Negocio.Utilidades
 
             using (Contexto context = new Contexto())
             {
-                context.FuentesArchivos.Add(this);
+                context.DataBreaches.Add(this);
                 try
                 {
                     context.SaveChanges();

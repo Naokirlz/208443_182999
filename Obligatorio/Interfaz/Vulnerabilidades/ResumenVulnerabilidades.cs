@@ -14,7 +14,7 @@ namespace Interfaz.Vulnerabilidades
         private Sesion Sesion = Sesion.ObtenerInstancia();
         private List<Contrasenia> contraseniasVulnerables;
         private List<TarjetaCredito> tarjetasVulnerables;
-        private Fuente fuenteVerificar;
+        private IFuente fuenteVerificar;
 
         public ResumenVulnerabilidades()
         {
@@ -43,8 +43,8 @@ namespace Interfaz.Vulnerabilidades
 
         private void CargarTablasVulnerables()
         {
-           // CargarTablaContraseniasVulnerables(fuenteVerificar);
-            //CargarTablaTarjetasVulnerables(fuenteVerificar);
+            CargarTablaContraseniasVulnerables(fuenteVerificar);
+            CargarTablaTarjetasVulnerables(fuenteVerificar);
         }
 
         private void CargarTablaContraseniasVulnerables(IFuente fuente)
@@ -112,7 +112,7 @@ namespace Interfaz.Vulnerabilidades
 
                     IngresoPassword frmIngresoPassword = new IngresoPassword(contraseniaSeleccionada);
 
-                   // CargarTablaContraseniasVulnerables(fuenteVerificar);
+                    CargarTablaContraseniasVulnerables(fuenteVerificar);
                 }
             }
         }
