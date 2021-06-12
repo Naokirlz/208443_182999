@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -58,6 +59,20 @@ namespace Negocio.Utilidades
             }
 
         }
-       
+
+        public Historial ObtenerHistorial(Historial entity)
+        {
+            using (Contexto context = new Contexto())
+            {
+
+                Historial existe = context.Historials.FirstOrDefault(t => t.Fecha == entity.Fecha);
+                existe.passwords = context.HistorialContrasenia.Where(t => t.Fecha == entity.Fecha).ToList();
+                existe.tarjetasVulnerables = context.HistorialTarjeta.Where(t => t.Fecha == entity.Fecha).ToList();
+
+                if (existe != null) return existe;
+                throw new ExcepcionElementoNoExiste("No existe Historial!");
+
+            }
+        }
     }
 }

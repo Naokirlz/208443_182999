@@ -59,12 +59,12 @@
   <ItemGroup>
     <Compile Include="PruebasGestorCategoria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PruebasHistorial.cs" />
     <Compile Include="PruebasSesion.cs" />
     <Compile Include="PruebasGestorTarjetaCredito.cs" />
     <Compile Include="PruebasContrasena.cs" />
     <Compile Include="PruebasGestorContrasenia.cs" />
     <Compile Include="PruebasFuenteArchivo.cs" />
-    <Compile Include="PruebasHistorial.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

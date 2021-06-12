@@ -616,42 +616,33 @@ namespace PruebasUnitarias
             sesionPrueba.AltaTarjetaCredito(nueva);
         }
 
-        //[TestMethod]
-        //public void SePuedeCargarUnaFuenteArchivoSiSeEstaLogueado()
-        //{
-        //    string rutaDirectorioOriginal = AppDomain.CurrentDomain.BaseDirectory + "\\ArchivosOriginales";
-        //    string rutaArchivoOriginal = AppDomain.CurrentDomain.BaseDirectory + "\\ArchivosOriginales\\Fuente.txt";
-        //    string rutaDestino = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos\\Fuente.txt";
-        //    if (!Directory.Exists(rutaDirectorioOriginal))
-        //    {
-        //        Directory.CreateDirectory(rutaDirectorioOriginal);
-        //    }
-        //    using (StreamWriter sw = File.CreateText(rutaArchivoOriginal))
-        //    {
-        //        sw.WriteLine("dalevo111!!!");
-        //    }
-        //    sesionPrueba.CargarFuenteArchivo(rutaArchivoOriginal);
-        //    Assert.IsTrue(File.Exists(rutaDestino));
-        //}
+        [TestMethod]
+        public void SePuedeGenerarUnHistorial()
+        {
+            DateTime historial = sesionPrueba.ConsultarVulnerabilidades();
+            Assert.IsNotNull(historial);
+        }
 
-        //[TestMethod]
-        //[ExpectedException(typeof(ExcepcionAccesoDenegado))]
-        //public void NoPuedeCargarUnaFuenteArchivoNoEstandoLogueado()
-        //{
-        //    sesionPrueba.LogOut();
-        //    string rutaDirectorioOriginal = AppDomain.CurrentDomain.BaseDirectory + "\\ArchivosOriginales";
-        //    string rutaArchivoOriginal = AppDomain.CurrentDomain.BaseDirectory + "\\ArchivosOriginales\\Fuente.txt";
-        //    string rutaDestino = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos\\Fuente.txt";
-        //    if (!Directory.Exists(rutaDirectorioOriginal))
-        //    {
-        //        Directory.CreateDirectory(rutaDirectorioOriginal);
-        //    }
-        //    using (StreamWriter sw = File.CreateText(rutaArchivoOriginal))
-        //    {
-        //        sw.WriteLine("dalevo111!!!");
-        //    }
-        //    sesionPrueba.CargarFuenteArchivo(rutaArchivoOriginal);
-        //}
+        [TestMethod]
+        public void ElHistorialDevulveContraseniasVulnerables()
+        {
+            DateTime historial = sesionPrueba.ConsultarVulnerabilidades();
+            IEnumerable<HistorialContrasenia> contraseniaVulnerable = sesionPrueba.DevolverContraseniasVulnerables(historial);
+
+            Assert.AreEqual(1,contraseniaVulnerable.Count());
+            Assert.AreEqual("dalevo111!!!", contraseniaVulnerable.First().Clave);
+            Assert.AreEqual(pruebaContrasenia.ContraseniaId, contraseniaVulnerable.First().ContraseniaId);
+        }
+
+        [TestMethod]
+        public void ElHistorialDevulveTarjetasVulnerables()
+        {
+            DateTime historial = sesionPrueba.ConsultarVulnerabilidades();
+            IEnumerable<HistorialTarjetas> tarjetasVulnerable = sesionPrueba.DevolverTarjetasVulnerables(historial);
+
+            Assert.AreEqual(1, tarjetasVulnerable.Count());
+            Assert.AreEqual("1234123412341234", tarjetasVulnerable.First().NumeroTarjeta);
+        }
 
         private string ArmarTextoDeLargoVariable(int largo)
         {

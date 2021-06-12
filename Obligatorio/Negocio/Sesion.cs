@@ -180,5 +180,51 @@ namespace Negocio
             this.gestorContrasenia.LimpiarBD();
             this.FuenteLocal = new FuenteLocal();
         }
+
+        public DateTime ConsultarVulnerabilidades()
+        {
+            Historial historial = new Historial();
+            historial.Fecha = DateTime.Now;
+
+            IEnumerable<Contrasenia> contraseniasVul = ContraseniasVulnerables();
+
+            foreach(Contrasenia con in contraseniasVul)
+            {
+                HistorialContrasenia nuevo = new HistorialContrasenia();
+                nuevo.ContraseniaId = con.ContraseniaId;
+                historial.passwords.Add(nuevo);
+            }
+
+            IEnumerable<TarjetaCredito> tarjetasVul = TarjetasCreditoVulnerables();
+
+            foreach (TarjetaCredito tarjeta in tarjetasVul)
+            {
+                HistorialTarjetas nuevo = new HistorialTarjetas();
+                nuevo.NumeroTarjeta = tarjeta.Numero;
+                historial.tarjetasVulnerables.Add(nuevo);
+            }
+
+            DateTime registroHistorial = historial.Guardar();
+
+            return registroHistorial;
+        }
+
+        public IEnumerable<HistorialContrasenia> DevolverContraseniasVulnerables(DateTime historial)
+        {
+            Historial histo = new Historial();
+            histo.Fecha = historial;
+            Historial buscado = histo.ObtenerHistorial(histo);
+
+            return buscado.passwords;
+        }
+
+        public IEnumerable<HistorialTarjetas> DevolverTarjetasVulnerables(DateTime historial)
+        {
+            Historial histo = new Historial();
+            histo.Fecha = historial;
+            Historial buscado = histo.ObtenerHistorial(histo);
+
+            return buscado.tarjetasVulnerables;
+        }
     }
 }

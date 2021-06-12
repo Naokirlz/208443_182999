@@ -136,6 +136,9 @@ namespace Negocio.Persistencia
                     context.Passwords.RemoveRange(context.Passwords);
                     context.Contrasenias.RemoveRange(context.Contrasenias);
                     context.Categorias.RemoveRange(context.Categorias);
+                    context.HistorialTarjeta.RemoveRange(context.HistorialTarjeta);
+                    context.HistorialContrasenia.RemoveRange(context.HistorialContrasenia);
+                    context.Historials.RemoveRange(context.Historials);
                     context.SaveChanges();
                 }
    

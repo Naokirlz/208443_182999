@@ -21,7 +21,14 @@ namespace Interfaz.Vulnerabilidades
 
         private void CargarTablaHistorial()
         {
-            //throw new NotImplementedException();
+            //throw new NotImplementedException();.
+
+            //id
+            //sitio
+            //usuario
+            //clave filtrada
+            //modificado o no
+            //boton modificar
         }
     }
 }

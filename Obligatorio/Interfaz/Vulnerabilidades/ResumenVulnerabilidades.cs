@@ -27,7 +27,7 @@ namespace Interfaz.Vulnerabilidades
             columnaBotonModificarContrasenia.Text = "Modificar";
             this.dgvVulnerabilidadesContrasenias.Columns.Add(columnaBotonModificarContrasenia);
             columnaBotonModificarContrasenia.UseColumnTextForButtonValue = true;
-
+            
             CargarTablasVulnerables();
         }
 
@@ -38,6 +38,7 @@ namespace Interfaz.Vulnerabilidades
 
         private void CargarTablasVulnerables()
         {
+            Sesion.ConsultarVulnerabilidades();
             CargarTablaContraseniasVulnerables();
             CargarTablaTarjetasVulnerables();
         }
@@ -102,7 +103,7 @@ namespace Interfaz.Vulnerabilidades
 
                     IngresoPassword frmIngresoPassword = new IngresoPassword(contraseniaSeleccionada);
 
-                    CargarTablaContraseniasVulnerables();
+                    //CargarTablaContraseniasVulnerables();
                 }
             }
         }
