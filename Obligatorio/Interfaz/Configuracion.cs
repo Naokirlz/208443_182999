@@ -188,10 +188,10 @@ namespace Interfaz
                 this.Sesion.MisFuentes.Add(this.FuenteLocal);
             }
 
-            FuenteLocal.AgregarPasswordOContraseniaVulnerable("aaaaa");
-            FuenteLocal.AgregarPasswordOContraseniaVulnerable("secreTo");
-            FuenteLocal.AgregarPasswordOContraseniaVulnerable("1231231231231231");
-            FuenteLocal.AgregarPasswordOContraseniaVulnerable("8558954744542212");
+            FuenteLocal.CrearDataBreach("aaaaa\nsecreTo\n1231231231231231\n8558954744542212");
+            //FuenteLocal.AgregarPasswordOContraseniaVulnerable("secreTo");
+            //FuenteLocal.AgregarPasswordOContraseniaVulnerable("1231231231231231");
+            //FuenteLocal.AgregarPasswordOContraseniaVulnerable("8558954744542212");
 
         }
 
