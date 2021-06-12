@@ -7,18 +7,18 @@ namespace Negocio.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class TablaHistorialContrasenia : IMigrationMetadata
+    public sealed partial class SeAgregaHistorial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TablaHistorialContrasenia));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SeAgregaHistorial));
         
         string IMigrationMetadata.Id
         {
-            get { return "202106122049359_TablaHistorialContrasenia"; }
+            get { return "202106122343403_SeAgregaHistorial"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

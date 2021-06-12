@@ -83,17 +83,9 @@
     <Compile Include="Migrations\202106100114137_CorregirClave.designer.cs">
       <DependentUpon>202106100114137_CorregirClave.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106122049359_TablaHistorialContrasenia.cs" />
-    <Compile Include="Migrations\202106122049359_TablaHistorialContrasenia.designer.cs">
-      <DependentUpon>202106122049359_TablaHistorialContrasenia.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106122107548_TablaHistorialTarjetas.cs" />
-    <Compile Include="Migrations\202106122107548_TablaHistorialTarjetas.designer.cs">
-      <DependentUpon>202106122107548_TablaHistorialTarjetas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202106122340101_SeAgregaHistorialId.cs" />
-    <Compile Include="Migrations\202106122340101_SeAgregaHistorialId.designer.cs">
-      <DependentUpon>202106122340101_SeAgregaHistorialId.cs</DependentUpon>
+    <Compile Include="Migrations\202106122343403_SeAgregaHistorial.cs" />
+    <Compile Include="Migrations\202106122343403_SeAgregaHistorial.designer.cs">
+      <DependentUpon>202106122343403_SeAgregaHistorial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistencia\Contexto.cs" />
@@ -151,14 +143,8 @@
     <EmbeddedResource Include="Migrations\202106100114137_CorregirClave.resx">
       <DependentUpon>202106100114137_CorregirClave.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106122049359_TablaHistorialContrasenia.resx">
-      <DependentUpon>202106122049359_TablaHistorialContrasenia.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106122107548_TablaHistorialTarjetas.resx">
-      <DependentUpon>202106122107548_TablaHistorialTarjetas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106122340101_SeAgregaHistorialId.resx">
-      <DependentUpon>202106122340101_SeAgregaHistorialId.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106122343403_SeAgregaHistorial.resx">
+      <DependentUpon>202106122343403_SeAgregaHistorial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
