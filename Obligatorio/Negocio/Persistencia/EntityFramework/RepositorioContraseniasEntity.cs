@@ -17,16 +17,10 @@ namespace Negocio.Persistencia.EntityFramework
                 entity.Categoria = context.Categorias.FirstOrDefault(c => c.Nombre == entity.Categoria.Nombre);
                 context.Categorias.Attach(entity.Categoria);
                 context.Contrasenias.Add(entity);
-                
-                try
-                {
-                    context.SaveChanges();
-                    return entity.ContraseniaId;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                context.SaveChanges();
+                return entity.ContraseniaId;
+               
+           
             }
         }
 
@@ -40,15 +34,7 @@ namespace Negocio.Persistencia.EntityFramework
                 { 
                     context.Passwords.Remove(aEliminar.Password);
                     context.Contrasenias.Remove(aEliminar);
-                        try
-                        {
-                            context.SaveChanges();
-                        }
-                        catch (Exception ex)
-                        {
-                            throw ex;
-                        }
-                
+                    context.SaveChanges();
                 }
                 else throw new ExcepcionElementoNoExiste("Error: Contraseña No Existe !!!");
             }
@@ -95,16 +81,10 @@ namespace Negocio.Persistencia.EntityFramework
                 aModificar.Categoria = context.Categorias.FirstOrDefault(c => c.Nombre == entity.Categoria.Nombre);
                 aModificar.CantidadVecesEncontradaVulnerable = entity.CantidadVecesEncontradaVulnerable;
                 aModificar.Notas = entity.Notas;
-
-                try
-                {
-                    context.Categorias.Attach(aModificar.Categoria);
-                    context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                context.Categorias.Attach(aModificar.Categoria);
+                context.SaveChanges();
+               
+              
             }
         }
 

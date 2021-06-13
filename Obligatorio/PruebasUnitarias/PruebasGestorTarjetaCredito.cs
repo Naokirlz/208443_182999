@@ -258,6 +258,21 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
+        public void BuscarTarjetaDeCredito()
+        {
+         int aBuscar= Gestor.Alta(TarjetaDePruebaUno);
+         TarjetaCredito buscada = Gestor.Buscar(aBuscar);
+         Assert.AreEqual(TarjetaDePruebaUno.Nombre, buscada.Nombre);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionElementoNoExiste))]
+        public void BuscarTarjetaDeCreditoQueNoExiste()
+        {
+            TarjetaCredito buscada = Gestor.Buscar(0);
+        }
+
+        [TestMethod]
         public void ListarTarjetasCreditoOrdenadaPorNombreCategoria()
         {
             Categoria z = new Categoria("ZZZZZZ");

@@ -16,16 +16,9 @@ namespace Negocio.Persistencia.EntityFramework
             {
                 Existe(entity);
                 context.Categorias.Add(entity);
-                try 
-                { 
-                    context.SaveChanges();
-                    autonumerado++;
-                    return entity.Id;
-                }
-               catch (Exception ex)
-                {
-                    throw ex;
-                }
+                context.SaveChanges();
+                autonumerado++;
+                return entity.Id;
             }
         }
 
@@ -38,14 +31,9 @@ namespace Negocio.Persistencia.EntityFramework
                 if (aEliminar != null)
                 {
                     context.Categorias.Remove(aEliminar);
-                    try
-                    {
-                        context.SaveChanges();
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
+                    context.SaveChanges();
+                  
+                 
                 }
                 else throw new ExcepcionElementoNoExiste("Error: Categoría No Existe !!!");
             }
