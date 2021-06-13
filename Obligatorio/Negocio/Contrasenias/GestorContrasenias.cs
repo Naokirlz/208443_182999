@@ -2,6 +2,8 @@
 using Negocio.Excepciones;
 using Negocio.Persistencia;
 using Negocio.Persistencia.EntityFramework;
+using Negocio.Persistencia.Memoria;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -147,6 +149,18 @@ namespace Negocio.Contrasenias
             repositorio.TestClear();
         }
 
-       
+
+        public string VerificarFortalezaPassword(string password)
+        {
+            Password pass = new Password(password);
+            return pass.CalcularFortaleza().ToString();
+        }
+
+        public int VerificarCantidadVecesPasswordRepetido(string password)
+        {
+            //return repositorio.VerificarCantidadVecesPasswordRepetido(password);
+            throw new NotImplementedException();
+        }
+
     }
 }

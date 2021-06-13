@@ -17,7 +17,7 @@ namespace Negocio.Persistencia.Memoria
 
         public int Alta(Contrasenia unaContrasenia)
         {
-            VerificarSiExisteContrasenia(unaContrasenia);
+            Existe(unaContrasenia);
             unaContrasenia.ContraseniaId = autonumerado;
             unaContrasenia.FechaUltimaModificacion = DateTime.Now;
             this.contrasenias.Add(unaContrasenia);
@@ -60,7 +60,7 @@ namespace Negocio.Persistencia.Memoria
             return this.contrasenias;
         }
    
-        private void VerificarSiExisteContrasenia(Contrasenia unaContrasenia)
+        public void Existe(Contrasenia unaContrasenia)
         {
             foreach (var contrasenia in this.contrasenias)
             {
@@ -70,14 +70,9 @@ namespace Negocio.Persistencia.Memoria
             }
         }
 
-        public void Existe(Contrasenia entity)
-        {
-            throw new NotImplementedException();
-        }
-
         public void TestClear()
         {
-            throw new NotImplementedException();
+            this.contrasenias = new List<Contrasenia>();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Negocio.Persistencia.Memoria
 
         public int Alta(TarjetaCredito nuevaTarjeta)
         {
-            VerificarNombreTarjetaRepetido(nuevaTarjeta);
+            Existe(nuevaTarjeta);
             VerificarNumeroTarjetaRepetido(nuevaTarjeta);
             nuevaTarjeta.Id = autonumerado;
             autonumerado++;
@@ -33,7 +33,7 @@ namespace Negocio.Persistencia.Memoria
         public void Modificar(TarjetaCredito modificada)
         {
             TarjetaCredito anterior = Buscar(modificada);
-            VerificarNombreTarjetaRepetido(modificada);
+            Existe(modificada);
             VerificarNumeroTarjetaRepetido(modificada);
             anterior.Categoria = modificada.Categoria;
             anterior.Nombre = modificada.Nombre;
@@ -69,7 +69,7 @@ namespace Negocio.Persistencia.Memoria
             }
         }
 
-        private void VerificarNombreTarjetaRepetido(TarjetaCredito tarjeta)
+        public void Existe(TarjetaCredito tarjeta)
         {
             
             foreach (TarjetaCredito item in tarjetas)
@@ -82,14 +82,9 @@ namespace Negocio.Persistencia.Memoria
             }
         }
 
-        public void Existe(TarjetaCredito entity)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void TestClear()
         {
-            throw new System.NotImplementedException();
+            this.tarjetas = new List<TarjetaCredito>();
         }
     }
 }

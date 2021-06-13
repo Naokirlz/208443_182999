@@ -4,6 +4,7 @@ using Negocio.Contrasenias;
 using Negocio.Excepciones;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Interfaz.Contrasenias
@@ -14,6 +15,7 @@ namespace Interfaz.Contrasenias
         public AgregarContrasenias()
         {
             InitializeComponent();
+            lblContrasenaInsegura.Visible = false;
             Refrescar();
         }
         private void Refrescar()
@@ -125,10 +127,40 @@ namespace Interfaz.Contrasenias
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
+            VerificarFortalezaPassword();
             //verificar passwoird repetido
-            //verificar password inseguro
             //verificar password filtrado
-            //marcar cada vulnerabilidad en el lbl que corresponda.
+        }
+        private void VerificarFortalezaPassword()
+        {
+            string password = this.txtPassword.Text;
+            lblContrasenaInsegura.Visible = true;
+            string fortaleza = Sesion.VerificarFortalezaPassword(password).ToString();
+            if (fortaleza.Equals("VERDE_OSCURO"))
+            {
+                lblContrasenaInsegura.Text = "La Contraseña es segura.";
+                lblContrasenaInsegura.ForeColor = Color.DarkGreen;
+            }
+            else if (fortaleza.Equals("VERDE_CLARO"))
+            {
+                lblContrasenaInsegura.Text = "La Contraseña podría ser más segura.";
+                lblContrasenaInsegura.ForeColor = Color.Green;
+            }
+            else if (fortaleza.Equals("AMARILLO"))
+            {
+                lblContrasenaInsegura.Text = "La Contraseña tiene cierta seguridad.";
+                lblContrasenaInsegura.ForeColor = Color.Yellow;
+            }
+            else if (fortaleza.Equals("NARANJA"))
+            {
+                lblContrasenaInsegura.Text = "La Contraseña no es segura.";
+                lblContrasenaInsegura.ForeColor = Color.Orange;
+            }
+            else
+            {
+                lblContrasenaInsegura.Text = "La Contraseña es muy insegura.";
+                lblContrasenaInsegura.ForeColor = Color.Red;
+            }
         }
     }
 }

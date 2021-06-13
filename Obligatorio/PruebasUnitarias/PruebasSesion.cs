@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using Negocio.DataBreaches;
+using static Negocio.Contrasenias.Password;
 
 namespace PruebasUnitarias
 {
@@ -684,6 +685,40 @@ namespace PruebasUnitarias
 
             List<Grupo> grupos = sesionPrueba.GenerarGrupos();
             Assert.IsNotNull(grupos);
+        public void LaSesionMeDevuelveElColorDeUnPassword()
+        {
+            string password = "HolaSecretoPassword";
+            string fortaleza = sesionPrueba.VerificarFortalezaPassword(password);
+            Assert.AreEqual("VERDE_CLARO", fortaleza);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void LaSesionNoDevuelveElColorDeUnPasswordSiNoEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            string password = "HolaSecretoPassword";
+            string fortaleza = sesionPrueba.VerificarFortalezaPassword(password);
+        }
+        [TestMethod]
+        public void LaSesionMeDevuelveSiElPasswordEsRepetido()
+        {
+            int id = sesionPrueba.AltaCategoria("Mas Cosas");
+            Categoria nuevaCategoriaPrueba = sesionPrueba.BuscarCategoriaPorId(id);
+            Contrasenia pruebaContrasenia2 = new Contrasenia()
+            {
+                Sitio = "deremate.com",
+                Usuario = "deremate",
+                Password = new Password("dalevo111!!!"),
+                Categoria = nuevaCategoriaPrueba,
+                Notas = "Sin"
+            };
+
+            sesionPrueba.AltaContrasenia(pruebaContrasenia2);
+
+            string password = "dalevo111!!!";
+
+            int vecesRepetido = sesionPrueba.VerificarCatidadVecesPasswordRepetido(password);
+            Assert.AreEqual(2, vecesRepetido);
         }
 
         [TestMethod]
@@ -693,6 +728,11 @@ namespace PruebasUnitarias
            sesionPrueba.LogOut();
            List<Grupo> grupos = sesionPrueba.GenerarGrupos();
            
+        public void LaSesionNoDevuelveSiElPasswordEsRepetidoSiNoEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            string password = "HolaSecretoPassword";
+            int vecesRepetido = sesionPrueba.VerificarCatidadVecesPasswordRepetido(password);
         }
 
         private string ArmarTextoDeLargoVariable(int largo)
