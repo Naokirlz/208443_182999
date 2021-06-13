@@ -1,7 +1,7 @@
 ﻿using Negocio.Categorias;
 using Negocio.Contrasenias;
+using Negocio.DataBreaches;
 using Negocio.TarjetaCreditos;
-using Negocio.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

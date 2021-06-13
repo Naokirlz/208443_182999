@@ -2,12 +2,13 @@
 using Negocio;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
-using Negocio.Utilidades;
+using Negocio.Excepciones;
 using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using Negocio.DataBreaches;
 
 namespace PruebasUnitarias
 {
@@ -649,7 +650,7 @@ namespace PruebasUnitarias
         {
             int historial = sesionPrueba.ConsultarVulnerabilidades();
             int historial2 = sesionPrueba.ConsultarVulnerabilidades();
-            IEnumerable<Historial> historiales = sesionPrueba.DevolverHistoriales();
+            IEnumerable<Historial> historiales = sesionPrueba.ObtenerTodasLosHistoriales();
 
             Assert.AreEqual(2, historiales.Count());
         }

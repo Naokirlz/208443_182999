@@ -1,5 +1,6 @@
-﻿using Negocio.TarjetaCreditos;
-using Negocio.Utilidades;
+﻿using Negocio.Excepciones;
+using Negocio.TarjetaCreditos;
+
 using System.Collections.Generic;
 
 namespace Negocio.Persistencia

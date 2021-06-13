@@ -2,7 +2,7 @@
 using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.TarjetaCreditos;
-using Negocio.Utilidades;
+using Negocio.Excepciones;
 using System;
 using System.Linq;
 using System.Windows.Forms;

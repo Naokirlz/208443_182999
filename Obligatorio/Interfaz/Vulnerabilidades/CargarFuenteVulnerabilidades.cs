@@ -1,5 +1,6 @@
 ﻿using Negocio;
-using Negocio.Utilidades;
+using Negocio.DataBreaches;
+using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

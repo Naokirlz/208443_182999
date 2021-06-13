@@ -1,5 +1,5 @@
 ﻿using Negocio;
-using Negocio.Utilidades;
+using Negocio.Excepciones;
 using System;
 using System.Windows.Forms;
 

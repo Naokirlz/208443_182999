@@ -3,11 +3,12 @@ using Negocio;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.TarjetaCreditos;
-using Negocio.Utilidades;
+using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Negocio.DataBreaches;
 
 namespace PruebasUnitarias
 {
@@ -18,6 +19,7 @@ namespace PruebasUnitarias
         FuenteLocal Fuente;
         private TarjetaCredito nuevoTarjeta;
         private Contrasenia pruebaContrasenia;
+        private GestorDataBreaches Gestor;
 
 
         [TestInitialize]
@@ -30,6 +32,7 @@ namespace PruebasUnitarias
             sesionPrueba.Login("secreto");
             int id = sesionPrueba.AltaCategoria("Cosas");
             Categoria nuevaCategoriaPrueba = sesionPrueba.BuscarCategoriaPorId(id);
+            
 
             this.nuevoTarjeta = new TarjetaCredito()
             {
@@ -89,8 +92,9 @@ namespace PruebasUnitarias
             HistorialTarjetas nuevo2 = new HistorialTarjetas();
             nuevo2.NumeroTarjeta = "1234123412349999";
             historial.tarjetasVulnerables.Add(nuevo2);
+
+            int registroHistorial = sesionPrueba.AltaHistorial(historial);
             
-            int registroHistorial = historial.Guardar();
 
             Assert.IsNotNull(registroHistorial);
 
@@ -107,7 +111,7 @@ namespace PruebasUnitarias
             historial.passwords.Add(nuevo);
 
 
-            int registroHistorial = historial.Guardar();
+            int registroHistorial = sesionPrueba.AltaHistorial(historial);
 
             Assert.IsNotNull(registroHistorial);
 

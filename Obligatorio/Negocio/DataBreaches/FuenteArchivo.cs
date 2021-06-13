@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Negocio.Utilidades
+namespace Negocio.DataBreaches
 {
     public class FuenteArchivo : IFuente
     {

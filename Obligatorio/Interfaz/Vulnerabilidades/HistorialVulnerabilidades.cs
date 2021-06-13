@@ -1,7 +1,7 @@
 ﻿using Negocio;
 using Negocio.Contrasenias;
 using Negocio.TarjetaCreditos;
-using Negocio.Utilidades;
+using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio.DataBreaches;
 
 namespace Interfaz.Vulnerabilidades
 {
@@ -27,7 +28,7 @@ namespace Interfaz.Vulnerabilidades
 
         private void CargarTablaHistorial()
         {
-            IEnumerable<Historial> historiales = Sesion.DevolverHistoriales();
+            IEnumerable<Historial> historiales = Sesion.ObtenerTodasLosHistoriales();
             this.dgvHistorial.Rows.Clear();
             foreach (Historial historial in historiales)
             {

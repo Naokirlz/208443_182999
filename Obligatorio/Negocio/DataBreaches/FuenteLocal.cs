@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 
-namespace Negocio.Utilidades
+namespace Negocio.DataBreaches
 {
     public class FuenteLocal : IFuente
     {

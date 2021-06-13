@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Negocio.Utilidades;
+using Negocio.DataBreaches;
 using System;
 using System.Collections.Generic;
 using System.IO;

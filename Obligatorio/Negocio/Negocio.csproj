@@ -55,6 +55,7 @@
     <Compile Include="Contrasenias\Contrasenia.cs" />
     <Compile Include="Categorias\GestorCategorias.cs" />
     <Compile Include="Contrasenias\Password.cs" />
+    <Compile Include="DataBreaches\GestorDataBreaches.cs" />
     <Compile Include="Migrations\202106062059237_InitialCreate.cs" />
     <Compile Include="Migrations\202106062059237_InitialCreate.designer.cs">
       <DependentUpon>202106062059237_InitialCreate.cs</DependentUpon>
@@ -92,15 +93,16 @@
     <Compile Include="Persistencia\IRepositorio.cs" />
     <Compile Include="Persistencia\RepositorioCategoriasEntity.cs" />
     <Compile Include="Persistencia\RepositorioContraseniasEntity.cs" />
+    <Compile Include="Persistencia\RepositorioDataBreachesEntity.cs" />
     <Compile Include="Persistencia\RepositorioTarjetaCreditoEntity.cs" />
-    <Compile Include="Utilidades\EnumColor.cs" />
-    <Compile Include="Utilidades\ExcepcionAccesoDenegado.cs" />
-    <Compile Include="Utilidades\FuenteArchivo.cs" />
-    <Compile Include="Utilidades\FuenteLocal.cs" />
-    <Compile Include="Utilidades\Historial.cs" />
-    <Compile Include="Utilidades\HistorialContrasenia.cs" />
-    <Compile Include="Utilidades\HistorialTarjetas.cs" />
-    <Compile Include="Utilidades\IFuente.cs" />
+    <Compile Include="Contrasenias\EnumColor.cs" />
+    <Compile Include="Excepciones\ExcepcionAccesoDenegado.cs" />
+    <Compile Include="DataBreaches\FuenteArchivo.cs" />
+    <Compile Include="DataBreaches\FuenteLocal.cs" />
+    <Compile Include="DataBreaches\Historial.cs" />
+    <Compile Include="DataBreaches\HistorialContrasenia.cs" />
+    <Compile Include="DataBreaches\HistorialTarjetas.cs" />
+    <Compile Include="DataBreaches\IFuente.cs" />
     <Compile Include="TarjetaCreditos\GestorTarjetaCredito.cs" />
     <Compile Include="Persistencia\RepositorioCategoriasMemoria.cs" />
     <Compile Include="Persistencia\RepositorioTarjetaCreditoMemoria.cs" />
@@ -108,14 +110,14 @@
     <Compile Include="TarjetaCreditos\TarjetaCredito.cs" />
     <Compile Include="Contrasenias\GestorContrasenias.cs" />
     <Compile Include="Persistencia\RepositorioContraseniasMemoria.cs" />
-    <Compile Include="Utilidades\ExcepcionElementoNoExiste.cs" />
-    <Compile Include="Utilidades\ExcepcionElementoYaExiste.cs" />
-    <Compile Include="Utilidades\ExcepcionFaltaAtributo.cs" />
-    <Compile Include="Utilidades\ExcepcionFechaIncorrecta.cs" />
-    <Compile Include="Utilidades\ExcepcionLargoTexto.cs" />
-    <Compile Include="Utilidades\ExcepcionNumeroNoValido.cs" />
+    <Compile Include="Excepciones\ExcepcionElementoNoExiste.cs" />
+    <Compile Include="Excepciones\ExcepcionElementoYaExiste.cs" />
+    <Compile Include="Excepciones\ExcepcionFaltaAtributo.cs" />
+    <Compile Include="Excepciones\ExcepcionFechaIncorrecta.cs" />
+    <Compile Include="Excepciones\ExcepcionLargoTexto.cs" />
+    <Compile Include="Excepciones\ExcepcionNumeroNoValido.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilidades\Validaciones.cs" />
+    <Compile Include="Validaciones.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

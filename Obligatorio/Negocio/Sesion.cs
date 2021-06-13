@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
-using Negocio.Utilidades;
-using Negocio.TarjetaCreditos;
 
+using Negocio.TarjetaCreditos;
+using Negocio.DataBreaches;
+using Negocio.Excepciones;
 
 namespace Negocio
 {
@@ -14,6 +15,7 @@ namespace Negocio
         private GestorCategorias gestorCategoria;
         private GestorContrasenias gestorContrasenia;
         private GestorTarjetaCredito gestorTarjetaCredito;
+        private GestorDataBreaches gestorDataBreaches;
         public IFuente FuenteLocal { get; set; }
         private string passwordMaestro;
         private bool logueado;
@@ -29,6 +31,7 @@ namespace Negocio
             gestorCategoria = new GestorCategorias();
             gestorContrasenia = new GestorContrasenias();
             gestorTarjetaCredito = new GestorTarjetaCredito();
+            gestorDataBreaches = new GestorDataBreaches();
             FuenteLocal = new FuenteLocal();
             passwordMaestro = "";
             this.logueado = false;
@@ -183,54 +186,41 @@ namespace Negocio
 
         public int ConsultarVulnerabilidades()
         {
-            Historial historial = new Historial();
-            historial.Fecha = DateTime.Now;
-
-            IEnumerable<Contrasenia> contraseniasVul = ContraseniasVulnerables();
-
-            foreach(Contrasenia con in contraseniasVul)
-            {
-                HistorialContrasenia nuevo = new HistorialContrasenia();
-                nuevo.ContraseniaId = con.ContraseniaId;
-                historial.passwords.Add(nuevo);
-            }
-
-            IEnumerable<TarjetaCredito> tarjetasVul = TarjetasCreditoVulnerables();
-
-            foreach (TarjetaCredito tarjeta in tarjetasVul)
-            {
-                HistorialTarjetas nuevo = new HistorialTarjetas();
-                nuevo.NumeroTarjeta = tarjeta.Numero;
-                historial.tarjetasVulnerables.Add(nuevo);
-            }
-
-            int registroHistorial = historial.Guardar();
-
-            return registroHistorial;
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            return gestorDataBreaches.ConsultarVulnerabilidades(ContraseniasVulnerables(), TarjetasCreditoVulnerables());
         }
 
         public IEnumerable<HistorialContrasenia> DevolverContraseniasVulnerables(int historial)
         {
-            Historial histo = new Historial();
-            histo.HistorialId = historial;
-            Historial buscado = histo.ObtenerHistorial(histo);
-
-            return buscado.passwords;
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            return gestorDataBreaches.DevolverContraseniasVulnerables(historial);
         }
 
         public IEnumerable<HistorialTarjetas> DevolverTarjetasVulnerables(int historial)
         {
-            Historial histo = new Historial();
-            histo.HistorialId = historial;
-            Historial buscado = histo.ObtenerHistorial(histo);
-
-            return buscado.tarjetasVulnerables;
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            return gestorDataBreaches.DevolverTarjetasVulnerables(historial);
         }
 
-        public IEnumerable<Historial> DevolverHistoriales()
+        public IEnumerable<Historial> ObtenerTodasLosHistoriales()
         {
-            Historial historial = new Historial();
-            return historial.DevolverHistoriales();
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            return gestorDataBreaches.ObtenerTodas();
         }
+
+        public int AltaHistorial(Historial historial)
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            return gestorDataBreaches.Alta(historial);
+        }
+
+        public Historial BuscarHistorial(Historial historial)
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado("Debe iniciar sesión para acceder a este método.");
+            return gestorDataBreaches.Buscar(historial);
+
+        }
+
+
     }
 }

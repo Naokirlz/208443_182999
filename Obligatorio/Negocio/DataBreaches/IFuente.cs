@@ -1,5 +1,5 @@
 ﻿
-namespace Negocio.Utilidades
+namespace Negocio.DataBreaches
 {
     public interface IFuente
     {

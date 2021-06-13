@@ -1,6 +1,6 @@
 ﻿using Negocio;
 using Negocio.Contrasenias;
-using Negocio.Utilidades;
+using Negocio.Excepciones;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;

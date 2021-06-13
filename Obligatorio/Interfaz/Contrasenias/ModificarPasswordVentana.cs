@@ -1,7 +1,7 @@
 ﻿using Negocio;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
-using Negocio.Utilidades;
+using Negocio.Excepciones;
 using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;

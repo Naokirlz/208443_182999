@@ -2,12 +2,13 @@
 using Negocio;
 using Negocio.TarjetaCreditos;
 using Negocio.Categorias;
-using Negocio.Utilidades;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Negocio.Excepciones;
 
 namespace PruebasUnitarias
 {

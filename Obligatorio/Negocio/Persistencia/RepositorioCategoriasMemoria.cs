@@ -1,5 +1,5 @@
 ﻿using Negocio.Categorias;
-using Negocio.Utilidades;
+using Negocio.Excepciones;
 using System.Collections.Generic;
 
 namespace Negocio.Persistencia

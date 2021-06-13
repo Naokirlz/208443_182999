@@ -1,5 +1,5 @@
 ﻿using Negocio.Persistencia;
-using Negocio.Utilidades;
+using Negocio.DataBreaches;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
