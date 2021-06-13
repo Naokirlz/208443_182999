@@ -72,11 +72,16 @@ namespace Interfaz
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            BotonActivo(sender, RGBColores.Color6);
-            Sesion.LogOut();
-            InicioSesion pantallaLogin = new InicioSesion();
-            this.Hide();
-            pantallaLogin.Show();
+            VentanaConfirmarBool confirmacion = new VentanaConfirmarBool("Realmente desea salir?");
+            confirmacion.Show();
+            if (confirmacion.Respuesta)
+            {
+                BotonActivo(sender, RGBColores.Color6);
+                Sesion.LogOut();
+                InicioSesion pantallaLogin = new InicioSesion();
+                this.Hide();
+                pantallaLogin.Show();
+            }
         }
         private void btnEscritorio_Click(object sender, EventArgs e)
         {
