@@ -175,9 +175,15 @@ namespace Interfaz
 
         private void btnEliminarDatos_Click(object sender, EventArgs e)
         {
-            Sesion.VaciarDatosPrueba();
-            this.btnCargarDatosPrueba.Enabled = true;
-            Alerta("Datos borrados con éxito.", AlertaToast.enmTipo.Exito);
+            VentanaConfirmarBool confirmacion = new VentanaConfirmarBool("Realmente desea eliminar los datos?");
+            confirmacion.Show();
+            if (confirmacion.Respuesta)
+            {
+                Sesion.VaciarDatosPrueba();
+                this.btnCargarDatosPrueba.Enabled = true;
+                Alerta("Datos borrados con éxito.", AlertaToast.enmTipo.Exito);
+            }
+            confirmacion.Close();
         }
     }
 }
