@@ -35,7 +35,17 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void Baja(Historial entity)
         {
-            throw new NotImplementedException();
+            using (Contexto context = new Contexto())
+            {
+                Historial aEliminar = context.Historials.FirstOrDefault(c => c.HistorialId == entity.HistorialId);
+
+                if (aEliminar != null)
+                {
+                    context.Historials.Remove(aEliminar);
+                    context.SaveChanges();
+                }
+                else throw new ExcepcionElementoNoExiste("Error: Historial No Existe !!!");
+            }
         }
 
         public Historial Buscar(Historial entity)
@@ -43,9 +53,12 @@ namespace Negocio.Persistencia.EntityFramework
             using (Contexto context = new Contexto())
             {
                 Historial existe = context.Historials.FirstOrDefault(t => t.HistorialId == entity.HistorialId);
-                existe.passwords = context.HistorialContrasenia.Where(t => t.HistorialId == entity.HistorialId).ToList();
-                existe.tarjetasVulnerables = context.HistorialTarjeta.Where(t => t.HistorialId == entity.HistorialId).ToList();
-                if (existe != null) return existe;
+                if (existe != null) 
+                { 
+                    existe.passwords = context.HistorialContrasenia.Where(t => t.HistorialId == entity.HistorialId).ToList();
+                    existe.tarjetasVulnerables = context.HistorialTarjeta.Where(t => t.HistorialId == entity.HistorialId).ToList();
+                    return existe;
+                }
                 throw new ExcepcionElementoNoExiste("No existe Historial!");
             }
         }

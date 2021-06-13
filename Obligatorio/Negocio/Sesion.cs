@@ -115,6 +115,12 @@ namespace Negocio
             gestorTarjetaCredito.Baja(id);
         }
 
+        public void BajaHistorial(int id)
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            gestorDataBreaches.Baja(id);
+        }
+
         public void ModificarTarjeta(TarjetaCredito modificada)
         {
             if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);

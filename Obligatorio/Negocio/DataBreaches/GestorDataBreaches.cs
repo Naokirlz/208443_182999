@@ -60,11 +60,18 @@ namespace Negocio.DataBreaches
         {
             return repositorio.Alta(historial);
         }
+        
+        public void Baja(int id)
+        {
+            Historial aEliminar = new Historial();
+            aEliminar.HistorialId = id;
+            repositorio.Baja(aEliminar);
+        }
 
-        public Historial Buscar(int entity)
+        public Historial Buscar(int id)
         {
             Historial buscado = new Historial();
-            buscado.HistorialId = entity;
+            buscado.HistorialId = id;
             return repositorio.Buscar(buscado);
         }
         public IEnumerable<Historial> ObtenerTodas()
@@ -72,6 +79,6 @@ namespace Negocio.DataBreaches
             return repositorio.ObtenerTodas();
         }
 
-
+       
     }
 }

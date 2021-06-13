@@ -101,7 +101,7 @@ namespace PruebasUnitarias
         }
 
         [TestMethod]
-        public void SePuedeGuardiarHistorial2Contrasenia()
+        public void SePuedeGuardarHistorial2Contrasenia()
         {
             Historial historial = new Historial();
             historial.Fecha = DateTime.Now;
@@ -115,6 +115,44 @@ namespace PruebasUnitarias
 
             Assert.IsNotNull(registroHistorial);
 
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionElementoNoExiste))]
+        public void SePuedeEliminarunHistorial()
+        {
+            Historial historial = new Historial();
+            historial.Fecha = DateTime.Now;
+            int registroHistorial = sesionPrueba.AltaHistorial(historial);
+                        
+            Assert.IsNotNull(registroHistorial);
+            sesionPrueba.BajaHistorial(registroHistorial);
+            sesionPrueba.BuscarHistorial(registroHistorial);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeEliminarunHistorialSinLoguearse()
+        {
+            Historial historial = new Historial();
+            historial.Fecha = DateTime.Now;
+            int registroHistorial = sesionPrueba.AltaHistorial(historial);
+
+            sesionPrueba.LogOut();
+            sesionPrueba.BajaHistorial(registroHistorial);
+   
+        }
+
+        [TestMethod]
+        public void SePuedeBudvstunHistorial()
+        {
+            Historial historial = new Historial();
+            historial.Fecha = DateTime.Now;
+            int registroHistorial = sesionPrueba.AltaHistorial(historial);
+            Historial buscado = sesionPrueba.BuscarHistorial(registroHistorial);
+            Assert.IsNotNull(buscado);
+   
         }
 
         [TestMethod]
