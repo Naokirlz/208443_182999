@@ -17,15 +17,10 @@ namespace Negocio.Persistencia.EntityFramework
                 entity.Categoria = context.Categorias.FirstOrDefault(c => c.Nombre == entity.Categoria.Nombre);
                 context.Categorias.Attach(entity.Categoria);
                 context.Tarjetas.Add(entity);
-                try
-                {
-                    context.SaveChanges();
-                    return entity.Id;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                context.SaveChanges();
+                return entity.Id;
+              
+             
              }
         }
 
@@ -37,14 +32,8 @@ namespace Negocio.Persistencia.EntityFramework
                 if (aEliminar != null)
                 {
                     context.Tarjetas.Remove(aEliminar);
-                    try
-                    {
-                        context.SaveChanges();
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
+                    context.SaveChanges();
+                
                 }
                 else throw new ExcepcionElementoNoExiste("Error: TarjetaCredito No Existe !!!");
             }
@@ -85,16 +74,10 @@ namespace Negocio.Persistencia.EntityFramework
                 tarjetaAModificar.Vencimiento = entity.Vencimiento;
                 tarjetaAModificar.Nota = entity.Nota;
                 tarjetaAModificar.CantidadVecesEncontradaVulnerable = entity.CantidadVecesEncontradaVulnerable;
-
-                try
-                {
-                    context.Categorias.Attach(entity.Categoria);
-                    context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                context.Categorias.Attach(entity.Categoria);
+                context.SaveChanges();
+                
+           
             }
         }
 

@@ -25,16 +25,10 @@ namespace Negocio.Persistencia.EntityFramework
                 {
                     context.HistorialTarjeta.Add(tar);
                 }
-
-                try
-                {
-                    context.SaveChanges();
-                    return historial.HistorialId;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                context.SaveChanges();
+                return historial.HistorialId;
+               
+             
             }
 
         }
