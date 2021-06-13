@@ -8,6 +8,14 @@ namespace Negocio.TarjetaCreditos
 {
     public class GestorTarjetaCredito 
     {
+        private const int LARGO_MAXIMO_NOMBRE = 25;
+        private const int LARGO_MINIMO_NOMBRE = 3;
+        private const int LARGO_MAXIO_TIPO = 25;
+        private const int LARGO_MINIMO_TIPO = 3;
+        private const int LARGONUMEROTARJETA = 16;
+        private const int LARGO_CODIGO = 16;
+                
+
         private IRepositorio<TarjetaCredito> repositorio;
       
         public GestorTarjetaCredito()
@@ -87,18 +95,17 @@ namespace Negocio.TarjetaCreditos
 
         private void ValidarCampos(TarjetaCredito tarjeta)
         {
-            Validaciones.ValidarLargoTexto(tarjeta.Nombre, 25, 3, "nombre");
-            Validaciones.ValidarLargoTexto(tarjeta.Tipo, 25, 3, "tipo");
-            Validaciones.ValidarLargoTexto(tarjeta.Numero, 16, 16, "número");
+            Validaciones.ValidarLargoTexto(tarjeta.Nombre, LARGO_MAXIMO_NOMBRE, LARGO_MINIMO_NOMBRE, "nombre");
+            Validaciones.ValidarLargoTexto(tarjeta.Tipo, LARGO_MAXIO_TIPO, LARGO_MINIMO_TIPO, "tipo");
+            Validaciones.ValidarLargoTexto(tarjeta.Numero, LARGONUMEROTARJETA, LARGONUMEROTARJETA, "número");
             Validaciones.ValidarSoloNumeros(tarjeta.Numero, "número");
-            Validaciones.ValidarLargoTexto(tarjeta.Codigo, 3, 3, "código");
+            Validaciones.ValidarLargoTexto(tarjeta.Codigo, LARGO_CODIGO, LARGO_CODIGO, "código");
             Validaciones.ValidarSoloNumeros(tarjeta.Codigo, "código");
             if(tarjeta.Nota != null){
                 Validaciones.ValidarLargoTexto(tarjeta.Nota, 250, -1, "nota");
             }
         }
-
-
+      
         public void LimpiarBD()
         {
             repositorio.TestClear();

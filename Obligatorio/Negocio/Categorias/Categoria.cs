@@ -7,7 +7,7 @@ namespace Negocio.Categorias
     [Table("Categoria")]
     public class Categoria
     {
-        
+       
         public int Id { get; set; }
 
         [Required]

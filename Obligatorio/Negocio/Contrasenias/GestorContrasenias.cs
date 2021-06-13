@@ -9,6 +9,15 @@ namespace Negocio.Contrasenias
 {
     public class GestorContrasenias
     {
+        private const int LARGO_MAXIMO_CLAVE = 25;
+        private const int LARGO_MINIMO_CLAVE = 5;
+        private const int LARGO_MAXIMO_SITIO = 25;
+        private const int LARGO_MINIMO_SITIO = 3;
+        private const int LARGO_MAXIMO_USUARIO = 25;
+        private const int LARGO_MINIMO_USUARIO = 5;
+        private const int LARGO_MAXIMO_NOTAS = 250;
+        private const int LARGO_MINIMO_NOTAS = 0;
+       
         private IRepositorio<Contrasenia> repositorio;
                 
         public GestorContrasenias() 
@@ -100,10 +109,10 @@ namespace Negocio.Contrasenias
                 throw new ExcepcionFaltaAtributo("Debe completar los campos obligatorios.");
 
             Validaciones.ValidarFecha(contrasenia.FechaUltimaModificacion);
-            Validaciones.ValidarLargoTexto(contrasenia.Sitio, 25, 3, "sitio");
-            Validaciones.ValidarLargoTexto(contrasenia.Usuario, 25, 5, "usuario");
-            Validaciones.ValidarPassword(contrasenia.Password.Clave, 25, 5);
-            if (contrasenia.Notas != null) Validaciones.ValidarLargoTexto(contrasenia.Notas, 250, 0, "notas");
+            Validaciones.ValidarLargoTexto(contrasenia.Sitio, LARGO_MAXIMO_SITIO, LARGO_MINIMO_SITIO, "sitio");
+            Validaciones.ValidarLargoTexto(contrasenia.Usuario, LARGO_MAXIMO_USUARIO, LARGO_MINIMO_USUARIO, "usuario");
+            Validaciones.ValidarPassword(contrasenia.Password.Clave, LARGO_MAXIMO_CLAVE, LARGO_MINIMO_CLAVE);
+            if (contrasenia.Notas != null) Validaciones.ValidarLargoTexto(contrasenia.Notas, LARGO_MAXIMO_NOTAS, LARGO_MINIMO_NOTAS, "notas");
         }
 
 
