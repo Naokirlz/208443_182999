@@ -685,6 +685,8 @@ namespace PruebasUnitarias
 
             List<Grupo> grupos = sesionPrueba.GenerarGrupos();
             Assert.IsNotNull(grupos);
+        }
+        [TestMethod]
         public void LaSesionMeDevuelveElColorDeUnPassword()
         {
             string password = "HolaSecretoPassword";
@@ -725,9 +727,11 @@ namespace PruebasUnitarias
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void NoSeGeneranGruposSinLoguearse()
         {
-           sesionPrueba.LogOut();
-           List<Grupo> grupos = sesionPrueba.GenerarGrupos();
-           
+            sesionPrueba.LogOut();
+            List<Grupo> grupos = sesionPrueba.GenerarGrupos();
+
+        }
+        [TestMethod]
         public void LaSesionNoDevuelveSiElPasswordEsRepetidoSiNoEstaLogueado()
         {
             sesionPrueba.LogOut();
