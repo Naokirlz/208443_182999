@@ -4,6 +4,7 @@ using Negocio.Contrasenias;
 using Negocio.Excepciones;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -16,6 +17,9 @@ namespace Interfaz.Contrasenias
         public ModificarPasswordVentana(Contrasenia contrasenia)
         {
             InitializeComponent();
+            lblContrasenaInsegura.Visible = false;
+            lblContrasenaFiltrada.Visible = false;
+            lblContrasenaRepetida.Visible = false;
 
             Sesion = Sesion.ObtenerInstancia();
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
@@ -113,10 +117,73 @@ namespace Interfaz.Contrasenias
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            //verificar passwoird repetido
-            //verificar password inseguro
-            //verificar password filtrado
-            //marcar cada vulnerabilidad en el lbl que corresponda.
+            VerificarFortalezaPassword();
+            VerificarPasswordsRepetidos();
+            VerificarPasswordsFiltrados();
+        }
+        private void VerificarPasswordsFiltrados()
+        {
+            string password = this.txtPassword.Text;
+            int vecesFiltrado = Sesion.VerificarPasswordFiltrado(password);
+            this.lblContrasenaFiltrada.Visible = true;
+            if (vecesFiltrado == 0)
+            {
+                lblContrasenaFiltrada.Text = "La Contraseña no ha sido filtrada.";
+                lblContrasenaFiltrada.ForeColor = Color.DarkGreen;
+            }
+            else
+            {
+                lblContrasenaFiltrada.Text = "La Contraseña se ha filtrado " + vecesFiltrado.ToString() + " veces.";
+                lblContrasenaFiltrada.ForeColor = Color.Red;
+            }
+        }
+        private void VerificarPasswordsRepetidos()
+        {
+            string password = this.txtPassword.Text;
+            int vecesRepetido = Sesion.VerificarCatidadVecesPasswordRepetido(password);
+            if (vecesRepetido == 0)
+            {
+                this.lblContrasenaRepetida.Visible = true;
+                lblContrasenaRepetida.Text = "La Contraseña no es repetida.";
+                lblContrasenaRepetida.ForeColor = Color.DarkGreen;
+            }
+            else
+            {
+                this.lblContrasenaRepetida.Visible = true;
+                lblContrasenaRepetida.Text = "La Contraseña se repite " + vecesRepetido.ToString() + " veces.";
+                lblContrasenaRepetida.ForeColor = Color.Red;
+            }
+        }
+        private void VerificarFortalezaPassword()
+        {
+            string password = this.txtPassword.Text;
+            lblContrasenaInsegura.Visible = true;
+            string fortaleza = Sesion.VerificarFortalezaPassword(password).ToString();
+            if (fortaleza.Equals("VERDE_OSCURO"))
+            {
+                lblContrasenaInsegura.Text = "La Contraseña es segura.";
+                lblContrasenaInsegura.ForeColor = Color.DarkGreen;
+            }
+            else if (fortaleza.Equals("VERDE_CLARO"))
+            {
+                lblContrasenaInsegura.Text = "La Contraseña podría ser más segura.";
+                lblContrasenaInsegura.ForeColor = Color.Green;
+            }
+            else if (fortaleza.Equals("AMARILLO"))
+            {
+                lblContrasenaInsegura.Text = "La Contraseña tiene cierta seguridad.";
+                lblContrasenaInsegura.ForeColor = Color.Yellow;
+            }
+            else if (fortaleza.Equals("NARANJA"))
+            {
+                lblContrasenaInsegura.Text = "La Contraseña no es segura.";
+                lblContrasenaInsegura.ForeColor = Color.Orange;
+            }
+            else
+            {
+                lblContrasenaInsegura.Text = "La Contraseña es muy insegura.";
+                lblContrasenaInsegura.ForeColor = Color.Red;
+            }
         }
     }
 }

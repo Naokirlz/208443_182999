@@ -20,8 +20,7 @@ namespace Interfaz.Contrasenias
 
             GenerarColumnaDeBotones();
 
-            this.Grupos = new List<Grupo>();
-            Sesion.GenerarGrupos();
+            this.Grupos = Sesion.GenerarGrupos();
             CargarTabla();
         }
 

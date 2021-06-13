@@ -19,6 +19,7 @@ namespace Negocio
         private GestorTarjetaCredito gestorTarjetaCredito;
         private GestorDataBreaches gestorDataBreaches;
         public IFuente FuenteLocal { get; set; }
+        private List<IFuente> fuentes { get; set; }
         private string passwordMaestro;
         private bool logueado;
 
@@ -35,6 +36,12 @@ namespace Negocio
             gestorTarjetaCredito = new GestorTarjetaCredito();
             gestorDataBreaches = new GestorDataBreaches();
             FuenteLocal = new FuenteLocal();
+            /////////////////////////////
+            IFuente fuenteArchivo = new FuenteArchivo();
+            fuentes = new List<IFuente>();
+            fuentes.Add(FuenteLocal);
+            fuentes.Add(fuenteArchivo);
+            ///////////////////////////////
             passwordMaestro = "";
             this.logueado = false;
         }
@@ -242,9 +249,14 @@ namespace Negocio
 
         public int VerificarCatidadVecesPasswordRepetido(string password)
         {
-            //if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            //return gestorContrasenia.VerificarCatidadVecesPasswordRepetido(password);
-            return 2;
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            return gestorContrasenia.VerificarCantidadVecesPasswordRepetido(password);
+        }
+
+        public int VerificarPasswordFiltrado(string password)
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            return gestorContrasenia.VerificarPasswordFiltrado(password, fuentes);
         }
     }
 }

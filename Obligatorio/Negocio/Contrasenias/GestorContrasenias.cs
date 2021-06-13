@@ -158,9 +158,25 @@ namespace Negocio.Contrasenias
 
         public int VerificarCantidadVecesPasswordRepetido(string password)
         {
-            //return repositorio.VerificarCantidadVecesPasswordRepetido(password);
-            throw new NotImplementedException();
+            List<Contrasenia> contrasenias = this.ObtenerTodas().ToList();
+            int cantidad = 0;
+            foreach(Contrasenia contrasenia in contrasenias)
+            {
+                if (contrasenia.Password.Clave.Equals(password)) cantidad++;
+            }
+            return cantidad;
         }
 
+        public int VerificarPasswordFiltrado(string password, List<IFuente> fuentes)
+        {
+            int cantidad = 0;
+
+            foreach(IFuente fuente in fuentes)
+            {
+                cantidad += fuente.BuscarPasswordOContraseniaEnFuente(password);
+            }
+
+            return cantidad;
+        }
     }
 }

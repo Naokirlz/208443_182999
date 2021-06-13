@@ -732,11 +732,28 @@ namespace PruebasUnitarias
 
         }
         [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void LaSesionNoDevuelveSiElPasswordEsRepetidoSiNoEstaLogueado()
         {
             sesionPrueba.LogOut();
             string password = "HolaSecretoPassword";
-            int vecesRepetido = sesionPrueba.VerificarCatidadVecesPasswordRepetido(password);
+            sesionPrueba.VerificarCatidadVecesPasswordRepetido(password);
+        }
+
+        [TestMethod]
+        public void LaSesionMeDevuelveSiElPasswordSeFiltro()
+        {
+            string password = "dalevo111!!!";
+            int filtrada = sesionPrueba.VerificarPasswordFiltrado(password);
+            Assert.AreEqual(1, filtrada);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void LaSesionNoDevuelveSiElPasswordSeFiltroSiNoEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            string password = "dalevo111!!!";
+            sesionPrueba.VerificarPasswordFiltrado(password);
         }
 
         private string ArmarTextoDeLargoVariable(int largo)

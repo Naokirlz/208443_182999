@@ -16,6 +16,8 @@ namespace Interfaz.Contrasenias
         {
             InitializeComponent();
             lblContrasenaInsegura.Visible = false;
+            lblContrasenaFiltrada.Visible = false;
+            lblContrasenaRepetida.Visible = false;
             Refrescar();
         }
         private void Refrescar()
@@ -128,8 +130,41 @@ namespace Interfaz.Contrasenias
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
             VerificarFortalezaPassword();
-            //verificar passwoird repetido
-            //verificar password filtrado
+            VerificarPasswordsRepetidos();
+            VerificarPasswordsFiltrados();
+        }
+        private void VerificarPasswordsFiltrados()
+        {
+            string password = this.txtPassword.Text;
+            int vecesFiltrado = Sesion.VerificarPasswordFiltrado(password);
+            this.lblContrasenaFiltrada.Visible = true;
+            if (vecesFiltrado == 0)
+            {
+                lblContrasenaFiltrada.Text = "La Contraseña no ha sido filtrada.";
+                lblContrasenaFiltrada.ForeColor = Color.DarkGreen;
+            }
+            else
+            {
+                lblContrasenaFiltrada.Text = "La Contraseña se ha filtrado " + vecesFiltrado.ToString() + " veces.";
+                lblContrasenaFiltrada.ForeColor = Color.Red;
+            }
+        }
+        private void VerificarPasswordsRepetidos()
+        {
+            string password = this.txtPassword.Text;
+            int vecesRepetido = Sesion.VerificarCatidadVecesPasswordRepetido(password);
+            if(vecesRepetido == 0)
+            {
+                this.lblContrasenaRepetida.Visible = true;
+                lblContrasenaRepetida.Text = "La Contraseña no es repetida.";
+                lblContrasenaRepetida.ForeColor = Color.DarkGreen;
+            }
+            else
+            {
+                this.lblContrasenaRepetida.Visible = true;
+                lblContrasenaRepetida.Text = "La Contraseña se repite " + vecesRepetido.ToString() + " veces.";
+                lblContrasenaRepetida.ForeColor = Color.Red;
+            }
         }
         private void VerificarFortalezaPassword()
         {
