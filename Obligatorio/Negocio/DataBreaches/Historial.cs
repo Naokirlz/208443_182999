@@ -23,7 +23,6 @@ namespace Negocio.DataBreaches
         public List <HistorialTarjetas> tarjetasVulnerables { get; set; }
 
 
-
         public Historial()
         {
             this.passwords = new List<HistorialContrasenia>();

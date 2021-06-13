@@ -3,14 +3,13 @@ using Negocio.TarjetaCreditos;
 
 using System.Collections.Generic;
 
-namespace Negocio.Persistencia
+namespace Negocio.Persistencia.Memoria
 {
     public class RepositorioTarjetaCreditoMemoria:IRepositorio<TarjetaCredito>
     {
         private static int autonumerado = 1;
         private List<TarjetaCredito> tarjetas;
-        
-
+ 
         public RepositorioTarjetaCreditoMemoria()
         {
             this.tarjetas = new List<TarjetaCredito>();
@@ -36,7 +35,6 @@ namespace Negocio.Persistencia
             TarjetaCredito anterior = Buscar(modificada);
             VerificarNombreTarjetaRepetido(modificada);
             VerificarNumeroTarjetaRepetido(modificada);
-
             anterior.Categoria = modificada.Categoria;
             anterior.Nombre = modificada.Nombre;
             anterior.Tipo = modificada.Tipo;

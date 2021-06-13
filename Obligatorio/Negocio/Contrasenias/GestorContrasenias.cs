@@ -1,6 +1,7 @@
 ﻿using Negocio.DataBreaches;
 using Negocio.Excepciones;
 using Negocio.Persistencia;
+using Negocio.Persistencia.EntityFramework;
 using System.Collections.Generic;
 using System.Linq;
 

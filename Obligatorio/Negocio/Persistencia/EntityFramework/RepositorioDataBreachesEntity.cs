@@ -3,10 +3,9 @@ using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Negocio.Persistencia
+
+namespace Negocio.Persistencia.EntityFramework
 {
     public class RepositorioDataBreachesEntity:IRepositorio<Historial>
     {
@@ -15,7 +14,6 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
-
                 context.Historials.Add(historial);
 
                 foreach (HistorialContrasenia pas in historial.passwords)
@@ -50,14 +48,11 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
-
                 Historial existe = context.Historials.FirstOrDefault(t => t.HistorialId == entity.HistorialId);
                 existe.passwords = context.HistorialContrasenia.Where(t => t.HistorialId == entity.HistorialId).ToList();
                 existe.tarjetasVulnerables = context.HistorialTarjeta.Where(t => t.HistorialId == entity.HistorialId).ToList();
-
                 if (existe != null) return existe;
                 throw new ExcepcionElementoNoExiste("No existe Historial!");
-
             }
         }
 
@@ -72,8 +67,6 @@ namespace Negocio.Persistencia
                 return retorno;
             }
         }
-
-
         public void Existe(Historial entity)
         {
             throw new NotImplementedException();
@@ -83,8 +76,7 @@ namespace Negocio.Persistencia
         {
             throw new NotImplementedException();
         }
-                
-
+ 
         public void TestClear()
         {
             throw new NotImplementedException();

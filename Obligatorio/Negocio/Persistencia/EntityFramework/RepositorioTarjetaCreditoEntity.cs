@@ -1,14 +1,11 @@
-﻿using Negocio.Categorias;
-using Negocio.TarjetaCreditos;
+﻿using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
 using Negocio.Excepciones;
 
-namespace Negocio.Persistencia
+namespace Negocio.Persistencia.EntityFramework
 {
     public class RepositorioTarjetaCreditoEntity : IRepositorio<TarjetaCredito>
     {
@@ -37,7 +34,6 @@ namespace Negocio.Persistencia
             using (Contexto context = new Contexto())
             {
                 TarjetaCredito aEliminar = context.Tarjetas.FirstOrDefault(c => c.Id == entity.Id);
-                
                 if (aEliminar != null)
                 {
                     context.Tarjetas.Remove(aEliminar);
@@ -59,11 +55,8 @@ namespace Negocio.Persistencia
             using (Contexto context = new Contexto())
             {
                 TarjetaCredito existe = context.Tarjetas.Include(t => t.Categoria).FirstOrDefault(t => t.Id == entity.Id);
-
                 if (existe != null) return existe;
                 throw new ExcepcionElementoNoExiste("No existe Tarjeta!");
-
-
             }
         }
 
@@ -72,7 +65,6 @@ namespace Negocio.Persistencia
             using (Contexto context = new Contexto())
             {
                 TarjetaCredito existe = context.Tarjetas.FirstOrDefault(c => (c.Numero == entity.Numero || c.Nombre == entity.Nombre) && c.Id != entity.Id);
-                
                 if (existe != null)
                     throw new ExcepcionElementoYaExiste("Ya existe Tarjeta con ese nombre o numero.");
             }
@@ -84,9 +76,7 @@ namespace Negocio.Persistencia
             {
                 TarjetaCredito tarjetaAModificar = context.Tarjetas.FirstOrDefault(c => c.Id == entity.Id);
                 tarjetaAModificar.Id = entity.Id;
-
                 Existe(entity);
-
                 tarjetaAModificar.Categoria = entity.Categoria;
                 tarjetaAModificar.Nombre = entity.Nombre;
                 tarjetaAModificar.Tipo = entity.Tipo;
@@ -94,7 +84,6 @@ namespace Negocio.Persistencia
                 tarjetaAModificar.Codigo = entity.Codigo;
                 tarjetaAModificar.Vencimiento = entity.Vencimiento;
                 tarjetaAModificar.Nota = entity.Nota;
-                
                 tarjetaAModificar.CantidadVecesEncontradaVulnerable = entity.CantidadVecesEncontradaVulnerable;
 
                 try

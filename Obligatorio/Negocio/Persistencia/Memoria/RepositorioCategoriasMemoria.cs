@@ -2,7 +2,7 @@
 using Negocio.Excepciones;
 using System.Collections.Generic;
 
-namespace Negocio.Persistencia
+namespace Negocio.Persistencia.Memoria
 {
     public class RepositorioCategoriasMemoria : IRepositorio<Categoria>
     {

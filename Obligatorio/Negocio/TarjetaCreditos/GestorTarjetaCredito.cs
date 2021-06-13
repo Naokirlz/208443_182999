@@ -2,7 +2,7 @@
 using System.Linq;
 using Negocio.DataBreaches;
 using Negocio.Persistencia;
-
+using Negocio.Persistencia.EntityFramework;
 
 namespace Negocio.TarjetaCreditos
 {

@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Negocio.DataBreaches
 {
@@ -29,15 +28,15 @@ namespace Negocio.DataBreaches
             foreach (string fila in fuentes)
             {
                 string texto = fila.TrimEnd('\r');
-
                 string sinEspacios = texto.Replace(" ", "");
                 bool soloNum = true;
+    
                 foreach (char digito in sinEspacios)
                 {
                     if (!Validaciones.EsNumero(digito)) soloNum = false;
                 }
+  
                 if (soloNum) texto = sinEspacios;
-
                 this.contraseniasYTarjetasVulnerables.Add(texto);
             }
         }

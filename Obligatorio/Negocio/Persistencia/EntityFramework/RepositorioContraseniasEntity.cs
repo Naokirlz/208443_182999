@@ -2,12 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
 using Negocio.Excepciones;
 
-namespace Negocio.Persistencia
+namespace Negocio.Persistencia.EntityFramework
 {
     public class RepositorioContraseniasEntity : IRepositorio<Contrasenia>
     {
@@ -38,18 +36,18 @@ namespace Negocio.Persistencia
             {
                 Contrasenia aEliminar = context.Contrasenias.FirstOrDefault(c => c.ContraseniaId == entity.ContraseniaId);
 
-                if (aEliminar != null) { 
-
-                context.Passwords.Remove(aEliminar.Password);
-                context.Contrasenias.Remove(aEliminar);
-                    try
-                    {
-                        context.SaveChanges();
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
+                if (aEliminar != null) 
+                { 
+                    context.Passwords.Remove(aEliminar.Password);
+                    context.Contrasenias.Remove(aEliminar);
+                        try
+                        {
+                            context.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
                 
                 }
                 else throw new ExcepcionElementoNoExiste("Error: Contraseña No Existe !!!");
@@ -60,12 +58,9 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
-                
                 Contrasenia existe = context.Contrasenias.Include(t => t.Categoria).Include(t => t.Password).FirstOrDefault(t => t.ContraseniaId == entity.ContraseniaId);
-
                 if (existe != null) return existe;
                 throw new ExcepcionElementoNoExiste("No existe Contrasenia!");
-                
             }
         }
 
@@ -73,13 +68,10 @@ namespace Negocio.Persistencia
         {
             using (Contexto context = new Contexto())
             {
-                //TOUPPER TODO
-                Contrasenia existe = context.Contrasenias.FirstOrDefault(c => c.Sitio == entity.Sitio && c.Usuario == entity.Usuario);
-
-                if (existe != null)
+               Contrasenia existe = context.Contrasenias.FirstOrDefault(c => c.Sitio == entity.Sitio && c.Usuario == entity.Usuario);
+               if (existe != null)
                     throw new ExcepcionElementoYaExiste("Ya existe Contraseña con ese Sitio y Usuario.");
             }
-
         }
 
         public void Modificar(Contrasenia entity)
@@ -103,7 +95,6 @@ namespace Negocio.Persistencia
                 aModificar.Categoria = context.Categorias.FirstOrDefault(c => c.Nombre == entity.Categoria.Nombre);
                 aModificar.CantidadVecesEncontradaVulnerable = entity.CantidadVecesEncontradaVulnerable;
                 aModificar.Notas = entity.Notas;
-
 
                 try
                 {

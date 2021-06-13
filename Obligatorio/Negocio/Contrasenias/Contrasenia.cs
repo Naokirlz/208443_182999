@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Negocio.Categorias;
-
+using static Negocio.Contrasenias.Password;
 
 namespace Negocio.Contrasenias
 {
@@ -14,22 +14,21 @@ namespace Negocio.Contrasenias
         public virtual Password Password { get; set; }
 
         [Required]
-        [StringLength(25, MinimumLength = 3, ErrorMessage = "Largo entre 3 y 25")]
+        [StringLength(25, MinimumLength = 3)]
         public string Sitio { get; set; }
         
         [Required]
-        [StringLength(25, MinimumLength = 3, ErrorMessage = "Largo entre 3 y 25")]
+        [StringLength(25, MinimumLength = 3)]
         public string Usuario { get; set; }
-        
-        
-        
-        [StringLength(250, MinimumLength = 0, ErrorMessage = "Largo menor a 250")]
+         
+        [StringLength(250, MinimumLength = 0)]
         public string Notas {get; set; }
         
         public Categoria Categoria { get; set; }
 
         [Required]
         public DateTime  FechaUltimaModificacion { get; set; }
+        
         public int CantidadVecesEncontradaVulnerable { get; set; }
          
         public int CompareTo(Contrasenia otraContrasenia)

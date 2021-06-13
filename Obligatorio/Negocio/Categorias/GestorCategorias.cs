@@ -1,8 +1,7 @@
 ﻿using Negocio.Persistencia;
-using Negocio.DataBreaches;
-using System;
+using Negocio.Persistencia.EntityFramework;
 using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
+
 
 namespace Negocio.Categorias
 {

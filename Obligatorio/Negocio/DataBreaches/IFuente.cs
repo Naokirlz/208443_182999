@@ -1,5 +1,4 @@
-﻿
-namespace Negocio.DataBreaches
+﻿namespace Negocio.DataBreaches
 {
     public interface IFuente
     {

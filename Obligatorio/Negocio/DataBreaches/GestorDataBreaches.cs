@@ -1,11 +1,10 @@
 ﻿using Negocio.Contrasenias;
 using Negocio.Persistencia;
+using Negocio.Persistencia.EntityFramework;
 using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Negocio.DataBreaches
 {
@@ -23,7 +22,6 @@ namespace Negocio.DataBreaches
         {
             Historial historial = new Historial();
             historial.Fecha = DateTime.Now;
-
             IEnumerable<Contrasenia> contraseniasVul = ContraseniasVulnerables;
 
             foreach (Contrasenia con in contraseniasVul)
@@ -43,23 +41,18 @@ namespace Negocio.DataBreaches
             }
 
             int registroHistorial = Alta(historial);
-
             return registroHistorial;
         }
 
         public IEnumerable<HistorialContrasenia> DevolverContraseniasVulnerables(int historial)
         {
-            
             Historial buscado = Buscar(historial);
-
             return buscado.passwords;
         }
 
         public IEnumerable<HistorialTarjetas> DevolverTarjetasVulnerables(int historial)
         {
-            
             Historial buscado = Buscar(historial);
-
             return buscado.tarjetasVulnerables;
         }
     
@@ -73,7 +66,6 @@ namespace Negocio.DataBreaches
             Historial buscado = new Historial();
             buscado.HistorialId = entity;
             return repositorio.Buscar(buscado);
-
         }
         public IEnumerable<Historial> ObtenerTodas()
         {

@@ -91,11 +91,10 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistencia\Contexto.cs" />
     <Compile Include="Persistencia\IRepositorio.cs" />
-    <Compile Include="Persistencia\RepositorioCategoriasEntity.cs" />
-    <Compile Include="Persistencia\RepositorioContraseniasEntity.cs" />
-    <Compile Include="Persistencia\RepositorioDataBreachesEntity.cs" />
-    <Compile Include="Persistencia\RepositorioTarjetaCreditoEntity.cs" />
-    <Compile Include="Contrasenias\EnumColor.cs" />
+    <Compile Include="Persistencia\EntityFramework\RepositorioCategoriasEntity.cs" />
+    <Compile Include="Persistencia\EntityFramework\RepositorioContraseniasEntity.cs" />
+    <Compile Include="Persistencia\EntityFramework\RepositorioDataBreachesEntity.cs" />
+    <Compile Include="Persistencia\EntityFramework\RepositorioTarjetaCreditoEntity.cs" />
     <Compile Include="Excepciones\ExcepcionAccesoDenegado.cs" />
     <Compile Include="DataBreaches\FuenteArchivo.cs" />
     <Compile Include="DataBreaches\FuenteLocal.cs" />
@@ -104,12 +103,12 @@
     <Compile Include="DataBreaches\HistorialTarjetas.cs" />
     <Compile Include="DataBreaches\IFuente.cs" />
     <Compile Include="TarjetaCreditos\GestorTarjetaCredito.cs" />
-    <Compile Include="Persistencia\RepositorioCategoriasMemoria.cs" />
-    <Compile Include="Persistencia\RepositorioTarjetaCreditoMemoria.cs" />
+    <Compile Include="Persistencia\Memoria\RepositorioCategoriasMemoria.cs" />
+    <Compile Include="Persistencia\Memoria\RepositorioTarjetaCreditoMemoria.cs" />
     <Compile Include="Sesion.cs" />
     <Compile Include="TarjetaCreditos\TarjetaCredito.cs" />
     <Compile Include="Contrasenias\GestorContrasenias.cs" />
-    <Compile Include="Persistencia\RepositorioContraseniasMemoria.cs" />
+    <Compile Include="Persistencia\Memoria\RepositorioContraseniasMemoria.cs" />
     <Compile Include="Excepciones\ExcepcionElementoNoExiste.cs" />
     <Compile Include="Excepciones\ExcepcionElementoYaExiste.cs" />
     <Compile Include="Excepciones\ExcepcionFaltaAtributo.cs" />
@@ -149,6 +148,7 @@
       <DependentUpon>202106122343403_SeAgregaHistorial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

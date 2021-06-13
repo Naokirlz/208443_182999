@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Negocio.DataBreaches
 {
@@ -18,7 +17,6 @@ namespace Negocio.DataBreaches
                 Directory.CreateDirectory(RutaDirectorio);
             }
         }
-
 
         public int BuscarPasswordOContraseniaEnFuente(string buscado)
         {

@@ -1,5 +1,4 @@
-﻿using Negocio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -37,8 +36,7 @@ namespace Negocio.Contrasenias
         {
             this.Clave = clave;
         }
-
-        
+  
         
         private string[] caracteresRandom = new[] {
             "ABCDEFGHJKLMNOPQRSTUVWXYZ",    // MAYUSCULAS 
@@ -118,6 +116,15 @@ namespace Negocio.Contrasenias
         public bool Equals(Password other)
         {
             return this.Clave.Equals(other.Clave);
+        }
+
+        public enum EnumColor
+        {
+            ROJO,
+            NARANJA,
+            AMARILLO,
+            VERDE_CLARO,
+            VERDE_OSCURO
         }
     }
    
