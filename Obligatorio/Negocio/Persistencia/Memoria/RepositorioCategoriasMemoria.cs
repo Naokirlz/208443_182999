@@ -64,7 +64,7 @@ namespace Negocio.Persistencia.Memoria
 
         public void TestClear()
         {
-            throw new System.NotImplementedException();
+            this.categorias = new List<Categoria>();
         }
     }
 }

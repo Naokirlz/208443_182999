@@ -671,6 +671,36 @@ namespace PruebasUnitarias
             string password = "HolaSecretoPassword";
             string fortaleza = sesionPrueba.VerificarFortalezaPassword(password);
         }
+        [TestMethod]
+        public void LaSesionMeDevuelveSiElPasswordEsRepetido()
+        {
+            int id = sesionPrueba.AltaCategoria("Mas Cosas");
+            Categoria nuevaCategoriaPrueba = sesionPrueba.BuscarCategoriaPorId(id);
+            Contrasenia pruebaContrasenia2 = new Contrasenia()
+            {
+                Sitio = "deremate.com",
+                Usuario = "deremate",
+                Password = new Password("dalevo111!!!"),
+                Categoria = nuevaCategoriaPrueba,
+                Notas = "Sin"
+            };
+
+            sesionPrueba.AltaContrasenia(pruebaContrasenia2);
+
+            string password = "dalevo111!!!";
+
+            int vecesRepetido = sesionPrueba.VerificarCatidadVecesPasswordRepetido(password);
+            Assert.AreEqual(2, vecesRepetido);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void LaSesionNoDevuelveSiElPasswordEsRepetidoSiNoEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            string password = "HolaSecretoPassword";
+            int vecesRepetido = sesionPrueba.VerificarCatidadVecesPasswordRepetido(password);
+        }
 
         private string ArmarTextoDeLargoVariable(int largo)
         {

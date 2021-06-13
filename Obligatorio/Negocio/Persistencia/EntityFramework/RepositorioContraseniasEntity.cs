@@ -19,8 +19,6 @@ namespace Negocio.Persistencia.EntityFramework
                 context.Contrasenias.Add(entity);
                 context.SaveChanges();
                 return entity.ContraseniaId;
-               
-           
             }
         }
 
@@ -113,6 +111,15 @@ namespace Negocio.Persistencia.EntityFramework
                     context.SaveChanges();
                 }
    
+        }
+
+        public int VerificarCantidadVecesPasswordRepetido(string password)
+        {
+            using (Contexto context = new Contexto())
+            {
+                int cantidad = context.Passwords.Where(c => c.Clave.Equals(password)).Count();
+                return cantidad;
+            }
         }
     }
 }

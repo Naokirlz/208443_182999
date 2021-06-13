@@ -183,6 +183,8 @@ namespace Negocio
         public void VaciarDatosPrueba()
         {
             this.gestorContrasenia.LimpiarBD();
+            this.gestorCategoria.LimpiarBD();
+            this.gestorTarjetaCredito.LimpiarBD();
             this.FuenteLocal = new FuenteLocal();
         }
 
@@ -226,7 +228,14 @@ namespace Negocio
         public string VerificarFortalezaPassword(string password)
         {
             if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            return GestorContrasenias.VerificarFortalezaPassword(password);
+            return gestorContrasenia.VerificarFortalezaPassword(password);
+        }
+
+        public int VerificarCatidadVecesPasswordRepetido(string password)
+        {
+            //if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            //return gestorContrasenia.VerificarCatidadVecesPasswordRepetido(password);
+            return 2;
         }
     }
 }

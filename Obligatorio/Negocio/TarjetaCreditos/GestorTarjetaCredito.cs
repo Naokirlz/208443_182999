@@ -3,6 +3,7 @@ using System.Linq;
 using Negocio.DataBreaches;
 using Negocio.Persistencia;
 using Negocio.Persistencia.EntityFramework;
+using Negocio.Persistencia.Memoria;
 
 namespace Negocio.TarjetaCreditos
 {

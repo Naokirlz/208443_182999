@@ -15,6 +15,7 @@ namespace Interfaz.Contrasenias
         public AgregarContrasenias()
         {
             InitializeComponent();
+            lblContrasenaInsegura.Visible = false;
             Refrescar();
         }
         private void Refrescar()
@@ -126,9 +127,14 @@ namespace Interfaz.Contrasenias
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
+            VerificarFortalezaPassword();
+            //verificar passwoird repetido
+            //verificar password filtrado
+        }
+        private void VerificarFortalezaPassword()
+        {
             string password = this.txtPassword.Text;
             lblContrasenaInsegura.Visible = true;
-            //verificar passwoird repetido
             string fortaleza = Sesion.VerificarFortalezaPassword(password).ToString();
             if (fortaleza.Equals("VERDE_OSCURO"))
             {
@@ -155,9 +161,6 @@ namespace Interfaz.Contrasenias
                 lblContrasenaInsegura.Text = "La Contraseña es muy insegura.";
                 lblContrasenaInsegura.ForeColor = Color.Red;
             }
-            //verificar password inseguro
-            //verificar password filtrado
-            //marcar cada vulnerabilidad en el lbl que corresponda.
         }
     }
 }
