@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using Negocio.DataBreaches;
+using static Negocio.Contrasenias.Password;
 
 namespace PruebasUnitarias
 {
@@ -653,6 +654,22 @@ namespace PruebasUnitarias
             IEnumerable<Historial> historiales = sesionPrueba.ObtenerTodasLosHistoriales();
 
             Assert.AreEqual(2, historiales.Count());
+        }
+
+        [TestMethod]
+        public void LaSesionMeDevuelveElColorDeUnPassword()
+        {
+            string password = "HolaSecretoPassword";
+            string fortaleza = sesionPrueba.VerificarFortalezaPassword(password);
+            Assert.AreEqual("VERDE_CLARO", fortaleza);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void LaSesionNoDevuelveElColorDeUnPasswordSiNoEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            string password = "HolaSecretoPassword";
+            string fortaleza = sesionPrueba.VerificarFortalezaPassword(password);
         }
 
         private string ArmarTextoDeLargoVariable(int largo)

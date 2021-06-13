@@ -223,6 +223,10 @@ namespace Negocio
 
         }
 
-
+        public string VerificarFortalezaPassword(string password)
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            return GestorContrasenias.VerificarFortalezaPassword(password);
+        }
     }
 }

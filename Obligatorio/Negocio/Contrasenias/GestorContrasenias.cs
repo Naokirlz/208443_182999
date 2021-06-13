@@ -2,6 +2,7 @@
 using Negocio.Excepciones;
 using Negocio.Persistencia;
 using Negocio.Persistencia.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -122,6 +123,10 @@ namespace Negocio.Contrasenias
             repositorio.TestClear();
         }
 
-
+        internal static string VerificarFortalezaPassword(string password)
+        {
+            Password pass = new Password(password);
+            return pass.CalcularFortaleza().ToString();
+        }
     }
 }
