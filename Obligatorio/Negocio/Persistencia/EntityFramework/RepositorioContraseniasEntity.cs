@@ -112,14 +112,6 @@ namespace Negocio.Persistencia.EntityFramework
                 }
    
         }
-
-        public int VerificarCantidadVecesPasswordRepetido(string password)
-        {
-            using (Contexto context = new Contexto())
-            {
-                int cantidad = context.Passwords.Where(c => c.Clave.Equals(password)).Count();
-                return cantidad;
-            }
-        }
+       
     }
 }

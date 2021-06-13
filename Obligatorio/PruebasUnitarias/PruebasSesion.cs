@@ -743,9 +743,11 @@ namespace PruebasUnitarias
         [TestMethod]
         public void LaSesionMeDevuelveSiElPasswordSeFiltro()
         {
+            sesionPrueba.FuenteLocal.CrearDataBreach("dalevo111!!!");
+            int filtrada = 0;
             string password = "dalevo111!!!";
-            int filtrada = sesionPrueba.VerificarPasswordFiltrado(password);
-            Assert.AreEqual(1, filtrada);
+            filtrada = sesionPrueba.VerificarPasswordFiltrado(password);
+            Assert.IsTrue(filtrada > 0);
         }
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
