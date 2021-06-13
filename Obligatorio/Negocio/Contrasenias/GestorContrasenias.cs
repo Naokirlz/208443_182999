@@ -18,7 +18,7 @@ namespace Negocio.Contrasenias
         private const int LARGO_MINIMO_USUARIO = 5;
         private const int LARGO_MAXIMO_NOTAS = 250;
         private const int LARGO_MINIMO_NOTAS = 0;
-       
+                
         private IRepositorio<Contrasenia> repositorio;
                 
         public GestorContrasenias() 
@@ -116,12 +116,37 @@ namespace Negocio.Contrasenias
             if (contrasenia.Notas != null) Validaciones.ValidarLargoTexto(contrasenia.Notas, LARGO_MAXIMO_NOTAS, LARGO_MINIMO_NOTAS, "notas");
         }
 
+        public List<Grupo> GenerarGrupos()
+        {
+            List<Grupo> retorno = new List<Grupo>();
+            string[] grupos = { "Rojo", "Naranja", "Amarillo", "Verde_Claro", "Verde_Oscuro" };
+            foreach (string grupo in grupos)
+            {
+                Grupo nuevo = new Grupo()
+                {
+                    Tipo = grupo
+                };
+                IEnumerable<Contrasenia> contrasenias = ObtenerTodas();
+                foreach (Contrasenia contrasenia in contrasenias)
+                {
+                    string password = MostrarPassword(contrasenia);
+                    if (contrasenia.Password.ColorPassword.ToString() == grupo.ToUpper())
+                    {
+                        nuevo.Cantidad = nuevo.Cantidad + 1;
+                        nuevo.Contrasenias.Add(contrasenia);
+                    }
+                }
+                retorno.Add(nuevo);
+            }
+
+            return retorno;
+        }
 
         public void LimpiarBD()
         {
             repositorio.TestClear();
         }
 
-
+       
     }
 }

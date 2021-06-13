@@ -5,6 +5,7 @@ using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Negocio.Contrasenias.Password;
 
 namespace PruebasUnitarias
 {
@@ -756,6 +757,52 @@ namespace PruebasUnitarias
             int despues = Gestor.ObtenerTodas().Count();
             Assert.AreEqual(1, despues - antes);
             Assert.AreEqual("       ", Gestor.MostrarPassword(conEspacios));
+        }
+
+        [TestMethod]
+        public void SePuedeGenerarGruposContraseniaColor()
+        {
+
+            ContraseniaCompleta.Password.Clave = "1234567";
+            ContraseniaCompleta.Usuario = "ussu1";
+            Gestor.Alta(ContraseniaCompleta);
+
+            ContraseniaCompleta.Password.Clave = "12345678";
+            ContraseniaCompleta.Usuario = "ussu2";
+            Gestor.Alta(ContraseniaCompleta);
+
+            ContraseniaCompleta.Password.Clave = "aaaaaaaaaaaaaaa";
+            ContraseniaCompleta.Usuario = "ussu3";
+            Gestor.Alta(ContraseniaCompleta);
+
+            ContraseniaCompleta.Password.Clave = "AAAAAAaAAAAAAAA";
+            ContraseniaCompleta.Usuario = "ussu4";
+            Gestor.Alta(ContraseniaCompleta);
+
+            ContraseniaCompleta.Password.Clave = " AAAA1@ AAAAAAA";
+            ContraseniaCompleta.Usuario = "ussu5";
+            Gestor.Alta(ContraseniaCompleta);
+
+            ContraseniaCompleta.Password.Clave = "AAAAAAaAAAA$AA1";
+            ContraseniaCompleta.Usuario = "ussu6";
+            Gestor.Alta(ContraseniaCompleta);
+
+           List<Grupo> grupos =  Gestor.GenerarGrupos();
+           Assert.IsNotNull(grupos);
+
+        }
+
+        [TestMethod]
+        public void SePuedeCrearUnGrupo()
+        {
+            Grupo nuevo = new Grupo();
+            nuevo.Tipo = EnumColor.ROJO.ToString();
+            nuevo.Contrasenias.Add(ContraseniaCompleta);
+            nuevo.Cantidad = nuevo.Contrasenias.Count;
+
+            Assert.AreEqual("ROJO", nuevo.Tipo);
+            Assert.AreEqual(1, nuevo.Cantidad);
+
         }
 
     }

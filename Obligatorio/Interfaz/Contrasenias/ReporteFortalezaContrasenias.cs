@@ -21,7 +21,7 @@ namespace Interfaz.Contrasenias
             GenerarColumnaDeBotones();
 
             this.Grupos = new List<Grupo>();
-            GenerarGrupos();
+            Sesion.GenerarGrupos();
             CargarTabla();
         }
 
@@ -71,30 +71,7 @@ namespace Interfaz.Contrasenias
             }
         }
 
-        private void GenerarGrupos()
-        {
-            this.Grupos.Clear();
-            string[] grupos = { "Rojo", "Naranja", "Amarillo", "Verde_Claro", "Verde_Oscuro" };
-            foreach(string grupo in grupos)
-            {
-                Grupo nuevo = new Grupo()
-                {
-                    Tipo = grupo
-                };
-                IEnumerable<Contrasenia> contrasenias = Sesion.ObtenerTodasLasContrasenias();
-                foreach (Contrasenia contrasenia in contrasenias)
-                {
-                    string password = Sesion.MostrarPassword(contrasenia);
-                    if (contrasenia.Password.ColorPassword.ToString() == grupo.ToUpper())
-                    {
-                        nuevo.Cantidad = nuevo.Cantidad + 1;
-                        nuevo.Contrasenias.Add(contrasenia);
-                    }
-                }
-                this.Grupos.Add(nuevo);
-            }
-        }
-
+        
         private void dgvContrasenias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
@@ -165,7 +142,7 @@ namespace Interfaz.Contrasenias
         private void ModificarPassword(Contrasenia contraseniaSeleccionada)
         {
             IngresoPassword frmIngresoPassword = new IngresoPassword(contraseniaSeleccionada);
-            GenerarGrupos();
+            Sesion.GenerarGrupos();
             Grupo grupoActualizado = Grupos[this.GrupoMostrando];
             CargarTablaPorGrupo(grupoActualizado);
             CargarTabla();
@@ -203,16 +180,4 @@ namespace Interfaz.Contrasenias
     }
 
 
-    internal class Grupo
-    {
-        public string Tipo { set; get; }
-        public List<Contrasenia> Contrasenias { set; get; }
-        public int Cantidad { set; get; }
-
-        public Grupo()
-        {
-            this.Contrasenias = new List<Contrasenia>();
-            Cantidad = 0;
-        }
-    }
 }

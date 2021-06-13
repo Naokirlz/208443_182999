@@ -655,6 +655,46 @@ namespace PruebasUnitarias
             Assert.AreEqual(2, historiales.Count());
         }
 
+        [TestMethod]
+        public void SeGeneranGrupos()
+        {
+            pruebaContrasenia.Password.Clave = "1234567";
+            pruebaContrasenia.Usuario = "ussu1";
+            sesionPrueba.AltaContrasenia(pruebaContrasenia);
+
+            pruebaContrasenia.Password.Clave = "12345678";
+            pruebaContrasenia.Usuario = "ussu2";
+            sesionPrueba.AltaContrasenia(pruebaContrasenia);
+
+            pruebaContrasenia.Password.Clave = "aaaaaaaaaaaaaaa";
+            pruebaContrasenia.Usuario = "ussu3";
+            sesionPrueba.AltaContrasenia(pruebaContrasenia);
+
+            pruebaContrasenia.Password.Clave = "AAAAAAaAAAAAAAA";
+            pruebaContrasenia.Usuario = "ussu4";
+            sesionPrueba.AltaContrasenia(pruebaContrasenia);
+
+            pruebaContrasenia.Password.Clave = " AAAA1@ AAAAAAA";
+            pruebaContrasenia.Usuario = "ussu5";
+            sesionPrueba.AltaContrasenia(pruebaContrasenia);
+
+            pruebaContrasenia.Password.Clave = "AAAAAAaAAAA$AA1";
+            pruebaContrasenia.Usuario = "ussu6";
+            sesionPrueba.AltaContrasenia(pruebaContrasenia);
+
+            List<Grupo> grupos = sesionPrueba.GenerarGrupos();
+            Assert.IsNotNull(grupos);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSeGeneranGruposSinLoguearse()
+        {
+           sesionPrueba.LogOut();
+           List<Grupo> grupos = sesionPrueba.GenerarGrupos();
+           
+        }
+
         private string ArmarTextoDeLargoVariable(int largo)
         {
 
