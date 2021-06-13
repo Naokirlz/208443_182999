@@ -97,5 +97,16 @@ namespace PruebasUnitarias
             Assert.IsTrue(cantidad == 3);
         }
 
+        [TestMethod]
+        public void CreaDirectorioSiNoExisteAlCrearFuenteArchivo()
+        {
+            string ruta = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
+            Directory.Delete(ruta);
+            Assert.IsFalse(Directory.Exists(ruta));
+            FuenteArchivo nuevo = new FuenteArchivo();
+            Assert.IsTrue(Directory.Exists(ruta));
+
+        }
+
     }
 }

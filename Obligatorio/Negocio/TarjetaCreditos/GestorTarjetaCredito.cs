@@ -13,7 +13,7 @@ namespace Negocio.TarjetaCreditos
         private const int LARGO_MAXIO_TIPO = 25;
         private const int LARGO_MINIMO_TIPO = 3;
         private const int LARGONUMEROTARJETA = 16;
-        private const int LARGO_CODIGO = 16;
+        private const int LARGO_CODIGO = 3;
                 
 
         private IRepositorio<TarjetaCredito> repositorio;

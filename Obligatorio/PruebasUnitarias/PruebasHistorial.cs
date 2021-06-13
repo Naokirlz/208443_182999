@@ -117,7 +117,151 @@ namespace PruebasUnitarias
 
         }
 
+        [TestMethod]
+        public void SePuedeObtenerHistorialGuardado()
+        {
+            Historial historial = new Historial();
+            historial.Fecha = DateTime.Now;
+            HistorialContrasenia nuevo = new HistorialContrasenia();
+            nuevo.ContraseniaId = pruebaContrasenia.ContraseniaId;
+            historial.passwords.Add(nuevo);
+            int registroHistorial = sesionPrueba.AltaHistorial(historial);
 
+            IEnumerable<Historial> guardado = sesionPrueba.ObtenerTodasLosHistoriales();
+
+            Assert.IsNotNull(guardado);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeObtenerHistorialGuardadoSinLoguearse()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.ObtenerTodasLosHistoriales();
+         }
+
+        [TestMethod]
+        public void SePuedeObtenerTarjetasVulnerablesDeUnHistorial()
+        {
+            Historial historial = new Historial();
+            historial.Fecha = DateTime.Now;
+            HistorialContrasenia nuevo = new HistorialContrasenia();
+            nuevo.ContraseniaId = pruebaContrasenia.ContraseniaId;
+            historial.passwords.Add(nuevo);
+            int registroHistorial = sesionPrueba.AltaHistorial(historial);
+            IEnumerable<HistorialTarjetas> historialTarjetas = sesionPrueba.DevolverTarjetasVulnerables(registroHistorial);
+            Assert.IsNotNull(historialTarjetas);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeObtenerTarjetasVulnerablesDeUnHistorialSinLoguearse()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.DevolverTarjetasVulnerables(1);
+        }
+
+        [TestMethod]
+        public void SePuedeObtenerContraseniasVulnerablesDeUnHistorial()
+        {
+            Historial historial = new Historial();
+            historial.Fecha = DateTime.Now;
+            HistorialContrasenia nuevo = new HistorialContrasenia();
+            nuevo.ContraseniaId = pruebaContrasenia.ContraseniaId;
+            historial.passwords.Add(nuevo);
+            int registroHistorial = sesionPrueba.AltaHistorial(historial);
+            IEnumerable<HistorialContrasenia> historialContrasenias = sesionPrueba.DevolverContraseniasVulnerables(registroHistorial);
+            Assert.IsNotNull(historialContrasenias);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeObtenerContraseniasVulnerablesDeUnHistorialSinLoguearse()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.DevolverContraseniasVulnerables(1);
+          
+
+        }
+
+        [TestMethod]
+        public void SeRegistraUnaConsultaDeVulnerabilidades()
+        {  
+            int consulta1= sesionPrueba.ConsultarVulnerabilidades();
+            int consulta2 = sesionPrueba.ConsultarVulnerabilidades();
+            Assert.AreEqual(1, consulta2 - consulta1);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSeRegistraUnaConsultaDeVulnerabilidadesSinLoguearse()
+        {
+            sesionPrueba.LogOut();
+            int consulta1 = sesionPrueba.ConsultarVulnerabilidades();
+            int consulta2 = sesionPrueba.ConsultarVulnerabilidades();
+            Assert.AreEqual(1, consulta2 - consulta1);
+
+        }
+
+        [TestMethod]
+        public void SePuedeDarDeAltaUnHistorial()
+        {
+            Historial historial = new Historial();
+            historial.Fecha = DateTime.Now;
+            HistorialContrasenia nuevo = new HistorialContrasenia();
+            nuevo.ContraseniaId = pruebaContrasenia.ContraseniaId;
+            historial.passwords.Add(nuevo);
+            int registroHistorial = sesionPrueba.AltaHistorial(historial);
+
+            Assert.IsNotNull(registroHistorial);
+            
+
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeDarDeAltaUnHistorialSinLoguearse()
+        {
+            sesionPrueba.LogOut();
+            Historial historial = new Historial();
+            historial.Fecha = DateTime.Now;
+            HistorialContrasenia nuevo = new HistorialContrasenia();
+            nuevo.ContraseniaId = pruebaContrasenia.ContraseniaId;
+            historial.passwords.Add(nuevo);
+            int registroHistorial = sesionPrueba.AltaHistorial(historial);
+
+            Assert.IsNotNull(registroHistorial);
+
+
+        }
+
+
+        [TestMethod]
+        public void SePuedeBuscarUnUnHistorial()
+        {
+            Historial historial = new Historial();
+            historial.Fecha = DateTime.Now;
+            HistorialContrasenia nuevo = new HistorialContrasenia();
+            nuevo.ContraseniaId = pruebaContrasenia.ContraseniaId;
+            historial.passwords.Add(nuevo);
+            int registroHistorial = sesionPrueba.AltaHistorial(historial);
+
+            Historial buscado = sesionPrueba.BuscarHistorial(registroHistorial);
+            Assert.IsNotNull(buscado);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeBuscarUnUnHistorialSinLoguearse()
+        {
+            sesionPrueba.LogOut();
+            Historial buscado = sesionPrueba.BuscarHistorial(1);
+
+        }
 
     }
 

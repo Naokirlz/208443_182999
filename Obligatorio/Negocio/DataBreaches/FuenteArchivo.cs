@@ -9,19 +9,21 @@ namespace Negocio.DataBreaches
 {
     public class FuenteArchivo : IFuente
     {
-        private string rutaDirectorio;
+        public string RutaDirectorio { get; set; }
         public FuenteArchivo()
         {
-            this.rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
-            if (!Directory.Exists(rutaDirectorio))
+            RutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
+            if (!Directory.Exists(this.RutaDirectorio))
             {
-                Directory.CreateDirectory(rutaDirectorio);
+                Directory.CreateDirectory(RutaDirectorio);
             }
         }
+
+
         public int BuscarPasswordOContraseniaEnFuente(string buscado)
         {
             int cantidad = 0;
-            List<string> strFiles = Directory.GetFiles(rutaDirectorio, "*", SearchOption.AllDirectories).ToList();
+            List<string> strFiles = Directory.GetFiles(RutaDirectorio, "*", SearchOption.AllDirectories).ToList();
 
             foreach (string fichero in strFiles)
             {
@@ -39,7 +41,7 @@ namespace Negocio.DataBreaches
         {
             string[] rutaDetalle = dataBreach.Split('\\').ToArray();
             string nombrearchivo = rutaDetalle[rutaDetalle.Length - 1];
-            string ruta = rutaDirectorio + "\\" + nombrearchivo;
+            string ruta = RutaDirectorio + "\\" + nombrearchivo;
             System.IO.File.Copy(dataBreach, ruta, true);
         }
     }

@@ -49,18 +49,16 @@ namespace Negocio.DataBreaches
 
         public IEnumerable<HistorialContrasenia> DevolverContraseniasVulnerables(int historial)
         {
-            Historial histo = new Historial();
-            histo.HistorialId = historial;
-            Historial buscado = Buscar(histo);
+            
+            Historial buscado = Buscar(historial);
 
             return buscado.passwords;
         }
 
         public IEnumerable<HistorialTarjetas> DevolverTarjetasVulnerables(int historial)
         {
-            Historial histo = new Historial();
-            histo.HistorialId = historial;
-            Historial buscado = Buscar(histo);
+            
+            Historial buscado = Buscar(historial);
 
             return buscado.tarjetasVulnerables;
         }
@@ -70,9 +68,11 @@ namespace Negocio.DataBreaches
             return repositorio.Alta(historial);
         }
 
-        public Historial Buscar(Historial entity)
+        public Historial Buscar(int entity)
         {
-            return repositorio.Buscar(entity);
+            Historial buscado = new Historial();
+            buscado.HistorialId = entity;
+            return repositorio.Buscar(buscado);
 
         }
         public IEnumerable<Historial> ObtenerTodas()

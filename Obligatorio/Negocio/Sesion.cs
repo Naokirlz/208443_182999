@@ -216,7 +216,7 @@ namespace Negocio
             return gestorDataBreaches.Alta(historial);
         }
 
-        public Historial BuscarHistorial(Historial historial)
+        public Historial BuscarHistorial(int historial)
         {
             if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
             return gestorDataBreaches.Buscar(historial);
