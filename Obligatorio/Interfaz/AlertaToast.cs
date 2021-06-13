@@ -51,6 +51,13 @@ namespace Interfaz
                     this.lblMensaje.ForeColor = Color.White;
                     this.btnCerrar.IconColor = Color.White;
                     break;
+                case enmTipo.Advertencia:
+                    this.icoIcono.IconChar = FontAwesome.Sharp.IconChar.ExclamationCircle;
+                    this.icoIcono.IconColor = Color.White;
+                    this.BackColor = Color.Orange;
+                    this.lblMensaje.ForeColor = Color.White;
+                    this.btnCerrar.IconColor = Color.White;
+                    break;
             }
 
             this.lblMensaje.Text = mensaje;
@@ -108,7 +115,8 @@ namespace Interfaz
         public enum enmTipo
         {
             Exito,
-            Error
+            Error,
+            Advertencia
         }
     }
 }

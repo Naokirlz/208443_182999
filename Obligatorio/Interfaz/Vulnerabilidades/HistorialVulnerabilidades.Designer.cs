@@ -46,13 +46,14 @@ namespace Interfaz.Vulnerabilidades
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ver = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dgvDetalleContrasenia = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContraseniaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sitio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClaveFiltrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Acciones = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dgvDetalleTarjeta = new System.Windows.Forms.DataGridView();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnVolver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleContrasenia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleTarjeta)).BeginInit();
@@ -90,7 +91,7 @@ namespace Interfaz.Vulnerabilidades
             this.dgvHistorial.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHistorial.EnableHeadersVisualStyles = false;
             this.dgvHistorial.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvHistorial.Location = new System.Drawing.Point(3, 20);
+            this.dgvHistorial.Location = new System.Drawing.Point(12, 20);
             this.dgvHistorial.Name = "dgvHistorial";
             this.dgvHistorial.ReadOnly = true;
             this.dgvHistorial.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -109,7 +110,7 @@ namespace Interfaz.Vulnerabilidades
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dgvHistorial.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHistorial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHistorial.Size = new System.Drawing.Size(218, 350);
+            this.dgvHistorial.Size = new System.Drawing.Size(788, 305);
             this.dgvHistorial.TabIndex = 28;
             this.dgvHistorial.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorial_CellContentClick);
             // 
@@ -133,6 +134,7 @@ namespace Interfaz.Vulnerabilidades
             this.Ver.HeaderText = "Ver";
             this.Ver.Name = "Ver";
             this.Ver.ReadOnly = true;
+            this.Ver.Text = "Ver";
             this.Ver.UseColumnTextForButtonValue = true;
             this.Ver.Width = 38;
             // 
@@ -155,7 +157,7 @@ namespace Interfaz.Vulnerabilidades
             this.dgvDetalleContrasenia.ColumnHeadersHeight = 30;
             this.dgvDetalleContrasenia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDetalleContrasenia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
+            this.ContraseniaId,
             this.Sitio,
             this.Usuario,
             this.ClaveFiltrada,
@@ -170,7 +172,7 @@ namespace Interfaz.Vulnerabilidades
             this.dgvDetalleContrasenia.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDetalleContrasenia.EnableHeadersVisualStyles = false;
             this.dgvDetalleContrasenia.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvDetalleContrasenia.Location = new System.Drawing.Point(226, 20);
+            this.dgvDetalleContrasenia.Location = new System.Drawing.Point(12, 20);
             this.dgvDetalleContrasenia.Name = "dgvDetalleContrasenia";
             this.dgvDetalleContrasenia.ReadOnly = true;
             this.dgvDetalleContrasenia.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -189,15 +191,17 @@ namespace Interfaz.Vulnerabilidades
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
             this.dgvDetalleContrasenia.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvDetalleContrasenia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetalleContrasenia.Size = new System.Drawing.Size(588, 195);
+            this.dgvDetalleContrasenia.Size = new System.Drawing.Size(556, 350);
             this.dgvDetalleContrasenia.TabIndex = 29;
+            this.dgvDetalleContrasenia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleContrasenia_CellContentClick);
+            this.dgvDetalleContrasenia.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvDetalleContrasenia_CellFormatting);
             // 
-            // dataGridViewTextBoxColumn1
+            // ContraseniaId
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "#";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 41;
+            this.ContraseniaId.HeaderText = "#";
+            this.ContraseniaId.Name = "ContraseniaId";
+            this.ContraseniaId.ReadOnly = true;
+            this.ContraseniaId.Width = 41;
             // 
             // Sitio
             // 
@@ -258,7 +262,7 @@ namespace Interfaz.Vulnerabilidades
             this.dgvDetalleTarjeta.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvDetalleTarjeta.EnableHeadersVisualStyles = false;
             this.dgvDetalleTarjeta.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvDetalleTarjeta.Location = new System.Drawing.Point(223, 221);
+            this.dgvDetalleTarjeta.Location = new System.Drawing.Point(574, 20);
             this.dgvDetalleTarjeta.Name = "dgvDetalleTarjeta";
             this.dgvDetalleTarjeta.ReadOnly = true;
             this.dgvDetalleTarjeta.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -277,7 +281,7 @@ namespace Interfaz.Vulnerabilidades
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
             this.dgvDetalleTarjeta.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvDetalleTarjeta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetalleTarjeta.Size = new System.Drawing.Size(588, 149);
+            this.dgvDetalleTarjeta.Size = new System.Drawing.Size(237, 305);
             this.dgvDetalleTarjeta.TabIndex = 30;
             // 
             // Numero
@@ -287,11 +291,26 @@ namespace Interfaz.Vulnerabilidades
             this.Numero.ReadOnly = true;
             this.Numero.Width = 145;
             // 
+            // btnVolver
+            // 
+            this.btnVolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnVolver.Location = new System.Drawing.Point(653, 337);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(147, 33);
+            this.btnVolver.TabIndex = 31;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
             // HistorialVulnerabilidades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
+            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.dgvDetalleTarjeta);
             this.Controls.Add(this.dgvDetalleContrasenia);
             this.Controls.Add(this.dgvHistorial);
@@ -312,14 +331,15 @@ namespace Interfaz.Vulnerabilidades
         private System.Windows.Forms.DataGridView dgvHistorial;
         private System.Windows.Forms.DataGridView dgvDetalleContrasenia;
         private System.Windows.Forms.DataGridView dgvDetalleTarjeta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ContraseniaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sitio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClaveFiltrada;
         private System.Windows.Forms.DataGridViewButtonColumn Acciones;
+        private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewButtonColumn Ver;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
     }
 }
