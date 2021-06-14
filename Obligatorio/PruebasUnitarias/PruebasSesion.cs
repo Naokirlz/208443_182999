@@ -65,18 +65,7 @@ namespace PruebasUnitarias
         [TestCleanup]
         public void LimpiarPruebas()
         {
-            sesionPrueba.VaciarDatosPrueba();
-            string rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
-            if (Directory.Exists(rutaDirectorio))
-            {
-                List<string> strFiles = Directory.GetFiles(rutaDirectorio, "*", SearchOption.AllDirectories).ToList();
-
-                foreach (string fichero in strFiles)
-                {
-                    File.Delete(fichero);
-                }
-            }
-            
+            sesionPrueba.VaciarDatosPrueba();            
         }
 
 
@@ -785,6 +774,14 @@ namespace PruebasUnitarias
         {
             sesionPrueba.LogOut();
             sesionPrueba.BajaDataBreachArchivos();
+        }
+        [TestMethod]
+        public void LaSesionPermiteEliminarLaFuenteLocal()
+        {
+            int vecesVulnerableAntes = sesionPrueba.VerificarPasswordFiltrado("dalevo111!!!");
+            sesionPrueba.BajaDataBreachLocal();
+            int vecesVulnerableDespues = sesionPrueba.VerificarPasswordFiltrado("dalevo111!!!");
+            Assert.AreNotEqual(vecesVulnerableAntes, vecesVulnerableDespues);
         }
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Negocio;
 using Negocio.DataBreaches;
 using System;
 using System.Collections.Generic;
@@ -10,22 +11,12 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasFuenteArchivo
     {
-
+        Sesion sesionPrueba;
         [TestCleanup]
         public void LimpiarPruebas()
         {
-            
-            string rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
-            if (Directory.Exists(rutaDirectorio))
-            {
-                List<string> strFiles = Directory.GetFiles(rutaDirectorio, "*", SearchOption.AllDirectories).ToList();
-
-                foreach (string fichero in strFiles)
-                {
-                    File.Delete(fichero);
-                }
-            }
-
+            sesionPrueba = Sesion.ObtenerInstancia();
+            sesionPrueba.VaciarDatosPrueba();
         }
 
         [TestMethod]
