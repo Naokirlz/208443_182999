@@ -1,5 +1,6 @@
 ﻿using Negocio;
 using Negocio.Excepciones;
+using Negocio.InterfacesGUI;
 using System;
 using System.Windows.Forms;
 
@@ -7,8 +8,8 @@ namespace Interfaz.Categorias
 {
     public partial class AgregarCategoria : UserControl
     {
-        public Sesion Sesion = Sesion.ObtenerInstancia();
-         
+        private ICategoria Sesion = new CategoriaGUI();
+
         public AgregarCategoria()
         {
             InitializeComponent();

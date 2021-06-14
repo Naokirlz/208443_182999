@@ -1,5 +1,6 @@
 ﻿using Negocio;
 using Negocio.Categorias;
+using Negocio.InterfacesGUI;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -8,7 +9,7 @@ namespace Interfaz.Categorias
 {
     public partial class EliminarCategorias : UserControl
     {
-        public Sesion Sesion = Sesion.ObtenerInstancia();
+        public ICategoria Sesion = new CategoriaGUI();
         public EliminarCategorias()
         {
             InitializeComponent();

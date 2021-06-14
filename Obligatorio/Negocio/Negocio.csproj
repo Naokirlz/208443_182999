@@ -57,6 +57,8 @@
     <Compile Include="Contrasenias\Grupo.cs" />
     <Compile Include="Contrasenias\Password.cs" />
     <Compile Include="DataBreaches\GestorDataBreaches.cs" />
+    <Compile Include="InterfacesGUI\CategoriaGUI.cs" />
+    <Compile Include="InterfacesGUI\ICategoria.cs" />
     <Compile Include="Migrations\202106062059237_InitialCreate.cs" />
     <Compile Include="Migrations\202106062059237_InitialCreate.designer.cs">
       <DependentUpon>202106062059237_InitialCreate.cs</DependentUpon>
