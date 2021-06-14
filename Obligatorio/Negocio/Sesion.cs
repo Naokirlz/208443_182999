@@ -199,6 +199,7 @@ namespace Negocio
             this.gestorCategoria.LimpiarBD();
             this.gestorTarjetaCredito.LimpiarBD();
             this.FuenteLocal = new FuenteLocal();
+            this.fuentes[0] = this.FuenteLocal;
         }
 
         public int ConsultarVulnerabilidades()

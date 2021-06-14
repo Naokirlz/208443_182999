@@ -27,6 +27,7 @@ namespace PruebasUnitarias
         [TestInitialize]
         public void InicializarPruebas()
         {
+            
             sesionPrueba = Sesion.ObtenerInstancia();
             
             sesionPrueba.GuardarPrimerPassword("secreto");
@@ -79,11 +80,23 @@ namespace PruebasUnitarias
             
         }
 
+
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void NoSePuedeIniciarSesionSinIngresarElPrimerPassword()
         {
             sesionPrueba.Login("");
+        }
+
+
+        [TestMethod]
+        public void LaSesionMeDevuelveSiElPasswordSeFiltro()
+        {
+          
+            int filtrada = 0;
+            string password = "dalevo111!!!";
+            filtrada = sesionPrueba.VerificarPasswordFiltrado(password);
+            Assert.IsTrue(filtrada > 0);
         }
 
         [TestMethod]
@@ -740,15 +753,7 @@ namespace PruebasUnitarias
             sesionPrueba.VerificarCatidadVecesPasswordRepetido(password);
         }
 
-        [TestMethod]
-        public void LaSesionMeDevuelveSiElPasswordSeFiltro()
-        {
-            sesionPrueba.FuenteLocal.CrearDataBreach("dalevo111!!!");
-            int filtrada = 0;
-            string password = "dalevo111!!!";
-            filtrada = sesionPrueba.VerificarPasswordFiltrado(password);
-            Assert.IsTrue(filtrada > 0);
-        }
+    
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void LaSesionNoDevuelveSiElPasswordSeFiltroSiNoEstaLogueado()
