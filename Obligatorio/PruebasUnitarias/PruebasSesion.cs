@@ -756,6 +756,45 @@ namespace PruebasUnitarias
             sesionPrueba.VerificarPasswordFiltrado(password);
         }
 
+        [TestMethod]
+        public void LaSesionPermiteEliminarLosArchivosDataBreach()
+        {
+            sesionPrueba.BajaDataBreachArchivos();
+            int contador = 0;
+            string rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
+            if (Directory.Exists(rutaDirectorio))
+            {
+                List<string> strFiles = Directory.GetFiles(rutaDirectorio, "*", SearchOption.AllDirectories).ToList();
+
+                foreach (string fichero in strFiles)
+                {
+                    contador++;
+                }
+            }
+            Assert.AreEqual(0, contador);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void LaSesionNoPermiteEliminarLosArchivosDataBreachSiNoEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.BajaDataBreachArchivos();
+        }
+
+        [TestMethod]
+        public void LaSesionPermiteEliminarLaFuenteLocal()
+        {
+            IFuente antigua = sesionPrueba.FuenteLocal;
+            sesionPrueba.BajaDataBreachLocal();
+            Assert.AreNotEqual(antigua, sesionPrueba.FuenteLocal);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void LaSesionNoPermiteEliminarLaFuenteLocalSiNoEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.BajaDataBreachLocal();
+        }
         private string ArmarTextoDeLargoVariable(int largo)
         {
 

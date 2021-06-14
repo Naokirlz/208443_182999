@@ -6,6 +6,8 @@ using Negocio.Excepciones;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using Negocio.DataBreaches;
 
 namespace Interfaz
 {
@@ -182,6 +184,72 @@ namespace Interfaz
                 Sesion.VaciarDatosPrueba();
                 this.btnCargarDatosPrueba.Enabled = true;
                 Alerta("Datos borrados con éxito.", AlertaToast.enmTipo.Exito);
+            }
+            confirmacion.Close();
+        }
+
+        private void btnEliminarSeleccion_Click(object sender, EventArgs e)
+        {
+            VentanaConfirmarBool confirmacion = new VentanaConfirmarBool("Realmente desea eliminar los datos?");
+            confirmacion.Show();
+            if (confirmacion.Respuesta)
+            {
+                try
+                {
+                    if (chkArchivos.Checked)
+                    {
+                        Sesion.BajaDataBreachArchivos();
+                        chkArchivos.Checked = false;
+                    }
+                    if (chkHistorial.Checked)
+                    {
+                        List<Historial> historiales = Sesion.ObtenerTodasLosHistoriales().ToList();
+                        foreach (Historial historial in historiales)
+                        {
+                            Sesion.BajaHistorial(historial.HistorialId);
+                            chkHistorial.Checked = false;
+                        }
+                    }
+                    if (chkFuenteLocal.Checked)
+                    {
+                        Sesion.BajaDataBreachLocal();
+                        chkFuenteLocal.Checked = false;
+                    }
+                    if (chkTarjetas.Checked)
+                    {
+                        List<TarjetaCredito> tarjetas = Sesion.ObtenerTodasLasTarjetas().ToList();
+                        foreach (TarjetaCredito tarjeta in tarjetas)
+                        {
+                            Sesion.BajaTarjetaCredito(tarjeta.Id);
+                        }
+                        chkTarjetas.Checked = false;
+                    }
+                    if (chkContrasenias.Checked)
+                    {
+                        List<Contrasenia> contrasenias = Sesion.ObtenerTodasLasContrasenias().ToList();
+                        foreach (Contrasenia contrasenia in contrasenias)
+                        {
+                            Sesion.BajaContrasenia(contrasenia.ContraseniaId);
+                        }
+                        chkContrasenias.Checked = false;
+                    }
+                    if (chkCategorias.Checked)
+                    {
+                        List<Categoria> categorias = Sesion.ObtenerTodasLasCategorias().ToList();
+                        foreach (Categoria categoria in categorias)
+                        {
+                            Sesion.BajaCategoria(categoria.Id);
+                        }
+                        chkCategorias.Checked = false;
+                    }
+
+                    //no hace un rollback, lo que elimina antes del error ya no aparece mas
+                    Alerta("Datos eliminados con satisfactoriamente.", AlertaToast.enmTipo.Exito);
+                }
+                catch(System.Data.Entity.Infrastructure.DbUpdateException ex)
+                {
+                    Alerta("Error de base de datos al intentar borrar los datos.\n" + ex.Message, AlertaToast.enmTipo.Error);
+                }
             }
             confirmacion.Close();
         }

@@ -264,5 +264,17 @@ namespace Negocio
             if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
             return gestorContrasenia.VerificarPasswordFiltrado(password, fuentes);
         }
+
+        public void BajaDataBreachArchivos()
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            gestorDataBreaches.BajaDataBreachArchivos();
+        }
+
+        public void BajaDataBreachLocal()
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            FuenteLocal = new FuenteLocal();
+        }
     }
 }

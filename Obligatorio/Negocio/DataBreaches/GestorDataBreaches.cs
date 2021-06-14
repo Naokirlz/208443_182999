@@ -4,7 +4,8 @@ using Negocio.Persistencia.EntityFramework;
 using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
-
+using System.IO;
+using System.Linq;
 
 namespace Negocio.DataBreaches
 {
@@ -79,6 +80,18 @@ namespace Negocio.DataBreaches
             return repositorio.ObtenerTodas();
         }
 
-       
+        public void BajaDataBreachArchivos()
+        {
+            string rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
+            if (Directory.Exists(rutaDirectorio))
+            {
+                List<string> strFiles = Directory.GetFiles(rutaDirectorio, "*", SearchOption.AllDirectories).ToList();
+
+                foreach (string fichero in strFiles)
+                {
+                    File.Delete(fichero);
+                }
+            }
+        }
     }
 }

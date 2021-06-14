@@ -37,6 +37,7 @@ namespace Interfaz
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCargarDatosPrueba = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnEliminarSeleccion = new System.Windows.Forms.Button();
             this.chkHistorial = new System.Windows.Forms.CheckBox();
             this.chkArchivos = new System.Windows.Forms.CheckBox();
             this.chkFuenteLocal = new System.Windows.Forms.CheckBox();
@@ -44,7 +45,6 @@ namespace Interfaz
             this.chkContrasenias = new System.Windows.Forms.CheckBox();
             this.chkCategorias = new System.Windows.Forms.CheckBox();
             this.btnEliminarDatos = new System.Windows.Forms.Button();
-            this.btnEliminarSeleccion = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -151,6 +151,20 @@ namespace Interfaz
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos";
             // 
+            // btnEliminarSeleccion
+            // 
+            this.btnEliminarSeleccion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminarSeleccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarSeleccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarSeleccion.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnEliminarSeleccion.Location = new System.Drawing.Point(27, 381);
+            this.btnEliminarSeleccion.Name = "btnEliminarSeleccion";
+            this.btnEliminarSeleccion.Size = new System.Drawing.Size(251, 33);
+            this.btnEliminarSeleccion.TabIndex = 54;
+            this.btnEliminarSeleccion.Text = "Eliminar Selección";
+            this.btnEliminarSeleccion.UseVisualStyleBackColor = true;
+            this.btnEliminarSeleccion.Click += new System.EventHandler(this.btnEliminarSeleccion_Click);
+            // 
             // chkHistorial
             // 
             this.chkHistorial.AutoSize = true;
@@ -224,19 +238,6 @@ namespace Interfaz
             this.btnEliminarDatos.Text = "Eliminar Todos Los Datos";
             this.btnEliminarDatos.UseVisualStyleBackColor = true;
             this.btnEliminarDatos.Click += new System.EventHandler(this.btnEliminarDatos_Click);
-            // 
-            // btnEliminarSeleccion
-            // 
-            this.btnEliminarSeleccion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminarSeleccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarSeleccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarSeleccion.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnEliminarSeleccion.Location = new System.Drawing.Point(27, 381);
-            this.btnEliminarSeleccion.Name = "btnEliminarSeleccion";
-            this.btnEliminarSeleccion.Size = new System.Drawing.Size(251, 33);
-            this.btnEliminarSeleccion.TabIndex = 54;
-            this.btnEliminarSeleccion.Text = "Eliminar Selección";
-            this.btnEliminarSeleccion.UseVisualStyleBackColor = true;
             // 
             // Configuracion
             // 
