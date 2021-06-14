@@ -18,8 +18,6 @@ namespace Negocio
         private GestorContrasenias gestorContrasenia;
         private GestorTarjetaCredito gestorTarjetaCredito;
         private GestorDataBreaches gestorDataBreaches;
-        public IFuente FuenteLocal { get; set; }
-        private List<IFuente> fuentes { get; set; }
         private string passwordMaestro;
         private bool logueado;
 
@@ -35,13 +33,6 @@ namespace Negocio
             gestorContrasenia = new GestorContrasenias();
             gestorTarjetaCredito = new GestorTarjetaCredito();
             gestorDataBreaches = new GestorDataBreaches();
-            FuenteLocal = new FuenteLocal();
-            /////////////////////////////
-            IFuente fuenteArchivo = new FuenteArchivo();
-            fuentes = new List<IFuente>();
-            fuentes.Add(FuenteLocal);
-            fuentes.Add(fuenteArchivo);
-            ///////////////////////////////
             passwordMaestro = "";
             this.logueado = false;
         }
@@ -58,14 +49,21 @@ namespace Negocio
 
         public IEnumerable<Contrasenia> ContraseniasVulnerables()
         {
-            return this.gestorContrasenia.ObtenerContraseniasVulnerables(FuenteLocal);
+            List<IFuente> fuentes = gestorDataBreaches.ObtenerFuentes();
+            return this.gestorContrasenia.ObtenerContraseniasVulnerables(fuentes);
         }
  
         public IEnumerable<TarjetaCredito> TarjetasCreditoVulnerables()
         {
-            return this.gestorTarjetaCredito.ObtenerTarjetasVulnerables(FuenteLocal);
+            List<IFuente> fuentes = gestorDataBreaches.ObtenerFuentes();
+            return this.gestorTarjetaCredito.ObtenerTarjetasVulnerables(fuentes);
         }
-        
+
+        public void CargarDataBreachLocal(string texto)
+        {
+            gestorDataBreaches.CargarDataBreachLocal(texto);
+        }
+
         public void GuardarPrimerPassword(string primerPassword)
         {
             Validaciones.ValidarPassword(primerPassword, 25, 5);
@@ -198,8 +196,9 @@ namespace Negocio
             this.gestorContrasenia.LimpiarBD();
             this.gestorCategoria.LimpiarBD();
             this.gestorTarjetaCredito.LimpiarBD();
-            this.FuenteLocal = new FuenteLocal();
-            this.fuentes[0] = this.FuenteLocal;
+            this.gestorDataBreaches.LimpiarBD();
+            this.gestorDataBreaches.LimpiarFuenteLocal();
+            this.gestorDataBreaches.LimpiarFuenteArchivo();
         }
 
         public int ConsultarVulnerabilidades()
@@ -263,19 +262,20 @@ namespace Negocio
         public int VerificarPasswordFiltrado(string password)
         {
             if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            List<IFuente> fuentes = gestorDataBreaches.ObtenerFuentes();
             return gestorContrasenia.VerificarPasswordFiltrado(password, fuentes);
         }
 
         public void BajaDataBreachArchivos()
         {
             if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            gestorDataBreaches.BajaDataBreachArchivos();
+            gestorDataBreaches.LimpiarFuenteArchivo();
         }
 
         public void BajaDataBreachLocal()
         {
             if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            FuenteLocal = new FuenteLocal();
+            gestorDataBreaches.LimpiarFuenteLocal();
         }
     }
 }

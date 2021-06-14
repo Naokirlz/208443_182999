@@ -60,7 +60,7 @@ namespace Negocio.TarjetaCreditos
             return repositorio.ObtenerTodas();
         }
         
-        public IEnumerable<TarjetaCredito> ObtenerTarjetasVulnerables(IFuente fuente)
+        public IEnumerable<TarjetaCredito> ObtenerTarjetasVulnerables(List<IFuente> fuentes)
         {
             List<TarjetaCredito> tarjetasVulnerables = new List<TarjetaCredito>();
             IEnumerable<TarjetaCredito> todasLasTarjetas = this.ObtenerTodas();
@@ -68,15 +68,15 @@ namespace Negocio.TarjetaCreditos
 
             for (int i = 0; i < cantidad; i++)
             {
-                AgregarTarjetaSiEsVulnerable(tarjetasVulnerables, todasLasTarjetas.ElementAt(i), fuente);
+                AgregarTarjetaSiEsVulnerable(tarjetasVulnerables, todasLasTarjetas.ElementAt(i), fuentes);
             }
 
             return tarjetasVulnerables;
         }
 
-        private void AgregarTarjetaSiEsVulnerable(List<TarjetaCredito> tarjetas, TarjetaCredito item, IFuente fuente)
+        private void AgregarTarjetaSiEsVulnerable(List<TarjetaCredito> tarjetas, TarjetaCredito item, List<IFuente> fuentes)
         {
-            int cantidadVecesEnFuente = BuscarTarjetaCreditoEnFuente(item, fuente);
+            int cantidadVecesEnFuente = BuscarTarjetaCreditoEnFuente(item, fuentes);
             if (cantidadVecesEnFuente > 0)
             {
                 item.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
@@ -86,11 +86,13 @@ namespace Negocio.TarjetaCreditos
 
         }
 
-        private int BuscarTarjetaCreditoEnFuente(TarjetaCredito item, IFuente fuente)
+        private int BuscarTarjetaCreditoEnFuente(TarjetaCredito item, List<IFuente> fuentes)
         {
-            int cantidadDeVecesVulnerable = fuente.BuscarPasswordOContraseniaEnFuente(item.Numero);
-            IFuente fuenteArchivo = new FuenteArchivo();
-            cantidadDeVecesVulnerable += fuenteArchivo.BuscarPasswordOContraseniaEnFuente(item.Numero);
+            int cantidadDeVecesVulnerable = 0;
+            foreach (IFuente fuente in fuentes)
+            {
+                cantidadDeVecesVulnerable += fuente.BuscarPasswordOContraseniaEnFuente(item.Numero);
+            }
             return cantidadDeVecesVulnerable;
         }
 

@@ -58,7 +58,7 @@ namespace PruebasUnitarias
 
             sesionPrueba.AltaTarjetaCredito(nuevoTarjeta);
             sesionPrueba.AltaContrasenia(pruebaContrasenia);
-            sesionPrueba.FuenteLocal.CrearDataBreach("dalevo111!!!\n1234123412341234");
+            sesionPrueba.CargarDataBreachLocal("dalevo111!!!\n1234123412341234");
 
         }
 
@@ -162,15 +162,6 @@ namespace PruebasUnitarias
             nuevo.Alta(historial);
             historial.Fecha = DateTime.Now.AddDays(10);
             nuevo.Modificar(historial);
-
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void NoSePuedeBorrarTest()
-        {
-            RepositorioDataBreachesEntity nuevo = new RepositorioDataBreachesEntity();
-            nuevo.TestClear();
 
         }
 

@@ -12,10 +12,18 @@ namespace Negocio.DataBreaches
     public class GestorDataBreaches
     {
         private IRepositorio<Historial> repositorio;
+        private List<IFuente> fuentes;
+        private FuenteLocal fuenteLocal;
+        private FuenteArchivo fuenteArchivo;
 
         public GestorDataBreaches()
         {
             this.repositorio = new RepositorioDataBreachesEntity();
+            this.fuentes = new List<IFuente>();
+            this.fuenteLocal = new FuenteLocal();
+            this.fuenteArchivo = new FuenteArchivo();
+            fuentes.Add(fuenteLocal);
+            fuentes.Add(fuenteArchivo);
         }
 
 
@@ -51,6 +59,11 @@ namespace Negocio.DataBreaches
             return buscado.passwords;
         }
 
+        internal void CargarDataBreachLocal(string texto)
+        {
+            this.fuenteLocal.CrearDataBreach(texto);
+        }
+
         public IEnumerable<HistorialTarjetas> DevolverTarjetasVulnerables(int historial)
         {
             Historial buscado = Buscar(historial);
@@ -80,7 +93,17 @@ namespace Negocio.DataBreaches
             return repositorio.ObtenerTodas();
         }
 
-        public void BajaDataBreachArchivos()
+        public void LimpiarBD()
+        {
+            repositorio.TestClear();
+        }
+        public void LimpiarFuenteLocal()
+        {
+            fuentes.Remove(fuenteLocal);
+            fuenteLocal = new FuenteLocal();
+            fuentes.Add(this.fuenteLocal);
+        }
+        public void LimpiarFuenteArchivo()
         {
             string rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
             if (Directory.Exists(rutaDirectorio))
@@ -92,6 +115,11 @@ namespace Negocio.DataBreaches
                     File.Delete(fichero);
                 }
             }
+        }
+
+        public List<IFuente> ObtenerFuentes()
+        {
+            return this.fuentes;
         }
     }
 }

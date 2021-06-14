@@ -89,7 +89,13 @@ namespace Negocio.Persistencia.EntityFramework
  
         public void TestClear()
         {
-            throw new InvalidOperationException();
+            using (Contexto context = new Contexto())
+            {
+                context.HistorialTarjeta.RemoveRange(context.HistorialTarjeta);
+                context.HistorialContrasenia.RemoveRange(context.HistorialContrasenia);
+                context.Historials.RemoveRange(context.Historials);
+                context.SaveChanges();
+            }
         }
     }
 }

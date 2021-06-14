@@ -171,7 +171,7 @@ namespace Interfaz
         }
         private void CargarVulnerabilidades()
         {
-            Sesion.FuenteLocal.CrearDataBreach("aaaaa\nsecreTo\n1231231231231231\n8558954744542212");
+            Sesion.CargarDataBreachLocal("aaaaa\nsecreTo\n1231231231231231\n8558954744542212");
 
         }
 

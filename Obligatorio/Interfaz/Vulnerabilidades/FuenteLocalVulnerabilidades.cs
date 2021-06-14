@@ -19,7 +19,7 @@ namespace Interfaz.Vulnerabilidades
             {
                 Alerta("El texto ha superado el límite de caracteres.", AlertaToast.enmTipo.Error);
             }
-            Sesion.FuenteLocal.CrearDataBreach(this.txtEntradaFuenteLocal.Text);
+            Sesion.CargarDataBreachLocal(this.txtEntradaFuenteLocal.Text);
             this.txtEntradaFuenteLocal.Text = "";
             Alerta("La lista ha sido guardada con éxito!", AlertaToast.enmTipo.Exito);
         }

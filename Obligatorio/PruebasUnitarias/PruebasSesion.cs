@@ -58,8 +58,7 @@ namespace PruebasUnitarias
 
             sesionPrueba.AltaTarjetaCredito(nuevoTarjeta);
             sesionPrueba.AltaContrasenia(pruebaContrasenia);
-            sesionPrueba.FuenteLocal.CrearDataBreach("dalevo111!!!\n1234123412341234");
-
+            sesionPrueba.CargarDataBreachLocal("dalevo111!!!\n1234123412341234");
         }
 
 
@@ -506,17 +505,17 @@ namespace PruebasUnitarias
         [TestMethod]
         public void AgregarContraseniaOTarjetaVulnerableAFuente()
         {
-            sesionPrueba.FuenteLocal.CrearDataBreach("admin123");
-            int cantidadVecesEncontrada = sesionPrueba.FuenteLocal.BuscarPasswordOContraseniaEnFuente("admin123");
+            sesionPrueba.CargarDataBreachLocal("admin123");
+            int cantidadVecesEncontrada = sesionPrueba.VerificarPasswordFiltrado("admin123");
             Assert.AreEqual(cantidadVecesEncontrada, 1);
         }
 
         [TestMethod]
         public void Agregar2VecesLaMismaContraseniaOTarjetaVulnerableAFuente()
         {
-            sesionPrueba.FuenteLocal.CrearDataBreach("admin123");
-            sesionPrueba.FuenteLocal.CrearDataBreach("admin123");
-            int cantidadVecesEncontrada = sesionPrueba.FuenteLocal.BuscarPasswordOContraseniaEnFuente("admin123");
+            sesionPrueba.CargarDataBreachLocal("admin123");
+            sesionPrueba.CargarDataBreachLocal("admin123");
+            int cantidadVecesEncontrada = sesionPrueba.VerificarPasswordFiltrado("admin123");
             Assert.AreEqual(cantidadVecesEncontrada, 2);
         }
 
@@ -533,7 +532,7 @@ namespace PruebasUnitarias
         [TestMethod]
         public void Encuentra2VecesUnaContraseniaVulnerableEnUnaFuente()
         {
-            sesionPrueba.FuenteLocal.CrearDataBreach("dalevo111!!!");
+            sesionPrueba.CargarDataBreachLocal("dalevo111!!!");
             sesionPrueba.ContraseniasVulnerables();
             pruebaContrasenia = sesionPrueba.BuscarContrasenia(pruebaContrasenia.ContraseniaId);
             Assert.AreEqual(pruebaContrasenia.CantidadVecesEncontradaVulnerable, 2);
@@ -562,7 +561,7 @@ namespace PruebasUnitarias
         [TestMethod]
         public void Encuentra2VecesTarjetaVulnerableEnUnaFuente()
         {
-            sesionPrueba.FuenteLocal.CrearDataBreach("1234123412341234");
+            sesionPrueba.CargarDataBreachLocal("1234123412341234");
             sesionPrueba.TarjetasCreditoVulnerables();
             nuevoTarjeta = sesionPrueba.BuscarTarjeta(nuevoTarjeta.Id);
             Assert.AreEqual(nuevoTarjeta.CantidadVecesEncontradaVulnerable, 2);
@@ -573,8 +572,8 @@ namespace PruebasUnitarias
         public void SiApareceMuchasVecesVulnerableDevuelveUnSoloObjeto()
         {
 
-            sesionPrueba.FuenteLocal.CrearDataBreach("1234123412341234");
-            sesionPrueba.FuenteLocal.CrearDataBreach("1234123412341234");
+            sesionPrueba.CargarDataBreachLocal("1234123412341234");
+            sesionPrueba.CargarDataBreachLocal("1234123412341234");
             IEnumerable<TarjetaCredito> tarjetasVulnerables = sesionPrueba.TarjetasCreditoVulnerables();
             Assert.AreEqual(1, tarjetasVulnerables.Count());
 
@@ -786,14 +785,6 @@ namespace PruebasUnitarias
         {
             sesionPrueba.LogOut();
             sesionPrueba.BajaDataBreachArchivos();
-        }
-
-        [TestMethod]
-        public void LaSesionPermiteEliminarLaFuenteLocal()
-        {
-            IFuente antigua = sesionPrueba.FuenteLocal;
-            sesionPrueba.BajaDataBreachLocal();
-            Assert.AreNotEqual(antigua, sesionPrueba.FuenteLocal);
         }
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]

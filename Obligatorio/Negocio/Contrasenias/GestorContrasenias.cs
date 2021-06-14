@@ -69,7 +69,7 @@ namespace Negocio.Contrasenias
             return password.Password.Clave;
         }
         
-        public IEnumerable<Contrasenia> ObtenerContraseniasVulnerables(IFuente fuente)
+        public IEnumerable<Contrasenia> ObtenerContraseniasVulnerables(List<IFuente> fuentes)
         {
             List<Contrasenia> contraseniasVulnerables = new List<Contrasenia>();
             IEnumerable<Contrasenia> todasLasContrasenias = this.ObtenerTodas();
@@ -77,14 +77,14 @@ namespace Negocio.Contrasenias
 
             for (int i = 0; i < cantidad; i++)
             {
-                AgregarContraseniaSiEsVulnerable(contraseniasVulnerables, todasLasContrasenias.ElementAt(i), fuente);
+                AgregarContraseniaSiEsVulnerable(contraseniasVulnerables, todasLasContrasenias.ElementAt(i), fuentes);
             }
 
             return contraseniasVulnerables;
         }
-        private void AgregarContraseniaSiEsVulnerable(List<Contrasenia> contrasenias, Contrasenia contrasenia, IFuente fuente)
+        private void AgregarContraseniaSiEsVulnerable(List<Contrasenia> contrasenias, Contrasenia contrasenia, List<IFuente> fuentes)
         {
-            int cantidadVecesEnFuente = BuscarContraseniaEnFuente(contrasenia, fuente);
+            int cantidadVecesEnFuente = BuscarContraseniaEnFuente(contrasenia, fuentes);
             if (cantidadVecesEnFuente > 0)
             {
                 contrasenia.CantidadVecesEncontradaVulnerable = cantidadVecesEnFuente;
@@ -94,12 +94,14 @@ namespace Negocio.Contrasenias
 
         }
 
-        private int BuscarContraseniaEnFuente(Contrasenia contrasenia, IFuente fuente)
+        private int BuscarContraseniaEnFuente(Contrasenia contrasenia, List<IFuente> fuentes)
         {
             string password = this.MostrarPassword(contrasenia);
-            int cantidadDeVecesVulnerable = fuente.BuscarPasswordOContraseniaEnFuente(password);
-            IFuente fuenteArchivo = new FuenteArchivo();
-            cantidadDeVecesVulnerable += fuenteArchivo.BuscarPasswordOContraseniaEnFuente(password);
+            int cantidadDeVecesVulnerable = 0;
+            foreach(IFuente fuente in fuentes)
+            {
+                cantidadDeVecesVulnerable += fuente.BuscarPasswordOContraseniaEnFuente(password);
+            }
             return cantidadDeVecesVulnerable;
         }
 
