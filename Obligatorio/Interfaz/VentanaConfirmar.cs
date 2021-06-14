@@ -66,6 +66,10 @@ namespace Interfaz
             {
                 Alerta(excepcion.Message, AlertaToast.enmTipo.Error);
             }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                Alerta("Error de base de datos al intentar borrar los datos.\n" + ex.Message, AlertaToast.enmTipo.Error);
+            }
         }
         private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
         {
