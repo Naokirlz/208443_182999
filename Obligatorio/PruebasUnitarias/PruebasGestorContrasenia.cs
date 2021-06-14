@@ -805,5 +805,22 @@ namespace PruebasUnitarias
 
         }
 
+        [TestMethod]
+        public void SePuedeVerficarCantidadVecesRepetidoUnPass()
+        {
+            ContraseniaCompleta.Password.Clave = "sssss1";
+            ContraseniaCompleta.Usuario = "Usuuu1";
+            Gestor.Alta(ContraseniaCompleta);
+
+            ContraseniaCompleta.Password.Clave = "sssss1";
+            ContraseniaCompleta.Usuario = "Usuuu2";
+            Gestor.Alta(ContraseniaCompleta);
+
+            int cantidad = Gestor.VerificarCantidadVecesPasswordRepetido("sssss1");
+
+            Assert.AreEqual(2, cantidad);
+        }
+
+        
     }
 }

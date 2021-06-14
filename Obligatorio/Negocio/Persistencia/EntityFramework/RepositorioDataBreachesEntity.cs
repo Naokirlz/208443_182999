@@ -52,14 +52,12 @@ namespace Negocio.Persistencia.EntityFramework
         {
             using (Contexto context = new Contexto())
             {
+                Existe(entity);
                 Historial existe = context.Historials.FirstOrDefault(t => t.HistorialId == entity.HistorialId);
-                if (existe != null) 
-                { 
-                    existe.passwords = context.HistorialContrasenia.Where(t => t.HistorialId == entity.HistorialId).ToList();
-                    existe.tarjetasVulnerables = context.HistorialTarjeta.Where(t => t.HistorialId == entity.HistorialId).ToList();
-                    return existe;
-                }
-                throw new ExcepcionElementoNoExiste("No existe Historial!");
+                existe.passwords = context.HistorialContrasenia.Where(t => t.HistorialId == entity.HistorialId).ToList();
+                existe.tarjetasVulnerables = context.HistorialTarjeta.Where(t => t.HistorialId == entity.HistorialId).ToList();
+                return existe;
+                
             }
         }
 
@@ -76,17 +74,22 @@ namespace Negocio.Persistencia.EntityFramework
         }
         public void Existe(Historial entity)
         {
-            throw new NotImplementedException();
+            using (Contexto context = new Contexto())
+            {
+                Historial existe = context.Historials.FirstOrDefault(t => t.HistorialId == entity.HistorialId);
+                if (existe == null)
+                    throw new ExcepcionElementoNoExiste("No existe Historial!");
+            }
         }
 
         public void Modificar(Historial entity)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException();
         }
  
         public void TestClear()
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException();
         }
     }
 }

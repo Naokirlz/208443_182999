@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Negocio.DataBreaches;
+using Negocio.Persistencia.EntityFramework;
 
 namespace PruebasUnitarias
 {
@@ -143,6 +144,38 @@ namespace PruebasUnitarias
             sesionPrueba.BajaHistorial(registroHistorial);
    
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionElementoNoExiste))]
+        public void NoSePuedeEliminarunHistorialQueNoExiste()
+        {
+           sesionPrueba.BajaHistorial(0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void NoSePuedeModificarHistorial()
+        {
+            RepositorioDataBreachesEntity nuevo = new RepositorioDataBreachesEntity();
+            Historial historial = new Historial();
+            historial.Fecha = DateTime.Now;
+            nuevo.Alta(historial);
+            historial.Fecha = DateTime.Now.AddDays(10);
+            nuevo.Modificar(historial);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void NoSePuedeBorrarTest()
+        {
+            RepositorioDataBreachesEntity nuevo = new RepositorioDataBreachesEntity();
+            nuevo.TestClear();
+
+        }
+
+
+
 
         [TestMethod]
         public void SePuedeBudvstunHistorial()
