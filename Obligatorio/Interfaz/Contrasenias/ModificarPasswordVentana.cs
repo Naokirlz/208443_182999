@@ -2,6 +2,7 @@
 using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.Excepciones;
+using Negocio.InterfacesGUI;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -13,7 +14,7 @@ namespace Interfaz.Contrasenias
     public partial class ModificarPasswordVentana : Form
     {
         private Contrasenia Contrasenia;
-        private Sesion Sesion;
+        private IContrasenia Sesion;
         public ModificarPasswordVentana(Contrasenia contrasenia)
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace Interfaz.Contrasenias
             lblContrasenaFiltrada.Visible = false;
             lblContrasenaRepetida.Visible = false;
 
-            Sesion = Sesion.ObtenerInstancia();
+            Sesion = new ContraseniaGUI();
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
             BindingSource bSource = new BindingSource();
             bSource.DataSource = this.Sesion.ObtenerTodasLasCategorias();

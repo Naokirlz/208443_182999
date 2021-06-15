@@ -239,7 +239,7 @@ namespace Negocio
         }
 
 
-        public List<Grupo> GenerarGrupos()
+        public IEnumerable<Grupo> GenerarGrupos()
         {
             if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
             return gestorContrasenia.GenerarGrupos();

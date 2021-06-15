@@ -2,6 +2,7 @@
 using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.Excepciones;
+using Negocio.InterfacesGUI;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -11,7 +12,7 @@ namespace Interfaz.Contrasenias
 {
     public partial class AgregarContrasenias : UserControl
     {
-        private Sesion Sesion = Sesion.ObtenerInstancia();
+        private IContrasenia Sesion = new ContraseniaGUI();
         public AgregarContrasenias()
         {
             InitializeComponent();

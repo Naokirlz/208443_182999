@@ -1,14 +1,16 @@
 ﻿using Negocio;
 using Negocio.Contrasenias;
+using Negocio.InterfacesGUI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Interfaz.Contrasenias
 {
     public partial class ReporteFortalezaContrasenias : UserControl
     {
-        private Sesion Sesion = Sesion.ObtenerInstancia();
+        private IContrasenia Sesion = new ContraseniaGUI();
         private List<Grupo> Grupos;
         private int GrupoMostrando;
 
@@ -20,7 +22,7 @@ namespace Interfaz.Contrasenias
 
             GenerarColumnaDeBotones();
 
-            this.Grupos = Sesion.GenerarGrupos();
+            this.Grupos = Sesion.GenerarGrupos().ToList();
             CargarTabla();
         }
 

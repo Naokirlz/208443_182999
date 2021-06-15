@@ -1,5 +1,6 @@
 ﻿using Negocio;
 using Negocio.Contrasenias;
+using Negocio.InterfacesGUI;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -8,7 +9,7 @@ namespace Interfaz.Contrasenias
 {
     public partial class EliminarContrasenias : UserControl
     {
-        private Sesion Sesion = Sesion.ObtenerInstancia();
+        private IContrasenia Sesion = new ContraseniaGUI();
         public EliminarContrasenias()
         {
             InitializeComponent();

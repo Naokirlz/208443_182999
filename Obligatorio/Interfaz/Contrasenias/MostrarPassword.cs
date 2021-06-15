@@ -1,6 +1,7 @@
 ﻿using Negocio;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
+using Negocio.InterfacesGUI;
 using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
@@ -11,12 +12,12 @@ namespace Interfaz.Contrasenias
     public partial class MostrarPassword : Form
     {
         private Contrasenia Contrasenia;
-        private Sesion Sesion;
+        private IContrasenia Sesion;
         private MostrarPassword.enmAccion Accion;
         public MostrarPassword(Contrasenia contrasenia)
         {
             InitializeComponent();
-            Sesion = Sesion.ObtenerInstancia();
+            Sesion = new ContraseniaGUI();
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
             BindingSource bSource = new BindingSource();
             bSource.DataSource = this.Sesion.ObtenerTodasLasCategorias();
