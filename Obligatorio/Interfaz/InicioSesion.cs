@@ -8,7 +8,7 @@ namespace Interfaz
 {
     public partial class InicioSesion : Form
     {
-        private Sesion Sesion = Sesion.ObtenerInstancia();
+        private IVulnerablidades Sesion = IVulnerablidades.ObtenerInstancia();
         public InicioSesion()
         {
             InitializeComponent();

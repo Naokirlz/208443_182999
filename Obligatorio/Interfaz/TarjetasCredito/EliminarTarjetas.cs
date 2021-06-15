@@ -1,4 +1,5 @@
 ﻿using Negocio;
+using Negocio.InterfacesGUI;
 using Negocio.TarjetaCreditos;
 using System;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ namespace Interfaz.TarjetasCredito
 {
     public partial class EliminarTarjetas : UserControl
     {
-        private Sesion Sesion = Sesion.ObtenerInstancia();
+        private ITarjetaCredito Sesion = new TarjetaCreditoGUI();
         public EliminarTarjetas()
         {
             InitializeComponent();

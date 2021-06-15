@@ -1,5 +1,6 @@
 ﻿using Negocio;
 using Negocio.Categorias;
+using Negocio.InterfacesGUI;
 using Negocio.TarjetaCreditos;
 using System;
 using System.ComponentModel;
@@ -11,12 +12,12 @@ namespace Interfaz.TarjetasCredito
     public partial class MostrarTarjeta : Form
     {
         private TarjetaCredito TarjetaDeCredito;
-        private Sesion Sesion;
+        private ITarjetaCredito Sesion;
         private enmAccion Accion;
         public MostrarTarjeta(TarjetaCredito tarjeta)
         {
             InitializeComponent();
-            Sesion = Sesion.ObtenerInstancia();
+            Sesion = new TarjetaCreditoGUI();
             BindingList<Categoria> bindinglist = new BindingList<Categoria>();
             BindingSource bSource = new BindingSource();
             bSource.DataSource = this.Sesion.ObtenerTodasLasCategorias();

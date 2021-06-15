@@ -1,6 +1,7 @@
 ﻿using Negocio;
 using Negocio.DataBreaches;
 using Negocio.Excepciones;
+using Negocio.InterfacesGUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,6 @@ namespace Interfaz.Vulnerabilidades
 {
     public partial class CargarFuenteVulnerabilidades : UserControl
     {
-        Sesion Sesion = Sesion.ObtenerInstancia();
         public CargarFuenteVulnerabilidades()
         {
             InitializeComponent();

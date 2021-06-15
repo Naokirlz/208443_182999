@@ -1,6 +1,7 @@
 ﻿using Negocio;
 using Negocio.Categorias;
 using Negocio.Excepciones;
+using Negocio.InterfacesGUI;
 using Negocio.TarjetaCreditos;
 using System;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ namespace Interfaz.TarjetasCredito
 {
     public partial class ModificarTarjetas : UserControl
     {
-        private Sesion Sesion = Sesion.ObtenerInstancia();
+        private ITarjetaCredito Sesion = new TarjetaCreditoGUI();
 
         public ModificarTarjetas()
         {

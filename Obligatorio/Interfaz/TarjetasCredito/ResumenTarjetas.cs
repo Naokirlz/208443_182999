@@ -1,4 +1,5 @@
 ﻿using Negocio;
+using Negocio.InterfacesGUI;
 using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace Interfaz.TarjetasCredito
 {
     public partial class ResumenTarjetas : UserControl
     {
-        private Sesion Sesion = Sesion.ObtenerInstancia();
+        private ITarjetaCredito Sesion = new TarjetaCreditoGUI();
         private IEnumerable<TarjetaCredito> Tarjetas;
         public ResumenTarjetas()
         {

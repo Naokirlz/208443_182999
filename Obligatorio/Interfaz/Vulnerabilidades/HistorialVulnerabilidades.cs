@@ -17,7 +17,7 @@ namespace Interfaz.Vulnerabilidades
 {
     public partial class HistorialVulnerabilidades : UserControl
     {
-        Sesion Sesion = Sesion.ObtenerInstancia();
+        IVulnerablidades Sesion = IVulnerablidades.ObtenerInstancia();
         int HistorialSeleccionado;
         public HistorialVulnerabilidades()
         {

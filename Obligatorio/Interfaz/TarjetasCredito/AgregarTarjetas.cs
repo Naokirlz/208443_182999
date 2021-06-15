@@ -6,12 +6,13 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using Negocio.InterfacesGUI;
 
 namespace Interfaz.TarjetasCredito
 {
     public partial class AgregarTarjetas : UserControl
     {
-        public Sesion Sesion = Sesion.ObtenerInstancia();
+        public ITarjetaCredito Sesion = new TarjetaCreditoGUI();
         public AgregarTarjetas()
         {
             InitializeComponent();

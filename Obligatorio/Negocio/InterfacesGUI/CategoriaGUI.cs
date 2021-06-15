@@ -9,10 +9,10 @@ namespace Negocio.InterfacesGUI
 {
     public class CategoriaGUI : ICategoria
     {
-        private Sesion sesion;
+        private IVulnerablidades sesion;
         public CategoriaGUI()
         {
-            sesion = Sesion.ObtenerInstancia();
+            sesion = IVulnerablidades.ObtenerInstancia();
         }
         public void AltaCategoria(string nombre)
         {

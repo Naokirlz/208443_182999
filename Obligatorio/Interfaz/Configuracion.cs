@@ -13,7 +13,7 @@ namespace Interfaz
 {
     public partial class Configuracion : UserControl
     {
-        private Sesion Sesion = Sesion.ObtenerInstancia();
+        private IVulnerablidades Sesion = IVulnerablidades.ObtenerInstancia();
 
         public Configuracion()
         {
@@ -31,7 +31,7 @@ namespace Interfaz
                     Alerta("Los passwords deben coincidir.", AlertaToast.enmTipo.Error);
                     return;
                 }
-                Sesion sesion = Sesion.ObtenerInstancia();
+                IVulnerablidades sesion = IVulnerablidades.ObtenerInstancia();
                 sesion.CambiarPassword(passwordRepetido);
                 this.txtPassword.Text = "";
                 this.txtRepetirPassword.Text = "";

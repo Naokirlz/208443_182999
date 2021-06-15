@@ -7,7 +7,7 @@ namespace Interfaz.Vulnerabilidades
 {
     public partial class FuenteLocalVulnerabilidades : UserControl
     {
-        Sesion Sesion = Sesion.ObtenerInstancia();
+        private IVulnerablidades Sesion = new VulnerabilidadesGUI();
         public FuenteLocalVulnerabilidades()
         {
             InitializeComponent();

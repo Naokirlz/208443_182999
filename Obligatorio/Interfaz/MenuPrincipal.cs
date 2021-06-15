@@ -13,7 +13,7 @@ namespace Interfaz
 {
     public partial class MenuPrincipal : Form
     {
-        private Sesion Sesion = Sesion.ObtenerInstancia();
+        private IVulnerablidades Sesion = IVulnerablidades.ObtenerInstancia();
 
         private IconButton BotonSeleccionado;
         private Panel BordeIzquierdoDelBoton;

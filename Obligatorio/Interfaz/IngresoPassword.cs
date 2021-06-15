@@ -10,11 +10,11 @@ namespace Interfaz
     public partial class IngresoPassword : Form
     {
         private Contrasenia Contrasenia;
-        private Sesion Sesion;
+        private IVulnerablidades Sesion;
         public IngresoPassword(Contrasenia contrasenia)
         {
             InitializeComponent();
-            Sesion = Sesion.ObtenerInstancia();
+            Sesion = IVulnerablidades.ObtenerInstancia();
             this.Contrasenia = contrasenia;
             this.txtPassword.Text = Sesion.MostrarPassword(Contrasenia);
 

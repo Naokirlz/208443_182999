@@ -18,7 +18,7 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasSesion
     {
-        Sesion sesionPrueba;
+        IVulnerablidades sesionPrueba;
         FuenteLocal Fuente;
         private TarjetaCredito nuevoTarjeta;
         private Contrasenia pruebaContrasenia;
@@ -28,7 +28,7 @@ namespace PruebasUnitarias
         public void InicializarPruebas()
         {
             
-            sesionPrueba = Sesion.ObtenerInstancia();
+            sesionPrueba = IVulnerablidades.ObtenerInstancia();
             
             sesionPrueba.GuardarPrimerPassword("secreto");
             sesionPrueba.Login("secreto");
@@ -684,7 +684,7 @@ namespace PruebasUnitarias
             pruebaContrasenia.Usuario = "ussu6";
             sesionPrueba.AltaContrasenia(pruebaContrasenia);
 
-            List<Grupo> grupos = sesionPrueba.GenerarGrupos();
+            List<Grupo> grupos = sesionPrueba.GenerarGrupos().ToList();
             Assert.IsNotNull(grupos);
         }
         [TestMethod]
@@ -729,7 +729,7 @@ namespace PruebasUnitarias
         public void NoSeGeneranGruposSinLoguearse()
         {
             sesionPrueba.LogOut();
-            List<Grupo> grupos = sesionPrueba.GenerarGrupos();
+            List<Grupo> grupos = sesionPrueba.GenerarGrupos().ToList();
 
         }
         [TestMethod]
