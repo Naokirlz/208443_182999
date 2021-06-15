@@ -2,6 +2,7 @@
 using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 
 
@@ -12,7 +13,8 @@ namespace Negocio.Persistencia.EntityFramework
       
         public int Alta(Historial historial)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 context.Historials.Add(historial);
 
@@ -35,7 +37,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void Baja(Historial entity)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 Historial aEliminar = context.Historials.FirstOrDefault(c => c.HistorialId == entity.HistorialId);
 
@@ -50,7 +53,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public Historial Buscar(Historial entity)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 Existe(entity);
                 Historial existe = context.Historials.FirstOrDefault(t => t.HistorialId == entity.HistorialId);
@@ -64,7 +68,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public IEnumerable<Historial> ObtenerTodas()
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 List<Historial> retorno;
                 retorno = context.Historials.ToList();
@@ -74,7 +79,8 @@ namespace Negocio.Persistencia.EntityFramework
         }
         public void Existe(Historial entity)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 Historial existe = context.Historials.FirstOrDefault(t => t.HistorialId == entity.HistorialId);
                 if (existe == null)
@@ -89,7 +95,8 @@ namespace Negocio.Persistencia.EntityFramework
  
         public void TestClear()
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 context.HistorialTarjeta.RemoveRange(context.HistorialTarjeta);
                 context.HistorialContrasenia.RemoveRange(context.HistorialContrasenia);

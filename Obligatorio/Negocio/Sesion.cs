@@ -6,6 +6,7 @@ using Negocio.Contrasenias;
 using Negocio.TarjetaCreditos;
 using Negocio.DataBreaches;
 using Negocio.Excepciones;
+using System.Configuration;
 
 namespace Negocio
 {
@@ -57,6 +58,11 @@ namespace Negocio
         {
             List<IFuente> fuentes = gestorDataBreaches.ObtenerFuentes();
             return this.gestorTarjetaCredito.ObtenerTarjetasVulnerables(fuentes);
+        }
+
+        public void CambiarContextoDeBaseDeDatos(string contexto)
+        {
+            ConfigurationManager.AppSettings["DATABASE_CONTEXT"] = contexto;
         }
 
         public void CargarDataBreachLocal(string texto)

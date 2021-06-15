@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,8 +59,10 @@
     <Compile Include="Contrasenias\Password.cs" />
     <Compile Include="DataBreaches\GestorDataBreaches.cs" />
     <Compile Include="InterfacesGUI\CategoriaGUI.cs" />
+    <Compile Include="InterfacesGUI\ConfiguracionGUI.cs" />
     <Compile Include="InterfacesGUI\ContraseniaGUI.cs" />
     <Compile Include="InterfacesGUI\ICategoria.cs" />
+    <Compile Include="InterfacesGUI\IConfiguracion.cs" />
     <Compile Include="InterfacesGUI\IContrasenia.cs" />
     <Compile Include="InterfacesGUI\ITarjetaCredito.cs" />
     <Compile Include="InterfacesGUI\IVulnerabilidades.cs" />

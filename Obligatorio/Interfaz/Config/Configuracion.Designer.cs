@@ -128,7 +128,7 @@ namespace Interfaz.Config
             this.btnCargarDatosPrueba.Name = "btnCargarDatosPrueba";
             this.btnCargarDatosPrueba.Size = new System.Drawing.Size(251, 33);
             this.btnCargarDatosPrueba.TabIndex = 46;
-            this.btnCargarDatosPrueba.Text = "Cargar Datos Prueba";
+            this.btnCargarDatosPrueba.Text = "Cambiar a Datos de Prueba";
             this.btnCargarDatosPrueba.UseVisualStyleBackColor = true;
             this.btnCargarDatosPrueba.Click += new System.EventHandler(this.btnCargarDatosPrueba_Click);
             // 

@@ -2,6 +2,7 @@
 using Negocio.Contrasenias;
 using Negocio.DataBreaches;
 using Negocio.TarjetaCreditos;
+using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -19,11 +20,12 @@ namespace Negocio.Persistencia
         public DbSet<HistorialContrasenia> HistorialContrasenia { get; set; }
         public DbSet<HistorialTarjetas> HistorialTarjeta { get; set; }
 
-        public Contexto() : base("name=Contexto")
+        //public Contexto() : base("name=ContextoProd")
+        //{
+        //}
+        public Contexto(string context) : base(context)
         {
-
         }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

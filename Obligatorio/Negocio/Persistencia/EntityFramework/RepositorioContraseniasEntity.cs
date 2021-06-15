@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using Negocio.Excepciones;
+using System.Configuration;
 
 namespace Negocio.Persistencia.EntityFramework
 {
@@ -11,7 +12,8 @@ namespace Negocio.Persistencia.EntityFramework
     {
         public int Alta(Contrasenia entity)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 Existe(entity);
                 entity.Categoria = context.Categorias.FirstOrDefault(c => c.Nombre == entity.Categoria.Nombre);
@@ -24,7 +26,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void Baja(Contrasenia entity)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 Contrasenia aEliminar = context.Contrasenias.FirstOrDefault(c => c.ContraseniaId == entity.ContraseniaId);
 
@@ -40,7 +43,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public Contrasenia Buscar(Contrasenia entity)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 Contrasenia existe = context.Contrasenias.Include(t => t.Categoria).Include(t => t.Password).FirstOrDefault(t => t.ContraseniaId == entity.ContraseniaId);
                 if (existe != null) return existe;
@@ -50,7 +54,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void Existe(Contrasenia entity)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                Contrasenia existe = context.Contrasenias.FirstOrDefault(c => c.Sitio == entity.Sitio && c.Usuario == entity.Usuario);
                if (existe != null)
@@ -60,7 +65,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void Modificar(Contrasenia entity)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 Contrasenia aModificar = context.Contrasenias.Include(t => t.Categoria).Include(t => t.Password).FirstOrDefault(t => t.ContraseniaId == entity.ContraseniaId);
                 aModificar.ContraseniaId = entity.ContraseniaId;
@@ -88,7 +94,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public IEnumerable<Contrasenia> ObtenerTodas()
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 List<Contrasenia> retorno;
                 retorno = context.Contrasenias.Include(c => c.Password).Include(c => c.Categoria).ToList();
@@ -99,8 +106,9 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void TestClear()
         {
-               using (Contexto context = new Contexto())
-                {
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
+            {
                     context.Tarjetas.RemoveRange(context.Tarjetas);
                     context.Passwords.RemoveRange(context.Passwords);
                     context.Contrasenias.RemoveRange(context.Contrasenias);

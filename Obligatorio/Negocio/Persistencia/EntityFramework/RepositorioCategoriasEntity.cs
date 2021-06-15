@@ -2,6 +2,7 @@
 using Negocio.Excepciones;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 
 
@@ -10,9 +11,11 @@ namespace Negocio.Persistencia.EntityFramework
     public class RepositorioCategoriasEntity : IRepositorio<Categoria>
     {
         private static int autonumerado = 1;
+        private string contexto;
         public int Alta(Categoria entity)
         {
-            using (Contexto context = new Contexto())
+            contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 Existe(entity);
                 context.Categorias.Add(entity);
@@ -24,7 +27,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void Baja(Categoria entity)
         {
-            using (Contexto context = new Contexto())
+            contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 Categoria aEliminar = context.Categorias.FirstOrDefault(c => c.Id == entity.Id);
 
@@ -41,7 +45,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public Categoria Buscar(Categoria entity)
         {
-            using (Contexto context = new Contexto())
+            contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 Categoria buscada;
                 buscada = context.Categorias.Find(entity.Id);
@@ -57,7 +62,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void Existe(Categoria entity)
         {
-            using (Contexto context = new Contexto())
+            contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 Categoria existe = context.Categorias.FirstOrDefault(c => c.Nombre == entity.Nombre);
                 if (existe != null)
@@ -67,7 +73,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void Modificar(Categoria entity)
         {
-            using (Contexto context = new Contexto())
+            contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 Existe(entity);
                 Categoria categoriaAModificar = context.Categorias.FirstOrDefault(c => c.Id == entity.Id);
@@ -78,7 +85,8 @@ namespace Negocio.Persistencia.EntityFramework
        
         public IEnumerable<Categoria> ObtenerTodas()
         {
-            using (Contexto context = new Contexto())
+            contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 return context.Categorias.ToList();
             }
@@ -86,7 +94,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void TestClear()
         {
-            using (Contexto context = new Contexto())
+            contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 context.Categorias.RemoveRange(context.Categorias);
                 context.SaveChanges();

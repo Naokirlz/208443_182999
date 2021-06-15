@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using Negocio.Excepciones;
+using System.Configuration;
 
 namespace Negocio.Persistencia.EntityFramework
 {
@@ -11,7 +12,8 @@ namespace Negocio.Persistencia.EntityFramework
     {
         public int Alta(TarjetaCredito entity)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 Existe(entity);
                 entity.Categoria = context.Categorias.FirstOrDefault(c => c.Nombre == entity.Categoria.Nombre);
@@ -26,7 +28,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void Baja(TarjetaCredito entity)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 TarjetaCredito aEliminar = context.Tarjetas.FirstOrDefault(c => c.Id == entity.Id);
                 if (aEliminar != null)
@@ -41,7 +44,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public TarjetaCredito Buscar(TarjetaCredito entity)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 TarjetaCredito existe = context.Tarjetas.Include(t => t.Categoria).FirstOrDefault(t => t.Id == entity.Id);
                 if (existe != null) return existe;
@@ -51,7 +55,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void Existe(TarjetaCredito entity)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 TarjetaCredito existe = context.Tarjetas.FirstOrDefault(c => (c.Numero == entity.Numero || c.Nombre == entity.Nombre) && c.Id != entity.Id);
                 if (existe != null)
@@ -61,7 +66,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void Modificar(TarjetaCredito entity)
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 TarjetaCredito tarjetaAModificar = context.Tarjetas.FirstOrDefault(c => c.Id == entity.Id);
                 tarjetaAModificar.Id = entity.Id;
@@ -83,7 +89,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public IEnumerable<TarjetaCredito> ObtenerTodas()
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 List<TarjetaCredito> retorno;
                 retorno = context.Tarjetas.Include(t => t.Categoria).ToList();
@@ -94,7 +101,8 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void TestClear()
         {
-            using (Contexto context = new Contexto())
+            string contexto = "name=" + ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+            using (Contexto context = new Contexto(contexto))
             {
                 context.Tarjetas.RemoveRange(context.Tarjetas);
                 context.Passwords.RemoveRange(context.Passwords);

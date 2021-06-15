@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using Negocio.DataBreaches;
 using Interfaz.Alertas;
+using System.Configuration;
 
 namespace Interfaz.Config
 {
@@ -54,7 +55,18 @@ namespace Interfaz.Config
         {
             try
             {
-                InsertarDatosDeMuestra();
+                string contexto = ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
+                if(contexto.Equals("ContextoProd"))
+                {
+                    Sesion.CambiarContextoDeBaseDeDatos("ContextoTest");
+                    btnCargarDatosPrueba.Text = "Cambiar a Produccion";
+                }
+                else
+                {
+                    Sesion.CambiarContextoDeBaseDeDatos("ContextoProd");
+                    btnCargarDatosPrueba.Text = "Cambiar a Test";
+                }
+                //InsertarDatosDeMuestra();
             }
             catch (ExcepcionElementoYaExiste excepcion)
             {
