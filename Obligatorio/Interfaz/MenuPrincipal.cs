@@ -6,8 +6,10 @@ using FontAwesome.Sharp;
 using Interfaz.Alertas;
 using Interfaz.Categorias;
 using Interfaz.Contrasenias;
+using Interfaz.Login;
 using Interfaz.TarjetasCredito;
 using Interfaz.Vulnerabilidades;
+using Interfaz.Config;
 using Negocio;
 
 namespace Interfaz

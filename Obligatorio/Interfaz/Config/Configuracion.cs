@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using Negocio.DataBreaches;
 using Interfaz.Alertas;
 
-namespace Interfaz
+namespace Interfaz.Config
 {
     public partial class Configuracion : UserControl
     {

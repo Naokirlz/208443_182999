@@ -134,10 +134,10 @@
     <Compile Include="Categorias\ResumenCategorias.Designer.cs">
       <DependentUpon>ResumenCategorias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Configuracion.cs">
+    <Compile Include="Config\Configuracion.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Configuracion.Designer.cs">
+    <Compile Include="Config\Configuracion.Designer.cs">
       <DependentUpon>Configuracion.cs</DependentUpon>
     </Compile>
     <Compile Include="Contrasenias\AgregarContrasenias.cs">
@@ -194,10 +194,10 @@
     <Compile Include="Contrasenias\IngresoPassword.Designer.cs">
       <DependentUpon>IngresoPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="InicioSesion.cs">
+    <Compile Include="Login\InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InicioSesion.Designer.cs">
+    <Compile Include="Login\InicioSesion.Designer.cs">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </Compile>
     <Compile Include="Categorias\ModificarCategoria.cs">
@@ -214,10 +214,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistroPassword.cs">
+    <Compile Include="Login\RegistroPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistroPassword.Designer.cs">
+    <Compile Include="Login\RegistroPassword.Designer.cs">
       <DependentUpon>RegistroPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="TarjetasCredito\AgregarTarjetas.cs">
@@ -319,7 +319,7 @@
     <EmbeddedResource Include="Categorias\ResumenCategorias.resx">
       <DependentUpon>ResumenCategorias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Configuracion.resx">
+    <EmbeddedResource Include="Config\Configuracion.resx">
       <DependentUpon>Configuracion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contrasenias\AgregarContrasenias.resx">
@@ -349,7 +349,7 @@
     <EmbeddedResource Include="Contrasenias\IngresoPassword.resx">
       <DependentUpon>IngresoPassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InicioSesion.resx">
+    <EmbeddedResource Include="Login\InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Categorias\ModificarCategoria.resx">
@@ -367,7 +367,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RegistroPassword.resx">
+    <EmbeddedResource Include="Login\RegistroPassword.resx">
       <DependentUpon>RegistroPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TarjetasCredito\AgregarTarjetas.resx">

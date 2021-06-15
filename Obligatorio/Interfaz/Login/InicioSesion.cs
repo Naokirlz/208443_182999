@@ -5,7 +5,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Interfaz
+namespace Interfaz.Login
 {
     public partial class InicioSesion : Form
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace Interfaz
+namespace Interfaz.Login
 {
     partial class RegistroPassword
     {

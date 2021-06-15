@@ -1,5 +1,5 @@
 ﻿
-namespace Interfaz
+namespace Interfaz.Config
 {
     partial class Configuracion
     {
