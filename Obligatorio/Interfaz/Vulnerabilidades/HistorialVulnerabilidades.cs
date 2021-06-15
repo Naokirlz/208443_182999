@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using Negocio.DataBreaches;
 using Negocio.InterfacesGUI;
 using Interfaz.Alertas;
+using Interfaz.Contrasenias;
 
 namespace Interfaz.Vulnerabilidades
 {

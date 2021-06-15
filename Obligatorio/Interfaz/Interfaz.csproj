@@ -188,10 +188,10 @@
     <Compile Include="Contrasenias\ResumenContrasenias.Designer.cs">
       <DependentUpon>ResumenContrasenias.cs</DependentUpon>
     </Compile>
-    <Compile Include="IngresoPassword.cs">
+    <Compile Include="Contrasenias\IngresoPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IngresoPassword.Designer.cs">
+    <Compile Include="Contrasenias\IngresoPassword.Designer.cs">
       <DependentUpon>IngresoPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="InicioSesion.cs">
@@ -346,7 +346,7 @@
     <EmbeddedResource Include="Contrasenias\ResumenContrasenias.resx">
       <DependentUpon>ResumenContrasenias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IngresoPassword.resx">
+    <EmbeddedResource Include="Contrasenias\IngresoPassword.resx">
       <DependentUpon>IngresoPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InicioSesion.resx">

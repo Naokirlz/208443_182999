@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Interfaz.Contrasenias;
+using Negocio;
 using Negocio.Contrasenias;
 using Negocio.Excepciones;
 using Negocio.InterfacesGUI;

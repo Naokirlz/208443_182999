@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
+using Interfaz.Alertas;
 using Interfaz.Categorias;
 using Interfaz.Contrasenias;
 using Interfaz.TarjetasCredito;

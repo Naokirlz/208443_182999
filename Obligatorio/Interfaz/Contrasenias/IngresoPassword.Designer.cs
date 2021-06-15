@@ -1,5 +1,5 @@
 ﻿
-namespace Interfaz
+namespace Interfaz.Contrasenias
 {
     partial class IngresoPassword
     {

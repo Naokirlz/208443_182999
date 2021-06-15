@@ -2,20 +2,21 @@
 using Negocio;
 using Negocio.Contrasenias;
 using Negocio.Excepciones;
+using Negocio.InterfacesGUI;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Interfaz
+namespace Interfaz.Contrasenias
 {
     public partial class IngresoPassword : Form
     {
         private Contrasenia Contrasenia;
-        private Sesion Sesion;
+        private IContrasenia Sesion;
         public IngresoPassword(Contrasenia contrasenia)
         {
             InitializeComponent();
-            Sesion = Sesion.ObtenerInstancia();
+            Sesion = new ContraseniaGUI();
             this.Contrasenia = contrasenia;
             this.txtPassword.Text = Sesion.MostrarPassword(Contrasenia);
 
