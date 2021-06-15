@@ -25,8 +25,8 @@ namespace Negocio.Contrasenias
                 
         public GestorContrasenias() 
         {
-            //this.repositorio = new RepositorioContraseniasMemoria();
-            this.repositorio = new RepositorioContraseniasEntity();
+            FabricaRepositorio fabrica = new FabricaRepositorio();
+            this.repositorio = fabrica.CrearRepositorioContrasenias();
         }
         
         public int Alta(Contrasenia unaContrasena)

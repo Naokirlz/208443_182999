@@ -14,9 +14,8 @@ namespace Negocio.Categorias
 
         public GestorCategorias()
         {
-            //this.repositorio = new RepositorioCategoriasMemoria();
-            this.repositorio = new RepositorioCategoriasEntity();
-
+            FabricaRepositorio fabrica = new FabricaRepositorio();
+            this.repositorio = fabrica.CrearRepositorioCategorias();
         }
 
         public int Alta(string nombre)

@@ -19,10 +19,6 @@ namespace Negocio.Persistencia
         public DbSet<Historial> Historials { get; set; }
         public DbSet<HistorialContrasenia> HistorialContrasenia { get; set; }
         public DbSet<HistorialTarjetas> HistorialTarjeta { get; set; }
-
-        //public Contexto() : base("name=ContextoProd")
-        //{
-        //}
         public Contexto(string context) : base(context)
         {
         }

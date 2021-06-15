@@ -102,6 +102,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Persistencia\Contexto.cs" />
+    <Compile Include="Persistencia\FabricaRepositorio.cs" />
     <Compile Include="Persistencia\IRepositorio.cs" />
     <Compile Include="Persistencia\EntityFramework\RepositorioCategoriasEntity.cs" />
     <Compile Include="Persistencia\EntityFramework\RepositorioContraseniasEntity.cs" />

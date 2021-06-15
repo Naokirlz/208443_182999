@@ -18,7 +18,8 @@ namespace Negocio.DataBreaches
 
         public GestorDataBreaches()
         {
-            this.repositorio = new RepositorioDataBreachesEntity();
+            FabricaRepositorio fabrica = new FabricaRepositorio();
+            this.repositorio = fabrica.CrearRepositorioDataBreaches();
             this.fuentes = new List<IFuente>();
             this.fuenteLocal = new FuenteLocal();
             this.fuenteArchivo = new FuenteArchivo();

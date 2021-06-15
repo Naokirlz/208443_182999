@@ -767,25 +767,50 @@ namespace PruebasUnitarias
             ContraseniaCompleta.Usuario = "ussu1";
             Gestor.Alta(ContraseniaCompleta);
 
-            ContraseniaCompleta.Password.Clave = "12345678";
-            ContraseniaCompleta.Usuario = "ussu2";
-            Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaCon1 = new Contrasenia()
+            {
+                Categoria = ContraseniaCompleta.Categoria,
+                Sitio = ContraseniaCompleta.Sitio,
+                Password = new Password("12345678"),
+                Usuario = "ussu2"
+            };
+            Gestor.Alta(nuevaCon1);
 
-            ContraseniaCompleta.Password.Clave = "aaaaaaaaaaaaaaa";
-            ContraseniaCompleta.Usuario = "ussu3";
-            Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaCon2 = new Contrasenia()
+            {
+                Categoria = ContraseniaCompleta.Categoria,
+                Sitio = ContraseniaCompleta.Sitio,
+                Password = new Password("aaaaaaaaaaaaaaa"),
+                Usuario = "ussu3"
+            };
+            Gestor.Alta(nuevaCon2);
 
-            ContraseniaCompleta.Password.Clave = "AAAAAAaAAAAAAAA";
-            ContraseniaCompleta.Usuario = "ussu4";
-            Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaCon3 = new Contrasenia()
+            {
+                Categoria = ContraseniaCompleta.Categoria,
+                Sitio = ContraseniaCompleta.Sitio,
+                Password = new Password("AAAAAAaAAAAAAAA"),
+                Usuario = "ussu4"
+            };
+            Gestor.Alta(nuevaCon3);
 
-            ContraseniaCompleta.Password.Clave = " AAAA1@ AAAAAAA";
-            ContraseniaCompleta.Usuario = "ussu5";
-            Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaCon4 = new Contrasenia()
+            {
+                Categoria = ContraseniaCompleta.Categoria,
+                Sitio = ContraseniaCompleta.Sitio,
+                Password = new Password(" AAAA1@ AAAAAAA"),
+                Usuario = "ussu5"
+            };
+            Gestor.Alta(nuevaCon4);
 
-            ContraseniaCompleta.Password.Clave = "AAAAAAaAAAA$AA1";
-            ContraseniaCompleta.Usuario = "ussu6";
-            Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaCon5 = new Contrasenia()
+            {
+                Categoria = ContraseniaCompleta.Categoria,
+                Sitio = ContraseniaCompleta.Sitio,
+                Password = new Password("AAAAAAaAAAA$AA1"),
+                Usuario = "ussu6"
+            };
+            Gestor.Alta(nuevaCon5);
 
            List<Grupo> grupos =  Gestor.GenerarGrupos();
            Assert.IsNotNull(grupos);
