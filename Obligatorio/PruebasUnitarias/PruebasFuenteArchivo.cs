@@ -11,11 +11,11 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasFuenteArchivo
     {
-        IVulnerablidades sesionPrueba;
+        Sesion sesionPrueba;
         [TestCleanup]
         public void LimpiarPruebas()
         {
-            sesionPrueba = IVulnerablidades.ObtenerInstancia();
+            sesionPrueba = Sesion.ObtenerInstancia();
             sesionPrueba.VaciarDatosPrueba();
         }
 

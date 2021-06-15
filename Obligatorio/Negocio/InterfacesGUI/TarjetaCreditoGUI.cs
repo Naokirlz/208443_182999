@@ -10,10 +10,10 @@ namespace Negocio.InterfacesGUI
 {
     public class TarjetaCreditoGUI : ITarjetaCredito
     {
-        private IVulnerablidades sesion;
+        private Sesion sesion;
         public TarjetaCreditoGUI()
         {
-            sesion = IVulnerablidades.ObtenerInstancia();
+            sesion = Sesion.ObtenerInstancia();
         }
 
         public int AltaTarjetaCredito(TarjetaCredito nuevaTarjeta)

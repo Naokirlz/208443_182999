@@ -1,6 +1,7 @@
 ﻿using Negocio;
 using Negocio.Contrasenias;
 using Negocio.Excepciones;
+using Negocio.InterfacesGUI;
 using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Interfaz.Vulnerabilidades
 {
     public partial class ResumenVulnerabilidades : UserControl
     {
-        private IVulnerablidades Sesion = IVulnerablidades.ObtenerInstancia();
+        private IVulnerabilidades Sesion = new VulnerabilidadesGUI();
         private List<Contrasenia> contraseniasVulnerables;
         private List<TarjetaCredito> tarjetasVulnerables;
 

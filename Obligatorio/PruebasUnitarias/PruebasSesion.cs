@@ -18,7 +18,7 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasSesion
     {
-        IVulnerablidades sesionPrueba;
+        Sesion sesionPrueba;
         FuenteLocal Fuente;
         private TarjetaCredito nuevoTarjeta;
         private Contrasenia pruebaContrasenia;
@@ -28,7 +28,7 @@ namespace PruebasUnitarias
         public void InicializarPruebas()
         {
             
-            sesionPrueba = IVulnerablidades.ObtenerInstancia();
+            sesionPrueba = Sesion.ObtenerInstancia();
             
             sesionPrueba.GuardarPrimerPassword("secreto");
             sesionPrueba.Login("secreto");

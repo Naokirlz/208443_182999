@@ -9,11 +9,11 @@ using Negocio.Excepciones;
 
 namespace Negocio
 {
-    public class IVulnerablidades
+    public class Sesion
     {
         private const string MENSAJE_ERROR_NO_LOGUEADO = "Debe estar logueado para realizar esta acción.";
         
-        private static IVulnerablidades instancia;
+        private static Sesion instancia;
         private GestorCategorias gestorCategoria;
         private GestorContrasenias gestorContrasenia;
         private GestorTarjetaCredito gestorTarjetaCredito;
@@ -21,13 +21,13 @@ namespace Negocio
         private string passwordMaestro;
         private bool logueado;
 
-        public static IVulnerablidades ObtenerInstancia()
+        public static Sesion ObtenerInstancia()
         {
-            if (instancia == null) instancia = new IVulnerablidades();
+            if (instancia == null) instancia = new Sesion();
             return instancia;
         }
 
-        private IVulnerablidades()
+        private Sesion()
         {
             gestorCategoria = new GestorCategorias();
             gestorContrasenia = new GestorContrasenias();

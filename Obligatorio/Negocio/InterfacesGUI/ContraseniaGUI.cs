@@ -10,10 +10,10 @@ namespace Negocio.InterfacesGUI
 {
     public class ContraseniaGUI : IContrasenia
     {
-        private IVulnerablidades sesion;
+        private Sesion sesion;
         public ContraseniaGUI()
         {
-            sesion = IVulnerablidades.ObtenerInstancia();
+            sesion = Sesion.ObtenerInstancia();
         }
 
         public int AltaContrasenia(Contrasenia unaContrasena)

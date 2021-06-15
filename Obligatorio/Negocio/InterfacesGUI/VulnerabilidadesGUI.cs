@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Negocio;
+using Negocio.Contrasenias;
+using Negocio.DataBreaches;
+using Negocio.TarjetaCreditos;
 
 namespace Negocio.InterfacesGUI
 {
@@ -12,7 +15,52 @@ namespace Negocio.InterfacesGUI
         private Sesion sesion;
         public VulnerabilidadesGUI()
         {
-            sesion
+            sesion = Sesion.ObtenerInstancia();
+        }
+
+        public Contrasenia BuscarContrasenia(int id)
+        {
+            return sesion.BuscarContrasenia(id);
+        }
+
+        public void CargarDataBreachLocal(string texto)
+        {
+            sesion.CargarDataBreachLocal(texto);
+        }
+
+        public int ConsultarVulnerabilidades()
+        {
+            return sesion.ConsultarVulnerabilidades();
+        }
+
+        public IEnumerable<Contrasenia> ContraseniasVulnerables()
+        {
+            return sesion.ContraseniasVulnerables();
+        }
+
+        public IEnumerable<HistorialContrasenia> DevolverContraseniasVulnerables(int historial)
+        {
+            return sesion.DevolverContraseniasVulnerables(historial);
+        }
+
+        public IEnumerable<HistorialTarjetas> DevolverTarjetasVulnerables(int historial)
+        {
+            return sesion.DevolverTarjetasVulnerables(historial);
+        }
+
+        public string MostrarPassword(Contrasenia contrasenia)
+        {
+            return sesion.MostrarPassword(contrasenia);
+        }
+
+        public IEnumerable<Historial> ObtenerTodasLosHistoriales()
+        {
+            return sesion.ObtenerTodasLosHistoriales();
+        }
+
+        public IEnumerable<TarjetaCredito> TarjetasCreditoVulnerables()
+        {
+            return sesion.TarjetasCreditoVulnerables();
         }
     }
 }

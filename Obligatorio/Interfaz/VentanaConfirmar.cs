@@ -8,7 +8,7 @@ namespace Interfaz
 {
     public partial class VentanaConfirmar : Form
     {
-        private IVulnerablidades Sesion = IVulnerablidades.ObtenerInstancia();
+        private Sesion Sesion = Sesion.ObtenerInstancia();
         private int Id;
         public string MsgConfirmación { get; set; }
         public string MsgPregunta { get; set; }

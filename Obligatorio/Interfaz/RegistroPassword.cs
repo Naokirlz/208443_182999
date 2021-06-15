@@ -38,7 +38,7 @@ namespace Interfaz
                     Alerta("Los passwords deben coincidir.", AlertaToast.enmTipo.Error);
                     return;
                 }
-                IVulnerablidades sesion = IVulnerablidades.ObtenerInstancia();
+                Sesion sesion = Sesion.ObtenerInstancia();
                 sesion.GuardarPrimerPassword(passwordRepetido);
                 NavegarALogin();
             }

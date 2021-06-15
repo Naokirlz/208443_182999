@@ -1,5 +1,6 @@
 ﻿using Negocio;
 using Negocio.Excepciones;
+using Negocio.InterfacesGUI;
 using System;
 using System.Windows.Forms;
 
@@ -7,7 +8,7 @@ namespace Interfaz.Vulnerabilidades
 {
     public partial class FuenteLocalVulnerabilidades : UserControl
     {
-        private IVulnerablidades Sesion = new VulnerabilidadesGUI();
+        private IVulnerabilidades Sesion = new VulnerabilidadesGUI();
         public FuenteLocalVulnerabilidades()
         {
             InitializeComponent();
