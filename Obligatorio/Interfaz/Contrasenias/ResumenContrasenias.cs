@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Negocio;
 using System.Linq;
 using Negocio.InterfacesGUI;
+using Interfaz.Alertas;
 
 namespace Interfaz.Contrasenias
 {

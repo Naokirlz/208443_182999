@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Interfaz
+namespace Interfaz.Alertas
 {
     public partial class AlertaToast : Form
     {

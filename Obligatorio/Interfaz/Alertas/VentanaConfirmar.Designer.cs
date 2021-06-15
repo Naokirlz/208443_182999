@@ -1,5 +1,5 @@
 ﻿
-namespace Interfaz
+namespace Interfaz.Alertas
 {
     partial class VentanaConfirmar
     {

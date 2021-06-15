@@ -62,7 +62,9 @@
     <Compile Include="InterfacesGUI\ICategoria.cs" />
     <Compile Include="InterfacesGUI\IContrasenia.cs" />
     <Compile Include="InterfacesGUI\ITarjetaCredito.cs" />
+    <Compile Include="InterfacesGUI\IVulnerabilidades.cs" />
     <Compile Include="InterfacesGUI\TarjetaCreditoGUI.cs" />
+    <Compile Include="InterfacesGUI\VulnerabilidadesGUI.cs" />
     <Compile Include="Migrations\202106062059237_InitialCreate.cs" />
     <Compile Include="Migrations\202106062059237_InitialCreate.designer.cs">
       <DependentUpon>202106062059237_InitialCreate.cs</DependentUpon>

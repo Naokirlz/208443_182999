@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio.DataBreaches;
 using Negocio.InterfacesGUI;
+using Interfaz.Alertas;
 
 namespace Interfaz.Vulnerabilidades
 {

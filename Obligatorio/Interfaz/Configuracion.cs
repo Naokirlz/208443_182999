@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using Negocio.DataBreaches;
+using Interfaz.Alertas;
 
 namespace Interfaz
 {

@@ -4,7 +4,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Interfaz
+namespace Interfaz.Alertas
 {
     public partial class VentanaConfirmar : Form
     {

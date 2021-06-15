@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Interfaz.Alertas;
+using Negocio;
 using Negocio.DataBreaches;
 using Negocio.Excepciones;
 using Negocio.InterfacesGUI;

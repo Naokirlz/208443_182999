@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using Negocio.InterfacesGUI;
+using Interfaz.Alertas;
 
 namespace Interfaz.TarjetasCredito
 {

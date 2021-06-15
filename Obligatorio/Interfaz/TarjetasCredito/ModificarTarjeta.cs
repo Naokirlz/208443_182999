@@ -1,4 +1,5 @@
-﻿using Negocio;
+﻿using Interfaz.Alertas;
+using Negocio;
 using Negocio.Categorias;
 using Negocio.Excepciones;
 using Negocio.InterfacesGUI;

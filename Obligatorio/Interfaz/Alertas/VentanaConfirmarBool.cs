@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Interfaz
+namespace Interfaz.Alertas
 {
     public partial class VentanaConfirmarBool : Form
     {
