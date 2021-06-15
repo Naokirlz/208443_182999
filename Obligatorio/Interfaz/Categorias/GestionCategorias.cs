@@ -1,5 +1,6 @@
 ﻿using FontAwesome.Sharp;
 using Negocio;
+using Negocio.InterfacesGUI;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -9,7 +10,7 @@ namespace Interfaz.Categorias
     public partial class GestionCategorias : UserControl
     {
         private IconButton BotonSeleccionado;
-        public Sesion sis = Sesion.ObtenerInstancia();
+        public ICategoria Sesion = new CategoriaGUI();
 
         public GestionCategorias()
         {

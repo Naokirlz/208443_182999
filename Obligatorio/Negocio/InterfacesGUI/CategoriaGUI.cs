@@ -24,6 +24,11 @@ namespace Negocio.InterfacesGUI
             sesion.BajaCategoria(categoriaId);
         }
 
+        public void ModificarCategoria(int id, string nombreNuevo)
+        {
+            sesion.ModificarCategoria(id, nombreNuevo);
+        }
+
         public IEnumerable<Categoria> ObtenerTodasLasCategorias()
         {
             return sesion.ObtenerTodasLasCategorias();

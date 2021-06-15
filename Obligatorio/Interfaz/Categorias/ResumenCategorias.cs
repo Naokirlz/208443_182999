@@ -2,14 +2,15 @@
 using System.Windows.Forms;
 using Negocio;
 using Negocio.Categorias;
+using Negocio.InterfacesGUI;
 
 namespace Interfaz.Categorias
 {
     public partial class ResumenCategorias : UserControl
     {
+        public ICategoria Sesion = new CategoriaGUI();
         public ResumenCategorias()
         {
-            Sesion Sesion = Sesion.ObtenerInstancia();
             InitializeComponent();
             IEnumerable<Categoria> categorias = Sesion.ObtenerTodasLasCategorias();
             foreach (Categoria categoria in categorias)

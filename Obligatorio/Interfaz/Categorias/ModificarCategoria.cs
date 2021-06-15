@@ -1,6 +1,7 @@
 ﻿using Negocio;
 using Negocio.Categorias;
 using Negocio.Excepciones;
+using Negocio.InterfacesGUI;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -9,7 +10,7 @@ namespace Interfaz.Categorias
 {
     public partial class ModificarCategoria : UserControl
     {
-        private Sesion Sesion = Sesion.ObtenerInstancia();
+        public ICategoria Sesion = new CategoriaGUI();
 
         public ModificarCategoria()
         {
