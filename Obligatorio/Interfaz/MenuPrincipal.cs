@@ -74,7 +74,9 @@ namespace Interfaz
         {
             VentanaConfirmarBool confirmacion = new VentanaConfirmarBool("Realmente desea salir?");
             confirmacion.Show();
-            if (confirmacion.Respuesta)
+            bool respuesta = confirmacion.Respuesta;
+            confirmacion.Close();
+            if (respuesta)
             {
                 BotonActivo(sender, RGBColores.Color6);
                 Sesion.LogOut();

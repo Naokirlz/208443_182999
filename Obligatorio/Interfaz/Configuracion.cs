@@ -67,7 +67,6 @@ namespace Interfaz
             CargarTarjetas();
             CargarContrasenias();
             CargarVulnerabilidades();
-            this.btnCargarDatosPrueba.Enabled = false;
             Alerta("Datos cargados con éxito.", AlertaToast.enmTipo.Exito);
         }
 
@@ -179,20 +178,22 @@ namespace Interfaz
         {
             VentanaConfirmarBool confirmacion = new VentanaConfirmarBool("Realmente desea eliminar los datos?");
             confirmacion.Show();
-            if (confirmacion.Respuesta)
+            bool respuesta = confirmacion.Respuesta;
+            confirmacion.Close();
+            if (respuesta)
             {
                 Sesion.VaciarDatosPrueba();
-                this.btnCargarDatosPrueba.Enabled = true;
                 Alerta("Datos borrados con éxito.", AlertaToast.enmTipo.Exito);
             }
-            confirmacion.Close();
         }
 
         private void btnEliminarSeleccion_Click(object sender, EventArgs e)
         {
             VentanaConfirmarBool confirmacion = new VentanaConfirmarBool("Realmente desea eliminar los datos?");
             confirmacion.Show();
-            if (confirmacion.Respuesta)
+            bool respuesta = confirmacion.Respuesta;
+            confirmacion.Close();
+            if (respuesta)
             {
                 try
                 {
@@ -251,7 +252,6 @@ namespace Interfaz
                     Alerta("Error de base de datos al intentar borrar los datos.\n" + ex.Message, AlertaToast.enmTipo.Error);
                 }
             }
-            confirmacion.Close();
         }
     }
 }
