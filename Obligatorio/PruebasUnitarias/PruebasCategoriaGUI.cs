@@ -1,12 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Negocio;
 using Negocio.Categorias;
-using Negocio.Contrasenias;
-using Negocio.DataBreaches;
 using Negocio.Excepciones;
 using Negocio.InterfacesGUI;
-using Negocio.TarjetaCreditos;
-using System;
 using System.Linq;
 
 namespace PruebasUnitarias
@@ -16,18 +12,14 @@ namespace PruebasUnitarias
     {
         private ICategoria categoriaGUI;
         private Sesion sesion;
-        private TarjetaCredito nuevoTarjeta;
-        private Contrasenia pruebaContrasenia;
 
         [TestInitialize]
         public void InicializarPruebas()
         {
-
             categoriaGUI = new CategoriaGUI();
             sesion = Sesion.ObtenerInstancia();
             sesion.GuardarPrimerPassword("secreto");
             sesion.Login("secreto");
-
         }
 
 

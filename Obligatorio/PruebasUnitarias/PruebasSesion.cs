@@ -93,19 +93,7 @@ namespace PruebasUnitarias
             sesionPrueba.CambiarPassword("cambio password");
         }
 
-        [TestMethod]
-        public void SePuedeCambiarElPasswordEstandoLogueado()
-        {
-            sesionPrueba.CambiarPassword("cambio password");
-            sesionPrueba.LogOut();
-            sesionPrueba.Login("cambio password");
-            
-            int cantidadAntes = sesionPrueba.ObtenerTodasLasCategorias().Count();
-            sesionPrueba.AltaCategoria("cat uno dos");
-            int cantidadDespues = sesionPrueba.ObtenerTodasLasCategorias().Count();
-
-            Assert.AreEqual(1, cantidadDespues - cantidadAntes);
-        }
+        
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void NoSePuedeEjecutarBuscarCategoriaSiNoSeEstaLogueado()
@@ -186,15 +174,7 @@ namespace PruebasUnitarias
             Assert.AreEqual(1,despues - antes);
         }
 
-        [TestMethod]
-        public void SePuedeEjecutarBajaTarjetaEstandoLogueado()
-        {
-            int antes = sesionPrueba.ObtenerTodasLasTarjetas().Count();
-            sesionPrueba.BajaTarjetaCredito(nuevoTarjeta.Id);
-            int despues = sesionPrueba.ObtenerTodasLasTarjetas().Count();
-            Assert.AreEqual(1, antes - despues);
-
-        }
+        
 
         [TestMethod]
         public void SePuedeEjecutarModificarTarjetaEstandoLogueado()
@@ -264,13 +244,7 @@ namespace PruebasUnitarias
             sesionPrueba.AltaContrasenia(new Contrasenia());
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
-        public void NoSePuedeEjecutarBajaContraseniaSiNoSeEstaLogueado()
-        {
-            sesionPrueba.LogOut();
-            sesionPrueba.BajaContrasenia(1);
-        }
+        
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
@@ -318,15 +292,7 @@ namespace PruebasUnitarias
 
         }
 
-        [TestMethod]
-        public void SePuedeEjecutarBajaContraseniaEstandoLogueado()
-        {
-           int cantidadAntes = sesionPrueba.ObtenerTodasLasContrasenias().Count();
-           sesionPrueba.BajaContrasenia(pruebaContrasenia.ContraseniaId);
-           int cantidadDespues = sesionPrueba.ObtenerTodasLasContrasenias().Count();
-           Assert.AreEqual(1, cantidadAntes - cantidadDespues);
-
-        }
+        
 
         [TestMethod]
         public void SePuedeEjecutarModificarContraseniaEstandoLogueado()
@@ -364,12 +330,7 @@ namespace PruebasUnitarias
             Assert.IsNotNull(buscada);
         }
 
-        [TestMethod]
-        public void SePuedeEjecutarListarContraseniasEstandoLogueado()
-        {
-            Contrasenia buscada = sesionPrueba.ObtenerTodasLasContrasenias().First();
-            Assert.IsNotNull(buscada);
-        }
+        
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
@@ -717,23 +678,7 @@ namespace PruebasUnitarias
             sesionPrueba.VerificarPasswordFiltrado(password);
         }
 
-        [TestMethod]
-        public void LaSesionPermiteEliminarLosArchivosDataBreach()
-        {
-            sesionPrueba.LimpiarFuentes();
-            int contador = 0;
-            string rutaDirectorio = AppDomain.CurrentDomain.BaseDirectory + "\\Archivos";
-            if (Directory.Exists(rutaDirectorio))
-            {
-                List<string> strFiles = Directory.GetFiles(rutaDirectorio, "*", SearchOption.AllDirectories).ToList();
-
-                foreach (string fichero in strFiles)
-                {
-                    contador++;
-                }
-            }
-            Assert.AreEqual(0, contador);
-        }
+        
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void LaSesionNoPermiteEliminarLosArchivosDataBreachSiNoEstaLogueado()
@@ -741,14 +686,7 @@ namespace PruebasUnitarias
             sesionPrueba.LogOut();
             sesionPrueba.LimpiarFuentes();
         }
-        [TestMethod]
-        public void LaSesionPermiteEliminarLaFuenteLocal()
-        {
-            int vecesVulnerableAntes = sesionPrueba.VerificarPasswordFiltrado("dalevo111!!!");
-            sesionPrueba.LimpiarFuentes();
-            int vecesVulnerableDespues = sesionPrueba.VerificarPasswordFiltrado("dalevo111!!!");
-            Assert.AreNotEqual(vecesVulnerableAntes, vecesVulnerableDespues);
-        }
+        
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void LaSesionNoPermiteEliminarLaFuenteLocalSiNoEstaLogueado()
