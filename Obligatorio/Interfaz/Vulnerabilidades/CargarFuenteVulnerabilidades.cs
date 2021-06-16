@@ -17,6 +17,7 @@ namespace Interfaz.Vulnerabilidades
 {
     public partial class CargarFuenteVulnerabilidades : UserControl
     {
+        IVulnerabilidades sesion = new VulnerabilidadesGUI();
         public CargarFuenteVulnerabilidades()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace Interfaz.Vulnerabilidades
             if (txtRutaArchivo.Text != "")
             {
                 IFuente fuenteArchivo = new FuenteArchivo();
-                fuenteArchivo.CrearDataBreach(txtRutaArchivo.Text);
+                sesion.CargarDataBreach(fuenteArchivo, txtRutaArchivo.Text);
                 Alerta("El archivo ha sido cargado con éxito!", AlertaToast.enmTipo.Exito);
                 txtRutaArchivo.Text = "";
             }

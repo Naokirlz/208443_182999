@@ -58,7 +58,8 @@ namespace PruebasUnitarias
 
             sesionPrueba.AltaTarjetaCredito(nuevoTarjeta);
             sesionPrueba.AltaContrasenia(pruebaContrasenia);
-            sesionPrueba.CargarDataBreachLocal("dalevo111!!!\n1234123412341234");
+            FuenteLocal fuente = new FuenteLocal();
+            sesionPrueba.CargarDataBreach(fuente, "dalevo111!!!\n1234123412341234");
 
         }
 

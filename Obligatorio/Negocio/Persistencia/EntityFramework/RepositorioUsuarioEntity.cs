@@ -50,7 +50,7 @@ namespace Negocio.Persistencia.EntityFramework
         {
             using (Contexto context = new Contexto(contexto))
             {
-                Usuario aModificar = Buscar(entity);
+                Usuario aModificar = context.Usuarios.FirstOrDefault();
                 aModificar.ClaveMaestra = entity.ClaveMaestra;
 
                 context.SaveChanges();

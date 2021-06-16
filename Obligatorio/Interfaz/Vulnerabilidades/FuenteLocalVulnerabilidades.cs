@@ -1,5 +1,6 @@
 ﻿using Interfaz.Alertas;
 using Negocio;
+using Negocio.DataBreaches;
 using Negocio.Excepciones;
 using Negocio.InterfacesGUI;
 using System;
@@ -21,7 +22,8 @@ namespace Interfaz.Vulnerabilidades
             {
                 Alerta("El texto ha superado el límite de caracteres.", AlertaToast.enmTipo.Error);
             }
-            Sesion.CargarDataBreachLocal(this.txtEntradaFuenteLocal.Text);
+            IFuente fuenteLocal = new FuenteLocal();
+            Sesion.CargarDataBreach(fuenteLocal, this.txtEntradaFuenteLocal.Text);
             this.txtEntradaFuenteLocal.Text = "";
             Alerta("La lista ha sido guardada con éxito!", AlertaToast.enmTipo.Exito);
         }

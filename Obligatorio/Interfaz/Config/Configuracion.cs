@@ -97,10 +97,10 @@ namespace Interfaz.Config
             {
                 try
                 {
-                    if (chkArchivos.Checked)
+                    if (chkFuentes.Checked)
                     {
-                        sesion.BajaDataBreachArchivos();
-                        chkArchivos.Checked = false;
+                        sesion.LimpiarFuentes();
+                        chkFuentes.Checked = false;
                     }
                     if (chkHistorial.Checked)
                     {
@@ -110,11 +110,6 @@ namespace Interfaz.Config
                             sesion.BajaHistorial(historial.HistorialId);
                             chkHistorial.Checked = false;
                         }
-                    }
-                    if (chkFuenteLocal.Checked)
-                    {
-                        sesion.BajaDataBreachLocal();
-                        chkFuenteLocal.Checked = false;
                     }
                     if (chkTarjetas.Checked)
                     {

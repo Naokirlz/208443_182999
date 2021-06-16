@@ -11,7 +11,7 @@ namespace Negocio.InterfacesGUI
 {
     public interface IVulnerabilidades
     {
-        void CargarDataBreachLocal(string texto);
+        void CargarDataBreach(IFuente fuente, string texto);
         IEnumerable<Historial> ObtenerTodasLosHistoriales();
         IEnumerable<HistorialContrasenia> DevolverContraseniasVulnerables(int historial);
         Contrasenia BuscarContrasenia(int id);

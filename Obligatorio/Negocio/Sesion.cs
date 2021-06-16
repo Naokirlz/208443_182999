@@ -63,9 +63,9 @@ namespace Negocio
             ConfigurationManager.AppSettings["DATABASE_CONTEXT"] = contexto;
         }
 
-        public void CargarDataBreachLocal(string texto)
+        public void CargarDataBreach(IFuente fuente, string texto)
         {
-            gestorDataBreaches.CargarDataBreachLocal(texto);
+            gestorDataBreaches.CargarDataBreach(fuente,texto);
         }
 
         public void GuardarPrimerPassword(string primerPassword)
@@ -199,8 +199,7 @@ namespace Negocio
             this.gestorCategoria.LimpiarBD();
             this.gestorTarjetaCredito.LimpiarBD();
             this.gestorDataBreaches.LimpiarBD();
-            this.gestorDataBreaches.LimpiarFuenteLocal();
-            this.gestorDataBreaches.LimpiarFuenteArchivo();
+            this.gestorDataBreaches.LimpiarFuentes();
             this.usuario.LimpiarBD();
         }
 
@@ -268,21 +267,14 @@ namespace Negocio
             List<IFuente> fuentes = gestorDataBreaches.ObtenerFuentes();
             return gestorContrasenia.VerificarPasswordFiltrado(password, fuentes);
         }
-
-        public void BajaDataBreachArchivos()
-        {
-            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            gestorDataBreaches.LimpiarFuenteArchivo();
-        }
-
-        public void BajaDataBreachLocal()
-        {
-            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            gestorDataBreaches.LimpiarFuenteLocal();
-        }
         public bool VerificarUsuarioExiste()
         {
             return usuario.VerificarUsuarioExiste();
+        }
+        public void LimpiarFuentes()
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            gestorDataBreaches.LimpiarFuentes();
         }
     }
 }

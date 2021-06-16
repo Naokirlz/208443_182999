@@ -28,14 +28,9 @@ namespace Negocio.InterfacesGUI
             sesion.BajaContrasenia(id);
         }
 
-        public void BajaDataBreachArchivos()
+        public void LimpiarFuentes()
         {
-            sesion.BajaDataBreachArchivos();
-        }
-
-        public void BajaDataBreachLocal()
-        {
-            sesion.BajaDataBreachLocal();
+            sesion.LimpiarFuentes();
         }
 
         public void BajaHistorial(int id)

@@ -15,10 +15,9 @@ namespace Negocio.InterfacesGUI
         void CambiarPassword(string nuevoPassword);
         void CambiarContextoDeBaseDeDatos(string contexto);
         void VaciarDatosPrueba();
-        void BajaDataBreachArchivos();
         IEnumerable<Historial> ObtenerTodasLosHistoriales();
         void BajaHistorial(int id);
-        void BajaDataBreachLocal();
+        void LimpiarFuentes();
         IEnumerable<TarjetaCredito> ObtenerTodasLasTarjetas();
         void BajaTarjetaCredito(int id);
         IEnumerable<Contrasenia> ObtenerTodasLasContrasenias();

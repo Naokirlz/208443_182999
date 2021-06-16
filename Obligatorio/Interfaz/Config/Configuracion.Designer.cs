@@ -39,8 +39,7 @@ namespace Interfaz.Config
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnEliminarSeleccion = new System.Windows.Forms.Button();
             this.chkHistorial = new System.Windows.Forms.CheckBox();
-            this.chkArchivos = new System.Windows.Forms.CheckBox();
-            this.chkFuenteLocal = new System.Windows.Forms.CheckBox();
+            this.chkFuentes = new System.Windows.Forms.CheckBox();
             this.chkTarjetas = new System.Windows.Forms.CheckBox();
             this.chkContrasenias = new System.Windows.Forms.CheckBox();
             this.chkCategorias = new System.Windows.Forms.CheckBox();
@@ -136,8 +135,7 @@ namespace Interfaz.Config
             // 
             this.groupBox2.Controls.Add(this.btnEliminarSeleccion);
             this.groupBox2.Controls.Add(this.chkHistorial);
-            this.groupBox2.Controls.Add(this.chkArchivos);
-            this.groupBox2.Controls.Add(this.chkFuenteLocal);
+            this.groupBox2.Controls.Add(this.chkFuentes);
             this.groupBox2.Controls.Add(this.chkTarjetas);
             this.groupBox2.Controls.Add(this.chkContrasenias);
             this.groupBox2.Controls.Add(this.chkCategorias);
@@ -168,32 +166,22 @@ namespace Interfaz.Config
             // chkHistorial
             // 
             this.chkHistorial.AutoSize = true;
-            this.chkHistorial.Location = new System.Drawing.Point(27, 351);
+            this.chkHistorial.Location = new System.Drawing.Point(27, 321);
             this.chkHistorial.Name = "chkHistorial";
             this.chkHistorial.Size = new System.Drawing.Size(145, 24);
             this.chkHistorial.TabIndex = 53;
             this.chkHistorial.Text = "Eliminar Historial";
             this.chkHistorial.UseVisualStyleBackColor = true;
             // 
-            // chkArchivos
+            // chkFuentes
             // 
-            this.chkArchivos.AutoSize = true;
-            this.chkArchivos.Location = new System.Drawing.Point(27, 321);
-            this.chkArchivos.Name = "chkArchivos";
-            this.chkArchivos.Size = new System.Drawing.Size(255, 24);
-            this.chkArchivos.TabIndex = 52;
-            this.chkArchivos.Text = "Eliminar Archivos DataBreaches";
-            this.chkArchivos.UseVisualStyleBackColor = true;
-            // 
-            // chkFuenteLocal
-            // 
-            this.chkFuenteLocal.AutoSize = true;
-            this.chkFuenteLocal.Location = new System.Drawing.Point(27, 291);
-            this.chkFuenteLocal.Name = "chkFuenteLocal";
-            this.chkFuenteLocal.Size = new System.Drawing.Size(181, 24);
-            this.chkFuenteLocal.TabIndex = 51;
-            this.chkFuenteLocal.Text = "Eliminar Fuente Local";
-            this.chkFuenteLocal.UseVisualStyleBackColor = true;
+            this.chkFuentes.AutoSize = true;
+            this.chkFuentes.Location = new System.Drawing.Point(27, 291);
+            this.chkFuentes.Name = "chkFuentes";
+            this.chkFuentes.Size = new System.Drawing.Size(191, 24);
+            this.chkFuentes.TabIndex = 51;
+            this.chkFuentes.Text = "Eliminar DataBreaches";
+            this.chkFuentes.UseVisualStyleBackColor = true;
             // 
             // chkTarjetas
             // 
@@ -270,8 +258,7 @@ namespace Interfaz.Config
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnEliminarDatos;
         private System.Windows.Forms.CheckBox chkHistorial;
-        private System.Windows.Forms.CheckBox chkArchivos;
-        private System.Windows.Forms.CheckBox chkFuenteLocal;
+        private System.Windows.Forms.CheckBox chkFuentes;
         private System.Windows.Forms.CheckBox chkTarjetas;
         private System.Windows.Forms.CheckBox chkContrasenias;
         private System.Windows.Forms.CheckBox chkCategorias;

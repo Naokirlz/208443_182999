@@ -23,9 +23,9 @@ namespace Negocio.InterfacesGUI
             return sesion.BuscarContrasenia(id);
         }
 
-        public void CargarDataBreachLocal(string texto)
+        public void CargarDataBreach(IFuente fuente, string texto)
         {
-            sesion.CargarDataBreachLocal(texto);
+            sesion.CargarDataBreach(fuente, texto);
         }
 
         public int ConsultarVulnerabilidades()
