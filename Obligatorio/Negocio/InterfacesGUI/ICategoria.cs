@@ -5,7 +5,7 @@ namespace Negocio.InterfacesGUI
 {
     public interface ICategoria
     {
-        void AltaCategoria(string nombre);
+        int AltaCategoria(string nombre);
         void BajaCategoria(int categoriaId);
         void ModificarCategoria(int id, string nombreNuevo);
         IEnumerable<Categoria> ObtenerTodasLasCategorias();

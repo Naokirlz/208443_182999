@@ -16,8 +16,7 @@ namespace PruebasUnitarias
     [TestClass]
     public class PruebasSesion
     {
-        Sesion sesionPrueba;
-        FuenteLocal Fuente;
+        private Sesion sesionPrueba;
         private TarjetaCredito nuevoTarjeta;
         private Contrasenia pruebaContrasenia;
 
@@ -107,42 +106,6 @@ namespace PruebasUnitarias
 
             Assert.AreEqual(1, cantidadDespues - cantidadAntes);
         }
-
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
-        public void NoSePuedeEjecutarAltaCategoriaSiNoSeEstaLogueado()
-        {
-            sesionPrueba.LogOut();
-            sesionPrueba.AltaCategoria("cat uno");
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
-        public void NoSePuedeEjecutarBajaCategoriaSiNoSeEstaLogueado()
-        {
-            sesionPrueba.LogOut();
-            sesionPrueba.BajaCategoria(1);
-        }
-
-        [TestMethod]
-        public void SePuedeEjecutarBajaCategoriaEstandoLogueado()
-        {
-            int id = sesionPrueba.AltaCategoria("NuevaCategoria");
-            int cantidadAntes = sesionPrueba.ObtenerTodasLasCategorias().Count();
-            sesionPrueba.BajaCategoria(id);
-            int cantidadDespues = sesionPrueba.ObtenerTodasLasCategorias().Count();
-            Assert.AreEqual(1, cantidadAntes - cantidadDespues);
-
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
-        public void NoSePuedeEjecutarModificarCategoriaSiNoSeEstaLogueado()
-        {
-            sesionPrueba.LogOut();
-            sesionPrueba.ModificarCategoria(1, "nuevoNombre");
-        }
-
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void NoSePuedeEjecutarBuscarCategoriaSiNoSeEstaLogueado()
@@ -150,35 +113,6 @@ namespace PruebasUnitarias
             sesionPrueba.LogOut();
             sesionPrueba.BuscarCategoriaPorId(1);
         }
-
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
-        public void NoSePuedeEjecutarObtenerTodasLasCategoriaSiNoSeEstaLogueado()
-        {
-            sesionPrueba.LogOut();
-            sesionPrueba.ObtenerTodasLasCategorias();
-        }
-
-        [TestMethod]
-        public void SePuedeEjecutarAltaCategoriaSiSeEstaLogueado()
-        {
-            int cantidadAntes = sesionPrueba.ObtenerTodasLasCategorias().Count();
-            sesionPrueba.AltaCategoria("cat 123");
-            int cantidadDespues = sesionPrueba.ObtenerTodasLasCategorias().Count();
-            
-            Assert.AreEqual(1, cantidadDespues - cantidadAntes) ;
-        }
-
-        [TestMethod]
-        public void SePuedeEjecutarModificacionCategoriaSiSeEstaLogueado()
-        {
-
-            int nuevaCategoria = sesionPrueba.AltaCategoria("algunaCategoria");
-            sesionPrueba.ModificarCategoria(nuevaCategoria, "modAlgunaCat");
-            Assert.AreEqual("modAlgunaCat", sesionPrueba.BuscarCategoriaPorId(nuevaCategoria).Nombre);
-
-        }
-
         [TestMethod]
         public void SePuedeEjecutarBuscarCategoriaPorIdSiSeEstaLogueado()
         {

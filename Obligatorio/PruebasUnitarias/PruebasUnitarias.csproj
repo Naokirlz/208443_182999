@@ -65,6 +65,7 @@
     <Compile Include="PruebasContrasena.cs" />
     <Compile Include="PruebasGestorContrasenia.cs" />
     <Compile Include="PruebasFuenteArchivo.cs" />
+    <Compile Include="PruebasCategoriaGUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

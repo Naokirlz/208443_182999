@@ -14,9 +14,9 @@ namespace Negocio.InterfacesGUI
         {
             sesion = Sesion.ObtenerInstancia();
         }
-        public void AltaCategoria(string nombre)
+        public int AltaCategoria(string nombre)
         {
-            sesion.AltaCategoria(nombre);
+            return sesion.AltaCategoria(nombre);
         }
 
         public void BajaCategoria(int categoriaId)
