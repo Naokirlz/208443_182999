@@ -12,6 +12,12 @@ namespace PruebasUnitarias
     public class PruebasFuenteArchivo
     {
         Sesion sesionPrueba;
+        [TestInitialize]
+        public void LimpiarDatosAnteriores()
+        {
+            sesionPrueba = Sesion.ObtenerInstancia();
+            sesionPrueba.VaciarDatosPrueba();
+        }
         [TestCleanup]
         public void LimpiarPruebas()
         {

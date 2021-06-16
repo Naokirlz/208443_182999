@@ -837,9 +837,13 @@ namespace PruebasUnitarias
             ContraseniaCompleta.Usuario = "Usuuu1";
             Gestor.Alta(ContraseniaCompleta);
 
-            ContraseniaCompleta.Password.Clave = "sssss1";
-            ContraseniaCompleta.Usuario = "Usuuu2";
-            Gestor.Alta(ContraseniaCompleta);
+            Contrasenia nuevaCon = new Contrasenia() { 
+                Usuario = "Usuuu2",
+                Password = new Password("sssss1"),
+                Sitio = ContraseniaCompleta.Sitio,
+                Categoria = ContraseniaCompleta.Categoria
+            };
+            Gestor.Alta(nuevaCon);
 
             int cantidad = Gestor.VerificarCantidadVecesPasswordRepetido("sssss1");
 

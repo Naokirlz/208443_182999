@@ -7,6 +7,7 @@ using Negocio.TarjetaCreditos;
 using Negocio.DataBreaches;
 using Negocio.Excepciones;
 using System.Configuration;
+using Negocio.Usuarios;
 
 namespace Negocio
 {
@@ -19,7 +20,7 @@ namespace Negocio
         private GestorContrasenias gestorContrasenia;
         private GestorTarjetaCredito gestorTarjetaCredito;
         private GestorDataBreaches gestorDataBreaches;
-        private string passwordMaestro;
+        private Usuario usuario;
         private bool logueado;
 
         public static Sesion ObtenerInstancia()
@@ -34,7 +35,7 @@ namespace Negocio
             gestorContrasenia = new GestorContrasenias();
             gestorTarjetaCredito = new GestorTarjetaCredito();
             gestorDataBreaches = new GestorDataBreaches();
-            passwordMaestro = "";
+            this.usuario = new Usuario();
             this.logueado = false;
         }
 
@@ -42,10 +43,7 @@ namespace Negocio
 
         public void Login(string password)
         {
-            if (password != passwordMaestro || passwordMaestro == "") 
-                throw new ExcepcionAccesoDenegado("El usuario o contraseña no son coinciden.");
-            this.logueado = true;
-           
+            this.logueado = usuario.Login(password);
         }
 
         public IEnumerable<Contrasenia> ContraseniasVulnerables()
@@ -72,15 +70,13 @@ namespace Negocio
 
         public void GuardarPrimerPassword(string primerPassword)
         {
-            Validaciones.ValidarPassword(primerPassword, 25, 5);
-            this.passwordMaestro = primerPassword;
+            usuario.GuardarPrimerPassword(primerPassword);
         }
 
         public void CambiarPassword(string nuevoPassword)
         {
             if (!this.logueado) throw new ExcepcionAccesoDenegado();
-            Validaciones.ValidarLargoTexto(nuevoPassword, 25, 5, "nuevo password");
-            this.passwordMaestro = nuevoPassword;
+            usuario.CambiarPassword(nuevoPassword);
         }
 
         public int AltaCategoria(string nombreCategoria)
@@ -205,6 +201,7 @@ namespace Negocio
             this.gestorDataBreaches.LimpiarBD();
             this.gestorDataBreaches.LimpiarFuenteLocal();
             this.gestorDataBreaches.LimpiarFuenteArchivo();
+            this.usuario.LimpiarBD();
         }
 
         public int ConsultarVulnerabilidades()
@@ -282,6 +279,10 @@ namespace Negocio
         {
             if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
             gestorDataBreaches.LimpiarFuenteLocal();
+        }
+        public bool VerificarUsuarioExiste()
+        {
+            return usuario.VerificarUsuarioExiste();
         }
     }
 }

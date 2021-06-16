@@ -37,6 +37,7 @@ namespace Interfaz.Login
             this.pnlLinea = new System.Windows.Forms.Panel();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.btnCerrar = new FontAwesome.Sharp.IconButton();
+            this.lblRegistrarse = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgIconoCentral)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,11 +55,11 @@ namespace Interfaz.Login
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Location = new System.Drawing.Point(85, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 24);
+            this.label1.Size = new System.Drawing.Size(164, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Inicio de Sesión";
             // 
@@ -85,12 +86,12 @@ namespace Interfaz.Login
             // 
             this.txtIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.txtIngresar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtIngresar.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIngresar.ForeColor = System.Drawing.Color.DarkGray;
             this.txtIngresar.HideSelection = false;
             this.txtIngresar.Location = new System.Drawing.Point(85, 227);
             this.txtIngresar.Name = "txtIngresar";
-            this.txtIngresar.Size = new System.Drawing.Size(205, 24);
+            this.txtIngresar.Size = new System.Drawing.Size(205, 22);
             this.txtIngresar.TabIndex = 5;
             this.txtIngresar.Text = "Contraseña";
             this.txtIngresar.Click += new System.EventHandler(this.txtIngresar_Click);
@@ -113,9 +114,9 @@ namespace Interfaz.Login
             // 
             this.btnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIngresar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresar.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnIngresar.Location = new System.Drawing.Point(95, 320);
+            this.btnIngresar.Location = new System.Drawing.Point(90, 308);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(147, 46);
             this.btnIngresar.TabIndex = 7;
@@ -140,12 +141,26 @@ namespace Interfaz.Login
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // lblRegistrarse
+            // 
+            this.lblRegistrarse.AutoSize = true;
+            this.lblRegistrarse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblRegistrarse.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblRegistrarse.ForeColor = System.Drawing.Color.White;
+            this.lblRegistrarse.Location = new System.Drawing.Point(114, 374);
+            this.lblRegistrarse.Name = "lblRegistrarse";
+            this.lblRegistrarse.Size = new System.Drawing.Size(91, 20);
+            this.lblRegistrarse.TabIndex = 9;
+            this.lblRegistrarse.Text = "Registrarse";
+            this.lblRegistrarse.Click += new System.EventHandler(this.lblRegistrarse_Click);
+            // 
             // InicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.ClientSize = new System.Drawing.Size(340, 530);
+            this.Controls.Add(this.lblRegistrarse);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.pnlLinea);
@@ -176,5 +191,6 @@ namespace Interfaz.Login
         private System.Windows.Forms.Panel pnlLinea;
         private System.Windows.Forms.Button btnIngresar;
         private FontAwesome.Sharp.IconButton btnCerrar;
+        private System.Windows.Forms.Label lblRegistrarse;
     }
 }

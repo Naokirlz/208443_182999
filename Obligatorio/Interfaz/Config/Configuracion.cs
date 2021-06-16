@@ -10,12 +10,13 @@ using System.Collections.Generic;
 using Negocio.DataBreaches;
 using Interfaz.Alertas;
 using System.Configuration;
+using Negocio.InterfacesGUI;
 
 namespace Interfaz.Config
 {
     public partial class Configuracion : UserControl
     {
-        private Sesion Sesion = Sesion.ObtenerInstancia();
+        private IConfiguracion sesion = new ConfiguracionGUI();
 
         public Configuracion()
         {
@@ -33,7 +34,6 @@ namespace Interfaz.Config
                     Alerta("Los passwords deben coincidir.", AlertaToast.enmTipo.Error);
                     return;
                 }
-                Sesion sesion = Sesion.ObtenerInstancia();
                 sesion.CambiarPassword(passwordRepetido);
                 this.txtPassword.Text = "";
                 this.txtRepetirPassword.Text = "";
@@ -58,12 +58,12 @@ namespace Interfaz.Config
                 string contexto = ConfigurationManager.AppSettings["DATABASE_CONTEXT"];
                 if(contexto.Equals("ContextoProd"))
                 {
-                    Sesion.CambiarContextoDeBaseDeDatos("ContextoTest");
+                    sesion.CambiarContextoDeBaseDeDatos("ContextoTest");
                     btnCargarDatosPrueba.Text = "Cambiar a Produccion";
                 }
                 else
                 {
-                    Sesion.CambiarContextoDeBaseDeDatos("ContextoProd");
+                    sesion.CambiarContextoDeBaseDeDatos("ContextoProd");
                     btnCargarDatosPrueba.Text = "Cambiar a Test";
                 }
                 //InsertarDatosDeMuestra();
@@ -74,119 +74,6 @@ namespace Interfaz.Config
             }
         }
 
-        private void InsertarDatosDeMuestra()
-        {
-            CargarCategorias();
-            CargarTarjetas();
-            CargarContrasenias();
-            CargarVulnerabilidades();
-            Alerta("Datos cargados con éxito.", AlertaToast.enmTipo.Exito);
-        }
-
-        private void CargarCategorias()
-        {
-            Sesion.AltaCategoria("Estudio");
-            Sesion.AltaCategoria("Hogar");
-            Sesion.AltaCategoria("Familia");
-            Sesion.AltaCategoria("Trabajo");
-        }
-        private void CargarTarjetas()
-        {
-            TarjetaCredito nueva = new TarjetaCredito()
-            {
-                Categoria = Sesion.ObtenerTodasLasCategorias().ToList()[1],
-                Codigo = 123.ToString(),
-                Nombre = "Visa República",
-                Numero = "1231231231231231",
-                Tipo = "Visa",
-                Vencimiento = DateTime.Now
-            };
-            TarjetaCredito nueva1 = new TarjetaCredito()
-            {
-                Categoria = Sesion.ObtenerTodasLasCategorias().ToList()[0],
-                Codigo = 123.ToString(),
-                Nombre = "Visa Maestro",
-                Numero = "4540556322541185",
-                Tipo = "Visa",
-                Vencimiento = DateTime.Now
-            };
-            TarjetaCredito nueva2 = new TarjetaCredito()
-            {
-                Categoria = Sesion.ObtenerTodasLasCategorias().ToList()[2],
-                Codigo = 123.ToString(),
-                Nombre = "Oca",
-                Numero = "8558954744542212",
-                Tipo = "Oca",
-                Vencimiento = DateTime.Now
-            };
-            Sesion.AltaTarjetaCredito(nueva);
-            Sesion.AltaTarjetaCredito(nueva1);
-            Sesion.AltaTarjetaCredito(nueva2);
-        }
-        private void CargarContrasenias()
-        {
-            Contrasenia contrasenia1 = new Contrasenia()
-            {
-                Categoria = Sesion.ObtenerTodasLasCategorias().ToList()[1],
-                Password=new Password("passwordSS"),
-                Sitio="netflix.com",
-                Usuario="falonso"
-            };
-            Contrasenia contrasenia2 = new Contrasenia()
-            {
-                Categoria = Sesion.ObtenerTodasLasCategorias().ToList()[0],
-                Password = new Password("AA ss1223AASas[[3 faa da"),
-                Sitio = "canvas.com",
-                Usuario = "usucanvas"
-            };
-            Contrasenia contrasenia3 = new Contrasenia()
-            {
-                Categoria = Sesion.ObtenerTodasLasCategorias().ToList()[1],
-                Password = new Password("aaaaa"),
-                Sitio = "Aplicación Banco",
-                Usuario = "falonso@gmail.com"
-            };
-            Contrasenia contrasenia4 = new Contrasenia()
-            {
-                Categoria = Sesion.ObtenerTodasLasCategorias().ToList()[3],
-                Password = new Password("sda asd asd a"),
-                Sitio = "facebook.com",
-                Usuario = "cpalma@gmail.com"
-            };
-            Contrasenia contrasenia5 = new Contrasenia()
-            {
-                Categoria = Sesion.ObtenerTodasLasCategorias().ToList()[0],
-                Password = new Password("secreTo"),
-                Sitio = "amazon.com",
-                Usuario = "usuarioAmazon"
-            };
-            Contrasenia contrasenia6 = new Contrasenia()
-            {
-                Categoria = Sesion.ObtenerTodasLasCategorias().ToList()[2],
-                Password = new Password("passwordSS"),
-                Sitio = "Spotify",
-                Usuario = "palmaCristian"
-            };
-
-            int id1 = Sesion.AltaContrasenia(contrasenia1);
-            int id2 = Sesion.AltaContrasenia(contrasenia2);
-            int id3 = Sesion.AltaContrasenia(contrasenia3);
-            int id4 = Sesion.AltaContrasenia(contrasenia4);
-            int id5 = Sesion.AltaContrasenia(contrasenia5);
-            int id6 = Sesion.AltaContrasenia(contrasenia6);
-            Sesion.BuscarContrasenia(id1).FechaUltimaModificacion = DateTime.Now.AddDays(-8);
-            Sesion.BuscarContrasenia(id2).FechaUltimaModificacion = DateTime.Now.AddDays(-10);
-            Sesion.BuscarContrasenia(id3).FechaUltimaModificacion = DateTime.Now.AddDays(-30);
-            Sesion.BuscarContrasenia(id4).FechaUltimaModificacion = DateTime.Now.AddDays(-1);
-            Sesion.BuscarContrasenia(id5).FechaUltimaModificacion = DateTime.Now.AddDays(-15);
-            Sesion.BuscarContrasenia(id6).FechaUltimaModificacion = DateTime.Now.AddDays(-7);
-        }
-        private void CargarVulnerabilidades()
-        {
-            Sesion.CargarDataBreachLocal("aaaaa\nsecreTo\n1231231231231231\n8558954744542212");
-
-        }
-
         private void btnEliminarDatos_Click(object sender, EventArgs e)
         {
             VentanaConfirmarBool confirmacion = new VentanaConfirmarBool("Realmente desea eliminar los datos?");
@@ -195,7 +82,7 @@ namespace Interfaz.Config
             confirmacion.Close();
             if (respuesta)
             {
-                Sesion.VaciarDatosPrueba();
+                sesion.VaciarDatosPrueba();
                 Alerta("Datos borrados con éxito.", AlertaToast.enmTipo.Exito);
             }
         }
@@ -212,47 +99,47 @@ namespace Interfaz.Config
                 {
                     if (chkArchivos.Checked)
                     {
-                        Sesion.BajaDataBreachArchivos();
+                        sesion.BajaDataBreachArchivos();
                         chkArchivos.Checked = false;
                     }
                     if (chkHistorial.Checked)
                     {
-                        List<Historial> historiales = Sesion.ObtenerTodasLosHistoriales().ToList();
+                        List<Historial> historiales = sesion.ObtenerTodasLosHistoriales().ToList();
                         foreach (Historial historial in historiales)
                         {
-                            Sesion.BajaHistorial(historial.HistorialId);
+                            sesion.BajaHistorial(historial.HistorialId);
                             chkHistorial.Checked = false;
                         }
                     }
                     if (chkFuenteLocal.Checked)
                     {
-                        Sesion.BajaDataBreachLocal();
+                        sesion.BajaDataBreachLocal();
                         chkFuenteLocal.Checked = false;
                     }
                     if (chkTarjetas.Checked)
                     {
-                        List<TarjetaCredito> tarjetas = Sesion.ObtenerTodasLasTarjetas().ToList();
+                        List<TarjetaCredito> tarjetas = sesion.ObtenerTodasLasTarjetas().ToList();
                         foreach (TarjetaCredito tarjeta in tarjetas)
                         {
-                            Sesion.BajaTarjetaCredito(tarjeta.Id);
+                            sesion.BajaTarjetaCredito(tarjeta.Id);
                         }
                         chkTarjetas.Checked = false;
                     }
                     if (chkContrasenias.Checked)
                     {
-                        List<Contrasenia> contrasenias = Sesion.ObtenerTodasLasContrasenias().ToList();
+                        List<Contrasenia> contrasenias = sesion.ObtenerTodasLasContrasenias().ToList();
                         foreach (Contrasenia contrasenia in contrasenias)
                         {
-                            Sesion.BajaContrasenia(contrasenia.ContraseniaId);
+                            sesion.BajaContrasenia(contrasenia.ContraseniaId);
                         }
                         chkContrasenias.Checked = false;
                     }
                     if (chkCategorias.Checked)
                     {
-                        List<Categoria> categorias = Sesion.ObtenerTodasLasCategorias().ToList();
+                        List<Categoria> categorias = sesion.ObtenerTodasLasCategorias().ToList();
                         foreach (Categoria categoria in categorias)
                         {
-                            Sesion.BajaCategoria(categoria.Id);
+                            sesion.BajaCategoria(categoria.Id);
                         }
                         chkCategorias.Checked = false;
                     }

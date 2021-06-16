@@ -2,6 +2,7 @@
 using Negocio.Contrasenias;
 using Negocio.DataBreaches;
 using Negocio.TarjetaCreditos;
+using Negocio.Usuarios;
 using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -19,6 +20,10 @@ namespace Negocio.Persistencia
         public DbSet<Historial> Historials { get; set; }
         public DbSet<HistorialContrasenia> HistorialContrasenia { get; set; }
         public DbSet<HistorialTarjetas> HistorialTarjeta { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public Contexto() 
+        {
+        }
         public Contexto(string context) : base(context)
         {
         }

@@ -13,8 +13,6 @@ using static Negocio.Contrasenias.Password;
 
 namespace PruebasUnitarias
 {
-    //LAS PRUEBAS SE ROMPEN PORQUE ESTAN USANDO EL REPOSITORIO ENTITY
-
     [TestClass]
     public class PruebasSesion
     {
@@ -660,29 +658,58 @@ namespace PruebasUnitarias
         [TestMethod]
         public void SeGeneranGrupos()
         {
-            pruebaContrasenia.Password.Clave = "1234567";
-            pruebaContrasenia.Usuario = "ussu1";
-            sesionPrueba.AltaContrasenia(pruebaContrasenia);
+            Contrasenia nuevaCon = new Contrasenia()
+            {
+                Sitio = pruebaContrasenia.Sitio,
+                Categoria = pruebaContrasenia.Categoria,
+                Password = new Password("1234567"),
+                Usuario = "ussu1"
+            };
+            sesionPrueba.AltaContrasenia(nuevaCon);
 
-            pruebaContrasenia.Password.Clave = "12345678";
-            pruebaContrasenia.Usuario = "ussu2";
-            sesionPrueba.AltaContrasenia(pruebaContrasenia);
+            Contrasenia nuevaCon2 = new Contrasenia() { 
+                Sitio = pruebaContrasenia.Sitio,
+                Categoria = pruebaContrasenia.Categoria,
+                Password = new Password("12345678"),
+                Usuario = "ussu2"
+            };
+            sesionPrueba.AltaContrasenia(nuevaCon2);
 
-            pruebaContrasenia.Password.Clave = "aaaaaaaaaaaaaaa";
-            pruebaContrasenia.Usuario = "ussu3";
-            sesionPrueba.AltaContrasenia(pruebaContrasenia);
+            Contrasenia nuevaCon3 = new Contrasenia()
+            {
+                Sitio = pruebaContrasenia.Sitio,
+                Categoria = pruebaContrasenia.Categoria,
+                Password = new Password("aaaaaaaaaaaaaaa"),
+                Usuario = "ussu3"
+            };
+            sesionPrueba.AltaContrasenia(nuevaCon3);
 
-            pruebaContrasenia.Password.Clave = "AAAAAAaAAAAAAAA";
-            pruebaContrasenia.Usuario = "ussu4";
-            sesionPrueba.AltaContrasenia(pruebaContrasenia);
+            Contrasenia nuevaCon4 = new Contrasenia()
+            {
+                Sitio = pruebaContrasenia.Sitio,
+                Categoria = pruebaContrasenia.Categoria,
+                Password = new Password("AAAAAAaAAAAAAAA"),
+                Usuario = "ussu4"
+            };
+            sesionPrueba.AltaContrasenia(nuevaCon4);
 
-            pruebaContrasenia.Password.Clave = " AAAA1@ AAAAAAA";
-            pruebaContrasenia.Usuario = "ussu5";
-            sesionPrueba.AltaContrasenia(pruebaContrasenia);
+            Contrasenia nuevaCon5 = new Contrasenia()
+            {
+                Sitio = pruebaContrasenia.Sitio,
+                Categoria = pruebaContrasenia.Categoria,
+                Password = new Password(" AAAA1@ AAAAAAA"),
+                Usuario = "ussu5"
+            };
+            sesionPrueba.AltaContrasenia(nuevaCon5);
 
-            pruebaContrasenia.Password.Clave = "AAAAAAaAAAA$AA1";
-            pruebaContrasenia.Usuario = "ussu6";
-            sesionPrueba.AltaContrasenia(pruebaContrasenia);
+            Contrasenia nuevaCon6 = new Contrasenia()
+            {
+                Sitio = pruebaContrasenia.Sitio,
+                Categoria = pruebaContrasenia.Categoria,
+                Password = new Password("AAAAAAaAAAA$AA1"),
+                Usuario = "ussu6"
+            };
+            sesionPrueba.AltaContrasenia(nuevaCon6);
 
             List<Grupo> grupos = sesionPrueba.GenerarGrupos().ToList();
             Assert.IsNotNull(grupos);
@@ -790,6 +817,13 @@ namespace PruebasUnitarias
             sesionPrueba.LogOut();
             sesionPrueba.BajaDataBreachLocal();
         }
+
+        [TestMethod]
+        public void SePuedeVerificarSiExisteUsuario()
+        {
+            Assert.IsTrue(sesionPrueba.VerificarUsuarioExiste());
+        }
+
         private string ArmarTextoDeLargoVariable(int largo)
         {
 

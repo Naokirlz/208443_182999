@@ -1,6 +1,7 @@
 ﻿using Interfaz.Alertas;
 using Negocio;
 using Negocio.Excepciones;
+using Negocio.InterfacesGUI;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -9,6 +10,7 @@ namespace Interfaz.Login
 {
     public partial class RegistroPassword : Form
     {
+        private IUsuario sesion = new UsuarioGUI();
         public RegistroPassword()
         {
             InitializeComponent();
@@ -39,7 +41,6 @@ namespace Interfaz.Login
                     Alerta("Los passwords deben coincidir.", AlertaToast.enmTipo.Error);
                     return;
                 }
-                Sesion sesion = Sesion.ObtenerInstancia();
                 sesion.GuardarPrimerPassword(passwordRepetido);
                 NavegarALogin();
             }
@@ -47,6 +48,10 @@ namespace Interfaz.Login
             {
                 Alerta(errorLargoTexto.Message, AlertaToast.enmTipo.Error);
             }
+        }
+        private void lblVolver_Click(object sender, EventArgs e)
+        {
+            NavegarALogin();
         }
         private void NavegarALogin()
         {
@@ -217,5 +222,6 @@ namespace Interfaz.Login
             }
         }
         #endregion
+
     }
 }

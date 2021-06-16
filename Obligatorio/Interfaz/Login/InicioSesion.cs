@@ -1,6 +1,7 @@
 ﻿using Interfaz.Alertas;
 using Negocio;
 using Negocio.Excepciones;
+using Negocio.InterfacesGUI;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -9,7 +10,7 @@ namespace Interfaz.Login
 {
     public partial class InicioSesion : Form
     {
-        private Sesion Sesion = Sesion.ObtenerInstancia();
+        private IUsuario Sesion = new UsuarioGUI();
         public InicioSesion()
         {
             InitializeComponent();
@@ -20,10 +21,20 @@ namespace Interfaz.Login
             {
                 try
                 {
-                    Sesion.Login(this.txtIngresar.Text);
-                    MenuPrincipal nuevaPantalla = new MenuPrincipal();
-                    this.Hide();
-                    nuevaPantalla.Show();
+                    if (Sesion.VerificarUsuarioExiste())
+                    {
+                        Sesion.Login(this.txtIngresar.Text);
+                        MenuPrincipal nuevaPantalla = new MenuPrincipal();
+                        this.Hide();
+                        nuevaPantalla.Show();
+                    }
+                    else
+                    {
+                        RegistroPassword nuevaPantalla = new RegistroPassword();
+                        this.Hide();
+                        nuevaPantalla.Show();
+                        Alerta("Debe registrar su clave de ingreso.", AlertaToast.enmTipo.Advertencia);
+                    }
                 }
                 catch (ExcepcionAccesoDenegado denegado)
                 {
@@ -33,6 +44,19 @@ namespace Interfaz.Login
             else
             {
                 Alerta("Debe rellenar los campos primero.", AlertaToast.enmTipo.Error);
+            }
+        }
+        private void lblRegistrarse_Click(object sender, EventArgs e)
+        {
+            if (Sesion.VerificarUsuarioExiste())
+            {
+                Alerta("Usted ya tiene un usuario registrado.", AlertaToast.enmTipo.Error);
+            }
+            else
+            {
+                RegistroPassword nuevaPantalla = new RegistroPassword();
+                this.Hide();
+                nuevaPantalla.Show();
             }
         }
 
@@ -125,5 +149,6 @@ namespace Interfaz.Login
             }
         }
         #endregion
+
     }
 }

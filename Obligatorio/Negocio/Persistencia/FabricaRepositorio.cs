@@ -4,6 +4,7 @@ using Negocio.DataBreaches;
 using Negocio.Persistencia.EntityFramework;
 using Negocio.Persistencia.Memoria;
 using Negocio.TarjetaCreditos;
+using Negocio.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,6 +20,20 @@ namespace Negocio.Persistencia
         public FabricaRepositorio()
         {
             entorno_persistencia = ConfigurationManager.AppSettings["ENTORNO_PERSISTENCIA"];
+        }
+
+        internal IRepositorio<Usuario> CrearRepositorioUsuario()
+        {
+            IRepositorio<Usuario> repositorio;
+            if (entorno_persistencia.Equals("Entity"))
+            {
+                repositorio = new RepositorioUsuarioEntity();
+            }
+            else
+            {
+                repositorio = new RepositorioUsuarioMemoria();
+            }
+            return repositorio;
         }
 
         public IRepositorio<Categoria> CrearRepositorioCategorias()

@@ -40,17 +40,18 @@ namespace Interfaz.Login
             this.pnlRepetirPassword = new System.Windows.Forms.Panel();
             this.txtRepetirPassword = new System.Windows.Forms.TextBox();
             this.icoRepetirPassword = new FontAwesome.Sharp.IconButton();
+            this.lblVolver = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgIconoCentral)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Location = new System.Drawing.Point(15, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(309, 24);
+            this.label1.Size = new System.Drawing.Size(300, 25);
             this.label1.TabIndex = 4;
             this.label1.Text = "Registrar Contraseña Maestra";
             // 
@@ -86,7 +87,7 @@ namespace Interfaz.Login
             // 
             this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnRegistrar.Location = new System.Drawing.Point(89, 325);
             this.btnRegistrar.Name = "btnRegistrar";
@@ -108,12 +109,12 @@ namespace Interfaz.Login
             // 
             this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.Color.DarkGray;
             this.txtPassword.HideSelection = false;
             this.txtPassword.Location = new System.Drawing.Point(83, 157);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(205, 24);
+            this.txtPassword.Size = new System.Drawing.Size(205, 22);
             this.txtPassword.TabIndex = 13;
             this.txtPassword.Text = "Contraseña";
             this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
@@ -155,12 +156,12 @@ namespace Interfaz.Login
             // 
             this.txtRepetirPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.txtRepetirPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtRepetirPassword.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRepetirPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRepetirPassword.ForeColor = System.Drawing.Color.DarkGray;
             this.txtRepetirPassword.HideSelection = false;
             this.txtRepetirPassword.Location = new System.Drawing.Point(82, 224);
             this.txtRepetirPassword.Name = "txtRepetirPassword";
-            this.txtRepetirPassword.Size = new System.Drawing.Size(205, 24);
+            this.txtRepetirPassword.Size = new System.Drawing.Size(205, 22);
             this.txtRepetirPassword.TabIndex = 16;
             this.txtRepetirPassword.Text = "Repetir Contraseña";
             this.txtRepetirPassword.Click += new System.EventHandler(this.txtRepetirPassword_Click);
@@ -190,12 +191,26 @@ namespace Interfaz.Login
             this.icoRepetirPassword.MouseLeave += new System.EventHandler(this.icoRepetirPassword_MouseLeave);
             this.icoRepetirPassword.MouseHover += new System.EventHandler(this.icoRepetirPassword_MouseHover);
             // 
+            // lblVolver
+            // 
+            this.lblVolver.AutoSize = true;
+            this.lblVolver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblVolver.ForeColor = System.Drawing.Color.White;
+            this.lblVolver.Location = new System.Drawing.Point(130, 384);
+            this.lblVolver.Name = "lblVolver";
+            this.lblVolver.Size = new System.Drawing.Size(53, 20);
+            this.lblVolver.TabIndex = 18;
+            this.lblVolver.Text = "Volver";
+            this.lblVolver.Click += new System.EventHandler(this.lblVolver_Click);
+            // 
             // RegistroPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.ClientSize = new System.Drawing.Size(340, 530);
+            this.Controls.Add(this.lblVolver);
             this.Controls.Add(this.pnlRepetirPassword);
             this.Controls.Add(this.txtRepetirPassword);
             this.Controls.Add(this.icoRepetirPassword);
@@ -232,5 +247,6 @@ namespace Interfaz.Login
         private System.Windows.Forms.Panel pnlRepetirPassword;
         private System.Windows.Forms.TextBox txtRepetirPassword;
         private FontAwesome.Sharp.IconButton icoRepetirPassword;
+        private System.Windows.Forms.Label lblVolver;
     }
 }
