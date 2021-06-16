@@ -22,7 +22,6 @@ namespace PruebasUnitarias
         private TarjetaCredito nuevoTarjeta;
         private Contrasenia pruebaContrasenia;
 
-
         [TestInitialize]
         public void InicializarPruebas()
         {
@@ -32,22 +31,48 @@ namespace PruebasUnitarias
 
             sesion.GuardarPrimerPassword("secreto");
             sesion.Login("secreto");
+
+            int id = sesion.AltaCategoria("Cosas");
+            Categoria nuevaCategoriaPrueba = sesion.BuscarCategoriaPorId(id);
+
+            this.nuevoTarjeta = new TarjetaCredito()
+            {
+                Categoria = nuevaCategoriaPrueba,
+                Nombre = "PruebaNombre",
+                Tipo = "PruebaTipo",
+                Numero = "1234123412341234",
+                Codigo = "123",
+                Vencimiento = DateTime.Now,
+                Nota = "Nota Opcional",
+
+            };
+
+            this.pruebaContrasenia = new Contrasenia()
+            {
+                Sitio = "deremate.com",
+                Usuario = "fedex",
+                Password = new Password("dalevo111!!!"),
+                Categoria = nuevaCategoriaPrueba,
+                Notas = "Sin"
+            };
+
+            sesion.AltaTarjetaCredito(nuevoTarjeta);
+            sesion.AltaContrasenia(pruebaContrasenia);
         }
 
 
         [TestCleanup]
         public void LimpiarPruebas()
         {
-            configuracionGUI.VaciarDatosPrueba();
             ConfigurationManager.AppSettings["DATABASE_CONTEXT"] = "ContextoUnitTest";
+            configuracionGUI.VaciarDatosPrueba();
         }
         [TestMethod]
         public void SePuedeEjecutarBajaCategoriaEstandoLogueado()
         {
-            sesion.AltaCategoria("NuevaCategoria");
+            int id = sesion.AltaCategoria("NuevaCategoria");
             int cantidadAntes = configuracionGUI.ObtenerTodasLasCategorias().Count();
-            Categoria unaCat = configuracionGUI.ObtenerTodasLasCategorias().First();
-            configuracionGUI.BajaCategoria(unaCat.Id);
+            configuracionGUI.BajaCategoria(id);
             int cantidadDespues = configuracionGUI.ObtenerTodasLasCategorias().Count();
             Assert.AreEqual(1, cantidadAntes - cantidadDespues);
         }
@@ -92,6 +117,8 @@ namespace PruebasUnitarias
         [TestMethod]
         public void LaSesionPermiteEliminarLaFuenteLocal()
         {
+            FuenteLocal fuente = new FuenteLocal();
+            sesion.CargarDataBreach(fuente, "dalevo111!!!");
             int vecesVulnerableAntes = sesion.VerificarPasswordFiltrado("dalevo111!!!");
             configuracionGUI.LimpiarFuentes();
             int vecesVulnerableDespues = sesion.VerificarPasswordFiltrado("dalevo111!!!");
