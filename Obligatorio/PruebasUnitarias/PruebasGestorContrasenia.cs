@@ -849,7 +849,5 @@ namespace PruebasUnitarias
 
             Assert.AreEqual(2, cantidad);
         }
-
-        
     }
 }

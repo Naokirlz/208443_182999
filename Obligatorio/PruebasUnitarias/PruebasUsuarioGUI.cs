@@ -2,7 +2,6 @@
 using Negocio;
 using Negocio.Excepciones;
 using Negocio.InterfacesGUI;
-using System;
 using System.Linq;
 
 namespace PruebasUnitarias

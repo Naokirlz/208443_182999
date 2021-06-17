@@ -4,8 +4,6 @@ using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.DataBreaches;
 using Negocio.InterfacesGUI;
-using Negocio.TarjetaCreditos;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 

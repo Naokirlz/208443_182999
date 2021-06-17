@@ -17,10 +17,8 @@ namespace PruebasUnitarias
     public class PruebasHistorial
     {
         Sesion sesionPrueba;
-        FuenteLocal Fuente;
         private TarjetaCredito nuevoTarjeta;
         private Contrasenia pruebaContrasenia;
-        private GestorDataBreaches Gestor;
 
 
         [TestInitialize]
@@ -165,9 +163,6 @@ namespace PruebasUnitarias
             nuevo.Modificar(historial);
 
         }
-
-
-
 
         [TestMethod]
         public void SePuedeBudvstunHistorial()

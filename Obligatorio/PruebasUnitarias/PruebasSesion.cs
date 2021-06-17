@@ -7,9 +7,7 @@ using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
 using Negocio.DataBreaches;
-using static Negocio.Contrasenias.Password;
 
 namespace PruebasUnitarias
 {
@@ -205,18 +203,6 @@ namespace PruebasUnitarias
             sesionPrueba.LogOut();
             sesionPrueba.ObtenerTodasLasContrasenias();
         }
-
-     
-        
-
-        
-
-        
-
-        
-
-        
-
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void NoPuedeEjecutarMostrarPasswordNoEstandoLogueado()
@@ -225,12 +211,6 @@ namespace PruebasUnitarias
             sesionPrueba.MostrarPassword(new Contrasenia());
 
         }
-
-        
-
-        
-
-
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
         public void NoSePuedeCambiarElPasswordMaestroMayorA25Caracteres()
@@ -244,13 +224,6 @@ namespace PruebasUnitarias
         {
             sesionPrueba.CambiarPassword("aaaa");
         }
-
-        
-
-        
-
-        
-
         [TestMethod]
         public void SePuedeModificarElPassword()
         {
@@ -301,11 +274,6 @@ namespace PruebasUnitarias
             };
             sesionPrueba.AltaTarjetaCredito(nueva);
         }
-
-        
-
-        
-        
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void LaSesionNoDevuelveElColorDeUnPasswordSiNoEstaLogueado()
@@ -365,19 +333,5 @@ namespace PruebasUnitarias
         {
             Assert.IsTrue(sesionPrueba.VerificarUsuarioExiste());
         }
-
-        private string ArmarTextoDeLargoVariable(int largo)
-        {
-
-            string retorno = "";
-            for (int i = 0; i < largo; i++)
-            {
-                retorno += "a";
-
-            }
-            return retorno;
-
-        }
-
     }
 }

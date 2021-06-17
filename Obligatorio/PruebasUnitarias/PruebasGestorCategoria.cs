@@ -1,10 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Negocio;
 using Negocio.Categorias;
 using Negocio.Excepciones;
 using System.Linq;
 using System.Collections.Generic;
-using Negocio.Persistencia;
 
 namespace PruebasUnitarias
 {
@@ -21,14 +19,6 @@ namespace PruebasUnitarias
             Gestor.LimpiarBD();
 
         }
-
-        //[TestCleanup]
-        //public void LimpiarPruebas()
-        //{
-
-        //    Gestor.LimpiarBD();
-
-        //}
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
