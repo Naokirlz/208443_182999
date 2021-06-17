@@ -1,5 +1,4 @@
-﻿using Negocio;
-using Negocio.Categorias;
+﻿using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.InterfacesGUI;
 using System;
@@ -76,7 +75,7 @@ namespace Interfaz.Contrasenias
             timMuestra.Interval = 1;
             Accion = enmAccion.cerrar;
         }
-
+        //Codigo utilizado para mover el formulario.
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]

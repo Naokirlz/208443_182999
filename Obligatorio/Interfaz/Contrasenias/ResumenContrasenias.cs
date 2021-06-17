@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Negocio;
 using System.Linq;
 using Negocio.InterfacesGUI;
 using Interfaz.Alertas;
@@ -18,13 +17,9 @@ namespace Interfaz.Contrasenias
         public ResumenContrasenias()
         {
             InitializeComponent();
-
             FormModificar = null;
-
             CargarColumnasBotones();
-
             CargarTabla();
-            
         }
 
         private void CargarColumnasBotones()
@@ -112,12 +107,6 @@ namespace Interfaz.Contrasenias
         private void ResumenContrasenias_Click(object sender, EventArgs e)
         {
             if (FormModificar != null) FormModificar = null;
-        }
-
-        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
-        {
-            AlertaToast alerta = new AlertaToast();
-            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Interfaz.Alertas;
-using Negocio;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.Excepciones;

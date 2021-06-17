@@ -1,5 +1,4 @@
 ﻿using Interfaz.Alertas;
-using Negocio;
 using Negocio.Contrasenias;
 using Negocio.InterfacesGUI;
 using System;
@@ -173,11 +172,6 @@ namespace Interfaz.Contrasenias
                     dgvContraseniasPorGrupo.Rows[e.RowIndex].Cells["Revelar"].Value = "Ocultar";
                 }
             }
-        }
-        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
-        {
-            AlertaToast alerta = new AlertaToast();
-            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 

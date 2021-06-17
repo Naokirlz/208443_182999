@@ -61,7 +61,7 @@ namespace Interfaz.Contrasenias
             AlertaToast alerta = new AlertaToast();
             alerta.MostrarAlerta(mensaje, tipo);
         }
-
+        //Codigo utilizado para poder mover el formulario.
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]

@@ -1,5 +1,4 @@
-﻿using Negocio;
-using Negocio.Categorias;
+﻿using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.TarjetaCreditos;
 using Negocio.Excepciones;
@@ -45,12 +44,6 @@ namespace Interfaz.Config
             }
         }
 
-        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
-        {
-            AlertaToast alerta = new AlertaToast();
-            alerta.MostrarAlerta(mensaje, tipo);
-        }
-
         private void btnCargarDatosPrueba_Click(object sender, EventArgs e)
         {
             try
@@ -66,14 +59,12 @@ namespace Interfaz.Config
                     sesion.CambiarContextoDeBaseDeDatos("ContextoProd");
                     btnCargarDatosPrueba.Text = "Cambiar a Test";
                 }
-                //InsertarDatosDeMuestra();
             }
             catch (ExcepcionElementoYaExiste excepcion)
             {
                 Alerta("Primero elimine los datos.", AlertaToast.enmTipo.Error);
             }
         }
-
         private void btnEliminarDatos_Click(object sender, EventArgs e)
         {
             VentanaConfirmarBool confirmacion = new VentanaConfirmarBool("Realmente desea eliminar los datos?");
@@ -147,6 +138,11 @@ namespace Interfaz.Config
                     Alerta("Error de base de datos al intentar borrar los datos.\n" + ex.Message, AlertaToast.enmTipo.Error);
                 }
             }
+        }
+        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
+        {
+            AlertaToast alerta = new AlertaToast();
+            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }

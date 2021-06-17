@@ -1,5 +1,4 @@
 ﻿using Interfaz.Alertas;
-using Negocio;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
 using Negocio.Excepciones;
@@ -92,7 +91,7 @@ namespace Interfaz.Contrasenias
                 Alerta(unaExcepcion.Message, AlertaToast.enmTipo.Error);
             }
         }
-
+        //Codigo utilizado para mover el formulario.
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
