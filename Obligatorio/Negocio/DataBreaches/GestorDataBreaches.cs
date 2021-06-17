@@ -1,11 +1,8 @@
 ﻿using Negocio.Contrasenias;
 using Negocio.Persistencia;
-using Negocio.Persistencia.EntityFramework;
 using Negocio.TarjetaCreditos;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace Negocio.DataBreaches
 {
@@ -23,33 +20,37 @@ namespace Negocio.DataBreaches
             this.fuentes = fabricaFuentes.FabricarFuentes();
         }
 
-
         public int ConsultarVulnerabilidades(IEnumerable<Contrasenia> ContraseniasVulnerables, IEnumerable<TarjetaCredito> TarjetasCreditoVulnerables)
         {
             Historial historial = new Historial();
             historial.Fecha = DateTime.Now;
             IEnumerable<Contrasenia> contraseniasVul = ContraseniasVulnerables;
-
-            foreach (Contrasenia con in contraseniasVul)
-            {
-                HistorialContrasenia nuevo = new HistorialContrasenia();
-                nuevo.ContraseniaId = con.ContraseniaId;
-                historial.passwords.Add(nuevo);
-            }
+            AgregarContraseniasVulnerables(historial, contraseniasVul);
 
             IEnumerable<TarjetaCredito> tarjetasVul = TarjetasCreditoVulnerables;
+            AgregarTarjetasVulnerables(historial,tarjetasVul);
 
+            int registroHistorial = Alta(historial);
+            return registroHistorial;
+        }
+        private void AgregarTarjetasVulnerables(Historial historial, IEnumerable<TarjetaCredito> tarjetasVul)
+        {
             foreach (TarjetaCredito tarjeta in tarjetasVul)
             {
                 HistorialTarjetas nuevo = new HistorialTarjetas();
                 nuevo.NumeroTarjeta = tarjeta.Numero;
                 historial.tarjetasVulnerables.Add(nuevo);
             }
-
-            int registroHistorial = Alta(historial);
-            return registroHistorial;
         }
-
+        private void AgregarContraseniasVulnerables(Historial historial, IEnumerable<Contrasenia> contraseniasVul)
+        {
+            foreach (Contrasenia con in contraseniasVul)
+            {
+                HistorialContrasenia nuevo = new HistorialContrasenia();
+                nuevo.ContraseniaId = con.ContraseniaId;
+                historial.passwords.Add(nuevo);
+            }
+        }
         public IEnumerable<HistorialContrasenia> DevolverContraseniasVulnerables(int historial)
         {
             Historial buscado = Buscar(historial);

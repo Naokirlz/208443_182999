@@ -40,7 +40,5 @@ namespace Negocio.DataBreaches
                 this.contraseniasYTarjetasVulnerables.Add(texto);
             }
         }
-
-
     }
 }
