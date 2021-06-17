@@ -5,11 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Negocio.Contrasenias
 {
-
-    
     public class Password : IEquatable<Password>
     {
-        
         [Key, ForeignKey("Contrasenia")]
         public int ContraseniaId { get; set; }
 
@@ -27,10 +24,7 @@ namespace Negocio.Contrasenias
 
         public EnumColor ColorPassword { get { return CalcularFortaleza(); } }
 
-        public Password()
-        {
-           
-        }
+        public Password() { }
 
         public Password(string clave)
         {
@@ -39,10 +33,10 @@ namespace Negocio.Contrasenias
   
         
         private string[] caracteresRandom = new[] {
-            "ABCDEFGHJKLMNOPQRSTUVWXYZ",    // MAYUSCULAS 
-            "abcdefghijkmnopqrstuvwxyz",    // MINUSCULAS
-            "0123456789",                   // NUMEROS
-            "!#$%&'()*+,-./: ;<=>?@[]^_`{|}~"  // ESPECIALES
+            "ABCDEFGHJKLMNOPQRSTUVWXYZ",
+            "abcdefghijkmnopqrstuvwxyz",
+            "0123456789",
+            "!#$%&'()*+,-./: ;<=>?@[]^_`{|}~"
         };
 
         public void GenerarPassword()
@@ -50,28 +44,24 @@ namespace Negocio.Contrasenias
             Random Rand = new Random(Environment.TickCount);
             List<char> palabras = new List<char>();
             
-            for (int i = 0; i < Largo; )
-            {
-            if (Mayuscula)
-                {
+            for (int i = 0; i < Largo; ) {
+                if (Mayuscula) {
                   palabras.Insert(Rand.Next(0, palabras.Count),
                     caracteresRandom[0][Rand.Next(0, caracteresRandom[0].Length)]);
                   i++;
                 }
-            if (i < Largo && Minuscula)
-                {
+                if (i < Largo && Minuscula) {
                     palabras.Insert(Rand.Next(0, palabras.Count),
                         caracteresRandom[1][Rand.Next(0, caracteresRandom[1].Length)]);
                     i++;
                 }
-            if (i < Largo && Numero)
-                {
+                if (i < Largo && Numero) {
                     palabras.Insert(Rand.Next(0, palabras.Count),
                    caracteresRandom[2][Rand.Next(0, caracteresRandom[2].Length)]);
                     i++;
                 }
-               
-            if (i < Largo && Especial) { 
+
+                if (i < Largo && Especial) { 
                     palabras.Insert(Rand.Next(0, palabras.Count),
                         caracteresRandom[3][Rand.Next(0, caracteresRandom[3].Length)]);
                     i++;

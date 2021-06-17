@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 
-
 namespace Negocio.Contrasenias
 {
     public class Grupo

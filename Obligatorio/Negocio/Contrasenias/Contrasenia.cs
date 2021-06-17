@@ -9,7 +9,6 @@ namespace Negocio.Contrasenias
     [Table("Contrasenia")]
     public class Contrasenia: IComparable<Contrasenia>
     {
-       
         public int ContraseniaId { get; set; }
         public virtual Password Password { get; set; }
 
@@ -45,8 +44,5 @@ namespace Negocio.Contrasenias
         {
             return this.Password.ColorPassword;
         }
-
     }
-
-    
 }
