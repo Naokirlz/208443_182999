@@ -70,6 +70,8 @@
     <Compile Include="PruebasConfiguracionGUI.cs" />
     <Compile Include="PruebasContraseniaGUI.cs" />
     <Compile Include="PruebasTarjetasGUI.cs" />
+    <Compile Include="PruebasUsuarioGUI.cs" />
+    <Compile Include="PruebasVulnerabilidadesGUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

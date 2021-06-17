@@ -67,12 +67,7 @@ namespace PruebasUnitarias
         }
 
 
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
-        public void NoSePuedeIniciarSesionSinIngresarElPrimerPassword()
-        {
-            sesionPrueba.Login("");
-        }
+        
 
 
         [TestMethod]
@@ -218,13 +213,7 @@ namespace PruebasUnitarias
 
         
 
-        [TestMethod]
-        public void SePuedeEjecutarBuscarContraseniaEstandoLogueado()
-        {
-            int id = sesionPrueba.ObtenerTodasLasContrasenias().First().ContraseniaId;
-            Contrasenia buscada = sesionPrueba.BuscarContrasenia(id);
-            Assert.IsNotNull(buscada);
-        }
+        
 
         
 
@@ -239,19 +228,8 @@ namespace PruebasUnitarias
 
         
 
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionLargoTexto))]
-        public void NoSePuedeGuardarElPasswordMaestroMenorA5Caracteres()
-        {
-            sesionPrueba.GuardarPrimerPassword("aaaa");
-        }
+        
 
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionLargoTexto))]
-        public void NoSePuedeGuardarElPasswordMaestroMayorA25Caracteres()
-        {
-            sesionPrueba.GuardarPrimerPassword("12345123451234512345123451");
-        }
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
@@ -267,78 +245,11 @@ namespace PruebasUnitarias
             sesionPrueba.CambiarPassword("aaaa");
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
-        public void FallaElLoginConPasswordIncorrecto()
-        {
-            string primerPassword = "nuevoPasswrod";
-            sesionPrueba.GuardarPrimerPassword(primerPassword);
-            sesionPrueba.Login("assassa");
-        }
+        
 
         
 
-        [TestMethod]
-        public void EncuentraContraseniaVulnerableEnFuente()
-        {
-
-            sesionPrueba.ContraseniasVulnerables();
-            Contrasenia vulnerable = sesionPrueba.BuscarContrasenia(pruebaContrasenia.ContraseniaId);
-            Assert.AreEqual(1, vulnerable.CantidadVecesEncontradaVulnerable);
-
-        }
-
-        [TestMethod]
-        public void Encuentra2VecesUnaContraseniaVulnerableEnUnaFuente()
-        {
-            FuenteLocal fuente = new FuenteLocal();
-            sesionPrueba.CargarDataBreach(fuente, "dalevo111!!!");
-            sesionPrueba.ContraseniasVulnerables();
-            pruebaContrasenia = sesionPrueba.BuscarContrasenia(pruebaContrasenia.ContraseniaId);
-            Assert.AreEqual(pruebaContrasenia.CantidadVecesEncontradaVulnerable, 2);
-        }
-
-        [TestMethod]
-        public void AciertaDosVecesLasContraseniasVulnerables()
-        {
-
-            IEnumerable<Contrasenia> contrasenias = sesionPrueba.ContraseniasVulnerables();
-            IEnumerable<Contrasenia> contrasenias2 = sesionPrueba.ContraseniasVulnerables();
-            Assert.AreEqual(contrasenias.Count(), contrasenias2.Count());
-
-        }
-
-        [TestMethod]
-        public void EncuentraTarjetaVulnerableEnFuente()
-        {
-
-            sesionPrueba.TarjetasCreditoVulnerables();
-            nuevoTarjeta = sesionPrueba.BuscarTarjeta(nuevoTarjeta.Id);
-            Assert.AreEqual(nuevoTarjeta.CantidadVecesEncontradaVulnerable, 1);
-
-        }
-
-        [TestMethod]
-        public void Encuentra2VecesTarjetaVulnerableEnUnaFuente()
-        {
-            FuenteLocal fuente = new FuenteLocal();
-            sesionPrueba.CargarDataBreach(fuente, "1234123412341234");
-            sesionPrueba.TarjetasCreditoVulnerables();
-            nuevoTarjeta = sesionPrueba.BuscarTarjeta(nuevoTarjeta.Id);
-            Assert.AreEqual(nuevoTarjeta.CantidadVecesEncontradaVulnerable, 2);
-
-        }
-
-        [TestMethod]
-        public void SiApareceMuchasVecesVulnerableDevuelveUnSoloObjeto()
-        {
-            FuenteLocal fuente = new FuenteLocal();
-            sesionPrueba.CargarDataBreach(fuente, "1234123412341234");
-            sesionPrueba.CargarDataBreach(fuente, "1234123412341234");
-            IEnumerable<TarjetaCredito> tarjetasVulnerables = sesionPrueba.TarjetasCreditoVulnerables();
-            Assert.AreEqual(1, tarjetasVulnerables.Count());
-
-        }
+        
 
         [TestMethod]
         public void SePuedeModificarElPassword()
@@ -391,43 +302,7 @@ namespace PruebasUnitarias
             sesionPrueba.AltaTarjetaCredito(nueva);
         }
 
-        [TestMethod]
-        public void SePuedeGenerarUnHistorial()
-        {
-            int historial = sesionPrueba.ConsultarVulnerabilidades();
-            Assert.IsNotNull(historial);
-        }
-
-        [TestMethod]
-        public void ElHistorialDevulveContraseniasVulnerables()
-        {
-            int historial = sesionPrueba.ConsultarVulnerabilidades();
-            IEnumerable<HistorialContrasenia> contraseniaVulnerable = sesionPrueba.DevolverContraseniasVulnerables(historial);
-
-            Assert.AreEqual(1,contraseniaVulnerable.Count());
-            Assert.AreEqual("dalevo111!!!", contraseniaVulnerable.First().Clave);
-            Assert.AreEqual(pruebaContrasenia.ContraseniaId, contraseniaVulnerable.First().ContraseniaId);
-        }
-
-        [TestMethod]
-        public void ElHistorialDevulveTarjetasVulnerables()
-        {
-            int historial = sesionPrueba.ConsultarVulnerabilidades();
-            IEnumerable<HistorialTarjetas> tarjetasVulnerable = sesionPrueba.DevolverTarjetasVulnerables(historial);
-
-            Assert.AreEqual(1, tarjetasVulnerable.Count());
-            Assert.AreEqual("1234123412341234", tarjetasVulnerable.First().NumeroTarjeta);
-        }
-
-        [TestMethod]
-        public void SeDevulvenHistoriales()
-        {
-            int historial = sesionPrueba.ConsultarVulnerabilidades();
-            int historial2 = sesionPrueba.ConsultarVulnerabilidades();
-            IEnumerable<Historial> historiales = sesionPrueba.ObtenerTodasLosHistoriales();
-
-            Assert.AreEqual(2, historiales.Count());
-        }
+        
 
         
         
