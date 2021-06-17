@@ -92,7 +92,7 @@ namespace Interfaz.Contrasenias
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(118)))), ((int)(((byte)(176)))));
             this.label1.Location = new System.Drawing.Point(76, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 20);
+            this.label1.Size = new System.Drawing.Size(198, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Modificar Contraseña";
             // 
@@ -148,7 +148,7 @@ namespace Interfaz.Contrasenias
             this.lblCategoria.Location = new System.Drawing.Point(70, 98);
             this.lblCategoria.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(78, 20);
+            this.lblCategoria.Size = new System.Drawing.Size(97, 25);
             this.lblCategoria.TabIndex = 63;
             this.lblCategoria.Text = "Categoría";
             // 
@@ -159,7 +159,7 @@ namespace Interfaz.Contrasenias
             this.cmbCategoria.Location = new System.Drawing.Point(190, 95);
             this.cmbCategoria.Margin = new System.Windows.Forms.Padding(5);
             this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(232, 28);
+            this.cmbCategoria.Size = new System.Drawing.Size(232, 33);
             this.cmbCategoria.TabIndex = 62;
             // 
             // txtNotas
@@ -168,7 +168,7 @@ namespace Interfaz.Contrasenias
             this.txtNotas.Margin = new System.Windows.Forms.Padding(5);
             this.txtNotas.Multiline = true;
             this.txtNotas.Name = "txtNotas";
-            this.txtNotas.Size = new System.Drawing.Size(232, 114);
+            this.txtNotas.Size = new System.Drawing.Size(232, 97);
             this.txtNotas.TabIndex = 61;
             // 
             // lblNotas
@@ -178,7 +178,7 @@ namespace Interfaz.Contrasenias
             this.lblNotas.Location = new System.Drawing.Point(105, 248);
             this.lblNotas.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblNotas.Name = "lblNotas";
-            this.lblNotas.Size = new System.Drawing.Size(51, 20);
+            this.lblNotas.Size = new System.Drawing.Size(63, 25);
             this.lblNotas.TabIndex = 60;
             this.lblNotas.Text = "Notas";
             // 
@@ -187,7 +187,7 @@ namespace Interfaz.Contrasenias
             this.txtPassword.Location = new System.Drawing.Point(190, 208);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(5);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(232, 26);
+            this.txtPassword.Size = new System.Drawing.Size(232, 30);
             this.txtPassword.TabIndex = 59;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
@@ -195,10 +195,10 @@ namespace Interfaz.Contrasenias
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.ForeColor = System.Drawing.Color.Black;
-            this.lblPassword.Location = new System.Drawing.Point(58, 212);
+            this.lblPassword.Location = new System.Drawing.Point(49, 212);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(92, 20);
+            this.lblPassword.Size = new System.Drawing.Size(114, 25);
             this.lblPassword.TabIndex = 58;
             this.lblPassword.Text = "Contraseña";
             // 
@@ -207,7 +207,7 @@ namespace Interfaz.Contrasenias
             this.txtUsuario.Location = new System.Drawing.Point(190, 171);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(5);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(232, 26);
+            this.txtUsuario.Size = new System.Drawing.Size(232, 30);
             this.txtUsuario.TabIndex = 57;
             // 
             // lblUsuario
@@ -217,7 +217,7 @@ namespace Interfaz.Contrasenias
             this.lblUsuario.Location = new System.Drawing.Point(95, 174);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(64, 20);
+            this.lblUsuario.Size = new System.Drawing.Size(79, 25);
             this.lblUsuario.TabIndex = 56;
             this.lblUsuario.Text = "Usuario";
             // 
@@ -226,7 +226,7 @@ namespace Interfaz.Contrasenias
             this.txtSitio.Location = new System.Drawing.Point(190, 134);
             this.txtSitio.Margin = new System.Windows.Forms.Padding(5);
             this.txtSitio.Name = "txtSitio";
-            this.txtSitio.Size = new System.Drawing.Size(232, 26);
+            this.txtSitio.Size = new System.Drawing.Size(232, 30);
             this.txtSitio.TabIndex = 55;
             // 
             // lblSitio
@@ -236,7 +236,7 @@ namespace Interfaz.Contrasenias
             this.lblSitio.Location = new System.Drawing.Point(18, 140);
             this.lblSitio.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblSitio.Name = "lblSitio";
-            this.lblSitio.Size = new System.Drawing.Size(129, 20);
+            this.lblSitio.Size = new System.Drawing.Size(161, 25);
             this.lblSitio.TabIndex = 54;
             this.lblSitio.Text = "Sitio o Aplicación";
             // 
@@ -277,7 +277,7 @@ namespace Interfaz.Contrasenias
             this.lblContrasenaInsegura.ForeColor = System.Drawing.Color.Red;
             this.lblContrasenaInsegura.Location = new System.Drawing.Point(18, 397);
             this.lblContrasenaInsegura.Name = "lblContrasenaInsegura";
-            this.lblContrasenaInsegura.Size = new System.Drawing.Size(51, 20);
+            this.lblContrasenaInsegura.Size = new System.Drawing.Size(63, 25);
             this.lblContrasenaInsegura.TabIndex = 68;
             this.lblContrasenaInsegura.Text = "Notas";
             // 
@@ -286,9 +286,9 @@ namespace Interfaz.Contrasenias
             this.lblContrasenaRepetida.AutoSize = true;
             this.lblContrasenaRepetida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContrasenaRepetida.ForeColor = System.Drawing.Color.Red;
-            this.lblContrasenaRepetida.Location = new System.Drawing.Point(18, 380);
+            this.lblContrasenaRepetida.Location = new System.Drawing.Point(18, 373);
             this.lblContrasenaRepetida.Name = "lblContrasenaRepetida";
-            this.lblContrasenaRepetida.Size = new System.Drawing.Size(51, 20);
+            this.lblContrasenaRepetida.Size = new System.Drawing.Size(63, 25);
             this.lblContrasenaRepetida.TabIndex = 67;
             this.lblContrasenaRepetida.Text = "Notas";
             // 
@@ -297,15 +297,15 @@ namespace Interfaz.Contrasenias
             this.lblContrasenaFiltrada.AutoSize = true;
             this.lblContrasenaFiltrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContrasenaFiltrada.ForeColor = System.Drawing.Color.Red;
-            this.lblContrasenaFiltrada.Location = new System.Drawing.Point(18, 363);
+            this.lblContrasenaFiltrada.Location = new System.Drawing.Point(18, 351);
             this.lblContrasenaFiltrada.Name = "lblContrasenaFiltrada";
-            this.lblContrasenaFiltrada.Size = new System.Drawing.Size(51, 20);
+            this.lblContrasenaFiltrada.Size = new System.Drawing.Size(63, 25);
             this.lblContrasenaFiltrada.TabIndex = 66;
             this.lblContrasenaFiltrada.Text = "Notas";
             // 
             // ModificarPasswordVentana
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(451, 471);

@@ -62,7 +62,7 @@ namespace PruebasUnitarias
         {
             string primerPassword = "nuevoPasswrod";
             usuarioGUI.GuardarPrimerPassword(primerPassword);
-            usuarioGUI.Login("assassa");
+            usuarioGUI.Login("nuevoPasswrod");
             usuarioGUI.Logout();
             sesion.AltaCategoria("aaazza");
         }
