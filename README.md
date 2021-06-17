@@ -1,8 +1,8 @@
 ![Imágen Logo ORT](Recursos/logoort.png)
 
 # Diseño de Aplicaciones 1
-# Obligatorio 1
-___Versión 1.0___
+# Obligatorio 2
+___Versión 2.0___
 
 **N5A, Docente: Leonardo Cecilia, Bruno Balduccio.**
 
