@@ -85,8 +85,35 @@ namespace PruebasUnitarias
             sesionPrueba.LogOut();
             sesionPrueba.CambiarPassword("cambio password");
         }
-
-        
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeVerificarContraseniasVulnerablesSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.ContraseniasVulnerables();
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeVerificarTarjetasVulnerablesSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.TarjetasCreditoVulnerables();
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeCambiarContextoBDSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            sesionPrueba.CambiarContextoDeBaseDeDatos("");
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ExcepcionAccesoDenegado))]
+        public void NoSePuedeCargarDataBreachSiNoSeEstaLogueado()
+        {
+            sesionPrueba.LogOut();
+            FuenteLocal fuente = new FuenteLocal();
+            sesionPrueba.CargarDataBreach(fuente, "");
+        }
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void NoSePuedeEjecutarBuscarCategoriaSiNoSeEstaLogueado()

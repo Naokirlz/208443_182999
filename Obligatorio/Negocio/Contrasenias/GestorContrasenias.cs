@@ -1,6 +1,7 @@
 ﻿using Negocio.DataBreaches;
 using Negocio.Excepciones;
 using Negocio.Persistencia;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,6 +30,7 @@ namespace Negocio.Contrasenias
         public int Alta(Contrasenia unaContrasena)
         {
             ValidarCampos(unaContrasena);
+            unaContrasena.FechaUltimaModificacion = DateTime.Now;
             return repositorio.Alta(unaContrasena);
         }
 

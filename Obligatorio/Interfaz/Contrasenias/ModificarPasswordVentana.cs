@@ -142,6 +142,9 @@ namespace Interfaz.Contrasenias
         {
             string password = this.txtPassword.Text;
             int vecesRepetido = Sesion.VerificarCatidadVecesPasswordRepetido(password);
+            if (password.Equals(Sesion.MostrarPassword(Contrasenia))){
+                vecesRepetido--;
+            }
             if (vecesRepetido == 0)
             {
                 this.lblContrasenaRepetida.Visible = true;

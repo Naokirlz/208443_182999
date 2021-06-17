@@ -13,6 +13,7 @@ namespace Interfaz.Contrasenias
     public partial class ModificarContrasenias : UserControl
     {
         private IContrasenia Sesion = new ContraseniaGUI();
+        private Contrasenia contraseniaSeleccionada;
         public ModificarContrasenias()
         {
             InitializeComponent();
@@ -38,7 +39,7 @@ namespace Interfaz.Contrasenias
 
         private void CargarDatosContrasenia()
         {
-            Contrasenia contraseniaSeleccionada = (Contrasenia)this.cmbContrasenia.SelectedItem;
+            this.contraseniaSeleccionada = (Contrasenia)this.cmbContrasenia.SelectedItem;
             if (contraseniaSeleccionada != null)
             {
                 this.cmbCategoria.SelectedItem = contraseniaSeleccionada.Categoria;
@@ -188,6 +189,9 @@ namespace Interfaz.Contrasenias
         {
             string password = this.txtPassword.Text;
             int vecesRepetido = Sesion.VerificarCatidadVecesPasswordRepetido(password);
+            if (password.Equals(Sesion.MostrarPassword(contraseniaSeleccionada))){
+                vecesRepetido--;
+            }
             if (vecesRepetido == 0)
             {
                 this.lblContrasenaRepetida.Visible = true;
