@@ -18,7 +18,7 @@ namespace Negocio.InterfacesGUI
 
         public int AltaTarjetaCredito(TarjetaCredito nuevaTarjeta)
         {
-            return AltaTarjetaCredito(nuevaTarjeta);
+            return sesion.AltaTarjetaCredito(nuevaTarjeta);
         }
 
         public void BajaTarjetaCredito(int id)

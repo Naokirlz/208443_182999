@@ -149,59 +149,8 @@ namespace PruebasUnitarias
             sesionPrueba.ObtenerTodasLasTarjetas();
         }
 
-        
-        [TestMethod]
-       public void SePuedeEjecutarAltaTarjetaEstandoLogueado()
-        {
-            int id = sesionPrueba.AltaCategoria("fake");
-            Categoria nuevaCat = sesionPrueba.BuscarCategoriaPorId(id);
-
-            TarjetaCredito nuevoTarjetaPrueba = new TarjetaCredito()
-            {
-                Categoria = nuevaCat,
-                Nombre = "PruebaNombre2",
-                Tipo = "PruebaTipo2",
-                Numero = "1234123412344444",
-                Codigo = "123",
-                Vencimiento = DateTime.Now,
-                Nota = "Nota Opcional",
-
-            };
-
-            int antes = sesionPrueba.ObtenerTodasLasTarjetas().Count();
-            sesionPrueba.AltaTarjetaCredito(nuevoTarjetaPrueba);
-            int despues = sesionPrueba.ObtenerTodasLasTarjetas().Count();
-            Assert.AreEqual(1,despues - antes);
-        }
 
         
-
-        [TestMethod]
-        public void SePuedeEjecutarModificarTarjetaEstandoLogueado()
-        {
-            int id = nuevoTarjeta.Id;
-            string nombreAnterior = nuevoTarjeta.Nombre;
-
-            int idCat = sesionPrueba.AltaCategoria("fake");
-            Categoria nuevaCat = sesionPrueba.BuscarCategoriaPorId(idCat);
-
-            TarjetaCredito modificadaTarjetaPrueba = new TarjetaCredito()
-            {
-                Categoria = nuevaCat,
-                Nombre = "nombreModificado",
-                Tipo = "PruebaTipo2",
-                Numero = "1234123412344444",
-                Codigo = "123",
-                Vencimiento = DateTime.Now,
-                Nota = "Nota Opcional",
-                Id = id
-            };
-
-            sesionPrueba.ModificarTarjeta(modificadaTarjetaPrueba);
-            string nombreActual = sesionPrueba.BuscarTarjeta(nuevoTarjeta.Id).Nombre;
-            Assert.AreNotEqual(nombreActual, nombreAnterior);
-        }
-
         [TestMethod]
         public void SePuedeEjecutarBuscarTarjetaEstandoLogueado()
         {
@@ -217,23 +166,15 @@ namespace PruebasUnitarias
                 Codigo = "123",
                 Vencimiento = DateTime.Now,
                 Nota = "Nota Opcional",
-                
+
             };
 
             int idTarjeta = sesionPrueba.AltaTarjetaCredito(buscada);
             TarjetaCredito encontrada = sesionPrueba.BuscarTarjeta(idTarjeta);
             Assert.AreEqual(idTarjeta, encontrada.Id);
-            
-        }
-
-        [TestMethod]
-        public void SePuedeEjecutarObtenerTodasTarjetaEstandoLogueado()
-        {
-           int cantidad = sesionPrueba.ObtenerTodasLasTarjetas().Count();
-           sesionPrueba.BajaTarjetaCredito(nuevoTarjeta.Id);
-           Assert.AreEqual(1, cantidad - sesionPrueba.ObtenerTodasLasTarjetas().Count());
 
         }
+
 
 
         [TestMethod]
