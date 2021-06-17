@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
-using Negocio;
 using Negocio.Categorias;
 using Negocio.InterfacesGUI;
 

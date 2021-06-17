@@ -3,6 +3,7 @@ using Negocio;
 using Negocio.Excepciones;
 using Negocio.InterfacesGUI;
 using System;
+using System.Linq;
 
 namespace PruebasUnitarias
 {
@@ -61,6 +62,15 @@ namespace PruebasUnitarias
         public void NoSePuedeGuardarElPasswordMaestroMenorA5Caracteres()
         {
             usuarioGUI.GuardarPrimerPassword("aaaa");
+        }
+
+        [TestMethod]
+        public void SePuedeRealizarLogin()
+        {
+            usuarioGUI.GuardarPrimerPassword("aaazza");
+            usuarioGUI.Login("aaazza");
+            sesion.AltaCategoria("aaazza");
+            Assert.IsTrue(sesion.ObtenerTodasLasCategorias().Count() > 0);
         }
 
         [TestMethod]
