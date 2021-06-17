@@ -11,5 +11,6 @@ namespace Negocio.InterfacesGUI
         void Login(string password);
         bool VerificarUsuarioExiste();
         void GuardarPrimerPassword(string primerPassword);
+        void Logout();
     }
 }

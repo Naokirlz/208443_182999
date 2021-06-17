@@ -1,7 +1,5 @@
 ﻿using Interfaz.Alertas;
-using Negocio;
 using Negocio.DataBreaches;
-using Negocio.Excepciones;
 using Negocio.InterfacesGUI;
 using System;
 using System.Windows.Forms;

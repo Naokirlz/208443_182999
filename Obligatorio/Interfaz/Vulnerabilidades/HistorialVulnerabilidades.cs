@@ -1,15 +1,6 @@
-﻿using Negocio;
-using Negocio.Contrasenias;
-using Negocio.TarjetaCreditos;
-using Negocio.Excepciones;
+﻿using Negocio.Contrasenias;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio.DataBreaches;
 using Negocio.InterfacesGUI;
@@ -93,11 +84,10 @@ namespace Interfaz.Vulnerabilidades
             {
                 Contrasenia contrasenia = Sesion.BuscarContrasenia(histoCon.ContraseniaId);
                 string[] fila = {
-                    //id - sitio - usuario - clave - acciones
                     histoCon.ContraseniaId.ToString(),
                     contrasenia.Sitio,
                     contrasenia.Usuario,
-                    histoCon.Clave // el boton cambia segun la clave
+                    histoCon.Clave
                 };
                 this.dgvDetalleContrasenia.Rows.Add(fila);
             }
@@ -142,7 +132,6 @@ namespace Interfaz.Vulnerabilidades
             AlertaToast alerta = new AlertaToast();
             alerta.MostrarAlerta(mensaje, tipo);
         }
-
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.dgvDetalleTarjeta.Visible = false;

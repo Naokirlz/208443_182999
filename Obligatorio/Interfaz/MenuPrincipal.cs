@@ -10,13 +10,13 @@ using Interfaz.Login;
 using Interfaz.TarjetasCredito;
 using Interfaz.Vulnerabilidades;
 using Interfaz.Config;
-using Negocio;
+using Negocio.InterfacesGUI;
 
 namespace Interfaz
 {
     public partial class MenuPrincipal : Form
     {
-        private Sesion Sesion = Sesion.ObtenerInstancia();
+        private IUsuario sesion = new UsuarioGUI();
 
         private IconButton BotonSeleccionado;
         private Panel BordeIzquierdoDelBoton;
@@ -82,7 +82,7 @@ namespace Interfaz
             if (respuesta)
             {
                 BotonActivo(sender, RGBColores.Color6);
-                Sesion.LogOut();
+                sesion.Logout();
                 InicioSesion pantallaLogin = new InicioSesion();
                 this.Hide();
                 pantallaLogin.Show();

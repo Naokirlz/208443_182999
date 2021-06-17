@@ -1,7 +1,5 @@
 ﻿using Interfaz.Contrasenias;
-using Negocio;
 using Negocio.Contrasenias;
-using Negocio.Excepciones;
 using Negocio.InterfacesGUI;
 using Negocio.TarjetaCreditos;
 using System;
@@ -104,8 +102,6 @@ namespace Interfaz.Vulnerabilidades
                     Contrasenia contraseniaSeleccionada = contraseniasVulnerables.ToList().Find(c => c.ContraseniaId == id);
 
                     IngresoPassword frmIngresoPassword = new IngresoPassword(contraseniaSeleccionada);
-
-                    //CargarTablaContraseniasVulnerables();
                 }
             }
         }
