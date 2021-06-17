@@ -271,56 +271,11 @@ namespace PruebasUnitarias
         }
 
      
-        [TestMethod]
-        public void SePuedeEjecutarAltaContraseniaEstandoLogueado()
-        {
-            int cantidadAntes = sesionPrueba.ObtenerTodasLasContrasenias().Count();
-            int id = sesionPrueba.AltaCategoria("fake");
-            Categoria nuevaCat = sesionPrueba.BuscarCategoriaPorId(id);
-
-            Contrasenia contraseniaPrueba = new Contrasenia()
-            {
-                Sitio = "deremate.com.ar",
-                Usuario = "fedexAlta",
-                Password = new Password("dale%%vo111!!!"),
-                Categoria = nuevaCat,
-                Notas = "Sin"
-            };
-
-            sesionPrueba.AltaContrasenia(contraseniaPrueba);
-            Assert.AreEqual(1, sesionPrueba.ObtenerTodasLasContrasenias().Count() - cantidadAntes);
-
-        }
+        
 
         
 
-        [TestMethod]
-        public void SePuedeEjecutarModificarContraseniaEstandoLogueado()
-        {
-
-            Contrasenia anterior = sesionPrueba.ObtenerTodasLasContrasenias().First();
-            string sitioViejo = anterior.Sitio;
-            int idCat = sesionPrueba.AltaCategoria("Fake");
-            Categoria categorianueva = sesionPrueba.BuscarCategoriaPorId(idCat);
-
-            Contrasenia contraseniaModificar = new Contrasenia()
-            {
-                Sitio = "sitio nuevo",
-                Usuario = "fedexAlta",
-                Password = new Password("dale%%vo111!!!"),
-                Categoria = categorianueva,
-                Notas = "Sin",
-                ContraseniaId = anterior.ContraseniaId
-            };
-
-            sesionPrueba.ModificarContrasenia(contraseniaModificar);
-
-            Contrasenia nueva = sesionPrueba.BuscarContrasenia(anterior.ContraseniaId);
-            string sitioNuevo = nueva.Sitio;
-
-            Assert.AreNotEqual(sitioViejo, sitioNuevo);
-
-        }
+        
 
         [TestMethod]
         public void SePuedeEjecutarBuscarContraseniaEstandoLogueado()
@@ -341,12 +296,7 @@ namespace PruebasUnitarias
 
         }
 
-        [TestMethod]
-        public void SePuedeEjecutarMostrarPasswordEstandoLogueado()
-        {
-            string password = sesionPrueba.MostrarPassword(pruebaContrasenia);
-            Assert.AreEqual(pruebaContrasenia.Password.Clave, password);
-        }
+        
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionLargoTexto))]
@@ -385,24 +335,7 @@ namespace PruebasUnitarias
             sesionPrueba.Login("assassa");
         }
 
-        [TestMethod]
-        public void AgregarContraseniaOTarjetaVulnerableAFuente()
-        {
-            FuenteLocal fuente2 = new FuenteLocal();
-            sesionPrueba.CargarDataBreach(fuente2, "admin123");
-            int cantidadVecesEncontrada = sesionPrueba.VerificarPasswordFiltrado("admin123");
-            Assert.AreEqual(cantidadVecesEncontrada, 1);
-        }
-
-        [TestMethod]
-        public void Agregar2VecesLaMismaContraseniaOTarjetaVulnerableAFuente()
-        {
-            FuenteLocal fuente = new FuenteLocal();
-            sesionPrueba.CargarDataBreach(fuente, "admin123");
-            sesionPrueba.CargarDataBreach(fuente, "admin123");
-            int cantidadVecesEncontrada = sesionPrueba.VerificarPasswordFiltrado("admin123");
-            Assert.AreEqual(cantidadVecesEncontrada, 2);
-        }
+        
 
         [TestMethod]
         public void EncuentraContraseniaVulnerableEnFuente()
@@ -555,72 +488,8 @@ namespace PruebasUnitarias
             Assert.AreEqual(2, historiales.Count());
         }
 
-        [TestMethod]
-        public void SeGeneranGrupos()
-        {
-            Contrasenia nuevaCon = new Contrasenia()
-            {
-                Sitio = pruebaContrasenia.Sitio,
-                Categoria = pruebaContrasenia.Categoria,
-                Password = new Password("1234567"),
-                Usuario = "ussu1"
-            };
-            sesionPrueba.AltaContrasenia(nuevaCon);
-
-            Contrasenia nuevaCon2 = new Contrasenia() { 
-                Sitio = pruebaContrasenia.Sitio,
-                Categoria = pruebaContrasenia.Categoria,
-                Password = new Password("12345678"),
-                Usuario = "ussu2"
-            };
-            sesionPrueba.AltaContrasenia(nuevaCon2);
-
-            Contrasenia nuevaCon3 = new Contrasenia()
-            {
-                Sitio = pruebaContrasenia.Sitio,
-                Categoria = pruebaContrasenia.Categoria,
-                Password = new Password("aaaaaaaaaaaaaaa"),
-                Usuario = "ussu3"
-            };
-            sesionPrueba.AltaContrasenia(nuevaCon3);
-
-            Contrasenia nuevaCon4 = new Contrasenia()
-            {
-                Sitio = pruebaContrasenia.Sitio,
-                Categoria = pruebaContrasenia.Categoria,
-                Password = new Password("AAAAAAaAAAAAAAA"),
-                Usuario = "ussu4"
-            };
-            sesionPrueba.AltaContrasenia(nuevaCon4);
-
-            Contrasenia nuevaCon5 = new Contrasenia()
-            {
-                Sitio = pruebaContrasenia.Sitio,
-                Categoria = pruebaContrasenia.Categoria,
-                Password = new Password(" AAAA1@ AAAAAAA"),
-                Usuario = "ussu5"
-            };
-            sesionPrueba.AltaContrasenia(nuevaCon5);
-
-            Contrasenia nuevaCon6 = new Contrasenia()
-            {
-                Sitio = pruebaContrasenia.Sitio,
-                Categoria = pruebaContrasenia.Categoria,
-                Password = new Password("AAAAAAaAAAA$AA1"),
-                Usuario = "ussu6"
-            };
-            sesionPrueba.AltaContrasenia(nuevaCon6);
-
-            List<Grupo> grupos = sesionPrueba.GenerarGrupos().ToList();
-            Assert.IsNotNull(grupos);
-        }
-        [TestMethod]
-        public void LaSesionMeDevuelveElColorDeUnPassword()
-        {
-            string password = "HolaSecretoPassword";
-            string fortaleza = sesionPrueba.VerificarFortalezaPassword(password);
-            Assert.AreEqual("VERDE_CLARO", fortaleza);
-        }
+        
+        
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]
         public void LaSesionNoDevuelveElColorDeUnPasswordSiNoEstaLogueado()
@@ -629,27 +498,7 @@ namespace PruebasUnitarias
             string password = "HolaSecretoPassword";
             string fortaleza = sesionPrueba.VerificarFortalezaPassword(password);
         }
-        [TestMethod]
-        public void LaSesionMeDevuelveSiElPasswordEsRepetido()
-        {
-            int id = sesionPrueba.AltaCategoria("Mas Cosas");
-            Categoria nuevaCategoriaPrueba = sesionPrueba.BuscarCategoriaPorId(id);
-            Contrasenia pruebaContrasenia2 = new Contrasenia()
-            {
-                Sitio = "deremate.com",
-                Usuario = "deremate",
-                Password = new Password("dalevo111!!!"),
-                Categoria = nuevaCategoriaPrueba,
-                Notas = "Sin"
-            };
-
-            sesionPrueba.AltaContrasenia(pruebaContrasenia2);
-
-            string password = "dalevo111!!!";
-
-            int vecesRepetido = sesionPrueba.VerificarCatidadVecesPasswordRepetido(password);
-            Assert.AreEqual(2, vecesRepetido);
-        }
+        
 
         [TestMethod]
         [ExpectedException(typeof(ExcepcionAccesoDenegado))]

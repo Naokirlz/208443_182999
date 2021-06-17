@@ -68,6 +68,7 @@
     <Compile Include="PruebasFuenteArchivo.cs" />
     <Compile Include="PruebasCategoriaGUI.cs" />
     <Compile Include="PruebasConfiguracionGUI.cs" />
+    <Compile Include="PruebasContraseniaGUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
