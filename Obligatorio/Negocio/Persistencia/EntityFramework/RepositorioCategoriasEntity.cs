@@ -1,6 +1,5 @@
 ﻿using Negocio.Categorias;
 using Negocio.Excepciones;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;

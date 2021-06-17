@@ -186,7 +186,61 @@ namespace Negocio
         {
             this.logueado = false;
         }
-
+        public int ConsultarVulnerabilidades()
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            return gestorDataBreaches.ConsultarVulnerabilidades(ContraseniasVulnerables(), TarjetasCreditoVulnerables());
+        }
+        public IEnumerable<HistorialContrasenia> DevolverContraseniasVulnerables(int historial)
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            return gestorDataBreaches.DevolverContraseniasVulnerables(historial);
+        }
+        public IEnumerable<HistorialTarjetas> DevolverTarjetasVulnerables(int historial)
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            return gestorDataBreaches.DevolverTarjetasVulnerables(historial);
+        }
+        public IEnumerable<Historial> ObtenerTodasLosHistoriales()
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            return gestorDataBreaches.ObtenerTodas();
+        }
+        public int AltaHistorial(Historial historial)
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            return gestorDataBreaches.Alta(historial);
+        }
+        public Historial BuscarHistorial(int historial)
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            return gestorDataBreaches.Buscar(historial);
+        }
+        public IEnumerable<Grupo> GenerarGrupos()
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            return gestorContrasenia.GenerarGrupos();
+        }
+        public string VerificarFortalezaPassword(string password)
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            return gestorContrasenia.VerificarFortalezaPassword(password);
+        }
+        public int VerificarCatidadVecesPasswordRepetido(string password)
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            return gestorContrasenia.VerificarCantidadVecesPasswordRepetido(password);
+        }
+        public int VerificarPasswordFiltrado(string password)
+        {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
+            List<IFuente> fuentes = gestorDataBreaches.ObtenerFuentes();
+            return gestorContrasenia.VerificarPasswordFiltrado(password, fuentes);
+        }
+        public bool VerificarUsuarioExiste()
+        {
+            return usuario.VerificarUsuarioExiste();
+        }
         /* 
          * Método que se realiza para limpiar los datos de las pruebas unitarias
          * de sesión, debido a que la sesión es Singleton, no se limpian los datos
@@ -200,75 +254,6 @@ namespace Negocio
             this.gestorDataBreaches.LimpiarBD();
             this.gestorDataBreaches.LimpiarFuentes();
             this.usuario.LimpiarBD();
-        }
-
-        public int ConsultarVulnerabilidades()
-        {
-            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            return gestorDataBreaches.ConsultarVulnerabilidades(ContraseniasVulnerables(), TarjetasCreditoVulnerables());
-        }
-
-        public IEnumerable<HistorialContrasenia> DevolverContraseniasVulnerables(int historial)
-        {
-            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            return gestorDataBreaches.DevolverContraseniasVulnerables(historial);
-        }
-
-        public IEnumerable<HistorialTarjetas> DevolverTarjetasVulnerables(int historial)
-        {
-            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            return gestorDataBreaches.DevolverTarjetasVulnerables(historial);
-        }
-
-        public IEnumerable<Historial> ObtenerTodasLosHistoriales()
-        {
-            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            return gestorDataBreaches.ObtenerTodas();
-        }
-
-        public int AltaHistorial(Historial historial)
-        {
-            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            return gestorDataBreaches.Alta(historial);
-        }
-
-        public Historial BuscarHistorial(int historial)
-        {
-            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            return gestorDataBreaches.Buscar(historial);
-
-        }
-
-
-        public IEnumerable<Grupo> GenerarGrupos()
-        {
-            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            return gestorContrasenia.GenerarGrupos();
-        }
-
-
-        public string VerificarFortalezaPassword(string password)
-        {
-            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            return gestorContrasenia.VerificarFortalezaPassword(password);
-        }
-
-
-        public int VerificarCatidadVecesPasswordRepetido(string password)
-        {
-            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            return gestorContrasenia.VerificarCantidadVecesPasswordRepetido(password);
-        }
-
-        public int VerificarPasswordFiltrado(string password)
-        {
-            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
-            List<IFuente> fuentes = gestorDataBreaches.ObtenerFuentes();
-            return gestorContrasenia.VerificarPasswordFiltrado(password, fuentes);
-        }
-        public bool VerificarUsuarioExiste()
-        {
-            return usuario.VerificarUsuarioExiste();
         }
         public void LimpiarFuentes()
         {
