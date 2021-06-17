@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Negocio.Categorias;
 using Negocio.Contrasenias;
-
 using Negocio.TarjetaCreditos;
 using Negocio.DataBreaches;
 using Negocio.Excepciones;
@@ -38,9 +36,6 @@ namespace Negocio
             this.usuario = new Usuario();
             this.logueado = false;
         }
-
-      
-
         public void Login(string password)
         {
             this.logueado = usuario.Login(password);
@@ -48,23 +43,27 @@ namespace Negocio
 
         public IEnumerable<Contrasenia> ContraseniasVulnerables()
         {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
             List<IFuente> fuentes = gestorDataBreaches.ObtenerFuentes();
             return this.gestorContrasenia.ObtenerContraseniasVulnerables(fuentes);
         }
  
         public IEnumerable<TarjetaCredito> TarjetasCreditoVulnerables()
         {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
             List<IFuente> fuentes = gestorDataBreaches.ObtenerFuentes();
             return this.gestorTarjetaCredito.ObtenerTarjetasVulnerables(fuentes);
         }
 
         public void CambiarContextoDeBaseDeDatos(string contexto)
         {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
             ConfigurationManager.AppSettings["DATABASE_CONTEXT"] = contexto;
         }
 
         public void CargarDataBreach(IFuente fuente, string texto)
         {
+            if (!this.logueado) throw new ExcepcionAccesoDenegado(MENSAJE_ERROR_NO_LOGUEADO);
             gestorDataBreaches.CargarDataBreach(fuente,texto);
         }
 

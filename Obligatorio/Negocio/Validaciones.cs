@@ -25,8 +25,7 @@ namespace Negocio {
 
             if(convertido > 57) return false;
             else if(convertido < 48) return false;
-            return true;          
-
+            return true;
         }
 
         public static void ValidarFecha(DateTime unaFecha)
