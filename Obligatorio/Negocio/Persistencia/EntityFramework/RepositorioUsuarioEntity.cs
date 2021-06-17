@@ -38,12 +38,7 @@ namespace Negocio.Persistencia.EntityFramework
 
         public void Existe(Usuario entity)
         {
-            using (Contexto context = new Contexto(contexto))
-            {
-                Usuario existe = context.Usuarios.FirstOrDefault();
-                if (existe != null)
-                    throw new ExcepcionElementoYaExiste("El usuario ya existe.");
-            }
+            throw new NotImplementedException();
         }
 
         public void Modificar(Usuario entity)

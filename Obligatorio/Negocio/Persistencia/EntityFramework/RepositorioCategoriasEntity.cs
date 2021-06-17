@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 
-
 namespace Negocio.Persistencia.EntityFramework
 {
     public class RepositorioCategoriasEntity : IRepositorio<Categoria>

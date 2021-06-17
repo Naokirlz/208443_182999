@@ -1,5 +1,4 @@
 ﻿using Negocio.TarjetaCreditos;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
@@ -21,8 +20,6 @@ namespace Negocio.Persistencia.EntityFramework
                 context.Tarjetas.Add(entity);
                 context.SaveChanges();
                 return entity.Id;
-              
-             
              }
         }
 
@@ -82,8 +79,6 @@ namespace Negocio.Persistencia.EntityFramework
                 tarjetaAModificar.CantidadVecesEncontradaVulnerable = entity.CantidadVecesEncontradaVulnerable;
                 context.Categorias.Attach(entity.Categoria);
                 context.SaveChanges();
-                
-           
             }
         }
 

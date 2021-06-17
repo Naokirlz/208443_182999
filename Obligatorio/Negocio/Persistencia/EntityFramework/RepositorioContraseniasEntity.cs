@@ -117,7 +117,7 @@ namespace Negocio.Persistencia.EntityFramework
                     context.HistorialContrasenia.RemoveRange(context.HistorialContrasenia);
                     context.Historials.RemoveRange(context.Historials);
                     context.SaveChanges();
-                }
+            }
    
         }
        

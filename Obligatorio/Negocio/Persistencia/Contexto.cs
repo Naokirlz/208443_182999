@@ -3,10 +3,8 @@ using Negocio.Contrasenias;
 using Negocio.DataBreaches;
 using Negocio.TarjetaCreditos;
 using Negocio.Usuarios;
-using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-
 
 namespace Negocio.Persistencia
 {

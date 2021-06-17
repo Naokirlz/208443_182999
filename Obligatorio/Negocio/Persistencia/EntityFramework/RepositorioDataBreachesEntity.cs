@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 
-
 namespace Negocio.Persistencia.EntityFramework
 {
     public class RepositorioDataBreachesEntity:IRepositorio<Historial>
@@ -73,7 +72,6 @@ namespace Negocio.Persistencia.EntityFramework
             {
                 List<Historial> retorno;
                 retorno = context.Historials.ToList();
-                //retorno.Sort();
                 return retorno;
             }
         }

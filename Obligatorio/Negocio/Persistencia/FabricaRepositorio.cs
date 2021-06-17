@@ -5,12 +5,7 @@ using Negocio.Persistencia.EntityFramework;
 using Negocio.Persistencia.Memoria;
 using Negocio.TarjetaCreditos;
 using Negocio.Usuarios;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio.Persistencia
 {
