@@ -55,7 +55,7 @@ namespace Interfaz.Config
             this.lblRepitaPassword.Location = new System.Drawing.Point(38, 113);
             this.lblRepitaPassword.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblRepitaPassword.Name = "lblRepitaPassword";
-            this.lblRepitaPassword.Size = new System.Drawing.Size(159, 20);
+            this.lblRepitaPassword.Size = new System.Drawing.Size(194, 25);
             this.lblRepitaPassword.TabIndex = 12;
             this.lblRepitaPassword.Text = "Repita la Contraseña";
             // 
@@ -65,7 +65,7 @@ namespace Interfaz.Config
             this.txtRepetirPassword.Margin = new System.Windows.Forms.Padding(5);
             this.txtRepetirPassword.Name = "txtRepetirPassword";
             this.txtRepetirPassword.PasswordChar = '•';
-            this.txtRepetirPassword.Size = new System.Drawing.Size(227, 26);
+            this.txtRepetirPassword.Size = new System.Drawing.Size(227, 30);
             this.txtRepetirPassword.TabIndex = 11;
             // 
             // lblPassword
@@ -75,7 +75,7 @@ namespace Interfaz.Config
             this.lblPassword.Location = new System.Drawing.Point(38, 46);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(92, 20);
+            this.lblPassword.Size = new System.Drawing.Size(114, 25);
             this.lblPassword.TabIndex = 10;
             this.lblPassword.Text = "Contraseña";
             // 
@@ -85,7 +85,7 @@ namespace Interfaz.Config
             this.txtPassword.Margin = new System.Windows.Forms.Padding(5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(227, 26);
+            this.txtPassword.Size = new System.Drawing.Size(227, 30);
             this.txtPassword.TabIndex = 9;
             // 
             // btnModificar
@@ -127,7 +127,7 @@ namespace Interfaz.Config
             this.btnCargarDatosPrueba.Name = "btnCargarDatosPrueba";
             this.btnCargarDatosPrueba.Size = new System.Drawing.Size(251, 33);
             this.btnCargarDatosPrueba.TabIndex = 46;
-            this.btnCargarDatosPrueba.Text = "Cambiar a Datos de Prueba";
+            this.btnCargarDatosPrueba.Text = "Cambiar a Test";
             this.btnCargarDatosPrueba.UseVisualStyleBackColor = true;
             this.btnCargarDatosPrueba.Click += new System.EventHandler(this.btnCargarDatosPrueba_Click);
             // 
@@ -168,7 +168,7 @@ namespace Interfaz.Config
             this.chkHistorial.AutoSize = true;
             this.chkHistorial.Location = new System.Drawing.Point(27, 321);
             this.chkHistorial.Name = "chkHistorial";
-            this.chkHistorial.Size = new System.Drawing.Size(145, 24);
+            this.chkHistorial.Size = new System.Drawing.Size(177, 29);
             this.chkHistorial.TabIndex = 53;
             this.chkHistorial.Text = "Eliminar Historial";
             this.chkHistorial.UseVisualStyleBackColor = true;
@@ -178,7 +178,7 @@ namespace Interfaz.Config
             this.chkFuentes.AutoSize = true;
             this.chkFuentes.Location = new System.Drawing.Point(27, 291);
             this.chkFuentes.Name = "chkFuentes";
-            this.chkFuentes.Size = new System.Drawing.Size(191, 24);
+            this.chkFuentes.Size = new System.Drawing.Size(232, 29);
             this.chkFuentes.TabIndex = 51;
             this.chkFuentes.Text = "Eliminar DataBreaches";
             this.chkFuentes.UseVisualStyleBackColor = true;
@@ -188,7 +188,7 @@ namespace Interfaz.Config
             this.chkTarjetas.AutoSize = true;
             this.chkTarjetas.Location = new System.Drawing.Point(27, 261);
             this.chkTarjetas.Name = "chkTarjetas";
-            this.chkTarjetas.Size = new System.Drawing.Size(222, 24);
+            this.chkTarjetas.Size = new System.Drawing.Size(274, 29);
             this.chkTarjetas.TabIndex = 50;
             this.chkTarjetas.Text = "Eliminar Tarjetas de Crédito";
             this.chkTarjetas.UseVisualStyleBackColor = true;
@@ -198,7 +198,7 @@ namespace Interfaz.Config
             this.chkContrasenias.AutoSize = true;
             this.chkContrasenias.Location = new System.Drawing.Point(27, 231);
             this.chkContrasenias.Name = "chkContrasenias";
-            this.chkContrasenias.Size = new System.Drawing.Size(179, 24);
+            this.chkContrasenias.Size = new System.Drawing.Size(220, 29);
             this.chkContrasenias.TabIndex = 49;
             this.chkContrasenias.Text = "Eliminar Contraseñas";
             this.chkContrasenias.UseVisualStyleBackColor = true;
@@ -208,7 +208,7 @@ namespace Interfaz.Config
             this.chkCategorias.AutoSize = true;
             this.chkCategorias.Location = new System.Drawing.Point(27, 201);
             this.chkCategorias.Name = "chkCategorias";
-            this.chkCategorias.Size = new System.Drawing.Size(165, 24);
+            this.chkCategorias.Size = new System.Drawing.Size(203, 29);
             this.chkCategorias.TabIndex = 48;
             this.chkCategorias.Text = "Eliminar Categorías";
             this.chkCategorias.UseVisualStyleBackColor = true;
@@ -229,7 +229,7 @@ namespace Interfaz.Config
             // 
             // Configuracion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.Controls.Add(this.groupBox2);
