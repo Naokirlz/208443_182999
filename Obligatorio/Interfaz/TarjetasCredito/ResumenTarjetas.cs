@@ -1,5 +1,4 @@
 ﻿using Interfaz.Alertas;
-using Negocio;
 using Negocio.InterfacesGUI;
 using Negocio.TarjetaCreditos;
 using System;
@@ -17,9 +16,7 @@ namespace Interfaz.TarjetasCredito
         {
             InitializeComponent();
             Tarjetas = Sesion.ObtenerTodasLasTarjetas();
-
             CargarColumnaBotones();
-
             CargarTabla();
         }
 
@@ -130,12 +127,6 @@ namespace Interfaz.TarjetasCredito
                     CargarTabla();
                 }
             }
-        }
-
-        private void Alerta(string mensaje, AlertaToast.enmTipo tipo)
-        {
-            AlertaToast alerta = new AlertaToast();
-            alerta.MostrarAlerta(mensaje, tipo);
         }
     }
 }

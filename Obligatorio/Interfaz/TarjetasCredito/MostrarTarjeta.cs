@@ -1,5 +1,4 @@
-﻿using Negocio;
-using Negocio.Categorias;
+﻿using Negocio.Categorias;
 using Negocio.InterfacesGUI;
 using Negocio.TarjetaCreditos;
 using System;
@@ -79,7 +78,7 @@ namespace Interfaz.TarjetasCredito
             timMuestraTarjeta.Interval = 1;
             Accion = enmAccion.cerrar;
         }
-
+        //Codigo utilizado para mover el formulario.
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]

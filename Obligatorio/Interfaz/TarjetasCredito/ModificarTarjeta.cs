@@ -1,5 +1,4 @@
 ﻿using Interfaz.Alertas;
-using Negocio;
 using Negocio.Categorias;
 using Negocio.Excepciones;
 using Negocio.InterfacesGUI;
@@ -99,7 +98,7 @@ namespace Interfaz.TarjetasCredito
         {
             this.Close();
         }
-
+        //Codigo utilizado para moverl el formulario.
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]

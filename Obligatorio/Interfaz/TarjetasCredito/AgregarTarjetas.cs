@@ -1,5 +1,4 @@
-﻿using Negocio;
-using Negocio.Categorias;
+﻿using Negocio.Categorias;
 using Negocio.TarjetaCreditos;
 using Negocio.Excepciones;
 using System;
